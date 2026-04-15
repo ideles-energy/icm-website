@@ -3,7 +3,38 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Independent Capacity Market</title>
+<title>Independent Capacity Market — The auction platform for battery dispatch rights</title>
+<meta name="description" content="The Independent Capacity Market auctions and executes the dispatch rights of flex assets, starting with Battery Energy Storage Systems in the Netherlands. First auction Q3 2026.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://icm.energy/">
+<meta property="og:title" content="Independent Capacity Market">
+<meta property="og:description" content="We auction and execute the dispatch rights for flex capacity — bringing price transparency where none exists and unlocking value from underutilised batteries in the Netherlands.">
+<meta property="og:image" content="https://icm.energy/og-image.png">
+<meta property="og:locale" content="en_GB">
+<meta property="og:site_name" content="Independent Capacity Market">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Independent Capacity Market">
+<meta name="twitter:description" content="We auction and execute the dispatch rights for flex capacity — bringing price transparency where none exists.">
+<meta name="twitter:image" content="https://icm.energy/og-image.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Independent Capacity Market",
+  "url": "https://icm.energy",
+  "description": "The Independent Capacity Market auctions and executes the dispatch rights of flex assets, starting with Battery Energy Storage Systems in the Netherlands.",
+  "founder": {
+    "@type": "Person",
+    "name": "Idelès Kaandorp",
+    "sameAs": "https://www.linkedin.com/in/idelès-kaandorp/"
+  },
+  "foundingLocation": {
+    "@type": "Country",
+    "name": "Netherlands"
+  },
+  "industry": "Energy Technology"
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -116,7 +147,7 @@
 
   .hero-eyebrow {
     font-family: var(--sans);
-    font-size: 0.72rem;
+    font-size: 0.82rem;
     font-weight: 400;
     letter-spacing: 0.14em;
     text-transform: uppercase;
@@ -153,7 +184,7 @@
     overflow: hidden;
   }
 
-  .rotating-text { display: inline-block; }
+  .rotating-text { display: inline-block; animation: none; }
   .rotating-text.exiting { animation: slideOut 0.4s ease forwards; }
   .rotating-text.entering { animation: slideIn 0.4s ease forwards; }
 
@@ -178,11 +209,11 @@
     border-bottom: 0.5px solid var(--border);
   }
 
-  .two-col-block { padding: 5rem 3rem; }
+  .two-col-block { padding: 6rem 3.5rem; }
   .two-col-block:first-child { border-right: 0.5px solid var(--border); }
 
   .col-label {
-    font-size: 0.68rem;
+    font-size: 0.8rem;
     font-weight: 400;
     letter-spacing: 0.16em;
     text-transform: uppercase;
@@ -193,9 +224,9 @@
 
   .col-text {
     font-family: var(--serif);
-    font-size: 1.05rem;
+    font-size: 1.15rem;
     font-weight: 400;
-    line-height: 1.8;
+    line-height: 1.85;
     color: var(--text);
     max-width: 480px;
   }
@@ -207,9 +238,9 @@
 
   .waitlist-section h2 {
     font-family: var(--serif);
-    font-size: 1.9rem;
+    font-size: 2.2rem;
     font-weight: 400;
-    line-height: 1.3;
+    line-height: 1.2;
     color: var(--text);
     margin-bottom: 1rem;
   }
@@ -228,11 +259,7 @@
     margin-bottom: 1rem;
   }
 
-  .form-field {
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-  }
+  .form-field { display: flex; flex-direction: column; gap: 0.4rem; }
 
   .form-field label {
     font-size: 0.68rem;
@@ -266,7 +293,7 @@
   .form-submit { margin-top: 1.5rem; }
 
   .form-note {
-    font-size: 0.75rem;
+    font-size: 0.85rem;
     color: var(--text-dim);
     margin-top: 1rem;
     line-height: 1.6;
@@ -281,7 +308,7 @@
   }
 
   .footer-founder {
-    font-size: 0.78rem;
+    font-size: 0.88rem;
     color: var(--text-dim);
     font-style: italic;
     font-family: var(--serif);
@@ -290,7 +317,7 @@
   }
 
   .footer-domain {
-    font-size: 0.72rem;
+    font-size: 0.82rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--text-dim);
@@ -332,8 +359,8 @@
   }
 
   .form-success p {
-    font-family: var(--serif);
-    font-style: italic;
+    font-family: var(--sans);
+    font-size: 0.95rem;
     color: var(--text-muted);
     margin-bottom: 0 !important;
   }
@@ -383,7 +410,7 @@
     <h2>Register interest</h2>
     <p>The Independent Capacity Market is currently in a closed-access phase. Leave your details to join the waitlist and be the first to access our auction house when we go live.</p>
 
-    <form id="waitlist-form" onsubmit="handleSubmit(event)">
+    <form id="waitlist-form" onsubmit="handleSubmit(event)" action="https://formspree.io/f/mbdqdpql" method="POST">
       <div class="form-row">
         <div class="form-field">
           <label for="fname">First name</label>
@@ -461,10 +488,25 @@
 
   setInterval(rotate, 3200);
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    document.getElementById('waitlist-form').style.display = 'none';
-    document.getElementById('form-success').style.display = 'block';
+    const form = document.getElementById('waitlist-form');
+    const data = new FormData(form);
+    try {
+      const response = await fetch('https://formspree.io/f/mbdqdpql', {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+      if (response.ok) {
+        form.style.display = 'none';
+        document.getElementById('form-success').style.display = 'block';
+      } else {
+        alert('Something went wrong. Please try again or email ideles@icm.energy directly.');
+      }
+    } catch (error) {
+      alert('Something went wrong. Please try again or email ideles@icm.energy directly.');
+    }
   }
 </script>
 </body>
