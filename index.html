@@ -4,17 +4,17 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Independent Capacity Market — The auction platform for battery dispatch rights</title>
-<meta name="description" content="The Independent Capacity Market auctions and executes the dispatch rights of flex assets, starting with Battery Energy Storage Systems in the Netherlands. First auction Q3 2026.">
+<meta name="description" content="The Independent Capacity Market auctions dispatch rights of flex assets, coordinates real-time dispatch, monitors compliance and handles settlement — starting with BESS in the Netherlands. First auction Q3 2026.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://icm.energy/">
 <meta property="og:title" content="Independent Capacity Market">
-<meta property="og:description" content="We auction and execute the dispatch rights for flex capacity — bringing price transparency where none exists and unlocking value from underutilised batteries in the Netherlands.">
+<meta property="og:description" content="We auction the dispatch rights of flex capacity — bringing price transparency where none exists and unlocking value from underutilised batteries in the Netherlands.">
 <meta property="og:image" content="https://icm.energy/og-image.png">
 <meta property="og:locale" content="en_GB">
 <meta property="og:site_name" content="Independent Capacity Market">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Independent Capacity Market">
-<meta name="twitter:description" content="We auction and execute the dispatch rights for flex capacity — bringing price transparency where none exists.">
+<meta name="twitter:description" content="We auction the dispatch rights of flex capacity — bringing price transparency where none exists.">
 <meta name="twitter:image" content="https://icm.energy/og-image.png">
 <script type="application/ld+json">
 {
@@ -22,7 +22,7 @@
   "@type": "Organization",
   "name": "Independent Capacity Market",
   "url": "https://icm.energy",
-  "description": "The Independent Capacity Market auctions and executes the dispatch rights of flex assets, starting with Battery Energy Storage Systems in the Netherlands.",
+  "description": "The Independent Capacity Market auctions dispatch rights of flex assets, coordinates real-time dispatch, monitors compliance and handles settlement — starting with BESS in the Netherlands.",
   "founder": {
     "@type": "Person",
     "name": "Idelès Kaandorp",
@@ -38,6 +38,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<script defer data-domain="icm.energy" src="https://plausible.io/js/script.js"></script>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -82,10 +83,10 @@
   }
 
   .nav-logo {
-    font-family: var(--serif);
-    font-size: 0.9rem;
+    font-family: var(--sans);
+    font-size: 0.82rem;
     font-weight: 400;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.1em;
     color: var(--text);
     text-decoration: none;
     text-transform: uppercase;
@@ -159,7 +160,7 @@
 
   .hero-headline {
     font-family: var(--serif);
-    font-size: clamp(2.2rem, 5.5vw, 4.8rem);
+    font-size: clamp(2.2rem, 5vw, 4.2rem);
     font-weight: 400;
     line-height: 1.15;
     letter-spacing: -0.01em;
@@ -181,7 +182,6 @@
     min-height: 1.2em;
     opacity: 0;
     animation: fadeUp 0.8s ease 0.5s forwards;
-    overflow: hidden;
   }
 
   .rotating-text { display: inline-block; animation: none; }
@@ -262,10 +262,10 @@
   .form-field { display: flex; flex-direction: column; gap: 0.4rem; }
 
   .form-field label {
-    font-size: 0.68rem;
+    font-size: 0.8rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--text-dim);
+    color: var(--text-muted);
     font-weight: 400;
   }
 
@@ -292,13 +292,6 @@
 
   .form-submit { margin-top: 1.5rem; }
 
-  .form-note {
-    font-size: 0.85rem;
-    color: var(--text-dim);
-    margin-top: 1rem;
-    line-height: 1.6;
-  }
-
   footer {
     border-top: 0.5px solid var(--border);
     padding: 2rem 3rem;
@@ -317,7 +310,9 @@
   }
 
   .footer-domain {
+    font-family: var(--sans);
     font-size: 0.82rem;
+    font-weight: 400;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--text-dim);
@@ -358,7 +353,7 @@
     text-align: center;
   }
 
- .form-success p {
+  .form-success p {
     font-family: var(--serif);
     font-size: 0.95rem;
     font-style: italic;
@@ -378,7 +373,7 @@
   <div class="hero-bg"></div>
   <div style="position:relative;">
     <p class="hero-eyebrow">Independent Capacity Market &nbsp;·&nbsp; Netherlands</p>
-    <h1 class="hero-headline">We auction and execute the dispatch rights for flex capacity to</h1>
+    <h1 class="hero-headline">We auction the dispatch rights of flex capacity to</h1>
     <div class="hero-rotating-line">
       <span class="rotating-text" id="rotating-phrase">unlock value from underutilised batteries.</span>
     </div>
@@ -395,13 +390,13 @@
   <div class="two-col-block">
     <span class="col-label">Who we are</span>
     <p class="col-text">
-      Independent Capacity Market is a collective of industry experts, BESS developers and flex traders who are missing a commercial layer. While the physical build-out of batteries is moving fast, capacity sits underutilised, pricing lacks transparency, and bilateral structures remain opaque. We believe in a new standard for market access in Europe — one that works for asset owners, aggregators, traders and grid operators alike.
+      Independent Capacity Market is a collective of BESS developers, flex traders, grid operators and industry experts who are missing a commercial and operational layer. While the physical build-out of batteries is moving fast, capacity sits underutilised, pricing lacks transparency, and bilateral structures remain opaque. We believe in a new standard for market access in Europe — one that delivers fair returns to asset owners, access to capacity for traders, and reliable flexibility for grid operators.
     </p>
   </div>
   <div class="two-col-block">
     <span class="col-label">What we do</span>
     <p class="col-text">
-      The ICM auctions and executes the dispatch rights of flex assets, starting with Battery Energy Storage Systems in the Netherlands. Sellers list available capacity of qualified assets; the winning bidder gains real-time dispatch control of the asset for the contracted period. Our first auction is planned for Q3 2026 and will serve as a blueprint for what's to come.
+      The ICM auctions the dispatch rights of flex assets and executes dispatch instructions, starting with BESS in the Netherlands. Sellers list available capacity of qualified assets; the winning bidder gains real-time dispatch control for the contracted period. The ICM acts as a neutral facilitator and its set-up minimises integration and switching costs. Our first auction is planned for Q3 2026 and will serve as a blueprint for what's to come.
     </p>
   </div>
 </div>
@@ -409,7 +404,7 @@
 <div id="waitlist">
   <div class="waitlist-section">
     <h2>Register interest</h2>
-    <p>The Independent Capacity Market is currently in a closed-access phase. Leave your details to join the waitlist and be the first to access our auction house when we go live.</p>
+    <p>The ICM is currently in a closed-access phase. Leave your details to register your interest and receive an invitation to our upcoming auctions.</p>
 
     <form id="waitlist-form" onsubmit="handleSubmit(event)" action="https://formspree.io/f/mbdqdpql" method="POST">
       <div class="form-row">
@@ -449,7 +444,6 @@
       <div class="form-submit">
         <button type="submit" class="btn-primary">Register interest</button>
       </div>
-      <p class="form-note">Your details will only be used to invite you to our first auction. We do not share data with third parties.</p>
     </form>
 
     <div class="form-success" id="form-success">
@@ -466,49 +460,5 @@
 <script>
   const phrases = [
     "unlock value from underutilised batteries.",
-    "bring price transparency where none exists.",
     "end the information asymmetry in bilateral deals.",
-    "improve the bankability of BESS.",
-    "provide an alternative to physical grid investment."
-  ];
-
-  let current = 0;
-  const el = document.getElementById('rotating-phrase');
-
-  function rotate() {
-    el.classList.remove('entering');
-    el.classList.add('exiting');
-    setTimeout(() => {
-      current = (current + 1) % phrases.length;
-      el.textContent = phrases[current];
-      el.classList.remove('exiting');
-      el.classList.add('entering');
-      setTimeout(() => el.classList.remove('entering'), 400);
-    }, 400);
-  }
-
-  setInterval(rotate, 3200);
-
-  async function handleSubmit(e) {
-    e.preventDefault();
-    const form = document.getElementById('waitlist-form');
-    const data = new FormData(form);
-    try {
-      const response = await fetch('https://formspree.io/f/mbdqdpql', {
-        method: 'POST',
-        body: data,
-        headers: { 'Accept': 'application/json' }
-      });
-      if (response.ok) {
-        form.style.display = 'none';
-        document.getElementById('form-success').style.display = 'block';
-      } else {
-        alert('Something went wrong. Please try again or email ideles@icm.energy directly.');
-      }
-    } catch (error) {
-      alert('Something went wrong. Please try again or email ideles@icm.energy directly.');
-    }
-  }
-</script>
-</body>
-</html>
+    "bring price transpare
