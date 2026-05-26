@@ -49,16 +49,16 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --bg: #0c0c0b;
-    --bg2: #131311;
-    --bg3: #1a1a17;
-    --text: #f0ede6;
-    --text-muted: #8a8880;
-    --text-dim: #5a5855;
-    --accent: #7a9bb5;
-    --accent-dim: #4e6f87;
-    --border: rgba(240,237,230,0.08);
-    --border-mid: rgba(240,237,230,0.14);
+    --bg: #f2ede5;
+    --bg2: #ece7de;
+    --bg3: #e8e3db;
+    --text: #2e2820;
+    --text-muted: #7a7268;
+    --text-dim: #a09890;
+    --accent: #4a6070;
+    --accent-dim: #3a5060;
+    --border: rgba(50,42,32,0.1);
+    --border-mid: rgba(50,42,32,0.16);
     --serif: 'Libre Baskerville', Georgia, serif;
     --sans: 'DM Sans', system-ui, sans-serif;
   }
@@ -83,8 +83,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 1.25rem 3rem;
-    background: rgba(12,12,11,0.85);
-    backdrop-filter: blur(12px);
+    background: var(--bg3);
     border-bottom: 0.5px solid var(--border);
   }
 
@@ -104,64 +103,21 @@
     font-weight: 400;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    color: #f0ede6;
-    background: #4e6f87;
+    color: var(--bg);
+    background: var(--accent);
     border: none;
     padding: 0.55rem 1.4rem;
     cursor: pointer;
     text-decoration: none;
     display: inline-block;
-    transition: background 0.2s, opacity 0.2s;
+    transition: background 0.2s;
   }
 
-  .btn-primary:hover { background: #5d8099; }
-
-  .btn-secondary {
-    font-family: var(--sans);
-    font-size: 0.8rem;
-    font-weight: 400;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    background: transparent;
-    border: 0.5px solid var(--border-mid);
-    padding: 0.55rem 1.4rem;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
-    transition: color 0.2s, border-color 0.2s;
-  }
-
-  .btn-secondary:hover { color: var(--text); border-color: rgba(240,237,230,0.3); }
+  .btn-primary:hover { background: var(--accent-dim); }
 
   .hero {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 0 3rem 3.5rem;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero-bg {
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(ellipse 60% 50% at 70% 40%, rgba(122,155,181,0.07) 0%, transparent 70%),
-      radial-gradient(ellipse 40% 60% at 20% 80%, rgba(122,155,181,0.04) 0%, transparent 60%);
-  }
-
-  .hero-eyebrow {
-    font-family: var(--sans);
-    font-size: 0.82rem;
-    font-weight: 400;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 1.5rem;
-    opacity: 0;
-    animation: fadeUp 0.8s ease 0.2s forwards;
+    padding: 8rem 3rem 4rem;
+    border-bottom: 0.5px solid var(--border);
   }
 
   .hero-headline {
@@ -174,7 +130,7 @@
     margin-bottom: 0.5rem;
     max-width: 800px;
     opacity: 0;
-    animation: fadeUp 0.8s ease 0.35s forwards;
+    animation: fadeUp 0.8s ease 0.2s forwards;
   }
 
   .hero-rotating-line {
@@ -187,20 +143,17 @@
     margin-bottom: 2.5rem;
     min-height: 1.2em;
     opacity: 0;
+    animation: fadeUp 0.8s ease 0.35s forwards;
+  }
+
+  .hero-ctas {
+    opacity: 0;
     animation: fadeUp 0.8s ease 0.5s forwards;
   }
 
   .rotating-text { display: inline-block; animation: none; }
   .rotating-text.exiting { animation: slideOut 0.4s ease forwards; }
   .rotating-text.entering { animation: slideIn 0.4s ease forwards; }
-
-  .hero-ctas {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    opacity: 0;
-    animation: fadeUp 0.8s ease 0.65s forwards;
-  }
 
   .section-divider {
     border: none;
@@ -292,7 +245,7 @@
   }
 
   .form-field input:focus,
-  .form-field select:focus { border-color: var(--accent-dim); }
+  .form-field select:focus { border-color: var(--accent); }
   .form-field input::placeholder { color: var(--text-dim); }
   .form-field select option { background: var(--bg2); }
 
@@ -304,6 +257,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    background: var(--bg3);
   }
 
   .footer-founder {
@@ -341,7 +295,7 @@
 
   @media (max-width: 768px) {
     nav { padding: 1rem 1.5rem; }
-    .hero { padding: 0 1.5rem 4rem; }
+    .hero { padding: 6rem 1.5rem 3rem; }
     .section-divider { margin: 0 1.5rem; }
     .two-col { grid-template-columns: 1fr; }
     .two-col-block { padding: 3rem 1.5rem; }
@@ -376,21 +330,14 @@
 </nav>
 
 <section class="hero" id="top">
-  <div class="hero-bg"></div>
-  <div style="position:relative;">
-    <p class="hero-eyebrow">Independent Capacity Market &nbsp;·&nbsp; Starting with BESS in the Netherlands</p>
-    <h1 class="hero-headline">We auction the dispatch rights of flex capacity to</h1>
-    <div class="hero-rotating-line">
-      <span class="rotating-text" id="rotating-phrase">unlock value from underutilised batteries.</span>
-    </div>
-    <div class="hero-ctas">
-      <a href="#waitlist" class="btn-primary">Register interest</a>
-      <a href="#about" class="btn-secondary">Read more</a>
-    </div>
+  <h1 class="hero-headline">We auction the dispatch rights of flex capacity to</h1>
+  <div class="hero-rotating-line">
+    <span class="rotating-text" id="rotating-phrase">unlock value from underutilised batteries.</span>
+  </div>
+  <div class="hero-ctas">
+    <a href="#waitlist" class="btn-primary">Register interest</a>
   </div>
 </section>
-
-<hr class="section-divider">
 
 <div class="two-col" id="about">
   <div class="two-col-block">
@@ -512,4 +459,3 @@
 </script>
 </body>
 </html>
-```
