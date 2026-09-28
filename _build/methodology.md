@@ -69,8 +69,6 @@ No figure enters the Benchmark without approval by an ICM employee. Software may
 | Corrections by the Optimizer | ICM employee | The new document replaces the old one; affected months are recalculated |
 | Calculation and publication | Automated | Benchmark, Project Scores, thresholds and hidden selections follow the rules in this document |
 
-**Anomaly flags.** Before approval, a result is flagged for a second look if it differs strongly from the asset's own history or from its peers, if revenue is negative, or if more than 10% of the month's hours are inactive. A flagged result is only approved once explained.
-
 **Pending results.** Until approved, Project Results are not part of any Benchmark, and the month is not yet open to the Member.
 
 ## Definitions and classification
@@ -94,7 +92,9 @@ We classify assets on measured characteristics, not on labels, so that like is c
 | 4-hour | 3.50 – 4.50 |
 | Other | all other values |
 
-Assets classified as "Other" are not included in any Benchmark.
+Assets classified as "Other", such as batteries of 2.51 to 3.49 hours, are not included in any Benchmark, including "All assets", and do not receive a Project Score. The ICM tells the owner in the intake meeting.
+
+The 1-hour and 2-hour bands follow the duration clusters that enspired uses in its public [portfolio performance reporting](https://www.enspired-trading.com/portfolio-performance). From January 2026, enspired narrowed its 2-hour cluster from 1.51–3.5 hours to 1.51–2.5 hours at the request of asset owners, to create a cleaner benchmark of true 2-hour assets. Batteries between 2.5 and 3.5 hours are therefore left out there as well.
 
 **Project type.** Stand-alone (one asset) or co-located (several assets in one Project).
 
@@ -191,7 +191,7 @@ Filters narrow the peer set so a Member can compare its Project with assets of a
 
 | Filter | Options | Rule |
 | --- | --- | --- |
-| Duration | All assets, plus the duration classes of the Member's own assets | "All assets" includes all 1-, 2- and 4-hour assets. Only the Member's own duration classes are offered (give-to-get). Default: All assets. |
+| Duration | All assets, plus the duration classes of the Member's own assets | "All assets" includes all 1-, 2- and 4-hour assets. Only the Member's own duration classes are offered (give-to-get). For a Project with assets in more than one duration class, only "All assets" is offered. Default: All assets. |
 | Revenue | Gross · Net | Net = after the Optimizer's fee. Default: Gross. |
 | Project type | All assets · Stand-alone · Co-located | Default: All assets. |
 | Markets | Wholesale markets · Ancillary services · Congestion markets | None selected = all markets. Several selected = peers active in all selected groups. |
@@ -238,7 +238,7 @@ We publish every change with a new version number and date on app.icm.energy and
 
 | Version | Date | Change |
 | --- | --- | --- |
-| 1.1 | 29 September 2026 | Markets in three groups; congestion contract as none, CSC or CBC/CLC; quarters and years; summary figures follow the filters; fixed Benchmark for the 80% contact rule; Member's other Projects in the peer set; section on real revenues versus a simulated index |
+| 1.1 | 29 September 2026 | Markets in three groups; congestion contract as none, CSC or CBC/CLC; duration bands aligned with enspired, "Other" durations excluded; quarters and years; summary figures follow the filters; fixed Benchmark for the 80% contact rule; Member's other Projects in the peer set; section on real revenues versus a simulated index |
 | 1.0 | 28 September 2026 | First published version |
 
 ## Limitations
