@@ -4,13 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>BESS Benchmark methodology – how we calculate revenue per MW | The ICM</title>
-<meta name="description" content="How the ICM calculates the BESS Benchmark and the Project Score: data, quality control, active hours, duration bands, filters, anonymity thresholds and corrections. Version 1.0.">
+<meta name="description" content="How the ICM calculates the BESS Benchmark and the Project Score: data, quality control, active hours, duration bands, filters, anonymity thresholds and corrections. Version 1.1.">
 <link rel="canonical" href="https://icm.energy/methodology/">
-<meta property="og:type" content="article">
+<meta property="og:type" content="website">
 <meta property="og:url" content="https://icm.energy/methodology/">
-<meta property="og:title" content="BESS Benchmark methodology, version 1.0">
-<meta property="og:description" content="Every rule that determines a Benchmark or a Project Score.">
+<meta property="og:title" content="BESS Benchmark methodology, version 1.1">
+<meta property="og:description" content="How the ICM calculates the BESS Benchmark and the Project Score: data, quality control, active hours, duration bands, filters, anonymity thresholds and corrections. Version 1.1.">
 <meta property="og:image" content="https://icm.energy/assets/og-image.png">
+<meta property="og:site_name" content="The Independent Capacity Market">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,11 +21,23 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-8RMBG4V4VG"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-8RMBG4V4VG');</script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"TechArticle","headline":"BESS Benchmark methodology","version":"1.0","datePublished":"2026-09-28","inLanguage":"en","publisher":{"@type":"Organization","name":"Independent Capacity Market B.V.","url":"https://icm.energy/"}}
+{
+ "@context": "https://schema.org",
+ "@type": "TechArticle",
+ "headline": "BESS Benchmark methodology",
+ "version": "1.1",
+ "inLanguage": "en",
+ "publisher": {
+  "@type": "Organization",
+  "name": "Independent Capacity Market B.V.",
+  "url": "https://icm.energy/"
+ }
+}
 </script>
 </head>
 <body>
 <a class="sr-only" href="#main">Skip to content</a>
+
 <div class="hero-shell">
   <div class="wrap">
     <header class="nav">
@@ -37,14 +51,15 @@
         </ul>
       </nav>
     </header>
-    <div class="doc-hero">
-      <span class="eyebrow">BESS Benchmark · Methodology v1.0 · 28 September 2026</span>
+
+    <div class="page-hero" id="main">
+      <span class="eyebrow">BESS Benchmark · Methodology v1.1 · 29 September 2026</span>
       <h1>How we calculate the benchmark</h1>
       <p>Every rule that determines a Benchmark or a Project Score – from the data we collect to how we keep peers anonymous.</p>
     </div>
   </div>
 </div>
-<main id="main" class="wrap doc-layout">
+<main class="wrap doc-layout">
   <nav class="toc" aria-label="Contents"><b>Contents</b><ol>
 <li><a href="#status-of-this-document">Status of this document</a></li>
 <li><a href="#purpose-and-principles">Purpose and principles</a></li>
@@ -67,9 +82,9 @@
   </ol></nav>
   <article class="prose">
 <h2 id="status-of-this-document">Status of this document</h2>
-<p>This is Methodology version 1.0, published by Independent Capacity Market B.V. ("the ICM"). It describes how the ICM calculates the BESS Benchmark and the Project Score.</p>
+<p>This is Methodology version 1.1 of 29 September 2026, published by Independent Capacity Market B.V. ("the ICM"). It describes how the ICM calculates the BESS Benchmark and the Project Score, and how both are shown to Members.</p>
 <ul>
-<li>The Methodology forms part of the Terms &amp; Conditions – BESS Benchmark. In case of conflict, the Terms prevail.</li>
+<li>The Methodology forms part of the Terms &amp; Conditions – BESS Benchmark (version 0.9, 27 September 2026). In case of conflict, the Terms prevail.</li>
 <li>Capitalised terms (Member, Project, Project Results, Gross Revenue, Benchmark, Project Score, Onboarding Month, Historical Month, New Month) have the meaning given in the Terms.</li>
 <li>All Benchmarks and Project Scores are preliminary until final under section "Preliminary results, corrections and final results".</li>
 <li>Changes are published with a new version number and date; see "Changes to this methodology".</li>
@@ -78,28 +93,25 @@
 <p>The BESS Benchmark shows how much comparable battery storage assets actually earned per MW, so a Member can see whether its own assets earn more or less. It compares real revenues of real assets, not a simulated battery with fixed assumptions.</p>
 <ul>
 <li><strong>Real outcome data.</strong> We use realised revenues as reported by the Optimizer for closed calendar months, plus capacity and availability. We do not request, process or display bids, prices, trading or dispatch logic, or inside information.</li>
-<li><strong>Independent.</strong> The ICM does not own BESS assets and is not an optimizer. The same rules apply to every Member, whatever its Optimizer.</li>
+<li><strong>Independent.</strong> The ICM does not own BESS assets and is not an optimizer, nor does it intend to become either. The same rules apply to every Member, whatever its Optimizer.</li>
 <li><strong>Give-to-get.</strong> A Member sees the Benchmark only for months for which it provided Project Results.</li>
 <li><strong>Anonymous.</strong> Peer data is shown only in groups large enough that no single asset, Member or Optimizer can be identified. We never publish results per optimizer or rankings of optimizers.</li>
 <li><strong>Transparent.</strong> This document sets out every rule that determines a Benchmark or a Project Score.</li>
 </ul>
 <h2 id="why-real-revenues-not-a-simulated-index">Why real revenues, not a simulated index</h2>
 <p>The BESS Benchmark compares what batteries actually earned. A simulated index models what a theoretical battery could have earned.</p>
-<div class="compare">
-<div class="index"><h3>A simulated revenue index</h3><ul><li>Models a theoretical battery with fixed assumptions</li><li>Assumes a full grid connection and no downtime</li><li>Cannot tell you how your optimizer performs comparatively</li></ul></div>
-<div class="ours"><h3>The BESS Benchmark</h3><ul><li>Is based on realised revenues, as members received them from their optimizers</li><li>Anticipates restrictions such as CSC terms, TDTR limits and downtime</li><li>Compares your battery with batteries set up like yours</li></ul></div>
-</div>
+<div class="compare"><div class="index"><h3>A simulated revenue index</h3><ul><li>Models a theoretical battery with fixed assumptions</li><li>Assumes a full grid connection and no downtime</li><li>Cannot tell you how your optimizer performs comparatively</li></ul></div><div class="ours"><h3>The BESS Benchmark</h3><ul><li>Is based on realised revenues, as members received them from their optimizers</li><li>Anticipates restrictions such as CSC terms, TDTR limits and downtime</li><li>Compares your battery with batteries set up like yours</li></ul></div></div>
 <h2 id="scope">Scope</h2>
 <p>The Benchmark covers battery energy storage (BESS) assets in the Netherlands that an Optimizer trades under a merchant contract. Our focus is assets of 3 to 30 MW; the ICM decides on each Project in the intake meeting.</p>
 <ul>
 <li><strong>Asset.</strong> One battery system with its own meter, not shared with another asset. The asset is the unit of calculation.</li>
-<li><strong>Project.</strong> A stand-alone asset, or a co-located group of assets, as recorded in the project form.</li>
+<li><strong>Project.</strong> A stand-alone asset, or a co-located group of assets, as recorded in the project form. A Member can have several Projects.</li>
 <li><strong>Contract type.</strong> Merchant contracts only. Tolling and index contracts are not part of the Benchmark, because their revenues do not reflect the Optimizer's trading result.</li>
 <li><strong>Other asset types.</strong> PV, wind, CHP and e-boilers at the same site are not included. Only BESS assets can be added to a Project.</li>
 </ul>
 <h2 id="data-we-collect">Data we collect</h2>
 <p>We use two sources: the project form, completed once per Project, and the monthly Project Results from the Optimizer.</p>
-<p><strong>Project form (per asset).</strong> Asset name, EAN, capacity (MW), energy capacity (MWh), brand, transport right, Optimizer, market qualifications (day-ahead, intraday, imbalance, FCR, aFRR, mFRR, redispatch), system operator and congestion contract (none, CSC, CBC, other). Optional: optimizer fee, estimated state of health, round-trip efficiency, power ceiling, connection capacity, EMS provider, metering service provider and energy supplier. The Member confirms the form is complete and accurate.</p>
+<p><strong>Project form (per asset).</strong> Asset name, EAN, capacity (MW), energy capacity (MWh), brand, transport right, Optimizer, markets the asset is active in (wholesale markets, ancillary services, congestion markets), system operator and congestion contract (none, CSC, CBC/CLC). Optional: optimizer fee, estimated state of health, round-trip efficiency, power ceiling, connection capacity, EMS provider, metering service provider and energy supplier. The Member confirms the form is complete and accurate.</p>
 <p><strong>Project Results (per asset, per calendar month).</strong></p>
 <div class="table-scroll"><table>
 <thead>
@@ -143,7 +155,7 @@
 <tr>
 <td>Project form</td>
 <td>ICM employee, in the intake meeting</td>
-<td>Capacity (MW, MWh), duration class, contract type, own meter, market qualifications, congestion contract</td>
+<td>Capacity (MW, MWh), duration class, contract type, own meter, markets, congestion contract</td>
 </tr>
 <tr>
 <td>Project Results</td>
@@ -180,7 +192,7 @@
 <ul>
 <li><strong>Gross Revenue</strong>: total trading revenue in a calendar month as stated in the Project Results, before the Optimizer's fee. Negative months are included in the Benchmark as reported.</li>
 <li><strong>Net revenue</strong>: Gross Revenue minus the Optimizer's fee for that month.</li>
-<li>The Benchmark, the Project Score and the 80% threshold always use Gross Revenue. Net revenue is a view option only.</li>
+<li>The 80% contact rule always uses Gross Revenue. Net revenue is a view option only.</li>
 </ul>
 <p><strong>Capacity.</strong> Power in MW and energy in MWh as recorded in the project form.</p>
 <p><strong>Duration.</strong> Energy capacity divided by power (MWh ÷ MW), classified into bands:</p>
@@ -212,8 +224,30 @@
 </table></div>
 <p>Assets classified as "Other" are not included in any Benchmark.</p>
 <p><strong>Project type.</strong> Stand-alone (one asset) or co-located (several assets in one Project).</p>
-<p><strong>Market qualifications.</strong> The markets an asset is prequalified for, as recorded in the project form.</p>
-<p><strong>Congestion contract.</strong> None, CSC, CBC or other, as recorded in the project form. Grid restrictions that follow from the connection or transport right (such as TDTR, TBTR, CSC or CBC) are characteristics of the asset. They do not count as inactive hours.</p>
+<p><strong>Markets.</strong> The market groups an asset is active in, as recorded in the project form. An asset counts as active in a group if it is active in at least one product of that group.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Market group</th>
+<th>Products</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Wholesale markets</td>
+<td>Day-ahead, intraday, imbalance</td>
+</tr>
+<tr>
+<td>Ancillary services</td>
+<td>FCR, aFRR, mFRR</td>
+</tr>
+<tr>
+<td>Congestion markets</td>
+<td>Redispatch</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Congestion contract.</strong> None, CSC or CBC/CLC, as recorded in the project form. Grid restrictions that follow from the connection or transport right (such as TDTR, TBTR, CSC or CBC) are characteristics of the asset. They do not count as inactive hours.</p>
 <h2 id="availability-active-hours">Availability: active hours</h2>
 <p>We correct for downtime per hour, so an asset is not penalised for maintenance or a malfunction and its revenue per MW stays comparable.</p>
 <ul>
@@ -237,12 +271,12 @@
 <tbody>
 <tr>
 <td>Project Results only for the Project as a whole, not per asset</td>
-<td>The Project counts as one unit. It is included in a filtered selection only if all its assets meet that filter (for example, all 2-hour, or all CSC). Otherwise it counts only where that filter is set to "Any".</td>
+<td>The Project counts as one unit. It is included in a filtered selection only if all its assets meet that filter (for example, all 2-hour, or all with a CSC). Otherwise it counts only where that filter is set to "All".</td>
 <td>Project Score shown; asset scores show "No asset data".</td>
 </tr>
 <tr>
 <td>A characteristic is unknown (for example the congestion contract)</td>
-<td>Included only where that filter is set to "Any".</td>
+<td>Included only where that filter is set to "All".</td>
 <td>Not affected.</td>
 </tr>
 <tr>
@@ -272,17 +306,19 @@
 <li>R = Gross Revenue of asset i in month m (or net revenue in the Net view).</li>
 <li>MW = power of asset i; H = its active hours in month m; 8,760 = hours in a year.</li>
 </ul>
-<p><strong>Periods longer than a month.</strong> For a period of several months, or a calendar year, we add up revenue and capacity-hours over all months first and divide once. We do not average monthly Benchmarks.</p>
-<p><strong>Peer set.</strong> By default the peer set excludes the Member's own Project. The Member can choose to include it; the minimum group size still counts only assets of other organisations.</p>
+<p><strong>Quarters and years.</strong> Members can view months, calendar quarters (for example "Q3 2026") or calendar years; the current year is shown as year-to-date (for example "2026 YTD (Jan–Sep)"). For a quarter, a year or any other period of several months, we add up revenue and capacity-hours over all months first and divide once. We do not average monthly Benchmarks.</p>
+<p><strong>Peer set.</strong> By default the peer set excludes the Project being viewed; the Member can choose to include it. The Member's other Projects are part of the peer set, but they never count towards the minimum group size, which counts only assets of other organisations.</p>
+<p><strong>Group size shown.</strong> Every Benchmark states its number of assets and organisations for the most recent period shown.</p>
 <p><strong>Net view.</strong> A peer whose optimizer fee is unknown is left out of the Net Benchmark. The Net view shows its own asset and organisation counts.</p>
 <h2 id="calculating-the-project-score">Calculating the Project Score</h2>
-<p>The Project Score is the Project's own revenue per MW per year divided by the Benchmark over exactly the same months. A score above 100% means the Project earned more per MW than its peers.</p>
+<p>The Project Score is the Project's own revenue per MW per year divided by the Benchmark over exactly the same months. A score above 100% means the Project earned more per MW than its peers; below 100%, less.</p>
 <div class="formula" role="math" aria-label="Score equals the project revenue per MW-hour over the period divided by the peer revenue per MW-hour over the same months, times 100 percent">Score<sub>T</sub> = <span class="frac"><span>Σ<sub>m∈T</sub> Σ<sub>i∈A</sub> R<sub>i,m</sub> ÷ Σ<sub>m∈T</sub> Σ<sub>i∈A</sub> MW<sub>i</sub> × H<sub>i,m</sub></span><span>Σ<sub>m∈T</sub> Σ<sub>j∈P<sub>m</sub></sub> R<sub>j,m</sub> ÷ Σ<sub>m∈T</sub> Σ<sub>j∈P<sub>m</sub></sub> MW<sub>j</sub> × H<sub>j,m</sub></span></span> × 100%</div>
 <ul>
 <li>A = the assets of the Project (or a single asset, for an asset score).</li>
 <li>T = the months in the period for which the Project has Project Results and a Benchmark is published. Months without Project Results are left out of both numerator and denominator.</li>
 <li>The Project figure is MW-weighted across its assets. Project revenue in EUR always equals the sum of its assets' revenue.</li>
 </ul>
+<p><strong>Difference with the Benchmark.</strong> For each period we also show the Project's revenue per MW per year minus the Benchmark, in EUR per MW per year.</p>
 <p><strong>Rounding.</strong> We divide by the unrounded Benchmark and show the score with one decimal. The score band follows the displayed value: 99.98% displays as 100.0% and falls in "Above benchmark".</p>
 <p><strong>Score bands.</strong></p>
 <div class="table-scroll"><table>
@@ -311,9 +347,9 @@
 </tr>
 </tbody>
 </table></div>
-<p><strong>Standard benchmark for summary figures.</strong> The headline figures (score over the last 12 months, number of months below 80% in the last 12, latest month) always use the standard benchmark: any duration, Gross Revenue, all peers, excluding the Member's own Project. They do not change with the filters.</p>
+<p><strong>Summary figures.</strong> Above the chart, the Member sees the Project's revenue per MW per year, its difference with the Benchmark (per MW and for the whole Project per year) and its Project Score. These figures follow the selected filters and period (last 6 months, last 12 months, the full timeline, or a period the Member selects), so the Member chooses which comparison to judge. The default period is the last 12 months. The difference per year equals the rounded difference per MW × the Project's MW.</p>
 <p><strong>Worked example (fictional).</strong> A 10 MW asset earns EUR 150,000 gross in a 31-day month (744 hours) with 20 inactive hours. It earns 150,000 ÷ (10 × 724) × 8,760 = EUR 181,492 per MW per year. With a Benchmark of EUR 200,000 per MW per year, its score is 90.7%: Near benchmark.</p>
-<p><strong>Contact under article 7.3 of the Terms.</strong> The ICM may contact a Member if a Project's score, against the standard benchmark, was below 80% in at least 6 of the last 12 calendar months.</p>
+<p><strong>Contact under article 7.3 of the Terms.</strong> The ICM may contact a Member if a Project's score was below 80% in at least 6 of the last 12 calendar months. For this rule the ICM always uses the same fixed Benchmark, independent of any filter a Member selects: all durations, Gross Revenue, all peers, excluding the Project itself.</p>
 <h2 id="filters">Filters</h2>
 <p>Filters narrow the peer set so a Member can compare its Project with assets of a similar set-up. Each filter applies to the peer assets, not to the Member's own figures.</p>
 <div class="table-scroll"><table>
@@ -327,46 +363,45 @@
 <tbody>
 <tr>
 <td>Duration</td>
-<td>Any, plus the durations of the Member's own assets</td>
-<td>"Any" includes all 1-, 2- and 4-hour assets. Only the Member's own durations are offered (give-to-get).</td>
+<td>All assets, plus the duration classes of the Member's own assets</td>
+<td>"All assets" includes all 1-, 2- and 4-hour assets. Only the Member's own duration classes are offered (give-to-get). Default: All assets.</td>
 </tr>
 <tr>
 <td>Revenue</td>
 <td>Gross · Net</td>
-<td>Net = after the Optimizer's fee.</td>
+<td>Net = after the Optimizer's fee. Default: Gross.</td>
 </tr>
 <tr>
 <td>Project type</td>
-<td>Any · Stand-alone · Co-located</td>
-<td></td>
+<td>All assets · Stand-alone · Co-located</td>
+<td>Default: All assets.</td>
 </tr>
 <tr>
-<td>Market qualifications</td>
-<td>Day-ahead · Intraday · Imbalance · FCR · aFRR · mFRR · Redispatch</td>
-<td>None selected = any. Several selected = peers qualified for all selected markets.</td>
+<td>Markets</td>
+<td>Wholesale markets · Ancillary services · Congestion markets</td>
+<td>None selected = all markets. Several selected = peers active in all selected groups.</td>
 </tr>
 <tr>
 <td>Congestion contract</td>
-<td>Any · None · CSC · CBC · Other</td>
-<td></td>
+<td>All · CSC or CBC/CLC · None</td>
+<td>Default: All.</td>
 </tr>
 <tr>
 <td>Benchmark</td>
-<td>Excluding own Project · Including own Project</td>
+<td>Excluding Project [name] · Including Project [name]</td>
 <td>Default: excluding.</td>
 </tr>
 </tbody>
 </table></div>
-<p>If a filter combination does not meet the thresholds in the next section, no Benchmark is shown for that selection.</p>
+<p>There is no filter by optimizer. If a filter combination does not meet the thresholds in the next section, no Benchmark is shown for that selection.</p>
 <h2 id="anonymity-and-publication-thresholds">Anonymity and publication thresholds</h2>
 <p>A Benchmark is shown only if it includes at least 5 assets from at least 3 organisations other than the viewing Member. Below that, the page shows "No benchmark for this selection".</p>
 <ul>
 <li><strong>Anonymisation.</strong> Before data enters the benchmark dataset, we remove the Member's name, asset name, EAN, location and Optimizer.</li>
 <li><strong>Protection against subtraction.</strong> Comparing two filter selections could reveal a small group of assets. We therefore also hide a selection whose peer set differs from another visible selection, for the same Member, month and duration, by 1 to 4 assets or 1 to 2 organisations. Which selection is hidden is fixed, so it does not change between visits.</li>
 <li><strong>Corrections.</strong> When a single Project Result is corrected, we do not show the before-and-after change per selection.</li>
-<li><strong>Group size shown.</strong> Every Benchmark states its number of assets and organisations for the most recent period shown.</li>
 <li><strong>No optimizer results.</strong> We never show results per optimizer or rankings of optimizers.</li>
-<li><strong>Reports.</strong> A Member's report contains its own figures and the Benchmark only, never asset-level data of other organisations.</li>
+<li><strong>Reports.</strong> A Member can print its results as a report. The report contains its own figures, the Benchmark, the selected filters and period, and which months are preliminary. It never contains asset-level data of other organisations.</li>
 </ul>
 <h2 id="access-give-to-get">Access: give-to-get</h2>
 <p>A Member sees the Benchmark for a calendar month only if it provided Project Results for at least one of its Projects for that month.</p>
@@ -389,7 +424,7 @@
 <ul>
 <li><strong>Recalculation.</strong> After a change, we recalculate all past months under the new version, so every period shown uses the same rules.</li>
 <li><strong>Comparability.</strong> If past months cannot be recalculated, we mark them as not comparable.</li>
-<li><strong>Effect.</strong> For material changes we state the effect on the standard benchmark, separating a change in method from a change in the peer group.</li>
+<li><strong>Effect.</strong> For material changes we state the effect on the Benchmark, separating a change in method from a change in the peer group.</li>
 </ul>
 <div class="table-scroll"><table>
 <thead>
@@ -400,6 +435,11 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>1.1</td>
+<td>29 September 2026</td>
+<td>Markets in three groups; congestion contract as none, CSC or CBC/CLC; quarters and years; summary figures follow the filters; fixed Benchmark for the 80% contact rule; Member's other Projects in the peer set; section on real revenues versus a simulated index</td>
+</tr>
 <tr>
 <td>1.0</td>
 <td>28 September 2026</td>
@@ -412,6 +452,7 @@
 <ul>
 <li><strong>Set-up versus optimizer.</strong> A score reflects both the asset's set-up (brand, connection, grid restrictions, state of health) and the Optimizer's trading. Filters reduce but do not remove differences in set-up.</li>
 <li><strong>Group size.</strong> In the first months the peer group is small. A Benchmark may then not be representative of the market.</li>
+<li><strong>Who joins first.</strong> Early Members may well be owners who doubt their optimizer. The first Benchmarks can therefore be lower than the market as a whole.</li>
 <li><strong>Changing peer group.</strong> Assets join and leave. A change in the Benchmark can come from a different peer group rather than from the market.</li>
 <li><strong>Reported data.</strong> We rely on Project Results and inactive hours as reported. We check extraction, but cannot verify the Optimizer's settlement.</li>
 <li><strong>Outcome data only.</strong> Figures describe closed months. They do not predict future revenue.</li>
@@ -438,8 +479,8 @@
 <td>Battery energy storage system</td>
 </tr>
 <tr>
-<td>CBC</td>
-<td>Capaciteitsbeperkingscontract: congestion contract under which the connected party limits its use of capacity</td>
+<td>CBC / CLC</td>
+<td>Capaciteitsbeperkingscontract (capacity limiting contract): congestion contract under which the connected party limits its use of capacity</td>
 </tr>
 <tr>
 <td>CSC</td>
@@ -462,6 +503,10 @@
 <td>Power / energy capacity of an asset</td>
 </tr>
 <tr>
+<td>Redispatch</td>
+<td>Congestion management through bids on GOPACS, at the request of a system operator</td>
+</tr>
+<tr>
 <td>SoH</td>
 <td>State of health: remaining capacity of a battery relative to new</td>
 </tr>
@@ -472,6 +517,10 @@
 <tr>
 <td>TDTR</td>
 <td>Tijdsduurgebonden transportrecht: transport right limited to a maximum duration</td>
+</tr>
+<tr>
+<td>YTD</td>
+<td>Year to date: from 1 January up to the latest month with data</td>
 </tr>
 </tbody>
 </table></div>
@@ -503,5 +552,6 @@
     <p class="legal"><span>© 2026 Independent Capacity Market B.V.</span><span><a href="/terms/">Terms & Conditions</a></span><span><a href="/privacy/">Privacy statement</a></span></p>
   </div>
 </footer>
+
 </body>
 </html>

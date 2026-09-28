@@ -431,10 +431,62 @@ for lang in LANGS:
     write(pre + 'privacy/index.html', privacy(t))
 print('built')
 
-# Keep the methodology page's header and footer in sync with the rest of the site.
-mp = os.path.join(ROOT, 'methodology', 'index.html')
-m = open(mp, encoding='utf-8').read()
-m = re.sub(r'    <header class="nav">.*?</header>\n', lambda _: nav(T['en'], '/nl/'), m, flags=re.S)
-m = re.sub(r'<footer>.*?</footer>\n', lambda _: footer(T['en'], '/nl/'), m, flags=re.S)
-open(mp, 'w', encoding='utf-8').write(m)
-print('methodology synced')
+# Methodology page, generated from _build/methodology.md (same text as the Methodology doc).
+import markdown
+FORMULAS = [
+ '<div class="formula" role="math" aria-label="B sub m equals the sum over peers of revenue, divided by the sum over peers of MW times active hours, times 8760">B<sub>m</sub> = <span class="frac"><span>Σ<sub>i∈P</sub> R<sub>i,m</sub></span><span>Σ<sub>i∈P</sub> MW<sub>i</sub> × H<sub>i,m</sub></span></span> × 8,760</div>',
+ '<div class="formula" role="math" aria-label="Score equals the project revenue per MW-hour over the period divided by the peer revenue per MW-hour over the same months, times 100 percent">Score<sub>T</sub> = <span class="frac"><span>Σ<sub>m∈T</sub> Σ<sub>i∈A</sub> R<sub>i,m</sub> ÷ Σ<sub>m∈T</sub> Σ<sub>i∈A</sub> MW<sub>i</sub> × H<sub>i,m</sub></span><span>Σ<sub>m∈T</sub> Σ<sub>j∈P<sub>m</sub></sub> R<sub>j,m</sub> ÷ Σ<sub>m∈T</sub> Σ<sub>j∈P<sub>m</sub></sub> MW<sub>j</sub> × H<sub>j,m</sub></span></span> × 100%</div>',
+]
+md = open(os.path.join(ROOT, '_build', 'methodology.md'), encoding='utf-8').read()
+md = re.sub(r'^# .*\n', '', md, count=1)
+version = re.search(r'Methodology version ([\d.]+) of ([^,]+),', md)
+blocks = re.findall(r'```latex\n.*?\n```', md, flags=re.S)
+for i, b in enumerate(blocks):
+    md = md.replace(b, f'[[F{i}]]')
+body = markdown.markdown(md, extensions=['tables'])
+for i, f in enumerate(FORMULAS):
+    body = body.replace(f'<p>[[F{i}]]</p>', f)
+# the comparison table becomes two cards
+def cards(m):
+    rows = re.findall(r'<tr>\s*<td>(.*?)</td>\s*<td>(.*?)</td>\s*</tr>', m.group(0), flags=re.S)
+    l = ''.join(f'<li>{a}</li>' for a, _ in rows); r = ''.join(f'<li>{b}</li>' for _, b in rows)
+    return f'<div class="compare"><div class="index"><h3>A simulated revenue index</h3><ul>{l}</ul></div><div class="ours"><h3>The BESS Benchmark</h3><ul>{r}</ul></div></div>'
+body = re.sub(r'<table>\s*<thead>\s*<tr>\s*<th>A simulated revenue index</th>.*?</table>', cards, body, count=1, flags=re.S)
+body = body.replace('<table>', '<div class="table-scroll"><table>').replace('</table>', '</table></div>')
+toc = []
+def h2(m):
+    t = m.group(1); sl = re.sub(r'[^a-z0-9]+', '-', re.sub('<[^>]+>', '', t).lower()).strip('-'); toc.append((sl, t))
+    return f'<h2 id="{sl}">{t}</h2>'
+body = re.sub(r'<h2>(.*?)</h2>', h2, body)
+body = body.replace('bessbenchmark@icm.energy', '<a href="mailto:bessbenchmark@icm.energy">bessbenchmark@icm.energy</a>')
+toc_html = '\n'.join(f'<li><a href="#{a}">{b}</a></li>' for a, b in toc)
+te = T['en']
+ld = {"@context": "https://schema.org", "@type": "TechArticle", "headline": "BESS Benchmark methodology", "version": version.group(1), "inLanguage": "en",
+      "publisher": {"@type": "Organization", "name": "Independent Capacity Market B.V.", "url": "https://icm.energy/"}}
+page = head(te, 'BESS Benchmark methodology – how we calculate revenue per MW | The ICM',
+            f'How the ICM calculates the BESS Benchmark and the Project Score: data, quality control, active hours, duration bands, filters, anonymity thresholds and corrections. Version {version.group(1)}.',
+            '/methodology/', None, ld, f'BESS Benchmark methodology, version {version.group(1)}') + f"""
+<div class="hero-shell">
+  <div class="wrap">
+{nav(te, '/nl/')}
+    <div class="page-hero" id="main">
+      <span class="eyebrow">BESS Benchmark · Methodology v{version.group(1)} · {version.group(2)}</span>
+      <h1>How we calculate the benchmark</h1>
+      <p>Every rule that determines a Benchmark or a Project Score – from the data we collect to how we keep peers anonymous.</p>
+    </div>
+  </div>
+</div>
+<main class="wrap doc-layout">
+  <nav class="toc" aria-label="Contents"><b>Contents</b><ol>
+{toc_html}
+  </ol></nav>
+  <article class="prose">
+{body}
+  </article>
+</main>
+{footer(te, '/nl/')}
+</body>
+</html>
+"""
+write('methodology/index.html', page)
+print('methodology built, v' + version.group(1), len(toc), 'sections')
