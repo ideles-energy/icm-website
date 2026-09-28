@@ -13,6 +13,42 @@
     <xhtml:link rel="alternate" hreflang="nl" href="https://icm.energy/nl/"/>
   </url>
   <url>
+    <loc>https://icm.energy/faq/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://icm.energy/faq/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://icm.energy/nl/faq/"/>
+  </url>
+  <url>
+    <loc>https://icm.energy/nl/faq/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://icm.energy/faq/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://icm.energy/nl/faq/"/>
+  </url>
+  <url>
+    <loc>https://icm.energy/terms/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://icm.energy/terms/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://icm.energy/nl/terms/"/>
+  </url>
+  <url>
+    <loc>https://icm.energy/nl/terms/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://icm.energy/terms/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://icm.energy/nl/terms/"/>
+  </url>
+  <url>
+    <loc>https://icm.energy/privacy/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://icm.energy/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://icm.energy/nl/privacy/"/>
+  </url>
+  <url>
+    <loc>https://icm.energy/nl/privacy/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://icm.energy/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://icm.energy/nl/privacy/"/>
+  </url>
+  <url>
     <loc>https://icm.energy/methodology/</loc>
     <lastmod>2026-09-28</lastmod>
   </url>
