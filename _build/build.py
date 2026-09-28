@@ -328,19 +328,6 @@ def home(t):
   </div>
 </section>
 
-<section>
-  <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">{t['real_eyebrow']}</span>
-      <h2>{t['real_h']}</h2>
-    </div>
-    <div class="compare">
-      <div class="index"><h3>{t['idx_h']}</h3><ul>{idx}</ul></div>
-      <div class="ours"><h3>{t['ours_h']}</h3><ul>{ours}</ul></div>
-    </div>
-  </div>
-</section>
-
 <section class="more" id="about">
   <div class="wrap">
     <div class="section-head">

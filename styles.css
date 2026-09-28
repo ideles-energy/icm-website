@@ -292,3 +292,7 @@ footer { background: var(--ink); color: rgba(255,255,255,.75); padding: 56px 0 4
 .model { grid-template-columns: minmax(0, .7fr) minmax(0, 1.3fr); gap: 48px; }
 .shot a { display: block; cursor: zoom-in; }
 @media (max-width: 960px) { .model { grid-template-columns: 1fr; } }
+.prose .compare { margin: 12px 0 24px; gap: 16px; }
+.prose .compare > div { padding: 24px; }
+.prose .compare h3 { font-size: 18px; margin-bottom: 10px; }
+.prose .compare ul { margin: 0; }
