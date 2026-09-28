@@ -6,7 +6,8 @@ Edit texts in the T dictionary below, then rebuild. Methodology is edited direct
 import json, os, re
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-BATTERIES = open(os.path.join(ROOT, '_build', 'batteries.html'), encoding='utf-8').read()
+HERO_ART = open(os.path.join(ROOT, '_build', 'hero-art.svg'), encoding='utf-8').read()
+LANGS = ['en']  # add 'nl' once the Dutch texts are proofread
 EMAIL = 'ideles@icm.energy'
 LINKEDIN = 'https://www.linkedin.com/in/idel%C3%A8s-kaandorp/'
 
@@ -25,24 +26,27 @@ T = {
   chart_aria="Illustrative chart: a project's monthly revenue per MW compared with the peer benchmark",
   months=['Oct','Dec','Feb','Apr','Jun','Aug'], chart_you='Your project', chart_peer='Peer benchmark (≥ 5 assets, ≥ 3 organisations)',
   chart_note='Illustrative example with fictional data.',
-  why_eyebrow='Why it matters', why_h='Same battery, same set-up, vastly different results',
-  why_p='Independent information on BESS performance is missing. You could be leaving 30,000 to 70,000 euro per MW per year on the table. Without a BESS benchmark, there is no way of knowing.',
+  why_eyebrow='Why it matters', why_h='BESS assets deliver vastly different results',
+  why_p='Independent information on what batteries earn is missing. Some discovered they\'re missing out on 30,000 to 70,000 euro per MW per year. Are you? Without a BESS Benchmark, there is no way of knowing.',
+  stats=['EUR 145k', 'EUR 185k', 'EUR 240k'], per='per MW per year', stats_note='Gross market revenues of three BESS assets.',
+  learn='How it works →',
   which='Which one is yours?',
   how_eyebrow='How it works', how_h='Our membership model',
   rules=[
    ('Registration', 'We ask new members to share 6 months of BESS performance data and stay a member for at least 3 months. After that, membership can be cancelled monthly.'),
    ('Contribution', 'Members pay 0.5% of what their battery earned that month. At €15,000 per MW, that is €75 per MW. After referring 5 members, the contribution drops to 0.1% for 6 months.'),
-   ('Give-to-get', 'You see the benchmark only for the months you contributed to. The same principle applies to installers, advisers and financiers who want access.'),
-   ('Strictly anonymous', 'A benchmark is shown only for groups of at least 5 assets from at least 3 organisations. We never publish results per optimizer.'),
+   ('Give-to-get', 'Members\' data is anonymised and added to the BESS Benchmark; members only see the BESS Benchmark for the months to which they have contributed. The same "give-to-get" principle applies to financiers, installers and advisers who want access.'),
   ],
+  shot_alt='The BESS Benchmark app: project score, revenue per MW and the benchmark over the last 12 months (fictional example data)',
+  shot_cap='What members see: their project score and revenue per MW against the BESS Benchmark, every month. Fictional example data.',
   faq_link='Read the FAQ →',
   real_eyebrow='Real data, not a model', real_h='Why real revenues beat a simulated index',
-  idx_h='A simulated revenue index', idx=['Models a theoretical battery with fixed assumptions','Assumes a full grid connection and no downtime','Cannot tell you how your optimizer performs'],
-  ours_h='The BESS Benchmark', ours=["Realised revenues from optimizers' credit invoices",'Anticipates restrictions such as CSC terms, TDTR limits and downtime','Compares your battery with batteries set up like yours'],
+  idx_h='A simulated revenue index', idx=['Models a theoretical battery with fixed assumptions','Assumes a full grid connection and no downtime','Cannot tell you how your optimizer performs comparatively'],
+  ours_h='The BESS Benchmark', ours=['Is based on realised revenues, as members received them from their optimizers','Anticipates restrictions such as CSC terms, TDTR limits and downtime','Compares your battery with batteries set up like yours'],
   about_eyebrow='About the ICM', about_h='Why an Independent Capacity Market matters',
   about_p='We are not owners. We are not optimizers. Nor will we ever be. We are an energy tech company, serving those who add capacity to the grid, but are in the dark on the potential of their assets. We compare BESS-to-BESS, introduce owners to optimizers and oversee the switch, so your battery keeps earning.',
   open_now='Open now', waitlist='Join the waitlist',
-  p1=('BESS Benchmark','Compare what your battery earns per MW with comparable batteries. Give-to-get, anonymised, independent.'),
+  p1=('BESS Benchmark','Compare your earnings BESS-to-BESS to understand the true value of your asset.'),
   p2=('BESS Broker','Outsource the search for a trusted optimizer. One form, a standardised process and terms banks appreciate.'),
   p3=('BESS Integration','Embed a new project into the portfolio. Our API platform derisks a switch by connecting optimizers with local infra.'),
   contact_eyebrow='Talk to us', contact_h='Book a 45-minute intake', contact_p='Tell us a little about your batteries and we will plan the intake together.',
@@ -51,20 +55,24 @@ T = {
   f_msg='Tell us a little bit about your context and objectives', f_ph='E.g., asset of 3-30 MW, trading revenues below expectations',
   f_submit='Request an intake →', f_fine='We use your details only to contact you about the ICM.', f_ok='Thank you – we will be in touch.',
   foot_tag='The Independent Capacity Market (“the ICM”) brings clarity, trusted partners and continuity to those adding capacity to the grid.',
-  founded='Independent Capacity Market B.V., Amsterdam. Founded by', foot_bench='BESS Benchmark', methodology='Methodology', contact='Contact',
+  founded='Founded by', foot_bench='Learn more', methodology='Methodology', contact='Contact',
   terms='Terms & Conditions', privacy='Privacy statement', disclaimer='Benchmark figures are outcome data as reported by optimizers, not advice.',
   faq_title='Frequently asked questions – BESS Benchmark | The ICM', faq_desc='Answers to common questions about the BESS Benchmark: data, costs, privacy and who can join.',
   faq_h='Frequently asked questions', faq_lead='Short answers about the BESS Benchmark. Missing something? Ask us in the intake.', faq_more='Still have a question?',
   faqs=[
-   ('What data do I share?', 'Your monthly revenue per battery, as shown on your optimizer\'s credit invoice. Plus the optimizer fee and any hours the battery was down. To start, we ask for the last 6 months.'),
-   ('Do you need my trading strategy or prices?', 'No. We only use the result: what the battery earned. Never bids, prices or trading strategies.'),
-   ('Am I allowed to share this under my optimizer contract?', 'Usually yes. If your contract limits sharing, you and your optimizer sign a short mandate. Your optimizer then sends the figures to us directly.'),
-   ('Who sees my data?', 'Only you see your own figures. Other members see averages of at least 5 batteries from at least 3 companies. We never show results per optimizer.'),
-   ('Which batteries can join?', 'Batteries in the Netherlands on a merchant contract. We focus on 3 to 30 MW and decide per project in the intake.'),
-   ('What does it cost?', '0.5% of what your battery earned that month, excluding VAT. The 6 months you share at the start are free. So is a month with negative revenue.'),
-   ('How long do I commit?', 'At least 3 months. After that you can cancel every month.'),
-   ('Can I show the results to my bank?', 'Yes. You can print a report with your own figures and the benchmark. It never contains data of other companies.'),
-   ('How do you calculate the benchmark?', 'We add up the revenue of all comparable batteries and divide it by their MW and the hours they were available. The result is shown in euro per MW per year. All rules are in the <a href="/methodology/">methodology</a>.'),
+   ('How does the BESS Benchmark help me?', '<ul><li><b>Are we doing well?</b> See at a glance how much more or less your batteries earn than comparable batteries. Apples with apples, pears with pears. All data is anonymised.</li><li><b>What does an outage cost?</b> Insurance and warranty claims stand stronger with independent figures on what comparable batteries earned in the meantime.</li><li><b>Who pays for an optimizer that disappoints?</b> A benchmark lets you negotiate a floor with your optimizer, such as "at least 80% of the benchmark".</li></ul>'),
+   ('Which batteries can join?', 'Batteries in the Netherlands that an optimizer trades under a merchant contract. We focus on assets of 3 to 30 MW and decide per project in the intake.'),
+   ('How does it work?', '<ol><li>A 45-minute intake, in which we go through your projects together.</li><li>You sign the membership form online and confirm the project form.</li><li>You share 6 months of history, then every month your optimizer\'s statement, for example by asking your optimizer to copy bessbenchmark@icm.energy.</li><li>Every month you see your project score in the app.</li></ol>'),
+   ('What data do I share?', 'Per battery and per month: the revenue on your optimizer\'s statement (credit invoice, settlement or report), the optimizer fee, and the hours the battery was out of service. We never ask for bids, prices or trading strategies.'),
+   ('Am I allowed to share this under my optimizer contract?', 'Usually yes. If your contract limits sharing with third parties, you and your optimizer first sign a short mandate. Your optimizer then sends the statements to us directly.'),
+   ('Who sees my data?', 'Only you see your own figures. Before your data enters the benchmark, we remove your name, the asset name, EAN, location and optimizer. A benchmark is only shown for at least 5 batteries of other companies. We never share your data with optimizers, other members or our investors, and never publish results per optimizer.'),
+   ('What do I get in return?', 'Every month, your project score: your revenue per MW divided by the benchmark. You see it per project and per battery, by month, quarter or year, and can filter by duration, project type, market qualifications and congestion contract. You can print it all as a report.'),
+   ('What does it cost?', '0.5% of your battery\'s gross revenue for each month you are a member, excluding VAT. The historical months you share at the start are free, and so is any month with negative revenue. There are no other fees. After referring 5 members, you pay 0.1% for 6 months.'),
+   ('How long do I commit?', 'The month you join plus two months. After that, membership renews monthly and you can cancel by email at the end of any month.'),
+   ('Can I share my results with my bank or optimizer?', 'Yes. You may share your benchmark results and project score with your advisers, financiers and optimizer, for example to negotiate contract terms.'),
+   ('Will the ICM try to sell me something?', 'No. We only contact you if your project scored below 80% of the benchmark in at least 6 of the last 12 months, to discuss the option of another optimizer. Otherwise we leave you alone.'),
+   ('Is the ICM independent?', 'Yes. We do not own batteries and are not an optimizer, nor will we ever be. The same rules apply to every member, whatever their optimizer.'),
+   ('How is the benchmark calculated?', 'We add up the revenue of all comparable batteries and divide it by their MW and the hours they were available, shown in euro per MW per year. Results are preliminary until no correction has come in for 3 months. All rules are in the <a href="/methodology/">methodology</a>.'),
   ],
   terms_title='Terms & Conditions | The ICM', terms_h='Terms & Conditions',
   terms_body='<p>The Terms &amp; Conditions of the BESS Benchmark are shared with every prospective member before signing, together with the methodology.</p><p>Would you like to read them first? Email <a href="mailto:ideles@icm.energy">ideles@icm.energy</a> and we will send you the current version.</p>',
@@ -155,7 +163,7 @@ GA = '''<script async src="https://www.googletagmanager.com/gtag/js?id=G-8RMBG4V
 
 def head(t, title, desc, path, alt_path=None, jsonld=None, og_title=None):
     alt = ''
-    if alt_path:
+    if alt_path and len(LANGS) > 1:
         en, nl = (path, alt_path) if t['lang'] == 'en' else (alt_path, path)
         alt = (f'<link rel="alternate" hreflang="en" href="https://icm.energy{en}">\n'
                f'<link rel="alternate" hreflang="nl" href="https://icm.energy{nl}">\n'
@@ -196,8 +204,7 @@ def nav(t, other_href):
           <li class="hide-sm"><a href="{b}#how">{t['nav_how']}</a></li>
           <li class="hide-sm"><a href="{b}faq/">{t['nav_faq']}</a></li>
           <li class="hide-sm"><a href="{b}#about">{t['nav_about']}</a></li>
-          <li><a class="lang" href="{other_href}" hreflang="{t['other_lang']}" lang="{t['other_lang']}">{t['other_label']}</a></li>
-          <li><a class="btn btn-lilac" href="{b}#contact">{t['talk']}</a></li>
+{f'          <li><a class="lang" href="{other_href}" hreflang="{t["other_lang"]}" lang="{t["other_lang"]}">{t["other_label"]}</a></li>' + chr(10) if len(LANGS) > 1 else ''}          <li><a class="btn btn-lilac" href="{b}#contact">{t['talk']}</a></li>
         </ul>
       </nav>
     </header>
@@ -216,7 +223,6 @@ def footer(t, other_href):
       <div>
         <h3>{t['foot_bench']}</h3>
         <ul>
-          <li><a href="{b}#how">{t['nav_how']}</a></li>
           <li><a href="{b}faq/">{t['nav_faq']}</a></li>
           <li><a href="/methodology/">{t['methodology']}</a></li>
         </ul>
@@ -225,11 +231,11 @@ def footer(t, other_href):
         <h3>{t['contact']}</h3>
         <ul>
           <li><a href="mailto:{EMAIL}">{EMAIL}</a></li>
-          <li><a href="{other_href}" hreflang="{t['other_lang']}" lang="{t['other_lang']}">{t['other_name']}</a></li>
+{f'          <li><a href="{other_href}" hreflang="{t["other_lang"]}" lang="{t["other_lang"]}">{t["other_name"]}</a></li>' + chr(10) if len(LANGS) > 1 else ''}
         </ul>
       </div>
     </div>
-    <p class="legal"><span>© 2026 Independent Capacity Market B.V.</span><span><a href="{b}terms/">{t['terms']}</a></span><span><a href="{b}privacy/">{t['privacy']}</a></span><span>{t['disclaimer']}</span></p>
+    <p class="legal"><span>© 2026 Independent Capacity Market B.V.</span><span><a href="{b}terms/">{t['terms']}</a></span><span><a href="{b}privacy/">{t['privacy']}</a></span></p>
   </div>
 </footer>
 '''
@@ -260,7 +266,9 @@ def home(t):
          "founder": {"@type": "Person", "name": "Idelès Kaandorp", "sameAs": LINKEDIN}},
         {"@type": "Service", "name": "BESS Benchmark", "provider": {"@id": "https://icm.energy/#org"}, "areaServed": "NL",
          "serviceType": "Battery energy storage revenue benchmark", "description": t['desc']}]}
-    rules = '\n'.join(f'      <div class="rule"><h3>{h}</h3><p>{p}</p></div>' for h, p in t['rules'])
+    rules = '\n'.join(f'        <div class="rule"><h3>{h}</h3><p>{p}</p></div>' for h, p in t['rules'])
+    icon = '<span class="stat-icon" aria-hidden="true"><svg viewBox="0 0 48 28"><rect x="2" y="3" width="38" height="22" rx="4" fill="none" stroke="#0E1B2B" stroke-width="3"/><rect x="41" y="10" width="5" height="8" rx="1.5" fill="#0E1B2B"/><rect x="7" y="8" width="5" height="12" rx="1" fill="#0E1B2B"/><path d="M24 5 16 16h7l-3 8 9-12h-7l3-7z" fill="#0E1B2B"/></svg></span>'
+    stats = '\n'.join(f'      <div class="stat">{icon}<p><b>{v}</b> {t["per"]}</p></div>' for v in t['stats'])
     idx = ''.join(f'<li>{x}</li>' for x in t['idx']); ours = ''.join(f'<li>{x}</li>' for x in t['ours'])
     return head(t, t['title'], t['desc'], b, other, ld, t['og_title']) + f'''
 <div class="hero-shell">
@@ -276,7 +284,8 @@ def home(t):
           <a class="btn btn-ghost" href="#how">{t['how_link']}</a>
         </div>
       </div>
-{chart(t)}    </div>
+      <div class="hero-visual">{HERO_ART}</div>
+    </div>
   </div>
 </div>
 
@@ -287,11 +296,12 @@ def home(t):
       <h2>{t['why_h']}</h2>
       <p>{t['why_p']}</p>
     </div>
-    <div class="batteries">
-      {BATTERIES}
+    <div class="stats">
+{stats}
     </div>
+    <p class="stats-note">{t['stats_note']}</p>
     <p class="which">{t['which']}</p>
-    <div class="cta-row"><a class="btn btn-lilac" href="#contact">{t['book']}</a></div>
+    <div class="cta-row"><a class="btn btn-lilac" href="#contact">{t['book']}</a><a class="btn btn-outline" href="#how">{t['learn']}</a></div>
   </div>
 </section>
 
@@ -301,12 +311,20 @@ def home(t):
       <span class="eyebrow">{t['how_eyebrow']}</span>
       <h2>{t['how_h']}</h2>
     </div>
-    <div class="rules">
+    <div class="model">
+      <div>
+        <div class="rules-stack">
 {rules}
-    </div>
-    <div class="cta-row" style="justify-content:flex-start;margin-top:36px">
-      <a class="btn btn-lilac" href="#contact">{t['book']}</a>
-      <a class="btn btn-outline teal" href="{b}faq/">{t['faq_link']}</a>
+        </div>
+        <div class="cta-row" style="justify-content:flex-start;margin-top:32px">
+          <a class="btn btn-lilac" href="#contact">{t['book']}</a>
+          <a class="btn btn-outline teal" href="{b}faq/">{t['faq_link']}</a>
+        </div>
+      </div>
+      <figure class="shot">
+        <img src="/assets/benchmark-preview.jpg" width="1240" height="1075" alt="{t['shot_alt']}" loading="lazy">
+        <figcaption>{t['shot_cap']}</figcaption>
+      </figure>
     </div>
   </div>
 </section>
@@ -396,7 +414,7 @@ def simple_page(t, path, other_path, title, desc, h1, lead, body, jsonld=None):
 '''
 
 def faq(t):
-    items = '\n'.join(f'      <details><summary>{q}</summary><p>{a}</p></details>' for q, a in t['faqs'])
+    items = '\n'.join(f'      <details><summary>{q}</summary>{a if a.startswith("<") else "<p>"+a+"</p>"}</details>' for q, a in t['faqs'])
     ld = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
         {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": re.sub('<[^>]+>', '', a)}} for q, a in t['faqs']]}
     body = f'''    <div class="faq">
@@ -419,7 +437,8 @@ def write(rel, html):
     os.makedirs(os.path.dirname(p), exist_ok=True)
     open(p, 'w', encoding='utf-8').write(html)
 
-for lang, t in T.items():
+for lang in LANGS:
+    t = T[lang]
     pre = '' if lang == 'en' else 'nl/'
     write(pre + 'index.html', home(t))
     write(pre + 'faq/index.html', faq(t))
