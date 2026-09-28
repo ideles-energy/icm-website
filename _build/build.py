@@ -6,7 +6,7 @@ Edit texts in the T dictionary below, then rebuild. Methodology is edited direct
 import json, os, re
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-HERO_ART = open(os.path.join(ROOT, '_build', 'hero-art.svg'), encoding='utf-8').read()
+
 LANGS = ['en']  # add 'nl' once the Dutch texts are proofread
 EMAIL = 'ideles@icm.energy'
 LINKEDIN = 'https://www.linkedin.com/in/idel%C3%A8s-kaandorp/'
@@ -21,7 +21,7 @@ T = {
   eyebrow='BESS Benchmark · Netherlands',
   h1_a='Understand and secure', h1_b='the true value of your asset',
   lead='For owners with a nagging sense their BESS assets could earn more. See how your assets compare, BESS-to-BESS, and find an alternative optimizer via the ICM.',
-  book='Book an intake →', how_link='How it works →',
+  book='Talk to us →', how_link='How it works →',
   chart_title='Project score: 87% of the peer benchmark', chart_sub='EUR per MW per year, by month · gross revenue',
   chart_aria="Illustrative chart: a project's monthly revenue per MW compared with the peer benchmark",
   months=['Oct','Dec','Feb','Apr','Jun','Aug'], chart_you='Your project', chart_peer='Peer benchmark (≥ 5 assets, ≥ 3 organisations)',
@@ -38,7 +38,7 @@ T = {
    ('Give-to-get', 'Members\' data is anonymised and added to the BESS Benchmark; members only see the BESS Benchmark for the months to which they have contributed. The same "give-to-get" principle applies to financiers, installers and advisers who want access.'),
   ],
   shot_alt='The BESS Benchmark app: project score, revenue per MW and the benchmark over the last 12 months (fictional example data)',
-  shot_cap='What members see: their project score and revenue per MW against the BESS Benchmark, every month. Fictional example data.',
+  shot_cap='The BESS Benchmark is a dynamic view on the EUR per MW per year of your assets and those of our other members. Fictional example data.',
   faq_link='Read the FAQ →',
   real_eyebrow='Real data, not a model', real_h='Why real revenues beat a simulated index',
   idx_h='A simulated revenue index', idx=['Models a theoretical battery with fixed assumptions','Assumes a full grid connection and no downtime','Cannot tell you how your optimizer performs comparatively'],
@@ -49,16 +49,16 @@ T = {
   p1=('BESS Benchmark','Compare your earnings BESS-to-BESS to understand the true value of your asset.'),
   p2=('BESS Broker','Outsource the search for a trusted optimizer. One form, a standardised process and terms banks appreciate.'),
   p3=('BESS Integration','Embed a new project into the portfolio. Our API platform derisks a switch by connecting optimizers with local infra.'),
-  contact_eyebrow='Talk to us', contact_h='Book a 45-minute intake', contact_p='Tell us a little about your batteries and we will plan the intake together.',
+  contact_eyebrow='Talk to us', contact_h='Book time with us', contact_p='',
   prefer='Prefer email?', subject='BESS Benchmark intake request',
-  f_name='Name', f_company='Company', f_email='Email', f_mw='Portfolio size (MW, approximately)',
-  f_msg='Tell us a little bit about your context and objectives', f_ph='E.g., asset of 3-30 MW, trading revenues below expectations',
-  f_submit='Request an intake →', f_fine='We use your details only to contact you about the ICM.', f_ok='Thank you – we will be in touch.',
+  f_name='Name', f_company='Company', f_email='Email', f_mw='Portfolio or project size in MW',
+  f_msg='Tell us a little bit about your context and objectives', f_ph='E.g., asset of 3-30 MW, trading revenues below expectations, interested in the BESS Benchmark',
+  f_submit='Send →', f_fine='We use your details only to contact you about the ICM.', f_ok='Thank you – we will be in touch.',
   foot_tag='The Independent Capacity Market (“the ICM”) brings clarity, trusted partners and continuity to those adding capacity to the grid.',
   founded='Founded by', foot_bench='Learn more', methodology='Methodology', contact='Contact',
   terms='Terms & Conditions', privacy='Privacy statement', disclaimer='Benchmark figures are outcome data as reported by optimizers, not advice.',
   faq_title='Frequently asked questions – BESS Benchmark | The ICM', faq_desc='Answers to common questions about the BESS Benchmark: data, costs, privacy and who can join.',
-  faq_h='Frequently asked questions', faq_lead='Short answers about the BESS Benchmark. Missing something? Ask us in the intake.', faq_more='Still have a question?',
+  faq_h='Frequently asked questions', faq_lead='Short answers about the BESS Benchmark. Missing something? Just ask us.', faq_more='Still have a question?',
   faqs=[
    ('How does the BESS Benchmark help me?', '<ul><li><b>Are we doing well?</b> See at a glance how much more or less your batteries earn than comparable batteries. Apples with apples, pears with pears. All data is anonymised.</li><li><b>What does an outage cost?</b> Insurance and warranty claims stand stronger with independent figures on what comparable batteries earned in the meantime.</li><li><b>Who pays for an optimizer that disappoints?</b> A benchmark lets you negotiate a floor with your optimizer, such as "at least 80% of the benchmark".</li></ul>'),
    ('Which batteries can join?', 'Batteries in the Netherlands that an optimizer trades under a merchant contract. We focus on assets of 3 to 30 MW and decide per project in the intake.'),
@@ -284,7 +284,6 @@ def home(t):
           <a class="btn btn-ghost" href="#how">{t['how_link']}</a>
         </div>
       </div>
-      <div class="hero-visual">{HERO_ART}</div>
     </div>
   </div>
 </div>
@@ -322,7 +321,7 @@ def home(t):
         </div>
       </div>
       <figure class="shot">
-        <img src="/assets/benchmark-preview.jpg" width="1240" height="1075" alt="{t['shot_alt']}" loading="lazy">
+        <a href="/assets/benchmark-preview.jpg" target="_blank" rel="noopener"><img src="/assets/benchmark-preview.jpg" width="1600" height="1016" alt="{t['shot_alt']}" loading="lazy"></a>
         <figcaption>{t['shot_cap']}</figcaption>
       </figure>
     </div>
@@ -363,7 +362,6 @@ def home(t):
     <div class="intro">
       <span class="eyebrow" style="color:var(--teal)">{t['contact_eyebrow']}</span>
       <h2>{t['contact_h']}</h2>
-      <p>{t['contact_p']}</p>
       <p>{t['prefer']} <a href="mailto:{EMAIL}">{EMAIL}</a></p>
     </div>
     <form class="form" id="contact-form" action="https://formspree.io/f/mbdqdpql" method="POST">

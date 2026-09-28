@@ -285,3 +285,10 @@ footer { background: var(--ink); color: rgba(255,255,255,.75); padding: 56px 0 4
 .faq details ul, .faq details ol { color: var(--muted); padding: 0 0 20px 20px; margin: 0; }
 .faq details li { margin: 8px 0; }
 .faq details li b { color: var(--text); }
+
+/* v4: single-column hero, larger screenshot */
+.hero { grid-template-columns: 1fr; padding-bottom: 88px; }
+.hero > div { max-width: 820px; }
+.model { grid-template-columns: minmax(0, .7fr) minmax(0, 1.3fr); gap: 48px; }
+.shot a { display: block; cursor: zoom-in; }
+@media (max-width: 960px) { .model { grid-template-columns: 1fr; } }
