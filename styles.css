@@ -296,3 +296,16 @@ footer { background: var(--ink); color: rgba(255,255,255,.75); padding: 56px 0 4
 .prose .compare > div { padding: 24px; }
 .prose .compare h3 { font-size: 18px; margin-bottom: 10px; }
 .prose .compare ul { margin: 0; }
+
+/* Interactive demo */
+.demo-open { position: relative; display: block; }
+.demo-badge { position: absolute; left: 50%; bottom: 22px; transform: translateX(-50%); background: var(--lilac); color: var(--white); font-weight: 700; font-size: 15px; padding: 12px 22px; border-radius: 999px; box-shadow: 0 10px 30px rgba(0,0,0,.35); white-space: nowrap; transition: background .2s; }
+.demo-open:hover .demo-badge { background: var(--lilac-dark); }
+.demo-dialog { width: min(1280px, 96vw); height: 92vh; padding: 0; border: 0; border-radius: 16px; background: #020B1A; overflow: hidden; }
+.demo-dialog::backdrop { background: rgba(2, 11, 26, .75); }
+.demo-dialog[open] { display: flex; flex-direction: column; }
+.demo-bar { display: flex; align-items: center; gap: 16px; padding: 10px 16px; color: #F2F7FB; font-size: 14px; border-bottom: 1px solid #1C3356; }
+.demo-bar span { flex: 1; font-weight: 600; }
+.demo-bar a { color: var(--cyan); }
+.demo-bar button { background: none; border: 0; color: #F2F7FB; font-size: 26px; line-height: 1; cursor: pointer; }
+.demo-dialog iframe { flex: 1; width: 100%; border: 0; }

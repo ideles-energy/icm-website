@@ -38,6 +38,7 @@ T = {
    ('Give-to-get', 'Members\' data is anonymised and added to the BESS Benchmark; members only see the BESS Benchmark for the months to which they have contributed. The same "give-to-get" principle applies to financiers, installers and advisers who want access.'),
   ],
   shot_alt='The BESS Benchmark app: project score, revenue per MW and the benchmark over the last 12 months (fictional example data)',
+  demo_btn='Try the interactive demo →', demo_title='BESS Benchmark – interactive demo (fictional data)', demo_new='Open in a new tab',
   shot_cap='The BESS Benchmark is a dynamic view on the EUR per MW per year of your assets and those of our other members. Fictional example data.',
   faq_link='Read the FAQ →',
   real_eyebrow='Real data, not a model', real_h='Why real revenues beat a simulated index',
@@ -235,7 +236,7 @@ def footer(t, other_href):
         </ul>
       </div>
     </div>
-    <p class="legal"><span>© 2026 Independent Capacity Market B.V.</span><span><a href="{b}terms/">{t['terms']}</a></span><span><a href="{b}privacy/">{t['privacy']}</a></span></p>
+    <p class="legal"><span>© 2026 Independent Capacity Market B.V. · KvK 99958775</span><span><a href="{b}terms/">{t['terms']}</a></span><span><a href="{b}privacy/">{t['privacy']}</a></span></p>
   </div>
 </footer>
 '''
@@ -321,10 +322,14 @@ def home(t):
         </div>
       </div>
       <figure class="shot">
-        <a href="/assets/benchmark-preview.jpg" target="_blank" rel="noopener"><img src="/assets/benchmark-preview.jpg" width="1600" height="1016" alt="{t['shot_alt']}" loading="lazy"></a>
+        <a class="demo-open" href="/demo/" data-demo><img src="/assets/benchmark-preview.jpg" width="1600" height="1016" alt="{t['shot_alt']}" loading="lazy"><span class="demo-badge">{t['demo_btn']}</span></a>
         <figcaption>{t['shot_cap']}</figcaption>
       </figure>
     </div>
+    <dialog class="demo-dialog" id="demo-dialog" aria-label="{t['demo_btn']}">
+      <div class="demo-bar"><span>{t['demo_title']}</span><a href="/demo/" target="_blank" rel="noopener">{t['demo_new']}</a><button type="button" data-close aria-label="Close">×</button></div>
+      <iframe title="{t['demo_title']}" loading="lazy"></iframe>
+    </dialog>
   </div>
 </section>
 
@@ -490,3 +495,16 @@ page = head(te, 'BESS Benchmark methodology – how we calculate revenue per MW 
 """
 write('methodology/index.html', page)
 print('methodology built, v' + version.group(1), len(toc), 'sections')
+
+
+# Interactive demo: the prototype (fictional data) served at /demo/, embedded on the homepage.
+demo = open(os.path.join(ROOT, '_build', 'prototype.html'), encoding='utf-8').read()
+demo = demo.replace('https://app.box.com/s/52dy3lyuocqpj3ss3rf47sdyveq7b1ir', '/methodology/').replace('https://app.box.com/s/3hmk2batlg2l2nv91e59gafzu2p1hek6', '/terms/')
+demo = demo.replace('<title>BESS Benchmark Report</title>', '<title>BESS Benchmark – interactive demo | The ICM</title><meta name="robots" content="noindex">')
+# no optimizer filter in the public demo (T&C 8.3: no results per optimizer)
+demo = demo.replace('<div class="f"><span class="lab">Optimizer</span><div class="seg stack" data-key="opt"></div></div>', '')
+demo = demo.replace("document.querySelectorAll('.seg[data-key]').forEach(el=>{\n  const key=el.dataset.key;", "document.querySelectorAll('.seg[data-key]').forEach(el=>{\n  const key=el.dataset.key;if(!OPTS[key])return;")
+# summary tiles follow the filters (decided 29 Sept 2026)
+demo = demo.replace('function summary(){\n  const f=DEF,', 'function summary(){\n  const f=st,')
+write('demo/index.html', demo)
+print('demo built')

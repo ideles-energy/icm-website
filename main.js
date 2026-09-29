@@ -23,3 +23,20 @@
       });
   });
 })();
+
+// Interactive demo in a dialog (falls back to the /demo/ page without JavaScript).
+(function () {
+  var dlg = document.getElementById('demo-dialog');
+  if (!dlg || typeof dlg.showModal !== 'function') return;
+  var frame = dlg.querySelector('iframe');
+  document.querySelectorAll('[data-demo]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      if (window.innerWidth < 900) return; // small screens: open the demo page itself
+      e.preventDefault();
+      if (!frame.src) frame.src = a.getAttribute('href');
+      dlg.showModal();
+    });
+  });
+  dlg.querySelector('[data-close]').addEventListener('click', function () { dlg.close(); });
+  dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
+})();

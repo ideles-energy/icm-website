@@ -1,0 +1,637 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>BESS Benchmark – interactive demo | The ICM</title><meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap">
+<style>
+/* Dark-first, following the ICM website (navy ground, cyan #97F2F5, lavender #D392EB).
+   The report preview (and print) switch to a light paper palette. */
+:root, body{
+  color-scheme:dark;
+  --bg:#020B1A; --surface:#061530; --raise:#0B1E3D; --ink:#F2F7FB; --muted:#A4B6CB; --faint:#7189A5;
+  --line:#1C3356; --line-strong:#2D4B78;
+  --proj:#97F2F5; --bench:#D392EB; --on-bench:#1A0B24; --brush:rgba(151,242,245,.14);
+  --g1:#081A35; --g2:#0D2447; --g3:#12305C; --g4:#193E73;
+  --red:#FF6B7A; --red-soft:rgba(255,107,122,.22); --neg:rgba(255,107,122,.55); --pos:rgba(151,242,245,.75);
+  --chip:#0B1E3D; --chip-on:#16335F; --tag:#3A2F10; --tag-ink:#FFD479;
+  --font:"Figtree", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+body.light, body.report{
+  color-scheme:light;
+  --bg:#E9EDF2; --surface:#FFFFFF; --raise:#F4F7FA; --ink:#0B1A2E; --muted:#4F6278; --faint:#627488;
+  --line:#DCE3EB; --line-strong:#C3CFDC;
+  --proj:#0B8A91; --bench:#9A4DBF; --brush:rgba(11,138,145,.12);
+  --g1:#F5F9FC; --g2:#E7F1F9; --g3:#D6E8F5; --g4:#C2DCEF;
+  --red:#C8352F; --red-soft:#F7D9D6; --neg:rgba(200,53,47,.55); --pos:rgba(11,138,145,.7);
+  --chip:#EEF2F6; --chip-on:#FFFFFF; --tag:#FFF1D6; --tag-ink:#7A5200;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--font);font-size:14px;line-height:1.45;padding-inline:16px;padding-block:20px 48px;font-variant-numeric:tabular-nums}
+.wrap{max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,select:focus-visible,a:focus-visible{outline:2px solid var(--proj);outline-offset:2px}
+a{color:var(--proj);text-underline-offset:2px}
+body.report a{color:var(--proj)}
+
+/* top */
+.top{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:14px}
+.brand{display:flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--proj);font-weight:700}
+.brand svg{flex:none}
+h1{font-size:28px;margin:6px 0 0;font-weight:800;letter-spacing:-.01em;color:var(--proj);text-wrap:balance}
+.sub{color:var(--muted);margin-top:2px}
+.projects{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}
+.projects button{border:1.5px solid var(--line-strong);background:transparent;color:var(--muted);border-radius:999px;padding:5px 14px;font-weight:600}
+.projects button[aria-pressed="true"]{border-color:var(--proj);color:var(--ink);background:var(--chip-on)}
+.actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.fict{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:var(--tag);color:var(--tag-ink);padding:4px 8px;border-radius:4px}
+.btn{border:0;background:var(--bench);color:var(--on-bench);padding:9px 18px;border-radius:999px;font-weight:700}
+body.report .btn, body.light .btn{color:#fff}
+
+/* controls */
+.lab{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.seg{display:inline-flex;flex-wrap:wrap;background:var(--chip);border:1px solid var(--line);border-radius:9px;padding:3px;gap:2px}
+.seg button{border:0;background:transparent;padding:5px 11px;border-radius:6px;font-weight:600;color:var(--muted);white-space:nowrap}
+.seg button[aria-pressed="true"]{background:var(--chip-on);color:var(--proj);box-shadow:inset 0 0 0 1px var(--line-strong)}
+.seg.stack{display:grid;grid-template-columns:1fr}
+.seg.stack button{text-align:left;white-space:normal}
+.checks{display:flex;flex-direction:column;gap:5px}
+.checks button{display:grid;grid-template-columns:16px 1fr;gap:9px;align-items:start;text-align:left;border:1px solid var(--line);background:var(--chip);border-radius:9px;padding:7px 10px;color:var(--ink)}
+.checks button i{width:14px;height:14px;border:1.5px solid var(--line-strong);border-radius:4px;margin-top:2px;display:block}
+.checks button[aria-pressed="true"]{border-color:var(--proj)}
+.checks button[aria-pressed="true"] i{background:var(--proj);border-color:var(--proj);box-shadow:inset 0 0 0 2px var(--chip)}
+.checks .nm{font-weight:700;font-size:14px;display:block}
+.checks .dt{color:var(--muted);font-size:12px;display:block}
+.sel{font:inherit;color:var(--ink);background:var(--chip);border:1px solid var(--line);border-radius:9px;padding:7px 32px 7px 12px;font-weight:600;appearance:none;-webkit-appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),linear-gradient(135deg,var(--muted) 50%,transparent 50%);background-position:calc(100% - 16px) 50%,calc(100% - 11px) 50%;background-size:5px 5px;background-repeat:no-repeat;width:100%}
+.sel option{background:#0B1E3D;color:#F2F7FB}
+
+/* summary tiles */
+.summary{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.tile{border:1.5px solid var(--line-strong);border-radius:14px;padding:12px 16px;background:var(--surface);display:flex;flex-direction:column;gap:2px;min-width:0}
+.tile .k{font-size:12px;color:var(--muted);font-weight:600}
+.tile .v{font-size:28px;font-weight:800;letter-spacing:-.01em;color:var(--ink);line-height:1.15;margin-top:2px}
+.tile .v small{font-size:14px;font-weight:600;color:var(--muted);letter-spacing:0;margin-left:4px}
+.tile .v.bad{color:var(--red)}
+.tile .s{font-size:14px;color:var(--ink);font-weight:600}
+.tile .s.neg{color:var(--red)} .tile .s.pos{color:var(--proj)}
+.tile .s2{font-size:12px;color:var(--faint)}
+.tile .row2{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.tile .row2 svg.bullet{flex:1 1 200px;max-width:340px}
+.tile svg.bullet{width:100%;height:auto;display:block;margin:2px 0}
+.tile .line{display:flex;flex-wrap:wrap;gap:4px 10px;align-items:baseline}
+.tile svg.bullet text{font-size:10px;fill:var(--faint);font-family:var(--font)}
+.summary-note{font-size:14px;color:var(--muted);margin-top:-6px}
+@media (max-width:980px){.summary{grid-template-columns:1fr 1fr}}
+.info{position:relative;display:inline-block;margin-left:5px;vertical-align:1px}
+.info button{width:16px;height:16px;border-radius:50%;border:1.3px solid var(--muted);background:transparent;color:var(--muted);font-size:12px;font-weight:800;line-height:13px;padding:0;text-align:center}
+.info .pop{display:none;position:absolute;left:-12px;top:22px;width:280px;background:var(--raise);border:1px solid var(--line-strong);border-radius:10px;padding:10px 12px;font-size:12px;font-weight:500;color:var(--ink);box-shadow:0 8px 24px rgba(0,0,0,.35);z-index:6;line-height:1.45}
+.info:hover .pop,.info:focus-within .pop{display:block}
+.report-only{display:none}
+body.report .report-only{display:block}
+body.report .info{display:none}
+.fbtn{border:1.5px solid var(--line-strong);background:transparent;color:var(--ink);border-radius:999px;padding:6px 14px;font-weight:700;display:inline-flex;align-items:center;gap:8px}
+.fbtn[aria-expanded="true"]{border-color:var(--proj);color:var(--proj)}
+.fbtn .cnt{background:var(--proj);color:var(--surface);border-radius:999px;font-size:12px;padding:0 7px;line-height:18px}
+.bench-grid.closed{grid-template-columns:1fr}
+.bench-grid.closed .filters{display:none}
+.conf{font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--red);margin-top:6px}
+.company{font-size:12px;color:var(--faint)}
+@media (max-width:560px){.summary{grid-template-columns:1fr}}
+
+/* cards */
+.card{background:var(--surface);border:1.5px solid var(--line-strong);border-radius:14px;padding:18px}
+.card-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px}
+.card-head h2{font-size:20px;margin:0;font-weight:800;color:var(--proj)}
+.card-head p{margin:2px 0 0;color:var(--muted);font-size:14px}
+.head-ctl{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+
+.bench-grid{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:22px;align-items:start}
+@media (max-width:940px){.bench-grid{grid-template-columns:1fr}}
+.filters{display:flex;flex-direction:column;gap:14px;border-left:1px solid var(--line);padding-left:20px}
+@media (max-width:940px){.filters{border-left:0;padding-left:0;border-top:1px solid var(--line);padding-top:14px}}
+.f{display:flex;flex-direction:column;gap:6px;min-width:0}
+.chart-box{position:relative;min-width:0;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+.chart-box svg{width:100%;height:auto;display:block;cursor:crosshair}
+svg text{font-family:var(--font);font-size:12px;fill:var(--muted)}
+.empty{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;color:var(--muted);background:var(--surface)}
+.tip{position:absolute;pointer-events:none;background:var(--raise);border:1px solid var(--line-strong);border-radius:10px;padding:9px 11px;font-size:12px;box-shadow:0 8px 24px rgba(0,0,0,.35);min-width:240px;z-index:2}
+.tip b{display:block;margin-bottom:4px}
+.tip .r{display:flex;justify-content:space-between;gap:12px}
+.tip .low{color:var(--red);font-weight:700}
+.li{vertical-align:middle;margin-right:4px}
+.var-title{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-top:10px;font-size:12px;color:var(--muted)}
+.var-title b{color:var(--ink);font-size:14px}
+
+.legend{display:grid;grid-template-columns:1fr 1fr;gap:10px 28px;margin-top:14px;font-size:14px}
+@media (max-width:560px){.legend{grid-template-columns:1fr}}
+.legend .col{display:flex;flex-direction:column;gap:8px}
+.lg{display:grid;grid-template-columns:28px 1fr;gap:8px;align-items:start}
+.lg .name{font-weight:700}
+.lg .meta{color:var(--muted);font-size:12px}
+.lg svg{margin-top:6px}
+.band{display:grid;grid-template-columns:28px 1fr;gap:8px;align-items:center;font-size:12px;color:var(--muted)}
+.band i{display:block;width:28px;height:12px;border-radius:3px;border:1px solid var(--line-strong)}
+.band b{display:block;width:10px;height:10px;border-radius:50%;background:var(--red);margin-left:9px;box-shadow:0 0 0 2px var(--surface)}
+
+/* table */
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;font-size:14px}
+#tbl{min-width:760px}
+th,td{padding:8px 10px;text-align:right;border-bottom:1px solid var(--line);white-space:nowrap}
+th{font-weight:700;color:var(--muted);font-size:12px;background:var(--surface)}
+thead tr.grp-row th{color:var(--ink);font-size:14px;border-bottom:0;text-align:left;padding-bottom:0}
+th .mw{color:var(--faint);font-weight:500;margin-left:6px}
+th.grp,td.grp{border-left:1px solid var(--line-strong)}
+td.per,th.per{text-align:left;position:sticky;left:0;background:var(--surface);z-index:1}
+td.per{font-weight:600}
+td.score{font-weight:700}
+td.low{background:var(--red-soft);color:var(--ink)}
+td.na{color:var(--faint);font-size:12px;text-align:center}
+tbody tr:last-child td{border-bottom:0}
+.ptag{display:inline-block;margin-left:6px;font-size:12px;letter-spacing:0;text-transform:none;background:var(--tag);color:var(--tag-ink);padding:1px 5px;border-radius:3px;font-weight:700;vertical-align:1px}
+.foot{font-size:12px;color:var(--muted);margin-top:10px}
+.docs{display:flex;gap:18px;flex-wrap:wrap;font-size:14px}
+
+/* report: page 1 = .wrap, pages 2..n = .sheet (light paper) */
+.rep-head,.rep-foot,#sheets{display:none}
+.rep-head{border-bottom:2px solid var(--ink);padding-bottom:14px}
+.rep-head .row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.rep-head h2{font-size:20px;margin:4px 0 2px;color:var(--ink)}
+.rep-head dl{display:grid;grid-template-columns:max-content 1fr;gap:3px 14px;margin:12px 0 0;font-size:14px}
+.rep-head dt{color:var(--muted)}
+.rep-head dd{margin:0}
+.rep-foot{border-top:1px solid var(--line);padding-top:10px;font-size:12px;color:var(--muted)}
+.rep-foot .pg{float:right}
+.sheet{background:var(--surface);max-width:840px;margin:24px auto 0;border:1px solid var(--line);box-shadow:0 8px 30px rgba(0,0,0,.08);padding:36px 40px;display:flex;flex-direction:column;gap:14px;min-height:1000px}
+.sheet .mini{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:8px}
+.sheet h3{font-size:20px;margin:4px 0 0}
+.sheet .sub2{color:var(--muted);font-size:14px;margin-top:-8px}
+.sheet table{font-size:12px}
+.sheet th,.sheet td{padding:5px 10px}
+.sheet .rep-foot{display:block;margin-top:auto}
+
+body.report .no-report{display:none!important}
+body.report #sheets{display:block}
+body.report .wrap{max-width:840px;background:var(--surface);border:1px solid var(--line);box-shadow:0 8px 30px rgba(0,0,0,.08);padding:36px 40px;gap:16px;min-height:1000px}
+body.report .wrap > .card{border:0;padding:0}
+body.report .card-head h2,body.report h1{color:var(--ink)}
+body.report .rep-head,body.report .wrap > .rep-foot{display:block}
+body.report .wrap > .rep-foot{margin-top:auto}
+body.report .top{justify-content:flex-end}
+body.report .bench-grid{grid-template-columns:1fr}
+body.report .filters{display:none}
+body.report .tile{border-width:1px;padding:10px 12px}
+body.report .tile .v{font-size:20px}
+@media (max-width:640px){body.report .wrap,.sheet{padding:20px 16px}}
+@media print{
+  body{background:#fff;padding:0}
+  .no-report,.actions,.filters{display:none!important}
+  .rep-head,.rep-foot,#sheets{display:block!important}
+  .wrap,.sheet{max-width:none;border:0;box-shadow:none;padding:0;margin:0;min-height:0}
+  .sheet{break-before:page}
+  .tbl-wrap{overflow:visible;border:0}
+  thead{display:table-header-group}
+  tr{break-inside:avoid}
+  @page{size:A4 portrait;margin:14mm}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="wrap" id="page1">
+  <div class="top">
+    <div class="no-report">
+      <div class="brand"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><g stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M9 2v14M2.9 5.5l12.2 7M2.9 12.5l12.2-7"/></g></svg>The Independent Capacity Market · BESS Benchmark</div>
+      <h1 id="pTitle">Project Noordkade</h1>
+      <div class="sub" id="pSub"></div>
+      <div class="projects" id="projects" aria-label="Projects"></div>
+    </div>
+    <div class="actions">
+      <span class="fict">Fictional example data</span>
+      <div class="seg no-report" id="themeSeg" aria-label="Colour mode"><button type="button" data-v="dark" aria-pressed="true">Dark</button><button type="button" data-v="light" aria-pressed="false">Light</button></div>
+      <button class="btn" id="reportBtn" aria-pressed="false">Report preview</button>
+    </div>
+  </div>
+
+  <header class="rep-head">
+    <div class="row">
+      <div>
+        <div class="lab">BESS Benchmark report</div>
+        <h2 id="rTitle">Project Noordkade</h2>
+        <div class="sub">Voorbeeld Storage B.V.</div>
+      </div>
+      <div class="sub" style="text-align:right">Report date<br><b style="color:var(--ink)">28 September 2026</b></div>
+    </div>
+    <dl>
+      <dt>Assets</dt><dd id="repAssets"></dd>
+      <dt>Filters</dt><dd id="repFilters"></dd>
+      <dt>Period</dt><dd id="repPeriod"></dd>
+      <dt>Status</dt><dd>Jul–Sep 2026 are preliminary. Preliminary data is considered final after 3 months without corrections.</dd>
+    </dl>
+  </header>
+
+  <section class="summary" aria-label="Summary" id="summary"></section>
+  <div class="summary-note report-only">Project score = your revenue per MW as a percentage of the BESS Benchmark. 100% means you earned the same, more than 100% means you earned more.</div>
+
+  <section class="card">
+    <div class="card-head">
+      <div>
+        <h2>BESS Benchmark</h2>
+        <p id="chartSub">EUR per MW per year</p>
+      </div>
+      <div class="head-ctl no-report">
+        <button type="button" class="fbtn" id="fbtn" aria-expanded="false" aria-controls="filters">Filters</button>
+        <div class="seg" id="rangeSeg" aria-label="Period"></div>
+        <div class="seg" data-key="unit" aria-label="Time unit"></div>
+      </div>
+    </div>
+    <div class="bench-grid closed" id="benchGrid">
+      <div>
+        <div class="chart-box" id="chartBox">
+          <svg id="chart" viewBox="0 0 860 340" role="img" aria-label="Annualised revenue per MW for project, assets and BESS Benchmark"></svg>
+          <div class="empty" id="empty" hidden>No benchmark for this selection. Fewer than 5 assets or 3 organisations match these filters.</div>
+          <div class="tip" id="tip" hidden></div>
+        </div>
+        <div class="var-title"><b>Difference with the BESS Benchmark, project total</b><span>EUR per MW per year</span></div>
+        <svg id="varChart" viewBox="0 0 860 130" role="img" aria-label="Difference between project and benchmark per period" style="width:100%;height:auto;display:block"></svg>
+        <div class="legend" id="legend"></div>
+      </div>
+      <aside class="filters" id="filters" aria-label="Benchmark filters">
+        <div class="f"><span class="lab">Duration</span><div class="seg" data-key="dur"></div></div>
+        <div class="f"><span class="lab">Revenue</span><div class="seg" data-key="rev"></div></div>
+        <div class="f"><span class="lab">Project type</span><div class="seg stack" data-key="type"></div></div>
+        <div class="f"><span class="lab">Markets</span><div class="checks" id="mkts"></div></div>
+        <div class="f"><span class="lab">Congestion contract</span><div class="seg" data-key="cc"></div></div>
+        
+        <div class="f"><span class="lab">Benchmark</span><div class="seg stack" data-key="own"></div></div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="card no-report">
+    <div class="card-head">
+      <div>
+        <h2>Performance per asset</h2>
+        <p id="tblSub">Per month, newest first</p>
+      </div>
+      <div class="head-ctl"><div class="seg" data-key="unit" aria-label="Time unit"></div></div>
+    </div>
+    <div class="tbl-wrap"><table id="tbl"></table></div>
+    <div class="foot">Revenue follows the Revenue filter (gross or net of the optimizer fee).</div>
+  </section>
+
+  <nav class="docs no-report" aria-label="Documents">
+    <a href="/terms/" target="_blank" rel="noopener">Terms &amp; Conditions</a>
+    <a href="/methodology/" target="_blank" rel="noopener">Methodology</a>
+    </nav>
+  <div class="company no-report">© 2026 Independent Capacity Market B.V. All rights reserved. · Marnixstraat 242 D, 1016 TL Amsterdam · KvK 99958775 · VAT NL869204361B01 · bessbenchmark@icm.energy</div>
+
+  <footer class="rep-foot"><span class="pg">Page 1 of 4</span>Preliminary &amp; confidential · © 2026 Independent Capacity Market B.V. All rights reserved.<br>BESS Benchmark · Outcome data as reported by the optimizer, not advice. Peer data is anonymised and shown only for groups of at least 5 assets from at least 3 organisations. · <a href="/methodology/">Methodology</a> · <a href="/terms/">Terms &amp; Conditions</a></footer>
+</div>
+<div id="sheets"></div>
+
+<script>
+(function(){
+const LINK_METH='/methodology/',LINK_TC='/terms/';
+/* ---------- seeded fictional data ---------- */
+let seed=20260928;
+function rnd(){seed|=0;seed=seed+0x6D2B79F5|0;let t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}
+function norm(){let u=0,v=0;while(!u)u=rnd();while(!v)v=rnd();return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v)}
+const MN=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const months=[];for(let i=0;i<33;i++){const y=2024+Math.floor(i/12),m=i%12;months.push({i,y,m,label:MN[m]+' '+y,short:MN[m]+(m===0?' '+String(y).slice(2):''),days:new Date(y,m+1,0).getDate(),prelim:i>=30})}
+const level=months.map(o=>{const s=1+0.16*Math.cos(2*Math.PI*o.m/12)+0.05*Math.cos(4*Math.PI*o.m/12);return 196000*s*(1-0.0045*o.i)*(1+0.05*norm())});
+const DURM={'1h':0.68,'2h':1,'4h':1.24};
+const MARKETS=[['ws','Wholesale markets','day-ahead, intraday, imbalance'],['as','Ancillary services','FCR, a/mFRR'],['cm','Congestion markets','Redispatch']];
+const MBON={ws:0.02,as:0.05,cm:0.02};
+const CCB={none:0,contract:-0.04};
+// optimizer effect per optimizer (fictional, never shown by name)
+const OPTS_EFF={A:1.05,B:1.01,C:0.98,D:0.85,E:1.03,F:0.95};
+function pick(arr,w){let r=rnd()*w.reduce((a,b)=>a+b,0);for(let i=0;i<arr.length;i++){if((r-=w[i])<0)return arr[i]}return arr[arr.length-1]}
+const peers=[];
+for(let k=0;k<60;k++){
+  const dur=pick(['1h','2h','4h'],[24,56,20]);
+  const mw=pick([3,4,5,6,8,10,12,15,20,25,30],[1,1,2,2,3,3,3,2,2,1,1]);
+  const mk=[];if(rnd()<.92)mk.push('ws');if(rnd()<.75)mk.push('as');if(rnd()<.25)mk.push('cm');if(!mk.length)mk.push('ws');
+  let o0=pick(['A','B','C','D','E','F'],[18,20,16,20,14,12]);
+  // optimizer per month: some assets switch once (the optimizer is taken from the credit invoice of each month)
+  const sw=rnd()<.18?6+Math.floor(rnd()*24):null,o1=sw!=null?pick(['A','B','C','E'],[1,1,1,1]):o0;
+  const p={id:'P'+k,org:'O'+(1+Math.floor(rnd()*16)),dur,mw,type:rnd()<.62?'Stand-alone':'Co-located',mk,cc:rnd()<.55?'none':'contract',skill:1+0.06*norm(),fee:0.06+rnd()*0.09,start:rnd()<.55?0:Math.floor(rnd()*28),rev:[],opt:[]};
+  const bonus=1+mk.reduce((a,m)=>a+MBON[m],0)*0.6+CCB[p.cc];
+  months.forEach(o=>{const op=(sw!=null&&o.i>=sw)?o1:o0;p.opt.push(op);
+    const a=level[o.i]*DURM[dur]*p.skill*OPTS_EFF[op]*bonus*(1+0.07*norm());p.rev.push(o.i>=p.start?Math.round(a*mw*o.days/365):null)});
+  peers.push(p);
+}
+function mkProject(def){
+  def.assets.forEach(a=>{a.rev=months.map(o=>{
+    if(o.i<def.start)return null;
+    if(a.gap&&a.gap.includes(o.i))return null;
+    let f=a.skill*OPTS_EFF[def.opt];(a.dips||[]).forEach(([i,x])=>{if(o.i===i)f*=x});
+    const bonus=1+def.mk.reduce((s,m)=>s+MBON[m],0)*0.6+CCB[def.cc];
+    return Math.round(level[o.i]*f*bonus*(1+0.045*norm())*a.mw*o.days/365);
+  })});
+  def.mw=def.assets.reduce((s,a)=>s+a.mw,0);def.mwh=def.assets.reduce((s,a)=>s+a.mwh,0);return def;
+}
+const PROJECTS=[
+  mkProject({id:'nk',name:'Project Noordkade',type:'Co-located',mk:['ws','as'],cc:'contract',opt:'B',start:3,
+    assets:[{id:'A',name:'Noordkade A',mw:12,mwh:24,dur:'2h',skill:1.03,fee:0.10,dash:'8 5',dips:[[25,0.6]]},
+            {id:'B',name:'Noordkade B',mw:8,mwh:16,dur:'2h',skill:0.97,fee:0.10,dash:'2 4',gap:[22],dips:[[26,0.8],[30,0.8]]}]}),
+  mkProject({id:'hw',name:'Project Havenweg',type:'Stand-alone',mk:['ws'],cc:'none',opt:'D',start:9,
+    assets:[{id:'H1',name:'Havenweg 1',mw:6,mwh:12,dur:'2h',skill:0.9,fee:0.12,dash:'8 5',dips:[[27,0.85],[23,0.88]]},
+            {id:'H2',name:'Havenweg 2',mw:4,mwh:8,dur:'2h',skill:0.87,fee:0.12,dash:'2 4',dips:[[31,0.9]]}]})
+];
+let CUR=PROJECTS[0];
+
+/* ---------- state ---------- */
+const DEF={dur:'all',rev:'gross',type:'all',mk:[],cc:'all',opt:'all',own:'excl',unit:'month'};
+const st=JSON.parse(JSON.stringify(DEF));st.range='12';st.zoom=null; // range: '6' | '12' | 'all'; zoom: [from,to] month index set by dragging
+const OPTS={
+  dur:[['all','All assets'],['2h','2-hour']],
+  type:[['all','All assets'],['Stand-alone','Stand-alone'],['Co-located','Co-located']],
+  rev:[['gross','Gross'],['net','Net']],
+  cc:[['all','All'],['contract','CSC or CBC/CLC'],['none','None']],
+  opt:[['all','All optimizers'],['same','Same optimizer as this project'],['other','Other optimizers']],
+  own:[['excl','Excluding this project'],['incl','Including this project']],
+  unit:[['month','Months'],['quarter','Quarters'],['year','Years']]
+};
+
+/* ---------- calculations ---------- */
+function matches(x,f){return (f.type==='all'||x.type===f.type)&&f.mk.every(m=>x.mk.includes(m))&&(f.cc==='all'||x.cc===f.cc)}
+function optOK(o,f){return f.opt==='all'||(f.opt==='same'?o===CUR.opt:o!==CUR.opt)}
+function net(v,fee,f){return f.rev==='net'?v*(1-fee):v}
+function benchMonth(i,f){
+  let rev=0,mwd=0,n=0;const orgs=new Set();const d=months[i].days;
+  peers.forEach(p=>{if((f.dur==='all'||p.dur===f.dur)&&p.rev[i]!=null&&matches(p,f)&&optOK(p.opt[i],f)){rev+=net(p.rev[i],p.fee,f);mwd+=p.mw*d;n++;orgs.add(p.org)}});
+  if(n<5||orgs.size<3)return null;
+  // the member's other projects are peers too, but never count towards the minimum of 5 assets / 3 organisations
+  PROJECTS.forEach(Q=>{if(Q===CUR||!matches(Q,f)||!optOK(Q.opt,f))return;Q.assets.forEach(a=>{if((f.dur==='all'||a.dur===f.dur)&&a.rev[i]!=null){rev+=net(a.rev[i],a.fee,f);mwd+=a.mw*d}})});
+  if(f.own==='incl'&&matches(CUR,f)&&optOK(CUR.opt,f))CUR.assets.forEach(a=>{if((f.dur==='all'||a.dur===f.dur)&&a.rev[i]!=null){rev+=net(a.rev[i],a.fee,f);mwd+=a.mw*d}});
+  return {rev,mwd,n,orgs:orgs.size};
+}
+function ownMonth(assets,i,f){let rev=0,mwd=0,any=false;assets.forEach(a=>{if(a.rev[i]!=null){rev+=net(a.rev[i],a.fee,f);mwd+=a.mw*months[i].days;any=true}});return any?{rev,mwd}:null}
+const ann=(rev,mwd)=>rev/mwd*365;
+/* score = annualised revenue per MW ÷ benchmark, both over the SAME months */
+function evalPeriod(assets,per,f){
+  let r=0,m=0,br=0,bm=0,has=false,bn=0,bo=0;
+  per.idx.forEach(i=>{const o=ownMonth(assets,i,f),b=benchMonth(i,f);
+    if(o){r+=o.rev;m+=o.mwd;has=true}
+    if(b){bn=b.n;bo=b.orgs}
+    if(o&&b){br+=b.rev;bm+=b.mwd}
+  });
+  const a=has?ann(r,m):null,bench=bm?ann(br,bm):null;
+  return {rev:has?r:null,ann:a,bench,bn,bo,score:(a!=null&&bench)?a/bench*100:null};
+}
+function monthIdx(){ // months of the current project inside the selected range / zoom
+  const all=months.filter(o=>o.i>=CUR.start).map(o=>o.i);
+  if(st.zoom)return all.filter(i=>i>=st.zoom[0]&&i<=st.zoom[1]);
+  if(st.range==='all')return all;return all.slice(-(+st.range));
+}
+function periods(unit){
+  const inRange=new Set(monthIdx());
+  const ms=months.filter(o=>o.i>=CUR.start);
+  if(unit==='month')return ms.filter(o=>inRange.has(o.i)).map(o=>({label:o.label,short:o.short,idx:[o.i],prelim:o.prelim}));
+  if(unit==='quarter'){const keys=[...new Set(ms.map(o=>o.y*10+Math.floor(o.m/3)))];
+    return keys.map(k=>{const y=Math.floor(k/10),q=k%10+1;const idx=ms.filter(o=>o.y===y&&Math.floor(o.m/3)===q-1).map(o=>o.i);
+      return {label:'Q'+q+' '+y,short:'Q'+q+' ’'+String(y).slice(2),idx,prelim:idx.some(i=>months[i].prelim)}}).filter(p=>p.idx.every(i=>inRange.has(i)))}
+  const ys=[...new Set(ms.map(o=>o.y))];
+  return ys.map(y=>{const idx=ms.filter(o=>o.y===y).map(o=>o.i);const a=months[idx[0]],b=months[idx[idx.length-1]];const full=idx.length===12;
+    const lab=full?String(y):(y===2026?'2026 YTD':String(y))+' ('+MN[a.m]+'–'+MN[b.m]+')';
+    return {label:lab,short:full?String(y):(y===2026?'2026 YTD':y+' ('+MN[a.m]+'–'+MN[b.m]+')'),idx,prelim:idx.some(i=>months[i].prelim)}});
+}
+const r1=v=>Math.round(v*10)/10;
+const isLow=s=>s!=null&&r1(s)<80;
+
+/* ---------- formatting ---------- */
+const fmtE=v=>v==null?'–':Math.round(v).toLocaleString('en-GB');
+const fmtA=v=>v==null?'–':(Math.round(v/100)*100).toLocaleString('en-GB');
+const fmtK=v=>(v>=0?'+':'−')+Math.abs(Math.round(v/1000))+'k';
+const fmtP=v=>v==null?'–':r1(v).toFixed(1)+'%';
+const vsText=v=>{if(v==null)return '';const d=r1(v-100);return d===0?'Same as the benchmark':Math.abs(d).toFixed(1)+'% '+(d>0?'more':'less')+' than the benchmark'};
+const cssv=n=>getComputedStyle(document.body).getPropertyValue(n).trim();
+const icon=(c,w,d,len)=>'<svg class="li" width="'+(len||22)+'" height="8" aria-hidden="true"><line x1="0" x2="'+(len||22)+'" y1="4" y2="4" stroke="'+c+'" stroke-width="'+Math.min(w,3)+'" '+(d?'stroke-dasharray="'+d+'"':'')+'/></svg>';
+
+/* monotone cubic interpolation (Fritsch–Carlson): smooth, no overshoot */
+function smooth(xs,ys,steps){
+  const n=xs.length;if(n<3)return xs.map((x,i)=>[x,ys[i]]);
+  const d=[],t=new Array(n);for(let i=0;i<n-1;i++)d.push((ys[i+1]-ys[i])/(xs[i+1]-xs[i]));
+  t[0]=d[0];t[n-1]=d[n-2];for(let i=1;i<n-1;i++)t[i]=d[i-1]*d[i]<=0?0:(d[i-1]+d[i])/2;
+  for(let i=0;i<n-1;i++){if(d[i]===0){t[i]=t[i+1]=0;continue}const a=t[i]/d[i],b=t[i+1]/d[i],s=a*a+b*b;if(s>9){const k=3/Math.sqrt(s);t[i]=k*a*d[i];t[i+1]=k*b*d[i]}}
+  const out=[];for(let i=0;i<n-1;i++){const h=xs[i+1]-xs[i];for(let j=0;j<steps;j++){const u=j/steps,u2=u*u,u3=u2*u;
+    out.push([xs[i]+u*h,(2*u3-3*u2+1)*ys[i]+(u3-2*u2+u)*h*t[i]+(-2*u3+3*u2)*ys[i+1]+(u3-u2)*h*t[i+1]])}}
+  out.push([xs[n-1],ys[n-1]]);return out;
+}
+
+/* ---------- controls ---------- */
+const projEl=document.getElementById('projects');
+PROJECTS.forEach(P=>{const b=document.createElement('button');b.type='button';b.textContent=P.name;b.dataset.v=P.id;
+  b.addEventListener('click',()=>{CUR=P;st.zoom=null;render()});projEl.appendChild(b)});
+const fbtn=document.getElementById('fbtn'),grid=document.getElementById('benchGrid');
+fbtn.addEventListener('click',()=>{const open=fbtn.getAttribute('aria-expanded')!=='true';fbtn.setAttribute('aria-expanded',open);grid.classList.toggle('closed',!open)});
+document.querySelectorAll('.seg[data-key]').forEach(el=>{
+  const key=el.dataset.key;if(!OPTS[key])return;
+  OPTS[key].forEach(([v,l])=>{const b=document.createElement('button');b.type='button';b.textContent=l;b.dataset.v=v;
+    b.addEventListener('click',()=>{st[key]=v;render()});el.appendChild(b)});
+});
+const mkEl=document.getElementById('mkts');
+MARKETS.forEach(([id,nm,dt])=>{const b=document.createElement('button');b.type='button';b.dataset.v=id;
+  b.innerHTML='<i aria-hidden="true"></i><span><span class="nm">'+nm+'</span><span class="dt">'+dt+'</span></span>';
+  b.addEventListener('click',()=>{const i=st.mk.indexOf(id);if(i>=0)st.mk.splice(i,1);else st.mk.push(id);render()});mkEl.appendChild(b)});
+const rangeSeg=document.getElementById('rangeSeg');
+[['6','Last 6 months'],['12','Last 12 months'],['all','Full timeline']].forEach(([v,l])=>{const b=document.createElement('button');b.type='button';b.textContent=l;b.dataset.v=v;
+  b.addEventListener('click',()=>{st.range=v;st.zoom=null;render()});rangeSeg.appendChild(b)});
+document.querySelectorAll('#themeSeg button').forEach(b=>b.addEventListener('click',()=>{document.body.classList.toggle('light',b.dataset.v==='light');document.querySelectorAll('#themeSeg button').forEach(x=>x.setAttribute('aria-pressed',x===b));render()}));
+const repBtn=document.getElementById('reportBtn');
+repBtn.addEventListener('click',()=>{const on=!document.body.classList.contains('report');document.body.classList.toggle('report',on);repBtn.setAttribute('aria-pressed',on);repBtn.textContent=on?'Back to dashboard':'Report preview';render();window.scrollTo(0,0)});
+
+/* ---------- summary tiles (standard benchmark; period follows the range buttons) ---------- */
+function rangeName(){const ix=monthIdx();if(st.zoom)return months[ix[0]].label+' – '+months[ix[ix.length-1]].label;return st.range==='all'?'full timeline':'last '+st.range+' months'}
+function bullet(score){
+  const W2=240,lo=50,hi=140,X=v=>6+(W2-12)*(Math.min(Math.max(v,lo),hi)-lo)/(hi-lo);
+  let s='<svg class="bullet" viewBox="0 0 '+W2+' 34" aria-hidden="true">';
+  [[lo,80,'--g1'],[80,100,'--g2'],[100,115,'--g3'],[115,hi,'--g4']].forEach(([a,b,c])=>{s+='<rect x="'+X(a)+'" y="2" width="'+(X(b)-X(a))+'" height="16" fill="'+cssv(c)+'"/>'});
+  s+='<rect x="'+X(lo)+'" y="7" width="'+Math.max(0,X(score)-X(lo))+'" height="6" rx="1" fill="'+cssv(isLow(score)?'--red':'--proj')+'"/>';
+  s+='<rect x="'+(X(100)-1.5)+'" y="0" width="3" height="20" fill="'+cssv('--bench')+'"/>';
+  [80,100,115].forEach(v=>{s+='<text x="'+X(v)+'" y="31" text-anchor="middle">'+v+'%</text>'});
+  return s+'</svg>';
+}
+function summary(){
+  const f=st,ix=monthIdx(),rn=rangeName();
+  const P=evalPeriod(CUR.assets,{idx:ix},f);
+  const gap=P.ann!=null&&P.bench?P.ann-P.bench:null;
+  let h='';
+  h+='<div class="tile"><div class="k">Revenue, '+rn+'</div><div class="v">EUR '+fmtA(P.ann)+'<small>per MW per year</small></div>'+
+     (gap!=null?'<div class="line"><span class="s '+(gap<0?'neg':'pos')+'">EUR '+fmtA(Math.abs(gap))+' per MW '+(gap<0?'less':'more')+' than the benchmark</span><span class="s2">≈ EUR '+fmtA(Math.abs(gap)*CUR.mw)+' a year '+(gap<0?'less':'more')+' for '+CUR.mw+' MW</span></div>':'')+'</div>';
+  h+='<div class="tile"><div class="k">Project score, '+rn+'<span class="info"><button type="button" aria-label="What is the project score?">i</button><span class="pop" role="tooltip">Project score = your revenue per MW as a percentage of the BESS Benchmark. 100% means you earned the same, more than 100% means you earned more.</span></span>'+'</div><div class="row2"><div class="v'+(isLow(P.score)?' bad':'')+'">'+fmtP(P.score)+'</div>'+bullet(P.score)+'</div><div class="s">'+vsText(P.score)+'</div></div>';
+  document.getElementById('summary').innerHTML=h;
+}
+
+/* ---------- render ---------- */
+const W=860,H=340,ML=62,MR=34,MT=14,MB=36;
+let geom=null;
+function describe(f){
+  const unitWord={month:'monthly',quarter:'quarterly',year:'yearly'}[f.unit];
+  const p=['EUR per MW per year',unitWord+' revenue annualised',f.rev==='gross'?'gross':'net of optimizer fee'];
+  if(f.dur==='2h')p.push('only 2-hour assets');
+  if(f.type!=='all')p.push('only '+f.type.toLowerCase()+' projects');
+  if(f.mk.length)p.push('only assets active in '+f.mk.map(m=>MARKETS.find(x=>x[0]===m)[1].toLowerCase()).join(' and '));
+  if(f.cc==='contract')p.push('only assets with CSC or CBC/CLC');
+  if(f.cc==='none')p.push('only assets without a congestion contract');
+  if(f.opt==='same')p.push('only assets with the same optimizer');
+  if(f.opt==='other')p.push('only assets with other optimizers');
+  if(f.own==='incl')p.push('including '+CUR.name);
+  return p.join(', ');
+}
+function render(){
+  const f=st;
+  document.getElementById('pTitle').textContent=CUR.name;
+  document.getElementById('rTitle').textContent=CUR.name;
+  document.getElementById('pSub').textContent='Voorbeeld Storage B.V. · '+CUR.assets.length+' assets · '+CUR.mw+' MW / '+CUR.mwh+' MWh · '+CUR.type.toLowerCase();
+  document.getElementById('repAssets').textContent=CUR.assets.map(a=>a.name+' ('+a.mw+' MW / '+a.mwh+' MWh)').join(' · ');
+  projEl.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.v===CUR.id));
+  OPTS.own=[['excl','Excluding '+CUR.name],['incl','Including '+CUR.name]];
+  document.querySelectorAll('.seg[data-key="own"] button').forEach((b,i)=>b.textContent=OPTS.own[i][1]);
+  document.querySelectorAll('.seg[data-key]').forEach(el=>el.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',st[el.dataset.key]===b.dataset.v)));
+  mkEl.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',st.mk.includes(b.dataset.v)));
+  const nAct=[f.dur!=='all',f.rev!=='gross',f.type!=='all',f.mk.length>0,f.cc!=='all',f.opt!=='all',f.own!=='excl'].filter(Boolean).length;
+  fbtn.innerHTML='Filters'+(nAct?' <span class="cnt">'+nAct+'</span>':'');fbtn.setAttribute('aria-label','Filters, '+nAct+' active');
+  rangeSeg.hidden=f.unit==='year';
+  rangeSeg.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',!st.zoom&&b.dataset.v===st.range));
+  summary();
+  const pers=periods(f.unit);
+
+  const acc=cssv('--proj'),benchC=cssv('--bench'),red=cssv('--red'),surf=cssv('--surface');
+  const series=[
+    {key:'proj',name:CUR.name,meta:CUR.mw+' MW / '+CUR.mwh+' MWh · 2-hour',assets:CUR.assets,w:3.2,dash:''},
+    ...CUR.assets.map(a=>({key:a.id,name:a.name,meta:a.mw+' MW / '+a.mwh+' MWh',assets:[a],w:1.8,dash:a.dash}))
+  ];
+  const data=series.map(s=>pers.map(p=>evalPeriod(s.assets,p,f)));
+  const bench=data[0].map(d=>d.bench);
+  const lastB=(()=>{for(let k=pers.length-1;k>=0;k--){if(bench[k]!=null)return data[0][k]}return null})();
+
+  const words=[f.dur==='all'?'all assets':'only 2-hour assets',f.rev==='gross'?'gross revenue':'net revenue (after optimizer fee)',
+    f.type==='all'?'all project types':'only '+f.type.toLowerCase()+' projects',
+    f.mk.length?'only assets active in '+f.mk.map(m=>MARKETS.find(x=>x[0]===m)[1].toLowerCase()).join(' and '):'all markets',
+    f.cc==='all'?'all congestion contracts':(f.cc==='contract'?'only assets with CSC or CBC/CLC':'only assets without a congestion contract'),
+    f.opt==='all'?'all optimizers':(f.opt==='same'?'same optimizer as this project':'other optimizers'),
+    (f.own==='excl'?'excluding ':'including ')+CUR.name];
+  const unitName={month:'per month',quarter:'per quarter',year:'per calendar year'}[f.unit];
+  document.getElementById('repFilters').textContent=words.join(' · ');
+  document.getElementById('repPeriod').textContent=(pers.length?pers[0].label+' – '+pers[pers.length-1].label:'–')+' ('+unitName+')';
+  document.getElementById('chartSub').textContent=describe(f);
+  document.getElementById('tblSub').textContent=unitName.charAt(0).toUpperCase()+unitName.slice(1)+', newest first';
+
+  /* scale */
+  const vals=[];data.forEach(d=>d.forEach(x=>{if(x.ann!=null)vals.push(x.ann)}));bench.forEach(b=>{if(b!=null)vals.push(b*0.78,b*1.2)});
+  let lo=Math.min(...vals),hi=Math.max(...vals);const step=hi-lo>150000?40000:20000;lo=Math.floor(lo/step)*step;hi=Math.ceil(hi/step)*step;
+  const n=pers.length,pw=W-ML-MR,ph=H-MT-MB,yearish=f.unit==='year'||n<2;
+  const x=k=>n===1?ML+pw/2:ML+(yearish?pw*(k+0.5)/n:pw*k/(n-1));
+  const y=v=>MT+ph*(1-(v-lo)/(hi-lo));
+  const slot=yearish?pw/n:pw/(n-1);
+  geom={n,x,slot,pers};
+  let s='<defs><clipPath id="clip"><rect x="'+ML+'" y="'+MT+'" width="'+pw+'" height="'+ph+'"/></clipPath></defs>';
+  function runs(v){const out=[];let c=[];v.forEach((val,k)=>{if(val!=null)c.push(k);else{if(c.length)out.push(c);c=[]}});if(c.length)out.push(c);return out}
+  function dense(run,v){return smooth(run.map(x),run.map(k=>v[k]),12)}
+  const bands=[[0,0.8,'--g1'],[0.8,1,'--g2'],[1,1.15,'--g3'],[1.15,9,'--g4']];
+  s+='<g clip-path="url(#clip)">';
+  runs(bench).forEach(run=>{
+    let pts=dense(run,bench);
+    const pad=yearish?slot/2:(run.length===1?slot/2:0);
+    if(pad){pts=[[pts[0][0]-pad,pts[0][1]],...pts,[pts[pts.length-1][0]+pad,pts[pts.length-1][1]]]}
+    bands.forEach(([a,b,c])=>{
+      const top=pts.map(([px,v])=>px.toFixed(1)+','+y(Math.min(v*b,hi+step)).toFixed(1));
+      const bot=pts.slice().reverse().map(([px,v])=>px.toFixed(1)+','+y(Math.max(v*a,lo-step)).toFixed(1));
+      s+='<polygon fill="'+cssv(c)+'" points="'+top.concat(bot).join(' ')+'"/>';
+    });
+  });
+  s+='</g>';
+  for(let v=lo;v<=hi+1;v+=step){s+='<line x1="'+ML+'" x2="'+(W-MR)+'" y1="'+y(v)+'" y2="'+y(v)+'" stroke="'+cssv('--line')+'" stroke-opacity=".6"/>';
+    s+='<text x="'+(ML-8)+'" y="'+(y(v)+4)+'" text-anchor="end">'+(v/1000)+'k</text>'}
+  const every=yearish?1:(n<=13?1:(f.unit==='quarter'?2:3));
+  const xl=(p,k)=>f.unit==='month'&&n<=13?p.label.replace(' 20',' ’'):p.short;
+  pers.forEach((p,k)=>{if(k%every===0||k===n-1)s+='<text x="'+x(k)+'" y="'+(H-MB+20)+'" text-anchor="middle">'+xl(p,k)+'</text>'});
+  function path(v){return runs(v).map(run=>{const pts=dense(run,v);return 'M'+pts.map(([px,val])=>px.toFixed(1)+','+y(val).toFixed(1)).join('L')}).join('')}
+  s+='<path d="'+path(bench)+'" fill="none" stroke="'+benchC+'" stroke-width="2.4" stroke-dasharray="7 5"/>';
+  for(let i=series.length-1;i>=0;i--){const sr=series[i];const v=data[i].map(d=>d.ann);
+    s+='<path d="'+path(v)+'" fill="none" stroke="'+acc+'" stroke-width="'+sr.w+'" '+(sr.dash?'stroke-dasharray="'+sr.dash+'"':'')+' stroke-linejoin="round" stroke-linecap="round"/>';
+    v.forEach((vv,k)=>{if(vv!=null&&(yearish||k===n-1||(v[k-1]==null&&v[k+1]==null)))s+='<circle cx="'+x(k)+'" cy="'+y(vv)+'" r="'+(i===0?4:3)+'" fill="'+acc+'"/>'});
+  }
+  if(yearish)bench.forEach((b,k)=>{if(b!=null)s+='<circle cx="'+x(k)+'" cy="'+y(b)+'" r="3.5" fill="'+surf+'" stroke="'+benchC+'" stroke-width="2"/>'});
+  data[0].forEach((p,k)=>{if(isLow(p.score))s+='<circle cx="'+x(k)+'" cy="'+y(p.ann)+'" r="6.5" fill="'+red+'" stroke="'+surf+'" stroke-width="2"/>'});
+  s+='<rect id="brush" y="'+MT+'" height="'+ph+'" fill="'+cssv('--brush')+'" stroke="'+acc+'" stroke-dasharray="3 3" visibility="hidden"/>';
+  s+='<line id="hl" y1="'+MT+'" y2="'+(H-MB)+'" stroke="'+cssv('--muted')+'" visibility="hidden"/>';
+  const svg=document.getElementById('chart');svg.innerHTML=s;
+  document.getElementById('empty').hidden=!bench.every(b=>b==null);
+
+  /* variance strip (IBCS-style absolute variance): project total minus benchmark, same x-axis */
+  const VH=130,VT=16,VB=22,diffs=data[0].map(d=>(d.ann!=null&&d.bench!=null)?d.ann-d.bench:null);
+  const maxAbs=Math.max(10000,...diffs.filter(v=>v!=null).map(Math.abs));const ext=Math.ceil(maxAbs/10000)*10000;
+  const vy=v=>VT+(VH-VT-VB)*(1-(v+ext)/(2*ext));
+  const bw=Math.max(4,Math.min(34,slot*0.62));
+  let vs='<line x1="'+ML+'" x2="'+(W-MR)+'" y1="'+vy(0)+'" y2="'+vy(0)+'" stroke="'+cssv('--muted')+'" stroke-width="1"/>';
+  vs+='<text x="'+(ML-8)+'" y="'+(vy(ext)+4)+'" text-anchor="end">+'+ext/1000+'k</text><text x="'+(ML-8)+'" y="'+(vy(0)+4)+'" text-anchor="end">0</text><text x="'+(ML-8)+'" y="'+(vy(-ext)+4)+'" text-anchor="end">−'+ext/1000+'k</text>';
+  diffs.forEach((v,k)=>{if(v==null)return;const low=isLow(data[0][k].score);
+    vs+='<rect x="'+(x(k)-bw/2)+'" y="'+Math.min(vy(v),vy(0))+'" width="'+bw+'" height="'+Math.max(1,Math.abs(vy(v)-vy(0)))+'" rx="2" fill="'+(v<0?cssv('--neg'):cssv('--pos'))+'"'+(low?' stroke="'+red+'" stroke-width="2"':'')+'/>';
+    if(n<=13)vs+='<text x="'+x(k)+'" y="'+(v<0?vy(v)+13:vy(v)-5)+'" text-anchor="middle" style="font-size:12px;fill:'+(v<0?red:acc)+';font-weight:700">'+fmtK(v)+'</text>';
+  });
+  document.getElementById('varChart').innerHTML=vs;
+
+  geom.show=k=>{
+    const tip=document.getElementById('tip'),hl=svg.querySelector('#hl'),box=document.getElementById('chartBox');
+    hl.setAttribute('x1',x(k));hl.setAttribute('x2',x(k));hl.setAttribute('visibility','visible');
+    let h='<b>'+pers[k].label+(pers[k].prelim?' <span class="ptag">Preliminary</span>':'')+'</b>';
+    series.forEach((sr,i)=>{const d=data[i][k];h+='<div class="r"><span>'+icon(acc,sr.w,sr.dash,16)+' '+sr.name+'</span><span>'+(d.ann==null?'No invoice':fmtA(d.ann)+(d.score!=null?' · <span class="'+(isLow(d.score)?'low':'')+'">'+fmtP(d.score)+'</span>':''))+'</span></div>'});
+    h+='<div class="r"><span>'+icon(benchC,2,'5 4',16)+' BESS Benchmark</span><span>'+(bench[k]==null?'No benchmark':fmtA(bench[k]))+'</span></div>';
+    tip.innerHTML=h;tip.hidden=false;const bw2=box.clientWidth,px=x(k)/W*bw2;tip.style.top='8px';tip.style.left=Math.max(0,(px>bw2/2?px-tip.offsetWidth-12:px+12))+'px';
+  };
+
+  /* legend */
+  let l1='';
+  series.forEach(sr=>{l1+='<div class="lg">'+icon(acc,sr.w,sr.dash,28).replace('class="li"','')+'<div><div class="name">'+sr.name+'</div><div class="meta">'+sr.meta+'</div></div></div>'});
+  l1+='<div class="lg">'+icon(benchC,2.4,'7 5',28).replace('class="li"','')+'<div><div class="name">BESS Benchmark</div><div class="meta">'+(lastB?lastB.bn+' assets · '+lastB.bo+' organisations':'No benchmark for this selection')+'</div></div></div>';
+  let l2='';[['--g4','115% and above of benchmark'],['--g3','100% to 115% of benchmark'],['--g2','80% to 100% of benchmark'],['--g1','Below 80% of benchmark']].forEach(([c,l])=>{l2+='<div class="band"><i style="background:'+cssv(c)+'"></i><span>'+l+'</span></div>'});
+  l2+='<div class="band"><b></b><span>Project score below 80% that '+{month:'month',quarter:'quarter',year:'year'}[f.unit]+'</span></div>';
+  document.getElementById('legend').innerHTML='<div class="col">'+l1+'</div><div class="col">'+l2+'</div>';
+
+  /* dashboard table */
+  const perHead={month:'Month',quarter:'Quarter',year:'Year'}[f.unit];
+  let t='<thead><tr class="grp-row"><th class="per"></th>';
+  series.forEach(sr=>{t+='<th class="grp" colspan="3">'+icon(acc,sr.w,sr.dash)+' '+(sr.key==='proj'?'Project (total)':sr.name)+'<span class="mw">'+(sr.key==='proj'?CUR.mw:sr.assets[0].mw)+' MW</span></th>'});
+  t+='</tr><tr><th class="per">'+perHead+'</th>';
+  series.forEach(()=>{t+='<th class="grp">Revenue (EUR)</th><th>EUR / MW / year</th><th>Score</th>'});
+  t+='</tr></thead><tbody>';
+  const cells=d=>{if(d.rev==null)return '<td class="grp na" colspan="3">No invoice</td>';
+    return '<td class="grp">'+fmtE(d.rev)+'</td><td>'+fmtA(d.ann)+'</td><td class="score'+(isLow(d.score)?' low':'')+'">'+fmtP(d.score)+'</td>'};
+  for(let k=n-1;k>=0;k--){const p=pers[k];t+='<tr><td class="per">'+p.label+(p.prelim?'<span class="ptag">Preliminary</span>':'')+'</td>';series.forEach((sr,i)=>{t+=cells(data[i][k])});t+='</tr>'}
+  document.getElementById('tbl').innerHTML=t+'</tbody>';
+
+  /* report pages: one table per page */
+  const total=series.length+1;
+  document.querySelector('#page1 .rep-foot .pg').textContent='Page 1 of '+total;
+  let sh='';
+  series.forEach((sr,i)=>{
+    let tb='<table><thead><tr><th class="per">'+perHead+'</th><th>Revenue (EUR)</th><th>EUR / MW / year</th><th>Score</th></tr></thead><tbody>';
+    for(let k=n-1;k>=0;k--){const p=pers[k],d=data[i][k];tb+='<tr><td class="per">'+p.label+(p.prelim?'<span class="ptag">Preliminary</span>':'')+'</td>';
+      tb+=d.rev==null?'<td class="na" colspan="3">No invoice</td>':cells(d).replace('class="grp"','');tb+='</tr>'}
+    tb+='</tbody></table>';
+    sh+='<section class="sheet"><div class="mini"><span>BESS Benchmark report · '+CUR.name+'</span><span>28 September 2026</span></div>'+
+      '<h3>'+icon(acc,sr.w,sr.dash,24)+' '+(sr.key==='proj'?CUR.name+' (total)':sr.name)+'</h3><div class="sub2">'+sr.meta+'</div>'+
+      '<div class="tbl-wrap">'+tb+'</div>'+
+      '<footer class="rep-foot"><span class="pg">Page '+(i+2)+' of '+total+'</span>Preliminary &amp; confidential · © 2026 Independent Capacity Market B.V. All rights reserved.<br>BESS Benchmark · Outcome data as reported by the optimizer, not advice. · <a href="'+LINK_METH+'">Methodology</a> · <a href="'+LINK_TC+'">Terms &amp; Conditions</a></footer></section>';
+  });
+  document.getElementById('sheets').innerHTML=sh;
+}
+
+/* ---------- chart interaction: hover = values, drag = zoom (months) ---------- */
+const svgEl=document.getElementById('chart');let drag=null;
+function kAt(ev){const r=svgEl.getBoundingClientRect();const vx=(ev.clientX-r.left)/r.width*W;let best=0,bd=1e9;for(let k=0;k<geom.n;k++){const d=Math.abs(geom.x(k)-vx);if(d<bd){bd=d;best=k}}return best}
+svgEl.addEventListener('pointerdown',ev=>{if(st.unit!=='month')return;drag={k0:kAt(ev),k1:kAt(ev)};svgEl.setPointerCapture(ev.pointerId)});
+svgEl.addEventListener('pointermove',ev=>{if(!geom||!geom.n)return;const k=kAt(ev);
+  if(drag){drag.k1=k;const a=Math.min(drag.k0,k),b=Math.max(drag.k0,k);const br=svgEl.querySelector('#brush');
+    if(b>a){br.setAttribute('x',geom.x(a));br.setAttribute('width',geom.x(b)-geom.x(a));br.setAttribute('visibility','visible')}}
+  geom.show(k)});
+svgEl.addEventListener('pointerup',()=>{if(!drag)return;const a=Math.min(drag.k0,drag.k1),b=Math.max(drag.k0,drag.k1);drag=null;
+  if(b-a>=1){st.zoom=[geom.pers[a].idx[0],geom.pers[b].idx[0]];render()}});
+svgEl.addEventListener('pointerleave',()=>{if(drag)return;document.getElementById('tip').hidden=true;const hl=svgEl.querySelector('#hl');if(hl)hl.setAttribute('visibility','hidden')});
+
+render();
+})();
+</script>
+
+</body></html>
