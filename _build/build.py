@@ -28,7 +28,7 @@ T = {
   chart_note='Illustrative example with fictional data.',
   why_eyebrow='Why it matters', why_h='BESS assets deliver vastly different results',
   why_p='Independent information on what batteries earn is missing. Some discovered they\'re missing out on 30,000 to 70,000 euro per MW per year. Are you? Without a BESS Benchmark, there is no way of knowing.',
-  stats=['EUR 145k', 'EUR 185k', 'EUR 240k'], per='per MW per year', stats_note='Gross market revenues of three BESS assets.',
+  stats=['EUR 145k', 'EUR 185k', 'EUR 240k'], per='per MW per year', stats_note='Illustrative example: gross market revenues of three BESS assets.',
   learn='How it works →',
   which='Which one is yours?',
   how_eyebrow='How it works', how_h='Our membership model',
@@ -146,9 +146,9 @@ T = {
 PRIVACY = {
  'en': [
   ('Who we are', 'Independent Capacity Market B.V. (“the ICM”), Amsterdam, is responsible for the personal data described here. Contact: <a href="mailto:ideles@icm.energy">ideles@icm.energy</a>.'),
-  ('What we collect', 'When you use the contact form: your name, company, email address, portfolio size and message. When you visit the site: anonymous usage statistics through Google Analytics.'),
+  ('What we collect', 'When you use the contact form: your name, company, email address, portfolio or project size and message. When you visit the site: anonymous usage statistics through Google Analytics.'),
   ('Why', 'To answer your request and plan an intake, and to understand how the website is used. We do not sell your data or use it for other purposes.'),
-  ('Who processes it for us', 'Formspree receives the contact form on our behalf. Google provides Google Analytics.'),
+  ('Who processes it for us', 'Fillout receives the contact form on our behalf and stores it in the United States. Google provides Google Analytics.'),
   ('How long we keep it', 'Contact details are kept as long as needed to follow up on your request, and at most two years after our last contact, unless you become a member.'),
   ('Your rights', 'You can ask to see, correct or delete your data, or object to its use, by emailing <a href="mailto:ideles@icm.energy">ideles@icm.energy</a>. You can also file a complaint with the Dutch Data Protection Authority (Autoriteit Persoonsgegevens).'),
  ],
@@ -156,7 +156,7 @@ PRIVACY = {
   ('Wie we zijn', 'Independent Capacity Market B.V. (“de ICM”), Amsterdam, is verantwoordelijk voor de persoonsgegevens die hier worden beschreven. Contact: <a href="mailto:ideles@icm.energy">ideles@icm.energy</a>.'),
   ('Wat we verzamelen', 'Via het contactformulier: je naam, bedrijf, e-mailadres, omvang van je portefeuille en je bericht. Bij een bezoek aan de site: anonieme gebruiksstatistieken via Google Analytics.'),
   ('Waarom', 'Om je verzoek te beantwoorden en een intake te plannen, en om te begrijpen hoe de website wordt gebruikt. We verkopen je gegevens niet en gebruiken ze niet voor andere doelen.'),
-  ('Wie ze voor ons verwerkt', 'Formspree ontvangt het contactformulier namens ons. Google levert Google Analytics.'),
+  ('Wie ze voor ons verwerkt', 'Fillout ontvangt het contactformulier namens ons en slaat het op in de Verenigde Staten. Google levert Google Analytics.'),
   ('Hoe lang we ze bewaren', 'Contactgegevens bewaren we zolang nodig is om je verzoek op te volgen, en maximaal twee jaar na ons laatste contact, tenzij je lid wordt.'),
   ('Jouw rechten', 'Je kunt je gegevens inzien, laten corrigeren of verwijderen, of bezwaar maken tegen het gebruik, via <a href="mailto:ideles@icm.energy">ideles@icm.energy</a>. Je kunt ook een klacht indienen bij de Autoriteit Persoonsgegevens.'),
  ],
@@ -357,22 +357,11 @@ def home(t):
       <h2>{t['contact_h']}</h2>
       <p>{t['prefer']} <a href="mailto:{EMAIL}">{EMAIL}</a></p>
     </div>
-    <form class="form" id="contact-form" action="https://formspree.io/f/mbdqdpql" method="POST">
-      <input type="hidden" name="_subject" value="{t['subject']}">
-      <input type="hidden" name="source" value="icm.energy ({t['lang'].upper()})">
-      <div class="row">
-        <label>{t['f_name']}<input name="name" autocomplete="name" required></label>
-        <label>{t['f_company']}<input name="company" autocomplete="organization" required></label>
-      </div>
-      <div class="row">
-        <label>{t['f_email']}<input type="email" name="email" autocomplete="email" required></label>
-        <label>{t['f_mw']}<input name="portfolio_mw" inputmode="decimal"></label>
-      </div>
-      <label>{t['f_msg']}<textarea name="message" placeholder="{t['f_ph']}"></textarea></label>
-      <button class="btn btn-lilac" type="submit">{t['f_submit']}</button>
-      <p class="fine">{t['f_fine']}</p>
-      <div class="form-ok" id="form-ok" role="status">{t['f_ok']}</div>
-    </form>
+    <div class="form fillout">
+      <div style="width:100%;height:560px" data-fillout-id="icWpPN8hsgus" data-fillout-embed-type="standard" data-fillout-inherit-parameters data-fillout-dynamic-resize></div>
+      <script src="https://server.fillout.com/embed/v1/" defer></script>
+      <noscript><a href="https://forms.fillout.com/t/icWpPN8hsgus">Open the contact form</a></noscript>
+    </div>
   </div>
 </section>
 
