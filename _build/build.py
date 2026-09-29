@@ -14,11 +14,11 @@ LINKEDIN = 'https://www.linkedin.com/in/idel%C3%A8s-kaandorp/'
 T = {
  'en': dict(
   lang='en', base='/', other='/nl/', other_label='NL', other_lang='nl', other_name='Nederlands',
-  title="BESS Benchmark – understand the true value of your battery | The ICM",
-  desc="See how your battery compares, BESS-to-BESS, with comparable batteries in the Netherlands – and find an alternative optimizer via the ICM.",
+  title="BESS Benchmark: understand the true value of your battery | The ICM",
+  desc="See how your battery compares, BESS-to-BESS, with comparable batteries in the Netherlands, and find a better optimizer when there's more to earn.",
   og_title="Understand and secure the true value of your BESS asset",
   skip='Skip to content', nav_how='How it works', nav_faq='FAQ', nav_about='About', talk='Talk to us', menu='Main',
-  eyebrow='BESS Benchmark · Netherlands',
+  eyebrow='BESS Benchmark',
   h1_a='Understand and secure', h1_b='the true value of your asset',
   lead='For owners with a nagging sense their BESS could earn more. See how your asset compares, BESS-to-BESS, and find a better optimizer when there\'s more to earn.',
   book='Talk to us', start='Get started', more='Learn more', how_link='How it works',
@@ -48,7 +48,7 @@ T = {
   calc_assume='Assumption: comparable batteries earned 30% more per MW. Illustrative – the BESS Benchmark shows your real gap.',
   calc_you='Your battery', calc_bench='Comparable batteries', calc_missed='Missed opportunity over 6 months', calc_cta='Find out your real gap',
   demo_eyebrow='How we can work together', demo_h='The BESS Benchmark', demo_p='Clarity is our goal. The ICM collects, anonymizes and creates a BESS-to-BESS comparison based on monthly BESS performance.', demo_note='Fictional example data.',
-  demo_btn='Try the interactive demo', demo_title='BESS Benchmark – interactive demo (fictional data)', demo_new='Open in a new tab',
+  demo_btn='Try the interactive demo', demo_title='BESS Benchmark interactive demo (fictional data)', demo_new='Open in a new tab',
   shot_cap='The BESS Benchmark is a dynamic view on the EUR per MW per year of your assets and those of our other members. Fictional example data.',
   faq_link='Read the FAQ',
   real_eyebrow='Real data, not a model', real_h='Why real revenues beat a simulated index',
@@ -70,7 +70,7 @@ T = {
   foot_tag='The Independent Capacity Market (“the ICM”) brings clarity, trusted partners and continuity to those adding capacity to the grid.',
   founded='Founded by', foot_bench='Learn more', methodology='Methodology', contact='Contact',
   terms='Terms & Conditions', privacy='Privacy statement', disclaimer='Benchmark figures are outcome data as reported by optimizers, not advice.',
-  faq_title='Frequently asked questions – BESS Benchmark | The ICM', faq_desc='Answers to common questions about the BESS Benchmark: data, costs, privacy and who can join.',
+  faq_title='Frequently asked questions about the BESS Benchmark | The ICM', faq_desc='Answers to common questions about the BESS Benchmark: data, costs, privacy and who can join.',
   faq_h='Frequently asked questions', faq_lead='Short answers about the BESS Benchmark. Missing something? Just ask us.', faq_more='Still have a question?',
   faqs=[
    ('How does the BESS Benchmark help me?', '<p>There are roughly 4 reasons people are keen to become and stay a member.</p><ol><li><b>Clarity on performance.</b> It removes doubt by comparing apples with apples and pears with pears.</li><li><b>Stronger claims.</b> Independent figures on what comparable batteries earned make insurance and warranty claims stronger.</li><li><b>A better optimizer contract.</b> A benchmark helps negotiate a better optimizer contract ("floor of at least 80% of the benchmark"; "right to terminate at 60% of the benchmark").</li><li><b>A realistic business case.</b> A basis for sizing the next project and a check on bankable forecasts. A benchmark of real data helps understand what a realistic business case could look like.</li></ol>'),
@@ -83,7 +83,7 @@ T = {
    ('Can I share my results?', 'Yes. You may share your BESS Benchmark freely. It\'s yours and may benefit conversations with your installer, adviser and financier.'),
    ('How is the benchmark calculated?', 'The BESS Benchmark divides revenues by MW and annualizes the result to show EUR per MW per year. Several filters allow members to compare batteries with a similar duration and set-up. Unavailable hours are excluded (maintenance, fault). Results are preliminary for 3 months, anticipating potential corrections. All choices made are in the <a href="/methodology/">methodology</a>.'),
    ('Why do BESS assets earn differently?', 'Various factors restrict the full earnings potential of a battery: (i) the battery itself (e.g., round-trip efficiency, minimum/maximum state of charge) and its local set-up (e.g., size of the grid connection, congestion contract), (ii) the markets it is active in and (iii) maintenance and malfunctions are the most commonly mentioned factors.'),
-   ('Can I see which optimizer performs best?', 'No. The BESS Benchmark does not show results per optimizer, or rankings of optimizers. Our BESS Broker proposition is designed to source and evaluate optimizers for you.'),
+   ('Can I see which optimizer performs best?', 'No. The BESS Benchmark does not show results per optimizer, or rankings of optimizers. You can compare your battery with peers that use the same or other optimizers, without names. Our BESS Broker proposition is designed to source and evaluate optimizers for you.'),
    ('Is the ICM independent?', 'Yes. We do not own BESS assets. We are not an optimizer. Nor will we ever be. For more information about our governance, please reach out to <a href="mailto:ideles@icm.energy">ideles@icm.energy</a>.'),
   ],
   terms_title='Terms & Conditions | The ICM', terms_h='Terms & Conditions',
@@ -528,7 +528,7 @@ print('methodology built, v' + version.group(1), len(toc), 'sections')
 # Interactive demo: the prototype (fictional data) served at /demo/, embedded on the homepage.
 demo = open(os.path.join(ROOT, '_build', 'prototype.html'), encoding='utf-8').read()
 demo = demo.replace('https://app.box.com/s/52dy3lyuocqpj3ss3rf47sdyveq7b1ir', '/methodology/').replace('https://app.box.com/s/3hmk2batlg2l2nv91e59gafzu2p1hek6', '/terms/')
-demo = demo.replace('<title>BESS Benchmark Report</title>', '<title>BESS Benchmark – interactive demo | The ICM</title><meta name="robots" content="noindex">')
+demo = demo.replace('<title>BESS Benchmark Report</title>', '<title>BESS Benchmark interactive demo | The ICM</title><meta name="robots" content="noindex">')
 demo = demo.replace("document.querySelectorAll('.seg[data-key]').forEach(el=>{\n  const key=el.dataset.key;", "document.querySelectorAll('.seg[data-key]').forEach(el=>{\n  const key=el.dataset.key;if(!OPTS[key])return;")
 # a way back to the website (target=_top also works when the demo is shown inside the homepage dialog)
 back = ('<div class="no-report" style="background:#061530;border-bottom:1px solid #1C3356;margin:-20px -16px 20px;padding:10px 16px;font:600 14px Figtree,system-ui,sans-serif">'
