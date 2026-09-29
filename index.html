@@ -98,43 +98,13 @@
       <div class="stat"><span class="stat-icon" aria-hidden="true"><svg viewBox="0 0 48 28"><rect x="2" y="3" width="38" height="22" rx="4" fill="none" stroke="#0E1B2B" stroke-width="3"/><rect x="41" y="10" width="5" height="8" rx="1.5" fill="#0E1B2B"/><rect x="7" y="8" width="8" height="12" rx="1.5" fill="#0E1B2B"/><rect x="18" y="8" width="8" height="12" rx="1.5" fill="#0E1B2B"/><rect x="29" y="8" width="8" height="12" rx="1.5" fill="#0E1B2B"/></svg></span><p><b>EUR 240k</b><span>per MW per year</span></p></div>
     </div>
     <p class="stats-note">Illustrative example: gross market revenues of three BESS assets.</p>
+    <div class="story" id="calculator" aria-live="polite">
+      <p class="story-h">We missed out on <b class="out" id="s-missed">EUR 277,500</b>.</p>
+      <p class="story-p">Our <input class="in" id="s-mw" type="number" min="1" max="500" step="1" value="10" aria-label="Project size in MW"> MW project earned EUR <input class="in in-w" id="s-rev" type="number" min="1" max="1000" step="1" value="185" aria-label="Revenue in thousand euro per MW per year">k per MW per year based on the last <input class="in" id="s-m" type="number" min="1" max="36" step="1" value="6" aria-label="Number of months"> months. Yet, a similar asset, same size and set-up, delivered 30% more over the same period: <b class="out" id="s-peer">EUR 240.5k</b> per MW per year.</p>
+      <p class="story-note">Illustrative. Change the numbers in cyan to see your own missed opportunity.</p>
+    </div>
     <p class="which">Which one is yours?</p>
     <div class="cta-row"><a class="btn btn-lilac" href="#contact">Talk to us →</a><a class="btn btn-outline" href="#how">How it works →</a></div>
-  </div>
-</section>
-
-<section class="calc-section" id="calculator">
-  <div class="wrap">
-    <div class="section-head center">
-      <span class="eyebrow">Calculator</span>
-      <h2>What is your missed opportunity?</h2>
-      <p>Enter your battery and what it earns today. See what you could have earned if it had matched comparable batteries.</p>
-    </div>
-    <div class="calc">
-      <form class="calc-inputs" onsubmit="return false">
-        <label class="calc-field"><span>Battery size</span>
-          <span class="calc-row"><input type="range" id="c-mw" min="1" max="50" step="1" value="10"><input type="number" id="c-mw-n" min="1" max="500" step="1" value="10" aria-label="Battery size"><em>MW</em></span></label>
-        <label class="calc-field"><span>Period</span>
-          <span class="calc-row"><input type="range" id="c-m" min="1" max="24" step="1" value="6"><input type="number" id="c-m-n" min="1" max="36" step="1" value="6" aria-label="Period"><em>months</em></span></label>
-        <label class="calc-field"><span>Your revenue today</span>
-          <span class="calc-row"><input type="range" id="c-r" min="50000" max="400000" step="5000" value="185000"><input type="number" id="c-r-n" min="0" max="1000000" step="1000" value="185000" aria-label="Your revenue today"><em>EUR / MW / yr</em></span></label>
-        <p class="calc-assume">Assumption: comparable batteries earned 30% more per MW. Illustrative – the BESS Benchmark shows your real gap.</p>
-      </form>
-      <div class="calc-out" aria-live="polite">
-        <div class="calc-bars">
-          <div class="cb"><span class="cb-l">Your battery</span><span class="cb-track"><i class="cb-you" id="c-bar-you"></i></span><b id="c-you">EUR 185,000</b></div>
-          <div class="cb"><span class="cb-l">Comparable batteries</span><span class="cb-track"><i class="cb-bench" id="c-bar-bench"></i><i class="cb-gap" id="c-bar-gap"></i></span><b id="c-bench">EUR 240,500</b></div>
-          <p class="cb-unit">EUR per MW per year</p>
-        </div>
-        <div class="calc-missed">
-          <span class="cm-k" id="c-k">Missed opportunity over 6 months</span>
-          <strong id="c-missed">EUR 277,500</strong>
-          <span class="cm-s" id="c-year">≈ EUR 555,000 per year</span>
-          <span class="cm-math" id="c-math">EUR 55,500 per MW per year × 10 MW × 6/12 months</span>
-        </div>
-        <a class="btn btn-lilac" href="#contact">Find out your real gap →</a>
-      </div>
-    </div>
   </div>
 </section>
 

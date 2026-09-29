@@ -374,3 +374,13 @@ footer { background: var(--ink); color: rgba(255,255,255,.75); padding: 56px 0 4
   .calc-row input[type=number] { width: 140px; }
 }
 .cm-math { font-size: 13px; color: #7189A5; margin-top: 4px; }
+
+/* Missed-opportunity sentence */
+.story { max-width: 860px; margin: 48px auto 0; text-align: center; }
+.story-h { font-size: clamp(30px, 3.6vw, 44px); font-weight: 700; color: var(--white); line-height: 1.2; }
+.story-p { font-size: clamp(18px, 2vw, 22px); line-height: 1.8; color: rgba(255,255,255,.88); margin-top: 16px; }
+.story .out { color: var(--lilac); font-weight: 800; white-space: nowrap; }
+.story .in { font: inherit; font-weight: 700; color: var(--cyan); background: transparent; border: 0; border-bottom: 2px dashed var(--cyan); padding: 0 2px; text-align: center; width: 3.6ch; -moz-appearance: textfield; }
+.story .in::-webkit-outer-spin-button, .story .in::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.story .in:focus { outline: none; border-bottom-style: solid; background: rgba(151,241,244,.1); }
+.story-note { font-size: 13px; color: rgba(255,255,255,.6); margin-top: 14px; }

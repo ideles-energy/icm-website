@@ -38,6 +38,7 @@ T = {
    ('Give-to-get', 'Members\' data is anonymised and added to the BESS Benchmark; members only see the BESS Benchmark for the months to which they have contributed. The same "give-to-get" principle applies to financiers, installers and advisers who want access.'),
   ],
   shot_alt='The BESS Benchmark app: project score, revenue per MW and the benchmark over the last 12 months (fictional example data)',
+  story_note='Illustrative. Change the numbers in cyan to see your own missed opportunity.',
   calc_eyebrow='Calculator', calc_h='What is your missed opportunity?',
   calc_p='Enter your battery and what it earns today. See what you could have earned if it had matched comparable batteries.',
   calc_mw='Battery size', calc_months='Period', calc_months_unit='months', calc_rev='Your revenue today',
@@ -309,43 +310,13 @@ def home(t):
 {stats}
     </div>
     <p class="stats-note">{t['stats_note']}</p>
+    <div class="story" id="calculator" aria-live="polite">
+      <p class="story-h">We missed out on <b class="out" id="s-missed">EUR 277,500</b>.</p>
+      <p class="story-p">Our <input class="in" id="s-mw" type="number" min="1" max="500" step="1" value="10" aria-label="Project size in MW"> MW project earned EUR <input class="in in-w" id="s-rev" type="number" min="1" max="1000" step="1" value="185" aria-label="Revenue in thousand euro per MW per year">k per MW per year based on the last <input class="in" id="s-m" type="number" min="1" max="36" step="1" value="6" aria-label="Number of months"> months. Yet, a similar asset, same size and set-up, delivered 30% more over the same period: <b class="out" id="s-peer">EUR 240.5k</b> per MW per year.</p>
+      <p class="story-note">{t['story_note']}</p>
+    </div>
     <p class="which">{t['which']}</p>
     <div class="cta-row"><a class="btn btn-lilac" href="#contact">{t['book']}</a><a class="btn btn-outline" href="#how">{t['learn']}</a></div>
-  </div>
-</section>
-
-<section class="calc-section" id="calculator">
-  <div class="wrap">
-    <div class="section-head center">
-      <span class="eyebrow">{t['calc_eyebrow']}</span>
-      <h2>{t['calc_h']}</h2>
-      <p>{t['calc_p']}</p>
-    </div>
-    <div class="calc">
-      <form class="calc-inputs" onsubmit="return false">
-        <label class="calc-field"><span>{t['calc_mw']}</span>
-          <span class="calc-row"><input type="range" id="c-mw" min="1" max="50" step="1" value="10"><input type="number" id="c-mw-n" min="1" max="500" step="1" value="10" aria-label="{t['calc_mw']}"><em>MW</em></span></label>
-        <label class="calc-field"><span>{t['calc_months']}</span>
-          <span class="calc-row"><input type="range" id="c-m" min="1" max="24" step="1" value="6"><input type="number" id="c-m-n" min="1" max="36" step="1" value="6" aria-label="{t['calc_months']}"><em>{t['calc_months_unit']}</em></span></label>
-        <label class="calc-field"><span>{t['calc_rev']}</span>
-          <span class="calc-row"><input type="range" id="c-r" min="50000" max="400000" step="5000" value="185000"><input type="number" id="c-r-n" min="0" max="1000000" step="1000" value="185000" aria-label="{t['calc_rev']}"><em>EUR / MW / yr</em></span></label>
-        <p class="calc-assume">{t['calc_assume']}</p>
-      </form>
-      <div class="calc-out" aria-live="polite">
-        <div class="calc-bars">
-          <div class="cb"><span class="cb-l">{t['calc_you']}</span><span class="cb-track"><i class="cb-you" id="c-bar-you"></i></span><b id="c-you">EUR 185,000</b></div>
-          <div class="cb"><span class="cb-l">{t['calc_bench']}</span><span class="cb-track"><i class="cb-bench" id="c-bar-bench"></i><i class="cb-gap" id="c-bar-gap"></i></span><b id="c-bench">EUR 240,500</b></div>
-          <p class="cb-unit">EUR per MW per year</p>
-        </div>
-        <div class="calc-missed">
-          <span class="cm-k" id="c-k">{t['calc_missed']}</span>
-          <strong id="c-missed">EUR 277,500</strong>
-          <span class="cm-s" id="c-year">≈ EUR 555,000 per year</span>
-          <span class="cm-math" id="c-math">EUR 55,500 per MW per year × 10 MW × 6/12 months</span>
-        </div>
-        <a class="btn btn-lilac" href="#contact">{t['calc_cta']}</a>
-      </div>
-    </div>
   </div>
 </section>
 
