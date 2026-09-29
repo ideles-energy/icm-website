@@ -390,3 +390,28 @@ footer { background: var(--ink); color: rgba(255,255,255,.75); padding: 56px 0 4
 .story-link:hover { color: var(--cyan); }
 .why-p { max-width: 720px; margin: 56px auto 0; text-align: center; font-size: 18px; color: rgba(255,255,255,.8); }
 .why-p + .cta-row { margin-top: 28px; }
+
+/* v6: hero fully cyan, calmer story, info tooltip, about grid, careers */
+.hero h1, .hero h1 span { color: var(--cyan); }
+.btn-outline { color: var(--white); border-color: var(--white); }
+.story-p, .why-p { font-size: clamp(18px, 1.9vw, 21px); line-height: 1.75; color: rgba(255,255,255,.85); font-weight: 400; }
+.why-p { max-width: 860px; margin: 28px auto 0; }
+.info-i { position: relative; display: inline-block; margin-left: 8px; vertical-align: 2px; }
+.info-i button { width: 20px; height: 20px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,.55); background: transparent; color: rgba(255,255,255,.75); font: 700 12px/16px var(--sans); padding: 0; cursor: help; }
+.info-pop { display: none; position: absolute; right: -8px; bottom: 30px; width: 260px; background: #061530; border: 1px solid #2D4B78; border-radius: 10px; padding: 10px 12px; font-size: 13px; line-height: 1.45; color: #F2F7FB; text-align: left; box-shadow: 0 8px 24px rgba(0,0,0,.35); z-index: 5; }
+.info-i:hover .info-pop, .info-i:focus-within .info-pop, .info-i.open .info-pop { display: block; }
+.about-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 56px; align-items: start; }
+.about-grid .section-head { margin-bottom: 0; }
+.more-stack { grid-template-columns: 1fr; gap: 16px; }
+.more-stack article { padding: 24px 28px; }
+@media (max-width: 900px) { .about-grid { grid-template-columns: 1fr; gap: 32px; } }
+.careers { max-width: 860px; margin: 0 auto; }
+.careers-intro { font-size: 20px; color: var(--text); }
+.careers-h { color: var(--teal); font-size: 28px; margin: 48px 0 16px; }
+.roles { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.roles li { display: flex; align-items: center; justify-content: space-between; gap: 16px; background: var(--white); border: 1px solid var(--line); border-radius: 14px; padding: 18px 22px; }
+.roles b { display: block; font-size: 18px; color: var(--teal); }
+.roles em { font-style: normal; color: var(--muted); font-size: 15px; }
+.careers-open { margin-top: 28px; color: var(--muted); }
+.btn-outline.teal { border-color: currentColor; }
+.careers .prose { max-width: none; }

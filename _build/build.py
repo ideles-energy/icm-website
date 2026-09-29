@@ -20,16 +20,16 @@ T = {
   skip='Skip to content', nav_how='How it works', nav_faq='FAQ', nav_about='About', talk='Talk to us', menu='Main',
   eyebrow='BESS Benchmark · Netherlands',
   h1_a='Understand and secure', h1_b='the true value of your asset',
-  lead='For owners with a nagging sense their BESS assets could earn more. See how your assets compare, BESS-to-BESS, and find an alternative optimizer via the ICM.',
-  book='Talk to us →', how_link='How it works →',
+  lead='For owners with a nagging sense their BESS could earn more. See how your asset compares, BESS-to-BESS, and find a better optimizer when there\'s more to earn.',
+  book='Talk to us', how_link='How it works',
   chart_title='Project score: 87% of the peer benchmark', chart_sub='EUR per MW per year, by month · gross revenue',
   chart_aria="Illustrative chart: a project's monthly revenue per MW compared with the peer benchmark",
   months=['Oct','Dec','Feb','Apr','Jun','Aug'], chart_you='Your project', chart_peer='Peer benchmark (≥ 5 assets, ≥ 3 organisations)',
   chart_note='Illustrative example with fictional data.',
   why_eyebrow='Why it matters', why_h='BESS assets deliver vastly different results',
-  why_p='Independent information on what batteries earn is missing. Some discovered that they\'re missing out on 50,000 to 80,000 euro per MW per year. Are you? Without a BESS Benchmark, there is no way of knowing.',
+  why_p='Independent information on what batteries earn is missing. Are you leaving money on the table?',
   stats=['EUR 145k', 'EUR 185k', 'EUR 240k'], per='per MW per year', stats_note='Illustrative example: gross market revenues of three BESS assets.',
-  learn='How it works →',
+  learn='How it works',
   which='Which one is yours?',
   how_eyebrow='How it works', how_h='Our membership model',
   rules=[
@@ -38,30 +38,31 @@ T = {
    ('Give-to-get', 'Members\' data is anonymised and added to the BESS Benchmark; members only see the BESS Benchmark for the months to which they have contributed. The same "give-to-get" principle applies to financiers, installers and advisers who want access.'),
   ],
   shot_alt='The BESS Benchmark app: project score, revenue per MW and the benchmark over the last 12 months (fictional example data)',
-  story_note='Illustrative. Change the numbers in cyan to see your own missed opportunity.',
+  story_note='Illustrative example. Change the numbers in cyan to see your own missed opportunity.',
   calc_eyebrow='Calculator', calc_h='What is your missed opportunity?',
   calc_p='Enter your battery and what it earns today. See what you could have earned if it had matched comparable batteries.',
   calc_mw='Battery size', calc_months='Period', calc_months_unit='months', calc_rev='Your revenue today',
   calc_assume='Assumption: comparable batteries earned 30% more per MW. Illustrative – the BESS Benchmark shows your real gap.',
-  calc_you='Your battery', calc_bench='Comparable batteries', calc_missed='Missed opportunity over 6 months', calc_cta='Find out your real gap →',
-  demo_eyebrow='See it in action', demo_h='The ICM brings clarity', demo_p='The BESS Benchmark is a dynamic view on the EUR per MW per year of your assets and those of our other members.', demo_note='Fictional example data.',
-  demo_btn='Try the interactive demo →', demo_title='BESS Benchmark – interactive demo (fictional data)', demo_new='Open in a new tab',
+  calc_you='Your battery', calc_bench='Comparable batteries', calc_missed='Missed opportunity over 6 months', calc_cta='Find out your real gap',
+  demo_eyebrow='How we can work together', demo_h='The BESS Benchmark brings clarity', demo_p='A BESS-to-BESS comparison of the EUR per MW per year earned by our members.', demo_note='Fictional example data.',
+  demo_btn='Try the interactive demo', demo_title='BESS Benchmark – interactive demo (fictional data)', demo_new='Open in a new tab',
   shot_cap='The BESS Benchmark is a dynamic view on the EUR per MW per year of your assets and those of our other members. Fictional example data.',
-  faq_link='Read the FAQ →',
+  faq_link='Read the FAQ',
   real_eyebrow='Real data, not a model', real_h='Why real revenues beat a simulated index',
   idx_h='A simulated revenue index', idx=['Models a theoretical battery with fixed assumptions','Assumes a full grid connection and no downtime','Cannot tell you how your optimizer performs comparatively'],
   ours_h='The BESS Benchmark', ours=['Is based on realised revenues, as members received them from their optimizers','Anticipates restrictions such as CSC terms, TDTR limits and downtime','Compares your battery with batteries set up like yours'],
   about_eyebrow='About the ICM', about_h='Why an Independent Capacity Market matters',
   about_p='We are not owners. We are not optimizers. Nor will we ever be.<br><br>We are an energy tech company, serving those who add capacity to the grid, but are in the dark on the potential of their assets. We compare BESS-to-BESS, introduce owners to optimizers and oversee the switch, so your battery keeps earning.',
+  roles='Open roles', careers='Careers',
   open_now='Open now', waitlist='Join the waitlist',
   p1=('BESS Benchmark','Compare your earnings BESS-to-BESS to understand the true value of your asset.'),
   p2=('BESS Broker','Outsource the search for a trusted optimizer. One form, a standardised process and terms banks appreciate.'),
-  p3=('BESS Integration','Embed a new project into the portfolio. Our API platform derisks a switch by connecting optimizers with local infra.'),
+  p3=('BESS Bridge','Switch optimizers without going dark. Our API platform connects optimizers with local infra.'),
   contact_eyebrow='Talk to us', contact_h='Book time with us', contact_p='',
   prefer='Prefer email?', subject='BESS Benchmark intake request',
   f_name='Name', f_company='Company', f_email='Email', f_mw='Portfolio or project size in MW',
   f_msg='Tell us a little bit about your context and objectives', f_ph='E.g., asset of 3-30 MW, trading revenues below expectations, interested in the BESS Benchmark',
-  f_submit='Send →', f_fine='We use your details only to contact you about the ICM.', f_ok='Thank you – we will be in touch.',
+  f_submit='Send', f_fine='We use your details only to contact you about the ICM.', f_ok='Thank you – we will be in touch.',
   foot_tag='The Independent Capacity Market (“the ICM”) brings clarity, trusted partners and continuity to those adding capacity to the grid.',
   founded='Founded by', foot_bench='Learn more', methodology='Methodology', contact='Contact',
   terms='Terms & Conditions', privacy='Privacy statement', disclaimer='Benchmark figures are outcome data as reported by optimizers, not advice.',
@@ -98,7 +99,7 @@ T = {
   eyebrow='BESS Benchmark · Nederland',
   h1_a='Ken en borg', h1_b='de echte waarde van je batterij',
   lead='Voor eigenaren die het knagende gevoel hebben dat hun batterijen meer kunnen verdienen. Zie hoe je assets presteren, BESS-to-BESS, en vind via de ICM een alternatieve optimizer.',
-  book='Plan een intake →', how_link='Zo werkt het →',
+  book='Plan een intake', how_link='Zo werkt het',
   chart_title='Projectscore: 87% van de benchmark', chart_sub='EUR per MW per jaar, per maand · bruto-opbrengst',
   chart_aria='Illustratieve grafiek: maandelijkse opbrengst per MW van een project naast de benchmark',
   months=['okt','dec','feb','apr','jun','aug'], chart_you='Jouw project', chart_peer='Benchmark (≥ 5 assets, ≥ 3 organisaties)',
@@ -113,7 +114,7 @@ T = {
    ('Give-to-get', 'Je ziet de benchmark alleen voor de maanden waaraan je hebt bijgedragen. Dat geldt ook voor installateurs, adviseurs en financiers die toegang willen.'),
    ('Strikt anoniem', 'Een benchmark wordt alleen getoond voor groepen van ten minste 5 assets van ten minste 3 organisaties. We publiceren nooit resultaten per optimizer.'),
   ],
-  faq_link='Lees de veelgestelde vragen →',
+  faq_link='Lees de veelgestelde vragen',
   real_eyebrow='Echte data, geen model', real_h='Waarom echte opbrengsten meer zeggen dan een gesimuleerde index',
   idx_h='Een gesimuleerde opbrengstindex', idx=['Rekent met een theoretische batterij en vaste aannames','Gaat uit van een volledige netaansluiting en geen stilstand','Zegt niets over hoe jouw optimizer presteert'],
   ours_h='De BESS Benchmark', ours=['Gerealiseerde opbrengsten uit creditfacturen van optimizers','Houdt rekening met beperkingen zoals CSC-voorwaarden, TDTR-limieten en stilstand','Vergelijkt jouw batterij met batterijen in een vergelijkbare opzet'],
@@ -127,7 +128,7 @@ T = {
   prefer='Liever mailen?', subject='BESS Benchmark intakeverzoek',
   f_name='Naam', f_company='Bedrijf', f_email='E-mail', f_mw='Omvang portefeuille (MW, ongeveer)',
   f_msg='Vertel ons kort over je situatie en doelen', f_ph='Bijv. asset van 3-30 MW, handelsopbrengsten onder verwachting',
-  f_submit='Vraag een intake aan →', f_fine='We gebruiken je gegevens alleen om contact met je op te nemen over de ICM.', f_ok='Dank je – we nemen contact met je op.',
+  f_submit='Vraag een intake aan', f_fine='We gebruiken je gegevens alleen om contact met je op te nemen over de ICM.', f_ok='Dank je – we nemen contact met je op.',
   foot_tag='The Independent Capacity Market (“de ICM”) brengt duidelijkheid, betrouwbare partners en continuïteit voor wie capaciteit toevoegt aan het net.',
   founded='Independent Capacity Market B.V., Amsterdam. Opgericht door', foot_bench='BESS Benchmark', methodology='Methodologie (Engels)', contact='Contact',
   terms='Algemene voorwaarden', privacy='Privacyverklaring', disclaimer='Benchmarkcijfers zijn uitkomstdata zoals gerapporteerd door optimizers, geen advies.',
@@ -234,6 +235,7 @@ def footer(t, other_href):
         <ul>
           <li><a href="{b}faq/">{t['nav_faq']}</a></li>
           <li><a href="/methodology/">{t['methodology']}</a></li>
+          <li><a href="/careers/">{t.get('careers', 'Careers')}</a></li>
         </ul>
       </div>
       <div>
@@ -288,11 +290,11 @@ def home(t):
     <div class="hero" id="main">
       <div>
         <span class="eyebrow">{t['eyebrow']}</span>
-        <h1>{t['h1_a']} <span>{t['h1_b']}</span></h1>
+        <h1>{t['h1_a']} {t['h1_b']}</h1>
         <p class="lead">{t['lead']}</p>
         <div class="hero-ctas">
           <a class="btn btn-lilac" href="#contact">{t['book']}</a>
-          <a class="btn btn-ghost" href="#how">{t['how_link']}</a>
+          <a class="btn btn-outline" href="#how">{t['how_link']}</a>
         </div>
       </div>
     </div>
@@ -304,10 +306,9 @@ def home(t):
     <span class="eyebrow why-eyebrow">{t['why_eyebrow']}</span>
     <div class="story" id="calculator" aria-live="polite">
       <p class="story-h">It's a waste to miss out on <b class="out" id="s-missed">EUR 555,000</b> a year.</p>
-      <p class="story-p">A similar asset, same size and set-up, can deliver <a class="story-link" href="https://www.flower.se/insights/case/ra-energy-switch-optimizer/" target="_blank" rel="noopener">30% more</a>. That means a <input class="in" id="s-mw" type="number" min="1" max="500" step="1" value="10" aria-label="Project size in MW"> MW project could have earned <b class="out" id="s-peer">EUR 240,500</b> instead of EUR <input class="in in-w" id="s-rev" type="text" inputmode="numeric" value="185,000" aria-label="Current revenue in euro per MW per year"> per MW per year.</p>
-      <p class="story-note">{t['story_note']}</p>
+      <p class="story-p">A similar BESS asset, same size and setup, can deliver <a class="story-link" href="https://www.flower.se/insights/case/ra-energy-switch-optimizer/" target="_blank" rel="noopener">30% more revenue</a>. Instead of EUR <input class="in" id="s-rev" type="number" min="1" max="1000" step="1" value="185" aria-label="Current revenue in thousand euro per MW per year">k per MW per year, a <input class="in" id="s-mw" type="number" min="1" max="500" step="1" value="10" aria-label="Project size in MW"> MW project could have earned <b class="out" id="s-peer">EUR 240.5k</b> per MW per year. That's an annual upside of <b class="out" id="s-up">55.5k</b> per MW.<span class="info-i"><button type="button" aria-label="About these numbers">i</button><span class="info-pop" role="tooltip">{t['story_note']}</span></span></p>
     </div>
-    <p class="why-p">{t['why_p']}</p>
+    <p class="story-p why-p">{t['why_p']}</p>
     <div class="cta-row"><a class="btn btn-lilac" href="#contact">{t['book']}</a><a class="btn btn-outline" href="#how">{t['learn']}</a></div>
   </div>
 </section>
@@ -320,7 +321,7 @@ def home(t):
       <p>{t['demo_p']}</p>
     </div>
     <figure class="shot shot-wide">
-      <a class="demo-open" href="/demo/" data-demo><img src="/assets/benchmark-preview.jpg" width="1600" height="1016" alt="{t['shot_alt']}" loading="lazy"><span class="demo-badge">{t['demo_btn']}</span></a>
+      <a class="demo-open" href="/demo/" data-demo><img src="/assets/benchmark-preview.jpg" width="1600" height="957" alt="{t['shot_alt']}" loading="lazy"><span class="demo-badge">{t['demo_btn']}</span></a>
       <figcaption>{t['demo_note']}</figcaption>
     </figure>
     <dialog class="demo-dialog" id="demo-dialog" aria-label="{t['demo_btn']}">
@@ -347,18 +348,21 @@ def home(t):
 </section>
 
 <section class="more" id="about">
-  <div class="wrap">
+  <div class="wrap about-grid">
     <div class="section-head">
       <span class="eyebrow">{t['about_eyebrow']}</span>
       <h2>{t['about_h']}</h2>
       <p>{t['about_p']}</p>
+      <div class="cta-row" style="justify-content:flex-start;margin-top:28px">
+        <a class="btn btn-lilac" href="#contact">{t['book']}</a>
+        <a class="btn btn-outline" href="/careers/">{t['roles']}</a>
+      </div>
     </div>
-    <div class="more-grid">
+    <div class="more-grid more-stack">
       <article><span class="tag">{t['open_now']}</span><h3>{t['p1'][0]}</h3><p>{t['p1'][1]}</p></article>
       <article><a class="tag soft" href="#contact">{t['waitlist']}</a><h3>{t['p2'][0]}</h3><p>{t['p2'][1]}</p></article>
       <article><a class="tag soft" href="#contact">{t['waitlist']}</a><h3>{t['p3'][0]}</h3><p>{t['p3'][1]}</p></article>
     </div>
-    <div class="cta-row"><a class="btn btn-lilac" href="#contact">{t['book']}</a></div>
   </div>
 </section>
 
@@ -424,6 +428,22 @@ def privacy(t):
     body = f'    <div class="prose">{secs}<p style="color:var(--muted);font-size:14px">28-09-2026</p></div>'
     return simple_page(t, t['base'] + 'privacy/', t['other'] + 'privacy/', t['privacy_title'], t['privacy_title'], t['privacy_h'], '', body)
 
+ROLES = [('Data Manager', 'Full time', 'Amsterdam'), ('Senior Sales Expert', 'Full time', 'Amsterdam'), ('Executive Assistant', 'Full time', 'Amsterdam')]
+
+def careers(t):
+    rows = '\n'.join(f'      <li><span><b>{r}</b><em>{a} · {c}</em></span><a class="btn btn-outline teal" href="mailto:{EMAIL}?subject=Application%3A%20{r.replace(" ", "%20")}">Apply</a></li>' for r, a, c in ROLES)
+    body = f"""    <div class="careers">
+      <div class="prose">
+        <p class="careers-intro">The grid is full, and the flexibility that could unblock it is invisible, locked in private deals nobody can see or price. We are not owners. We are not optimizers. Nor will we ever be. We bring clarity to those adding capacity to the grid.</p>
+      </div>
+      <h2 class="careers-h">Current open roles</h2>
+      <ul class="roles">
+{rows}
+      </ul>
+      <p class="careers-open">Don't see your role? Send an open application with your CV and what you would like to achieve at the ICM to <a href="mailto:{EMAIL}">{EMAIL}</a>.</p>
+    </div>"""
+    return simple_page(t, '/careers/', '/nl/careers/', 'Careers | The ICM', 'Open roles at the Independent Capacity Market in Amsterdam: help bring clarity to battery storage in Europe.', 'A more equitable grid', 'Do work that matters with people who care.', body).replace(f"<span class=\"eyebrow\">{t['eyebrow']}</span>", '<span class="eyebrow">Careers</span>', 1)
+
 def write(rel, html):
     p = os.path.join(ROOT, rel)
     os.makedirs(os.path.dirname(p), exist_ok=True)
@@ -436,6 +456,8 @@ for lang in LANGS:
     write(pre + 'faq/index.html', faq(t))
     write(pre + 'terms/index.html', terms(t))
     write(pre + 'privacy/index.html', privacy(t))
+    if lang == 'en':
+        write('careers/index.html', careers(t))
 print('built')
 
 # Methodology page, generated from _build/methodology.md (same text as the Methodology doc).

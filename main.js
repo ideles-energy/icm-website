@@ -41,22 +41,27 @@
   dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
 })();
 
-// Missed-opportunity sentence (illustrative: a similar asset can deliver 30% more per MW).
+// Missed-opportunity sentence (illustrative: a similar asset can deliver 30% more revenue per MW).
 (function () {
   var UPLIFT = 0.30;
   var $ = function (id) { return document.getElementById(id); };
   if (!$('s-mw')) return;
-  var eur = function (v) { return 'EUR ' + Math.round(v).toLocaleString('en-GB'); };
   var num = function (el) { return Math.max(0, +String(el.value).replace(/[^0-9.]/g, '') || 0); };
+  var k = function (v) { return (Math.round(v * 10) / 10).toLocaleString('en-GB', { maximumFractionDigits: 1 }) + 'k'; };
   function size(el) { el.style.width = (Math.max(2, String(el.value).length) + 1.6) + 'ch'; }
   function calc() {
-    var mw = num($('s-mw')), rev = num($('s-rev'));
-    var peer = rev * (1 + UPLIFT);
-    $('s-peer').textContent = eur(Math.round(peer / 100) * 100);
-    $('s-missed').textContent = eur(Math.round((peer - rev) * mw / 100) * 100);
+    var mw = num($('s-mw')), revK = num($('s-rev'));
+    var upK = revK * UPLIFT;
+    $('s-peer').textContent = 'EUR ' + k(revK + upK);
+    $('s-up').textContent = k(upK);
+    $('s-missed').textContent = 'EUR ' + (Math.round(upK * 1000 * mw / 100) * 100).toLocaleString('en-GB');
     ['s-mw', 's-rev'].forEach(function (id) { size($(id)); });
   }
   ['s-mw', 's-rev'].forEach(function (id) { $(id).addEventListener('input', calc); });
-  $('s-rev').addEventListener('blur', function () { var v = num(this); this.value = v.toLocaleString('en-GB'); calc(); });
   calc();
 })();
+
+// Info tooltips: tap to toggle on touch screens.
+document.querySelectorAll('.info-i button').forEach(function (b) {
+  b.addEventListener('click', function () { b.parentNode.classList.toggle('open'); });
+});
