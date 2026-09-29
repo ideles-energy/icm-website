@@ -415,3 +415,8 @@ footer { background: var(--ink); color: rgba(255,255,255,.75); padding: 56px 0 4
 .careers-open { margin-top: 28px; color: var(--muted); }
 .btn-outline.teal { border-color: currentColor; }
 .careers .prose { max-width: none; }
+/* v7 */
+.story .in { padding: 0; margin: 0 1px; }
+.why-p { margin: 14px auto 0; }
+.why-p b { color: var(--white); font-weight: 700; }
+.rules-row { row-gap: 36px; }

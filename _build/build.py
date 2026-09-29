@@ -21,21 +21,24 @@ T = {
   eyebrow='BESS Benchmark · Netherlands',
   h1_a='Understand and secure', h1_b='the true value of your asset',
   lead='For owners with a nagging sense their BESS could earn more. See how your asset compares, BESS-to-BESS, and find a better optimizer when there\'s more to earn.',
-  book='Talk to us', how_link='How it works',
+  book='Talk to us', start='Get started', more='Learn more', how_link='How it works',
   chart_title='Project score: 87% of the peer benchmark', chart_sub='EUR per MW per year, by month · gross revenue',
   chart_aria="Illustrative chart: a project's monthly revenue per MW compared with the peer benchmark",
   months=['Oct','Dec','Feb','Apr','Jun','Aug'], chart_you='Your project', chart_peer='Peer benchmark (≥ 5 assets, ≥ 3 organisations)',
   chart_note='Illustrative example with fictional data.',
   why_eyebrow='Why it matters', why_h='BESS assets deliver vastly different results',
-  why_p='Independent information on what batteries earn is missing. Are you leaving money on the table?',
+  why_p='Independent information on what batteries earn is missing. <b>Are you leaving money on the table?</b>',
   stats=['EUR 145k', 'EUR 185k', 'EUR 240k'], per='per MW per year', stats_note='Illustrative example: gross market revenues of three BESS assets.',
   learn='How it works',
   which='Which one is yours?',
   how_eyebrow='How it works', how_h='Our membership model',
   rules=[
-   ('Registration', 'We ask new members to share 6 months of BESS performance data and stay a member for at least 3 months. After that, membership can be cancelled monthly.'),
-   ('Contribution', 'Members pay 0.5% of what their battery earned that month. At €15,000 per MW, that is €75 per MW. After referring 5 members, the contribution drops to 0.1% for 6 months.'),
-   ('Give-to-get', 'Members\' data is anonymised and added to the BESS Benchmark; members only see the BESS Benchmark for the months to which they have contributed. The same "give-to-get" principle applies to financiers, installers and advisers who want access.'),
+   ('Registration', 'New members submit 6 months of historical data and complete a 45-minute intake that takes care of collecting the relevant project information. A membership lasts at least 3 months and can be cancelled every month after that.'),
+   ('Participation', 'Members share their earnings every month, for instance by asking their optimizer to CC the ICM on its monthly performance report. The ICM anonymises the data and adds it to the BESS Benchmark.'),
+   ('Contribution', 'Members pay a symbolic handling fee of 0.5% of what their BESS assets earned that month: EUR 75 for a project delivering EUR 15,000. After referring 5 members, the contribution drops to 0.1% for 6 months.'),
+   ('Give-to-get', 'Members only see the BESS Benchmark for the months to which they contributed. If no data is shared for August, September and October, the BESS Benchmark stays blank for those months. This also applies to financiers, installers and advisers.'),
+   ('Silent by design', 'The Dutch saying "geen bericht, goed bericht" (no news is good news) applies here. The ICM reaches out to members whose projects earn below 80% of the BESS Benchmark in at least 6 of the last 12 months. Otherwise, we keep quiet.'),
+   ('Proof of performance', 'The ICM helps translate the BESS Benchmark into input for negotiations, such as the right to terminate below 80% of the BESS Benchmark, and for insurance and warranty claims, such as what comparable assets earned during downtime.'),
   ],
   shot_alt='The BESS Benchmark app: project score, revenue per MW and the benchmark over the last 12 months (fictional example data)',
   story_note='Illustrative example. Change the numbers in cyan to see your own missed opportunity.',
@@ -293,7 +296,7 @@ def home(t):
         <h1>{t['h1_a']} {t['h1_b']}</h1>
         <p class="lead">{t['lead']}</p>
         <div class="hero-ctas">
-          <a class="btn btn-lilac" href="#contact">{t['book']}</a>
+          <a class="btn btn-lilac" href="#contact">{t['start']}</a>
           <a class="btn btn-outline" href="#how">{t['how_link']}</a>
         </div>
       </div>
@@ -307,9 +310,9 @@ def home(t):
     <div class="story" id="calculator" aria-live="polite">
       <p class="story-h">It's a waste to miss out on <b class="out" id="s-missed">EUR 555,000</b> a year.</p>
       <p class="story-p">A similar BESS asset, same size and setup, can deliver <a class="story-link" href="https://www.flower.se/insights/case/ra-energy-switch-optimizer/" target="_blank" rel="noopener">30% more revenue</a>. Instead of EUR <input class="in" id="s-rev" type="number" min="1" max="1000" step="1" value="185" aria-label="Current revenue in thousand euro per MW per year">k per MW per year, a <input class="in" id="s-mw" type="number" min="1" max="500" step="1" value="10" aria-label="Project size in MW"> MW project could have earned <b class="out" id="s-peer">EUR 240.5k</b> per MW per year. That's an annual upside of <b class="out" id="s-up">55.5k</b> per MW.<span class="info-i"><button type="button" aria-label="About these numbers">i</button><span class="info-pop" role="tooltip">{t['story_note']}</span></span></p>
+      <p class="story-p why-p">{t['why_p']}</p>
     </div>
-    <p class="story-p why-p">{t['why_p']}</p>
-    <div class="cta-row"><a class="btn btn-lilac" href="#contact">{t['book']}</a><a class="btn btn-outline" href="#how">{t['learn']}</a></div>
+    <div class="cta-row"><a class="btn btn-lilac" href="#contact">{t['start']}</a><a class="btn btn-outline" href="#demo">{t['more']}</a></div>
   </div>
 </section>
 
@@ -341,7 +344,7 @@ def home(t):
 {rules}
     </div>
     <div class="cta-row" style="justify-content:flex-start;margin-top:36px">
-      <a class="btn btn-lilac" href="#contact">{t['book']}</a>
+      <a class="btn btn-lilac" href="#contact">{t['start']}</a>
       <a class="btn btn-outline teal" href="{b}faq/">{t['faq_link']}</a>
     </div>
   </div>
@@ -428,10 +431,10 @@ def privacy(t):
     body = f'    <div class="prose">{secs}<p style="color:var(--muted);font-size:14px">28-09-2026</p></div>'
     return simple_page(t, t['base'] + 'privacy/', t['other'] + 'privacy/', t['privacy_title'], t['privacy_title'], t['privacy_h'], '', body)
 
-ROLES = [('Data Manager', 'Full time', 'Amsterdam'), ('Senior Sales Expert', 'Full time', 'Amsterdam'), ('Executive Assistant', 'Full time', 'Amsterdam')]
+ROLES = [('Founders Associate', 'Amsterdam'), ('Commercial Lead', 'Amsterdam'), ('Legal Counsel', 'Amsterdam')]
 
 def careers(t):
-    rows = '\n'.join(f'      <li><span><b>{r}</b><em>{a} · {c}</em></span><a class="btn btn-outline teal" href="mailto:{EMAIL}?subject=Application%3A%20{r.replace(" ", "%20")}">Apply</a></li>' for r, a, c in ROLES)
+    rows = '\n'.join(f'      <li><span><b>{r}</b><em>{c}</em></span><a class="btn btn-outline teal" href="mailto:{EMAIL}?subject=Application%3A%20{r.replace(" ", "%20")}">Apply</a></li>' for r, c in ROLES)
     body = f"""    <div class="careers">
       <div class="prose">
         <p class="careers-intro">The grid is full, and the flexibility that could unblock it is invisible, locked in private deals nobody can see or price. We are not owners. We are not optimizers. Nor will we ever be. We bring clarity to those adding capacity to the grid.</p>

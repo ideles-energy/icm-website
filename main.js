@@ -48,7 +48,7 @@
   if (!$('s-mw')) return;
   var num = function (el) { return Math.max(0, +String(el.value).replace(/[^0-9.]/g, '') || 0); };
   var k = function (v) { return (Math.round(v * 10) / 10).toLocaleString('en-GB', { maximumFractionDigits: 1 }) + 'k'; };
-  function size(el) { el.style.width = (Math.max(2, String(el.value).length) + 1.6) + 'ch'; }
+  function size(el) { el.style.width = (Math.max(1, String(el.value).length) + 0.4) + 'ch'; }
   function calc() {
     var mw = num($('s-mw')), revK = num($('s-rev'));
     var upK = revK * UPLIFT;
