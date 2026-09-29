@@ -74,8 +74,8 @@
       var c = Math.floor(k / rows), y = k % rows, cx = c * g + g / 2, cy = y * g + g / 2;
       var d = (c * 0.06 + y * 0.015).toFixed(2);
       out += k < nD
-        ? '<circle class="dd" cx="' + cx + '" cy="' + cy + '" r="' + r + '" style="animation-delay:' + d + 's"/>'
-        : '<circle class="dm" cx="' + cx + '" cy="' + cy + '" r="' + (r - 0.8) + '" style="animation-delay:' + ((k - nD) * 0.037 % 2.4).toFixed(2) + 's"/>';
+        ? '<circle class="dd" cx="' + cx + '" cy="' + cy + '" r="' + r + '" style="transition-delay:' + d + 's"/>'
+        : '<circle class="dm" cx="' + cx + '" cy="' + cy + '" r="' + (r - 0.8) + '" style="transition-delay:' + d + 's"/>';
     }
     svg.innerHTML = out;
     $('f-del').textContent = eur(del);
@@ -84,6 +84,13 @@
   }
   ['s-mw', 's-rev'].forEach(function (id) { $(id).addEventListener('input', calc); });
   calc();
+  // show the dots once, calmly, when the figure first scrolls into view; afterwards they stay still
+  var fig = svg && svg.parentNode;
+  if (fig && 'IntersectionObserver' in window) {
+    fig.classList.add('pre');
+    var io = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { fig.classList.remove('pre'); io.disconnect(); } }, { threshold: 0.3 });
+    io.observe(fig);
+  }
 })();
 
 // Info tooltips: tap to toggle on touch screens.

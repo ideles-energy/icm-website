@@ -428,10 +428,9 @@ footer { background: var(--ink); color: rgba(255,255,255,.75); padding: 56px 0 4
 .why-grid .cta-row { justify-content: flex-start; }
 .why-fig { margin: 0; }
 .why-fig svg { width: 100%; height: auto; display: block; overflow: visible; }
-.why-fig .dd { fill: var(--cyan); transform-box: fill-box; transform-origin: center; animation: dotwave 3.2s ease-in-out infinite; }
-.why-fig .dm { fill: none; stroke: var(--lilac); stroke-width: 1.6; stroke-dasharray: 3 2.4; transform-box: fill-box; transform-origin: center; animation: dotleak 2.4s ease-in-out infinite; }
-@keyframes dotwave { 0%, 100% { opacity: .55; transform: scale(.82); } 40% { opacity: 1; transform: scale(1); } }
-@keyframes dotleak { 0%, 100% { opacity: .95; } 50% { opacity: .25; } }
+.why-fig .dd { fill: var(--cyan); transition: opacity .5s ease; }
+.why-fig .dm { fill: none; stroke: var(--lilac); stroke-width: 1.6; stroke-dasharray: 3 2.4; transition: opacity .5s ease; }
+.why-fig.pre .dd, .why-fig.pre .dm { opacity: 0; }
 .why-legend { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 20px; font-size: 14px; color: rgba(255,255,255,.75); }
 .why-legend b { color: var(--white); font-weight: 700; white-space: nowrap; }
 .why-legend i { display: inline-block; width: 11px; height: 11px; border-radius: 50%; margin-right: 8px; vertical-align: -1px; }
@@ -439,4 +438,4 @@ footer { background: var(--ink); color: rgba(255,255,255,.75); padding: 56px 0 4
 .why-legend i.m { border: 1.6px dashed var(--lilac); }
 .why-legend .unit { flex-basis: 100%; color: rgba(255,255,255,.5); font-size: 13px; }
 @media (max-width: 900px) { .why-grid { grid-template-columns: 1fr; gap: 40px; } }
-@media (prefers-reduced-motion: reduce) { .why-fig .dd, .why-fig .dm { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .why-fig .dd, .why-fig .dm { transition: none; } }

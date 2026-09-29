@@ -331,7 +331,7 @@ def home(t):
       <p>{t['demo_p']}</p>
     </div>
     <figure class="shot shot-wide">
-      <a class="demo-open" href="/demo/" data-demo><img src="/assets/benchmark-preview.jpg" width="1600" height="957" alt="{t['shot_alt']}" loading="lazy"><span class="demo-badge">{t['demo_btn']}</span></a>
+      <a class="demo-open" href="/demo/" data-demo><img src="/assets/benchmark-preview.jpg" width="1600" height="912" alt="{t['shot_alt']}" loading="lazy"><span class="demo-badge">{t['demo_btn']}</span></a>
       <figcaption>{t['demo_note']}</figcaption>
     </figure>
     <dialog class="demo-dialog" id="demo-dialog" aria-label="{t['demo_btn']}">
@@ -538,5 +538,9 @@ demo = demo.replace("document.querySelectorAll('.seg[data-key]').forEach(el=>{\n
 back = ('<div class="no-report" style="background:#061530;border-bottom:1px solid #1C3356;margin:-20px -16px 20px;padding:10px 16px;font:600 14px Figtree,system-ui,sans-serif">'
         '<a href="/#how" target="_top" style="color:#97F2F5;text-decoration:none">← Back to icm.energy</a></div>')
 demo = demo.replace('<div class="wrap" id="page1">', back + '\n<div class="wrap" id="page1">', 1)
+# open in light mode, at the top of the page
+demo = demo.replace('<body>', '<body class="light">', 1)
+demo = demo.replace('data-v="dark" aria-pressed="true">Dark</button><button type="button" data-v="light" aria-pressed="false">', 'data-v="dark" aria-pressed="false">Dark</button><button type="button" data-v="light" aria-pressed="true">', 1)
+demo = demo.replace('</body>', "<script>if('scrollRestoration' in history)history.scrollRestoration='manual';window.scrollTo(0,0);addEventListener('load',function(){window.scrollTo(0,0)});</script>\n</body>", 1)
 write('demo/index.html', demo)
 print('demo built')
