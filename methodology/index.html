@@ -93,7 +93,7 @@
 <li><strong>Real outcomes.</strong> We use the revenues optimizers report for closed calendar months, plus capacity and availability. We never ask for bids, prices, trading strategies or inside information.</li>
 <li><strong>Independent.</strong> The ICM owns no batteries and is not an optimizer. The same rules apply to every Member, whatever its optimizer.</li>
 <li><strong>Give-to-get.</strong> A Member sees the BESS Benchmark only for the months to which it contributed data.</li>
-<li><strong>Anonymous.</strong> We show peer data only in groups large enough that no asset, Member or optimizer can be identified. We never publish results per optimizer or rank optimizers.</li>
+<li><strong>Anonymous.</strong> We show peer data only in groups large enough that no asset, Member or optimizer can be identified. We never name optimizers or rank them.</li>
 </ul>
 <h2 id="real-revenues-not-a-simulated-index">Real revenues, not a simulated index</h2>
 <div class="compare"><div class="index"><h3>A simulated revenue index</h3><ul><li>Models a theoretical battery with fixed assumptions</li><li>Assumes a full grid connection and no downtime</li><li>Cannot tell you how your optimizer performs comparatively</li></ul></div><div class="ours"><h3>The BESS Benchmark</h3><ul><li>Is based on realised revenues, as members received them from their optimizers</li><li>Anticipates restrictions such as CSC terms, TDTR limits and downtime</li><li>Compares your battery with batteries set up like yours</li></ul></div></div>
@@ -170,16 +170,12 @@
 <td>above 1.50, up to 2.50</td>
 </tr>
 <tr>
-<td>3-hour</td>
-<td>above 2.50, up to 3.50</td>
-</tr>
-<tr>
-<td>4-hour and longer</td>
-<td>above 3.50</td>
+<td>4-hour</td>
+<td>above 2.50</td>
 </tr>
 </tbody>
 </table></div>
-<p>The 1-hour and 2-hour classes follow the duration clusters in enspired's <a href="https://www.enspired-trading.com/portfolio-performance">portfolio performance reporting</a>.</p>
+<p>The 1-hour and 2-hour classes follow the duration clusters in enspired's <a href="https://www.enspired-trading.com/portfolio-performance">portfolio performance reporting</a>. Like enspired, we keep assets above 2.50 hours out of the 2-hour class. We place them in the 4-hour class, so every battery is included.</p>
 <p><strong>Project type.</strong> Stand-alone: a site with only BESS. Co-located: BESS at a site with solar, wind, CHP or an e-boiler.</p>
 <p><strong>Markets.</strong> We group the markets an asset is active in. An asset counts in a group if it is active in at least one of its products.</p>
 <div class="table-scroll"><table>
@@ -264,7 +260,7 @@
 <li>R = Gross Revenue of asset i in month m (net revenue in the Net view).</li>
 <li>MW = power of asset i; H = its active hours in month m; 8,760 = hours in a year.</li>
 </ul>
-<p><strong>Quarters and years.</strong> Members can view months, calendar quarters or calendar years; the current year shows as year to date. For any period longer than a month, we add up revenue and capacity-hours first and divide once. We never average monthly figures.</p>
+<p><strong>Periods.</strong> Members can view months, calendar quarters or calendar years, over the last 6 months, the last 12 months (default) or the full timeline. The current year shows as year to date. For any period longer than a month, we add up revenue and capacity-hours first and divide once. We never average monthly figures.</p>
 <p><strong>Peer set.</strong> By default, the peer set leaves out the Project being viewed; the Member can choose to include it. The Member's other Projects are part of the peer set, but never count towards the minimum group size.</p>
 <p><strong>Group size.</strong> Every BESS Benchmark shows its number of assets and organisations for the latest period shown.</p>
 <h2 id="calculating-the-project-score">Calculating the Project Score</h2>
@@ -275,7 +271,7 @@
 <li>T = the months in the period with both Project Results and a published BESS Benchmark.</li>
 <li>The Project figure is weighted by MW. Project revenue in euros always equals the sum of its assets.</li>
 </ul>
-<p><strong>Rounding.</strong> We divide by the unrounded BESS Benchmark and show one decimal. The band follows the shown value: 99.98% shows as 100.0% and falls in "Above benchmark".</p>
+<p><strong>Rounding.</strong> We divide by the unrounded BESS Benchmark and show one decimal. The band follows the shown value: 99.98% shows as 100.0% and falls in the band "100% to 115%".</p>
 <div class="table-scroll"><table>
 <thead>
 <tr>
@@ -285,25 +281,26 @@
 </thead>
 <tbody>
 <tr>
-<td>Below benchmark</td>
+<td>Below 80% of benchmark</td>
 <td>below 80%</td>
 </tr>
 <tr>
-<td>Near benchmark</td>
+<td>80% to 100% of benchmark</td>
 <td>80% up to 100%</td>
 </tr>
 <tr>
-<td>Above benchmark</td>
+<td>100% to 115% of benchmark</td>
 <td>100% up to 115%</td>
 </tr>
 <tr>
-<td>Well above benchmark</td>
+<td>115% and above of benchmark</td>
 <td>115% and above</td>
 </tr>
 </tbody>
 </table></div>
+<p>The chart marks every month (or quarter or year) in which the Project Score was below 80%.</p>
 <p><strong>Summary figures.</strong> Above the chart, the Member sees the Project's revenue per MW per year, its difference with the BESS Benchmark (per MW and per year for the whole Project) and its Project Score. These follow the selected filters and period; the default period is the last 12 months.</p>
-<p><strong>Example (fictional).</strong> A 10 MW asset earns EUR 150,000 in a 31-day month (744 hours) with 20 inactive hours: 150,000 ÷ (10 × 724) × 8,760 = EUR 181,492 per MW per year. Against a BESS Benchmark of EUR 200,000, its score is 90.7%: Near benchmark.</p>
+<p><strong>Example (fictional).</strong> A 10 MW asset earns EUR 150,000 in a 31-day month (744 hours) with 20 inactive hours: 150,000 ÷ (10 × 724) × 8,760 = EUR 181,492 per MW per year. Against a BESS Benchmark of EUR 200,000, its score is 90.7%, in the band "80% to 100%".</p>
 <p><strong>When we reach out.</strong> The ICM may contact a Member if a Project scored below 80% in at least 6 of the last 12 months (article 7.3 of the Terms). For this rule we always use the same view: all durations, Gross Revenue, all peers, without the Project itself.</p>
 <h2 id="filters">Filters</h2>
 <p>Filters narrow the peer set to assets with a similar set-up. They apply to the peers, not to the Member's own figures.</p>
@@ -342,20 +339,25 @@
 <td>Default: All.</td>
 </tr>
 <tr>
+<td>Optimizer</td>
+<td>All optimizers, Same optimizer as this Project, Other optimizers</td>
+<td>Default: All optimizers. We take the optimizer from each month's statement, so a switch counts from the month it happens.</td>
+</tr>
+<tr>
 <td>Benchmark</td>
 <td>Excluding or including the Project itself</td>
 <td>Default: excluding.</td>
 </tr>
 </tbody>
 </table></div>
-<p>There is no filter by optimizer. If a selection does not meet the thresholds below, we show no BESS Benchmark for it.</p>
+<p>If a selection does not meet the thresholds below, we show no BESS Benchmark for it.</p>
 <h2 id="anonymity">Anonymity</h2>
 <p>We show a BESS Benchmark only if it includes at least 5 assets from at least 3 organisations other than the viewing Member.</p>
 <ul>
-<li><strong>Anonymization.</strong> Before data enters the BESS Benchmark, we remove the Member's name, asset name, EAN, location and optimizer.</li>
+<li><strong>Anonymization.</strong> Before data enters the BESS Benchmark, we remove the Member's name, asset name, EAN and location. We keep the optimizer only to apply the optimizer filter and never show it.</li>
 <li><strong>No subtraction.</strong> Comparing two selections could reveal a small group of assets. We therefore also hide a selection whose peers differ from another visible selection by 1 to 4 assets or 1 to 2 organisations. The hidden selection stays the same between visits.</li>
 <li><strong>Corrections.</strong> When one result is corrected, we do not show the change per selection.</li>
-<li><strong>No optimizer results.</strong> We never show results per optimizer or rank optimizers.</li>
+<li><strong>No optimizer results.</strong> We never show results per named optimizer or rank optimizers. The optimizer filter only compares the Member's own optimizer with all others, within the same group size rules.</li>
 <li><strong>Reports.</strong> A Member can print its results as a report: its own figures, the BESS Benchmark, the filters and period, and which months are preliminary. It never contains asset data of other organisations.</li>
 </ul>
 <h2 id="access">Access</h2>
@@ -392,7 +394,7 @@
 <tr>
 <td>1.2</td>
 <td>29 September 2026</td>
-<td>Duration classes cover every battery; co-located defined by other asset types at the site; shorter, plainer text</td>
+<td>Duration classes cover every battery (above 2.50 hours counts as 4-hour); optimizer filter; bands and periods as in the app; co-located defined by other asset types at the site; shorter, plainer text</td>
 </tr>
 <tr>
 <td>1.1</td>

@@ -38,7 +38,7 @@ T = {
    ('Contribution', 'Members pay a symbolic handling fee of 0.5% of what their BESS assets earned that month: EUR 75 for a project delivering EUR 15,000. After referring 5 members, the contribution drops to 0.1% for 6 months.'),
    ('Give-to-get', 'Members only see the BESS Benchmark for the months to which they contributed. If no data is shared for August, September and October, the BESS Benchmark stays blank for those months.'),
    ('Silent by design', 'The Dutch saying "geen bericht, goed bericht" applies here. The ICM reaches out to members whose projects earn below 80% of the BESS Benchmark in at least 6 of the last 12 months. Otherwise, we prefer to keep quiet.'),
-   ('Proof of performance', 'The ICM commits to translating the BESS Benchmark into input for negotiations ("the right to terminate at <80% of the BESS Benchmark") and insurance or warranty claims ("comparable assets earned EUR X during the downtime").'),
+   ('Proof of performance', 'The BESS Benchmark can serve as concrete input for negotiations and insurance/warranty claims ("comparable assets earned EUR X during downtime").'),
   ],
   shot_alt='The BESS Benchmark app: project score, revenue per MW and the benchmark over the last 12 months (fictional example data)',
   story_note='Illustrative example. Change the numbers in cyan to see your own missed opportunity.',
@@ -79,14 +79,14 @@ T = {
    ('How does it work?', '<ol><li>A 45-minute intake, in which we go through your projects together.</li><li>You sign the membership form online and confirm the project form.</li><li>You share 6 months of history, then every month your optimizer\'s statement, for example by asking your optimizer to copy bessbenchmark@icm.energy.</li><li>Every month you see your project score online.</li></ol>'),
    ('What data do I share?', 'Per battery and per month: the revenue on your optimizer\'s statement (credit invoice, settlement or report), the optimizer fee, and the hours the battery was out of service. We never ask for bids, prices or trading strategies.'),
    ('Am I allowed to share this under my optimizer contract?', 'Usually yes. If your contract limits sharing with third parties, you and your optimizer first sign a short mandate. Your optimizer then sends the statements to us directly.'),
-   ('Who sees my data?', 'Only you see your own figures. Before your data enters the benchmark, we remove your name, the asset name, EAN, location and optimizer. A benchmark is only shown for at least 5 batteries of other companies. We never share your data with optimizers, other members or our investors, and never publish results per optimizer.'),
+   ('Who sees my data?', 'Only you see your own figures. Before your data enters the benchmark, we remove your name, the asset name, EAN and location. We keep your optimizer only for the optimizer filter and never show it. A benchmark is only shown for at least 5 batteries from at least 3 other organisations. We never share your data with optimizers, other members or our investors.'),
    ('What do I get in return?', 'Every month, your project score: your revenue per MW divided by the benchmark. You see it per project and per battery, by month, quarter or year, and can filter by duration, project type, market qualifications and congestion contract. You can print it all as a report.'),
    ('What does it cost?', '0.5% of your battery\'s gross revenue for each month you are a member, excluding VAT. The historical months you share at the start are free, and so is any month with negative revenue. There are no other fees. After referring 5 members, you pay 0.1% for 6 months.'),
    ('How long do I commit?', 'The month you join plus two months. After that, membership renews monthly and you can cancel by email at the end of any month.'),
    ('Why do batteries with the same duration earn different amounts?', 'Revenue depends on more than duration: the markets a battery is active in, its grid connection and congestion contract, how often it is available, its state of health, and how well the optimizer trades it. That is why you can filter the benchmark by these characteristics, so you compare like with like.'),
    ('Can I share my results with my bank or optimizer?', 'Yes. You may share your benchmark results and project score with your advisers, financiers and optimizer, for example to negotiate contract terms.'),
    ('Will the ICM try to sell me something?', 'No. We only contact you if your project scored below 80% of the benchmark in at least 6 of the last 12 months, to discuss the option of another optimizer. Otherwise we leave you alone.'),
-   ('Can I see which optimizer performs best?', 'No. The BESS Benchmark never shows results per optimizer or rankings of optimizers. If you want to explore other optimizers, our BESS Broker service runs that search for you.'),
+   ('Can I see which optimizer performs best?', 'No. The BESS Benchmark never names or ranks optimizers. You can compare your battery with peers that use the same optimizer, or with peers that use other optimizers. If you want to explore other optimizers, our BESS Broker service runs that search for you.'),
    ('Is the ICM independent?', 'Yes. We do not own batteries and are not an optimizer, nor will we ever be. The same rules apply to every member, whatever their optimizer.'),
    ('How is the benchmark calculated?', 'We add up the revenue of all comparable batteries and divide it by their MW and the hours they were available, shown in euro per MW per year. Results are preliminary until no correction has come in for 3 months. All rules are in the <a href="/methodology/">methodology</a>.'),
   ],
@@ -525,8 +525,6 @@ print('methodology built, v' + version.group(1), len(toc), 'sections')
 demo = open(os.path.join(ROOT, '_build', 'prototype.html'), encoding='utf-8').read()
 demo = demo.replace('https://app.box.com/s/52dy3lyuocqpj3ss3rf47sdyveq7b1ir', '/methodology/').replace('https://app.box.com/s/3hmk2batlg2l2nv91e59gafzu2p1hek6', '/terms/')
 demo = demo.replace('<title>BESS Benchmark Report</title>', '<title>BESS Benchmark – interactive demo | The ICM</title><meta name="robots" content="noindex">')
-# no optimizer filter in the public demo (T&C 8.3: no results per optimizer)
-demo = demo.replace('<div class="f"><span class="lab">Optimizer</span><div class="seg stack" data-key="opt"></div></div>', '')
 demo = demo.replace("document.querySelectorAll('.seg[data-key]').forEach(el=>{\n  const key=el.dataset.key;", "document.querySelectorAll('.seg[data-key]').forEach(el=>{\n  const key=el.dataset.key;if(!OPTS[key])return;")
 # a way back to the website (target=_top also works when the demo is shown inside the homepage dialog)
 back = ('<div class="no-report" style="background:#061530;border-bottom:1px solid #1C3356;margin:-20px -16px 20px;padding:10px 16px;font:600 14px Figtree,system-ui,sans-serif">'
