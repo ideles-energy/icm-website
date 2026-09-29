@@ -269,8 +269,10 @@ def home(t):
         {"@type": "Service", "name": "BESS Benchmark", "provider": {"@id": "https://icm.energy/#org"}, "areaServed": "NL",
          "serviceType": "Battery energy storage revenue benchmark", "description": t['desc']}]}
     rules = '\n'.join(f'        <div class="rule"><h3>{h}</h3><p>{p}</p></div>' for h, p in t['rules'])
-    icon = '<span class="stat-icon" aria-hidden="true"><svg viewBox="0 0 48 28"><rect x="2" y="3" width="38" height="22" rx="4" fill="none" stroke="#0E1B2B" stroke-width="3"/><rect x="41" y="10" width="5" height="8" rx="1.5" fill="#0E1B2B"/><rect x="7" y="8" width="5" height="12" rx="1" fill="#0E1B2B"/><path d="M24 5 16 16h7l-3 8 9-12h-7l3-7z" fill="#0E1B2B"/></svg></span>'
-    stats = '\n'.join(f'      <div class="stat">{icon}<p><b>{v}</b> {t["per"]}</p></div>' for v in t['stats'])
+    def icon(n):
+        bars = ''.join(f'<rect x="{7 + 11*k}" y="8" width="8" height="12" rx="1.5" fill="#0E1B2B"' + ('' if k < n else ' fill-opacity="0.18"') + '/>' for k in range(3))
+        return f'<span class="stat-icon" aria-hidden="true"><svg viewBox="0 0 48 28"><rect x="2" y="3" width="38" height="22" rx="4" fill="none" stroke="#0E1B2B" stroke-width="3"/><rect x="41" y="10" width="5" height="8" rx="1.5" fill="#0E1B2B"/>{bars}</svg></span>'
+    stats = '\n'.join(f'      <div class="stat">{icon(k + 1)}<p><b>{v}</b><span>{t["per"]}</span></p></div>' for k, v in enumerate(t['stats']))
     idx = ''.join(f'<li>{x}</li>' for x in t['idx']); ours = ''.join(f'<li>{x}</li>' for x in t['ours'])
     return head(t, t['title'], t['desc'], b, other, ld, t['og_title']) + f'''
 <div class="hero-shell">
