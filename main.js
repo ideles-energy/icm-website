@@ -56,6 +56,31 @@
     $('s-up').textContent = 'EUR ' + k(upK);
     $('s-missed').textContent = 'EUR ' + (Math.round(upK * 1000 * mw / 100) * 100).toLocaleString('en-GB');
     ['s-mw', 's-rev'].forEach(function (id) { size($(id)); });
+    dots(revK * 1000 * mw, upK * 1000 * mw);
+  }
+  // Abstract figure: one dot per fixed amount of yearly revenue; filled = delivered, outlined = missed.
+  var svg = $('why-dots');
+  function eur(v) { return 'EUR ' + (Math.round(v / 100) * 100).toLocaleString('en-GB'); }
+  function dots(del, mis) {
+    if (!svg) return;
+    var total = del + mis, units = [1e3, 2e3, 5e3, 1e4, 2e4, 5e4, 1e5, 2e5, 5e5, 1e6, 2e6, 5e6, 1e7, 2e7, 5e7];
+    var unit = units[units.length - 1];
+    for (var i = 0; i < units.length; i++) { if (total / units[i] <= 300) { unit = units[i]; break; } }
+    var nD = Math.round(del / unit), nM = Math.max(0, Math.floor(total / unit) - nD);
+    var rows = 10, n = nD + nM, cols = Math.max(12, Math.ceil(n / rows)), g = 20, r = 6.2;
+    svg.setAttribute('viewBox', '0 0 ' + (cols * g) + ' ' + (rows * g));
+    var out = '';
+    for (var k = 0; k < n; k++) {
+      var c = Math.floor(k / rows), y = k % rows, cx = c * g + g / 2, cy = y * g + g / 2;
+      var d = (c * 0.06 + y * 0.015).toFixed(2);
+      out += k < nD
+        ? '<circle class="dd" cx="' + cx + '" cy="' + cy + '" r="' + r + '" style="animation-delay:' + d + 's"/>'
+        : '<circle class="dm" cx="' + cx + '" cy="' + cy + '" r="' + (r - 0.8) + '" style="animation-delay:' + ((k - nD) * 0.037 % 2.4).toFixed(2) + 's"/>';
+    }
+    svg.innerHTML = out;
+    $('f-del').textContent = eur(del);
+    $('f-mis').textContent = eur(mis);
+    $('f-unit').textContent = '1 dot = ' + eur(unit) + ' a year';
   }
   ['s-mw', 's-rev'].forEach(function (id) { $(id).addEventListener('input', calc); });
   calc();
