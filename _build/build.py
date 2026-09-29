@@ -154,17 +154,17 @@ T = {
 PRIVACY = {
  'en': [
   ('Who we are', 'Independent Capacity Market B.V. (“the ICM”), Amsterdam, is responsible for the personal data described here. Contact: <a href="mailto:ideles@icm.energy">ideles@icm.energy</a>.'),
-  ('What we collect', 'When you use the contact form: your name, company, email address, portfolio or project size and message. When you visit the site: anonymous usage statistics through Google Analytics.'),
-  ('Why', 'To answer your request and plan an intake, and to understand how the website is used. We do not sell your data or use it for other purposes.'),
-  ('Who processes it for us', 'Fillout receives the contact form on our behalf and stores it in the United States. Google provides Google Analytics.'),
+  ('What we collect', 'When you use the contact form: your name, company, email address, portfolio or project size and message. The website does not use tracking or analytics cookies.'),
+  ('Why', 'To answer your request and plan an intake. We do not sell your data or use it for other purposes.'),
+  ('Who processes it for us', 'Fillout receives the contact form on our behalf and stores it in the United States.'),
   ('How long we keep it', 'Contact details are kept as long as needed to follow up on your request, and at most two years after our last contact, unless you become a member.'),
   ('Your rights', 'You can ask to see, correct or delete your data, or object to its use, by emailing <a href="mailto:ideles@icm.energy">ideles@icm.energy</a>. You can also file a complaint with the Dutch Data Protection Authority (Autoriteit Persoonsgegevens).'),
  ],
  'nl': [
   ('Wie we zijn', 'Independent Capacity Market B.V. (“de ICM”), Amsterdam, is verantwoordelijk voor de persoonsgegevens die hier worden beschreven. Contact: <a href="mailto:ideles@icm.energy">ideles@icm.energy</a>.'),
-  ('Wat we verzamelen', 'Via het contactformulier: je naam, bedrijf, e-mailadres, omvang van je portefeuille en je bericht. Bij een bezoek aan de site: anonieme gebruiksstatistieken via Google Analytics.'),
-  ('Waarom', 'Om je verzoek te beantwoorden en een intake te plannen, en om te begrijpen hoe de website wordt gebruikt. We verkopen je gegevens niet en gebruiken ze niet voor andere doelen.'),
-  ('Wie ze voor ons verwerkt', 'Fillout ontvangt het contactformulier namens ons en slaat het op in de Verenigde Staten. Google levert Google Analytics.'),
+  ('Wat we verzamelen', 'Via het contactformulier: je naam, bedrijf, e-mailadres, omvang van je portefeuille en je bericht. De website gebruikt geen tracking- of analytische cookies.'),
+  ('Waarom', 'Om je verzoek te beantwoorden en een intake te plannen. We verkopen je gegevens niet en gebruiken ze niet voor andere doelen.'),
+  ('Wie ze voor ons verwerkt', 'Fillout ontvangt het contactformulier namens ons en slaat het op in de Verenigde Staten.'),
   ('Hoe lang we ze bewaren', 'Contactgegevens bewaren we zolang nodig is om je verzoek op te volgen, en maximaal twee jaar na ons laatste contact, tenzij je lid wordt.'),
   ('Jouw rechten', 'Je kunt je gegevens inzien, laten corrigeren of verwijderen, of bezwaar maken tegen het gebruik, via <a href="mailto:ideles@icm.energy">ideles@icm.energy</a>. Je kunt ook een klacht indienen bij de Autoriteit Persoonsgegevens.'),
  ],
@@ -201,7 +201,6 @@ def head(t, title, desc, path, alt_path=None, jsonld=None, og_title=None):
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css">
-{GA}
 {ld}</head>
 <body>
 <a class="sr-only" href="#main">{t['skip']}</a>
@@ -432,7 +431,7 @@ def terms(t):
 
 def privacy(t):
     secs = ''.join(f'<h2>{h}</h2><p>{p}</p>' for h, p in PRIVACY[t['lang']])
-    body = f'    <div class="prose">{secs}<p style="color:var(--muted);font-size:14px">28-09-2026</p></div>'
+    body = f'    <div class="prose">{secs}<p style="color:var(--muted);font-size:14px">29-09-2026</p></div>'
     return simple_page(t, t['base'] + 'privacy/', t['other'] + 'privacy/', t['privacy_title'], t['privacy_title'], t['privacy_h'], '', body)
 
 ROLES = [('Founders Associate', 'Amsterdam'), ('Commercial Lead', 'Amsterdam'), ('Legal Counsel', 'Amsterdam')]
