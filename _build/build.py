@@ -205,8 +205,6 @@ def nav(t, other_href):
       <a class="logo" href="{b}" aria-label="The Independent Capacity Market, home"><span class="logo-text">The Independent<br>Capacity Market</span></a>
       <nav aria-label="{t['menu']}">
         <ul class="nav-links">
-          <li class="hide-sm"><a href="{b}#how">{t['nav_how']}</a></li>
-          <li class="hide-sm"><a href="{b}faq/">{t['nav_faq']}</a></li>
           <li class="hide-sm"><a href="{b}#about">{t['nav_about']}</a></li>
 {f'          <li><a class="lang" href="{other_href}" hreflang="{t["other_lang"]}" lang="{t["other_lang"]}">{t["other_label"]}</a></li>' + chr(10) if len(LANGS) > 1 else ''}          <li><a class="btn btn-lilac" href="{b}#contact">{t['talk']}</a></li>
         </ul>
@@ -330,7 +328,7 @@ def home(t):
       </figure>
     </div>
     <dialog class="demo-dialog" id="demo-dialog" aria-label="{t['demo_btn']}">
-      <div class="demo-bar"><span>{t['demo_title']}</span><a href="/demo/" target="_blank" rel="noopener">{t['demo_new']}</a><button type="button" data-close aria-label="Close">×</button></div>
+      <div class="demo-bar"><span></span><a href="/demo/" target="_blank" rel="noopener">{t['demo_new']}</a><button type="button" data-close aria-label="Close">×</button></div>
       <iframe title="{t['demo_title']}" loading="lazy"></iframe>
     </dialog>
   </div>
@@ -507,8 +505,6 @@ demo = demo.replace('<title>BESS Benchmark Report</title>', '<title>BESS Benchma
 # no optimizer filter in the public demo (T&C 8.3: no results per optimizer)
 demo = demo.replace('<div class="f"><span class="lab">Optimizer</span><div class="seg stack" data-key="opt"></div></div>', '')
 demo = demo.replace("document.querySelectorAll('.seg[data-key]').forEach(el=>{\n  const key=el.dataset.key;", "document.querySelectorAll('.seg[data-key]').forEach(el=>{\n  const key=el.dataset.key;if(!OPTS[key])return;")
-# summary tiles follow the filters (decided 29 Sept 2026)
-demo = demo.replace('function summary(){\n  const f=DEF,', 'function summary(){\n  const f=st,')
 # a way back to the website (target=_top also works when the demo is shown inside the homepage dialog)
 back = ('<div class="no-report" style="background:#061530;border-bottom:1px solid #1C3356;margin:-20px -16px 20px;padding:10px 16px;font:600 14px Figtree,system-ui,sans-serif">'
         '<a href="/#how" target="_top" style="color:#97F2F5;text-decoration:none">← Back to icm.energy</a></div>')

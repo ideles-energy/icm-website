@@ -85,6 +85,8 @@ body.report .btn, body.light .btn{color:#fff}
 .info button{width:16px;height:16px;border-radius:50%;border:1.3px solid var(--muted);background:transparent;color:var(--muted);font-size:12px;font-weight:800;line-height:13px;padding:0;text-align:center}
 .info .pop{display:none;position:absolute;left:-12px;top:22px;width:280px;background:var(--raise);border:1px solid var(--line-strong);border-radius:10px;padding:10px 12px;font-size:12px;font-weight:500;color:var(--ink);box-shadow:0 8px 24px rgba(0,0,0,.35);z-index:6;line-height:1.45}
 .info:hover .pop,.info:focus-within .pop{display:block}
+.ftag{display:inline-block;margin-left:8px;font-size:12px;font-weight:700;color:var(--proj);border:1px solid var(--proj);border-radius:999px;padding:0 7px;line-height:16px}
+body.report .ftag{display:none}
 .report-only{display:none}
 body.report .report-only{display:block}
 body.report .info{display:none}
@@ -282,9 +284,9 @@ body.report .tile .v{font-size:20px}
     <a href="https://app.box.com/s/3hmk2batlg2l2nv91e59gafzu2p1hek6" target="_blank" rel="noopener">Terms &amp; Conditions</a>
     <a href="https://app.box.com/s/52dy3lyuocqpj3ss3rf47sdyveq7b1ir" target="_blank" rel="noopener">Methodology</a>
     </nav>
-  <div class="company no-report">© 2026 Independent Capacity Market B.V. All rights reserved. · Marnixstraat 242 D, 1016 TL Amsterdam · KvK 99958775 · VAT NL869204361B01 · bessbenchmark@icm.energy</div>
+  <div class="company no-report">© 2026 Independent Capacity Market B.V. All rights reserved. · KvK 99958775 · VAT NL869204361B01 · bessbenchmark@icm.energy</div>
 
-  <footer class="rep-foot"><span class="pg">Page 1 of 4</span>Preliminary &amp; confidential · © 2026 Independent Capacity Market B.V. All rights reserved.<br>BESS Benchmark · Outcome data as reported by the optimizer, not advice. Peer data is anonymised and shown only for groups of at least 5 assets from at least 3 organisations. · <a href="https://app.box.com/s/52dy3lyuocqpj3ss3rf47sdyveq7b1ir">Methodology</a> · <a href="https://app.box.com/s/3hmk2batlg2l2nv91e59gafzu2p1hek6">Terms &amp; Conditions</a></footer>
+  <footer class="rep-foot"><span class="pg">Page 1 of 4</span>Preliminary &amp; confidential · © 2026 Independent Capacity Market B.V. All rights reserved.<br><a href="https://app.box.com/s/52dy3lyuocqpj3ss3rf47sdyveq7b1ir">Methodology</a> · <a href="https://app.box.com/s/3hmk2batlg2l2nv91e59gafzu2p1hek6">Terms &amp; Conditions</a></footer>
 </div>
 <div id="sheets"></div>
 
@@ -452,13 +454,15 @@ function bullet(score){
   return s+'</svg>';
 }
 function summary(){
-  const f=DEF,ix=monthIdx(),rn=rangeName();
+  const f=st,ix=monthIdx(),rn=rangeName(); // tiles follow the filters, like the chart
+  const nF=[f.dur!=='all',f.rev!=='gross',f.type!=='all',f.mk.length>0,f.cc!=='all',f.opt!=='all',f.own!=='excl'].filter(Boolean).length;
+  const ft=nF?'<span class="ftag">'+nF+' filter'+(nF>1?'s':'')+'</span>':'';
   const P=evalPeriod(CUR.assets,{idx:ix},f);
   const gap=P.ann!=null&&P.bench?P.ann-P.bench:null;
   let h='';
-  h+='<div class="tile"><div class="k">Revenue, '+rn+'</div><div class="v">EUR '+fmtA(P.ann)+'<small>per MW per year</small></div>'+
-     (gap!=null?'<div class="line"><span class="s '+(gap<0?'neg':'pos')+'">EUR '+fmtA(Math.abs(gap))+' per MW '+(gap<0?'less':'more')+' than the benchmark</span><span class="s2">≈ EUR '+fmtA(Math.abs(gap)*CUR.mw)+' a year '+(gap<0?'less':'more')+' for '+CUR.mw+' MW</span></div>':'')+'</div>';
-  h+='<div class="tile"><div class="k">Project score, '+rn+'<span class="info"><button type="button" aria-label="What is the project score?">i</button><span class="pop" role="tooltip">Project score = your revenue per MW as a percentage of the BESS Benchmark. 100% means you earned the same, more than 100% means you earned more.</span></span>'+'</div><div class="row2"><div class="v'+(isLow(P.score)?' bad':'')+'">'+fmtP(P.score)+'</div>'+bullet(P.score)+'</div><div class="s">'+vsText(P.score)+'</div></div>';
+  h+='<div class="tile"><div class="k">Revenue, '+rn+ft+'</div><div class="v">EUR '+fmtA(P.ann)+'<small>per MW per year</small></div>'+
+     (gap!=null?'<div class="line"><span class="s '+(gap<0?'neg':'pos')+'">EUR '+fmtA(Math.abs(gap))+' per MW '+(gap<0?'less':'more')+' than the benchmark</span><span class="s2">≈ EUR '+fmtE(Math.round(Math.abs(gap)/100)*100*CUR.mw)+' a year '+(gap<0?'less':'more')+' for '+CUR.mw+' MW</span></div>':'')+'</div>';
+  h+='<div class="tile"><div class="k">Project score, '+rn+ft+'<span class="info"><button type="button" aria-label="What is the project score?">i</button><span class="pop" role="tooltip">Project score = your revenue per MW as a percentage of the BESS Benchmark. 100% means you earned the same, more than 100% means you earned more.</span></span>'+'</div><div class="row2"><div class="v'+(isLow(P.score)?' bad':'')+'">'+fmtP(P.score)+'</div>'+bullet(P.score)+'</div><div class="s">'+vsText(P.score)+'</div></div>';
   document.getElementById('summary').innerHTML=h;
 }
 
@@ -613,7 +617,7 @@ function render(){
     sh+='<section class="sheet"><div class="mini"><span>BESS Benchmark report · '+CUR.name+'</span><span>28 September 2026</span></div>'+
       '<h3>'+icon(acc,sr.w,sr.dash,24)+' '+(sr.key==='proj'?CUR.name+' (total)':sr.name)+'</h3><div class="sub2">'+sr.meta+'</div>'+
       '<div class="tbl-wrap">'+tb+'</div>'+
-      '<footer class="rep-foot"><span class="pg">Page '+(i+2)+' of '+total+'</span>Preliminary &amp; confidential · © 2026 Independent Capacity Market B.V. All rights reserved.<br>BESS Benchmark · Outcome data as reported by the optimizer, not advice. · <a href="'+LINK_METH+'">Methodology</a> · <a href="'+LINK_TC+'">Terms &amp; Conditions</a></footer></section>';
+      '<footer class="rep-foot"><span class="pg">Page '+(i+2)+' of '+total+'</span>Preliminary &amp; confidential · © 2026 Independent Capacity Market B.V. All rights reserved.<br><a href="'+LINK_METH+'">Methodology</a> · <a href="'+LINK_TC+'">Terms &amp; Conditions</a></footer></section>';
   });
   document.getElementById('sheets').innerHTML=sh;
 }
