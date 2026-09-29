@@ -40,3 +40,38 @@
   dlg.querySelector('[data-close]').addEventListener('click', function () { dlg.close(); });
   dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
 })();
+
+// Missed-opportunity calculator (illustrative: comparable batteries earn 30% more per MW).
+(function () {
+  var UPLIFT = 0.30;
+  var $ = function (id) { return document.getElementById(id); };
+  if (!$('c-mw')) return;
+  var pairs = [['c-mw', 'c-mw-n'], ['c-m', 'c-m-n'], ['c-r', 'c-r-n']];
+  var eur = function (v) { return 'EUR ' + Math.round(v).toLocaleString('en-GB'); };
+  var round = function (v, step) { return Math.round(v / step) * step; };
+  function calc() {
+    var mw = Math.max(0, +$('c-mw-n').value || 0);
+    var months = Math.max(0, +$('c-m-n').value || 0);
+    var you = Math.max(0, +$('c-r-n').value || 0);
+    var bench = you * (1 + UPLIFT);
+    var missedYear = (bench - you) * mw;
+    var missed = missedYear * months / 12;
+    $('c-you').textContent = eur(you);
+    $('c-bench').textContent = eur(bench);
+    $('c-missed').textContent = eur(round(missed, 100));
+    $('c-year').textContent = '≈ ' + eur(round(missedYear, 100)) + ' per year for ' + mw + ' MW';
+    $('c-math').textContent = eur(bench - you) + ' per MW per year × ' + mw + ' MW × ' + months + '/12 months';
+    $('c-k').textContent = 'Missed opportunity over ' + months + (months === 1 ? ' month' : ' months');
+    var max = bench || 1;
+    $('c-bar-you').style.width = (you / max * 100) + '%';
+    $('c-bar-bench').style.width = (you / max * 100) + '%';
+    $('c-bar-gap').style.left = (you / max * 100) + '%';
+    $('c-bar-gap').style.width = ((bench - you) / max * 100) + '%';
+  }
+  pairs.forEach(function (p) {
+    var r = $(p[0]), n = $(p[1]);
+    r.addEventListener('input', function () { n.value = r.value; calc(); });
+    n.addEventListener('input', function () { r.value = n.value; calc(); });
+  });
+  calc();
+})();
