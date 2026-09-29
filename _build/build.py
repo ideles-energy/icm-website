@@ -27,7 +27,7 @@ T = {
   months=['Oct','Dec','Feb','Apr','Jun','Aug'], chart_you='Your project', chart_peer='Peer benchmark (≥ 5 assets, ≥ 3 organisations)',
   chart_note='Illustrative example with fictional data.',
   why_eyebrow='Why it matters', why_h='BESS assets deliver vastly different results',
-  why_p='Independent information on what batteries earn is missing. Some discovered they\'re missing out on 30,000 to 70,000 euro per MW per year. Are you? Without a BESS Benchmark, there is no way of knowing.',
+  why_p='Independent information on what batteries earn is missing. Some discovered that they\'re missing out on 50,000 to 80,000 euro per MW per year. Are you? Without a BESS Benchmark, there is no way of knowing.',
   stats=['EUR 145k', 'EUR 185k', 'EUR 240k'], per='per MW per year', stats_note='Illustrative example: gross market revenues of three BESS assets.',
   learn='How it works →',
   which='Which one is yours?',
@@ -301,21 +301,13 @@ def home(t):
 
 <section class="dark" style="border-top:1px solid rgba(255,255,255,.08)">
   <div class="wrap">
-    <div class="section-head center">
-      <span class="eyebrow">{t['why_eyebrow']}</span>
-      <h2>{t['why_h']}</h2>
-      <p>{t['why_p']}</p>
-    </div>
-    <div class="stats">
-{stats}
-    </div>
-    <p class="stats-note">{t['stats_note']}</p>
+    <span class="eyebrow why-eyebrow">{t['why_eyebrow']}</span>
     <div class="story" id="calculator" aria-live="polite">
-      <p class="story-h">We missed out on <b class="out" id="s-missed">EUR 277,500</b>.</p>
-      <p class="story-p">Our <input class="in" id="s-mw" type="number" min="1" max="500" step="1" value="10" aria-label="Project size in MW"> MW project earned EUR <input class="in in-w" id="s-rev" type="number" min="1" max="1000" step="1" value="185" aria-label="Revenue in thousand euro per MW per year">k per MW per year based on the last <input class="in" id="s-m" type="number" min="1" max="36" step="1" value="6" aria-label="Number of months"> months. Yet, a similar asset, same size and set-up, delivered 30% more over the same period: <b class="out" id="s-peer">EUR 240.5k</b> per MW per year.</p>
+      <p class="story-h">It's a waste to miss out on <b class="out" id="s-missed">EUR 277,500</b> in <input class="in" id="s-m" type="number" min="1" max="36" step="1" value="6" aria-label="Number of months"> months.</p>
+      <p class="story-p">A similar asset, same size and set-up, can deliver <a class="story-link" href="https://www.flower.se/insights/case/ra-energy-switch-optimizer/" target="_blank" rel="noopener">30% more</a>. That means a <input class="in" id="s-mw" type="number" min="1" max="500" step="1" value="10" aria-label="Project size in MW"> MW project could have earned <b class="out" id="s-peer">EUR 240,500</b> instead of EUR <input class="in in-w" id="s-rev" type="text" inputmode="numeric" value="185,000" aria-label="Current revenue in euro per MW per year"> per MW per year.</p>
       <p class="story-note">{t['story_note']}</p>
     </div>
-    <p class="which">{t['which']}</p>
+    <p class="why-p">{t['why_p']}</p>
     <div class="cta-row"><a class="btn btn-lilac" href="#contact">{t['book']}</a><a class="btn btn-outline" href="#how">{t['learn']}</a></div>
   </div>
 </section>
