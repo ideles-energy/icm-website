@@ -53,7 +53,7 @@
     var mw = num($('s-mw')), revK = num($('s-rev'));
     var upK = revK * UPLIFT;
     $('s-peer').textContent = 'EUR ' + k(revK + upK);
-    $('s-up').textContent = k(upK);
+    $('s-up').textContent = 'EUR ' + k(upK);
     $('s-missed').textContent = 'EUR ' + (Math.round(upK * 1000 * mw / 100) * 100).toLocaleString('en-GB');
     ['s-mw', 's-rev'].forEach(function (id) { size($(id)); });
   }

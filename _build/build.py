@@ -27,7 +27,7 @@ T = {
   months=['Oct','Dec','Feb','Apr','Jun','Aug'], chart_you='Your project', chart_peer='Peer benchmark (≥ 5 assets, ≥ 3 organisations)',
   chart_note='Illustrative example with fictional data.',
   why_eyebrow='Why it matters', why_h='BESS assets deliver vastly different results',
-  why_p='Independent information on what batteries earn is missing. <b>Are you leaving money on the table?</b>',
+  why_p='Independent information is missing as long as no one works together.',
   stats=['EUR 145k', 'EUR 185k', 'EUR 240k'], per='per MW per year', stats_note='Illustrative example: gross market revenues of three BESS assets.',
   learn='How it works',
   which='Which one is yours?',
@@ -292,11 +292,10 @@ def home(t):
 {nav(t, other)}
     <div class="hero" id="main">
       <div>
-        <span class="eyebrow">{t['eyebrow']}</span>
-        <h1>{t['h1_a']} {t['h1_b']}</h1>
+        <h1>Understand and<br>secure the true value<br>of your asset</h1>
         <p class="lead">{t['lead']}</p>
         <div class="hero-ctas">
-          <a class="btn btn-lilac" href="#contact">{t['start']}</a>
+          <a class="btn btn-lilac" href="#contact">{t['book']}</a>
           <a class="btn btn-outline" href="#how">{t['how_link']}</a>
         </div>
       </div>
@@ -309,10 +308,9 @@ def home(t):
     <span class="eyebrow why-eyebrow">{t['why_eyebrow']}</span>
     <div class="story" id="calculator" aria-live="polite">
       <p class="story-h">It's a waste to miss out on <b class="out" id="s-missed">EUR 555,000</b> a year.</p>
-      <p class="story-p">A similar BESS asset, same size and setup, can deliver <a class="story-link" href="https://www.flower.se/insights/case/ra-energy-switch-optimizer/" target="_blank" rel="noopener">30% more revenue</a>. Instead of EUR <input class="in" id="s-rev" type="number" min="1" max="1000" step="1" value="185" aria-label="Current revenue in thousand euro per MW per year">k per MW per year, a <input class="in" id="s-mw" type="number" min="1" max="500" step="1" value="10" aria-label="Project size in MW"> MW project could have earned <b class="out" id="s-peer">EUR 240.5k</b> per MW per year. That's an annual upside of <b class="out" id="s-up">55.5k</b> per MW.<span class="info-i"><button type="button" aria-label="About these numbers">i</button><span class="info-pop" role="tooltip">{t['story_note']}</span></span></p>
-      <p class="story-p why-p">{t['why_p']}</p>
+      <p class="story-p">A similar BESS asset, same size and setup, can deliver <a class="story-link" href="https://www.flower.se/insights/case/ra-energy-switch-optimizer/" target="_blank" rel="noopener">30% more revenue</a>. A <input class="in" id="s-mw" type="number" min="1" max="500" step="1" value="10" aria-label="Project size in MW"> MW project could have earned <b class="out" id="s-peer">EUR 240.5k</b> per MW per year, instead of the EUR <input class="in" id="s-rev" type="number" min="1" max="1000" step="1" value="185" aria-label="Revenue it delivered, in thousand euro per MW per year">k per MW per year it delivered. That's a missed opportunity of <b class="out" id="s-up">EUR 55.5k</b> per MW.<span class="info-i"><button type="button" aria-label="About these numbers">i</button><span class="info-pop" role="tooltip">{t['story_note']}</span></span> {t['why_p']}</p>
     </div>
-    <div class="cta-row"><a class="btn btn-lilac" href="#contact">{t['start']}</a><a class="btn btn-outline" href="#demo">{t['more']}</a></div>
+    <div class="cta-row"><a class="btn btn-lilac" href="#contact">{t['book']}</a><a class="btn btn-outline" href="#demo">{t['more']}</a></div>
   </div>
 </section>
 
@@ -434,12 +432,9 @@ def privacy(t):
 ROLES = [('Founders Associate', 'Amsterdam'), ('Commercial Lead', 'Amsterdam'), ('Legal Counsel', 'Amsterdam')]
 
 def careers(t):
-    rows = '\n'.join(f'      <li><span><b>{r}</b><em>{c}</em></span><a class="btn btn-outline teal" href="mailto:{EMAIL}?subject=Application%3A%20{r.replace(" ", "%20")}">Apply</a></li>' for r, c in ROLES)
+    rows = '\n'.join(f'      <li><span><b>{r}</b><em>{c}</em></span><a class="btn btn-outline teal" href="/?role={r.replace(" ", "%20")}#contact">Apply</a></li>' for r, c in ROLES)
     body = f"""    <div class="careers">
-      <div class="prose">
-        <p class="careers-intro">The grid is full, and the flexibility that could unblock it is invisible, locked in private deals nobody can see or price. We are not owners. We are not optimizers. Nor will we ever be. We bring clarity to those adding capacity to the grid.</p>
-      </div>
-      <h2 class="careers-h">Current open roles</h2>
+      <h2 class="careers-h" style="margin-top:0">Current open roles</h2>
       <ul class="roles">
 {rows}
       </ul>
