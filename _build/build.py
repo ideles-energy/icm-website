@@ -303,7 +303,7 @@ def home(t):
   <div class="wrap">
     <span class="eyebrow why-eyebrow">{t['why_eyebrow']}</span>
     <div class="story" id="calculator" aria-live="polite">
-      <p class="story-h">It's a waste to miss out on <b class="out" id="s-missed">EUR 277,500</b> in <input class="in" id="s-m" type="number" min="1" max="36" step="1" value="6" aria-label="Number of months"> months.</p>
+      <p class="story-h">It's a waste to miss out on <b class="out" id="s-missed">EUR 555,000</b> a year.</p>
       <p class="story-p">A similar asset, same size and set-up, can deliver <a class="story-link" href="https://www.flower.se/insights/case/ra-energy-switch-optimizer/" target="_blank" rel="noopener">30% more</a>. That means a <input class="in" id="s-mw" type="number" min="1" max="500" step="1" value="10" aria-label="Project size in MW"> MW project could have earned <b class="out" id="s-peer">EUR 240,500</b> instead of EUR <input class="in in-w" id="s-rev" type="text" inputmode="numeric" value="185,000" aria-label="Current revenue in euro per MW per year"> per MW per year.</p>
       <p class="story-note">{t['story_note']}</p>
     </div>

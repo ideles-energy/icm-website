@@ -50,13 +50,13 @@
   var num = function (el) { return Math.max(0, +String(el.value).replace(/[^0-9.]/g, '') || 0); };
   function size(el) { el.style.width = (Math.max(2, String(el.value).length) + 1.6) + 'ch'; }
   function calc() {
-    var mw = num($('s-mw')), rev = num($('s-rev')), months = num($('s-m'));
+    var mw = num($('s-mw')), rev = num($('s-rev'));
     var peer = rev * (1 + UPLIFT);
     $('s-peer').textContent = eur(Math.round(peer / 100) * 100);
-    $('s-missed').textContent = eur(Math.round((peer - rev) * mw * months / 12 / 100) * 100);
-    ['s-mw', 's-rev', 's-m'].forEach(function (id) { size($(id)); });
+    $('s-missed').textContent = eur(Math.round((peer - rev) * mw / 100) * 100);
+    ['s-mw', 's-rev'].forEach(function (id) { size($(id)); });
   }
-  ['s-mw', 's-rev', 's-m'].forEach(function (id) { $(id).addEventListener('input', calc); });
+  ['s-mw', 's-rev'].forEach(function (id) { $(id).addEventListener('input', calc); });
   $('s-rev').addEventListener('blur', function () { var v = num(this); this.value = v.toLocaleString('en-GB'); calc(); });
   calc();
 })();
