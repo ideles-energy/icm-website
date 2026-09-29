@@ -31,14 +31,14 @@ T = {
   stats=['EUR 145k', 'EUR 185k', 'EUR 240k'], per='per MW per year', stats_note='Illustrative example: gross market revenues of three BESS assets.',
   learn='How it works',
   which='Which one is yours?',
-  how_eyebrow='How it works', how_h='Our membership model',
+  how_eyebrow='How it works', how_h='BESS Benchmark membership',
   rules=[
-   ('Registration', 'New members submit 6 months of historical data and complete a 45-minute intake that takes care of collecting the relevant project information. A membership lasts at least 3 months and can be cancelled every month after that.'),
-   ('Participation', 'Members share their earnings every month, for instance by asking their optimizer to CC the ICM on its monthly performance report. The ICM anonymises the data and adds it to the BESS Benchmark.'),
+   ('Registration', 'New members submit 6 months of historical data and complete a 45-minute intake that collects the relevant project information. A membership lasts at least 3 months and can be cancelled every month after that.'),
+   ('Participation', 'Members share their earnings every month, for instance by asking their optimizer to CC the ICM on its monthly performance report. The ICM anonymizes the data and adds it to the BESS Benchmark.'),
    ('Contribution', 'Members pay a symbolic handling fee of 0.5% of what their BESS assets earned that month: EUR 75 for a project delivering EUR 15,000. After referring 5 members, the contribution drops to 0.1% for 6 months.'),
-   ('Give-to-get', 'Members only see the BESS Benchmark for the months to which they contributed. If no data is shared for August, September and October, the BESS Benchmark stays blank for those months. This also applies to financiers, installers and advisers.'),
-   ('Silent by design', 'The Dutch saying "geen bericht, goed bericht" (no news is good news) applies here. The ICM reaches out to members whose projects earn below 80% of the BESS Benchmark in at least 6 of the last 12 months. Otherwise, we keep quiet.'),
-   ('Proof of performance', 'The ICM helps translate the BESS Benchmark into input for negotiations, such as the right to terminate below 80% of the BESS Benchmark, and for insurance and warranty claims, such as what comparable assets earned during downtime.'),
+   ('Give-to-get', 'Members only see the BESS Benchmark for the months to which they contributed. If no data is shared for August, September and October, the BESS Benchmark stays blank for those months.'),
+   ('Silent by design', 'The Dutch saying "geen bericht, goed bericht" applies here. The ICM reaches out to members whose projects earn below 80% of the BESS Benchmark in at least 6 of the last 12 months. Otherwise, we prefer to keep quiet.'),
+   ('Proof of performance', 'The ICM commits to translating the BESS Benchmark into input for negotiations ("the right to terminate at <80% of the BESS Benchmark") and insurance or warranty claims ("comparable assets earned EUR X during the downtime").'),
   ],
   shot_alt='The BESS Benchmark app: project score, revenue per MW and the benchmark over the last 12 months (fictional example data)',
   story_note='Illustrative example. Change the numbers in cyan to see your own missed opportunity.',
@@ -47,7 +47,7 @@ T = {
   calc_mw='Battery size', calc_months='Period', calc_months_unit='months', calc_rev='Your revenue today',
   calc_assume='Assumption: comparable batteries earned 30% more per MW. Illustrative – the BESS Benchmark shows your real gap.',
   calc_you='Your battery', calc_bench='Comparable batteries', calc_missed='Missed opportunity over 6 months', calc_cta='Find out your real gap',
-  demo_eyebrow='How we can work together', demo_h='The BESS Benchmark brings clarity', demo_p='A BESS-to-BESS comparison of the EUR per MW per year earned by our members.', demo_note='Fictional example data.',
+  demo_eyebrow='How we can work together', demo_h='The BESS Benchmark', demo_p='Clarity is our goal. The ICM collects, anonymizes and creates a BESS-to-BESS comparison based on monthly BESS performance.', demo_note='Fictional example data.',
   demo_btn='Try the interactive demo', demo_title='BESS Benchmark – interactive demo (fictional data)', demo_new='Open in a new tab',
   shot_cap='The BESS Benchmark is a dynamic view on the EUR per MW per year of your assets and those of our other members. Fictional example data.',
   faq_link='Read the FAQ',
@@ -59,6 +59,7 @@ T = {
   roles='Open roles', careers='Careers',
   open_now='Open now', waitlist='Join the waitlist',
   p1=('BESS Benchmark','Compare your earnings BESS-to-BESS to understand the true value of your asset.'),
+  p1b=('BESS Backtest','Understand the drivers of your capture rate. A deep dive into the full potential of complex, co-located set-ups.'),
   p2=('BESS Broker','Outsource the search for a trusted optimizer. One form, a standardised process and terms banks appreciate.'),
   p3=('BESS Bridge','Switch optimizers without going dark. Our API platform connects optimizers with local infra.'),
   contact_eyebrow='Talk to us', contact_h='Book time with us', contact_p='',
@@ -72,7 +73,7 @@ T = {
   faq_title='Frequently asked questions – BESS Benchmark | The ICM', faq_desc='Answers to common questions about the BESS Benchmark: data, costs, privacy and who can join.',
   faq_h='Frequently asked questions', faq_lead='Short answers about the BESS Benchmark. Missing something? Just ask us.', faq_more='Still have a question?',
   faqs=[
-   ('How does the BESS Benchmark help me?', '<ul><li><b>Are we doing well?</b> See at a glance how much more or less your batteries earn than comparable batteries. Apples with apples, pears with pears. All data is anonymised.</li><li><b>What does an outage cost?</b> Insurance and warranty claims stand stronger with independent figures on what comparable batteries earned in the meantime.</li><li><b>Who pays for an optimizer that disappoints?</b> A benchmark lets you negotiate a floor with your optimizer, such as "at least 80% of the benchmark".</li><li><b>Is the business case realistic?</b> What comparable batteries really earned is a check on bankable forecasts, and a basis for sizing your next project and for performance warranties.</li></ul>'),
+   ('How does the BESS Benchmark help me?', '<ul><li><b>Are we doing well?</b> See at a glance how much more or less your batteries earn than comparable batteries. Apples with apples, pears with pears. All data is anonymized.</li><li><b>What does an outage cost?</b> Insurance and warranty claims stand stronger with independent figures on what comparable batteries earned in the meantime.</li><li><b>Who pays for an optimizer that disappoints?</b> A benchmark lets you negotiate a floor with your optimizer, such as "at least 80% of the benchmark".</li><li><b>Is the business case realistic?</b> What comparable batteries really earned is a check on bankable forecasts, and a basis for sizing your next project and for performance warranties.</li></ul>'),
    ('How is this different from backtests, forecasts and battery indices?', 'Backtests, bankable forecasts and indices model what a battery could earn, with fixed assumptions. The BESS Benchmark shows what batteries actually earned: real revenues from optimizers\' statements, including grid restrictions, downtime and degradation. That makes it the reality check for those models.'),
    ('Which batteries can join?', 'Batteries in the Netherlands that an optimizer trades under a merchant contract. We focus on assets of 3 to 30 MW and decide per project in the intake.'),
    ('How does it work?', '<ol><li>A 45-minute intake, in which we go through your projects together.</li><li>You sign the membership form online and confirm the project form.</li><li>You share 6 months of history, then every month your optimizer\'s statement, for example by asking your optimizer to copy bessbenchmark@icm.energy.</li><li>Every month you see your project score online.</li></ol>'),
@@ -308,7 +309,7 @@ def home(t):
     <span class="eyebrow why-eyebrow">{t['why_eyebrow']}</span>
     <div class="story" id="calculator" aria-live="polite">
       <p class="story-h">It's a waste to miss out on <b class="out" id="s-missed">EUR 555,000</b> a year.</p>
-      <p class="story-p">A similar BESS asset, same size and setup, can deliver <a class="story-link" href="https://www.flower.se/insights/case/ra-energy-switch-optimizer/" target="_blank" rel="noopener">30% more revenue</a>. A <input class="in" id="s-mw" type="number" min="1" max="500" step="1" value="10" aria-label="Project size in MW"> MW project could have earned <b class="out" id="s-peer">EUR 240.5k</b> per MW per year, instead of the EUR <input class="in" id="s-rev" type="number" min="1" max="1000" step="1" value="185" aria-label="Revenue it delivered, in thousand euro per MW per year">k per MW per year it delivered. That's a missed opportunity of <b class="out" id="s-up">EUR 55.5k</b> per MW.<span class="info-i"><button type="button" aria-label="About these numbers">i</button><span class="info-pop" role="tooltip">{t['story_note']}</span></span> {t['why_p']}</p>
+      <p class="story-p">A similar BESS asset, same size and setup, can deliver <a class="story-link" href="https://www.flower.se/insights/case/ra-energy-switch-optimizer/" target="_blank" rel="noopener">30% more revenue</a>. A <input class="in" id="s-mw" type="number" min="1" max="500" step="1" value="10" aria-label="Project size in MW"> MW project could have earned <b class="out" id="s-peer">EUR 240.5k</b> per MW per year, instead of the EUR <input class="in" id="s-rev" type="number" min="1" max="1000" step="1" value="185" aria-label="Revenue it delivered, in thousand euro per MW per year">k per MW per year it delivered. That's a missed opportunity of <b class="out" id="s-up">EUR 55.5k</b> per MW.<span class="info-i"><button type="button" aria-label="About these numbers">i</button><span class="info-pop" role="tooltip">{t['story_note']}</span></span></p>
     </div>
     <div class="cta-row"><a class="btn btn-lilac" href="#contact">{t['book']}</a><a class="btn btn-outline" href="#demo">{t['more']}</a></div>
   </div>
@@ -361,6 +362,7 @@ def home(t):
     </div>
     <div class="more-grid more-stack">
       <article><span class="tag">{t['open_now']}</span><h3>{t['p1'][0]}</h3><p>{t['p1'][1]}</p></article>
+      <article><a class="tag soft" href="#contact">{t['waitlist']}</a><h3>{t['p1b'][0]}</h3><p>{t['p1b'][1]}</p></article>
       <article><a class="tag soft" href="#contact">{t['waitlist']}</a><h3>{t['p2'][0]}</h3><p>{t['p2'][1]}</p></article>
       <article><a class="tag soft" href="#contact">{t['waitlist']}</a><h3>{t['p3'][0]}</h3><p>{t['p3'][1]}</p></article>
     </div>
@@ -466,7 +468,7 @@ FORMULAS = [
 ]
 md = open(os.path.join(ROOT, '_build', 'methodology.md'), encoding='utf-8').read()
 md = re.sub(r'^# .*\n', '', md, count=1)
-version = re.search(r'Methodology version ([\d.]+) of ([^,]+),', md)
+version = re.search(r'This is version ([\d.]+) of ([^.]+)\.', md)
 blocks = re.findall(r'```latex\n.*?\n```', md, flags=re.S)
 for i, b in enumerate(blocks):
     md = md.replace(b, f'[[F{i}]]')
@@ -490,7 +492,7 @@ toc_html = '\n'.join(f'<li><a href="#{a}">{b}</a></li>' for a, b in toc)
 te = T['en']
 ld = {"@context": "https://schema.org", "@type": "TechArticle", "headline": "BESS Benchmark methodology", "version": version.group(1), "inLanguage": "en",
       "publisher": {"@type": "Organization", "name": "Independent Capacity Market B.V.", "url": "https://icm.energy/"}}
-page = head(te, 'BESS Benchmark methodology – how we calculate revenue per MW | The ICM',
+page = head(te, 'BESS Benchmark methodology: how we calculate revenue per MW | The ICM',
             f'How the ICM calculates the BESS Benchmark and the Project Score: data, quality control, active hours, duration bands, filters, anonymity thresholds and corrections. Version {version.group(1)}.',
             '/methodology/', None, ld, f'BESS Benchmark methodology, version {version.group(1)}') + f"""
 <div class="hero-shell">
@@ -498,8 +500,8 @@ page = head(te, 'BESS Benchmark methodology – how we calculate revenue per MW 
 {nav(te, '/nl/')}
     <div class="page-hero" id="main">
       <span class="eyebrow">BESS Benchmark · Methodology v{version.group(1)} · {version.group(2)}</span>
-      <h1>How we calculate the benchmark</h1>
-      <p>Every rule that determines a Benchmark or a Project Score – from the data we collect to how we keep peers anonymous.</p>
+      <h1>How we calculate the BESS Benchmark</h1>
+      <p>From the data we collect and anonymize to how we present the results.</p>
     </div>
   </div>
 </div>
