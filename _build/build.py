@@ -38,6 +38,7 @@ T = {
    ('Give-to-get', 'Members\' data is anonymised and added to the BESS Benchmark; members only see the BESS Benchmark for the months to which they have contributed. The same "give-to-get" principle applies to financiers, installers and advisers who want access.'),
   ],
   shot_alt='The BESS Benchmark app: project score, revenue per MW and the benchmark over the last 12 months (fictional example data)',
+  demo_eyebrow='See it in action', demo_h='Your EUR per MW per year, next to the BESS Benchmark', demo_p='The BESS Benchmark is a dynamic view on the EUR per MW per year of your assets and those of our other members.', demo_note='Fictional example data.',
   demo_btn='Try the interactive demo →', demo_title='BESS Benchmark – interactive demo (fictional data)', demo_new='Open in a new tab',
   shot_cap='The BESS Benchmark is a dynamic view on the EUR per MW per year of your assets and those of our other members. Fictional example data.',
   faq_link='Read the FAQ →',
@@ -308,31 +309,37 @@ def home(t):
   </div>
 </section>
 
+<section class="demo-section" id="demo">
+  <div class="wrap">
+    <div class="section-head center">
+      <span class="eyebrow">{t['demo_eyebrow']}</span>
+      <h2>{t['demo_h']}</h2>
+      <p>{t['demo_p']}</p>
+    </div>
+    <figure class="shot shot-wide">
+      <a class="demo-open" href="/demo/" data-demo><img src="/assets/benchmark-preview.jpg" width="1600" height="1016" alt="{t['shot_alt']}" loading="lazy"><span class="demo-badge">{t['demo_btn']}</span></a>
+      <figcaption>{t['demo_note']}</figcaption>
+    </figure>
+    <dialog class="demo-dialog" id="demo-dialog" aria-label="{t['demo_btn']}">
+      <div class="demo-bar"><span></span><a href="/demo/" target="_blank" rel="noopener">{t['demo_new']}</a><button type="button" data-close aria-label="Close">×</button></div>
+      <iframe title="{t['demo_title']}" loading="lazy"></iframe>
+    </dialog>
+  </div>
+</section>
+
 <section class="rules-wrap" id="how">
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">{t['how_eyebrow']}</span>
       <h2>{t['how_h']}</h2>
     </div>
-    <div class="model">
-      <div>
-        <div class="rules-stack">
+    <div class="rules-row">
 {rules}
-        </div>
-        <div class="cta-row" style="justify-content:flex-start;margin-top:32px">
-          <a class="btn btn-lilac" href="#contact">{t['book']}</a>
-          <a class="btn btn-outline teal" href="{b}faq/">{t['faq_link']}</a>
-        </div>
-      </div>
-      <figure class="shot">
-        <a class="demo-open" href="/demo/" data-demo><img src="/assets/benchmark-preview.jpg" width="1600" height="1016" alt="{t['shot_alt']}" loading="lazy"><span class="demo-badge">{t['demo_btn']}</span></a>
-        <figcaption>{t['shot_cap']}</figcaption>
-      </figure>
     </div>
-    <dialog class="demo-dialog" id="demo-dialog" aria-label="{t['demo_btn']}">
-      <div class="demo-bar"><span></span><a href="/demo/" target="_blank" rel="noopener">{t['demo_new']}</a><button type="button" data-close aria-label="Close">×</button></div>
-      <iframe title="{t['demo_title']}" loading="lazy"></iframe>
-    </dialog>
+    <div class="cta-row" style="justify-content:flex-start;margin-top:36px">
+      <a class="btn btn-lilac" href="#contact">{t['book']}</a>
+      <a class="btn btn-outline teal" href="{b}faq/">{t['faq_link']}</a>
+    </div>
   </div>
 </section>
 

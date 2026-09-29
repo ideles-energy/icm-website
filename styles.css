@@ -327,3 +327,10 @@ footer { background: var(--ink); color: rgba(255,255,255,.75); padding: 56px 0 4
   .stat-icon svg { width: 56px; height: 33px; }
   .stat p span { margin-top: 4px; font-size: 16px; }
 }
+
+/* Demo section */
+.demo-section { background: var(--mist); }
+.shot-wide { max-width: 1080px; margin: 0 auto; }
+.shot-wide figcaption { text-align: center; }
+.rules-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+@media (max-width: 900px) { .rules-row { grid-template-columns: 1fr; gap: 22px; } }
