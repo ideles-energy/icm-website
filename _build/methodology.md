@@ -54,7 +54,7 @@ We use two sources: the project form, completed once per Project, and the monthl
 
 **How Project Results reach us.** The Member uploads them to its dedicated Box folder, or asks its Optimizer to copy bessbenchmark@icm.energy. If the optimizer contract restricts sharing, the Member and the Optimizer first sign the Mandate. At registration, the Member provides at least the 6 most recent Historical Months.
 
-**Extraction and checks.** Amounts are in euros, excluding VAT. The Member sees the extracted amounts in app.icm.energy and can correct them. How we check the data is set out under "Quality control".
+**Extraction and checks.** Amounts are in euros, excluding VAT. The Member sees the extracted amounts and can correct them. How we check the data is set out under "Quality control".
 
 ## Quality control
 
@@ -217,7 +217,7 @@ A Member sees the Benchmark for a calendar month only if it provided Project Res
 - Historical Months provided at registration count, so a new Member sees at least 6 months from the start.
 - A Project Score or asset score for a month appears only for Projects and assets with Project Results for that month. Otherwise the month shows "No invoice".
 - If Project Results arrive late, access to that month opens once they are received and checked.
-- Access is per organisation: the Member's employees with an account on app.icm.energy see the same months.
+- Access is per organisation: the Member's employees with access see the same months.
 
 ## Preliminary results, corrections and final results
 
@@ -225,12 +225,12 @@ Every Benchmark and Project Score is preliminary. A month becomes final once no 
 
 - **Late data.** Project Results received after a month is first published are added to that month's Benchmark. This can change the Benchmark and every Project Score for that month.
 - **Corrections.** If an Optimizer corrects Project Results, we replace the old figures and recalculate the Benchmark and Project Scores for the months affected. The Membership Fee is adjusted to the corrected Gross Revenue.
-- **Marking.** Preliminary months carry a "Preliminary" tag in the app and in reports.
+- **Marking.** Preliminary months carry a "Preliminary" tag on screen and in reports.
 - **After a month is final.** We only change a final month to correct a clear error, and we record the change in the changelog. Final results are not a warranty of accuracy.
 
 ## Changes to this methodology
 
-We publish every change with a new version number and date on app.icm.energy and icm.energy, and inform Members by email. Article 1.6 of the Terms applies.
+We publish every change with a new version number and date on icm.energy, and inform Members by email. Article 1.6 of the Terms applies.
 
 - **Recalculation.** After a change, we recalculate all past months under the new version, so every period shown uses the same rules.
 - **Comparability.** If past months cannot be recalculated, we mark them as not comparable.
