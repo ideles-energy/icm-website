@@ -507,7 +507,7 @@ demo = demo.replace("document.querySelectorAll('.seg[data-key]').forEach(el=>{\n
 # summary tiles follow the filters (decided 29 Sept 2026)
 demo = demo.replace('function summary(){\n  const f=DEF,', 'function summary(){\n  const f=st,')
 # a way back to the website (target=_top also works when the demo is shown inside the homepage dialog)
-back = ('<div style="background:#061530;border-bottom:1px solid #1C3356;margin:-20px -16px 20px;padding:10px 16px;font:600 14px Figtree,system-ui,sans-serif">'
+back = ('<div class="no-report" style="background:#061530;border-bottom:1px solid #1C3356;margin:-20px -16px 20px;padding:10px 16px;font:600 14px Figtree,system-ui,sans-serif">'
         '<a href="/#how" target="_top" style="color:#97F2F5;text-decoration:none">← Back to icm.energy</a></div>')
 demo = demo.replace('<div class="wrap" id="page1">', back + '\n<div class="wrap" id="page1">', 1)
 write('demo/index.html', demo)
