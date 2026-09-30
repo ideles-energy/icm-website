@@ -81,7 +81,7 @@ T = {
    ('How long do I commit to the BESS Benchmark?', 'New members are asked to stay at least 3 months. After that, membership renews monthly.'),
    ('Who sees my data?', 'Only the member and the ICM see the raw data. The ICM anonymizes submitted information before it adds it to the BESS Benchmark. We do not share individual member data with other members, or third parties. The BESS Benchmark itself is based on aggregated, anonymized information.'),
    ('Can I share my results?', 'Yes. You may share your BESS Benchmark freely. It\'s yours and may benefit conversations with your installer, adviser and financier.'),
-   ('I advise or finance BESS assets. Can we work together?', 'Yes. Members may share their BESS Benchmark with their advisers and financiers. If you would like to introduce an owner or explore working together, please reach out to <a href="mailto:ideles@icm.energy">ideles@icm.energy</a>.'),
+   ('I advise or finance BESS assets. Can we work together?', 'Yes. Reach out to <a href="mailto:ideles@icm.energy">ideles@icm.energy</a> to explore the options to work together and join our partner network.'),
    ('How is the benchmark calculated?', 'The BESS Benchmark divides revenues by MW and annualizes the result to show EUR per MW per year. Several filters allow members to compare batteries with a similar duration and set-up. Unavailable hours are excluded (maintenance, fault). Results are preliminary for 3 months, anticipating potential corrections.'),
    ('Why do BESS assets earn differently?', 'Various factors restrict the full earnings potential of a battery: (i) the battery itself (e.g., round-trip efficiency, minimum/maximum state of charge) and its local set-up (e.g., size of the grid connection, congestion contract), (ii) the markets it is active in and (iii) maintenance and malfunctions are the most commonly mentioned factors.'),
    ('Can I see which optimizer performs best?', 'No. The BESS Benchmark does not show results per optimizer, or rankings of optimizers. You can compare your battery with peers that use the same or other optimizers, without names. Our BESS Broker proposition is designed to source and evaluate optimizers for you.'),
@@ -433,17 +433,17 @@ def faq(t):
 
 def terms(t):
     body = f'    <div class="prose">{t["terms_body"]}</div>'
-    return simple_page(t, t['base'] + 'terms/', t['other'] + 'terms/', t['terms_title'], t['terms_title'], t['terms_h'], '', body)
+    return simple_page(t, t['base'] + 'terms/', t['other'] + 'terms/', t['terms_title'], 'How to receive the Terms & Conditions of the BESS Benchmark by the Independent Capacity Market.', t['terms_h'], '', body)
 
 def privacy(t):
     secs = ''.join(f'<h2>{h}</h2><p>{p}</p>' for h, p in PRIVACY[t['lang']])
     body = f'    <div class="prose">{secs}<p style="color:var(--muted);font-size:14px">29-09-2026</p></div>'
-    return simple_page(t, t['base'] + 'privacy/', t['other'] + 'privacy/', t['privacy_title'], t['privacy_title'], t['privacy_h'], '', body)
+    return simple_page(t, t['base'] + 'privacy/', t['other'] + 'privacy/', t['privacy_title'], 'How the Independent Capacity Market handles personal data from its website and contact form.', t['privacy_h'], '', body)
 
 ROLES = [('Founders Associate', 'Amsterdam'), ('Commercial Lead', 'Amsterdam'), ('Legal Counsel', 'Amsterdam')]
 
-def page_shell(t, path, title, desc, hero, body):
-    return head(t, title, desc, path) + f'''
+def page_shell(t, path, title, desc, hero, body, jsonld=None):
+    return head(t, title, desc, path, None, jsonld) + f'''
 <div class="hero-shell">
   <div class="wrap">
 {nav(t, path)}
@@ -503,10 +503,11 @@ def company(t):
   <div class="wrap">
     <h2>Meet the team</h2>
     <div class="team">
-      <a class="member" href="https://www.linkedin.com/in/idel%C3%A8s-kaandorp/" target="_blank" rel="noopener"><span class="ph ph-empty">IK</span><b>Idelès Kaandorp</b><em>LinkedIn →</em></a>
+      <a class="member" href="https://www.linkedin.com/in/idel%C3%A8s-kaandorp/" target="_blank" rel="noopener"><img class="ph" src="/assets/team-ideles.jpg" alt="Idelès Kaandorp" width="600" height="600" loading="lazy"><b>Idelès Kaandorp</b><em>LinkedIn →</em></a>
       <a class="member" href="https://www.linkedin.com/in/edo-rivai-78b66a17/" target="_blank" rel="noopener"><img class="ph" src="/assets/team-edo.jpg" alt="Edo Rivai" width="192" height="192" loading="lazy"><b>Edo Rivai</b><em>LinkedIn →</em></a>
       <div class="member tbc"><span class="ph ph-empty"></span><b>Coming soon</b><em>&nbsp;</em></div>
     </div>
+    <div class="team-cta"><a class="btn btn-lilac" href="/#contact">Get in touch →</a></div>
   </div>
 </section>
 <section class="co-careers" id="careers">
@@ -521,7 +522,10 @@ def company(t):
     </ul>
   </div>
 </section>'''
-    return page_shell(t, '/company/', 'Company | The ICM', 'About the Independent Capacity Market: who we are and open roles in Amsterdam.', hero, body)
+    ld = {"@context": "https://schema.org", "@type": "AboutPage", "url": "https://icm.energy/company/", "mainEntity": {"@type": "Organization", "@id": "https://icm.energy/#org", "name": "Independent Capacity Market B.V.", "alternateName": "The ICM", "url": "https://icm.energy/",
+          "founder": {"@type": "Person", "name": "Idelès Kaandorp", "sameAs": "https://www.linkedin.com/in/idel%C3%A8s-kaandorp/"},
+          "employee": [{"@type": "Person", "name": "Idelès Kaandorp", "sameAs": "https://www.linkedin.com/in/idel%C3%A8s-kaandorp/"}, {"@type": "Person", "name": "Edo Rivai", "sameAs": "https://www.linkedin.com/in/edo-rivai-78b66a17/"}]}}
+    return page_shell(t, '/company/', 'Company | The ICM', 'About the Independent Capacity Market: who we are, our team and open roles in Amsterdam.', hero, body, ld)
 
 REDIRECT = '''<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Careers | The ICM</title><meta name="robots" content="noindex"><link rel="canonical" href="https://icm.energy/company/#careers"><meta http-equiv="refresh" content="0; url=/company/#careers"></head><body><a href="/company/#careers">Careers have moved to our company page.</a></body></html>'''
 

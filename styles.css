@@ -588,3 +588,4 @@ body, .section-head p, .rule p, .more-grid p, .faq details p, .faq li, .res-card
 .rules-wrap .section-head p { margin-top: 12px; }
 @media (max-width: 760px) { .team { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } .member.tbc { display: none; } }
 .member img.ph { height: auto; }
+.team-cta { display: flex; justify-content: center; margin-top: 48px; }
