@@ -37,7 +37,7 @@ T = {
    ('Participation', 'Members share their earnings every month, for instance by asking their optimizer to CC the ICM on its monthly performance report. The ICM anonymizes the data and adds it to the BESS Benchmark.'),
    ('Contribution', 'Members pay a symbolic handling fee of 0.5% of what their BESS assets earned that month: EUR 75 for a project delivering EUR 15,000. After referring 5 members, the contribution drops to 0.1% for 6 months.'),
    ('Give-to-get', 'Members only see the BESS Benchmark for the months to which they contributed. If no data is shared for August, September and October, the BESS Benchmark stays blank for those months.'),
-   ('Silent by design', 'The Dutch saying "geen bericht, goed bericht" applies here. The ICM reaches out to members whose projects earn below 80% of the BESS Benchmark in at least 6 of the last 12 months. Otherwise, we prefer to keep quiet.'),
+   ('Silent by design', 'The Dutch saying "geen bericht, goed bericht" applies here. The ICM reaches out to members whose projects earn below 80% of the BESS Benchmark in at least 6 of the last 12 months. Otherwise, we prefer not to bother you.'),
    ('Proof of performance', 'The BESS Benchmark can serve as concrete input for negotiations and insurance/warranty claims ("comparable assets earned EUR X during downtime").'),
   ],
   shot_alt='The BESS Benchmark app: project score, revenue per MW and the benchmark over the last 12 months (fictional example data)',
@@ -81,6 +81,7 @@ T = {
    ('How long do I commit to the BESS Benchmark?', 'New members are asked to stay at least 3 months. After that, membership renews monthly.'),
    ('Who sees my data?', 'Only the member and the ICM see the raw data. The ICM anonymizes submitted information before it adds it to the BESS Benchmark. We do not share individual member data with other members, or third parties. The BESS Benchmark itself is based on aggregated, anonymized information.'),
    ('Can I share my results?', 'Yes. You may share your BESS Benchmark freely. It\'s yours and may benefit conversations with your installer, adviser and financier.'),
+   ('I advise or finance BESS assets. Can we work together?', 'Yes. Members may share their BESS Benchmark with their advisers and financiers. If you would like to introduce an owner or explore working together, please reach out to <a href="mailto:ideles@icm.energy">ideles@icm.energy</a>.'),
    ('How is the benchmark calculated?', 'The BESS Benchmark divides revenues by MW and annualizes the result to show EUR per MW per year. Several filters allow members to compare batteries with a similar duration and set-up. Unavailable hours are excluded (maintenance, fault). Results are preliminary for 3 months, anticipating potential corrections.'),
    ('Why do BESS assets earn differently?', 'Various factors restrict the full earnings potential of a battery: (i) the battery itself (e.g., round-trip efficiency, minimum/maximum state of charge) and its local set-up (e.g., size of the grid connection, congestion contract), (ii) the markets it is active in and (iii) maintenance and malfunctions are the most commonly mentioned factors.'),
    ('Can I see which optimizer performs best?', 'No. The BESS Benchmark does not show results per optimizer, or rankings of optimizers. You can compare your battery with peers that use the same or other optimizers, without names. Our BESS Broker proposition is designed to source and evaluate optimizers for you.'),
@@ -294,7 +295,7 @@ def home(t):
         <p class="lead">{t['lead']}</p>
         <div class="hero-ctas">
           <a class="btn btn-lilac" href="#contact">{t['book']}</a>
-          <a class="btn btn-outline" href="#how">{t['how_link']}</a>
+          <a class="btn btn-outline" href="#demo">{t['how_link']}</a>
         </div>
       </div>
     </div>
@@ -344,6 +345,7 @@ def home(t):
     <div class="section-head">
       <span class="eyebrow">{t['how_eyebrow']}</span>
       <h2>{t['how_h']}</h2>
+      <p>For merchant-traded BESS assets of 3 to 30 MW in the Netherlands.</p>
     </div>
     <div class="rules-row">
 {rules}
@@ -380,6 +382,7 @@ def home(t):
     <div class="intro">
       <span class="eyebrow" style="color:var(--teal)">{t['contact_eyebrow']}</span>
       <h2>{t['contact_h']}</h2>
+      <p>Our starting point is a 45-minute call to understand your context and objectives.</p>
       <p>{t['prefer']} <a href="mailto:{EMAIL}">{EMAIL}</a></p>
     </div>
     <div class="form fillout">
@@ -493,6 +496,16 @@ def company(t):
       <p>We believe in a new standard: an independent benchmark based on real assets, backtesting that looks at all constraints, access to trusted optimizers, and switching made less costly and less risky.</p>
       <p>A more transparent flex space rewards optimizers that perform, builds a stronger grid in uncertain times, and delivers more affordable power to us all.</p>
       <a class="btn btn-lilac" href="/#contact">Talk to us</a>
+    </div>
+  </div>
+</section>
+<section class="dark co-team">
+  <div class="wrap">
+    <h2>Meet the team</h2>
+    <div class="team">
+      <a class="member" href="https://www.linkedin.com/in/idel%C3%A8s-kaandorp/" target="_blank" rel="noopener"><span class="ph ph-empty">IK</span><b>Idelès Kaandorp</b><em>LinkedIn →</em></a>
+      <a class="member" href="https://www.linkedin.com/in/edo-rivai-78b66a17/" target="_blank" rel="noopener"><img class="ph" src="/assets/team-edo.jpg" alt="Edo Rivai" width="192" height="192" loading="lazy"><b>Edo Rivai</b><em>LinkedIn →</em></a>
+      <div class="member tbc"><span class="ph ph-empty"></span><b>Coming soon</b><em>&nbsp;</em></div>
     </div>
   </div>
 </section>

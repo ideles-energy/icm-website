@@ -574,3 +574,17 @@ body, .section-head p, .rule p, .more-grid p, .faq details p, .faq li, .res-card
 .co-grid .co-label { font-size: 13px; }
 .prose p[style] { font-size: 13px !important; }
 .contact .intro p { font-size: 17px; }
+
+/* v13: team */
+.co-team { padding: 24px 0 88px; }
+.co-team h2 { color: var(--cyan); font-size: clamp(30px, 3.2vw, 40px); font-weight: 600; margin: 0 0 36px; }
+.team { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 36px; }
+.member { text-decoration: none; color: var(--white); display: block; }
+.member .ph { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 14px; display: flex; align-items: center; justify-content: center; background: #0B1A30; border: 1px solid rgba(255,255,255,.1); color: var(--cyan); font-size: 40px; font-weight: 600; }
+.member b { display: block; margin-top: 18px; font-size: 17px; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; }
+.member em { font-style: normal; font-size: 15px; color: var(--cyan); }
+.member:hover em { text-decoration: underline; }
+.member.tbc { opacity: .4; }
+.rules-wrap .section-head p { margin-top: 12px; }
+@media (max-width: 760px) { .team { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } .member.tbc { display: none; } }
+.member img.ph { height: auto; }
