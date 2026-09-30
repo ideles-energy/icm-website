@@ -81,13 +81,13 @@ T = {
    ('How long do I commit to the BESS Benchmark?', 'New members are asked to stay at least 3 months. After that, membership renews monthly.'),
    ('Who sees my data?', 'Only the member and the ICM see the raw data. The ICM anonymizes submitted information before it adds it to the BESS Benchmark. We do not share individual member data with other members, or third parties. The BESS Benchmark itself is based on aggregated, anonymized information.'),
    ('Can I share my results?', 'Yes. You may share your BESS Benchmark freely. It\'s yours and may benefit conversations with your installer, adviser and financier.'),
-   ('How is the benchmark calculated?', 'The BESS Benchmark divides revenues by MW and annualizes the result to show EUR per MW per year. Several filters allow members to compare batteries with a similar duration and set-up. Unavailable hours are excluded (maintenance, fault). Results are preliminary for 3 months, anticipating potential corrections. All choices made are in the methodology.'),
+   ('How is the benchmark calculated?', 'The BESS Benchmark divides revenues by MW and annualizes the result to show EUR per MW per year. Several filters allow members to compare batteries with a similar duration and set-up. Unavailable hours are excluded (maintenance, fault). Results are preliminary for 3 months, anticipating potential corrections.'),
    ('Why do BESS assets earn differently?', 'Various factors restrict the full earnings potential of a battery: (i) the battery itself (e.g., round-trip efficiency, minimum/maximum state of charge) and its local set-up (e.g., size of the grid connection, congestion contract), (ii) the markets it is active in and (iii) maintenance and malfunctions are the most commonly mentioned factors.'),
    ('Can I see which optimizer performs best?', 'No. The BESS Benchmark does not show results per optimizer, or rankings of optimizers. You can compare your battery with peers that use the same or other optimizers, without names. Our BESS Broker proposition is designed to source and evaluate optimizers for you.'),
    ('Is the ICM independent?', 'Yes. We do not own BESS assets. We are not an optimizer. Nor will we ever be. For more information about our governance, please reach out to <a href="mailto:ideles@icm.energy">ideles@icm.energy</a>.'),
   ],
   terms_title='Terms & Conditions | The ICM', terms_h='Terms & Conditions',
-  terms_body='<p>The Terms &amp; Conditions of the BESS Benchmark are shared with every prospective member before signing, together with the methodology.</p><p>Would you like to read them first? Email <a href="mailto:ideles@icm.energy">ideles@icm.energy</a> and we will send you the current version.</p>',
+  terms_body='<p>The Terms &amp; Conditions of the BESS Benchmark are shared with every prospective member before signing.</p><p>Would you like to read them first? Email <a href="mailto:ideles@icm.energy">ideles@icm.energy</a> and we will send you the current version.</p>',
   privacy_title='Privacy statement | The ICM', privacy_h='Privacy statement',
  ),
  'nl': dict(
@@ -461,9 +461,10 @@ def resources(t):
     body = f'''<main class="res">
   <section class="wrap res-sec">
     <h2>Documents</h2>
+    <p class="res-lead">Find answers to common questions about the BESS Benchmark, or request access to our API documents. Can't find what you need? Just ask us.</p>
     <div class="res-cards">
       <div class="res-card"><span>Access our API documents here</span><a class="btn btn-lilac" href="/#contact">Access →</a></div>
-      <div class="res-card"><span>Frequently asked questions</span><a class="btn btn-lilac" href="/faq/">Read →</a></div>
+      <div class="res-card"><span>BESS Benchmark FAQ</span><a class="btn btn-lilac" href="/faq/">Read →</a></div>
     </div>
   </section>
   <section class="wrap res-sec">
@@ -501,7 +502,7 @@ def company(t):
     <h2 class="co-big">A more equitable grid.<span>Do work that matters with people who care.</span></h2>
     <hr>
     <h3>Current open roles:</h3>
-    <p class="co-open">If no positions are showing below, you're welcome to submit an open application including your CV and what you'd want to achieve at the ICM to <a href="mailto:{EMAIL}">{EMAIL}</a>.</p>
+    <p class="co-open">You're welcome to submit an open application including your CV and what you'd want to achieve at the ICM to <a href="mailto:{EMAIL}">{EMAIL}</a>.</p>
     <ul class="co-roles">
 {rows}
     </ul>

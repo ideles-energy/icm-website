@@ -559,3 +559,18 @@ footer { background: var(--night); }
 .co-careers hr, .co-open, .co-roles { max-width: none; }
 .co-careers h3 { font-size: clamp(26px, 2.8vw, 34px); }
 .f-mail p { margin: 6px 0 0; font-size: 12px; color: rgba(255,255,255,.7); }
+
+/* v12: one type scale: 13 / 15 / 17 / 20 / 24 / 40 / 52 */
+.eyebrow, .tag, .legal, .f-legal, .f-mail p, .why-legend .unit, .shot figcaption, .demo-section figcaption, .co-label, .soon { font-size: 13px; }
+.nav-links a, .sub-btn, .btn, .story .hint, .why-legend, .demo-badge, .co-open, .foot2, .f-name, .f-tag, .f-links a { font-size: 15px; }
+body, .section-head p, .rule p, .more-grid p, .faq details p, .faq li, .res-card, .res-lead, .co-grid p, .co-roles li, .prose p, .intro p { font-size: 17px; }
+.hero .lead, .story-p, .page-hero p, .faq summary { font-size: 20px; }
+.rule h3, .more-grid h3, .co-careers h3, .prose h2, .co-big span { font-size: 24px; }
+.section-head h2, .story-h, .res h2, .co-big, .co-why h2 { font-size: clamp(30px, 3.2vw, 40px); }
+.hero h1, .page-hero h1 { font-size: clamp(38px, 4.2vw, 52px); }
+.co-big span { font-size: 24px; }
+.contact h2, .intro h2 { font-size: clamp(30px, 3.2vw, 40px); }
+.contact p, .intro p, .more .section-head p, .about-grid p { font-size: 17px; }
+.co-grid .co-label { font-size: 13px; }
+.prose p[style] { font-size: 13px !important; }
+.contact .intro p { font-size: 17px; }
