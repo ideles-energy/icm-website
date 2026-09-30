@@ -41,7 +41,7 @@ T = {
    ('Proof of performance', 'The BESS Benchmark can serve as concrete input for negotiations and insurance/warranty claims ("comparable assets earned EUR X during downtime").'),
   ],
   shot_alt='The BESS Benchmark app: project score, revenue per MW and the benchmark over the last 12 months (fictional example data)',
-  story_note='Illustrative example. Change the numbers in cyan to see your own missed opportunity.',
+  story_note='Fill in your own numbers. Illustrative example.',
   calc_eyebrow='Calculator', calc_h='What is your missed opportunity?',
   calc_p='Enter your battery and what it earns today. See what you could have earned if it had matched comparable batteries.',
   calc_mw='Battery size', calc_months='Period', calc_months_unit='months', calc_rev='Your revenue today',
@@ -67,7 +67,7 @@ T = {
   f_name='Name', f_company='Company', f_email='Email', f_mw='Portfolio or project size in MW',
   f_msg='Tell us a little bit about your context and objectives', f_ph='E.g., asset of 3-30 MW, trading revenues below expectations, interested in the BESS Benchmark',
   f_submit='Send', f_fine='We use your details only to contact you about the ICM.', f_ok='Thank you – we will be in touch.',
-  foot_tag='The Independent Capacity Market (“the ICM”) brings clarity, trusted partners and continuity to those adding capacity to the grid.',
+  foot_tag='The ICM brings clarity, trusted partners and continuity to those adding capacity to the grid.',
   founded='Founded by', foot_bench='Learn more', methodology='Methodology', contact='Contact',
   terms='Terms & Conditions', privacy='Privacy statement', disclaimer='Benchmark figures are outcome data as reported by optimizers, not advice.',
   faq_title='Frequently asked questions about the BESS Benchmark | The ICM', faq_desc='Answers to common questions about the BESS Benchmark: data, costs, privacy and who can join.',
@@ -222,30 +222,24 @@ def nav(t, other_href):
 def footer(t, other_href):
     b = t['base']
     return f'''<footer>
-  <div class="wrap">
-    <div class="foot">
-      <div>
-        <h3>The Independent Capacity Market</h3>
-        <p class="foot-tag">{t['foot_tag']}</p>
-        <p>{t['founded']} <a href="{LINKEDIN}" rel="noopener">Idelès Kaandorp</a>.</p>
-      </div>
-      <div>
-        <h3>{t['foot_bench']}</h3>
-        <ul>
-          <li><a href="{b}faq/">{t['nav_faq']}</a></li>
-          <li><a href="/methodology/">{t['methodology']}</a></li>
-          <li><a href="/careers/">{t.get('careers', 'Careers')}</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3>{t['contact']}</h3>
-        <ul>
-          <li><a href="mailto:{EMAIL}">{EMAIL}</a></li>
-{f'          <li><a href="{other_href}" hreflang="{t["other_lang"]}" lang="{t["other_lang"]}">{t["other_name"]}</a></li>' + chr(10) if len(LANGS) > 1 else ''}
-        </ul>
-      </div>
+  <div class="wrap foot2">
+    <div class="f-about">
+      <p class="f-name">The Independent Capacity Market</p>
+      <p class="f-tag">{t['foot_tag']}</p>
     </div>
-    <p class="legal"><span>© 2026 Independent Capacity Market B.V. · KvK 99958775</span><span><a href="{b}terms/">{t['terms']}</a></span><span><a href="{b}privacy/">{t['privacy']}</a></span></p>
+    <a class="f-logo" href="/" aria-label="The ICM, home">ICM</a>
+    <nav class="f-links" aria-label="Footer">
+      <a href="/#about">About</a>
+      <a href="{b}faq/">{t['nav_faq']}</a>
+      <a href="/methodology/">{t['methodology']}</a>
+      <a href="/careers/">{t.get('careers', 'Careers')}</a>
+    </nav>
+    <p class="f-mail"><a href="mailto:{EMAIL}">{EMAIL}</a></p>
+    <div class="f-legal">
+      <p>Website designed by Salt &amp; Chalk</p>
+      <p><a href="{b}terms/">{t['terms']}</a> | <a href="{b}privacy/">{t['privacy']}</a></p>
+      <p>© 2026 Independent Capacity Market B.V. · KvK 99958775</p>
+    </div>
   </div>
 </footer>
 '''
@@ -306,7 +300,8 @@ def home(t):
     <span class="eyebrow why-eyebrow">{t['why_eyebrow']}</span>
     <div class="story" id="calculator" aria-live="polite">
       <p class="story-h">It's a waste to miss out on <b class="out" id="s-missed">EUR 555,000</b> a year.</p>
-      <p class="story-p">A similar BESS asset, same size and setup, can deliver <a class="story-link" href="https://www.flower.se/insights/case/ra-energy-switch-optimizer/" target="_blank" rel="noopener">30% more revenue</a>. A <input class="in" id="s-mw" type="number" min="1" max="500" step="1" value="10" aria-label="Project size in MW"> MW project could have earned <b class="out" id="s-peer">EUR 240.5k</b> per MW per year, instead of the EUR <input class="in" id="s-rev" type="number" min="1" max="1000" step="1" value="185" aria-label="Revenue it delivered, in thousand euro per MW per year">k per MW per year it delivered. That's a missed opportunity of <b class="out" id="s-up">EUR 55.5k</b> per MW.<span class="info-i"><button type="button" aria-label="About these numbers">i</button><span class="info-pop" role="tooltip">{t['story_note']}</span></span></p>
+      <p class="story-p">A similar BESS asset, same size and setup, can deliver <a class="story-link" href="https://www.flower.se/insights/case/ra-energy-switch-optimizer/" target="_blank" rel="noopener">30% more revenue</a>. A <label class="pill"><input class="in" id="s-mw" type="number" min="1" max="500" step="1" value="10" aria-label="Project size in MW"><svg class="pen" viewBox="0 0 16 16" aria-hidden="true"><path d="M11.5 2.5l2 2L6 12l-2.8.8L4 10z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></label> MW project could have earned <b class="out" id="s-peer">EUR 240.5k</b> per MW per year, instead of the EUR <label class="pill"><input class="in" id="s-rev" type="number" min="1" max="1000" step="1" value="185" aria-label="Revenue it delivered, in thousand euro per MW per year"><svg class="pen" viewBox="0 0 16 16" aria-hidden="true"><path d="M11.5 2.5l2 2L6 12l-2.8.8L4 10z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></label>k per MW per year it delivered. That's a missed opportunity of <b class="out" id="s-up">EUR 55.5k</b> per MW.</p>
+      <p class="hint"><svg class="pen" viewBox="0 0 16 16" aria-hidden="true"><path d="M11.5 2.5l2 2L6 12l-2.8.8L4 10z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>{t['story_note']}</p>
     </div>
     <div class="cta-row"><a class="btn btn-lilac" href="#contact">{t['book']}</a><a class="btn btn-outline" href="#demo">{t['more']}</a></div>
     </div>

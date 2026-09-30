@@ -439,3 +439,29 @@ footer { background: var(--ink); color: rgba(255,255,255,.75); padding: 56px 0 4
 .why-legend .unit { flex-basis: 100%; color: rgba(255,255,255,.5); font-size: 13px; }
 @media (max-width: 900px) { .why-grid { grid-template-columns: 1fr; gap: 40px; } }
 @media (prefers-reduced-motion: reduce) { .why-fig .dd, .why-fig .dm { transition: none; } }
+
+/* v9: editable number pills (version A) */
+.story .pill { display: inline-flex; align-items: center; gap: 4px; background: rgba(151,241,244,.10); border: 1.5px solid rgba(151,241,244,.55); border-radius: 10px; padding: 0 8px 0 6px; line-height: 1.5; cursor: text; vertical-align: baseline; }
+.story .pill:focus-within { border-color: var(--cyan); background: rgba(151,241,244,.18); }
+.story .pill .in { border: 0; padding: 0; background: transparent; }
+.story .pill .in:focus { background: transparent; }
+.story .pen { width: .8em; height: .8em; color: var(--cyan); flex: none; }
+.story .hint { display: flex; align-items: center; gap: 8px; font-size: 15px; color: rgba(255,255,255,.65); margin-top: 14px; }
+/* v9: footer following the Canva design */
+footer { background: #020B1C; padding: 64px 0 40px; border-top: 1px solid rgba(255,255,255,.08); }
+.foot2 { display: grid; grid-template-columns: 1fr auto 1fr; grid-template-areas: "about logo links" "mail . legal"; column-gap: 48px; row-gap: 40px; align-items: start; font-size: 14px; color: rgba(255,255,255,.85); }
+.f-about { grid-area: about; max-width: 360px; }
+.f-name { color: var(--cyan); font-weight: 600; margin: 0 0 10px; }
+.f-tag { margin: 0; line-height: 1.5; }
+.f-logo { grid-area: logo; justify-self: center; color: var(--cyan); font-weight: 700; font-size: 44px; letter-spacing: .02em; text-decoration: none; line-height: 1; }
+.f-links { grid-area: links; justify-self: center; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.f-links a, .f-legal a { color: rgba(255,255,255,.9); text-decoration: none; }
+.f-links a:hover, .f-legal a:hover, .f-mail a:hover { text-decoration: underline; }
+.f-mail { grid-area: mail; margin: 0; }
+.f-mail a { color: var(--cyan); text-decoration: none; }
+.f-legal { grid-area: legal; justify-self: center; text-align: center; font-size: 12px; color: rgba(255,255,255,.8); }
+.f-legal p { margin: 2px 0; }
+@media (max-width: 760px) {
+  .foot2 { grid-template-columns: 1fr; grid-template-areas: "logo" "about" "links" "mail" "legal"; text-align: center; row-gap: 28px; }
+  .f-about { justify-self: center; }
+}

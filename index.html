@@ -89,7 +89,8 @@
     <span class="eyebrow why-eyebrow">Why it matters</span>
     <div class="story" id="calculator" aria-live="polite">
       <p class="story-h">It's a waste to miss out on <b class="out" id="s-missed">EUR 555,000</b> a year.</p>
-      <p class="story-p">A similar BESS asset, same size and setup, can deliver <a class="story-link" href="https://www.flower.se/insights/case/ra-energy-switch-optimizer/" target="_blank" rel="noopener">30% more revenue</a>. A <input class="in" id="s-mw" type="number" min="1" max="500" step="1" value="10" aria-label="Project size in MW"> MW project could have earned <b class="out" id="s-peer">EUR 240.5k</b> per MW per year, instead of the EUR <input class="in" id="s-rev" type="number" min="1" max="1000" step="1" value="185" aria-label="Revenue it delivered, in thousand euro per MW per year">k per MW per year it delivered. That's a missed opportunity of <b class="out" id="s-up">EUR 55.5k</b> per MW.<span class="info-i"><button type="button" aria-label="About these numbers">i</button><span class="info-pop" role="tooltip">Illustrative example. Change the numbers in cyan to see your own missed opportunity.</span></span></p>
+      <p class="story-p">A similar BESS asset, same size and setup, can deliver <a class="story-link" href="https://www.flower.se/insights/case/ra-energy-switch-optimizer/" target="_blank" rel="noopener">30% more revenue</a>. A <label class="pill"><input class="in" id="s-mw" type="number" min="1" max="500" step="1" value="10" aria-label="Project size in MW"><svg class="pen" viewBox="0 0 16 16" aria-hidden="true"><path d="M11.5 2.5l2 2L6 12l-2.8.8L4 10z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></label> MW project could have earned <b class="out" id="s-peer">EUR 240.5k</b> per MW per year, instead of the EUR <label class="pill"><input class="in" id="s-rev" type="number" min="1" max="1000" step="1" value="185" aria-label="Revenue it delivered, in thousand euro per MW per year"><svg class="pen" viewBox="0 0 16 16" aria-hidden="true"><path d="M11.5 2.5l2 2L6 12l-2.8.8L4 10z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></label>k per MW per year it delivered. That's a missed opportunity of <b class="out" id="s-up">EUR 55.5k</b> per MW.</p>
+      <p class="hint"><svg class="pen" viewBox="0 0 16 16" aria-hidden="true"><path d="M11.5 2.5l2 2L6 12l-2.8.8L4 10z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>Fill in your own numbers. Illustrative example.</p>
     </div>
     <div class="cta-row"><a class="btn btn-lilac" href="#contact">Talk to us</a><a class="btn btn-outline" href="#demo">Learn more</a></div>
     </div>
@@ -176,30 +177,24 @@
 </section>
 
 <footer>
-  <div class="wrap">
-    <div class="foot">
-      <div>
-        <h3>The Independent Capacity Market</h3>
-        <p class="foot-tag">The Independent Capacity Market (“the ICM”) brings clarity, trusted partners and continuity to those adding capacity to the grid.</p>
-        <p>Founded by <a href="https://www.linkedin.com/in/idel%C3%A8s-kaandorp/" rel="noopener">Idelès Kaandorp</a>.</p>
-      </div>
-      <div>
-        <h3>Learn more</h3>
-        <ul>
-          <li><a href="/faq/">FAQ</a></li>
-          <li><a href="/methodology/">Methodology</a></li>
-          <li><a href="/careers/">Careers</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3>Contact</h3>
-        <ul>
-          <li><a href="mailto:ideles@icm.energy">ideles@icm.energy</a></li>
-
-        </ul>
-      </div>
+  <div class="wrap foot2">
+    <div class="f-about">
+      <p class="f-name">The Independent Capacity Market</p>
+      <p class="f-tag">The ICM brings clarity, trusted partners and continuity to those adding capacity to the grid.</p>
     </div>
-    <p class="legal"><span>© 2026 Independent Capacity Market B.V. · KvK 99958775</span><span><a href="/terms/">Terms & Conditions</a></span><span><a href="/privacy/">Privacy statement</a></span></p>
+    <a class="f-logo" href="/" aria-label="The ICM, home">ICM</a>
+    <nav class="f-links" aria-label="Footer">
+      <a href="/#about">About</a>
+      <a href="/faq/">FAQ</a>
+      <a href="/methodology/">Methodology</a>
+      <a href="/careers/">Careers</a>
+    </nav>
+    <p class="f-mail"><a href="mailto:ideles@icm.energy">ideles@icm.energy</a></p>
+    <div class="f-legal">
+      <p>Website designed by Salt &amp; Chalk</p>
+      <p><a href="/terms/">Terms & Conditions</a> | <a href="/privacy/">Privacy statement</a></p>
+      <p>© 2026 Independent Capacity Market B.V. · KvK 99958775</p>
+    </div>
   </div>
 </footer>
 
