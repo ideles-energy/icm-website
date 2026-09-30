@@ -15,12 +15,12 @@ T = {
  'en': dict(
   lang='en', base='/', other='/nl/', other_label='NL', other_lang='nl', other_name='Nederlands',
   title="BESS Benchmark: understand the true value of your battery | The ICM",
-  desc="See how your battery compares, BESS-to-BESS, with comparable batteries in the Netherlands, and find a better optimizer when there's more to earn.",
+  desc="See how your battery compares, BESS-to-BESS, with comparable batteries in the Netherlands, and find a trusted optimizer when there's more to earn.",
   og_title="Understand and secure the true value of your BESS asset",
   skip='Skip to content', nav_how='How it works', nav_faq='FAQ', nav_about='About', talk='Talk to us', menu='Main',
   eyebrow='BESS Benchmark',
   h1_a='Understand and secure', h1_b='the true value of your asset',
-  lead='For owners with a nagging sense their BESS could earn more. See how your asset compares, BESS-to-BESS, and find a better optimizer when there\'s more to earn.',
+  lead='For owners with a nagging sense their BESS could earn more. See how your asset compares, BESS-to-BESS, and find a trusted optimizer when there\'s more to earn.',
   book='Talk to us', start='Get started', more='Learn more', how_link='How it works',
   chart_title='Project score: 87% of the peer benchmark', chart_sub='EUR per MW per year, by month · gross revenue',
   chart_aria="Illustrative chart: a project's monthly revenue per MW compared with the peer benchmark",
@@ -47,7 +47,7 @@ T = {
   calc_mw='Battery size', calc_months='Period', calc_months_unit='months', calc_rev='Your revenue today',
   calc_assume='Assumption: comparable batteries earned 30% more per MW. Illustrative – the BESS Benchmark shows your real gap.',
   calc_you='Your battery', calc_bench='Comparable batteries', calc_missed='Missed opportunity over 6 months', calc_cta='Find out your real gap',
-  demo_eyebrow='How we can work together', demo_h='The BESS Benchmark', demo_p='Clarity is our goal. The ICM collects, anonymizes and creates a BESS-to-BESS comparison based on monthly BESS performance.', demo_note='Fictional example data.',
+  demo_eyebrow='How we can work together', demo_h='The BESS Benchmark', demo_p='Clarity is our goal. The ICM collects and anonymizes monthly BESS revenues for a BESS-to-BESS comparison.', demo_note='Fictional example data.',
   demo_btn='Try the interactive demo', demo_title='BESS Benchmark interactive demo (fictional data)', demo_new='Open in a new tab',
   shot_cap='The BESS Benchmark is a dynamic view on the EUR per MW per year of your assets and those of our other members. Fictional example data.',
   faq_link='Read the FAQ',
@@ -206,16 +206,25 @@ def head(t, title, desc, path, alt_path=None, jsonld=None, og_title=None):
 <a class="sr-only" href="#main">{t['skip']}</a>
 '''
 
+SOLUTIONS = [('BESS Benchmark', 'Open now', '/#demo'), ('BESS Backtest', 'Join the waitlist', '/#about'),
+             ('BESS Broker', 'Join the waitlist', '/#about'), ('BESS Bridge', 'Join the waitlist', '/#about')]
+
 def nav(t, other_href):
     b = t['base']
+    subs = ''.join(f'<li><a href="{h}"><b>{n}</b><span>{s}</span></a></li>' for n, s, h in SOLUTIONS)
+    msubs = ''.join(f'<a class="m-sub" href="{h}">{n}</a>' for n, s, h in SOLUTIONS)
     return f'''    <header class="nav">
       <a class="logo" href="{b}" aria-label="The Independent Capacity Market, home"><span class="logo-text">The Independent<br>Capacity Market</span></a>
       <nav aria-label="{t['menu']}">
         <ul class="nav-links">
-          <li class="hide-sm"><a href="{b}#about">{t['nav_about']}</a></li>
-{f'          <li><a class="lang" href="{other_href}" hreflang="{t["other_lang"]}" lang="{t["other_lang"]}">{t["other_label"]}</a></li>' + chr(10) if len(LANGS) > 1 else ''}          <li><a class="btn btn-lilac" href="{b}#contact">{t['talk']}</a></li>
+          <li class="has-sub hide-sm"><button type="button" class="sub-btn" aria-expanded="false" aria-haspopup="true">Solutions</button><ul class="sub">{subs}</ul></li>
+          <li class="hide-sm"><a href="/resources/">Resources</a></li>
+          <li class="hide-sm"><a href="/company/">Company</a></li>
+          <li><a class="btn btn-lilac" href="{b}#contact">{t['talk']}</a></li>
+          <li class="show-sm"><button type="button" class="menu-btn" aria-expanded="false" aria-label="Open menu"><span></span><span></span><span></span></button></li>
         </ul>
       </nav>
+      <div class="m-menu" hidden><p class="m-h">Solutions</p>{msubs}<a href="/resources/">Resources</a><a href="/company/">Company</a></div>
     </header>
 '''
 
@@ -229,10 +238,10 @@ def footer(t, other_href):
     </div>
     <a class="f-logo" href="/" aria-label="The ICM, home">ICM</a>
     <nav class="f-links" aria-label="Footer">
-      <a href="/#about">About</a>
       <a href="{b}faq/">{t['nav_faq']}</a>
       <a href="/methodology/">{t['methodology']}</a>
-      <a href="/careers/">{t.get('careers', 'Careers')}</a>
+      <a href="/resources/">Resources</a>
+      <a href="/company/">Company</a>
     </nav>
     <p class="f-mail"><a href="mailto:{EMAIL}">{EMAIL}</a></p>
     <div class="f-legal">
@@ -355,7 +364,7 @@ def home(t):
       <p>{t['about_p']}</p>
       <div class="cta-row" style="justify-content:flex-start;margin-top:28px">
         <a class="btn btn-lilac" href="#contact">{t['book']}</a>
-        <a class="btn btn-outline" href="/careers/">{t['roles']}</a>
+        <a class="btn btn-outline" href="/company/#careers">{t['roles']}</a>
       </div>
     </div>
     <div class="more-grid more-stack">
@@ -431,16 +440,99 @@ def privacy(t):
 
 ROLES = [('Founders Associate', 'Amsterdam'), ('Commercial Lead', 'Amsterdam'), ('Legal Counsel', 'Amsterdam')]
 
-def careers(t):
-    rows = '\n'.join(f'      <li><span><b>{r}</b><em>{c}</em></span><a class="btn btn-outline teal" href="/?role={r.replace(" ", "%20")}#contact">Apply</a></li>' for r, c in ROLES)
-    body = f"""    <div class="careers">
-      <h2 class="careers-h" style="margin-top:0">Current open roles</h2>
-      <ul class="roles">
+def img(id_, w=1200):
+    return f'https://images.unsplash.com/{id_}?auto=format&fit=crop&w={w}&q=70'
+
+POSTS = [
+    ('The power of switching.', 'Flex assets are locked into fixed terms. Here\'s the solution.', 'photo-1466611653911-95081537e5b7', 'Wind turbine at golden hour'),
+    ('It\'s a highly fragmented market.', 'How we\'re keeping tabs on new players, be it optimizers, traders, aggregators or else.', 'photo-1642950863398-1fc3600a5313', 'Aerial view of a solar power plant'),
+    ('Why not every optimizer is bankable.', 'The horrors of banks denying financing requests.', 'photo-1473341304170-971dccb5ac1e', 'Transmission towers'),
+    ('The technical lock-in is real.', 'The next optimizer may not be compatible with your current EMS and meter systems.', 'photo-1776251896448-a5eb8ae25e35', 'Electrical insulators at a substation'),
+    ('Is there a monopoly on megawatts?', 'Why most BESS owners end up comparing the 2 or 3 household names they happen to know.', 'photo-1508791290064-c27cc1ef7a9a', 'Wind turbines on a green field'),
+]
+
+def page_shell(t, path, title, desc, hero, body):
+    return head(t, title, desc, path) + f'''
+<div class="hero-shell">
+  <div class="wrap">
+{nav(t, path)}
+{hero}
+  </div>
+</div>
+{body}
+{footer(t, path)}
+</body>
+</html>
+'''
+
+def resources(t):
+    cards = '\n'.join(f'''        <article class="post"><img src="{img(i, 800)}" alt="{a}" loading="lazy" width="800" height="560"><h3>{h}</h3><p>{p}</p><span class="soon">Coming soon</span></article>''' for h, p, i, a in POSTS)
+    hero = '''    <div class="page-hero" id="main">
+      <h1>Resources</h1>
+      <p>You'll find all Independent Capacity Market resources below, including the blog, API documents and brand assets.</p>
+    </div>'''
+    body = f'''<main class="res">
+  <section class="wrap res-sec">
+    <h2>Blog</h2>
+    <div class="posts">
+{cards}
+    </div>
+  </section>
+  <section class="wrap res-sec">
+    <h2>API documents</h2>
+    <div class="res-row"><span>Our API documentation for optimizers and local infrastructure providers is in preparation.</span><a class="btn btn-lilac" href="/#contact">Request access</a></div>
+  </section>
+  <section class="wrap res-sec">
+    <h2>Brand assets</h2>
+    <p class="res-lead">Download the official brand assets of the ICM. Use these resources to ensure a consistent and professional representation of the ICM in all your designs and communications.</p>
+    <div class="assets">
+      <a class="asset" href="mailto:{EMAIL}?subject=Brand%20assets%3A%20logos"><img src="{img('photo-1718670013921-2f144aba173a', 800)}" alt="Business cards on a marble counter" loading="lazy" width="800" height="500"><span>Logos</span></a>
+      <a class="asset" href="mailto:{EMAIL}?subject=Brand%20assets%3A%20images"><img src="{img('photo-1495291916458-c12f594151e7', 800)}" alt="Light bulb on a dark background" loading="lazy" width="800" height="500"><span>Images</span></a>
+    </div>
+  </section>
+</main>'''
+    return page_shell(t, '/resources/', 'Resources | The ICM', 'Blog, API documents and brand assets of the Independent Capacity Market.', hero, body)
+
+ROLES = [('Founders Associate', 'Amsterdam'), ('Commercial Lead', 'Amsterdam'), ('Legal Counsel', 'Amsterdam')]
+
+def company(t):
+    rows = '\n'.join(f'        <li><span>{r} | {c}</span><a class="btn btn-lilac" href="/?role={r.replace(" ", "%20")}#contact">Apply</a></li>' for r, c in ROLES)
+    hero = f'''    <div class="page-hero co-hero" id="main">
+      <h1>About The Independent Capacity Market</h1>
+    </div>
+    <img class="co-img" src="{img('photo-1790039110126-af52ad70e601', 1600)}" alt="An electrical substation with power lines" width="1600" height="700">'''
+    body = f'''<section class="dark co-who">
+  <div class="wrap co-grid">
+    <p class="co-label">Who we are</p>
+    <div>
+      <p>The Independent Capacity Market (ICM) exists because Europe's battery market is growing faster than its transparency. Batteries are being built at record pace, yet owners can't see what their assets should earn, optimizer contracts lock them in, and switching is costly and risky.</p>
+      <p>We believe in a new standard: independent benchmarks from real assets, a fair choice of optimizers, and switching without technical lock-in. A transparent flex market rewards optimizers that perform, and gives grid operators flexibility they can rely on.</p>
+      <a class="btn btn-lilac" href="/#contact">Talk to us</a>
+    </div>
+  </div>
+</section>
+<section class="co-careers" id="careers">
+  <div class="wrap">
+    <p class="co-label dark-t">Careers</p>
+    <h2 class="co-big">A more equitable grid.<br>Do work that matters with people who care.</h2>
+    <hr>
+    <h3>Current open roles:</h3>
+    <p class="co-open">If no positions are showing below, you're welcome to submit an open application including your CV and what you'd want to achieve at the ICM to <a href="mailto:{EMAIL}">{EMAIL}</a>.</p>
+    <ul class="co-roles">
 {rows}
-      </ul>
-      <p class="careers-open">Don't see your role? Send an open application with your CV and what you would like to achieve at the ICM to <a href="mailto:{EMAIL}">{EMAIL}</a>.</p>
-    </div>"""
-    return simple_page(t, '/careers/', '/nl/careers/', 'Careers | The ICM', 'Open roles at the Independent Capacity Market in Amsterdam: help bring clarity to battery storage in Europe.', 'A more equitable grid', 'Do work that matters with people who care.', body).replace(f"<span class=\"eyebrow\">{t['eyebrow']}</span>", '<span class="eyebrow">Careers</span>', 1)
+    </ul>
+  </div>
+</section>
+<section class="dark co-why">
+  <div class="wrap">
+    <h2>Why does the world need the ICM?</h2>
+    <p>The grid is full, and the flexibility that could unblock it is invisible, locked in private deals nobody can see or price.</p>
+    <p>We're not owners. We're not optimizers. Nor will we ever be. We are the market they meet in.</p>
+  </div>
+</section>'''
+    return page_shell(t, '/company/', 'Company | The ICM', 'About the Independent Capacity Market: who we are, open roles in Amsterdam and why the world needs an independent capacity market.', hero, body)
+
+REDIRECT = '''<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Careers | The ICM</title><meta name="robots" content="noindex"><link rel="canonical" href="https://icm.energy/company/#careers"><meta http-equiv="refresh" content="0; url=/company/#careers"></head><body><a href="/company/#careers">Careers have moved to our company page.</a></body></html>'''
 
 def write(rel, html):
     p = os.path.join(ROOT, rel)
@@ -455,7 +547,9 @@ for lang in LANGS:
     write(pre + 'terms/index.html', terms(t))
     write(pre + 'privacy/index.html', privacy(t))
     if lang == 'en':
-        write('careers/index.html', careers(t))
+        write('careers/index.html', REDIRECT)
+        write('resources/index.html', resources(t))
+        write('company/index.html', company(t))
 print('built')
 
 # Methodology page, generated from _build/methodology.md (same text as the Methodology doc).

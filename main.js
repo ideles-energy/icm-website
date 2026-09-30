@@ -97,3 +97,18 @@
 document.querySelectorAll('.info-i button').forEach(function (b) {
   b.addEventListener('click', function () { b.parentNode.classList.toggle('open'); });
 });
+
+// Navigation: Solutions menu (click/tap) and mobile menu.
+(function () {
+  document.querySelectorAll('.has-sub').forEach(function (li) {
+    var b = li.querySelector('.sub-btn');
+    b.addEventListener('click', function (e) { e.stopPropagation(); var o = li.classList.toggle('open'); b.setAttribute('aria-expanded', o); });
+  });
+  var mb = document.querySelector('.menu-btn'), mm = document.querySelector('.m-menu');
+  if (mb && mm) mb.addEventListener('click', function (e) { e.stopPropagation(); mm.hidden = !mm.hidden; mb.setAttribute('aria-expanded', !mm.hidden); });
+  document.addEventListener('click', function () {
+    document.querySelectorAll('.has-sub.open').forEach(function (li) { li.classList.remove('open'); li.querySelector('.sub-btn').setAttribute('aria-expanded', false); });
+    if (mm && !mm.hidden) { mm.hidden = true; mb.setAttribute('aria-expanded', false); }
+  });
+  document.querySelectorAll('.sub a, .m-menu a').forEach(function (a) { a.addEventListener('click', function () { if (mm) mm.hidden = true; }); });
+})();
