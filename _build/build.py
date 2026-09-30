@@ -464,9 +464,9 @@ def resources(t):
     body = f'''<main class="res">
   <section class="wrap res-sec">
     <h2>Documents</h2>
-    <p class="res-lead">Find answers to common questions about the BESS Benchmark, or request access to our API documents. Can't find what you need? Just ask us.</p>
+    <p class="res-lead">Find answers to common questions about the BESS Benchmark, or read our API documents. Can't find what you need? Just ask us.</p>
     <div class="res-cards">
-      <div class="res-card"><span>Access our API documents here</span><a class="btn btn-lilac" href="/#contact">Access →</a></div>
+      <div class="res-card"><span>Access our API documents here</span><a class="btn btn-lilac" href="https://docs.icm.energy/" target="_blank" rel="noopener">Access →</a></div>
       <div class="res-card"><span>BESS Benchmark FAQ</span><a class="btn btn-lilac" href="/faq/">Read →</a></div>
     </div>
   </section>
