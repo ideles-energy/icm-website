@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>BESS Benchmark: understand the true value of your battery | The ICM</title>
-<meta name="description" content="See how your battery compares, BESS-to-BESS, with comparable batteries in the Netherlands, and find a better optimizer when there's more to earn.">
+<meta name="description" content="See how your battery compares, BESS-to-BESS, with comparable batteries in the Netherlands, and find a trusted optimizer when there's more to earn.">
 <link rel="canonical" href="https://icm.energy/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://icm.energy/">
 <meta property="og:title" content="Understand and secure the true value of your BESS asset">
-<meta property="og:description" content="See how your battery compares, BESS-to-BESS, with comparable batteries in the Netherlands, and find a better optimizer when there's more to earn.">
+<meta property="og:description" content="See how your battery compares, BESS-to-BESS, with comparable batteries in the Netherlands, and find a trusted optimizer when there's more to earn.">
 <meta property="og:image" content="https://icm.energy/assets/og-image.png">
 <meta property="og:site_name" content="The Independent Capacity Market">
 <meta name="twitter:card" content="summary_large_image">
@@ -48,7 +48,7 @@
    },
    "areaServed": "NL",
    "serviceType": "Battery energy storage revenue benchmark",
-   "description": "See how your battery compares, BESS-to-BESS, with comparable batteries in the Netherlands, and find a better optimizer when there's more to earn."
+   "description": "See how your battery compares, BESS-to-BESS, with comparable batteries in the Netherlands, and find a trusted optimizer when there's more to earn."
   }
  ]
 }
@@ -63,19 +63,23 @@
       <a class="logo" href="/" aria-label="The Independent Capacity Market, home"><span class="logo-text">The Independent<br>Capacity Market</span></a>
       <nav aria-label="Main">
         <ul class="nav-links">
-          <li class="hide-sm"><a href="/#about">About</a></li>
+          <li class="has-sub hide-sm"><button type="button" class="sub-btn" aria-expanded="false" aria-haspopup="true">Solutions</button><ul class="sub"><li><a href="/#demo"><b>BESS Benchmark</b><span>Open now</span></a></li><li><a href="/#about"><b>BESS Backtest</b><span>Join the waitlist</span></a></li><li><a href="/#about"><b>BESS Broker</b><span>Join the waitlist</span></a></li><li><a href="/#about"><b>BESS Bridge</b><span>Join the waitlist</span></a></li></ul></li>
+          <li class="hide-sm"><a href="/resources/">Resources</a></li>
+          <li class="hide-sm"><a href="/company/">Company</a></li>
           <li><a class="btn btn-lilac" href="/#contact">Talk to us</a></li>
+          <li class="show-sm"><button type="button" class="menu-btn" aria-expanded="false" aria-label="Open menu"><span></span><span></span><span></span></button></li>
         </ul>
       </nav>
+      <div class="m-menu" hidden><p class="m-h">Solutions</p><a class="m-sub" href="/#demo">BESS Benchmark</a><a class="m-sub" href="/#about">BESS Backtest</a><a class="m-sub" href="/#about">BESS Broker</a><a class="m-sub" href="/#about">BESS Bridge</a><a href="/resources/">Resources</a><a href="/company/">Company</a></div>
     </header>
 
     <div class="hero" id="main">
       <div>
         <h1>Understand and<br>secure the true value<br>of your asset</h1>
-        <p class="lead">For owners with a nagging sense their BESS could earn more. See how your asset compares, BESS-to-BESS, and find a better optimizer when there's more to earn.</p>
+        <p class="lead">For owners with a nagging sense their BESS could earn more. See how your asset compares, BESS-to-BESS, and find a trusted optimizer when there's more to earn.</p>
         <div class="hero-ctas">
           <a class="btn btn-lilac" href="#contact">Talk to us</a>
-          <a class="btn btn-outline" href="#how">How it works</a>
+          <a class="btn btn-outline" href="#demo">How it works</a>
         </div>
       </div>
     </div>
@@ -89,7 +93,8 @@
     <span class="eyebrow why-eyebrow">Why it matters</span>
     <div class="story" id="calculator" aria-live="polite">
       <p class="story-h">It's a waste to miss out on <b class="out" id="s-missed">EUR 555,000</b> a year.</p>
-      <p class="story-p">A similar BESS asset, same size and setup, can deliver <a class="story-link" href="https://www.flower.se/insights/case/ra-energy-switch-optimizer/" target="_blank" rel="noopener">30% more revenue</a>. A <input class="in" id="s-mw" type="number" min="1" max="500" step="1" value="10" aria-label="Project size in MW"> MW project could have earned <b class="out" id="s-peer">EUR 240.5k</b> per MW per year, instead of the EUR <input class="in" id="s-rev" type="number" min="1" max="1000" step="1" value="185" aria-label="Revenue it delivered, in thousand euro per MW per year">k per MW per year it delivered. That's a missed opportunity of <b class="out" id="s-up">EUR 55.5k</b> per MW.<span class="info-i"><button type="button" aria-label="About these numbers">i</button><span class="info-pop" role="tooltip">Illustrative example. Change the numbers in cyan to see your own missed opportunity.</span></span></p>
+      <p class="story-p">A similar BESS asset, same size and setup, can deliver <a class="story-link" href="https://www.flower.se/insights/case/ra-energy-switch-optimizer/" target="_blank" rel="noopener">30% more revenue</a>. A <label class="pill"><input class="in" id="s-mw" type="number" min="1" max="500" step="1" value="10" aria-label="Project size in MW"><svg class="pen" viewBox="0 0 16 16" aria-hidden="true"><path d="M11.5 2.5l2 2L6 12l-2.8.8L4 10z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></label> MW project could have earned <b class="out" id="s-peer">EUR 240.5k</b> per MW per year, instead of the EUR <label class="pill"><input class="in" id="s-rev" type="number" min="1" max="1000" step="1" value="185" aria-label="Revenue it delivered, in thousand euro per MW per year"><svg class="pen" viewBox="0 0 16 16" aria-hidden="true"><path d="M11.5 2.5l2 2L6 12l-2.8.8L4 10z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></label>k per MW per year it delivered. That's a missed opportunity of <b class="out" id="s-up">EUR 55.5k</b> per MW.</p>
+      <p class="hint"><svg class="pen" viewBox="0 0 16 16" aria-hidden="true"><path d="M11.5 2.5l2 2L6 12l-2.8.8L4 10z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>Fill in your own numbers. Illustrative example.</p>
     </div>
     <div class="cta-row"><a class="btn btn-lilac" href="#contact">Talk to us</a><a class="btn btn-outline" href="#demo">Learn more</a></div>
     </div>
@@ -106,7 +111,7 @@
     <div class="section-head center">
       <span class="eyebrow">How we can work together</span>
       <h2>The BESS Benchmark</h2>
-      <p>Clarity is our goal. The ICM collects, anonymizes and creates a BESS-to-BESS comparison based on monthly BESS performance.</p>
+      <p>Clarity is our goal. The ICM collects and anonymizes monthly BESS revenues for a BESS-to-BESS comparison.</p>
     </div>
     <figure class="shot shot-wide">
       <a class="demo-open" href="/demo/" data-demo><img src="/assets/benchmark-preview.jpg" width="1600" height="912" alt="The BESS Benchmark app: project score, revenue per MW and the benchmark over the last 12 months (fictional example data)" loading="lazy"><span class="demo-badge">Try the interactive demo</span></a>
@@ -124,13 +129,14 @@
     <div class="section-head">
       <span class="eyebrow">How it works</span>
       <h2>Become a member of the BESS Benchmark</h2>
+      <p>For merchant-traded BESS assets of 3 to 30 MW in the Netherlands.</p>
     </div>
     <div class="rules-row">
         <div class="rule"><h3>Registration</h3><p>New members submit 6 months of historical data and complete a 45-minute intake that collects the relevant project information. A membership lasts at least 3 months and can be cancelled every month after that.</p></div>
         <div class="rule"><h3>Participation</h3><p>Members share their earnings every month, for instance by asking their optimizer to CC the ICM on its monthly performance report. The ICM anonymizes the data and adds it to the BESS Benchmark.</p></div>
         <div class="rule"><h3>Contribution</h3><p>Members pay a symbolic handling fee of 0.5% of what their BESS assets earned that month: EUR 75 for a project delivering EUR 15,000. After referring 5 members, the contribution drops to 0.1% for 6 months.</p></div>
         <div class="rule"><h3>Give-to-get</h3><p>Members only see the BESS Benchmark for the months to which they contributed. If no data is shared for August, September and October, the BESS Benchmark stays blank for those months.</p></div>
-        <div class="rule"><h3>Silent by design</h3><p>The Dutch saying "geen bericht, goed bericht" applies here. The ICM reaches out to members whose projects earn below 80% of the BESS Benchmark in at least 6 of the last 12 months. Otherwise, we prefer to keep quiet.</p></div>
+        <div class="rule"><h3>Silent by design</h3><p>The Dutch saying "geen bericht, goed bericht" applies here. The ICM reaches out to members whose projects earn below 80% of the BESS Benchmark in at least 6 of the last 12 months. Otherwise, we prefer not to bother you.</p></div>
         <div class="rule"><h3>Proof of performance</h3><p>The BESS Benchmark can serve as concrete input for negotiations and insurance/warranty claims ("comparable assets earned EUR X during downtime").</p></div>
     </div>
     <div class="cta-row" style="justify-content:flex-start;margin-top:36px">
@@ -148,7 +154,7 @@
       <p>We are not owners. We are not optimizers. Nor will we ever be.<br><br>We are an energy tech company, serving those who add capacity to the grid, but are in the dark on the potential of their assets. We compare BESS-to-BESS, introduce owners to optimizers and oversee the switch, so your battery keeps earning.</p>
       <div class="cta-row" style="justify-content:flex-start;margin-top:28px">
         <a class="btn btn-lilac" href="#contact">Talk to us</a>
-        <a class="btn btn-outline" href="/careers/">Open roles</a>
+        <a class="btn btn-outline" href="/company/#careers">Open roles</a>
       </div>
     </div>
     <div class="more-grid more-stack">
@@ -165,6 +171,7 @@
     <div class="intro">
       <span class="eyebrow" style="color:var(--teal)">Talk to us</span>
       <h2>Book time with us</h2>
+      <p>Our starting point is a 45-minute call to understand your context and objectives.</p>
       <p>Prefer email? <a href="mailto:ideles@icm.energy">ideles@icm.energy</a></p>
     </div>
     <div class="form fillout">
@@ -176,30 +183,23 @@
 </section>
 
 <footer>
-  <div class="wrap">
-    <div class="foot">
-      <div>
-        <h3>The Independent Capacity Market</h3>
-        <p class="foot-tag">The Independent Capacity Market (“the ICM”) brings clarity, trusted partners and continuity to those adding capacity to the grid.</p>
-        <p>Founded by <a href="https://www.linkedin.com/in/idel%C3%A8s-kaandorp/" rel="noopener">Idelès Kaandorp</a>.</p>
-      </div>
-      <div>
-        <h3>Learn more</h3>
-        <ul>
-          <li><a href="/faq/">FAQ</a></li>
-          <li><a href="/methodology/">Methodology</a></li>
-          <li><a href="/careers/">Careers</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3>Contact</h3>
-        <ul>
-          <li><a href="mailto:ideles@icm.energy">ideles@icm.energy</a></li>
-
-        </ul>
-      </div>
+  <div class="wrap foot2">
+    <div class="f-about">
+      <p class="f-name">The Independent Capacity Market</p>
+      <p class="f-tag">The ICM brings clarity, trusted partners and continuity to those adding capacity to the grid.</p>
     </div>
-    <p class="legal"><span>© 2026 Independent Capacity Market B.V. · KvK 99958775</span><span><a href="/terms/">Terms & Conditions</a></span><span><a href="/privacy/">Privacy statement</a></span></p>
+    <a class="f-logo" href="/" aria-label="The ICM, home">ICM</a>
+    <nav class="f-links" aria-label="Footer">
+      <a href="/#about">Solutions</a>
+      <a href="/resources/">Resources</a>
+      <a href="/company/">Company</a>
+    </nav>
+    <div class="f-mail"><a href="mailto:ideles@icm.energy">ideles@icm.energy</a><p>KvK 99958775</p></div>
+    <div class="f-legal">
+      <p>Website designed by Salt &amp; Chalk</p>
+      <p><a href="/terms/">Terms & Conditions</a> | <a href="/privacy/">Privacy statement</a></p>
+      <p>© 2026 Independent Capacity Market B.V.</p>
+    </div>
   </div>
 </footer>
 

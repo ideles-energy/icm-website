@@ -1,0 +1,25 @@
+# The Independent Capacity Market (the ICM)
+
+> The ICM is an independent energy tech company in Amsterdam. It helps owners of battery energy storage systems (BESS) in the Netherlands understand and secure the true value of their assets. The ICM owns no batteries and is not an optimizer.
+
+## BESS Benchmark (open now)
+- A BESS-to-BESS comparison of real monthly revenues per MW, based on optimizers' statements, anonymized and checked by an ICM analyst.
+- For merchant-traded BESS assets of 3 to 30 MW in the Netherlands.
+- Give-to-get: members see the benchmark for the months they contributed data.
+- Members pay a handling fee of 0.5% of monthly gross revenue (excluding VAT); minimum membership 3 months, then monthly.
+- Results are never shown per named optimizer; optimizers are not ranked.
+
+## Coming soon (waitlist)
+- BESS Backtest: drivers of capture rate for complex, co-located set-ups.
+- BESS Broker: a standardized process to source and evaluate trusted optimizers.
+- BESS Bridge: an API platform that connects optimizers with local infrastructure, so switching optimizers is less costly and less risky.
+
+## Pages
+- [Home](https://icm.energy/): the BESS Benchmark, how membership works, interactive demo with fictional data
+- [BESS Benchmark FAQ](https://icm.energy/faq/)
+- [Resources](https://icm.energy/resources/): documents and brand assets
+- [Company](https://icm.energy/company/): who we are, team and open roles
+
+## Contact
+- ideles@icm.energy
+- Independent Capacity Market B.V., Amsterdam, KvK 99958775
