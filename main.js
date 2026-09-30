@@ -112,3 +112,20 @@ document.querySelectorAll('.info-i button').forEach(function (b) {
   });
   document.querySelectorAll('.sub a, .m-menu a').forEach(function (a) { a.addEventListener('click', function () { if (mm) mm.hidden = true; }); });
 })();
+
+// Keep the menu bar visible once the page scrolls past it.
+(function () {
+  var nav = document.querySelector('header.nav');
+  if (!nav) return;
+  var shell = nav.closest('.hero-shell'), h = 0, fixed = false;
+  function onScroll() {
+    var should = window.scrollY > (nav.offsetTop + nav.offsetHeight);
+    if (should === fixed) return;
+    if (should) { h = nav.offsetHeight; if (shell) shell.style.paddingTop = h + 'px'; }
+    else if (shell) shell.style.paddingTop = '';
+    document.body.classList.toggle('nav-fixed', should);
+    fixed = should;
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();

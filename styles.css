@@ -589,3 +589,6 @@ body, .section-head p, .rule p, .more-grid p, .faq details p, .faq li, .res-card
 @media (max-width: 760px) { .team { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } .member.tbc { display: none; } }
 .member img.ph { height: auto; }
 .team-cta { display: flex; justify-content: center; margin-top: 48px; }
+/* v14: menu bar stays visible while scrolling */
+html { scroll-padding-top: 88px; }
+body.nav-fixed header.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50; padding: 14px max(24px, calc((100vw - var(--max)) / 2 + 24px)); background: rgba(2, 13, 31, .96); border-bottom: 1px solid rgba(255,255,255,.08); color: var(--white); }
