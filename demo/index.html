@@ -283,17 +283,17 @@ body.report .tile .v{font-size:20px}
 
   <nav class="docs no-report" aria-label="Documents">
     <a href="/terms/" target="_blank" rel="noopener">Terms &amp; Conditions</a>
-    <a href="/methodology/" target="_blank" rel="noopener">Methodology</a>
+    <a href="https://app.box.com/s/52dy3lyuocqpj3ss3rf47sdyveq7b1ir" target="_blank" rel="noopener">Methodology</a>
     </nav>
   <div class="company no-report">© 2026 Independent Capacity Market B.V. All rights reserved. · KvK 99958775 · VAT NL869204361B01 · bessbenchmark@icm.energy</div>
 
-  <footer class="rep-foot"><span class="pg">Page 1 of 4</span>Preliminary &amp; confidential · © 2026 Independent Capacity Market B.V. All rights reserved.<br><a href="/methodology/">Methodology</a> · <a href="/terms/">Terms &amp; Conditions</a></footer>
+  <footer class="rep-foot"><span class="pg">Page 1 of 4</span>Preliminary &amp; confidential · © 2026 Independent Capacity Market B.V. All rights reserved.<br><a href="/terms/">Terms &amp; Conditions</a></footer>
 </div>
 <div id="sheets"></div>
 
 <script>
 (function(){
-const LINK_METH='/methodology/',LINK_TC='/terms/';
+const LINK_METH='https://app.box.com/s/52dy3lyuocqpj3ss3rf47sdyveq7b1ir',LINK_TC='/terms/';
 /* ---------- seeded fictional data ---------- */
 let seed=20260928;
 function rnd(){seed|=0;seed=seed+0x6D2B79F5|0;let t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}
@@ -618,7 +618,7 @@ function render(){
     sh+='<section class="sheet"><div class="mini"><span>BESS Benchmark report · '+CUR.name+'</span><span>28 September 2026</span></div>'+
       '<h3>'+icon(acc,sr.w,sr.dash,24)+' '+(sr.key==='proj'?CUR.name+' (total)':sr.name)+'</h3><div class="sub2">'+sr.meta+'</div>'+
       '<div class="tbl-wrap">'+tb+'</div>'+
-      '<footer class="rep-foot"><span class="pg">Page '+(i+2)+' of '+total+'</span>Preliminary &amp; confidential · © 2026 Independent Capacity Market B.V. All rights reserved.<br><a href="'+LINK_METH+'">Methodology</a> · <a href="'+LINK_TC+'">Terms &amp; Conditions</a></footer></section>';
+      '<footer class="rep-foot"><span class="pg">Page '+(i+2)+' of '+total+'</span>Preliminary &amp; confidential · © 2026 Independent Capacity Market B.V. All rights reserved.<br><a href="'+LINK_TC+'">Terms &amp; Conditions</a></footer></section>';
   });
   document.getElementById('sheets').innerHTML=sh;
 }

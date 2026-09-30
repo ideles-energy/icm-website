@@ -81,7 +81,7 @@ T = {
    ('How long do I commit to the BESS Benchmark?', 'New members are asked to stay at least 3 months. After that, membership renews monthly.'),
    ('Who sees my data?', 'Only the member and the ICM see the raw data. The ICM anonymizes submitted information before it adds it to the BESS Benchmark. We do not share individual member data with other members, or third parties. The BESS Benchmark itself is based on aggregated, anonymized information.'),
    ('Can I share my results?', 'Yes. You may share your BESS Benchmark freely. It\'s yours and may benefit conversations with your installer, adviser and financier.'),
-   ('How is the benchmark calculated?', 'The BESS Benchmark divides revenues by MW and annualizes the result to show EUR per MW per year. Several filters allow members to compare batteries with a similar duration and set-up. Unavailable hours are excluded (maintenance, fault). Results are preliminary for 3 months, anticipating potential corrections. All choices made are in the <a href="/methodology/">methodology</a>.'),
+   ('How is the benchmark calculated?', 'The BESS Benchmark divides revenues by MW and annualizes the result to show EUR per MW per year. Several filters allow members to compare batteries with a similar duration and set-up. Unavailable hours are excluded (maintenance, fault). Results are preliminary for 3 months, anticipating potential corrections. All choices made are in the methodology.'),
    ('Why do BESS assets earn differently?', 'Various factors restrict the full earnings potential of a battery: (i) the battery itself (e.g., round-trip efficiency, minimum/maximum state of charge) and its local set-up (e.g., size of the grid connection, congestion contract), (ii) the markets it is active in and (iii) maintenance and malfunctions are the most commonly mentioned factors.'),
    ('Can I see which optimizer performs best?', 'No. The BESS Benchmark does not show results per optimizer, or rankings of optimizers. You can compare your battery with peers that use the same or other optimizers, without names. Our BESS Broker proposition is designed to source and evaluate optimizers for you.'),
    ('Is the ICM independent?', 'Yes. We do not own BESS assets. We are not an optimizer. Nor will we ever be. For more information about our governance, please reach out to <a href="mailto:ideles@icm.energy">ideles@icm.energy</a>.'),
@@ -238,16 +238,15 @@ def footer(t, other_href):
     </div>
     <a class="f-logo" href="/" aria-label="The ICM, home">ICM</a>
     <nav class="f-links" aria-label="Footer">
-      <a href="{b}faq/">{t['nav_faq']}</a>
-      <a href="/methodology/">{t['methodology']}</a>
+      <a href="/#about">Solutions</a>
       <a href="/resources/">Resources</a>
       <a href="/company/">Company</a>
     </nav>
-    <p class="f-mail"><a href="mailto:{EMAIL}">{EMAIL}</a></p>
+    <div class="f-mail"><a href="mailto:{EMAIL}">{EMAIL}</a><p>KvK 99958775</p></div>
     <div class="f-legal">
       <p>Website designed by Salt &amp; Chalk</p>
       <p><a href="{b}terms/">{t['terms']}</a> | <a href="{b}privacy/">{t['privacy']}</a></p>
-      <p>© 2026 Independent Capacity Market B.V. · KvK 99958775</p>
+      <p>© 2026 Independent Capacity Market B.V.</p>
     </div>
   </div>
 </footer>
@@ -440,17 +439,6 @@ def privacy(t):
 
 ROLES = [('Founders Associate', 'Amsterdam'), ('Commercial Lead', 'Amsterdam'), ('Legal Counsel', 'Amsterdam')]
 
-def img(id_, w=1200):
-    return f'https://images.unsplash.com/{id_}?auto=format&fit=crop&w={w}&q=70'
-
-POSTS = [
-    ('The power of switching.', 'Flex assets are locked into fixed terms. Here\'s the solution.', 'photo-1466611653911-95081537e5b7', 'Wind turbine at golden hour'),
-    ('It\'s a highly fragmented market.', 'How we\'re keeping tabs on new players, be it optimizers, traders, aggregators or else.', 'photo-1642950863398-1fc3600a5313', 'Aerial view of a solar power plant'),
-    ('Why not every optimizer is bankable.', 'The horrors of banks denying financing requests.', 'photo-1473341304170-971dccb5ac1e', 'Transmission towers'),
-    ('The technical lock-in is real.', 'The next optimizer may not be compatible with your current EMS and meter systems.', 'photo-1776251896448-a5eb8ae25e35', 'Electrical insulators at a substation'),
-    ('Is there a monopoly on megawatts?', 'Why most BESS owners end up comparing the 2 or 3 household names they happen to know.', 'photo-1508791290064-c27cc1ef7a9a', 'Wind turbines on a green field'),
-]
-
 def page_shell(t, path, title, desc, hero, body):
     return head(t, title, desc, path) + f'''
 <div class="hero-shell">
@@ -466,47 +454,43 @@ def page_shell(t, path, title, desc, hero, body):
 '''
 
 def resources(t):
-    cards = '\n'.join(f'''        <article class="post"><img src="{img(i, 800)}" alt="{a}" loading="lazy" width="800" height="560"><h3>{h}</h3><p>{p}</p><span class="soon">Coming soon</span></article>''' for h, p, i, a in POSTS)
     hero = '''    <div class="page-hero" id="main">
       <h1>Resources</h1>
-      <p>You'll find all Independent Capacity Market resources below, including the blog, API documents and brand assets.</p>
+      <p>You'll find all Independent Capacity Market resources below, including documents and brand assets.</p>
     </div>'''
     body = f'''<main class="res">
   <section class="wrap res-sec">
-    <h2>Blog</h2>
-    <div class="posts">
-{cards}
+    <h2>Documents</h2>
+    <div class="res-cards">
+      <div class="res-card"><span>Access our API documents here</span><a class="btn btn-lilac" href="/#contact">Access →</a></div>
+      <div class="res-card"><span>Frequently asked questions</span><a class="btn btn-lilac" href="/faq/">Read →</a></div>
     </div>
-  </section>
-  <section class="wrap res-sec">
-    <h2>API documents</h2>
-    <div class="res-row"><span>Our API documentation for optimizers and local infrastructure providers is in preparation.</span><a class="btn btn-lilac" href="/#contact">Request access</a></div>
   </section>
   <section class="wrap res-sec">
     <h2>Brand assets</h2>
     <p class="res-lead">Download the official brand assets of the ICM. Use these resources to ensure a consistent and professional representation of the ICM in all your designs and communications.</p>
-    <div class="assets">
-      <a class="asset" href="mailto:{EMAIL}?subject=Brand%20assets%3A%20logos"><img src="{img('photo-1718670013921-2f144aba173a', 800)}" alt="Business cards on a marble counter" loading="lazy" width="800" height="500"><span>Logos</span></a>
-      <a class="asset" href="mailto:{EMAIL}?subject=Brand%20assets%3A%20images"><img src="{img('photo-1495291916458-c12f594151e7', 800)}" alt="Light bulb on a dark background" loading="lazy" width="800" height="500"><span>Images</span></a>
+    <div class="res-cards">
+      <div class="res-card"><span>Logos</span><a class="btn btn-lilac" href="mailto:{EMAIL}?subject=ICM%20logos">Request →</a></div>
+      <div class="res-card"><span>Images</span><a class="btn btn-lilac" href="mailto:{EMAIL}?subject=ICM%20images">Request →</a></div>
     </div>
   </section>
 </main>'''
-    return page_shell(t, '/resources/', 'Resources | The ICM', 'Blog, API documents and brand assets of the Independent Capacity Market.', hero, body)
+    return page_shell(t, '/resources/', 'Resources | The ICM', 'Documents and brand assets of the Independent Capacity Market.', hero, body)
 
 ROLES = [('Founders Associate', 'Amsterdam'), ('Commercial Lead', 'Amsterdam'), ('Legal Counsel', 'Amsterdam')]
 
 def company(t):
-    rows = '\n'.join(f'        <li><span>{r} | {c}</span><a class="btn btn-lilac" href="/?role={r.replace(" ", "%20")}#contact">Apply</a></li>' for r, c in ROLES)
-    hero = f'''    <div class="page-hero co-hero" id="main">
+    rows = '\n'.join(f'        <li><span>{r} | {c}</span><a class="btn btn-lilac" href="/?role={r.replace(" ", "%20")}#contact">Apply →</a></li>' for r, c in ROLES)
+    hero = '''    <div class="page-hero" id="main">
       <h1>About The Independent Capacity Market</h1>
-    </div>
-    <img class="co-img" src="{img('photo-1790039110126-af52ad70e601', 1600)}" alt="An electrical substation with power lines" width="1600" height="700">'''
+    </div>'''
     body = f'''<section class="dark co-who">
   <div class="wrap co-grid">
     <p class="co-label">Who we are</p>
     <div>
-      <p>The Independent Capacity Market (ICM) exists because Europe's battery market is growing faster than its transparency. Batteries are being built at record pace, yet owners can't see what their assets should earn, optimizer contracts lock them in, and switching is costly and risky.</p>
-      <p>We believe in a new standard: independent benchmarks from real assets, a fair choice of optimizers, and switching without technical lock-in. A transparent flex market rewards optimizers that perform, and gives grid operators flexibility they can rely on.</p>
+      <p>The ICM serves those who add capacity to the grid, but are in the dark on the potential of their assets.</p>
+      <p>We believe in a new standard: an independent benchmark based on real assets, backtesting that looks at all constraints, access to trusted optimizers, and switching made less costly and less risky.</p>
+      <p>A more transparent flex space rewards optimizers that perform, builds a stronger grid in uncertain times, and delivers more affordable power to us all.</p>
       <a class="btn btn-lilac" href="/#contact">Talk to us</a>
     </div>
   </div>
@@ -514,7 +498,7 @@ def company(t):
 <section class="co-careers" id="careers">
   <div class="wrap">
     <p class="co-label dark-t">Careers</p>
-    <h2 class="co-big">A more equitable grid.<br>Do work that matters with people who care.</h2>
+    <h2 class="co-big">A more equitable grid.<span>Do work that matters with people who care.</span></h2>
     <hr>
     <h3>Current open roles:</h3>
     <p class="co-open">If no positions are showing below, you're welcome to submit an open application including your CV and what you'd want to achieve at the ICM to <a href="mailto:{EMAIL}">{EMAIL}</a>.</p>
@@ -522,15 +506,8 @@ def company(t):
 {rows}
     </ul>
   </div>
-</section>
-<section class="dark co-why">
-  <div class="wrap">
-    <h2>Why does the world need the ICM?</h2>
-    <p>The grid is full, and the flexibility that could unblock it is invisible, locked in private deals nobody can see or price.</p>
-    <p>We're not owners. We're not optimizers. Nor will we ever be. We are the market they meet in.</p>
-  </div>
 </section>'''
-    return page_shell(t, '/company/', 'Company | The ICM', 'About the Independent Capacity Market: who we are, open roles in Amsterdam and why the world needs an independent capacity market.', hero, body)
+    return page_shell(t, '/company/', 'Company | The ICM', 'About the Independent Capacity Market: who we are and open roles in Amsterdam.', hero, body)
 
 REDIRECT = '''<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Careers | The ICM</title><meta name="robots" content="noindex"><link rel="canonical" href="https://icm.energy/company/#careers"><meta http-equiv="refresh" content="0; url=/company/#careers"></head><body><a href="/company/#careers">Careers have moved to our company page.</a></body></html>'''
 
@@ -609,13 +586,14 @@ page = head(te, 'BESS Benchmark methodology: how we calculate revenue per MW | T
 </body>
 </html>
 """
-write('methodology/index.html', page)
+write('methodology/index.html', '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>The ICM</title><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0; url=/#demo"></head><body><a href="/#demo">Go to the BESS Benchmark</a></body></html>')
 print('methodology built, v' + version.group(1), len(toc), 'sections')
 
 
 # Interactive demo: the prototype (fictional data) served at /demo/, embedded on the homepage.
 demo = open(os.path.join(ROOT, '_build', 'prototype.html'), encoding='utf-8').read()
-demo = demo.replace('https://app.box.com/s/52dy3lyuocqpj3ss3rf47sdyveq7b1ir', '/methodology/').replace('https://app.box.com/s/3hmk2batlg2l2nv91e59gafzu2p1hek6', '/terms/')
+demo = demo.replace('<a href="https://app.box.com/s/52dy3lyuocqpj3ss3rf47sdyveq7b1ir">Methodology</a> · ', '')
+demo = demo.replace('<a href="\'+LINK_METH+\'">Methodology</a> · ', '').replace('https://app.box.com/s/3hmk2batlg2l2nv91e59gafzu2p1hek6', '/terms/')
 demo = demo.replace('<title>BESS Benchmark Report</title>', '<title>BESS Benchmark interactive demo | The ICM</title><meta name="robots" content="noindex">')
 demo = demo.replace("document.querySelectorAll('.seg[data-key]').forEach(el=>{\n  const key=el.dataset.key;", "document.querySelectorAll('.seg[data-key]').forEach(el=>{\n  const key=el.dataset.key;if(!OPTS[key])return;")
 # a way back to the website (target=_top also works when the demo is shown inside the homepage dialog)
