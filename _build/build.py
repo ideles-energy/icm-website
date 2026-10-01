@@ -3,7 +3,7 @@
 Run from the repo root:  python3 _build/build.py
 Edit texts in the T dictionary below, then rebuild. Methodology is edited directly in methodology/index.html.
 """
-import json, os, re
+import json, os, re, hashlib
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -201,11 +201,15 @@ def head(t, title, desc, path, alt_path=None, jsonld=None, og_title=None):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/styles.css?v={V_CSS}">
 {ld}</head>
 <body>
 <a class="sr-only" href="#main">{t['skip']}</a>
 '''
+
+def _v(f):
+    return hashlib.md5(open(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), f),'rb').read()).hexdigest()[:8]
+V_CSS, V_JS = _v('styles.css'), _v('main.js')
 
 SOLUTIONS = [('BESS Benchmark', 'Open now', '/solutions/#benchmark'), ('BESS Backtest', 'Join the waitlist', '/solutions/#backtest'),
              ('BESS Broker', 'Join the waitlist', '/solutions/#broker'), ('BESS Bridge', 'Join the waitlist', '/solutions/#bridge')]
@@ -391,7 +395,7 @@ def home(t):
 </section>
 
 {footer(t, other)}
-<script src="/main.js" defer></script>
+<script src="/main.js?v={V_JS}" defer></script>
 </body>
 </html>
 '''
@@ -570,7 +574,7 @@ def solutions(t):
 {cards}  </div>
 </section>
 {footer(t, '/solutions/')}
-<script src="/main.js" defer></script>
+<script src="/main.js?v={V_JS}" defer></script>
 </body>
 </html>
 '''
