@@ -660,3 +660,7 @@ body.nav-fixed header.nav { position: fixed; top: 0; left: 0; right: 0; z-index:
 /* v22 contact form embed: stay below the fixed header, no double card */
 body.nav-fixed header.nav { z-index: 1000; }
 .form.fillout { position: relative; z-index: 0; isolation: isolate; padding: 0; background: transparent; border: 0; box-shadow: none; overflow: hidden; border-radius: var(--radius); }
+
+/* v23 company */
+.co-team .co-label { margin: 0 0 28px; }
+.co-roles + .co-open { margin: 28px 0 0; }
