@@ -645,3 +645,8 @@ body.nav-fixed header.nav { position: fixed; top: 0; left: 0; right: 0; z-index:
 /* v19 icons */
 .sol-icon { width: 72px; height: 72px; border-radius: 18px; background: rgba(151,242,245,.07); border: 1px solid rgba(151,242,245,.35); display: grid; place-items: center; }
 .sol-icon svg { width: 36px; height: 36px; }
+
+/* v20 company type */
+.co-big span, .co-careers h3 { font-size: 20px; font-weight: 600; }
+.co-open { font-size: 17px; }
+.res-thumb img { object-position: top left; }

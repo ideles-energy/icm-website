@@ -58,7 +58,7 @@ T = {
   about_p='We are not owners. We are not optimizers. Nor will we ever be.<br><br>We are an energy tech company, serving those who add capacity to the grid, but are in the dark on the potential of their assets. We compare BESS-to-BESS, introduce owners to optimizers and oversee the switch, so batteries keep earning.',
   roles='Open roles', careers='Careers',
   open_now='Open now', waitlist='Join the waitlist',
-  p1=('BESS Benchmark',"Become a member to compare your earnings BESS-to-BESS."),
+  p1=('BESS Benchmark',"Become a member to compare your earnings BESS-to-BESS. Real revenues, anonymised, clarifying how well you're doing."),
   p1b=('BESS Backtest','Understand the drivers of the capture rate. A deep dive into the full potential of complex, co-located set-ups.'),
   p2=('BESS Broker','Outsource the search for a trusted optimizer. One form, a standardised process and terms banks appreciate.'),
   p3=('BESS Bridge','Switch optimizers without going dark. Our API platform connects optimizers with local infra.'),
@@ -463,8 +463,8 @@ def resources(t):
     <h2>Documents</h2>
     <p class="res-lead">Find answers to common questions about the BESS Benchmark, or read our API documents. Anything missing? Just ask.</p>
     <div class="res-cards">
-      <div class="res-card"><span>Access our API documents here</span><a class="btn btn-lilac" href="https://docs.icm.energy/" target="_blank" rel="noopener">Access →</a></div>
-      <div class="res-card"><span>BESS Benchmark FAQ</span><a class="btn btn-lilac" href="/faq/">Read →</a></div>
+      <div class="res-card res-thumb"><img src="/assets/brand/thumb-api.jpg" alt="" width="1425" height="552" loading="lazy"><div><span>API documents</span><small>Guides and reference for the ICM Platform API</small></div><a class="btn btn-lilac" href="https://docs.icm.energy/" target="_blank" rel="noopener">Access →</a></div>
+      <div class="res-card res-thumb"><img src="/assets/brand/thumb-faq.jpg" alt="" width="1000" height="428" loading="lazy"><div><span>BESS Benchmark FAQ</span><small>Answers on membership, data and results</small></div><a class="btn btn-lilac" href="/faq/">Read →</a></div>
     </div>
   </section>
   <section class="wrap res-sec">
@@ -533,7 +533,7 @@ def solutions(t):
       'bridge': '<path d="M4 8h13m0 0-3.5-3.5M17 8l-3.5 3.5"/><path d="M20 16H7m0 0 3.5-3.5M7 16l3.5 3.5"/>',
     }
     items = [
-      ('benchmark', 'BESS Benchmark', True, "Become a member to compare your earnings BESS-to-BESS."),
+      ('benchmark', 'BESS Benchmark', True, "Become a member to compare your earnings BESS-to-BESS. Real revenues, anonymised, clarifying how well you're doing."),
       ('backtest', 'BESS Backtest', False, 'Understand the drivers of the capture rate. A deep dive into the full potential of complex, co-located set-ups.'),
       ('broker', 'BESS Broker', False, 'Outsource the search for a trusted optimizer. One form, a standardised process and terms banks appreciate.'),
       ('bridge', 'BESS Bridge', False, 'Switch optimizers without going dark. Our API platform connects optimizers with local infra.'),
