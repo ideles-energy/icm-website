@@ -247,7 +247,6 @@ def footer(t, other_href):
       <a href="/resources/">Resources</a>
       <a href="/company/">Company</a>
     </nav>
-    <div class="f-mail"><a href="mailto:{EMAIL}">{EMAIL}</a><p>KvK 99958775</p></div>
     <div class="f-legal">
       <p>Website designed by Salt &amp; Chalk</p>
       <p><a href="{b}terms/">{t['terms']}</a> | <a href="{b}privacy/">{t['privacy']}</a></p>
