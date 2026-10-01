@@ -379,7 +379,8 @@ def home(t):
   </div>
 </section>
 
-<section id="contact">
+<section id="contact" class="contact-photo">
+  <img class="bg-img" src="/assets/img/contact-veins.jpg" alt="" width="1920" height="1080" loading="lazy">
   <div class="wrap contact">
     <div class="intro">
       <span class="eyebrow" style="color:var(--teal)">{t['contact_eyebrow']}</span>
@@ -489,7 +490,7 @@ def company(t):
     rows = '\n'.join(f'        <li><span>{r} | {c}</span><a class="btn btn-lilac" href="/?role={r.replace(" ", "%20")}#contact">Apply →</a></li>' for r, c in ROLES)
     hero = '''    <div class="page-hero" id="main">
       <h1>About The Independent Capacity Market</h1>
-      <img class="co-img" src="/assets/img/company-bess.jpg" alt="Containerised battery energy storage system on a grass field" width="1920" height="1080">
+      <img class="co-img" src="/assets/img/company-turbine.jpg" alt="Wind turbine seen from below against a blue sky" width="1920" height="1080">
     </div>'''
     body = f'''<section class="dark co-who">
   <div class="wrap co-grid">
@@ -507,7 +508,7 @@ def company(t):
     <h2>Meet the team</h2>
     <div class="team">
       <a class="member" href="https://www.linkedin.com/in/idel%C3%A8s-kaandorp/" target="_blank" rel="noopener"><img class="ph" src="/assets/team-ideles.jpg" alt="Idelès Kaandorp" width="600" height="600" loading="lazy"><b>Idelès Kaandorp</b><em>LinkedIn →</em></a>
-      <a class="member" href="https://www.linkedin.com/in/edo-rivai-78b66a17/" target="_blank" rel="noopener"><img class="ph" src="/assets/team-edo.jpg" alt="Edo Rivai" width="192" height="192" loading="lazy"><b>Edo Rivai</b><em>LinkedIn →</em></a>
+      <a class="member" href="https://www.linkedin.com/in/edo-rivai-78b66a17/" target="_blank" rel="noopener"><img class="ph" src="/assets/team-edo.jpg" alt="Edo Rivai" width="512" height="512" loading="lazy"><b>Edo Rivai</b><em>LinkedIn →</em></a>
       <div class="member tbc"><span class="ph ph-empty"></span><b>Coming soon</b><em>&nbsp;</em></div>
     </div>
     <div class="team-cta"><a class="btn btn-lilac" href="/#contact">Get in touch →</a></div>
