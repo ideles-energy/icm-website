@@ -48,7 +48,7 @@ T = {
   calc_assume='Assumption: comparable batteries earned 30% more per MW. Illustrative – the BESS Benchmark shows the real gap.',
   calc_you='This battery', calc_bench='Comparable batteries', calc_missed='Missed opportunity over 6 months', calc_cta='Find the real gap',
   demo_eyebrow='How we can work together', demo_h='The BESS Benchmark', demo_p='Clarity is our goal. The ICM collects and anonymizes monthly BESS revenues for a BESS-to-BESS comparison.', demo_note='Fictional example data.',
-  demo_btn='Try the interactive demo', demo_title='BESS Benchmark interactive demo (fictional data)', demo_new='Open in a new tab',
+  demo_btn='Try the demo', demo_title='BESS Benchmark interactive demo (fictional data)', demo_new='Open in a new tab',
   shot_cap='The BESS Benchmark is a dynamic view on the EUR per MW per year across the assets of all members. Fictional example data.',
   faq_link='Read the FAQ',
   real_eyebrow='Real data, not a model', real_h='Why real revenues beat a simulated index',
@@ -471,8 +471,8 @@ def resources(t):
     <h2>Brand assets</h2>
     <p class="res-lead">Download the official brand assets of the ICM. Use these resources to ensure a consistent and professional representation of the ICM in all designs and communications.</p>
     <div class="res-cards">
-      <div class="res-card"><span>Logos</span><a class="btn btn-lilac" href="mailto:{EMAIL}?subject=ICM%20logos">Request →</a></div>
-      <div class="res-card"><span>Images</span><a class="btn btn-lilac" href="mailto:{EMAIL}?subject=ICM%20images">Request →</a></div>
+      <div class="res-card res-thumb"><img src="/assets/brand/thumb-logos.jpg" alt="" width="640" height="360" loading="lazy"><div><span>Logos</span><small>PNG and SVG, header and footer versions</small></div><a class="btn btn-lilac" href="/assets/brand/ICM-logos.zip" download>Download →</a></div>
+      <div class="res-card res-thumb"><img src="/assets/brand/thumb-images.jpg" alt="" width="640" height="360" loading="lazy"><div><span>Images</span><small>Seven brand photos, high resolution</small></div><a class="btn btn-lilac" href="/assets/brand/ICM-images.zip" download>Download →</a></div>
     </div>
   </section>
 </main>'''
@@ -540,8 +540,8 @@ def solutions(t):
     ]
     cards = ''
     for k, name, live, body in items:
-        tag = '<span class="tag">Open now</span>' if live else '<a class="tag soft" href="/#contact">Join the waitlist</a>'
-        cta = '<a class="btn btn-lilac" href="/#demo">Try the demo</a><a class="btn btn-outline" href="/faq/">Read the FAQ</a>' if live else '<a class="btn btn-lilac" href="/#contact">Join the waitlist</a>'
+        tag = '<span class="tag live">Open now</span>' if live else '<a class="tag soft" href="/#contact">Join the waitlist</a>'
+        cta = '<a class="btn btn-lilac" href="/#demo">Try the demo</a><a class="btn btn-outline" href="/#how">Learn more</a>' if live else '<a class="btn btn-lilac" href="/#contact">Join the waitlist</a>'
         cards += f'''    <article class="sol" id="{k}">
       <span class="sol-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#274A51" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">{icons[k]}</svg></span>
       <div class="sol-body">
@@ -561,7 +561,6 @@ def solutions(t):
 {nav(t, '/solutions/')}
     <div class="page-hero" id="main">
       <h1>Solutions</h1>
-      <p>The ICM works with owners, optimizers and partners. Four propositions give BESS owners an independent view on the true value of their asset.</p>
     </div>
   </div>
 </div>
