@@ -503,7 +503,7 @@ def company(t):
 </section>
 <section class="dark co-team">
   <div class="wrap">
-    <h2>Meet the team</h2>
+    <p class="co-label">The team</p>
     <div class="team">
       <a class="member" href="https://www.linkedin.com/in/idel%C3%A8s-kaandorp/" target="_blank" rel="noopener"><img class="ph" src="/assets/team-ideles.jpg" alt="Idelès Kaandorp" width="600" height="600" loading="lazy"><b>Idelès Kaandorp</b><em>LinkedIn →</em></a>
       <a class="member" href="https://www.linkedin.com/in/edo-rivai-78b66a17/" target="_blank" rel="noopener"><img class="ph" src="/assets/team-edo.jpg" alt="Edo Rivai" width="512" height="512" loading="lazy"><b>Edo Rivai</b><em>LinkedIn →</em></a>
@@ -514,14 +514,13 @@ def company(t):
 </section>
 <section class="co-careers" id="careers">
   <div class="wrap">
-    <p class="co-label dark-t">Careers</p>
+    <p class="co-label dark-t">Open roles</p>
     <h2 class="co-big">A more equitable grid.<span>Do work that matters with people who care.</span></h2>
     <hr>
-    <h3>Current open roles:</h3>
-    <p class="co-open">Open applications are welcome, including a CV and a description of what the applicant wants to achieve at the ICM, to <a href="mailto:{EMAIL}">{EMAIL}</a>.</p>
     <ul class="co-roles">
 {rows}
     </ul>
+    <p class="co-open">Open applications are welcome. Please include a CV and what you want to achieve at the ICM, to <a href="mailto:{EMAIL}">{EMAIL}</a>.</p>
   </div>
 </section>'''
     ld = {"@context": "https://schema.org", "@type": "AboutPage", "url": "https://icm.energy/company/", "mainEntity": {"@type": "Organization", "@id": "https://icm.energy/#org", "name": "Independent Capacity Market B.V.", "alternateName": "The ICM", "logo": "https://icm.energy/assets/logo-footer.png", "url": "https://icm.energy/",
@@ -544,7 +543,7 @@ def solutions(t):
     ]
     cards = ''
     for k, name, live, body in items:
-        tag = '<span class="tag live">Open now</span>' if live else '<a class="tag soft" href="/#contact">Join the waitlist</a>'
+        tag = '<span class="tag live">Open now</span>' if live else '<span class="tag soft">Coming soon</span>'
         cta = '<a class="btn btn-lilac" href="/#demo">Try the demo</a><a class="btn btn-outline" href="/#how">Learn more</a>' if live else '<a class="btn btn-lilac" href="/#contact">Join the waitlist</a>'
         cards += f'''    <article class="sol" id="{k}">
       <span class="sol-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#97F2F5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">{icons[k]}</svg></span>
