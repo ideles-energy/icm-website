@@ -14,17 +14,17 @@ LINKEDIN = 'https://www.linkedin.com/in/idel%C3%A8s-kaandorp/'
 T = {
  'en': dict(
   lang='en', base='/', other='/nl/', other_label='NL', other_lang='nl', other_name='Nederlands',
-  title="BESS Benchmark: understand the true value of your battery | The ICM",
-  desc="See how your battery compares, BESS-to-BESS, with comparable batteries in the Netherlands, and find a trusted optimizer when there's more to earn.",
-  og_title="Understand and secure the true value of your BESS asset",
+  title="BESS Benchmark: understand the true value of a BESS asset | The ICM",
+  desc="See how a battery compares, BESS-to-BESS, with comparable batteries in the Netherlands, and find a trusted optimizer when there's more to earn.",
+  og_title="Understand and secure the true value of a BESS asset",
   skip='Skip to content', nav_how='How it works', nav_faq='FAQ', nav_about='About', talk='Talk to us', menu='Main',
   eyebrow='BESS Benchmark',
-  h1_a='Understand and secure', h1_b='the true value of your asset',
-  lead='For owners with a nagging sense their BESS could earn more. See how your asset compares, BESS-to-BESS, and find a trusted optimizer when there\'s more to earn.',
+  h1_a='Understand and secure', h1_b='the true value of a BESS asset',
+  lead='For owners with a nagging sense their BESS could earn more. See how an asset compares, BESS-to-BESS, and find a trusted optimizer when there\'s more to earn.',
   book='Talk to us', start='Get started', more='Learn more', how_link='How it works',
   chart_title='Project score: 87% of the peer benchmark', chart_sub='EUR per MW per year, by month · gross revenue',
   chart_aria="Illustrative chart: a project's monthly revenue per MW compared with the peer benchmark",
-  months=['Oct','Dec','Feb','Apr','Jun','Aug'], chart_you='Your project', chart_peer='Peer benchmark (≥ 5 assets, ≥ 3 organisations)',
+  months=['Oct','Dec','Feb','Apr','Jun','Aug'], chart_you='This project', chart_peer='Peer benchmark (≥ 5 assets, ≥ 3 organisations)',
   chart_note='Illustrative example with fictional data.',
   why_eyebrow='Why it matters', why_h='BESS assets deliver vastly different results',
   why_p='Independent information is missing as long as no one works together.',
@@ -37,36 +37,36 @@ T = {
    ('Participation', 'Members share their earnings every month, for instance by asking their optimizer to CC the ICM on its monthly performance report. The ICM anonymizes the data and adds it to the BESS Benchmark.'),
    ('Contribution', 'Members pay a symbolic handling fee of 0.5% of what their BESS assets earned that month: EUR 75 for a project delivering EUR 15,000. After referring 5 members, the contribution drops to 0.1% for 6 months.'),
    ('Give-to-get', 'Members only see the BESS Benchmark for the months to which they contributed. If no data is shared for August, September and October, the BESS Benchmark stays blank for those months.'),
-   ('Silent by design', 'The Dutch saying "geen bericht, goed bericht" applies here. The ICM reaches out to members whose projects earn below 80% of the BESS Benchmark in at least 6 of the last 12 months. Otherwise, we prefer not to bother you.'),
-   ('Proof of performance', 'The BESS Benchmark can serve as concrete input for negotiations and insurance/warranty claims ("comparable assets earned EUR X during downtime").'),
+   ('Silent by design', 'The Dutch saying "geen bericht, goed bericht" applies here. The ICM reaches out to members whose projects earn below 80% of the BESS Benchmark in at least 6 of the last 12 months. Otherwise, the ICM stays quiet.'),
+   ('Proof of performance', 'The BESS Benchmark can serve as concrete input for (re)financing conversations, contract negotiations with optimizers and insurance/warranty claims.'),
   ],
   shot_alt='The BESS Benchmark app: project score, revenue per MW and the benchmark over the last 12 months (fictional example data)',
-  story_note='Fill in your own numbers. Illustrative example.',
-  calc_eyebrow='Calculator', calc_h='What is your missed opportunity?',
-  calc_p='Enter your battery and what it earns today. See what you could have earned if it had matched comparable batteries.',
-  calc_mw='Battery size', calc_months='Period', calc_months_unit='months', calc_rev='Your revenue today',
-  calc_assume='Assumption: comparable batteries earned 30% more per MW. Illustrative – the BESS Benchmark shows your real gap.',
-  calc_you='Your battery', calc_bench='Comparable batteries', calc_missed='Missed opportunity over 6 months', calc_cta='Find out your real gap',
+  story_note='Enter figures to adjust. Illustrative example.',
+  calc_eyebrow='Calculator', calc_h='What is the missed opportunity?',
+  calc_p='Enter the battery size and what it earns today, to see what it could have earned if it had matched comparable batteries.',
+  calc_mw='Battery size', calc_months='Period', calc_months_unit='months', calc_rev='Current revenue',
+  calc_assume='Assumption: comparable batteries earned 30% more per MW. Illustrative – the BESS Benchmark shows the real gap.',
+  calc_you='This battery', calc_bench='Comparable batteries', calc_missed='Missed opportunity over 6 months', calc_cta='Find the real gap',
   demo_eyebrow='How we can work together', demo_h='The BESS Benchmark', demo_p='Clarity is our goal. The ICM collects and anonymizes monthly BESS revenues for a BESS-to-BESS comparison.', demo_note='Fictional example data.',
   demo_btn='Try the interactive demo', demo_title='BESS Benchmark interactive demo (fictional data)', demo_new='Open in a new tab',
-  shot_cap='The BESS Benchmark is a dynamic view on the EUR per MW per year of your assets and those of our other members. Fictional example data.',
+  shot_cap='The BESS Benchmark is a dynamic view on the EUR per MW per year across the assets of all members. Fictional example data.',
   faq_link='Read the FAQ',
   real_eyebrow='Real data, not a model', real_h='Why real revenues beat a simulated index',
-  idx_h='A simulated revenue index', idx=['Models a theoretical battery with fixed assumptions','Assumes a full grid connection and no downtime','Cannot tell you how your optimizer performs comparatively'],
-  ours_h='The BESS Benchmark', ours=['Is based on realised revenues, as members received them from their optimizers','Anticipates restrictions such as CSC terms, TDTR limits and downtime','Compares your battery with batteries set up like yours'],
+  idx_h='A simulated revenue index', idx=['Models a theoretical battery with fixed assumptions','Assumes a full grid connection and no downtime','Cannot show how an optimizer performs comparatively'],
+  ours_h='The BESS Benchmark', ours=['Is based on realised revenues, as members received them from their optimizers','Anticipates restrictions such as CSC terms, TDTR limits and downtime','Compares a battery with batteries set up alike'],
   about_eyebrow='About the ICM', about_h='Why an Independent Capacity Market matters',
-  about_p='We are not owners. We are not optimizers. Nor will we ever be.<br><br>We are an energy tech company, serving those who add capacity to the grid, but are in the dark on the potential of their assets. We compare BESS-to-BESS, introduce owners to optimizers and oversee the switch, so your battery keeps earning.',
+  about_p='We are not owners. We are not optimizers. Nor will we ever be.<br><br>We are an energy tech company, serving those who add capacity to the grid, but are in the dark on the potential of their assets. We compare BESS-to-BESS, introduce owners to optimizers and oversee the switch, so batteries keep earning.',
   roles='Open roles', careers='Careers',
   open_now='Open now', waitlist='Join the waitlist',
   p1=('BESS Benchmark',"Compare your earnings BESS-to-BESS and understand if you're earning a lot, or too little."),
-  p1b=('BESS Backtest','Understand the drivers of your capture rate. A deep dive into the full potential of complex, co-located set-ups.'),
+  p1b=('BESS Backtest','Understand the drivers of the capture rate. A deep dive into the full potential of complex, co-located set-ups.'),
   p2=('BESS Broker','Outsource the search for a trusted optimizer. One form, a standardised process and terms banks appreciate.'),
   p3=('BESS Bridge','Switch optimizers without going dark. Our API platform connects optimizers with local infra.'),
   contact_eyebrow='Talk to us', contact_h='Book time with us', contact_p='',
   prefer='Prefer email?', subject='BESS Benchmark intake request',
   f_name='Name', f_company='Company', f_email='Email', f_mw='Portfolio or project size in MW',
-  f_msg='Tell us a little bit about your context and objectives', f_ph='E.g., asset of 3-30 MW, trading revenues below expectations, interested in the BESS Benchmark',
-  f_submit='Send', f_fine='We use your details only to contact you about the ICM.', f_ok='Thank you – we will be in touch.',
+  f_msg='Context and objectives', f_ph='E.g., asset of 3-30 MW, trading revenues below expectations, interested in the BESS Benchmark',
+  f_submit='Send', f_fine='Details are used only to get in touch about the ICM.', f_ok='Thank you – we will be in touch.',
   foot_tag='The ICM brings clarity, trusted partners and continuity to those adding capacity to the grid.',
   founded='Founded by', foot_bench='Learn more', methodology='Methodology', contact='Contact',
   terms='Terms & Conditions', privacy='Privacy statement', disclaimer='Benchmark figures are outcome data as reported by optimizers, not advice.',
@@ -76,15 +76,15 @@ T = {
    ('How does the BESS Benchmark help me?', '<p>There are roughly 4 reasons people are keen to become and stay a member.</p><ol><li><b>Clarity on performance.</b> It removes doubt by comparing apples with apples and pears with pears.</li><li><b>Stronger claims.</b> Independent figures on what comparable batteries earned make insurance and warranty claims stronger.</li><li><b>A better optimizer contract.</b> A benchmark helps negotiate a better optimizer contract ("floor of at least 80% of the benchmark"; "right to terminate at 60% of the benchmark").</li><li><b>A realistic business case.</b> A basis for sizing the next project and a check on bankable forecasts. A benchmark of real data helps understand what a realistic business case could look like.</li></ol>'),
    ('How is this different from other benchmarks, forecasts and indices?', 'Virtual batteries with fixed assumptions give a suboptimal view. The BESS Benchmark shows what assets actually delivered: real revenues from optimizers\' statements, including grid restrictions, downtime and degradation. That makes it the reality check for those models.'),
    ('Who becomes a member?', 'Batteries in the Netherlands that an optimizer trades under a merchant contract. We focus on assets of 3 to 30 MW and decide per project in the intake.'),
-   ('How does one become a member?', 'A 45-minute intake is our starting point. We use this time to discuss your context and objectives, understand which decisions the BESS Benchmark can help make and share what is needed to become and contribute as a member. New members share 6 months of historical data and decide how they will share revenue data each month. One route is for the optimizer to CC the ICM on their monthly performance report. Thereafter, the BESS Benchmark can be accessed at any time. The ICM will proactively reach out when the project performs poorly (&lt;80% of the BESS Benchmark for at least 6 months in the last 12 months).'),
+   ('How does one become a member?', 'A 45-minute intake is our starting point. We use this time to discuss the context and objectives, understand which decisions the BESS Benchmark can help make and share what is needed to become and contribute as a member. New members share 6 months of historical data and decide how they will share revenue data each month. One route is for the optimizer to CC the ICM on their monthly performance report. Thereafter, the BESS Benchmark can be accessed at any time. The ICM will proactively reach out when the project performs poorly (&lt;80% of the BESS Benchmark for at least 6 months in the last 12 months).'),
    ('What does the BESS Benchmark cost?', 'Members pay a symbolic handling fee set at 0.5% of the gross revenues earned in that month. This number is excluding VAT. After referring 5 members, the fee drops to 0.1% for 6 months.'),
    ('How long do I commit to the BESS Benchmark?', 'New members are asked to stay at least 3 months. After that, membership renews monthly.'),
    ('Who sees my data?', 'Only the member and the ICM see the raw data. The ICM anonymizes submitted information before it adds it to the BESS Benchmark. We do not share individual member data with other members, or third parties. The BESS Benchmark itself is based on aggregated, anonymized information.'),
-   ('Can I share my results?', 'Yes. You may share your BESS Benchmark freely. It\'s yours and may benefit conversations with your installer, adviser and financier.'),
+   ('Can I share my results?', 'Yes. Members may share their BESS Benchmark freely. It belongs to the member and may benefit conversations with installers, advisers and financiers.'),
    ('I advise or finance BESS assets. Can we work together?', 'Yes. Reach out to <a href="mailto:ideles@icm.energy">ideles@icm.energy</a> to explore the options to work together and join our partner network.'),
    ('How is the benchmark calculated?', 'The BESS Benchmark divides revenues by MW and annualizes the result to show EUR per MW per year. Several filters allow members to compare batteries with a similar duration and set-up. Unavailable hours are excluded (maintenance, fault). Results are preliminary for 3 months, anticipating potential corrections.'),
    ('Why do BESS assets earn differently?', 'Various factors restrict the full earnings potential of a battery: (i) the battery itself (e.g., round-trip efficiency, minimum/maximum state of charge) and its local set-up (e.g., size of the grid connection, congestion contract), (ii) the markets it is active in and (iii) maintenance and malfunctions are the most commonly mentioned factors.'),
-   ('Can I see which optimizer performs best?', 'No. The BESS Benchmark does not show results per optimizer, or rankings of optimizers. You can compare your battery with peers that use the same or other optimizers, without names. Our BESS Broker proposition is designed to source and evaluate optimizers for you.'),
+   ('Can I see which optimizer performs best?', 'No. The BESS Benchmark does not show results per optimizer, or rankings of optimizers. Members can compare their battery with peers that use the same or other optimizers, without names. Our BESS Broker proposition is designed to source and evaluate optimizers for owners.'),
    ('Is the ICM independent?', 'Yes. We do not own BESS assets. We are not an optimizer. Nor will we ever be. For more information about our governance, please reach out to <a href="mailto:ideles@icm.energy">ideles@icm.energy</a>.'),
   ],
   terms_title='Terms & Conditions | The ICM', terms_h='Terms & Conditions',
@@ -292,7 +292,7 @@ def home(t):
 {nav(t, other)}
     <div class="hero" id="main">
       <div>
-        <h1>Understand and<br>secure the true value<br>of your asset</h1>
+        <h1>Understand and<br>secure the true value<br>of a BESS asset</h1>
         <p class="lead">{t['lead']}</p>
         <div class="hero-ctas">
           <a class="btn btn-lilac" href="#contact">{t['book']}</a>
@@ -379,7 +379,7 @@ def home(t):
     <div class="intro">
       <span class="eyebrow" style="color:var(--teal)">{t['contact_eyebrow']}</span>
       <h2>{t['contact_h']}</h2>
-      <p>Our starting point is a 45-minute call to understand your context and objectives.</p>
+      <p>Our starting point is a 45-minute call to understand context and objectives.</p>
       <p>{t['prefer']} <a href="mailto:{EMAIL}">{EMAIL}</a></p>
     </div>
     <div class="form fillout">
@@ -456,12 +456,12 @@ def page_shell(t, path, title, desc, hero, body, jsonld=None):
 def resources(t):
     hero = '''    <div class="page-hero" id="main">
       <h1>Resources</h1>
-      <p>You'll find all Independent Capacity Market resources below, including documents and brand assets.</p>
+      <p>All Independent Capacity Market resources are listed below, including documents and brand assets.</p>
     </div>'''
     body = f'''<main class="res">
   <section class="wrap res-sec">
     <h2>Documents</h2>
-    <p class="res-lead">Find answers to common questions about the BESS Benchmark, or read our API documents. Can't find what you need? Just ask us.</p>
+    <p class="res-lead">Find answers to common questions about the BESS Benchmark, or read our API documents. Anything missing? Just ask.</p>
     <div class="res-cards">
       <div class="res-card"><span>Access our API documents here</span><a class="btn btn-lilac" href="https://docs.icm.energy/" target="_blank" rel="noopener">Access →</a></div>
       <div class="res-card"><span>BESS Benchmark FAQ</span><a class="btn btn-lilac" href="/faq/">Read →</a></div>
@@ -469,7 +469,7 @@ def resources(t):
   </section>
   <section class="wrap res-sec">
     <h2>Brand assets</h2>
-    <p class="res-lead">Download the official brand assets of the ICM. Use these resources to ensure a consistent and professional representation of the ICM in all your designs and communications.</p>
+    <p class="res-lead">Download the official brand assets of the ICM. Use these resources to ensure a consistent and professional representation of the ICM in all designs and communications.</p>
     <div class="res-cards">
       <div class="res-card"><span>Logos</span><a class="btn btn-lilac" href="mailto:{EMAIL}?subject=ICM%20logos">Request →</a></div>
       <div class="res-card"><span>Images</span><a class="btn btn-lilac" href="mailto:{EMAIL}?subject=ICM%20images">Request →</a></div>
@@ -514,7 +514,7 @@ def company(t):
     <h2 class="co-big">A more equitable grid.<span>Do work that matters with people who care.</span></h2>
     <hr>
     <h3>Current open roles:</h3>
-    <p class="co-open">You're welcome to submit an open application including your CV and what you'd want to achieve at the ICM to <a href="mailto:{EMAIL}">{EMAIL}</a>.</p>
+    <p class="co-open">Open applications are welcome, including a CV and a description of what the applicant wants to achieve at the ICM, to <a href="mailto:{EMAIL}">{EMAIL}</a>.</p>
     <ul class="co-roles">
 {rows}
     </ul>
@@ -533,17 +533,13 @@ def solutions(t):
       'bridge': '<path d="M3 16c3-8 15-8 18 0M3 16v3M21 16v3M12 10v9M7.5 12v7M16.5 12v7" />',
     }
     items = [
-      ('benchmark', 'BESS Benchmark', True, "Compare your earnings BESS-to-BESS and understand if you're earning a lot, or too little.",
-       'Owners share their BESS revenues to access the benchmark, following a "give-to-get" principle: only the months that are shared can be seen. The benchmark divides the total earnings (EUR) by the total capacity (MW). Real data from real assets, anonymized.'),
-      ('backtest', 'BESS Backtest', False, 'Understand the drivers of the capture rate.',
-       'A deep dive into the full potential of complex, co-located set-ups, looking at all constraints.'),
-      ('broker', 'BESS Broker', False, 'Outsource the search for a trusted optimizer.',
-       'Owners complete a single form that captures most, if not all, that optimizers need to make an offer. The ICM runs a standardized process to source, evaluate and select a trusted optimizer that matches the owner, the project and its financing needs.'),
-      ('bridge', 'BESS Bridge', False, 'Switch optimizers without going dark.',
-       'The ICM integrates projects into the portfolio of an optimizer. Owners allow the ICM to connect with their local software (EMS, MSP), and the API platform connects optimizers with local infrastructure.'),
+      ('benchmark', 'BESS Benchmark', True, "Compare your earnings BESS-to-BESS and understand if you're earning a lot, or too little."),
+      ('backtest', 'BESS Backtest', False, 'Understand the drivers of the capture rate. A deep dive into the full potential of complex, co-located set-ups.'),
+      ('broker', 'BESS Broker', False, 'Outsource the search for a trusted optimizer. One form, a standardised process and terms banks appreciate.'),
+      ('bridge', 'BESS Bridge', False, 'Switch optimizers without going dark. Our API platform connects optimizers with local infra.'),
     ]
     cards = ''
-    for k, name, live, lead, body in items:
+    for k, name, live, body in items:
         tag = '<span class="tag">Open now</span>' if live else '<a class="tag soft" href="/#contact">Join the waitlist</a>'
         cta = '<a class="btn btn-lilac" href="/#demo">Try the demo</a><a class="btn btn-outline" href="/faq/">Read the FAQ</a>' if live else '<a class="btn btn-lilac" href="/#contact">Join the waitlist</a>'
         cards += f'''    <article class="sol" id="{k}">
@@ -551,7 +547,6 @@ def solutions(t):
       <div class="sol-body">
         {tag}
         <h2>{name}</h2>
-        <p class="sol-lead">{lead}</p>
         <p>{body}</p>
         <div class="cta-row" style="justify-content:flex-start;margin-top:22px">{cta}</div>
       </div>
@@ -566,7 +561,7 @@ def solutions(t):
 {nav(t, '/solutions/')}
     <div class="page-hero" id="main">
       <h1>Solutions</h1>
-      <p>The ICM works with owners, optimizers and partners. Four propositions give BESS owners an independent view on the true value of their asset and a trusted way to act on it.</p>
+      <p>The ICM works with owners, optimizers and partners. Four propositions give BESS owners an independent view on the true value of their asset.</p>
     </div>
   </div>
 </div>
