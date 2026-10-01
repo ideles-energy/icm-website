@@ -379,8 +379,7 @@ def home(t):
   </div>
 </section>
 
-<section id="contact" class="contact-photo">
-  <img class="bg-img" src="/assets/img/contact-veins.jpg" alt="" width="1920" height="1080" loading="lazy">
+<section id="contact">
   <div class="wrap contact">
     <div class="intro">
       <span class="eyebrow" style="color:var(--teal)">{t['contact_eyebrow']}</span>
@@ -443,7 +442,7 @@ def privacy(t):
     body = f'    <div class="prose">{secs}<p style="color:var(--muted);font-size:14px">29-09-2026</p></div>'
     return simple_page(t, t['base'] + 'privacy/', t['other'] + 'privacy/', t['privacy_title'], 'How the Independent Capacity Market handles personal data from its website and contact form.', t['privacy_h'], '', body)
 
-ROLES = [('Founders Associate', 'Amsterdam'), ('Commercial Lead', 'Amsterdam'), ('Legal Counsel', 'Amsterdam')]
+ROLES = [('Founders Associate', 'Amsterdam'), ('Commercial Lead', 'Amsterdam'), ('Legal Counsel', 'Amsterdam'), ('Software Engineer', 'Amsterdam')]
 
 def page_shell(t, path, title, desc, hero, body, jsonld=None):
     return head(t, title, desc, path, None, jsonld) + f'''
@@ -484,13 +483,13 @@ def resources(t):
 </main>'''
     return page_shell(t, '/resources/', 'Resources | The ICM', 'Documents and brand assets of the Independent Capacity Market.', hero, body)
 
-ROLES = [('Founders Associate', 'Amsterdam'), ('Commercial Lead', 'Amsterdam'), ('Legal Counsel', 'Amsterdam')]
+ROLES = [('Founders Associate', 'Amsterdam'), ('Commercial Lead', 'Amsterdam'), ('Legal Counsel', 'Amsterdam'), ('Software Engineer', 'Amsterdam')]
 
 def company(t):
-    rows = '\n'.join(f'        <li><span>{r} | {c}</span><a class="btn btn-lilac" href="/?role={r.replace(" ", "%20")}#contact">Apply →</a></li>' for r, c in ROLES)
+    rows = '\n'.join(f'        <li><span><b>{r}</b><em>{c}</em></span><a class="btn btn-lilac" href="/?role={r.replace(" ", "%20")}#contact">Apply →</a></li>' for r, c in ROLES)
     hero = '''    <div class="page-hero" id="main">
       <h1>About The Independent Capacity Market</h1>
-      <img class="co-img" src="/assets/img/company-turbine.jpg" alt="Wind turbine seen from below against a blue sky" width="1920" height="1080">
+      <img class="co-img" src="/assets/img/company-grid.jpg" alt="High-voltage substation against the evening sky" width="1920" height="1080">
     </div>'''
     body = f'''<section class="dark co-who">
   <div class="wrap co-grid">
