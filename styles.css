@@ -616,3 +616,4 @@ body.nav-fixed header.nav { position: fixed; top: 0; left: 0; right: 0; z-index:
 .co-roles li em { font-style: normal; color: var(--muted); font-size: 15px; }
 @media (max-width: 1000px) { .co-roles { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 560px) { .co-roles { grid-template-columns: 1fr; } }
+@media (min-width: 561px) { .nw { white-space: nowrap; } }

@@ -31,7 +31,7 @@ T = {
   stats=['EUR 145k', 'EUR 185k', 'EUR 240k'], per='per MW per year', stats_note='Illustrative example: gross market revenues of three BESS assets.',
   learn='How it works',
   which='Which one is yours?',
-  how_eyebrow='How it works', how_h='Become a member of the BESS Benchmark',
+  how_eyebrow='How it works', how_h='Become a member of <span class="nw">the BESS Benchmark</span>',
   rules=[
    ('Registration', 'New members submit 6 months of historical data and complete a 45-minute intake that collects the relevant project information. A membership lasts at least 3 months and can be cancelled every month after that.'),
    ('Participation', 'Members share their earnings every month, for instance by asking their optimizer to CC the ICM on its monthly performance report. The ICM anonymizes the data and adds it to the BESS Benchmark.'),
