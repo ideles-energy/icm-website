@@ -520,7 +520,7 @@ def company(t):
     <ul class="co-roles">
 {rows}
     </ul>
-    <p class="co-open">Open applications are welcome. Please include a CV and what you want to achieve at the ICM, to <a href="mailto:{EMAIL}">{EMAIL}</a>.</p>
+    <p class="co-open">Open applications are welcome. Please email <a href="mailto:{EMAIL}">{EMAIL}</a>, including a CV and what you want to achieve at the ICM.</p>
   </div>
 </section>'''
     ld = {"@context": "https://schema.org", "@type": "AboutPage", "url": "https://icm.energy/company/", "mainEntity": {"@type": "Organization", "@id": "https://icm.energy/#org", "name": "Independent Capacity Market B.V.", "alternateName": "The ICM", "logo": "https://icm.energy/assets/logo-footer.png", "url": "https://icm.energy/",
