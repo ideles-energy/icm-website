@@ -58,7 +58,7 @@ T = {
   about_p='We are not owners. We are not optimizers. Nor will we ever be.<br><br>We are an energy tech company, serving those who add capacity to the grid, but are in the dark on the potential of their assets. We compare BESS-to-BESS, introduce owners to optimizers and oversee the switch, so your battery keeps earning.',
   roles='Open roles', careers='Careers',
   open_now='Open now', waitlist='Join the waitlist',
-  p1=('BESS Benchmark','Compare your earnings BESS-to-BESS to understand the true value of your asset.'),
+  p1=('BESS Benchmark',"Compare your earnings BESS-to-BESS and understand if you're earning a lot, or too little."),
   p1b=('BESS Backtest','Understand the drivers of your capture rate. A deep dive into the full potential of complex, co-located set-ups.'),
   p2=('BESS Broker','Outsource the search for a trusted optimizer. One form, a standardised process and terms banks appreciate.'),
   p3=('BESS Bridge','Switch optimizers without going dark. Our API platform connects optimizers with local infra.'),
@@ -207,8 +207,8 @@ def head(t, title, desc, path, alt_path=None, jsonld=None, og_title=None):
 <a class="sr-only" href="#main">{t['skip']}</a>
 '''
 
-SOLUTIONS = [('BESS Benchmark', 'Open now', '/#demo'), ('BESS Backtest', 'Join the waitlist', '/#about'),
-             ('BESS Broker', 'Join the waitlist', '/#about'), ('BESS Bridge', 'Join the waitlist', '/#about')]
+SOLUTIONS = [('BESS Benchmark', 'Open now', '/solutions/#benchmark'), ('BESS Backtest', 'Join the waitlist', '/solutions/#backtest'),
+             ('BESS Broker', 'Join the waitlist', '/solutions/#broker'), ('BESS Bridge', 'Join the waitlist', '/solutions/#bridge')]
 
 def nav(t, other_href):
     b = t['base']
@@ -239,7 +239,7 @@ def footer(t, other_href):
     </div>
     <a class="f-logo" href="/" aria-label="The ICM, home"><img src="/assets/logo-footer.png" alt="The ICM" width="302" height="449" loading="lazy"></a>
     <nav class="f-links" aria-label="Footer">
-      <a href="/#about">Solutions</a>
+      <a href="/solutions/">Solutions</a>
       <a href="/resources/">Resources</a>
       <a href="/company/">Company</a>
     </nav>
@@ -366,16 +366,11 @@ def home(t):
       <p>{t['about_p']}</p>
       <div class="cta-row" style="justify-content:flex-start;margin-top:28px">
         <a class="btn btn-lilac" href="#contact">{t['book']}</a>
+        <a class="btn btn-outline" href="/solutions/">Our solutions</a>
         <a class="btn btn-outline" href="/company/#careers">{t['roles']}</a>
       </div>
-      <img class="about-img" src="/assets/img/about-pylon.jpg" alt="High-voltage pylon against the evening sky" width="960" height="1080" loading="lazy">
     </div>
-    <div class="more-grid more-stack">
-      <article><span class="tag">{t['open_now']}</span><h3>{t['p1'][0]}</h3><p>{t['p1'][1]}</p></article>
-      <article><a class="tag soft" href="#contact">{t['waitlist']}</a><h3>{t['p1b'][0]}</h3><p>{t['p1b'][1]}</p></article>
-      <article><a class="tag soft" href="#contact">{t['waitlist']}</a><h3>{t['p2'][0]}</h3><p>{t['p2'][1]}</p></article>
-      <article><a class="tag soft" href="#contact">{t['waitlist']}</a><h3>{t['p3'][0]}</h3><p>{t['p3'][1]}</p></article>
-    </div>
+    <div class="about-visual"><img class="about-img" src="/assets/img/about-pylon.jpg" alt="High-voltage pylon against the evening sky" width="960" height="1080" loading="lazy"></div>
   </div>
 </section>
 
@@ -530,6 +525,61 @@ def company(t):
           "employee": [{"@type": "Person", "name": "Idelès Kaandorp", "sameAs": "https://www.linkedin.com/in/idel%C3%A8s-kaandorp/"}, {"@type": "Person", "name": "Edo Rivai", "sameAs": "https://www.linkedin.com/in/edo-rivai-78b66a17/"}]}}
     return page_shell(t, '/company/', 'Company | The ICM', 'About the Independent Capacity Market: who we are, our team and open roles in Amsterdam.', hero, body, ld)
 
+def solutions(t):
+    icons = {
+      'benchmark': '<path d="M4 20V10M12 20V4M20 20v-7" />',
+      'backtest': '<path d="M4 18c3-8 5-8 8-3s5 3 8-9" /><path d="M4 21h16" />',
+      'broker': '<path d="M5 8h12l-3-3M19 16H7l3 3" />',
+      'bridge': '<path d="M3 16c3-8 15-8 18 0M3 16v3M21 16v3M12 10v9M7.5 12v7M16.5 12v7" />',
+    }
+    items = [
+      ('benchmark', 'BESS Benchmark', True, "Compare your earnings BESS-to-BESS and understand if you're earning a lot, or too little.",
+       'Owners share their BESS revenues to access the benchmark, following a "give-to-get" principle: only the months that are shared can be seen. The benchmark divides the total earnings (EUR) by the total capacity (MW). Real data from real assets, anonymized.'),
+      ('backtest', 'BESS Backtest', False, 'Understand the drivers of the capture rate.',
+       'A deep dive into the full potential of complex, co-located set-ups, looking at all constraints.'),
+      ('broker', 'BESS Broker', False, 'Outsource the search for a trusted optimizer.',
+       'Owners complete a single form that captures most, if not all, that optimizers need to make an offer. The ICM runs a standardized process to source, evaluate and select a trusted optimizer that matches the owner, the project and its financing needs.'),
+      ('bridge', 'BESS Bridge', False, 'Switch optimizers without going dark.',
+       'The ICM integrates projects into the portfolio of an optimizer. Owners allow the ICM to connect with their local software (EMS, MSP), and the API platform connects optimizers with local infrastructure.'),
+    ]
+    cards = ''
+    for k, name, live, lead, body in items:
+        tag = '<span class="tag">Open now</span>' if live else '<a class="tag soft" href="/#contact">Join the waitlist</a>'
+        cta = '<a class="btn btn-lilac" href="/#demo">Try the demo</a><a class="btn btn-outline" href="/faq/">Read the FAQ</a>' if live else '<a class="btn btn-lilac" href="/#contact">Join the waitlist</a>'
+        cards += f'''    <article class="sol" id="{k}">
+      <span class="sol-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#274A51" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">{icons[k]}</svg></span>
+      <div class="sol-body">
+        {tag}
+        <h2>{name}</h2>
+        <p class="sol-lead">{lead}</p>
+        <p>{body}</p>
+        <div class="cta-row" style="justify-content:flex-start;margin-top:22px">{cta}</div>
+      </div>
+    </article>
+'''
+    title = 'Solutions | The ICM'
+    desc = 'The ICM solutions for BESS owners: BESS Benchmark, BESS Backtest, BESS Broker and BESS Bridge.'
+    return head(t, title, desc, '/solutions/') + f'''
+<div class="hero-shell hero-photo sol-hero">
+  <img class="hero-img" src="/assets/img/solutions-veins.jpg" alt="" width="1920" height="1080" fetchpriority="high">
+  <div class="wrap">
+{nav(t, '/solutions/')}
+    <div class="page-hero" id="main">
+      <h1>Solutions</h1>
+      <p>The ICM works with owners, optimizers and partners. Four propositions give BESS owners an independent view on the true value of their asset and a trusted way to act on it.</p>
+    </div>
+  </div>
+</div>
+<section class="dark sol-wrap">
+  <div class="wrap">
+{cards}  </div>
+</section>
+{footer(t, '/solutions/')}
+<script src="/main.js" defer></script>
+</body>
+</html>
+'''
+
 REDIRECT = '''<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Careers | The ICM</title><meta name="robots" content="noindex"><link rel="canonical" href="https://icm.energy/company/#careers"><meta http-equiv="refresh" content="0; url=/company/#careers"></head><body><a href="/company/#careers">Careers have moved to our company page.</a></body></html>'''
 
 def write(rel, html):
@@ -548,6 +598,7 @@ for lang in LANGS:
         write('careers/index.html', REDIRECT)
         write('resources/index.html', resources(t))
         write('company/index.html', company(t))
+        write('solutions/index.html', solutions(t))
 print('built')
 
 # Methodology page, generated from _build/methodology.md (same text as the Methodology doc).

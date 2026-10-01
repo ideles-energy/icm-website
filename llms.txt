@@ -16,6 +16,7 @@
 
 ## Pages
 - [Home](https://icm.energy/): the BESS Benchmark, how membership works, interactive demo with fictional data
+- [Solutions](https://icm.energy/solutions/): BESS Benchmark (open now), BESS Backtest, BESS Broker and BESS Bridge (waitlist)
 - [BESS Benchmark FAQ](https://icm.energy/faq/)
 - [Resources](https://icm.energy/resources/): documents and brand assets
 - [Company](https://icm.energy/company/): who we are, team and open roles
