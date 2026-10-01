@@ -1,10 +1,10 @@
 /* The ICM — website styles. Palette and type follow the Canva design. */
 :root {
   --ink: #0F1015;
-  --night: #020D1F;
+  --night: #040D1F;
   --teal: #274A51;
   --teal-2: #31585F;
-  --cyan: #97F1F4;
+  --cyan: #97F2F5;
   --lilac: #D392EB;
   --lilac-dark: #BE72DA;
   --mist: #F2F8F9;
@@ -175,7 +175,7 @@ section { padding: 96px 0; }
 .more .section-head h2 { color: var(--cyan); }
 .more .section-head p, .more .section-head .eyebrow { color: rgba(255,255,255,.75); }
 .more-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-.more-grid article { border: 1px solid rgba(151,241,244,.3); border-radius: var(--radius); padding: 30px; }
+.more-grid article { border: 1px solid rgba(151,242,245,.3); border-radius: var(--radius); padding: 30px; }
 .more-grid h3 { color: var(--cyan); font-size: 22px; margin-bottom: 10px; }
 .more-grid p { color: rgba(255,255,255,.85); }
 .tag { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; background: var(--lilac); color: var(--white); border-radius: 999px; padding: 4px 10px; margin-bottom: 16px; }
@@ -382,7 +382,7 @@ footer { background: var(--ink); color: rgba(255,255,255,.75); padding: 56px 0 4
 .story .out { color: var(--lilac); font-weight: 800; white-space: nowrap; }
 .story .in { font: inherit; font-weight: 700; color: var(--cyan); background: transparent; border: 0; border-bottom: 2px dashed var(--cyan); padding: 0 2px; text-align: center; width: 3.6ch; -moz-appearance: textfield; }
 .story .in::-webkit-outer-spin-button, .story .in::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
-.story .in:focus { outline: none; border-bottom-style: solid; background: rgba(151,241,244,.1); }
+.story .in:focus { outline: none; border-bottom-style: solid; background: rgba(151,242,245,.1); }
 .story-note { font-size: 13px; color: rgba(255,255,255,.6); margin-top: 14px; }
 .why-eyebrow { display: block; text-align: center; color: var(--cyan); }
 .story { margin-top: 18px; }
@@ -441,8 +441,8 @@ footer { background: var(--ink); color: rgba(255,255,255,.75); padding: 56px 0 4
 @media (prefers-reduced-motion: reduce) { .why-fig .dd, .why-fig .dm { transition: none; } }
 
 /* v9: editable number pills (version A) */
-.story .pill { display: inline-flex; align-items: center; gap: 4px; background: rgba(151,241,244,.10); border: 1.5px solid rgba(151,241,244,.55); border-radius: 10px; padding: 0 8px 0 6px; line-height: 1.5; cursor: text; vertical-align: baseline; }
-.story .pill:focus-within { border-color: var(--cyan); background: rgba(151,241,244,.18); }
+.story .pill { display: inline-flex; align-items: center; gap: 4px; background: rgba(151,242,245,.10); border: 1.5px solid rgba(151,242,245,.55); border-radius: 10px; padding: 0 8px 0 6px; line-height: 1.5; cursor: text; vertical-align: baseline; }
+.story .pill:focus-within { border-color: var(--cyan); background: rgba(151,242,245,.18); }
 .story .pill .in { border: 0; padding: 0; background: transparent; }
 .story .pill .in:focus { background: transparent; }
 .story .pen { width: .8em; height: .8em; color: var(--cyan); flex: none; }
@@ -476,7 +476,7 @@ footer { background: #020B1C; padding: 64px 0 40px; border-top: 1px solid rgba(2
 .has-sub.open .sub, .has-sub:hover .sub, .has-sub:focus-within .sub { display: block; }
 .has-sub::after { content: ""; position: absolute; left: 0; right: 0; top: 100%; height: 16px; }
 .sub a { display: flex; justify-content: space-between; align-items: baseline; gap: 14px; padding: 10px 12px; border-radius: 10px; text-decoration: none !important; opacity: 1 !important; }
-.sub a:hover { background: rgba(151,241,244,.08); }
+.sub a:hover { background: rgba(151,242,245,.08); }
 .sub b { color: var(--white); font-weight: 600; font-size: 15px; }
 .sub span { color: var(--cyan); font-size: 12px; white-space: nowrap; }
 .show-sm { display: none; }
@@ -592,3 +592,15 @@ body, .section-head p, .rule p, .more-grid p, .faq details p, .faq li, .res-card
 /* v14: menu bar stays visible while scrolling */
 html { scroll-padding-top: 88px; }
 body.nav-fixed header.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50; padding: 14px max(24px, calc((100vw - var(--max)) / 2 + 24px)); background: rgba(2, 13, 31, .96); border-bottom: 1px solid rgba(255,255,255,.08); color: var(--white); }
+
+/* v15: official logos and photography from the brand folder; palette per ICM Colour Palette (night #040D1F, cyan #97F2F5) */
+.logo img { height: 36px; width: auto; display: block; }
+.f-logo img { height: 112px; width: auto; display: block; }
+.hero-photo { position: relative; overflow: hidden; isolation: isolate; }
+.hero-photo > .wrap { position: relative; z-index: 1; }
+.hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 75% center; z-index: -2; }
+.hero-photo::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, var(--night) 0%, var(--night) 28%, rgba(4,13,31,.6) 52%, rgba(4,13,31,.1) 80%); }
+@media (max-width: 900px) { .hero-photo::after { background: linear-gradient(rgba(4,13,31,.82), rgba(4,13,31,.72)); } .logo img { height: 30px; } }
+.about-img { height: auto; display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: center 35%; border-radius: 20px; margin-top: 36px; }
+.co-img { height: auto; display: block; width: 100%; aspect-ratio: 21 / 9; object-fit: cover; object-position: center 55%; border-radius: 20px; margin-top: 40px; }
+.page-hero { padding-bottom: 56px; }

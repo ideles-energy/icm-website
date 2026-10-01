@@ -215,7 +215,7 @@ def nav(t, other_href):
     subs = ''.join(f'<li><a href="{h}"><b>{n}</b><span>{s}</span></a></li>' for n, s, h in SOLUTIONS)
     msubs = ''.join(f'<a class="m-sub" href="{h}">{n}</a>' for n, s, h in SOLUTIONS)
     return f'''    <header class="nav">
-      <a class="logo" href="{b}" aria-label="The Independent Capacity Market, home"><span class="logo-text">The Independent<br>Capacity Market</span></a>
+      <a class="logo" href="{b}" aria-label="The Independent Capacity Market, home"><img src="/assets/logo-header.png" alt="The Independent Capacity Market" width="796" height="119"></a>
       <nav aria-label="{t['menu']}">
         <ul class="nav-links">
           <li class="has-sub hide-sm"><button type="button" class="sub-btn" aria-expanded="false" aria-haspopup="true">Solutions</button><ul class="sub">{subs}</ul></li>
@@ -237,7 +237,7 @@ def footer(t, other_href):
       <p class="f-name">The Independent Capacity Market</p>
       <p class="f-tag">{t['foot_tag']}</p>
     </div>
-    <a class="f-logo" href="/" aria-label="The ICM, home">ICM</a>
+    <a class="f-logo" href="/" aria-label="The ICM, home"><img src="/assets/logo-footer.png" alt="The ICM" width="302" height="449" loading="lazy"></a>
     <nav class="f-links" aria-label="Footer">
       <a href="/#about">Solutions</a>
       <a href="/resources/">Resources</a>
@@ -274,7 +274,7 @@ def home(t):
     b = t['base']
     other = t['other']
     ld = {"@context": "https://schema.org", "@graph": [
-        {"@type": "Organization", "@id": "https://icm.energy/#org", "name": "Independent Capacity Market B.V.", "alternateName": "The ICM",
+        {"@type": "Organization", "@id": "https://icm.energy/#org", "name": "Independent Capacity Market B.V.", "alternateName": "The ICM", "logo": "https://icm.energy/assets/logo-footer.png",
          "url": "https://icm.energy/", "email": EMAIL, "address": {"@type": "PostalAddress", "addressLocality": "Amsterdam", "addressCountry": "NL"},
          "founder": {"@type": "Person", "name": "Idelès Kaandorp", "sameAs": LINKEDIN}},
         {"@type": "Service", "name": "BESS Benchmark", "provider": {"@id": "https://icm.energy/#org"}, "areaServed": "NL",
@@ -286,7 +286,8 @@ def home(t):
     stats = '\n'.join(f'      <div class="stat">{icon(k + 1)}<p><b>{v}</b><span>{t["per"]}</span></p></div>' for k, v in enumerate(t['stats']))
     idx = ''.join(f'<li>{x}</li>' for x in t['idx']); ours = ''.join(f'<li>{x}</li>' for x in t['ours'])
     return head(t, t['title'], t['desc'], b, other, ld, t['og_title']) + f'''
-<div class="hero-shell">
+<div class="hero-shell hero-photo">
+  <img class="hero-img" src="/assets/img/hero-bulb.jpg" alt="" width="1920" height="1080" fetchpriority="high">
   <div class="wrap">
 {nav(t, other)}
     <div class="hero" id="main">
@@ -367,6 +368,7 @@ def home(t):
         <a class="btn btn-lilac" href="#contact">{t['book']}</a>
         <a class="btn btn-outline" href="/company/#careers">{t['roles']}</a>
       </div>
+      <img class="about-img" src="/assets/img/about-pylon.jpg" alt="High-voltage pylon against the evening sky" width="960" height="1080" loading="lazy">
     </div>
     <div class="more-grid more-stack">
       <article><span class="tag">{t['open_now']}</span><h3>{t['p1'][0]}</h3><p>{t['p1'][1]}</p></article>
@@ -487,6 +489,7 @@ def company(t):
     rows = '\n'.join(f'        <li><span>{r} | {c}</span><a class="btn btn-lilac" href="/?role={r.replace(" ", "%20")}#contact">Apply →</a></li>' for r, c in ROLES)
     hero = '''    <div class="page-hero" id="main">
       <h1>About The Independent Capacity Market</h1>
+      <img class="co-img" src="/assets/img/company-bess.jpg" alt="Containerised battery energy storage system on a grass field" width="1920" height="1080">
     </div>'''
     body = f'''<section class="dark co-who">
   <div class="wrap co-grid">
@@ -522,7 +525,7 @@ def company(t):
     </ul>
   </div>
 </section>'''
-    ld = {"@context": "https://schema.org", "@type": "AboutPage", "url": "https://icm.energy/company/", "mainEntity": {"@type": "Organization", "@id": "https://icm.energy/#org", "name": "Independent Capacity Market B.V.", "alternateName": "The ICM", "url": "https://icm.energy/",
+    ld = {"@context": "https://schema.org", "@type": "AboutPage", "url": "https://icm.energy/company/", "mainEntity": {"@type": "Organization", "@id": "https://icm.energy/#org", "name": "Independent Capacity Market B.V.", "alternateName": "The ICM", "logo": "https://icm.energy/assets/logo-footer.png", "url": "https://icm.energy/",
           "founder": {"@type": "Person", "name": "Idelès Kaandorp", "sameAs": "https://www.linkedin.com/in/idel%C3%A8s-kaandorp/"},
           "employee": [{"@type": "Person", "name": "Idelès Kaandorp", "sameAs": "https://www.linkedin.com/in/idel%C3%A8s-kaandorp/"}, {"@type": "Person", "name": "Edo Rivai", "sameAs": "https://www.linkedin.com/in/edo-rivai-78b66a17/"}]}}
     return page_shell(t, '/company/', 'Company | The ICM', 'About the Independent Capacity Market: who we are, our team and open roles in Amsterdam.', hero, body, ld)
