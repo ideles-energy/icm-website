@@ -34,7 +34,7 @@ T = {
   how_eyebrow='How it works', how_h='Become a member of <span class="nw">the BESS Benchmark</span>',
   rules=[
    ('Registration', 'New members submit 6 months of historical data and complete a 45-minute intake that collects the relevant project information. A membership lasts at least 3 months and can be cancelled every month after that.'),
-   ('Participation', 'Members share their earnings every month, for instance by asking their optimizer to CC the ICM on its monthly performance report. The ICM anonymizes the data and adds it to the BESS Benchmark.'),
+   ('Participation', 'Members share their earnings every month, for instance by asking their optimizer to CC the ICM on its monthly performance report. The ICM anonymises the data and adds it to the BESS Benchmark.'),
    ('Contribution', 'Members pay a symbolic handling fee of 0.5% of what their BESS assets earned that month: EUR 75 for a project delivering EUR 15,000. After referring 5 members, the contribution drops to 0.1% for 6 months.'),
    ('Give-to-get', 'Members only see the BESS Benchmark for the months to which they contributed. If no data is shared for August, September and October, the BESS Benchmark stays blank for those months.'),
    ('Silent by design', 'The Dutch saying "geen bericht, goed bericht" applies here. The ICM reaches out to members whose projects earn below 80% of the BESS Benchmark. Otherwise, the ICM stays quiet.'),
@@ -47,7 +47,7 @@ T = {
   calc_mw='Battery size', calc_months='Period', calc_months_unit='months', calc_rev='Current revenue',
   calc_assume='Assumption: comparable batteries earned 30% more per MW. Illustrative – the BESS Benchmark shows the real gap.',
   calc_you='This battery', calc_bench='Comparable batteries', calc_missed='Missed opportunity over 6 months', calc_cta='Find the real gap',
-  demo_eyebrow='How we can work together', demo_h='The BESS Benchmark', demo_p='Clarity is our goal. The ICM collects and anonymizes monthly BESS revenues for a BESS-to-BESS comparison.', demo_note='Fictional example data.',
+  demo_eyebrow='How we can work together', demo_h='The BESS Benchmark', demo_p='Clarity is our goal. The ICM collects and anonymises monthly BESS revenues for a BESS-to-BESS comparison.', demo_note='Fictional example data.',
   demo_btn='Try the demo', demo_title='BESS Benchmark interactive demo (fictional data)', demo_new='Open in a new tab',
   shot_cap='The BESS Benchmark is a dynamic view on the EUR per MW per year across the assets of all members. Fictional example data.',
   faq_link='Read the FAQ',
@@ -79,10 +79,10 @@ T = {
    ('How does one become a member?', 'A 45-minute intake is our starting point. We use this time to discuss the context and objectives, understand which decisions the BESS Benchmark can help make and share what is needed to become and contribute as a member. New members share 6 months of historical data and decide how they will share revenue data each month. One route is for the optimizer to CC the ICM on their monthly performance report. Thereafter, the BESS Benchmark can be accessed at any time. The ICM will proactively reach out when the project performs poorly (&lt;80% of the BESS Benchmark for at least 6 months in the last 12 months).'),
    ('What does the BESS Benchmark cost?', 'Members pay a symbolic handling fee set at 0.5% of the gross revenues earned in that month. This number is excluding VAT. After referring 5 members, the fee drops to 0.1% for 6 months.'),
    ('How long do I commit to the BESS Benchmark?', 'New members are asked to stay at least 3 months. After that, membership renews monthly.'),
-   ('Who sees my data?', 'Only the member and the ICM see the raw data. The ICM anonymizes submitted information before it adds it to the BESS Benchmark. We do not share individual member data with other members, or third parties. The BESS Benchmark itself is based on aggregated, anonymized information.'),
+   ('Who sees my data?', 'Only the member and the ICM see the raw data. The ICM anonymises submitted information before it adds it to the BESS Benchmark. We do not share individual member data with other members, or third parties. The BESS Benchmark itself is based on aggregated, anonymised information.'),
    ('Can I share my results?', 'Yes. Members may share their BESS Benchmark freely. It belongs to the member and may benefit conversations with installers, advisers and financiers.'),
    ('I advise or finance BESS assets. Can we work together?', 'Yes. Reach out to <a href="mailto:ideles@icm.energy">ideles@icm.energy</a> to explore the options to work together and join our partner network.'),
-   ('How is the benchmark calculated?', 'The BESS Benchmark divides revenues by MW and annualizes the result to show EUR per MW per year. Several filters allow members to compare batteries with a similar duration and set-up. Unavailable hours are excluded (maintenance, fault). Results are preliminary for 3 months, anticipating potential corrections.'),
+   ('How is the benchmark calculated?', 'The BESS Benchmark divides revenues by MW and annualises the result to show EUR per MW per year. Several filters allow members to compare batteries with a similar duration and set-up. Unavailable hours are excluded (maintenance, fault). Results are preliminary for 3 months, anticipating potential corrections.'),
    ('Why do BESS assets earn differently?', 'Various factors restrict the full earnings potential of a battery: (i) the battery itself (e.g., round-trip efficiency, minimum/maximum state of charge) and its local set-up (e.g., size of the grid connection, congestion contract), (ii) the markets it is active in and (iii) maintenance and malfunctions are the most commonly mentioned factors.'),
    ('Can I see which optimizer performs best?', 'No. The BESS Benchmark does not show results per optimizer, or rankings of optimizers. Members can compare their battery with peers that use the same or other optimizers, without names. Our BESS Broker proposition is designed to source and evaluate optimizers for owners.'),
    ('Is the ICM independent?', 'Yes. We do not own BESS assets. We are not an optimizer. Nor will we ever be. For more information about our governance, please reach out to <a href="mailto:ideles@icm.energy">ideles@icm.energy</a>.'),
@@ -637,7 +637,7 @@ page = head(te, 'BESS Benchmark methodology: how we calculate revenue per MW | T
     <div class="page-hero" id="main">
       <span class="eyebrow">BESS Benchmark · Methodology v{version.group(1)} · {version.group(2)}</span>
       <h1>How we calculate the BESS Benchmark</h1>
-      <p>From the data we collect and anonymize to how we present the results.</p>
+      <p>From the data we collect and anonymise to how we present the results.</p>
     </div>
   </div>
 </div>
