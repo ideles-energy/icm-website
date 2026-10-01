@@ -15,12 +15,12 @@ T = {
  'en': dict(
   lang='en', base='/', other='/nl/', other_label='NL', other_lang='nl', other_name='Nederlands',
   title="BESS Benchmark: understand the true value of a BESS asset | The ICM",
-  desc="See how a battery compares, BESS-to-BESS, with comparable batteries in the Netherlands, and find a trusted optimizer when there's more to earn.",
+  desc="See how a battery compares, BESS-to-BESS, with comparable batteries in the Netherlands, and outsource the research for a trusted optimizer when there is more to earn.",
   og_title="Understand and secure the true value of a BESS asset",
   skip='Skip to content', nav_how='How it works', nav_faq='FAQ', nav_about='About', talk='Talk to us', menu='Main',
   eyebrow='BESS Benchmark',
   h1_a='Understand and secure', h1_b='the true value of a BESS asset',
-  lead='For owners with a nagging sense their BESS could earn more. See how an asset compares, BESS-to-BESS, and find a trusted optimizer when there\'s more to earn.',
+  lead='For owners with a nagging sense their BESS could earn more. See how an asset compares, BESS-to-BESS, and outsource the research for a trusted optimizer when there is more to earn.',
   book='Talk to us', start='Get started', more='Learn more', how_link='How it works',
   chart_title='Project score: 87% of the peer benchmark', chart_sub='EUR per MW per year, by month · gross revenue',
   chart_aria="Illustrative chart: a project's monthly revenue per MW compared with the peer benchmark",
@@ -58,7 +58,7 @@ T = {
   about_p='We are not owners. We are not optimizers. Nor will we ever be.<br><br>We are an energy tech company, serving those who add capacity to the grid, but are in the dark on the potential of their assets. We compare BESS-to-BESS, introduce owners to optimizers and oversee the switch, so batteries keep earning.',
   roles='Open roles', careers='Careers',
   open_now='Open now', waitlist='Join the waitlist',
-  p1=('BESS Benchmark',"Compare your earnings BESS-to-BESS and understand if you're earning a lot, or too little."),
+  p1=('BESS Benchmark',"Become a member to compare your earnings BESS-to-BESS."),
   p1b=('BESS Backtest','Understand the drivers of the capture rate. A deep dive into the full potential of complex, co-located set-ups.'),
   p2=('BESS Broker','Outsource the search for a trusted optimizer. One form, a standardised process and terms banks appreciate.'),
   p3=('BESS Bridge','Switch optimizers without going dark. Our API platform connects optimizers with local infra.'),
@@ -527,13 +527,13 @@ def company(t):
 
 def solutions(t):
     icons = {
-      'benchmark': '<path d="M4 20V10M12 20V4M20 20v-7" />',
-      'backtest': '<path d="M4 18c3-8 5-8 8-3s5 3 8-9" /><path d="M4 21h16" />',
-      'broker': '<path d="M5 8h12l-3-3M19 16H7l3 3" />',
-      'bridge': '<path d="M3 16c3-8 15-8 18 0M3 16v3M21 16v3M12 10v9M7.5 12v7M16.5 12v7" />',
+      'benchmark': '<path d="M5 20V12M12 20V4M19 20V9"/><path d="M3 20h18"/>',
+      'backtest': '<path d="M3.5 12a8.5 8.5 0 1 0 2.6-6.1"/><path d="M3.5 4.5v4h4"/><path d="M12 7.5V12l3 2"/>',
+      'broker': '<circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/><path d="M8 10.5l2 2 3.5-4"/>',
+      'bridge': '<path d="M4 8h13m0 0-3.5-3.5M17 8l-3.5 3.5"/><path d="M20 16H7m0 0 3.5-3.5M7 16l3.5 3.5"/>',
     }
     items = [
-      ('benchmark', 'BESS Benchmark', True, "Compare your earnings BESS-to-BESS and understand if you're earning a lot, or too little."),
+      ('benchmark', 'BESS Benchmark', True, "Become a member to compare your earnings BESS-to-BESS."),
       ('backtest', 'BESS Backtest', False, 'Understand the drivers of the capture rate. A deep dive into the full potential of complex, co-located set-ups.'),
       ('broker', 'BESS Broker', False, 'Outsource the search for a trusted optimizer. One form, a standardised process and terms banks appreciate.'),
       ('bridge', 'BESS Bridge', False, 'Switch optimizers without going dark. Our API platform connects optimizers with local infra.'),
@@ -543,7 +543,7 @@ def solutions(t):
         tag = '<span class="tag live">Open now</span>' if live else '<a class="tag soft" href="/#contact">Join the waitlist</a>'
         cta = '<a class="btn btn-lilac" href="/#demo">Try the demo</a><a class="btn btn-outline" href="/#how">Learn more</a>' if live else '<a class="btn btn-lilac" href="/#contact">Join the waitlist</a>'
         cards += f'''    <article class="sol" id="{k}">
-      <span class="sol-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#274A51" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">{icons[k]}</svg></span>
+      <span class="sol-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#97F2F5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">{icons[k]}</svg></span>
       <div class="sol-body">
         {tag}
         <h2>{name}</h2>

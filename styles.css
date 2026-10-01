@@ -641,3 +641,7 @@ body.nav-fixed header.nav { position: fixed; top: 0; left: 0; right: 0; z-index:
 .res-thumb > div { flex: 1; padding: 16px 0 16px 24px; display: flex; flex-direction: column; gap: 2px; }
 .res-thumb small { font-size: 13px; font-weight: 400; opacity: .8; }
 .res-thumb .btn { align-self: center; margin-right: 20px; }
+
+/* v19 icons */
+.sol-icon { width: 72px; height: 72px; border-radius: 18px; background: rgba(151,242,245,.07); border: 1px solid rgba(151,242,245,.35); display: grid; place-items: center; }
+.sol-icon svg { width: 36px; height: 36px; }
