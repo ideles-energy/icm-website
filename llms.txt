@@ -4,7 +4,7 @@
 
 ## BESS Benchmark (open now)
 - A BESS-to-BESS comparison of real monthly revenues per MW, based on optimizers' statements, anonymised and checked by an ICM analyst.
-- For merchant-traded BESS assets of 3 to 30 MW in the Netherlands.
+- For merchant-traded BESS assets from 3 MW in the Netherlands.
 - Give-to-get: members see the benchmark for the months they contributed data.
 - Members pay a handling fee of 0.5% of monthly gross revenue (excluding VAT); minimum membership 3 months, then monthly.
 - Results are never shown per named optimizer; optimizers are not ranked.

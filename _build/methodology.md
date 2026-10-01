@@ -28,7 +28,7 @@ The BESS Benchmark shows what comparable batteries actually earned per MW, so a 
 
 ## Scope
 
-The BESS Benchmark covers battery energy storage (BESS) assets in the Netherlands that an optimizer trades under a merchant contract. We focus on assets of 3 to 30 MW and decide on each Project in the intake.
+The BESS Benchmark covers battery energy storage (BESS) assets in the Netherlands that an optimizer trades under a merchant contract. We focus on assets from 3 MW and decide on each Project in the intake.
 
 - **Asset.** One battery system with its own meter. The asset is the unit of calculation.
 - **Project.** One or more assets at one site, as recorded in the project form. A Member can have several Projects.

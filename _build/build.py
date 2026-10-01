@@ -65,7 +65,7 @@ T = {
   contact_eyebrow='Talk to us', contact_h='Book time with us', contact_p='',
   prefer='Prefer email?', subject='BESS Benchmark intake request',
   f_name='Name', f_company='Company', f_email='Email', f_mw='Portfolio or project size in MW',
-  f_msg='Context and objectives', f_ph='E.g., asset of 3-30 MW, trading revenues below expectations, interested in the BESS Benchmark',
+  f_msg='Context and objectives', f_ph='E.g., asset from 3 MW, trading revenues below expectations, interested in the BESS Benchmark',
   f_submit='Send', f_fine='Details are used only to get in touch about the ICM.', f_ok='Thank you – we will be in touch.',
   foot_tag='The ICM brings clarity, trusted partners and continuity to those adding capacity to the grid.',
   founded='Founded by', foot_bench='Learn more', methodology='Methodology', contact='Contact',
@@ -75,7 +75,7 @@ T = {
   faqs=[
    ('How does the BESS Benchmark help?', '<p>There are roughly 4 reasons people are keen to become and stay a member.</p><ol><li><b>Clarity on performance.</b> It removes doubt by comparing apples with apples and pears with pears.</li><li><b>Stronger claims.</b> Independent figures on what comparable batteries earned make insurance and warranty claims stronger.</li><li><b>A better optimizer contract.</b> The BESS Benchmark helps negotiate a better optimizer contract ("floor of at least 80% of the benchmark"; "right to terminate at 60% of the benchmark").</li><li><b>A realistic business case.</b> A basis for sizing the next project and a check on bankable forecasts. Real data helps understand what a realistic business case could look like.</li></ol>'),
    ('How is this different from other benchmarks, forecasts and indices?', 'Virtual batteries with fixed assumptions give a suboptimal view. The BESS Benchmark shows what assets actually delivered: real revenues from optimizers\' statements, including grid restrictions, downtime and degradation. That makes it the reality check for those models.'),
-   ('Who becomes a member?', 'Batteries in the Netherlands that an optimizer trades under a merchant contract. We focus on assets of 3 to 30 MW and decide per project in the intake.'),
+   ('Who becomes a member?', 'Batteries in the Netherlands that an optimizer trades under a merchant contract. We focus on assets from 3 MW and decide per project in the intake.'),
    ('How does one become a member?', 'A 45-minute intake is our starting point. We use this time to discuss the context and objectives, understand which decisions the BESS Benchmark can help make and share what is needed to become and contribute as a member. New members share 6 months of historical data and decide how they will share revenue data each month. One route is for the optimizer to CC the ICM on their monthly performance report. Thereafter, the BESS Benchmark can be accessed at any time. The ICM will proactively reach out when the project performs poorly (below 80% of the BESS Benchmark).'),
    ('What does the BESS Benchmark cost?', 'Members pay a symbolic handling fee set at 0.5% of the gross revenues earned in that month. This number is excluding VAT. After referring 5 members, the fee drops to 0.1% for 6 months.'),
    ('How long is the commitment?', 'New members are asked to stay at least 3 months. After that, membership renews monthly.'),
@@ -128,7 +128,7 @@ T = {
   contact_eyebrow='Neem contact op', contact_h='Plan een intake van 45 minuten', contact_p='Vertel ons kort over je batterijen, dan plannen we samen de intake.',
   prefer='Liever mailen?', subject='BESS Benchmark intakeverzoek',
   f_name='Naam', f_company='Bedrijf', f_email='E-mail', f_mw='Omvang portefeuille (MW, ongeveer)',
-  f_msg='Vertel ons kort over je situatie en doelen', f_ph='Bijv. asset van 3-30 MW, handelsopbrengsten onder verwachting',
+  f_msg='Vertel ons kort over je situatie en doelen', f_ph='Bijv. asset vanaf 3 MW, handelsopbrengsten onder verwachting',
   f_submit='Vraag een intake aan', f_fine='We gebruiken je gegevens alleen om contact met je op te nemen over de ICM.', f_ok='Dank je – we nemen contact met je op.',
   foot_tag='The Independent Capacity Market (“de ICM”) brengt duidelijkheid, betrouwbare partners en continuïteit voor wie capaciteit toevoegt aan het net.',
   founded='Independent Capacity Market B.V., Amsterdam. Opgericht door', foot_bench='BESS Benchmark', methodology='Methodologie (Engels)', contact='Contact',
@@ -140,7 +140,7 @@ T = {
    ('Hebben jullie mijn handelsstrategie of prijzen nodig?', 'Nee. We gebruiken alleen het resultaat: wat de batterij verdiende. Nooit biedingen, prijzen of handelsstrategieën.'),
    ('Mag ik dit delen onder mijn optimizer-contract?', 'Meestal wel. Beperkt je contract het delen, dan tekenen jij en je optimizer een korte machtiging. Je optimizer stuurt de cijfers dan rechtstreeks naar ons.'),
    ('Wie ziet mijn data?', 'Alleen jij ziet je eigen cijfers. Andere leden zien gemiddelden van ten minste 5 batterijen van ten minste 3 bedrijven. We tonen nooit resultaten per optimizer.'),
-   ('Welke batterijen kunnen meedoen?', 'Batterijen in Nederland met een merchant-contract. We richten ons op 3 tot 30 MW en beslissen per project in de intake.'),
+   ('Welke batterijen kunnen meedoen?', 'Batterijen in Nederland met een merchant-contract. We richten ons op assets vanaf 3 MW en beslissen per project in de intake.'),
    ('Wat kost het?', '0,5% van wat je batterij die maand verdiende, exclusief btw. De 6 maanden die je bij de start deelt zijn gratis. Een maand met negatieve opbrengst ook.'),
    ('Hoe lang zit ik eraan vast?', 'Ten minste 3 maanden. Daarna kun je elke maand opzeggen.'),
    ('Mag ik de resultaten aan mijn bank laten zien?', 'Ja. Je kunt een rapport printen met je eigen cijfers en de benchmark. Daarin staan nooit gegevens van andere bedrijven.'),
@@ -350,7 +350,7 @@ def home(t):
     <div class="section-head">
       <span class="eyebrow">{t['how_eyebrow']}</span>
       <h2>{t['how_h']}</h2>
-      <p>For merchant-traded BESS assets of 3 to 30 MW in the Netherlands.</p>
+      <p>For merchant-traded BESS assets from 3 MW in the Netherlands.</p>
     </div>
     <div class="rules-row">
 {rules}
