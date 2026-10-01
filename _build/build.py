@@ -417,6 +417,7 @@ def simple_page(t, path, other_path, title, desc, h1, lead, body, jsonld=None):
   </div>
 </main>
 {footer(t, other_path)}
+<script src="/main.js?v={V_JS}" defer></script>
 </body>
 </html>
 '''
@@ -452,6 +453,7 @@ def page_shell(t, path, title, desc, hero, body, jsonld=None):
 </div>
 {body}
 {footer(t, path)}
+<script src="/main.js?v={V_JS}" defer></script>
 </body>
 </html>
 '''
@@ -652,6 +654,7 @@ page = head(te, 'BESS Benchmark methodology: how we calculate revenue per MW | T
   </article>
 </main>
 {footer(te, '/nl/')}
+<script src="/main.js?v={V_JS}" defer></script>
 </body>
 </html>
 """
