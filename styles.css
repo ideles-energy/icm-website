@@ -679,3 +679,12 @@ body.nav-fixed header.nav { z-index: 1000; }
 .talk-form .form.fillout { max-width: 860px; margin: 0 auto; }
 .cta-alt { color: var(--muted); font-size: 15px; margin-top: 22px; text-align: center; }
 .cta-alt a { color: inherit; text-decoration: underline; }
+
+/* Legal pages as wide as the rest of the site; footer without empty row */
+.page-body .prose { max-width: none; }
+@media (min-width: 761px) {
+  .foot2 { grid-template-areas: "about logo links" "about logo legal"; row-gap: 14px; }
+  .f-logo { align-self: end; }
+}
+body { display: flex; flex-direction: column; min-height: 100vh; }
+body > footer { margin-top: auto; }
