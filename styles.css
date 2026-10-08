@@ -693,3 +693,10 @@ body > footer { margin-top: auto; }
 .logo img { height: 60px; }
 .f-logo img { height: 112px; }
 @media (max-width: 900px) { .logo img { height: 48px; } }
+
+/* Hero: full-width photo so the blue glow sits behind the logo; more air between logo and headline */
+@media (min-width: 901px) {
+  .hero-img { left: 0; right: auto; width: 100%; object-position: 50% 30%; -webkit-mask-image: none; mask-image: none; }
+  .hero-photo::after { background: linear-gradient(90deg, rgba(4,13,31,.62) 0%, rgba(4,13,31,.42) 40%, rgba(4,13,31,.05) 70%, rgba(4,13,31,0) 100%); }
+}
+.hero { padding-top: clamp(64px, 9vw, 120px); }
