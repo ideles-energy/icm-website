@@ -239,7 +239,7 @@ def footer(t, other_href):
       <a href="/register/">Register</a>
     </nav>
     <div class="f-legal">
-      <p>Website designed by Salt &amp; Chalk</p>
+      <p>Website designed by <a href="https://www.saltandchalk.co.uk" target="_blank" rel="noopener">Salt &amp; Chalk</a></p>
       <p><a href="{b}terms/">{t['terms']}</a> | <a href="{b}privacy/">{t['privacy']}</a></p>
       <p>© 2026 Independent Capacity Market B.V.</p>
     </div>

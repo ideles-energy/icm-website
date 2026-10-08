@@ -15,7 +15,8 @@
   --line: rgba(39, 74, 80, 0.14);
   --radius: 18px;
   --sans: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --max: 1180px;
+  --max: 1440px;
+  --pad: clamp(24px, 4.2vw, 64px);
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -33,7 +34,7 @@ img, svg { max-width: 100%; display: block; }
 a { color: inherit; }
 h1, h2, h3 { line-height: 1.12; letter-spacing: -0.015em; margin: 0; }
 p { margin: 0; }
-.wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+.wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--pad); }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
 
 /* Buttons */
@@ -591,7 +592,7 @@ body, .section-head p, .rule p, .more-grid p, .faq details p, .faq li, .res-card
 .team-cta { display: flex; justify-content: center; margin-top: 48px; }
 /* v14: menu bar stays visible while scrolling */
 html { scroll-padding-top: 88px; }
-body.nav-fixed header.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50; padding: 14px max(24px, calc((100vw - var(--max)) / 2 + 24px)); background: rgba(2, 13, 31, .96); border-bottom: 1px solid rgba(255,255,255,.08); color: var(--white); }
+body.nav-fixed header.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50; padding: 14px max(var(--pad), calc((100vw - var(--max)) / 2 + var(--pad))); background: rgba(2, 13, 31, .96); border-bottom: 1px solid rgba(255,255,255,.08); color: var(--white); }
 
 /* v15: official logos and photography from the brand folder; palette per ICM Colour Palette (night #040D1F, cyan #97F2F5) */
 .logo img { height: 36px; width: auto; display: block; }
