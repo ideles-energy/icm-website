@@ -234,7 +234,7 @@ def footer(t, other_href):
       <p class="f-name">The Independent Capacity Market</p>
       <p class="f-tag">{t['foot_tag']}</p>
     </div>
-    <a class="f-logo" href="/" aria-label="The ICM, home"><img src="/assets/logo-main.png" alt="The Independent Capacity Market" width="684" height="302" loading="lazy"></a>
+    <a class="f-logo" href="/" aria-label="The ICM, home"><img src="/assets/submark.png" alt="The ICM" width="302" height="449" loading="lazy"></a>
     <nav class="f-links" aria-label="Footer">
       <a href="/register/">Talk to us</a>
     </nav>

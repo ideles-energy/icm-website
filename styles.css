@@ -691,5 +691,5 @@ body > footer { margin-top: auto; }
 
 /* Main logo (stacked, supplied brand file) */
 .logo img { height: 60px; }
-.f-logo img { height: 130px; }
+.f-logo img { height: 112px; }
 @media (max-width: 900px) { .logo img { height: 48px; } }
