@@ -26,7 +26,7 @@ T = {
   chart_aria="Illustrative chart: a project's monthly revenue per MW compared with the peer benchmark",
   months=['Oct','Dec','Feb','Apr','Jun','Aug'], chart_you='This project', chart_peer='Peer benchmark (≥ 5 assets, ≥ 3 organisations)',
   chart_note='Illustrative example with fictional data.',
-  why_eyebrow='Why it matters', why_h='BESS assets deliver vastly different results',
+  why_eyebrow='Our why', why_h='BESS assets deliver vastly different results',
   why_p='Independent information is missing as long as no one works together.',
   stats=['EUR 145k', 'EUR 185k', 'EUR 240k'], per='per MW per year', stats_note='Illustrative example: gross market revenues of three BESS assets.',
   learn='How it works',
@@ -217,7 +217,7 @@ SOLUTIONS = [('BESS Benchmark', 'Open now', '/solutions/#benchmark'), ('BESS Bac
 def nav(t, other_href):
     b = t['base']
     return f'''    <header class="nav">
-      <a class="logo" href="{b}" aria-label="The Independent Capacity Market, home"><img src="/assets/logo-main.png" alt="The Independent Capacity Market" width="684" height="302"></a>
+      <a class="logo" href="{b}" aria-label="The Independent Capacity Market, home"><img src="/assets/logo-header.png" alt="The Independent Capacity Market" width="863" height="129"></a>
       <nav aria-label="{t['menu']}">
         <ul class="nav-links">
           <li><a class="btn btn-lilac" href="/register/">Talk to us</a></li>
@@ -268,7 +268,7 @@ def home(t):
     b = t['base']
     other = t['other']
     ld = {"@context": "https://schema.org", "@graph": [
-        {"@type": "Organization", "@id": "https://icm.energy/#org", "name": "Independent Capacity Market B.V.", "alternateName": "The ICM", "logo": "https://icm.energy/assets/logo-main.png",
+        {"@type": "Organization", "@id": "https://icm.energy/#org", "name": "Independent Capacity Market B.V.", "alternateName": "The ICM", "logo": "https://icm.energy/assets/logo-header.png",
          "url": "https://icm.energy/", "email": EMAIL, "address": {"@type": "PostalAddress", "addressLocality": "Amsterdam", "addressCountry": "NL"},
          "founder": {"@type": "Person", "name": "Idelès Kaandorp", "sameAs": LINKEDIN}},
         {"@type": "Service", "name": "BESS Benchmark", "provider": {"@id": "https://icm.energy/#org"}, "areaServed": "NL",
@@ -462,7 +462,7 @@ def company(t):
     <p class="co-open">Open applications are welcome. Please email <a href="mailto:{EMAIL}">{EMAIL}</a>, including a CV and what you want to achieve at the ICM.</p>
   </div>
 </section>'''
-    ld = {"@context": "https://schema.org", "@type": "AboutPage", "url": "https://icm.energy/company/", "mainEntity": {"@type": "Organization", "@id": "https://icm.energy/#org", "name": "Independent Capacity Market B.V.", "alternateName": "The ICM", "logo": "https://icm.energy/assets/logo-main.png", "url": "https://icm.energy/",
+    ld = {"@context": "https://schema.org", "@type": "AboutPage", "url": "https://icm.energy/company/", "mainEntity": {"@type": "Organization", "@id": "https://icm.energy/#org", "name": "Independent Capacity Market B.V.", "alternateName": "The ICM", "logo": "https://icm.energy/assets/logo-header.png", "url": "https://icm.energy/",
           "founder": {"@type": "Person", "name": "Idelès Kaandorp", "sameAs": "https://www.linkedin.com/in/idel%C3%A8s-kaandorp/"},
           "employee": [{"@type": "Person", "name": "Idelès Kaandorp", "sameAs": "https://www.linkedin.com/in/idel%C3%A8s-kaandorp/"}, {"@type": "Person", "name": "Edo Rivai", "sameAs": "https://www.linkedin.com/in/edo-rivai-78b66a17/"}]}}
     return page_shell(t, '/company/', 'Company | The ICM', 'About the Independent Capacity Market: who we are, our team and open roles in Amsterdam.', hero, body, ld)
