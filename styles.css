@@ -690,9 +690,9 @@ body { display: flex; flex-direction: column; min-height: 100vh; }
 body > footer { margin-top: auto; }
 
 /* Main logo (stacked, supplied brand file) */
-.logo img { height: 60px; }
+.logo img { height: 38px; }
 .f-logo img { height: 112px; }
-@media (max-width: 900px) { .logo img { height: 48px; } }
+@media (max-width: 900px) { .logo img { height: 30px; } }
 
 /* Hero: full-width photo so the blue glow sits behind the logo; more air between logo and headline */
 @media (min-width: 901px) {
@@ -700,3 +700,5 @@ body > footer { margin-top: auto; }
   .hero-photo::after { background: linear-gradient(90deg, rgba(4,13,31,.62) 0%, rgba(4,13,31,.42) 40%, rgba(4,13,31,.05) 70%, rgba(4,13,31,0) 100%); }
 }
 .hero { padding-top: clamp(64px, 9vw, 120px); }
+
+.why-eyebrow, .dark .section-head .why-eyebrow { color: var(--white); }
