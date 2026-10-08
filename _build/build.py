@@ -216,20 +216,13 @@ SOLUTIONS = [('BESS Benchmark', 'Open now', '/solutions/#benchmark'), ('BESS Bac
 
 def nav(t, other_href):
     b = t['base']
-    subs = ''.join(f'<li><a href="{h}"><b>{n}</b><span>{s}</span></a></li>' for n, s, h in SOLUTIONS)
-    msubs = ''.join(f'<a class="m-sub" href="{h}">{n}</a>' for n, s, h in SOLUTIONS)
     return f'''    <header class="nav">
       <a class="logo" href="{b}" aria-label="The Independent Capacity Market, home"><img src="/assets/logo-header.png" alt="The Independent Capacity Market" width="796" height="119"></a>
       <nav aria-label="{t['menu']}">
         <ul class="nav-links">
-          <li class="has-sub hide-sm"><button type="button" class="sub-btn" aria-expanded="false" aria-haspopup="true">Solutions</button><ul class="sub">{subs}</ul></li>
-          <li class="hide-sm"><a href="/resources/">Resources</a></li>
-          <li class="hide-sm"><a href="/company/">Company</a></li>
-          <li><a class="btn btn-lilac" href="{b}#contact">{t['talk']}</a></li>
-          <li class="show-sm"><button type="button" class="menu-btn" aria-expanded="false" aria-label="Open menu"><span></span><span></span><span></span></button></li>
+          <li><a class="btn btn-lilac" href="/register/">Register</a></li>
         </ul>
       </nav>
-      <div class="m-menu" hidden><p class="m-h">Solutions</p>{msubs}<a href="/resources/">Resources</a><a href="/company/">Company</a></div>
     </header>
 '''
 
@@ -243,9 +236,7 @@ def footer(t, other_href):
     </div>
     <a class="f-logo" href="/" aria-label="The ICM, home"><img src="/assets/logo-footer.png" alt="The ICM" width="302" height="449" loading="lazy"></a>
     <nav class="f-links" aria-label="Footer">
-      <a href="/solutions/">Solutions</a>
-      <a href="/resources/">Resources</a>
-      <a href="/company/">Company</a>
+      <a href="/register/">Register</a>
     </nav>
     <div class="f-legal">
       <p>Website designed by Salt &amp; Chalk</p>
@@ -298,15 +289,15 @@ def home(t):
         <h1>Understand and<br>secure the true value<br>of a BESS asset</h1>
         <p class="lead">{t['lead']}</p>
         <div class="hero-ctas">
-          <a class="btn btn-lilac" href="#contact">{t['book']}</a>
-          <a class="btn btn-outline" href="#demo">{t['how_link']}</a>
+          <a class="btn btn-lilac" href="/register/">Register</a>
+          <a class="btn btn-outline" href="#why">Check the numbers</a>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<section class="dark" style="border-top:1px solid rgba(255,255,255,.08)">
+<section class="dark" id="why" style="border-top:1px solid rgba(255,255,255,.08)">
   <div class="wrap">
     <div class="why-grid">
     <div>
@@ -316,47 +307,12 @@ def home(t):
       <p class="story-p">A similar BESS asset, same size and setup, can deliver <a class="story-link" href="https://www.flower.se/insights/case/ra-energy-switch-optimizer/" target="_blank" rel="noopener">30% more revenue</a>. A <label class="pill"><input class="in" id="s-mw" type="number" min="1" max="500" step="1" value="10" aria-label="Project size in MW"><svg class="pen" viewBox="0 0 16 16" aria-hidden="true"><path d="M11.5 2.5l2 2L6 12l-2.8.8L4 10z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></label> MW project could have earned <b class="out" id="s-peer">EUR 240.5k</b> per MW per year, instead of the EUR <label class="pill"><input class="in" id="s-rev" type="number" min="1" max="1000" step="1" value="185" aria-label="Revenue it delivered, in thousand euro per MW per year"><svg class="pen" viewBox="0 0 16 16" aria-hidden="true"><path d="M11.5 2.5l2 2L6 12l-2.8.8L4 10z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></label>k per MW per year it delivered. That's a missed opportunity of <b class="out" id="s-up">EUR 55.5k</b> per MW.</p>
       <p class="hint"><svg class="pen" viewBox="0 0 16 16" aria-hidden="true"><path d="M11.5 2.5l2 2L6 12l-2.8.8L4 10z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>{t['story_note']}</p>
     </div>
-    <div class="cta-row"><a class="btn btn-lilac" href="#contact">{t['book']}</a><a class="btn btn-outline" href="#demo">{t['more']}</a></div>
+    <div class="cta-row"><a class="btn btn-lilac" href="/register/">Register</a><a class="btn btn-outline" href="#about">{t['more']}</a></div>
     </div>
     <figure class="why-fig" aria-hidden="true">
       <svg id="why-dots" role="presentation"></svg>
       <figcaption class="why-legend"><span><i class="d"></i>Delivered <b id="f-del">EUR 1,850,000</b></span><span><i class="m"></i>Missed <b id="f-mis">EUR 555,000</b></span><span class="unit" id="f-unit">1 dot = EUR 10,000 a year</span></figcaption>
     </figure>
-    </div>
-  </div>
-</section>
-
-<section class="demo-section" id="demo">
-  <div class="wrap">
-    <div class="section-head center">
-      <span class="eyebrow">{t['demo_eyebrow']}</span>
-      <h2>{t['demo_h']}</h2>
-      <p>{t['demo_p']}</p>
-    </div>
-    <figure class="shot shot-wide">
-      <a class="demo-open" href="/demo/" data-demo><img src="/assets/benchmark-preview.jpg" width="1600" height="912" alt="{t['shot_alt']}" loading="lazy"><span class="demo-badge">{t['demo_btn']}</span></a>
-      <figcaption>{t['demo_note']}</figcaption>
-    </figure>
-    <dialog class="demo-dialog" id="demo-dialog" aria-label="{t['demo_btn']}">
-      <div class="demo-bar"><span></span><a href="/demo/" target="_blank" rel="noopener">{t['demo_new']}</a><button type="button" data-close aria-label="Close">×</button></div>
-      <iframe title="{t['demo_title']}" loading="lazy"></iframe>
-    </dialog>
-  </div>
-</section>
-
-<section class="rules-wrap" id="how">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">{t['how_eyebrow']}</span>
-      <h2>{t['how_h']}</h2>
-      <p>For merchant-traded BESS assets from 3 MW in the Netherlands.</p>
-    </div>
-    <div class="rules-row">
-{rules}
-    </div>
-    <div class="cta-row" style="justify-content:flex-start;margin-top:36px">
-      <a class="btn btn-lilac" href="#contact">{t['start']}</a>
-      <a class="btn btn-outline teal" href="{b}faq/">{t['faq_link']}</a>
     </div>
   </div>
 </section>
@@ -368,28 +324,10 @@ def home(t):
       <h2>{t['about_h']}</h2>
       <p>{t['about_p']}</p>
       <div class="cta-row" style="justify-content:flex-start;margin-top:28px">
-        <a class="btn btn-lilac" href="#contact">{t['book']}</a>
-        <a class="btn btn-outline" href="/solutions/">Our solutions</a>
-        <a class="btn btn-outline" href="/company/#careers">{t['roles']}</a>
+        <a class="btn btn-lilac" href="/register/">Register</a>
       </div>
     </div>
     <div class="about-visual"><img class="about-img" src="/assets/img/about-pylon.jpg" alt="High-voltage pylon against the evening sky" width="960" height="1080" loading="lazy"></div>
-  </div>
-</section>
-
-<section id="contact">
-  <div class="wrap contact">
-    <div class="intro">
-      <span class="eyebrow" style="color:var(--teal)">{t['contact_eyebrow']}</span>
-      <h2>{t['contact_h']}</h2>
-      <p>Our starting point is a 45-minute call to understand context and objectives.</p>
-      <p>{t['prefer']} <a href="mailto:{EMAIL}">{EMAIL}</a></p>
-    </div>
-    <div class="form fillout">
-      <div style="width:100%;height:560px" data-fillout-id="icWpPN8hsgus" data-fillout-embed-type="standard" data-fillout-inherit-parameters data-fillout-dynamic-resize></div>
-      <script src="https://server.fillout.com/embed/v1/" defer></script>
-      <noscript><a href="https://forms.fillout.com/t/icWpPN8hsgus">Open the contact form</a></noscript>
-    </div>
   </div>
 </section>
 
@@ -579,6 +517,23 @@ def solutions(t):
 </html>
 '''
 
+def register(t):
+    hero = '''    <div class="page-hero" id="main">
+      <h1>Register</h1>
+      <p>Tell us about your BESS asset. A 45-minute call is our starting point to understand context and objectives.</p>
+    </div>'''
+    body = f'''<section class="talk-form" id="form">
+  <div class="wrap">
+    <div class="form fillout">
+      <div style="width:100%;height:640px" data-fillout-id="icWpPN8hsgus" data-fillout-embed-type="standard" data-fillout-inherit-parameters data-fillout-dynamic-resize></div>
+      <script src="https://server.fillout.com/embed/v1/" defer></script>
+      <noscript><a href="https://forms.fillout.com/t/icWpPN8hsgus">Open the registration form</a></noscript>
+    </div>
+    <p class="cta-alt">{t['prefer']} <a href="mailto:{EMAIL}">{EMAIL}</a></p>
+  </div>
+</section>'''
+    return page_shell(t, '/register/', 'Register | The Independent Capacity Market', 'Register your BESS asset with the Independent Capacity Market.', hero, body)
+
 REDIRECT = '''<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Careers | The ICM</title><meta name="robots" content="noindex"><link rel="canonical" href="https://icm.energy/company/#careers"><meta http-equiv="refresh" content="0; url=/company/#careers"></head><body><a href="/company/#careers">Careers have moved to our company page.</a></body></html>'''
 
 def write(rel, html):
@@ -590,91 +545,8 @@ for lang in LANGS:
     t = T[lang]
     pre = '' if lang == 'en' else 'nl/'
     write(pre + 'index.html', home(t))
-    write(pre + 'faq/index.html', faq(t))
     write(pre + 'terms/index.html', terms(t))
     write(pre + 'privacy/index.html', privacy(t))
     if lang == 'en':
-        write('careers/index.html', REDIRECT)
-        write('resources/index.html', resources(t))
-        write('company/index.html', company(t))
-        write('solutions/index.html', solutions(t))
+        write('register/index.html', register(t))
 print('built')
-
-# Methodology page, generated from _build/methodology.md (same text as the Methodology doc).
-import markdown
-FORMULAS = [
- '<div class="formula" role="math" aria-label="B sub m equals the sum over peers of revenue, divided by the sum over peers of MW times active hours, times 8760">B<sub>m</sub> = <span class="frac"><span>Σ<sub>i∈P</sub> R<sub>i,m</sub></span><span>Σ<sub>i∈P</sub> MW<sub>i</sub> × H<sub>i,m</sub></span></span> × 8,760</div>',
- '<div class="formula" role="math" aria-label="Score equals the project revenue per MW-hour over the period divided by the peer revenue per MW-hour over the same months, times 100 percent">Score<sub>T</sub> = <span class="frac"><span>Σ<sub>m∈T</sub> Σ<sub>i∈A</sub> R<sub>i,m</sub> ÷ Σ<sub>m∈T</sub> Σ<sub>i∈A</sub> MW<sub>i</sub> × H<sub>i,m</sub></span><span>Σ<sub>m∈T</sub> Σ<sub>j∈P<sub>m</sub></sub> R<sub>j,m</sub> ÷ Σ<sub>m∈T</sub> Σ<sub>j∈P<sub>m</sub></sub> MW<sub>j</sub> × H<sub>j,m</sub></span></span> × 100%</div>',
-]
-md = open(os.path.join(ROOT, '_build', 'methodology.md'), encoding='utf-8').read()
-md = re.sub(r'^# .*\n', '', md, count=1)
-version = re.search(r'This is version ([\d.]+) of ([^.]+)\.', md)
-blocks = re.findall(r'```latex\n.*?\n```', md, flags=re.S)
-for i, b in enumerate(blocks):
-    md = md.replace(b, f'[[F{i}]]')
-body = markdown.markdown(md, extensions=['tables'])
-for i, f in enumerate(FORMULAS):
-    body = body.replace(f'<p>[[F{i}]]</p>', f)
-# the comparison table becomes two cards
-def cards(m):
-    rows = re.findall(r'<tr>\s*<td>(.*?)</td>\s*<td>(.*?)</td>\s*</tr>', m.group(0), flags=re.S)
-    l = ''.join(f'<li>{a}</li>' for a, _ in rows); r = ''.join(f'<li>{b}</li>' for _, b in rows)
-    return f'<div class="compare"><div class="index"><h3>A simulated revenue index</h3><ul>{l}</ul></div><div class="ours"><h3>The BESS Benchmark</h3><ul>{r}</ul></div></div>'
-body = re.sub(r'<table>\s*<thead>\s*<tr>\s*<th>A simulated revenue index</th>.*?</table>', cards, body, count=1, flags=re.S)
-body = body.replace('<table>', '<div class="table-scroll"><table>').replace('</table>', '</table></div>')
-toc = []
-def h2(m):
-    t = m.group(1); sl = re.sub(r'[^a-z0-9]+', '-', re.sub('<[^>]+>', '', t).lower()).strip('-'); toc.append((sl, t))
-    return f'<h2 id="{sl}">{t}</h2>'
-body = re.sub(r'<h2>(.*?)</h2>', h2, body)
-body = body.replace('bessbenchmark@icm.energy', '<a href="mailto:bessbenchmark@icm.energy">bessbenchmark@icm.energy</a>')
-toc_html = '\n'.join(f'<li><a href="#{a}">{b}</a></li>' for a, b in toc)
-te = T['en']
-ld = {"@context": "https://schema.org", "@type": "TechArticle", "headline": "BESS Benchmark methodology", "version": version.group(1), "inLanguage": "en",
-      "publisher": {"@type": "Organization", "name": "Independent Capacity Market B.V.", "url": "https://icm.energy/"}}
-page = head(te, 'BESS Benchmark methodology: how we calculate revenue per MW | The ICM',
-            f'How the ICM calculates the BESS Benchmark and the Project Score: data, quality control, active hours, duration bands, filters, anonymity thresholds and corrections. Version {version.group(1)}.',
-            '/methodology/', None, ld, f'BESS Benchmark methodology, version {version.group(1)}') + f"""
-<div class="hero-shell">
-  <div class="wrap">
-{nav(te, '/nl/')}
-    <div class="page-hero" id="main">
-      <span class="eyebrow">BESS Benchmark · Methodology v{version.group(1)} · {version.group(2)}</span>
-      <h1>How we calculate the BESS Benchmark</h1>
-      <p>From the data we collect and anonymise to how we present the results.</p>
-    </div>
-  </div>
-</div>
-<main class="wrap doc-layout">
-  <nav class="toc" aria-label="Contents"><b>Contents</b><ol>
-{toc_html}
-  </ol></nav>
-  <article class="prose">
-{body}
-  </article>
-</main>
-{footer(te, '/nl/')}
-<script src="/main.js?v={V_JS}" defer></script>
-</body>
-</html>
-"""
-write('methodology/index.html', '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>The ICM</title><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0; url=/#demo"></head><body><a href="/#demo">Go to the BESS Benchmark</a></body></html>')
-print('methodology built, v' + version.group(1), len(toc), 'sections')
-
-
-# Interactive demo: the prototype (fictional data) served at /demo/, embedded on the homepage.
-demo = open(os.path.join(ROOT, '_build', 'prototype.html'), encoding='utf-8').read()
-demo = demo.replace('<a href="https://app.box.com/s/52dy3lyuocqpj3ss3rf47sdyveq7b1ir">Methodology</a> · ', '')
-demo = demo.replace('<a href="\'+LINK_METH+\'">Methodology</a> · ', '').replace('https://app.box.com/s/3hmk2batlg2l2nv91e59gafzu2p1hek6', '/terms/')
-demo = demo.replace('<title>BESS Benchmark Report</title>', '<title>BESS Benchmark interactive demo | The ICM</title><meta name="robots" content="noindex">')
-demo = demo.replace("document.querySelectorAll('.seg[data-key]').forEach(el=>{\n  const key=el.dataset.key;", "document.querySelectorAll('.seg[data-key]').forEach(el=>{\n  const key=el.dataset.key;if(!OPTS[key])return;")
-# a way back to the website (target=_top also works when the demo is shown inside the homepage dialog)
-back = ('<div class="no-report" style="background:#061530;border-bottom:1px solid #1C3356;margin:-20px -16px 20px;padding:10px 16px;font:600 14px Figtree,system-ui,sans-serif">'
-        '<a href="/#how" target="_top" style="color:#97F2F5;text-decoration:none">← Back to icm.energy</a></div>')
-demo = demo.replace('<div class="wrap" id="page1">', back + '\n<div class="wrap" id="page1">', 1)
-# open in light mode, at the top of the page
-demo = demo.replace('<body>', '<body class="light">', 1)
-demo = demo.replace('data-v="dark" aria-pressed="true">Dark</button><button type="button" data-v="light" aria-pressed="false">', 'data-v="dark" aria-pressed="false">Dark</button><button type="button" data-v="light" aria-pressed="true">', 1)
-demo = demo.replace('</body>', "<script>if('scrollRestoration' in history)history.scrollRestoration='manual';window.scrollTo(0,0);addEventListener('load',function(){window.scrollTo(0,0)});</script>\n</body>", 1)
-write('demo/index.html', demo)
-print('demo built')

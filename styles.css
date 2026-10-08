@@ -672,3 +672,9 @@ body.nav-fixed header.nav { z-index: 1000; }
 
 /* v25 fixed menu bar must sit above all page content (the hero is its own stacking context) */
 .hero-shell { position: relative; z-index: 100; }
+
+/* Simple version: register page */
+.talk-form { background: var(--mist); padding: 72px 0 96px; }
+.talk-form .form.fillout { max-width: 860px; margin: 0 auto; }
+.cta-alt { color: var(--muted); font-size: 15px; margin-top: 22px; text-align: center; }
+.cta-alt a { color: inherit; text-decoration: underline; }

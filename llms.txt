@@ -15,12 +15,9 @@
 - BESS Bridge: an API platform that connects optimizers with local infrastructure, so switching optimizers is less costly and less risky.
 
 ## Pages
-- [Home](https://icm.energy/): the BESS Benchmark, how membership works, interactive demo with fictional data
-- [Solutions](https://icm.energy/solutions/): BESS Benchmark (open now), BESS Backtest, BESS Broker and BESS Bridge (waitlist)
-- [BESS Benchmark FAQ](https://icm.energy/faq/)
-- [Resources](https://icm.energy/resources/): documents and brand assets
-- [Company](https://icm.energy/company/): who we are, team and open roles
+- [Home](https://icm.energy/): what a BESS asset could earn, and about the ICM
+- [Register](https://icm.energy/register/): register a BESS asset
 
 ## Contact
 - ideles@icm.energy
-- Independent Capacity Market B.V., Amsterdam, KvK 99958775
+- Independent Capacity Market B.V., Amsterdam

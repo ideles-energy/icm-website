@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css?v=021de302">
+<link rel="stylesheet" href="/styles.css?v=79a06c0a">
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -65,14 +65,9 @@
       <a class="logo" href="/" aria-label="The Independent Capacity Market, home"><img src="/assets/logo-header.png" alt="The Independent Capacity Market" width="796" height="119"></a>
       <nav aria-label="Main">
         <ul class="nav-links">
-          <li class="has-sub hide-sm"><button type="button" class="sub-btn" aria-expanded="false" aria-haspopup="true">Solutions</button><ul class="sub"><li><a href="/solutions/#benchmark"><b>BESS Benchmark</b><span>Open now</span></a></li><li><a href="/solutions/#backtest"><b>BESS Backtest</b><span>Join the waitlist</span></a></li><li><a href="/solutions/#broker"><b>BESS Broker</b><span>Join the waitlist</span></a></li><li><a href="/solutions/#bridge"><b>BESS Bridge</b><span>Join the waitlist</span></a></li></ul></li>
-          <li class="hide-sm"><a href="/resources/">Resources</a></li>
-          <li class="hide-sm"><a href="/company/">Company</a></li>
-          <li><a class="btn btn-lilac" href="/#contact">Talk to us</a></li>
-          <li class="show-sm"><button type="button" class="menu-btn" aria-expanded="false" aria-label="Open menu"><span></span><span></span><span></span></button></li>
+          <li><a class="btn btn-lilac" href="/register/">Register</a></li>
         </ul>
       </nav>
-      <div class="m-menu" hidden><p class="m-h">Solutions</p><a class="m-sub" href="/solutions/#benchmark">BESS Benchmark</a><a class="m-sub" href="/solutions/#backtest">BESS Backtest</a><a class="m-sub" href="/solutions/#broker">BESS Broker</a><a class="m-sub" href="/solutions/#bridge">BESS Bridge</a><a href="/resources/">Resources</a><a href="/company/">Company</a></div>
     </header>
 
     <div class="hero" id="main">
@@ -80,15 +75,15 @@
         <h1>Understand and<br>secure the true value<br>of a BESS asset</h1>
         <p class="lead">For owners with a nagging sense their BESS could earn more. See how an asset compares, BESS-to-BESS, and outsource the research for a trusted optimizer when there is more to earn.</p>
         <div class="hero-ctas">
-          <a class="btn btn-lilac" href="#contact">Talk to us</a>
-          <a class="btn btn-outline" href="#demo">How it works</a>
+          <a class="btn btn-lilac" href="/register/">Register</a>
+          <a class="btn btn-outline" href="#why">Check the numbers</a>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<section class="dark" style="border-top:1px solid rgba(255,255,255,.08)">
+<section class="dark" id="why" style="border-top:1px solid rgba(255,255,255,.08)">
   <div class="wrap">
     <div class="why-grid">
     <div>
@@ -98,52 +93,12 @@
       <p class="story-p">A similar BESS asset, same size and setup, can deliver <a class="story-link" href="https://www.flower.se/insights/case/ra-energy-switch-optimizer/" target="_blank" rel="noopener">30% more revenue</a>. A <label class="pill"><input class="in" id="s-mw" type="number" min="1" max="500" step="1" value="10" aria-label="Project size in MW"><svg class="pen" viewBox="0 0 16 16" aria-hidden="true"><path d="M11.5 2.5l2 2L6 12l-2.8.8L4 10z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></label> MW project could have earned <b class="out" id="s-peer">EUR 240.5k</b> per MW per year, instead of the EUR <label class="pill"><input class="in" id="s-rev" type="number" min="1" max="1000" step="1" value="185" aria-label="Revenue it delivered, in thousand euro per MW per year"><svg class="pen" viewBox="0 0 16 16" aria-hidden="true"><path d="M11.5 2.5l2 2L6 12l-2.8.8L4 10z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></label>k per MW per year it delivered. That's a missed opportunity of <b class="out" id="s-up">EUR 55.5k</b> per MW.</p>
       <p class="hint"><svg class="pen" viewBox="0 0 16 16" aria-hidden="true"><path d="M11.5 2.5l2 2L6 12l-2.8.8L4 10z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>Enter figures to adjust. Illustrative example.</p>
     </div>
-    <div class="cta-row"><a class="btn btn-lilac" href="#contact">Talk to us</a><a class="btn btn-outline" href="#demo">Learn more</a></div>
+    <div class="cta-row"><a class="btn btn-lilac" href="/register/">Register</a><a class="btn btn-outline" href="#about">Learn more</a></div>
     </div>
     <figure class="why-fig" aria-hidden="true">
       <svg id="why-dots" role="presentation"></svg>
       <figcaption class="why-legend"><span><i class="d"></i>Delivered <b id="f-del">EUR 1,850,000</b></span><span><i class="m"></i>Missed <b id="f-mis">EUR 555,000</b></span><span class="unit" id="f-unit">1 dot = EUR 10,000 a year</span></figcaption>
     </figure>
-    </div>
-  </div>
-</section>
-
-<section class="demo-section" id="demo">
-  <div class="wrap">
-    <div class="section-head center">
-      <span class="eyebrow">Open now</span>
-      <h2>The BESS Benchmark</h2>
-      <p>Clarity is our goal. Real, anonymised revenues, compared BESS-to-BESS.</p>
-    </div>
-    <figure class="shot shot-wide">
-      <a class="demo-open" href="/demo/" data-demo><img src="/assets/benchmark-preview.jpg" width="1600" height="912" alt="The BESS Benchmark app: project score, revenue per MW and the benchmark over the last 12 months (fictional example data)" loading="lazy"><span class="demo-badge">Try the demo</span></a>
-      <figcaption>Fictional example data.</figcaption>
-    </figure>
-    <dialog class="demo-dialog" id="demo-dialog" aria-label="Try the demo">
-      <div class="demo-bar"><span></span><a href="/demo/" target="_blank" rel="noopener">Open in a new tab</a><button type="button" data-close aria-label="Close">×</button></div>
-      <iframe title="BESS Benchmark interactive demo (fictional data)" loading="lazy"></iframe>
-    </dialog>
-  </div>
-</section>
-
-<section class="rules-wrap" id="how">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">How it works</span>
-      <h2>Become a member of <span class="nw">the BESS Benchmark</span></h2>
-      <p>For merchant-traded BESS assets from 3 MW in the Netherlands.</p>
-    </div>
-    <div class="rules-row">
-        <div class="rule"><h3>Registration</h3><p>New members submit 6 months of historical data and complete a 45-minute intake that collects the relevant project information. A membership lasts at least 3 months and can be cancelled every month after that.</p></div>
-        <div class="rule"><h3>Participation</h3><p>Members share their earnings every month, for instance by asking their optimizer to CC the ICM on its monthly performance report. The ICM anonymises the data and adds it to the BESS Benchmark.</p></div>
-        <div class="rule"><h3>Contribution</h3><p>Members pay a symbolic handling fee of 0.5% of what their BESS assets earned that month: EUR 75 for a project delivering EUR 15,000. After referring 5 members, the contribution drops to 0.1% for 6 months.</p></div>
-        <div class="rule"><h3>Give-to-get</h3><p>Members only see the BESS Benchmark for the months to which they contributed. If no data is shared for August, September and October, the BESS Benchmark stays blank for those months.</p></div>
-        <div class="rule"><h3>Silent by design</h3><p>The Dutch saying "geen bericht, goed bericht" applies here. The ICM reaches out to members whose projects earn below 80% of the BESS Benchmark. Otherwise, the ICM stays quiet.</p></div>
-        <div class="rule"><h3>Proof of performance</h3><p>The BESS Benchmark can serve as concrete input for (re)financing conversations, contract negotiations with optimizers and insurance/warranty claims.</p></div>
-    </div>
-    <div class="cta-row" style="justify-content:flex-start;margin-top:36px">
-      <a class="btn btn-lilac" href="#contact">Get started</a>
-      <a class="btn btn-outline teal" href="/faq/">Read the FAQ</a>
     </div>
   </div>
 </section>
@@ -155,28 +110,10 @@
       <h2>Why an Independent Capacity Market matters</h2>
       <p>We are not owners. We are not optimizers. Nor will we ever be.<br><br>We are an energy tech company. We compare BESS-to-BESS, introduce owners to optimizers and oversee the switch, so batteries keep earning.</p>
       <div class="cta-row" style="justify-content:flex-start;margin-top:28px">
-        <a class="btn btn-lilac" href="#contact">Talk to us</a>
-        <a class="btn btn-outline" href="/solutions/">Our solutions</a>
-        <a class="btn btn-outline" href="/company/#careers">Open roles</a>
+        <a class="btn btn-lilac" href="/register/">Register</a>
       </div>
     </div>
     <div class="about-visual"><img class="about-img" src="/assets/img/about-pylon.jpg" alt="High-voltage pylon against the evening sky" width="960" height="1080" loading="lazy"></div>
-  </div>
-</section>
-
-<section id="contact">
-  <div class="wrap contact">
-    <div class="intro">
-      <span class="eyebrow" style="color:var(--teal)">Talk to us</span>
-      <h2>Book time with us</h2>
-      <p>Our starting point is a 45-minute call to understand context and objectives.</p>
-      <p>Prefer email? <a href="mailto:ideles@icm.energy">ideles@icm.energy</a></p>
-    </div>
-    <div class="form fillout">
-      <div style="width:100%;height:560px" data-fillout-id="icWpPN8hsgus" data-fillout-embed-type="standard" data-fillout-inherit-parameters data-fillout-dynamic-resize></div>
-      <script src="https://server.fillout.com/embed/v1/" defer></script>
-      <noscript><a href="https://forms.fillout.com/t/icWpPN8hsgus">Open the contact form</a></noscript>
-    </div>
   </div>
 </section>
 
@@ -188,9 +125,7 @@
     </div>
     <a class="f-logo" href="/" aria-label="The ICM, home"><img src="/assets/logo-footer.png" alt="The ICM" width="302" height="449" loading="lazy"></a>
     <nav class="f-links" aria-label="Footer">
-      <a href="/solutions/">Solutions</a>
-      <a href="/resources/">Resources</a>
-      <a href="/company/">Company</a>
+      <a href="/register/">Register</a>
     </nav>
     <div class="f-legal">
       <p>Website designed by Salt &amp; Chalk</p>
