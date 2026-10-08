@@ -26,7 +26,7 @@ T = {
   chart_aria="Illustrative chart: a project's monthly revenue per MW compared with the peer benchmark",
   months=['Oct','Dec','Feb','Apr','Jun','Aug'], chart_you='This project', chart_peer='Peer benchmark (≥ 5 assets, ≥ 3 organisations)',
   chart_note='Illustrative example with fictional data.',
-  why_eyebrow='Why it matters', why_h='BESS assets deliver vastly different results',
+  why_eyebrow='Our why', why_h='BESS assets deliver vastly different results',
   why_p='Independent information is missing as long as no one works together.',
   stats=['EUR 145k', 'EUR 185k', 'EUR 240k'], per='per MW per year', stats_note='Illustrative example: gross market revenues of three BESS assets.',
   learn='How it works',
@@ -88,7 +88,7 @@ T = {
    ('Is the ICM independent?', 'Yes. We do not own BESS assets. We are not an optimizer. Nor will we ever be. For more information about our governance, please reach out to <a href="mailto:ideles@icm.energy">ideles@icm.energy</a>.'),
   ],
   terms_title='Terms & Conditions | The ICM', terms_h='Terms & Conditions',
-  terms_body='<p>The Terms &amp; Conditions are shared with prospective members.</p><p>Please email <a href="mailto:ideles@icm.energy">ideles@icm.energy</a> to request a version of our Terms &amp; Conditions.</p>',
+  terms_body='<p>Please email <a href="mailto:ideles@icm.energy">ideles@icm.energy</a> to request a version of our Terms &amp; Conditions.</p>',
   privacy_title='Privacy statement | The ICM', privacy_h='Privacy statement',
  ),
  'nl': dict(
@@ -217,10 +217,10 @@ SOLUTIONS = [('BESS Benchmark', 'Open now', '/solutions/#benchmark'), ('BESS Bac
 def nav(t, other_href):
     b = t['base']
     return f'''    <header class="nav">
-      <a class="logo" href="{b}" aria-label="The Independent Capacity Market, home"><img src="/assets/logo-header.png" alt="The Independent Capacity Market" width="796" height="119"></a>
+      <a class="logo" href="{b}" aria-label="The Independent Capacity Market, home"><img src="/assets/logo-header.png" alt="The Independent Capacity Market" width="863" height="129"></a>
       <nav aria-label="{t['menu']}">
         <ul class="nav-links">
-          <li><a class="btn btn-lilac" href="/register/">Register</a></li>
+          <li><a class="btn btn-lilac" href="/register/">Talk to us</a></li>
         </ul>
       </nav>
     </header>
@@ -234,12 +234,12 @@ def footer(t, other_href):
       <p class="f-name">The Independent Capacity Market</p>
       <p class="f-tag">{t['foot_tag']}</p>
     </div>
-    <a class="f-logo" href="/" aria-label="The ICM, home"><img src="/assets/logo-footer.png" alt="The ICM" width="302" height="449" loading="lazy"></a>
+    <a class="f-logo" href="/" aria-label="The ICM, home"><img src="/assets/submark.png" alt="The ICM" width="302" height="449" loading="lazy"></a>
     <nav class="f-links" aria-label="Footer">
-      <a href="/register/">Register</a>
+      <a href="/register/">Talk to us</a>
     </nav>
     <div class="f-legal">
-      <p>Website designed by Salt &amp; Chalk</p>
+      <p>Website designed by <a href="https://www.saltandchalk.co.uk" target="_blank" rel="noopener">Salt &amp; Chalk</a></p>
       <p><a href="{b}terms/">{t['terms']}</a> | <a href="{b}privacy/">{t['privacy']}</a></p>
       <p>© 2026 Independent Capacity Market B.V.</p>
     </div>
@@ -268,7 +268,7 @@ def home(t):
     b = t['base']
     other = t['other']
     ld = {"@context": "https://schema.org", "@graph": [
-        {"@type": "Organization", "@id": "https://icm.energy/#org", "name": "Independent Capacity Market B.V.", "alternateName": "The ICM", "logo": "https://icm.energy/assets/logo-footer.png",
+        {"@type": "Organization", "@id": "https://icm.energy/#org", "name": "Independent Capacity Market B.V.", "alternateName": "The ICM", "logo": "https://icm.energy/assets/logo-header.png",
          "url": "https://icm.energy/", "email": EMAIL, "address": {"@type": "PostalAddress", "addressLocality": "Amsterdam", "addressCountry": "NL"},
          "founder": {"@type": "Person", "name": "Idelès Kaandorp", "sameAs": LINKEDIN}},
         {"@type": "Service", "name": "BESS Benchmark", "provider": {"@id": "https://icm.energy/#org"}, "areaServed": "NL",
@@ -289,7 +289,7 @@ def home(t):
         <h1>Understand and<br>secure the true value<br>of a BESS asset</h1>
         <p class="lead">{t['lead']}</p>
         <div class="hero-ctas">
-          <a class="btn btn-lilac" href="/register/">Register</a>
+          <a class="btn btn-lilac" href="/register/">Talk to us</a>
           <a class="btn btn-outline" href="#why">Check the numbers</a>
         </div>
       </div>
@@ -307,7 +307,7 @@ def home(t):
       <p class="story-p">A similar BESS asset, same size and setup, can deliver <a class="story-link" href="https://www.flower.se/insights/case/ra-energy-switch-optimizer/" target="_blank" rel="noopener">30% more revenue</a>. A <label class="pill"><input class="in" id="s-mw" type="number" min="1" max="500" step="1" value="10" aria-label="Project size in MW"><svg class="pen" viewBox="0 0 16 16" aria-hidden="true"><path d="M11.5 2.5l2 2L6 12l-2.8.8L4 10z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></label> MW project could have earned <b class="out" id="s-peer">EUR 240.5k</b> per MW per year, instead of the EUR <label class="pill"><input class="in" id="s-rev" type="number" min="1" max="1000" step="1" value="185" aria-label="Revenue it delivered, in thousand euro per MW per year"><svg class="pen" viewBox="0 0 16 16" aria-hidden="true"><path d="M11.5 2.5l2 2L6 12l-2.8.8L4 10z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></label>k per MW per year it delivered. That's a missed opportunity of <b class="out" id="s-up">EUR 55.5k</b> per MW.</p>
       <p class="hint"><svg class="pen" viewBox="0 0 16 16" aria-hidden="true"><path d="M11.5 2.5l2 2L6 12l-2.8.8L4 10z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>{t['story_note']}</p>
     </div>
-    <div class="cta-row"><a class="btn btn-lilac" href="/register/">Register</a><a class="btn btn-outline" href="#about">{t['more']}</a></div>
+    <div class="cta-row"><a class="btn btn-lilac" href="/register/">Talk to us</a><a class="btn btn-outline" href="#about">{t['more']}</a></div>
     </div>
     <figure class="why-fig" aria-hidden="true">
       <svg id="why-dots" role="presentation"></svg>
@@ -324,7 +324,7 @@ def home(t):
       <h2>{t['about_h']}</h2>
       <p>{t['about_p']}</p>
       <div class="cta-row" style="justify-content:flex-start;margin-top:28px">
-        <a class="btn btn-lilac" href="/register/">Register</a>
+        <a class="btn btn-lilac" href="/register/">Talk to us</a>
       </div>
     </div>
     <div class="about-visual"><img class="about-img" src="/assets/img/about-pylon.jpg" alt="High-voltage pylon against the evening sky" width="960" height="1080" loading="lazy"></div>
@@ -462,7 +462,7 @@ def company(t):
     <p class="co-open">Open applications are welcome. Please email <a href="mailto:{EMAIL}">{EMAIL}</a>, including a CV and what you want to achieve at the ICM.</p>
   </div>
 </section>'''
-    ld = {"@context": "https://schema.org", "@type": "AboutPage", "url": "https://icm.energy/company/", "mainEntity": {"@type": "Organization", "@id": "https://icm.energy/#org", "name": "Independent Capacity Market B.V.", "alternateName": "The ICM", "logo": "https://icm.energy/assets/logo-footer.png", "url": "https://icm.energy/",
+    ld = {"@context": "https://schema.org", "@type": "AboutPage", "url": "https://icm.energy/company/", "mainEntity": {"@type": "Organization", "@id": "https://icm.energy/#org", "name": "Independent Capacity Market B.V.", "alternateName": "The ICM", "logo": "https://icm.energy/assets/logo-header.png", "url": "https://icm.energy/",
           "founder": {"@type": "Person", "name": "Idelès Kaandorp", "sameAs": "https://www.linkedin.com/in/idel%C3%A8s-kaandorp/"},
           "employee": [{"@type": "Person", "name": "Idelès Kaandorp", "sameAs": "https://www.linkedin.com/in/idel%C3%A8s-kaandorp/"}, {"@type": "Person", "name": "Edo Rivai", "sameAs": "https://www.linkedin.com/in/edo-rivai-78b66a17/"}]}}
     return page_shell(t, '/company/', 'Company | The ICM', 'About the Independent Capacity Market: who we are, our team and open roles in Amsterdam.', hero, body, ld)
@@ -519,7 +519,7 @@ def solutions(t):
 
 def register(t):
     hero = '''    <div class="page-hero" id="main">
-      <h1>Register</h1>
+      <h1>Talk to us</h1>
       <p>Tell us about your BESS asset. A 45-minute call is our starting point to understand context and objectives.</p>
     </div>'''
     body = f'''<section class="talk-form" id="form">
@@ -527,12 +527,12 @@ def register(t):
     <div class="form fillout">
       <div style="width:100%;height:640px" data-fillout-id="icWpPN8hsgus" data-fillout-embed-type="standard" data-fillout-inherit-parameters data-fillout-dynamic-resize></div>
       <script src="https://server.fillout.com/embed/v1/" defer></script>
-      <noscript><a href="https://forms.fillout.com/t/icWpPN8hsgus">Open the registration form</a></noscript>
+      <noscript><a href="https://forms.fillout.com/t/icWpPN8hsgus">Open the form</a></noscript>
     </div>
     <p class="cta-alt">{t['prefer']} <a href="mailto:{EMAIL}">{EMAIL}</a></p>
   </div>
 </section>'''
-    return page_shell(t, '/register/', 'Register | The Independent Capacity Market', 'Register your BESS asset with the Independent Capacity Market.', hero, body)
+    return page_shell(t, '/register/', 'Talk to us | The Independent Capacity Market', 'Talk to us about your BESS asset with the Independent Capacity Market.', hero, body)
 
 REDIRECT = '''<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Careers | The ICM</title><meta name="robots" content="noindex"><link rel="canonical" href="https://icm.energy/company/#careers"><meta http-equiv="refresh" content="0; url=/company/#careers"></head><body><a href="/company/#careers">Careers have moved to our company page.</a></body></html>'''
 

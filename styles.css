@@ -15,7 +15,8 @@
   --line: rgba(39, 74, 80, 0.14);
   --radius: 18px;
   --sans: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --max: 1180px;
+  --max: 1440px;
+  --pad: clamp(24px, 4.2vw, 64px);
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -33,7 +34,7 @@ img, svg { max-width: 100%; display: block; }
 a { color: inherit; }
 h1, h2, h3 { line-height: 1.12; letter-spacing: -0.015em; margin: 0; }
 p { margin: 0; }
-.wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+.wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--pad); }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
 
 /* Buttons */
@@ -591,7 +592,7 @@ body, .section-head p, .rule p, .more-grid p, .faq details p, .faq li, .res-card
 .team-cta { display: flex; justify-content: center; margin-top: 48px; }
 /* v14: menu bar stays visible while scrolling */
 html { scroll-padding-top: 88px; }
-body.nav-fixed header.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50; padding: 14px max(24px, calc((100vw - var(--max)) / 2 + 24px)); background: rgba(2, 13, 31, .96); border-bottom: 1px solid rgba(255,255,255,.08); color: var(--white); }
+body.nav-fixed header.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50; padding: 14px max(var(--pad), calc((100vw - var(--max)) / 2 + var(--pad))); background: rgba(2, 13, 31, .96); border-bottom: 1px solid rgba(255,255,255,.08); color: var(--white); }
 
 /* v15: official logos and photography from the brand folder; palette per ICM Colour Palette (night #040D1F, cyan #97F2F5) */
 .logo img { height: 36px; width: auto; display: block; }
@@ -678,3 +679,30 @@ body.nav-fixed header.nav { z-index: 1000; }
 .talk-form .form.fillout { max-width: 860px; margin: 0 auto; }
 .cta-alt { color: var(--muted); font-size: 15px; margin-top: 22px; text-align: center; }
 .cta-alt a { color: inherit; text-decoration: underline; }
+
+/* Legal pages as wide as the rest of the site; footer without empty row */
+.page-body .prose { max-width: none; }
+@media (min-width: 761px) {
+  .foot2 { grid-template-areas: "about logo links" "about logo legal"; row-gap: 14px; }
+  .f-logo { align-self: end; }
+}
+body { display: flex; flex-direction: column; min-height: 100vh; }
+body > footer { margin-top: auto; }
+
+/* Main logo (stacked, supplied brand file) */
+.logo img { height: 38px; }
+.f-logo img { height: 112px; }
+@media (max-width: 900px) { .logo img { height: 30px; } }
+
+/* Hero: whole bulb (image scaled to hero height, right-aligned), blue glow extended behind the logo */
+@media (min-width: 901px) {
+  .hero-img { left: auto; right: min(0px, calc((100vw - 1440px) * -.4)); width: auto; max-width: none; height: 100%; object-fit: initial; -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 38%); mask-image: linear-gradient(90deg, transparent 0, #000 38%); }
+  .hero-photo::after { background: radial-gradient(ellipse 55% 75% at 8% 0%, rgba(16,64,160,.55), rgba(16,64,160,0) 70%), linear-gradient(90deg, rgba(4,13,31,.35) 0%, rgba(4,13,31,.25) 45%, rgba(4,13,31,0) 75%); }
+}
+.hero { padding-top: clamp(64px, 9vw, 120px); }
+.why-eyebrow, .dark .section-head .why-eyebrow { color: var(--white); }
+
+/* Wide screens: bulb just right of centre, edges fade into the night background */
+@media (min-width: 1250px) {
+  .hero-img { left: 64%; right: auto; transform: translateX(-70.3%); -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 22%, #000 88%, transparent 100%); mask-image: linear-gradient(90deg, transparent 0, #000 22%, #000 88%, transparent 100%); }
+}
