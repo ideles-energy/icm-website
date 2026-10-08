@@ -219,7 +219,7 @@ def nav(t, other_href):
     subs = ''.join(f'<li><a href="{h}"><b>{n}</b><span>{s}</span></a></li>' for n, s, h in SOLUTIONS)
     msubs = ''.join(f'<a class="m-sub" href="{h}">{n}</a>' for n, s, h in SOLUTIONS)
     return f'''    <header class="nav">
-      <a class="logo" href="{b}" aria-label="The Independent Capacity Market, home"><img src="/assets/logo-header.png" alt="The Independent Capacity Market" width="796" height="119"></a>
+      <a class="logo" href="{b}" aria-label="The Independent Capacity Market, home"><img src="/assets/logo-main.png" alt="The Independent Capacity Market" width="684" height="302"></a>
       <nav aria-label="{t['menu']}">
         <ul class="nav-links">
           <li class="has-sub hide-sm"><button type="button" class="sub-btn" aria-expanded="false" aria-haspopup="true">Solutions</button><ul class="sub">{subs}</ul></li>
@@ -242,7 +242,7 @@ def footer(t, other_href):
       <p class="f-name">The Independent Capacity Market</p>
       <p class="f-tag">{t['foot_tag']}</p>
     </div>
-    <a class="f-logo" href="/" aria-label="The ICM, home"><img src="/assets/logo-footer.png" alt="The ICM" width="302" height="449" loading="lazy"></a>
+    <a class="f-logo" href="/" aria-label="The ICM, home"><img src="/assets/logo-main.png" alt="The Independent Capacity Market" width="684" height="302" loading="lazy"></a>
     <nav class="f-links" aria-label="Footer">
       <a href="/solutions/">Solutions</a>
       <a href="/resources/">Resources</a>
@@ -279,7 +279,7 @@ def home(t):
     b = t['base']
     other = t['other']
     ld = {"@context": "https://schema.org", "@graph": [
-        {"@type": "Organization", "@id": "https://icm.energy/#org", "name": "Independent Capacity Market B.V.", "alternateName": "The ICM", "logo": "https://icm.energy/assets/logo-footer.png",
+        {"@type": "Organization", "@id": "https://icm.energy/#org", "name": "Independent Capacity Market B.V.", "alternateName": "The ICM", "logo": "https://icm.energy/assets/logo-main.png",
          "url": "https://icm.energy/", "email": EMAIL, "address": {"@type": "PostalAddress", "addressLocality": "Amsterdam", "addressCountry": "NL"},
          "founder": {"@type": "Person", "name": "Idelès Kaandorp", "sameAs": LINKEDIN}},
         {"@type": "Service", "name": "BESS Benchmark", "provider": {"@id": "https://icm.energy/#org"}, "areaServed": "NL",
@@ -530,7 +530,7 @@ def company(t):
     <p class="co-open">Open applications are welcome. Please email <a href="mailto:{EMAIL}">{EMAIL}</a>, including a CV and what you want to achieve at the ICM.</p>
   </div>
 </section>'''
-    ld = {"@context": "https://schema.org", "@type": "AboutPage", "url": "https://icm.energy/company/", "mainEntity": {"@type": "Organization", "@id": "https://icm.energy/#org", "name": "Independent Capacity Market B.V.", "alternateName": "The ICM", "logo": "https://icm.energy/assets/logo-footer.png", "url": "https://icm.energy/",
+    ld = {"@context": "https://schema.org", "@type": "AboutPage", "url": "https://icm.energy/company/", "mainEntity": {"@type": "Organization", "@id": "https://icm.energy/#org", "name": "Independent Capacity Market B.V.", "alternateName": "The ICM", "logo": "https://icm.energy/assets/logo-main.png", "url": "https://icm.energy/",
           "founder": {"@type": "Person", "name": "Idelès Kaandorp", "sameAs": "https://www.linkedin.com/in/idel%C3%A8s-kaandorp/"},
           "employee": [{"@type": "Person", "name": "Idelès Kaandorp", "sameAs": "https://www.linkedin.com/in/idel%C3%A8s-kaandorp/"}, {"@type": "Person", "name": "Edo Rivai", "sameAs": "https://www.linkedin.com/in/edo-rivai-78b66a17/"}]}}
     return page_shell(t, '/company/', 'Company | The ICM', 'About the Independent Capacity Market: who we are, our team and open roles in Amsterdam.', hero, body, ld)
@@ -595,7 +595,7 @@ def register(t):
     <div class="form fillout">
       <div style="width:100%;height:640px" data-fillout-id="icWpPN8hsgus" data-fillout-embed-type="standard" data-fillout-inherit-parameters data-fillout-dynamic-resize></div>
       <script src="https://server.fillout.com/embed/v1/" defer></script>
-      <noscript><a href="https://forms.fillout.com/t/icWpPN8hsgus">Open the registration form</a></noscript>
+      <noscript><a href="https://forms.fillout.com/t/icWpPN8hsgus">Open the form</a></noscript>
     </div>
     <p class="cta-alt">{t['prefer']} <a href="mailto:{EMAIL}">{EMAIL}</a></p>
   </div>
