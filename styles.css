@@ -1254,3 +1254,9 @@ header.nav a b { font-size: 14px !important; } header.nav a span:not(.nw) { font
 .co-role .co-body > div { display: block; }
 .co-role .co-body h4 { margin-top: 0; }
 @media (max-width: 900px) { .co-role > .co-body { grid-template-columns: minmax(0, 1fr); gap: 20px; } }
+
+/* v27: team like Canva: taller photos, one text style, name links to LinkedIn */
+.member .ph, .member .ph-init { aspect-ratio: 5 / 6; width: 100%; height: auto; object-fit: cover; }
+.member .m-bio { color: rgba(255,255,255,.9); font-size: var(--body); line-height: 1.5; margin-top: 10px; }
+.member b { display: block; margin-top: 18px; }
+a.member:hover b { text-decoration: underline; text-underline-offset: 4px; }
