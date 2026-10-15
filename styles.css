@@ -1349,3 +1349,13 @@ a.member:hover b { text-decoration: underline; text-underline-offset: 4px; }
 .wy-v13 .wy-dotsrow{grid-template-columns:minmax(0,720px) 240px;gap:56px;justify-content:start}
 .wy-v13 .wy-dotsrow svg{width:100%;height:auto}
 @media (max-width:900px){.wy-v13 .wy-dotsrow{grid-template-columns:minmax(0,1fr)}}
+
+/* v36 homepage why: text stacked left, dots + legend right */
+.wy-v13 .wy-splitR{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:64px;align-items:center;margin-top:36px}
+.wy-v13 .wy-colL{display:grid;gap:36px}
+.wy-v13 .wy-vizR > svg,.wy-v13 .wy-vizR > .why-fig svg{width:100%;max-width:none;height:auto}
+.wy-v13 .wy-legr{flex-direction:row;flex-wrap:wrap;gap:8px 22px;margin:20px 0 0}
+.wy-v13 .wy-vizR .hint{margin:16px 0 0}
+@media (max-width:900px){.wy-v13 .wy-splitR{grid-template-columns:minmax(0,1fr);gap:36px}}
+.wy-v13 .wy-colL.wy-two{grid-template-columns:minmax(0,1fr);max-width:none;margin-top:0;gap:32px}
+.wy-v13 .wy-colL.wy-two > div + div{border-left:0;padding-left:0}

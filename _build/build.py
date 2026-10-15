@@ -737,7 +737,7 @@ def why_section(v='1'):
     {w_can()}"""
     elif v == '3':  # big number + light form card
         causes = ''.join(f'<a class="wy-chip" href="{h}"><b>{a}</b><span>{n} →</span></a>' for a, b, h, n in cs)
-        inner = f"""<div class="wy-split">
+        inner = f"""<div class="wy-splitR">
       <div><p class="wy-k">Missed a year</p><p class="wy-big out js-missed">EUR 555,000</p><p class="wy-lead">It's a waste to miss out. A similar BESS asset, same size and setup, can deliver <a class="story-link" href="{FLOWER}" target="_blank" rel="noopener">30% more revenue</a>.</p>{w_can()}</div>
       <div class="wy-form"><h3>Your battery</h3>
         <label>Project size<span>{w_pill('js-mw','Project size in MW',10,'max="500"')} MW</span></label>
@@ -757,12 +757,13 @@ def why_section(v='1'):
         bl = ''.join(f'<li>{x}</li>' for x in (BL1, BL2, BL3))
         inner = f"""<div class="wy-top"><div class="wy-top-l">{w_head()}</div></div>
     <div class="story wy-wide wy-v13">
-      <div class="wy-two wy-plain">
-        <div><p class="wy-k">Check your own battery</p><p class="story-p story">{w_sentence()}</p></div>
-        <div><p class="wy-k">Where it leaks</p><ul class="wy-bul">{bl}</ul></div>
+      <div class="wy-splitR">
+        <div class="wy-colL wy-two wy-plain">
+          <div><p class="wy-k">Check your own battery</p><p class="story-p story">{w_sentence()}</p></div>
+          <div><p class="wy-k">Where it leaks</p><ul class="wy-bul">{bl}</ul></div>
+        </div>
+        <div class="wy-vizR">{w_dots(6, legend=False)}<div class="why-legend wy-legr">{WLEG}</div>{w_hint()}</div>
       </div>
-      <div class="wy-dotsrow">{w_dots(6, legend=False)}<div class="why-legend wy-legr">{WLEG}</div></div>
-      {w_hint()}
     </div>"""
     elif v in ('10', '11', '12'):
         lk = lambda h, n: f'<a class="story-link" href="{h}">{n}</a>'
@@ -801,7 +802,7 @@ def why_section(v='1'):
         elif v == '8':  # dark left: headline + clean leaks, light right: check + dots on light
             leaks = ''.join(f'<div><b>{a}</b><p>{b}</p><a href="{h}">{n} →</a></div>' for a, b, h, n in cs)
             inner = f"""<div class="wy-split wy-split4 wy-split8">
-      <div class="wy-dark">{w_head('h2')}<div class="wy-stack">{leaks}</div></div>
+      <div class="wy-dark">{w_head('h2')}<div class="wy-colL wy-two wy-plain">{leaks}</div></div>
       <div class="wy-light wy-ondots">{check}{w_dots()}</div>
     </div>"""
         else:           # 9: headline, light strip with the check, full-width dots, columns
