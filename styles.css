@@ -883,3 +883,6 @@ h1, h2, h3 { letter-spacing: -0.025em; font-weight: 700; }
 .co-role ul + h4 + ul { margin-top: 0; }
 @media (max-width: 1000px) { .co-roles { grid-template-columns: minmax(0, 1fr); } }
 .co-roles .co-role ul li { display: list-item; border: 0; border-radius: 0; padding: 0; margin: 4px 0; }
+@media (min-width: 801px) { .res-cols .res-lead { min-height: 3.4em; } }
+.res-cols .res-card { height: auto; }
+@media (min-width: 801px) and (max-width: 1100px) { .res-cols .res-lead { min-height: 4.9em; } }
