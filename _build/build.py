@@ -453,7 +453,7 @@ def icon_svg(k):
 
 PROPS = [
   ('configurator', 'BESS Configurator', '/bess-configurator/', 'Find the optimal system for your context.',
-   'We select the configuration (number of batteries, MW/MWh, C-rate) that earns the most within the restrictions on your site, and simulate the revenues.'),
+   'We simulate the revenues of different configurations (number of batteries, MW/MWh) within the restrictions on your site, so you see which one could earn the most.'),
   ('broker', 'BESS Broker', '/bess-broker/', 'Outsource the search for a trusted optimizer.',
    'We run a standardised process to source, compare and contract optimizers, and manage the switch so your battery keeps earning without interruption.'),
   ('backtest', 'BESS Backtest', '/bess-backtest/', 'Monitor your performance proactively.',
@@ -543,7 +543,6 @@ def home(t):
     <div class="section-head center">
       <span class="eyebrow why-eyebrow">How it works</span>
       <h2>An independent perspective</h2>
-      <p>At every stage of a battery's life: size the right system before you build, find a trusted optimizer to run it and monitor its performance while it operates.</p>
     </div>
     <div class="props">
 {cards}    </div>
@@ -710,7 +709,7 @@ def why_section(v='1'):
     </div>
     {w_can()}"""
     elif v == '13':
-        bl = ''.join(f'<li>{x}</li>' for x in ('<b>The set-up.</b> The number of batteries, the MW and MWh and the C-rate decide what a site can earn. A set-up that does not fit your site\'s restrictions leaves revenue on the table from day one.', '<b>The optimizer.</b> Optimizers do not earn the same with the same battery, and without a like-for-like comparison you cannot tell whether yours is among the weaker ones.', '<b>The follow-up.</b> Without a clear reference, a shortfall looks like a bad month. It can run for years before anyone notices.'))
+        bl = ''.join(f'<li>{x}</li>' for x in ('<b>The wrong configuration.</b> The number of batteries and the MW/MWh you build decide what your site can earn. The wrong mix earns less from day one.', '<b>The wrong optimizer.</b> Two optimizers do not earn the same with the same battery. Without a comparison, you cannot tell whether yours is behind.', '<b>Too little monitoring.</b> Without a reference, low revenue looks like a bad month. Underperformance can go unnoticed for years.'))
         inner = f"""<div class="wy-head">{w_head()}</div>
     <div class="story wy-wide wy-v13">{w_dots(8)}
       <div class="wy-two wy-plain">

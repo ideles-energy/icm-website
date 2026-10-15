@@ -1122,3 +1122,6 @@ footer { padding: 48px 0 32px; }
 .wy-bul li b { color: #fff; }
 .wy-bul { font-size: 17px; line-height: 1.6; }
 .wy-bul li { margin-bottom: 14px; }
+.prop .prop-lead { color: var(--white); font-weight: 700; font-size: 16px; }
+.prop p { font-weight: 400; }
+.prop .prop-lead { font-weight: 700; }
