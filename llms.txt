@@ -16,13 +16,13 @@
 
 ## Pages
 - [Home](https://icm.energy/): independent insight for BESS owners: calculator, backtest and broker
-- [How we can help](https://icm.energy/how-we-can-help/): BESS Calculator, BESS Backtest and BESS Broker
-- [BESS Calculator](https://icm.energy/bess-calculator/)
+- [Solutions](https://icm.energy/solutions/): BESS Configurator, BESS Backtest and BESS Broker
+- [BESS Configurator](https://icm.energy/bess-configurator/)
 - [BESS Backtest](https://icm.energy/bess-backtest/)
 - [BESS Broker](https://icm.energy/bess-broker/)
 - [Talk to us](https://icm.energy/talk-to-us/)
 - [Resources](https://icm.energy/resources/): documents and brand assets
-- [Our story](https://icm.energy/our-story/): who we are, team and open roles
+- [Company](https://icm.energy/company/): our story, team and open roles
 
 ## Contact
 - ideles@icm.energy

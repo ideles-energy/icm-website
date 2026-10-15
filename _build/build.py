@@ -211,8 +211,7 @@ def _v(f):
     return hashlib.md5(open(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), f),'rb').read()).hexdigest()[:8]
 V_CSS, V_JS = _v('styles.css'), _v('main.js')
 
-SOLUTIONS = [('How we can help', 'Overview of our solutions', '/how-we-can-help/'),
-             ('BESS Calculator', 'Size and value the right system', '/bess-calculator/'),
+SOLUTIONS = [('BESS Configurator', 'Size and value the right system', '/bess-configurator/'),
              ('BESS Backtest', 'Measure what a battery captures', '/bess-backtest/'),
              ('BESS Broker', 'Find a trusted optimizer', '/bess-broker/')]
 TALK = '/talk-to-us/'
@@ -220,18 +219,19 @@ TALK = '/talk-to-us/'
 def nav(t, other_href):
     b = t['base']
     subs = ''.join(f'<li><a href="{h}"><b>{n}</b><span>{s}</span></a></li>' for n, s, h in SOLUTIONS)
-    msubs = ''.join(f'<a class="m-sub" href="{h}">{n}</a>' for n, s, h in SOLUTIONS[1:])
+    msubs = ''.join(f'<a class="m-sub" href="{h}">{n}</a>' for n, s, h in SOLUTIONS)
     return f"""    <header class="nav">
       <a class="logo" href="{b}" aria-label="The Independent Capacity Market, home"><img src="/assets/logo-header.png" alt="The Independent Capacity Market" width="796" height="119"></a>
       <nav aria-label="{t['menu']}">
         <ul class="nav-links">
-          <li class="has-sub hide-sm"><button type="button" class="sub-btn" aria-expanded="false" aria-haspopup="true">How we can help</button><ul class="sub">{subs}</ul></li>
-          <li class="hide-sm"><a href="/our-story/">Our story</a></li>
+          <li class="has-sub hide-sm"><button type="button" class="sub-btn" aria-expanded="false" aria-haspopup="true">Solutions</button><ul class="sub">{subs}</ul></li>
+          <li class="hide-sm"><a href="/resources/">Resources</a></li>
+          <li class="hide-sm"><a href="/company/">Company</a></li>
           <li><a class="btn btn-lilac" href="{TALK}">{t['talk']}</a></li>
           <li class="show-sm"><button type="button" class="menu-btn" aria-expanded="false" aria-label="Open menu"><span></span><span></span><span></span></button></li>
         </ul>
       </nav>
-      <div class="m-menu" hidden><p class="m-h">How we can help</p><a class="m-sub" href="/how-we-can-help/">Overview</a>{msubs}<a href="/our-story/">Our story</a></div>
+      <div class="m-menu" hidden><p class="m-h">Solutions</p>{msubs}<a href="/resources/">Resources</a><a href="/company/">Company</a></div>
     </header>
 """
 
@@ -241,12 +241,12 @@ def footer(t, other_href):
   <div class="wrap foot2">
     <div class="f-about">
       <p class="f-name">The Independent Capacity Market</p>
-      <p class="f-tag">The ICM brings clarity, trusted partners and continuity to those adding capacity to the grid. We help BESS owners size the right battery, backtest its performance and find a trusted optimizer.</p>
+      <p class="f-tag">The ICM brings clarity, trusted partners and continuity to those adding capacity to the grid.</p>
     </div>
     <a class="f-logo" href="/" aria-label="The ICM, home"><img src="/assets/submark.png" alt="The ICM" width="302" height="449" loading="lazy"></a>
     <nav class="f-links" aria-label="Footer">
-      <a href="/how-we-can-help/">How we can help</a>
-      <a href="/our-story/">Our story</a>
+      <a href="/solutions/">Solutions</a>
+      <a href="/company/">Company</a>
       <a href="/resources/">Resources</a>
       <a href="{TALK}">Talk to us</a>
     </nav>
@@ -343,10 +343,10 @@ def resources(t):
     body = f'''<main class="res">
   <section class="wrap res-sec">
     <h2>Documents</h2>
-    <p class="res-lead">Find answers to common questions about the BESS Benchmark, or read our API documents. Anything missing? Just ask.</p>
+    <p class="res-lead">Find answers to common questions about the BESS Backtest, or read our API documents. Anything missing? Just ask.</p>
     <div class="res-cards">
       <div class="res-card res-thumb"><img src="/assets/brand/thumb-api.jpg" alt="" width="1425" height="552" loading="lazy"><div><span>API documents</span><small>Guides and reference for the ICM Platform API</small></div><a class="btn btn-lilac" href="https://docs.icm.energy/" target="_blank" rel="noopener">Access →</a></div>
-      <div class="res-card res-thumb"><img src="/assets/brand/thumb-faq.jpg" alt="" width="1000" height="428" loading="lazy"><div><span>BESS Benchmark FAQ</span><small>Answers on membership, data and results</small></div><a class="btn btn-lilac" href="/faq/">Read →</a></div>
+      <div class="res-card res-thumb"><img src="/assets/brand/thumb-faq.jpg" alt="" width="1000" height="428" loading="lazy"><div><span>BESS Backtest FAQ</span><small>Answers on data, results and the role of the installer</small></div><a class="btn btn-lilac" href="/bess-backtest/#faq">Read →</a></div>
     </div>
   </section>
   <section class="wrap res-sec">
@@ -379,6 +379,18 @@ def company(t):
     </div>
   </div>
 </section>
+<section class="story-sec">
+  <div class="wrap">
+    <div class="section-head center">
+      <h2>Independent insight for BESS owners in the Netherlands</h2>
+    </div>
+    <div class="story-long">
+      <p>Owners of battery energy storage systems (BESS) share one question: is my battery earning what it should? Revenues per MW differ widely between comparable batteries, and an optimizer report rarely shows why.</p>
+      <p>The Independent Capacity Market (the ICM) is an independent energy tech company that helps BESS owners, installers and developers answer that question. We are not an optimizer and we own no batteries. With the BESS Configurator we size and value the right system for your site. With the BESS Backtest we measure how much of your battery's full potential its optimizer captures. With the BESS Broker we request and compare quotes from trusted optimizers and guide the switch when there is more to earn.</p>
+      <p>The result is a BESS that keeps earning, backed by an independent view you can share with your bank, installer or insurer.</p>
+    </div>
+  </div></section>
+
 <section class="dark co-team">
   <div class="wrap">
     <p class="co-label">The team</p>
@@ -388,6 +400,14 @@ def company(t):
       <div class="member tbc"><span class="ph ph-empty"></span><b>Coming soon</b><em>&nbsp;</em></div>
     </div>
     <div class="team-cta"><a class="btn btn-lilac" href="/talk-to-us/">Get in touch →</a></div>
+  </div>
+</section>
+<section class="dark co-support">
+  <div class="wrap">
+    <div class="support-box">
+      <span class="co-label">Supported by</span>
+      <img src="/assets/img/provincie-noord-holland.png" alt="Province of Noord-Holland" width="1200" height="233" loading="lazy">
+    </div>
   </div>
 </section>
 <section class="co-careers" id="careers">
@@ -401,13 +421,13 @@ def company(t):
     <p class="co-open">Open applications are welcome. Please email <a href="mailto:{EMAIL}">{EMAIL}</a>, including a CV and what you want to achieve at the ICM.</p>
   </div>
 </section>'''
-    ld = {"@context": "https://schema.org", "@type": "AboutPage", "url": "https://icm.energy/our-story/", "mainEntity": {"@type": "Organization", "@id": "https://icm.energy/#org", "name": "Independent Capacity Market B.V.", "alternateName": "The ICM", "logo": "https://icm.energy/assets/logo-header.png", "url": "https://icm.energy/",
+    ld = {"@context": "https://schema.org", "@type": "AboutPage", "url": "https://icm.energy/company/", "mainEntity": {"@type": "Organization", "@id": "https://icm.energy/#org", "name": "Independent Capacity Market B.V.", "alternateName": "The ICM", "logo": "https://icm.energy/assets/logo-header.png", "url": "https://icm.energy/",
           "founder": {"@type": "Person", "name": "Idelès Kaandorp", "sameAs": "https://www.linkedin.com/in/idel%C3%A8s-kaandorp/"},
           "employee": [{"@type": "Person", "name": "Idelès Kaandorp", "sameAs": "https://www.linkedin.com/in/idel%C3%A8s-kaandorp/"}, {"@type": "Person", "name": "Edo Rivai", "sameAs": "https://www.linkedin.com/in/edo-rivai-78b66a17/"}]}}
-    return page_shell(t, '/our-story/', 'Our story: the team behind the Independent Capacity Market | The ICM', 'About the Independent Capacity Market: who we are, our team and open roles in Amsterdam.', hero, body, ld)
+    return page_shell(t, '/company/', 'Company: our story and the team behind the Independent Capacity Market | The ICM', 'About the Independent Capacity Market: who we are, our team and open roles in Amsterdam.', hero, body, ld)
 
 ICONS = {
-  'calculator': '<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 11h.01M12 11h.01M16 11h.01M8 15h.01M12 15h.01M16 15h.01M8 18h4"/>',
+  'configurator': '<path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/><path d="M4 12h5M13 12h7"/><circle cx="11" cy="12" r="2"/>',
   'backtest': '<path d="M3.5 12a8.5 8.5 0 1 0 2.6-6.1"/><path d="M3.5 4.5v4h4"/><path d="M12 7.5V12l3 2"/>',
   'broker': '<circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/><path d="M8 10.5l2 2 3.5-4"/>',
 }
@@ -415,7 +435,7 @@ def icon_svg(k):
     return f'<svg viewBox="0 0 24 24" fill="none" stroke="#97F2F5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">{ICONS[k]}</svg>'
 
 PROPS = [
-  ('calculator', 'BESS Calculator', '/bess-calculator/', 'Find the optimal system for your context.',
+  ('configurator', 'BESS Configurator', '/bess-configurator/', 'Find the optimal system for your context.',
    'Size the battery for your site and see the business case: payback, return and revenue streams over its lifetime.'),
   ('backtest', 'BESS Backtest', '/bess-backtest/', 'Monitor the performance of your BESS.',
    'See how much of its full potential your battery captures, and why. An independent view on what a live battery earns.'),
@@ -430,6 +450,7 @@ NEWFAQS = [
  ('Is downtime counted against my optimizer?', 'No. Downtime is reported as a separate driver, so that a fault is not attributed to trading performance, and the other way around.'),
  ('What data do you need?', 'The optimizer report, quarter-hour meter data, data from the energy management system for downtime, and the documents on your grid connection and optimizer mandate. We guide you through the list, and your installer or metering service provider can often deliver most of it.'),
  ('Who orders a BESS Backtest?', 'Installers can include a BESS Backtest at delivery, so every customer gets an independent view of what the battery earns. Owners can also order one directly. Talk to us about how this works for you.'),
+ ('What is the role of the installer?', 'Installers can use the ICM in three ways: size a system with the BESS Configurator before the sale, include a BESS Backtest at delivery so every customer gets an independent view of what the battery earns, and refer owners who want a better optimizer to the BESS Broker. Talk to us to see what fits your way of working.'),
  ('What if my battery earns less than expected?', 'You decide what happens next. If the result objectively falls short, the BESS Broker can help you request and compare quotes from other optimizers, test what they would have earned, and guide the switch.'),
  ('Is the ICM independent?', 'Yes. We do not own BESS assets. We are not an optimizer. Nor will we ever be.'),
 ]
@@ -437,7 +458,7 @@ NEWFAQS = [
 def faq_block(items, title=None):
     rows = '\n'.join(f'      <details><summary>{q}</summary><p>{a}</p></details>' for q, a in items)
     h = f'<h2>{title}</h2>' if title else ''
-    return f"""<section class="faq-sec">
+    return f"""<section class="faq-sec" id="faq">
   <div class="wrap">
     <div class="section-head center">{h}</div>
     <div class="faq">
@@ -446,13 +467,13 @@ def faq_block(items, title=None):
   </div>
 </section>"""
 
-def cta_band(t, h='Ready to talk?', p='Our starting point is a 45-minute call to understand your context and objectives (e.g., a portfolio of 3-30 MW, trading revenues below expectations). We then get to work.', topic=None):
+def cta_band(t, h="Let's talk about your BESS", p='Start with a 45-minute call about your context and objectives (for example a portfolio of 3-30 MW BESS assets, or trading revenues below expectations). Afterwards you receive a full proposal.', topic=None):
     q = f'?topic={topic}' if topic else ''
     return f"""<section class="cta-band">
   <div class="wrap">
     <h2>{h}</h2>
     <p>{p}</p>
-    <a class="btn btn-lilac" href="{TALK}{q}">{t['talk']}</a>
+    <a class="btn btn-outline" href="{TALK}{q}">{t['talk']}</a>
   </div>
 </section>"""
 
@@ -502,54 +523,50 @@ def home(t):
   <div class="wrap">
     <div class="section-head center">
       <span class="eyebrow why-eyebrow">How it works</span>
-      <h2>Three ways we help you secure the value of your BESS</h2>
-      <p>Before you build, while you operate and when it is time to change: an independent view at every stage of a battery's life.</p>
+      <h2>Our propositions</h2>
+      <p>An independent view at every stage of a battery's life: size the right system before you build, monitor its performance while it operates and find a trusted optimizer when there is more to earn.</p>
     </div>
     <div class="props">
 {cards}    </div>
-    <div class="cta-row"><a class="btn btn-lilac" href="{TALK}">{t['talk']}</a><a class="btn btn-outline" href="/how-we-can-help/">How we can help</a></div>
   </div>
 </section>
 
-<section class="proof-sec">
+<section class="dark proof-sec">
   <div class="wrap">
     <div class="section-head center">
-      <span class="eyebrow">Why trust the ICM</span>
-      <h2>A method you can check, an independent view you can rely on</h2>
+      <span class="eyebrow why-eyebrow">Why trust the ICM</span>
+      <h2>An independent view you can check</h2>
     </div>
-    <ul class="proof-list proof-3">
-      <li><b>Independent.</b> We are not owners and not optimizers. We own no batteries and never will.</li>
-      <li><b>Transparent.</b> Our method and its assumptions are written down and open to scrutiny.</li>
-      <li><b>Based on your own data.</b> Results come from your optimizer report and meter data, not from a theoretical battery.</li>
-    </ul>
+    <div class="proof">
+      <ul class="proof-list">
+        <li><b>Independent.</b> We are not owners and not optimizers. We own no batteries and never will.</li>
+        <li><b>Transparent.</b> Our method and its assumptions are written down and open to scrutiny.</li>
+        <li><b>Based on your own data.</b> Results come from your optimizer report and meter data, not from a theoretical battery.</li>
+        <li><b>Checked by people.</b> Every result is quality controlled before it reaches you.</li>
+      </ul>
+      <figure class="proof-fig" role="img" aria-label="Illustration: the full potential of a site is 100 percent, the expected result is 80 percent, and your battery's realised result is compared with both.">
+        <div class="pbar"><span>Full potential</span><i class="b1" style="width:100%"></i><em>100%</em></div>
+        <div class="pbar"><span>Expected result</span><i class="b2" style="width:80%"></i><em>80%</em></div>
+        <div class="pbar"><span>Your battery</span><i class="b3" style="width:66%"></i><em>capture rate</em></div>
+        <figcaption>How the BESS Backtest reads a battery. Illustration, not a result.</figcaption>
+      </figure>
+    </div>
   </div>
 </section>
 
 <section class="dark about-sec" id="about">
   <div class="wrap about-grid2">
     <div class="about-card">
-      <span class="eyebrow why-eyebrow">Our story</span>
+      <span class="eyebrow why-eyebrow">About us</span>
       <h2>Why an Independent Capacity Market matters</h2>
       <p>We are not owners. We are not optimizers. Nor will we ever be.</p>
       <p>We are an energy tech company. We serve those who add capacity to the grid, but are in the dark on the potential of their assets. We compare BESS-to-BESS, introduce owners to optimizers and oversee the switch, so your battery keeps earning.</p>
-      <div class="cta-row" style="justify-content:flex-start"><a class="btn btn-lilac" href="{TALK}">{t['talk']}</a><a class="btn btn-outline" href="/our-story/">Our story</a></div>
+      <div class="cta-row" style="justify-content:flex-start"><a class="btn btn-lilac" href="{TALK}">{t['talk']}</a><a class="btn btn-outline" href="/company/">Our story</a></div>
     </div>
     <div class="about-visual"><img class="about-img" src="/assets/img/about-pylon.jpg" alt="High-voltage pylon against the evening sky" width="960" height="1080" loading="lazy"></div>
   </div>
 </section>
 
-<section class="story-sec">
-  <div class="wrap">
-    <div class="section-head center">
-      <h2>Independent insight for BESS owners in the Netherlands</h2>
-    </div>
-    <div class="story-long">
-      <p>Owners of battery energy storage systems (BESS) share one question: is my battery earning what it should? Revenues per MW differ widely between comparable batteries, and an optimizer report rarely shows why.</p>
-      <p>The Independent Capacity Market (the ICM) is an independent energy tech company that helps BESS owners, installers and developers answer that question. We are not an optimizer and we own no batteries. With the BESS Calculator we size and value the right system for your site. With the BESS Backtest we measure how much of your battery's full potential its optimizer captures. With the BESS Broker we request and compare quotes from trusted optimizers and guide the switch when there is more to earn.</p>
-      <p>The result is a BESS that keeps earning, backed by an independent view you can share with your bank, installer or insurer.</p>
-    </div>
-  </div>
-</section>
 
 {cta_band(t)}
 
@@ -574,13 +591,13 @@ def sol_block(k, n, href, lead, body, extra):
 
 def solutions(t):
     extras = {
-      'calculator': 'For owners and developers who plan a battery on a site with solar, wind or a large energy use, and for installers who size systems for customers.',
+      'configurator': 'For owners and developers who plan a battery on a site with solar, wind or a large energy use, and for installers who size systems for customers.',
       'backtest': 'For owners of operating batteries, and for installers who want to give every customer an independent view on what the battery earns.',
       'broker': 'For owners whose battery objectively earns less than it could and who want to compare optimizers without doing the research themselves.',
     }
     blocks = ''.join(sol_block(k, n, h, lead, body, extras[k]) for k, n, h, lead, body in PROPS)
     hero = """    <div class="page-hero" id="main">
-      <h1>How we can help</h1>
+      <h1>Solutions</h1>
       <p>Three solutions for those who add capacity to the grid but are in the dark on the potential of their assets: size the right system, monitor its performance and find a trusted optimizer when there is more to earn.</p>
     </div>"""
     body = f"""<section class="dark sol-wrap">
@@ -589,7 +606,7 @@ def solutions(t):
 </section>
 {faq_block(NEWFAQS, 'Frequently asked questions')}
 {cta_band(t)}"""
-    return page_shell(t, '/how-we-can-help/', 'How we can help: BESS Calculator, BESS Backtest and BESS Broker | The ICM',
+    return page_shell(t, '/solutions/', 'Solutions: BESS Configurator, BESS Backtest and BESS Broker | The ICM',
         'How the ICM helps BESS owners: size the right battery system, backtest its performance against its full potential and find a trusted optimizer.', hero, body)
 
 def prop_page(t, k, path, name, title, desc, lead, what, steps, who, extra_top='', faq=None):
@@ -618,11 +635,11 @@ def prop_page(t, k, path, name, title, desc, lead, what, steps, who, extra_top='
 {cta_band(t, topic=k)}"""
     return page_shell(t, path, title, desc, hero, body)
 
-def calculator_page(t):
-    return prop_page(t, 'calculator', '/bess-calculator/', 'BESS Calculator',
-      'BESS Calculator: size a battery and value the business case | The ICM',
+def configurator_page(t):
+    return prop_page(t, 'configurator', '/bess-configurator/', 'BESS Configurator',
+      'BESS Configurator: size a battery and value the business case | The ICM',
       'Find the optimal battery storage system for your site: size power and capacity, simulate revenue streams and degradation, and see payback and return.',
-      ('Find the optimal system for your context', 'A BESS calculator that sizes the battery for your site and shows whether the investment is technically and financially feasible.'),
+      ('Find the optimal system for your context', 'A BESS configurator and calculator that sizes the battery for your site and shows whether the investment is technically and financially feasible.'),
       ['Size: how many MW of power and MWh of storage fit your site, your load and your PV or wind profile.',
        'Business case: payback period, net present value and return on investment of the project.',
        'Revenue streams: energy arbitrage, peak shaving, and the imbalance and ancillary service markets.',
@@ -652,6 +669,16 @@ def backtest_page(t):
   </div>
 </section>
 """
+    example = '''<section class="example-sec">
+  <div class="wrap">
+    <div class="section-head center"><span class="eyebrow">See it for yourself</span><h2>An example BESS Backtest report</h2><p>Open an interactive report with fictional data: the capture rate, what drives it and the downtime, with the method written underneath.</p></div>
+    <a class="example-card" href="/bess-backtest/example/" aria-label="Open the example BESS Backtest report">
+      <img src="/assets/img/backtest-example.jpg" alt="Screenshot of an example BESS Backtest report showing revenue, capture rate and drivers" width="1440" height="900" loading="lazy">
+      <span class="btn btn-lilac">Open the example report</span>
+    </a>
+  </div>
+</section>
+'''
     return prop_page(t, 'backtest', '/bess-backtest/', 'BESS Backtest',
       'BESS Backtest: how much of its full potential does your battery capture? | The ICM',
       'The BESS Backtest compares what a battery earned with the most it could have earned on its site. An independent view on BESS performance, optimizer results and downtime.',
@@ -664,7 +691,7 @@ def backtest_page(t):
        ('We calculate the full potential', 'We model the best result your site could achieve, hour by hour, and compare it with what the battery earned.'),
        ('You see the result and its drivers', 'The capture rate, split into trading, downtime and site limits. If it falls short, you choose what to do next.')],
       'Owners of operating batteries, and installers who deliver a BESS Backtest with each installation to give customers an independent verdict.',
-      extra_top=why, faq=NEWFAQS)
+      extra_top=why + example, faq=NEWFAQS)
 
 def broker_page(t):
     return prop_page(t, 'broker', '/bess-broker/', 'BESS Broker',
@@ -704,10 +731,10 @@ def talk(t):
 </section>
 {faq_block(NEWFAQS, 'Frequently asked questions')}"""
     return page_shell(t, TALK, 'Talk to us: book a 45-minute call about your BESS | The ICM',
-        'Talk to the ICM about the BESS Calculator, BESS Backtest or BESS Broker. Book a 45-minute call to share your context and objectives and receive a full proposal.', hero, body)
+        'Talk to the ICM about the BESS Configurator, BESS Backtest or BESS Broker. Book a 45-minute call to share your context and objectives and receive a full proposal.', hero, body)
 
 
-REDIRECT = '''<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Careers | The ICM</title><meta name="robots" content="noindex"><link rel="canonical" href="https://icm.energy/our-story/#careers"><meta http-equiv="refresh" content="0; url=/our-story/#careers"></head><body><a href="/our-story/#careers">Careers have moved to our company page.</a></body></html>'''
+REDIRECT = '''<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Careers | The ICM</title><meta name="robots" content="noindex"><link rel="canonical" href="https://icm.energy/company/#careers"><meta http-equiv="refresh" content="0; url=/company/#careers"></head><body><a href="/company/#careers">Careers have moved to our company page.</a></body></html>'''
 
 def write(rel, html):
     p = os.path.join(ROOT, rel)
@@ -723,9 +750,9 @@ for lang in LANGS:
     if lang == 'en':
         write('careers/index.html', REDIRECT)
         write('resources/index.html', resources(t))
-        write('our-story/index.html', company(t))
-        write('how-we-can-help/index.html', solutions(t))
-        write('bess-calculator/index.html', calculator_page(t))
+        write('company/index.html', company(t))
+        write('solutions/index.html', solutions(t))
+        write('bess-configurator/index.html', configurator_page(t))
         write('bess-backtest/index.html', backtest_page(t))
         write('bess-broker/index.html', broker_page(t))
         write('talk-to-us/index.html', talk(t))
@@ -808,4 +835,7 @@ demo = demo.replace('<body>', '<body class="light">', 1)
 demo = demo.replace('data-v="dark" aria-pressed="true">Dark</button><button type="button" data-v="light" aria-pressed="false">', 'data-v="dark" aria-pressed="false">Dark</button><button type="button" data-v="light" aria-pressed="true">', 1)
 demo = demo.replace('</body>', "<script>if('scrollRestoration' in history)history.scrollRestoration='manual';window.scrollTo(0,0);addEventListener('load',function(){window.scrollTo(0,0)});</script>\n</body>", 1)
 write('demo/index.html', demo)
+
+# BESS Backtest example report (fictional data), served at /bess-backtest/example/ with a way back to the site.
+write('bess-backtest/example/index.html', open(os.path.join(ROOT, '_build', 'backtest-example.html'), encoding='utf-8').read())
 print('demo built')
