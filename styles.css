@@ -1320,3 +1320,10 @@ a.member:hover b { text-decoration: underline; text-underline-offset: 4px; }
 
 /* v32 sign in */
 .nav-links a.nav-signin{color:var(--white);opacity:.9;padding:8px 2px}
+
+/* v33 nav like Ramp: links next to the logo, actions right */
+.nav{justify-content:flex-start;gap:40px}
+.nav > nav{flex:1;display:flex;align-items:center;justify-content:space-between;gap:24px;min-width:0}
+.nav-main{gap:32px}
+.nav-right{gap:24px;margin-left:auto}
+@media (max-width:900px){.nav{gap:16px}}
