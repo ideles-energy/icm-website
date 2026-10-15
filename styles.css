@@ -1338,3 +1338,14 @@ a.member:hover b { text-decoration: underline; text-underline-offset: 4px; }
 .ps-terms li{font-size:var(--body);line-height:1.5;color:rgba(255,255,255,.85)}
 .ps-terms li b{color:var(--cyan);font-weight:700}
 @media (max-width:860px){.ps-terms ul{grid-template-columns:minmax(0,1fr)}}
+
+/* v35 homepage why: text first, dots with the legend on their right */
+.wy-v13 .wy-dotsrow{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:48px;align-items:center;margin-top:48px}
+.wy-v13 .wy-dotsrow .why-fig{max-width:760px}
+.wy-v13 .wy-legr{flex-direction:column;flex-wrap:nowrap;gap:12px;margin:0;align-items:flex-start}
+.wy-v13 .wy-legr .unit{flex-basis:auto}
+.wy-v13 .hint{margin-top:24px}
+@media (max-width:900px){.wy-v13 .wy-dotsrow{grid-template-columns:minmax(0,1fr);gap:20px;margin-top:36px}}
+.wy-v13 .wy-dotsrow{grid-template-columns:minmax(0,720px) 240px;gap:56px;justify-content:start}
+.wy-v13 .wy-dotsrow svg{width:100%;height:auto}
+@media (max-width:900px){.wy-v13 .wy-dotsrow{grid-template-columns:minmax(0,1fr)}}

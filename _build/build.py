@@ -755,12 +755,15 @@ def why_section(v='1'):
     {w_can()}"""
     elif v == '13':
         bl = ''.join(f'<li>{x}</li>' for x in (BL1, BL2, BL3))
-        inner = f"""<div class="wy-top"><div class="wy-top-l">{w_head()}</div><div class="wy-top-r"><div class="why-legend">{WLEG}</div>{w_hint()}</div></div>
-    <div class="story wy-wide wy-v13">{w_dots(6, legend=False)}
+        inner = f"""<div class="wy-top"><div class="wy-top-l">{w_head()}</div></div>
+    <div class="story wy-wide wy-v13">
       <div class="wy-two wy-plain">
         <div><p class="wy-k">Check your own battery</p><p class="story-p story">{w_sentence()}</p></div>
         <div><p class="wy-k">Where it leaks</p><ul class="wy-bul">{bl}</ul></div>
-      </div></div>"""
+      </div>
+      <div class="wy-dotsrow">{w_dots(6, legend=False)}<div class="why-legend wy-legr">{WLEG}</div></div>
+      {w_hint()}
+    </div>"""
     elif v in ('10', '11', '12'):
         lk = lambda h, n: f'<a class="story-link" href="{h}">{n}</a>'
         leaks = (f'Revenue leaks in three places. <b>The wrong configuration:</b> the battery is not sized or set up for what your site allows ({lk("/solutions/#configurator", "BESS Configurator")}). '
