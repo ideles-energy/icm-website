@@ -1452,3 +1452,13 @@ body.nav-light.nav-fixed header.nav .btn-lilac{color:#040D1F}
 .sol-hero2 .sh-l > p + p{margin-top:-16px}
 .wy-v13 .wy-dotsrow{grid-template-columns:minmax(0,560px) auto;gap:40px}
 .story-src{font-family:inherit}
+
+/* v40 */
+.wy-v13 .wy-dotsrow{grid-template-columns:minmax(0,1fr) 300px;gap:56px}
+.wy-v13 .wy-dotsrow .why-fig{max-width:none}
+.wy-cards .ws1 b{font-size:26px;line-height:1.25;font-weight:700}
+.wy-cards .ws1{display:block}
+.wy-cards .ws1 .story-src{display:inline-block;margin:6px 0 0}
+.prop-demo{margin-top:14px;align-self:flex-start}
+.prop .prop-link{display:inline-block}
+.member .ph,.member .ph-init{max-width:280px}

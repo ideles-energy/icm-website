@@ -55,7 +55,7 @@ T = {
   idx_h='A simulated revenue index', idx=['Models a theoretical battery with fixed assumptions','Assumes a full grid connection and no downtime','Cannot show how an optimizer performs comparatively'],
   ours_h='The BESS Benchmark', ours=['Is based on realised revenues, as members received them from their optimizers','Anticipates restrictions such as CSC terms, TDTR limits and downtime','Compares a battery with batteries set up alike'],
   about_eyebrow='About the ICM', about_h='Why an Independent Capacity Market matters',
-  about_p='We are not owners. We are not optimizers. Nor will we ever be.<br><br>We are an energy tech company. We compare BESS-to-BESS, introduce owners to optimizers and oversee the switch, so batteries keep earning.',
+  about_p='We are not owners. We are not optimizers. Nor will we ever be.<br><br>We are an energy tech company.<br><br>We compare BESS-to-BESS, introduce owners to optimizers and oversee the switch, so batteries keep earning.',
   roles='Open roles', careers='Careers',
   open_now='Open now', waitlist='Join the waitlist',
   p1=('BESS Benchmark',"Real, anonymised revenues, compared BESS-to-BESS. Become a member to see how an asset is doing."),
@@ -372,12 +372,12 @@ def resources(t):
 ROLES = [
   ('Commercial Lead', 'Amsterdam',
    'Sell our solutions to BESS owners and the installers who work with them. You own the pipeline, from first call to signed contract and beyond.',
-   ['Build relationships with installers and developers who bring us BESS owners (3-30 MW)',
+   ['Connect the ICM with owners, optimizers and the wider BESS ecosystem, and optimizers with owners',
+    'Build relationships with installers and developers who bring us BESS owners (3-30 MW)',
     'Run discovery calls and present Configurator, Backtest and Broker results',
     'Guide clients from first call through onboarding, and keep them with us',
     'Turn successfully served clients into case examples'],
    ['3-6 years in B2B consultative sales (SaaS, energy or finance)',
-    'Connects people: builds trust with asset owners, installers and partners',
     'Explains technical topics clearly',
     'Fluent in Dutch and English',
     'Knows BRP and aFRR, or learns fast']),
@@ -454,7 +454,7 @@ PROPS = [
   ('broker', 'BESS Broker', '/solutions/#broker', 'Outsource the search for a trusted optimizer.',
    'We run a standardised process to source, compare and contract optimizers, and manage the switch so your battery keeps earning without interruption.'),
   ('backtest', 'BESS Backtest', '/solutions/#backtest', 'Monitor your performance proactively.',
-   'We compare your realised revenues with what is reasonably achievable on your site, and alert you when performance consistently falls short.'),
+   'We compare your realised revenues with what can be reasonably achieved within your restrictions, and alert you when performance consistently falls short.'),
 ]
 
 NEWFAQS = [
@@ -520,7 +520,7 @@ def home(t):
         <h3>{n}</h3>
         <p class="prop-lead">{lead}</p>
         <p>{body}</p>
-        <a class="prop-link" href="{h}">Learn more →</a>
+        <a class="prop-link" href="{h}">Learn more →</a>{'<button type="button" class="btn btn-lilac js-gate-open prop-demo">See a demo</button>' if k == 'backtest' else ''}
       </article>
 """ for k, n, h, lead, body in PROPS)
     title = 'BESS performance and optimizer insight: secure the true value of a BESS asset | The ICM'
@@ -565,7 +565,8 @@ def home(t):
       <span class="eyebrow why-eyebrow">About us</span>
       <h2>Why an Independent Capacity Market matters</h2>
       <p>We are not owners. We are not optimizers. Nor will we ever be.</p>
-      <p>We are an energy tech company. We serve those who add capacity to the grid, but are in the dark on the potential of their assets. We compare BESS-to-BESS, introduce owners to optimizers and oversee the switch, so your battery keeps earning.</p>
+      <p>We are an energy tech company.</p>
+      <p>We serve those who add capacity to the grid, but are in the dark on the potential of their assets. We compare BESS-to-BESS, introduce owners to optimizers and oversee the switch, so your battery keeps earning.</p>
       <div class="cta-row" style="justify-content:flex-start"><a class="btn btn-lilac" href="{TALK}">{t['talk']}</a><a class="btn btn-outline" href="/company/">Our story</a></div>
     </div>
     <div class="about-visual"><img class="about-img" src="/assets/img/about-pylon.jpg" alt="High-voltage pylon against the evening sky" width="960" height="1080" loading="lazy"></div>
@@ -575,6 +576,7 @@ def home(t):
 
 {cta_band(t)}
 
+{GATE}
 {footer(t, other)}
 <script src="/main.js?v={V_JS}" defer></script>
 </body>
@@ -690,14 +692,13 @@ def solutions(t):
     extras = {
       'configurator': 'For owners and developers who plan a battery on a site with solar, wind or a large energy use, and for installers who size systems for customers.',
       'backtest': 'For owners of operating batteries, and for installers who want to give every customer an independent view on what the battery earns.',
-      'broker': 'For owners whose battery objectively earns less than it could and who want to compare optimizers without doing the research themselves.',
+      'broker': 'For owners whose battery objectively earns less than it could. We know the optimizers and keep a finger on the pulse, so you get a better deal in less time.',
     }
     blocks = ''.join(sol_block(i, k, n, h, lead, body, extras[k]) for i, (k, n, h, lead, body) in enumerate(PROPS))
     hero = f"""    <div class="page-hero sol-hero2" id="main">
       <div class="sh-l">
         <h1>Stop leaving money<br>on the table</h1>
-        <p>The ICM serves those who add capacity to the grid, but are in the dark on their potential.</p>
-        <p>Our clients access the intel they need to secure the true value of their BESS asset, backed by reliable numbers that can be shared with their bank, installer and insurer. No manual entry. No wasted hours.</p>
+        <p>Know what your battery could earn, switch to a better optimizer when there is more to earn, and share numbers your bank, installer and insurer trust. No manual entry. No wasted hours.</p>
         {gs_form('a')}
       </div>
       <div class="sh-r"><img src="/assets/img/solutions-veins-bright.jpg" alt="" width="1600" height="900"></div>
@@ -762,7 +763,7 @@ def w_pill(cls, label, val, mx=''):
     return f'<label class="pill"><input class="in fit {cls}" type="number" min="1" {mx} step="1" value="{val}" aria-label="{label}">{PEN}</label>'
 
 def w_sentence():
-    return f"""<span class="ws1"><b>Same battery, same site, 30% more revenue.</b> <a class="story-src" href="{FLOWER}" target="_blank" rel="noopener">Source: Flower case</a></span>Missed revenue can add up to <b class="out js-missedk">EUR 555k</b> per year. That's for a {w_pill('js-mw','Battery size in MW',10,'max="500"')} MW battery that delivered EUR {w_pill('js-rev','Revenue in thousand EUR per MW per year',185)}k per MW per year. <span class="ws3">Choose to know what you are leaving on the table. We'll get to work.</span>"""
+    return f"""<span class="ws1"><b>Same battery, same site, 30% more revenue.</b> <a class="story-src" href="{FLOWER}" target="_blank" rel="noopener">Source: Flower case</a></span>Missed revenue can add up to <b class="out js-missedk">EUR 555k</b> per year. That's for a {w_pill('js-mw','Battery size in MW',10,'max="500"')} MW battery that delivered EUR {w_pill('js-rev','Revenue in thousand EUR per MW per year',185)}k per MW per year. <span class="ws3">Choose to know what you are leaving on the table.</span>"""
 
 def w_hint():
     return f'<p class="hint">{PEN}Enter figures to adjust. Illustrative example.</p>'
@@ -824,7 +825,7 @@ def why_section(v='1'):
         bl = ''.join(f'<li>{x}</li>' for x in (BL1, BL2, BL3))
         inner = f"""<div class="wy-top"><div class="wy-top-l">{w_head()}</div></div>
     <div class="story wy-wide wy-v13">
-      <div class="wy-dotsrow">{w_dots(10, legend=False)}<div class="wy-side"><div class="why-legend wy-legr">{WLEG}</div>{w_hint()}</div></div>
+      <div class="wy-dotsrow">{w_dots(9, legend=False)}<div class="wy-side"><div class="why-legend wy-legr">{WLEG}</div>{w_hint()}</div></div>
       <div class="wy-two wy-plain wy-cards">
         <div><p class="wy-k">What your battery is missing</p><p class="story-p story">{w_sentence()}</p></div>
         <div><p class="wy-k">Where it leaks</p><ul class="wy-bul">{bl}</ul></div>
@@ -937,7 +938,7 @@ def talk_proof(v):
         inner = '''<div class="tp-stat"><b>30%</b><span>more revenue</span></div>
       <div><h2>Comparable batteries can earn very different amounts</h2><p>A similar BESS asset, same size and setup, delivered 30% more revenue after switching optimizer. We help you find out where your battery stands.</p><p class="tp-src"><a href="https://www.flower.se/insights/case/ra-energy-switch-optimizer/" target="_blank" rel="noopener">Source: Flower and RA Energy case →</a></p></div>'''
     elif v == 'D':
-        inner = '''<div><h2>What you can expect from us</h2><ul class="tp-list"><li><b>Independent.</b> We own no batteries and are not an optimizer.</li><li><b>No obligation.</b> A 45-minute call about your context and objectives.</li><li><b>Then a full proposal.</b> You decide what to do next.</li></ul></div>'''
+        inner = '''<div><h2>What you can expect from us</h2><ul class="tp-list"><li><b>Independent.</b> We don't own batteries and we're not an optimizer.</li><li><b>No obligation.</b> A 45-minute call about your context and objectives.</li><li><b>Then a full proposal.</b> You decide what to do next.</li></ul></div>'''
     else:
         inner = '''<img class="tp-face" src="/assets/team-ideles.jpg" alt="Idelès Kaandorp" width="600" height="600" loading="lazy">
       <div><h2>You talk to the founder</h2><p>Idelès Kaandorp, founder of the ICM, walks through your context and objectives with you. Afterwards you receive a full proposal.</p></div>'''
@@ -950,7 +951,7 @@ def talk(t, variant=None):
     hero = """    <div class="talk-hero" id="main">
       <div class="talk-copy">
         <span class="eyebrow">Talk to us</span>
-        <h1>Find the right fit as an owner, optimizer or partner</h1>
+        <h1>Secure the true value of your BESS asset</h1>
         <p>You are ready to learn more. Use the form to give us a bit more information about your context and objectives.</p>
         <p>Alternatively, you can email us directly at <a href="mailto:ideles@icm.energy">ideles@icm.energy</a>.</p>
       </div>
@@ -965,8 +966,8 @@ def talk(t, variant=None):
     <div class="section-head center"><h2>What to expect</h2></div>
     <div class="expect">
       <div><b>1</b><h3>An open 45-minute conversation</h3><p>An expert from the team talks you through the options for your context and objectives.</p></div>
-      <div><b>2</b><h3>An independent perspective</h3><p>We own no batteries and are not an optimizer. That matters: our advice is about your return, not about selling a product.</p></div>
-      <div><b>3</b><h3>A clearly scoped proposal</h3><p>We work towards a proposal with clear next steps and deliverables, so nothing comes as a surprise.</p></div>
+      <div><b>2</b><h3>An independent perspective</h3><p>We don't own batteries and we're not an optimizer. Our advice is about your return, not about selling a product.</p></div>
+      <div><b>3</b><h3>A clear plan for your battery</h3><p>You leave knowing what we would do, what it delivers and what it takes from you.</p></div>
     </div>
   </div>
 </section>
