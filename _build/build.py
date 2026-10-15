@@ -584,7 +584,7 @@ def sol_card(k, n, href, lead, body, extra):
           <p class="sol-lead">{lead}</p>
           <p>{body}</p>
           <p>{extra}</p>
-          <div class="cta-row" style="justify-content:flex-start;margin-top:22px"><a class="btn btn-lilac" href="{TALK}?topic={k}">Talk to us</a>{'<a class="btn btn-outline" href="/bess-backtest/example/">See an example report</a>' if k == 'backtest' else ''}</div>
+          <div class="cta-row" style="justify-content:flex-start;margin-top:22px"><a class="btn btn-lilac" href="{TALK}?topic={k}">Talk to us</a>{'<button type="button" class="btn btn-outline js-gate-open">Explore the prototype</button>' if k == 'backtest' else ''}</div>
         </div>
       </article>"""
 
@@ -626,6 +626,22 @@ PARTNER_STRIP = '''<section class="dark partner-wrap" id="partners">
   </div>
 </section>'''
 
+PROTO_URL = 'https://claude.ai/artifact/4JJ9cpLm8pJMx9ZwknDKti'
+GATE = f'''<div class="gate" id="gate" hidden data-target="{PROTO_URL}">
+  <div class="gate-card" role="dialog" aria-modal="true" aria-labelledby="gate-h">
+    <button type="button" class="gate-x js-gate-close" aria-label="Close">&times;</button>
+    <h2 id="gate-h">Welcome to the ICM</h2>
+    <p>Explore our prototype to see how the ICM helps you monitor your BESS performance proactively.</p>
+    <form class="gate-form" novalidate>
+      <label for="gate-email" class="sr-only">Work email address</label>
+      <input id="gate-email" type="email" name="email" placeholder="Work email address*" autocomplete="email" required>
+      <p class="gate-err" role="alert" hidden>Please use your work email address.</p>
+      <button type="submit" class="btn btn-lilac">Explore prototype</button>
+      <p class="gate-fine">We use your email to follow up on the prototype, nothing else. See our <a href="/privacy/">privacy statement</a>.</p>
+    </form>
+  </div>
+</div>'''
+
 def solutions(t):
     extras = {
       'configurator': 'For owners and developers who plan a battery on a site with solar, wind or a large energy use, and for installers who size systems for customers.',
@@ -644,7 +660,8 @@ def solutions(t):
 </section>
 {PARTNER_STRIP}
 {faq_block(NEWFAQS, 'Frequently asked questions')}
-{cta_band(t)}"""
+{cta_band(t)}
+{GATE}"""
     return page_shell(t, '/solutions/', 'Solutions: BESS Configurator, BESS Backtest and BESS Broker | The ICM',
         'How the ICM helps BESS owners: size the right battery system, backtest its performance against its full potential and find a trusted optimizer.', hero, body)
 
@@ -695,7 +712,7 @@ def w_pill(cls, label, val, mx=''):
     return f'<label class="pill"><input class="in fit {cls}" type="number" min="1" {mx} step="1" value="{val}" aria-label="{label}">{PEN}</label>'
 
 def w_sentence():
-    return f"""<span class="ws1">Same battery, same site, 30% more revenue. <a class="story-src" href="{FLOWER}" target="_blank" rel="noopener">Source: Flower and RA Energy case</a></span>Missed revenue can add up to <b class="out js-missedk">EUR 555k</b> per year. That's for a {w_pill('js-mw','Battery size in MW',10,'max="500"')} MW battery that delivered EUR {w_pill('js-rev','Revenue in thousand EUR per MW per year',185)}k per MW per year. Choose to know what you are leaving on the table. We'll get to work."""
+    return f"""<span class="ws1">Same battery, same site, 30% more revenue. <a class="story-src" href="{FLOWER}" target="_blank" rel="noopener">Source: Flower and RA Energy case</a></span>Missed revenue can add up to <b class="out js-missedk">EUR 555k</b> per year. That's for a {w_pill('js-mw','Battery size in MW',10,'max="500"')} MW battery that delivered EUR {w_pill('js-rev','Revenue in thousand EUR per MW per year',185)}k per MW per year. <span class="ws3">Choose to know what you are leaving on the table. We'll get to work.</span>"""
 
 def w_hint():
     return f'<p class="hint">{PEN}Enter figures to adjust. Illustrative example.</p>'
@@ -755,16 +772,12 @@ def why_section(v='1'):
     {w_can()}"""
     elif v == '13':
         bl = ''.join(f'<li>{x}</li>' for x in (BL1, BL2, BL3))
-        inner = f"""<div class="wy-top"><div class="wy-top-l">{w_head()}</div></div>
-    <div class="story wy-wide wy-v13">
-      <div class="wy-splitR">
-        <div class="wy-colL wy-two wy-plain">
-          <div><p class="wy-k">Check your own battery</p><p class="story-p story">{w_sentence()}</p></div>
-          <div><p class="wy-k">Where it leaks</p><ul class="wy-bul">{bl}</ul></div>
-        </div>
-        <div class="wy-vizR">{w_dots(6, legend=False)}<div class="why-legend wy-legr">{WLEG}</div>{w_hint()}</div>
-      </div>
-    </div>"""
+        inner = f"""<div class="wy-top"><div class="wy-top-l">{w_head()}</div><div class="wy-top-r"><div class="why-legend">{WLEG}</div>{w_hint()}</div></div>
+    <div class="story wy-wide wy-v13">{w_dots(6, legend=False)}
+      <div class="wy-two wy-plain">
+        <div><p class="wy-k">Check your own battery</p><p class="story-p story">{w_sentence()}</p></div>
+        <div><p class="wy-k">Where it leaks</p><ul class="wy-bul">{bl}</ul></div>
+      </div></div>"""
     elif v in ('10', '11', '12'):
         lk = lambda h, n: f'<a class="story-link" href="{h}">{n}</a>'
         leaks = (f'Revenue leaks in three places. <b>The wrong configuration:</b> the battery is not sized or set up for what your site allows ({lk("/solutions/#configurator", "BESS Configurator")}). '
