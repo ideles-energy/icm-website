@@ -1125,3 +1125,6 @@ footer { padding: 48px 0 32px; }
 .prop .prop-lead { color: var(--white); font-weight: 700; font-size: 16px; }
 .prop p { font-weight: 400; }
 .prop .prop-lead { font-weight: 700; }
+/* v18: bullets same type as the left text */
+.wy-v13 .wy-bul { font-size: 20px; line-height: 1.75; font-weight: 400; color: rgba(255,255,255,.92); }
+.wy-v13 .wy-bul li { margin-bottom: 10px; }
