@@ -1128,3 +1128,16 @@ footer { padding: 48px 0 32px; }
 /* v18: bullets same type as the left text */
 .wy-v13 .wy-bul { font-size: 20px; line-height: 1.75; font-weight: 400; color: rgba(255,255,255,.92); }
 .wy-v13 .wy-bul li { margin-bottom: 10px; }
+
+/* v19: one body size on the home page, set by the hero lead */
+:root { --body: 17px; }
+.hero .lead, .wy-v13 .story-p, .wy-v13 .wy-bul, .prop .prop-lead, .prop p, .about-card p, .cta-band p, .section-head p, .props-sec .section-head p { font-size: var(--body) !important; line-height: 1.6; }
+.wy-v13 .wy-bul, .wy-v13 .story-p { line-height: 1.65; }
+.prop .prop-lead { font-weight: 700; }
+/* v19b: type scale 13 / 14 / 17 / 26 / 35 / 47 */
+.eyebrow, .wy-k, .why-legend, .why-legend *, .unit, .hint, .story .hint, .foot2, .f-name, .f-tag, .f-links a, .f-legal, .f-legal p, .f-mail, .f-mail a, .f-mail p, .f-mail .f-copy, .m-h { font-size: 13px !important; }
+.btn, .sub-btn, .nav-links a, .cta-band .btn, .about-card .btn, .hero-ctas .btn { font-size: 14px !important; }
+h2, .cta-band h2, .section-head h2, .props-sec .section-head h2, .wy-head h2, .story-h, .about-card h2 { font-size: clamp(28px, 3vw, 35px) !important; }
+b.out, .out { font-size: inherit !important; }
+.story .story-p b.js-del, .story .story-p b.js-mis, .story-p b { font-size: inherit; }
+header.nav a b { font-size: 14px !important; } header.nav a span:not(.nw) { font-size: 13px !important; }
