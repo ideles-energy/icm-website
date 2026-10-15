@@ -393,8 +393,7 @@ ROLES = [
 def company(t):
     def li(items): return ''.join(f'<li>{i}</li>' for i in items)
     rows = '\n'.join(f'''      <details class="co-role" name="roles"><summary><b>{r}</b><em>{c}</em><i class="co-pm" aria-hidden="true"></i></summary><div class="co-body"><div><p>{m}</p><a class="btn btn-lilac" href="/talk-to-us/?role={r.replace(" ", "%20")}">Apply →</a></div><div><h4>What you will do</h4><ul>{li(do)}</ul></div><div><h4>Who you are</h4><ul>{li(you)}</ul></div></div></details>''' for r, c, m, do, you in ROLES)
-    rows += f'''
-      <details class="co-role co-open-app" name="roles"><summary><b>Open application</b><em>Amsterdam</em><i class="co-pm" aria-hidden="true"></i></summary><div class="co-body"><div><p>Don't see your role? Open applications are welcome. Tell us what you want to achieve at the ICM.</p><a class="btn btn-lilac" href="mailto:{EMAIL}">Email us →</a></div></div></details>'''
+
     hero = '''    <div class="page-hero" id="main">
       <h1>Our story</h1>
       <img class="co-img" src="/assets/img/company-grid.jpg" alt="High-voltage substation against the evening sky" width="1920" height="1080">
@@ -403,7 +402,8 @@ def company(t):
   <div class="wrap co-grid">
     <p class="co-label">Who we are</p>
     <div>
-      <p>The ICM serves those who add capacity to the grid, but are in the dark on their potential. By bringing transparency, we contribute to a stronger grid: one that rewards optimizers that perform, makes batteries easier to finance and gives system operators access to more flexibility.</p>
+      <p>The ICM serves those who add capacity to the grid, but are in the dark on their potential.</p>
+      <p>By bringing transparency, we contribute to a stronger grid: one that rewards optimizers that perform, makes batteries easier to finance and gives system operators access to more flexibility.</p>
       <p>We value our independence. We don't own, install or optimize to keep our intentions pure and our heads clear. For our clients, that means securing the true value of their battery, backed by reliable numbers that can be shared with your bank, installer and insurer.</p>
       <a class="btn btn-lilac" href="/talk-to-us/">Talk to us</a>
     </div>
@@ -413,9 +413,11 @@ def company(t):
   <div class="wrap">
     <p class="co-label">The team</p>
     <div class="team">
-      <a class="member" href="https://www.linkedin.com/in/idel%C3%A8s-kaandorp/" target="_blank" rel="noopener"><img class="ph" src="/assets/team-ideles.jpg" alt="Idelès Kaandorp" width="600" height="600" loading="lazy"><b>Idelès Kaandorp</b><span class="m-bio">MSc in Pure Mathematics from King's College London and MBA from Harvard Business School. Worked at McKinsey &amp; Company from 2017 to 2019 and from 2022 to 2025, on energy projects. Owns overall strategy, culture, team and commercial development, builds participant relationships and leads fundraising.</span></a>
-      <a class="member" href="https://www.linkedin.com/in/edo-rivai-78b66a17/" target="_blank" rel="noopener"><img class="ph" src="/assets/team-edo.jpg" alt="Edo Rivai" width="512" height="512" loading="lazy"><b>Edo Rivai</b><span class="m-bio">Senior software developer at Spot AI. Responsible for platform design, partner integrations, infrastructure and DevOps, and API delivery: ensures API integration with selected EMS and metering service providers (MSPs), develops the API sandbox and owns technical onboarding.</span></a>
-      <div class="member"><span class="ph ph-empty ph-init" aria-hidden="true"><i>JW</i></span><b>Jesse Willis</b><span class="m-bio">Project manager and industrial design engineer with a background in Delft. Founded and runs an industrial design consultancy. Builds complex physical and IT products and plans deliverables, scope, budget and time across the ICM's work.</span></div>
+      <a class="member" href="https://www.linkedin.com/in/idel%C3%A8s-kaandorp/" target="_blank" rel="noopener"><img class="ph" src="/assets/team-ideles.jpg" alt="Idelès Kaandorp" width="600" height="600" loading="lazy"><b>Idelès Kaandorp</b><span class="m-bio">Founder. Owns overall strategy, culture, team and commercial development, builds participant relationships and leads fundraising. MSc in Pure Mathematics from King's College London and MBA from Harvard Business School. Worked at McKinsey &amp; Company from 2017 to 2019 and from 2022 to 2025, on energy projects.</span></a>
+      <a class="member" href="https://www.linkedin.com/in/edo-rivai-78b66a17/" target="_blank" rel="noopener"><img class="ph" src="/assets/team-edo.jpg" alt="Edo Rivai" width="512" height="512" loading="lazy"><b>Edo Rivai</b><span class="m-bio">Senior software developer with a track record building scalable software. Responsible for platform design, partner integrations, infrastructure and DevOps, and API delivery: ensures API integration with selected EMS and metering service providers (MSPs), develops the API sandbox and owns technical onboarding.</span></a>
+      <div class="member"><span class="ph ph-empty ph-init" aria-hidden="true"><i>JW</i></span><b>Jesse Willis</b><span class="m-bio">Project manager with a background as industrial design engineer. Plans deliverables, scope, budget and time across the ICM's work, and supports commercial development: discovery calls with BESS owners and installers, presenting results and closing the first clients.</span></div>
+      <div class="member tbc"><span class="ph ph-empty ph-init" aria-hidden="true"><i>+</i></span><b>Coming soon</b><span class="m-bio">A new teammate joins us.</span></div>
+      <div class="member tbc"><span class="ph ph-empty ph-init" aria-hidden="true"><i>+</i></span><b>Coming soon</b><span class="m-bio">A new teammate joins us.</span></div>
     </div>
     <div class="team-cta"><a class="btn btn-lilac" href="/talk-to-us/">Get in touch →</a></div>
   </div>
@@ -428,6 +430,7 @@ def company(t):
     <div class="co-acc">
 {rows}
     </div>
+    <p class="co-note">If no position suits you, you're welcome to submit an open application with your CV and what you'd want to achieve at the ICM to <a href="mailto:ideles@icm.energy">ideles@icm.energy</a>.</p>
   </div>
 </section>'''
     ld = {"@context": "https://schema.org", "@type": "AboutPage", "url": "https://icm.energy/company/", "mainEntity": {"@type": "Organization", "@id": "https://icm.energy/#org", "name": "Independent Capacity Market B.V.", "alternateName": "The ICM", "logo": "https://icm.energy/assets/logo-header.png", "url": "https://icm.energy/",

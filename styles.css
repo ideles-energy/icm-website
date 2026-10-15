@@ -1260,3 +1260,8 @@ header.nav a b { font-size: 14px !important; } header.nav a span:not(.nw) { font
 .member .m-bio { color: rgba(255,255,255,.9); font-size: var(--body); line-height: 1.5; margin-top: 10px; }
 .member b { display: block; margin-top: 18px; }
 a.member:hover b { text-decoration: underline; text-underline-offset: 4px; }
+
+/* v28 */
+.co-note{margin-top:28px;font-size:var(--body);line-height:1.5}.co-note a{text-decoration:underline}
+.member.tbc{opacity:.6}
+.member.tbc .ph{display:none}.member.tbc{border:1px dashed rgba(255,255,255,.25);border-radius:12px;padding:22px;align-self:start}.member.tbc b{margin-top:0}
