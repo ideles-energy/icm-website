@@ -403,9 +403,8 @@ def company(t):
   <div class="wrap co-grid">
     <p class="co-label">Who we are</p>
     <div>
-      <p class="co-lead"><b>We are an independent energy tech company for BESS owners, installers and developers in the Netherlands.</b> We own no batteries and we are not an optimizer.</p>
-      <ul class="co-do"><li><b>Size.</b> Our configurator finds the set-up that could earn the most on your site.</li><li><b>Monitor.</b> Our backtest shows what your battery should earn, and alerts you when it falls short.</li><li><b>Switch.</b> We help you find a trusted optimizer and oversee the switch.</li></ul>
-      <p>A more transparent flex market rewards optimizers that perform, builds a stronger grid and makes power more affordable. For you, it means a battery that keeps earning, with an independent view to share with your bank, installer or insurer.</p>
+      <p>The ICM serves those who add capacity to the grid, but are in the dark on their potential. By bringing transparency, we contribute to a stronger grid: one that rewards optimizers that perform, makes batteries easier to finance and gives system operators access to more flexibility.</p>
+      <p>We value our independence. We don't own, install or optimize to keep our intentions pure and our heads clear. For our clients, that means securing the true value of their battery, backed by reliable numbers that can be shared with your bank, installer and insurer.</p>
       <a class="btn btn-lilac" href="/talk-to-us/">Talk to us</a>
     </div>
   </div>
@@ -414,9 +413,9 @@ def company(t):
   <div class="wrap">
     <p class="co-label">The team</p>
     <div class="team">
-      <a class="member" href="https://www.linkedin.com/in/idel%C3%A8s-kaandorp/" target="_blank" rel="noopener"><img class="ph" src="/assets/team-ideles.jpg" alt="Idelès Kaandorp" width="600" height="600" loading="lazy"><b>Idelès Kaandorp</b><em>LinkedIn →</em></a>
-      <a class="member" href="https://www.linkedin.com/in/edo-rivai-78b66a17/" target="_blank" rel="noopener"><img class="ph" src="/assets/team-edo.jpg" alt="Edo Rivai" width="512" height="512" loading="lazy"><b>Edo Rivai</b><em>LinkedIn →</em></a>
-      <div class="member tbc"><span class="ph ph-empty"></span><b>Coming soon</b><em>&nbsp;</em></div>
+      <a class="member" href="https://www.linkedin.com/in/idel%C3%A8s-kaandorp/" target="_blank" rel="noopener"><img class="ph" src="/assets/team-ideles.jpg" alt="Idelès Kaandorp" width="600" height="600" loading="lazy"><b>Idelès Kaandorp</b><span class="m-role">Founder and CEO</span><span class="m-bio">Studied mathematics at the UvA, at King's College London and at Harvard Business School. Previously at McKinsey and InvestNL.</span><em>LinkedIn →</em></a>
+      <a class="member" href="https://www.linkedin.com/in/edo-rivai-78b66a17/" target="_blank" rel="noopener"><img class="ph" src="/assets/team-edo.jpg" alt="Edo Rivai" width="512" height="512" loading="lazy"><b>Edo Rivai</b><span class="m-role">Senior software developer</span><span class="m-bio">Works at Spot AI and builds the ICM platform.</span><em>LinkedIn →</em></a>
+      <div class="member"><span class="ph ph-empty ph-init" aria-hidden="true"><i>JW</i></span><b>Jesse Willis</b><span class="m-role">Project manager</span><span class="m-bio">Background in Delft.</span><em>&nbsp;</em></div>
     </div>
     <div class="team-cta"><a class="btn btn-lilac" href="/talk-to-us/">Get in touch →</a></div>
   </div>

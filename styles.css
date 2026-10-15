@@ -1219,3 +1219,11 @@ header.nav a b { font-size: 14px !important; } header.nav a span:not(.nw) { font
 .co-do li { margin: 0 0 10px; padding-left: 4px; }
 .co-do li::marker { color: var(--cyan); }
 .co-do b { color: var(--white); font-weight: 700; }
+
+/* v25: team bios */
+.member .m-role { display: block; color: var(--cyan); font-size: 13px; margin-top: 4px; letter-spacing: .02em; }
+.member .m-bio { display: block; color: rgba(255,255,255,.85); font-size: var(--body); line-height: 1.5; margin-top: 8px; }
+.member .ph-init { display: grid; place-items: center; }
+.member .ph-init i { font-style: normal; font-size: 56px; font-weight: 700; color: var(--cyan); opacity: .6; letter-spacing: -.02em; }
+.member.tbc { display: block; }
+@media (max-width: 760px) { .team { grid-template-columns: minmax(0, 1fr); } }
