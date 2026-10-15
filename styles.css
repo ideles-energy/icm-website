@@ -450,7 +450,7 @@ footer { background: var(--ink); color: rgba(255,255,255,.75); padding: 56px 0 4
 .story .hint { display: flex; align-items: center; gap: 8px; font-size: 15px; color: rgba(255,255,255,.65); margin-top: 14px; }
 /* v9: footer following the Canva design */
 footer { background: #020B1C; padding: 64px 0 40px; border-top: 1px solid rgba(255,255,255,.08); }
-.foot2 { display: grid; grid-template-columns: 1fr auto 1fr; grid-template-areas: "about logo links" "mail . legal"; column-gap: 48px; row-gap: 40px; align-items: start; font-size: 14px; color: rgba(255,255,255,.85); }
+.foot2 { display: grid; grid-template-columns: minmax(0,1fr) auto minmax(0,1fr); grid-template-areas: "about logo links" "mail . legal"; column-gap: 48px; row-gap: 40px; align-items: start; font-size: 14px; color: rgba(255,255,255,.85); }
 .f-about { grid-area: about; max-width: 360px; }
 .f-name { color: var(--cyan); font-weight: 600; margin: 0 0 10px; }
 .f-tag { margin: 0; line-height: 1.5; }
