@@ -350,7 +350,7 @@ def resources(t):
       <h1>Resources</h1>
       <p>API documents and brand assets of the Independent Capacity Market.</p>
     </div>'''
-    body = f'''<main class="res dark">
+    body = f'''<main class="res">
   <div class="wrap res-cols">
     <section class="res-sec">
       <h2>Documents</h2>
