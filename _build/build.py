@@ -212,8 +212,8 @@ def _v(f):
 V_CSS, V_JS = _v('styles.css'), _v('main.js')
 
 SOLUTIONS = [('BESS Configurator', 'Size and value the right system', '/bess-configurator/'),
-             ('BESS Backtest', 'Measure what a battery captures', '/bess-backtest/'),
-             ('BESS Broker', 'Find a trusted optimizer', '/bess-broker/')]
+             ('BESS Broker', 'Find a trusted optimizer', '/bess-broker/'),
+             ('BESS Backtest', 'Measure what a battery captures', '/bess-backtest/')]
 TALK = '/talk-to-us/'
 
 def nav(t, other_href):
@@ -441,12 +441,12 @@ def icon_svg(k):
     return f'<svg viewBox="0 0 24 24" fill="none" stroke="#97F2F5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">{ICONS[k]}</svg>'
 
 PROPS = [
-  ('configurator', 'BESS Configurator', '/bess-configurator/', 'Design a battery that fits your site.',
-   'We translate your site and objectives into BESS configurations, simulate the revenues and show which MW/MWh gives the highest return.'),
-  ('backtest', 'BESS Backtest', '/bess-backtest/', 'Understand how well your battery is earning.',
-   'We compare your realised revenues with those of a trader with perfect foresight on your site, and alert you when performance persistently falls short.'),
-  ('broker', 'BESS Broker', '/bess-broker/', 'Switch to the optimizer that fits your battery.',
-   'We run a standardised process to source and compare quotes, and manage the switch so your battery keeps trading without interruption.'),
+  ('configurator', 'BESS Configurator', '/bess-configurator/', 'Find the optimal system for your context.',
+   'We select the configuration (number of batteries, MW/MWh, C-rate) that earns the most within the restrictions on your site, and simulate the revenues.'),
+  ('broker', 'BESS Broker', '/bess-broker/', 'Outsource the search for a trusted optimizer.',
+   'We run a standardised process to source, compare and contract optimizers, and manage the switch so your battery keeps earning without interruption.'),
+  ('backtest', 'BESS Backtest', '/bess-backtest/', 'Monitor your performance proactively.',
+   'We compare your realised revenues with what is reasonably achievable on your site, and alert you when performance consistently falls short.'),
 ]
 
 NEWFAQS = [
@@ -473,7 +473,7 @@ def faq_block(items, title=None):
   </div>
 </section>"""
 
-def cta_band(t, h="Let's talk about your project", p='Start with a 45-minute call about your context and objectives (for example a portfolio of 3-30 MW BESS assets, or trading revenues below expectations). Afterwards you receive a full proposal.', topic=None):
+def cta_band(t, h="Let's talk about your project", p='Start with a 45-minute call about your context and objectives (for example a portfolio of 3-30 MW BESS assets, or trading revenues below expectations).', topic=None):
     q = f'?topic={topic}' if topic else ''
     return f"""<section class="cta-band">
   <div class="wrap">
@@ -515,7 +515,7 @@ def home(t):
     <div class="hero" id="main">
       <div>
         <h1>Secure the true value<br>of a BESS asset</h1>
-        <p class="lead">For owners with a nagging sense their BESS asset could earn more. Find the optimal system for your context, monitor the performance and outsource the research for a trusted optimizer.</p>
+        <p class="lead">For those with a nagging sense they could earn more with their battery. Find the optimal system for your context, outsource the search for a trusted optimizer and monitor your performance proactively.</p>
         <div class="hero-ctas">
           <a class="btn btn-lilac" href="{TALK}">{t['talk']}</a>
           <a class="btn btn-outline" href="#how">How it works</a>
@@ -529,8 +529,8 @@ def home(t):
   <div class="wrap">
     <div class="section-head center">
       <span class="eyebrow why-eyebrow">How it works</span>
-      <h2>Our propositions</h2>
-      <p>An independent view at every stage of a battery's life: size the right system before you build, monitor its performance while it operates and find a trusted optimizer when there is more to earn.</p>
+      <h2>An independent perspective</h2>
+      <p>At every stage of a battery's life: size the right system before you build, find a trusted optimizer to run it and monitor its performance while it operates.</p>
     </div>
     <div class="props">
 {cards}    </div>
@@ -538,19 +538,20 @@ def home(t):
 </section>
 
 
-<section class="dark proof-sec">
-  <div class="wrap about-grid2 proof-grid">
-    {why_left(t)}
-    <div class="about-card">
+{why_section(os.environ.get('WHY_VARIANT', '1'))}
+
+<section class="dark trust-sec">
+  <div class="wrap trust-grid">
+    <div>
       <span class="eyebrow why-eyebrow">Why trust the ICM</span>
       <h2>Independent, and connected to your battery</h2>
-      <ul class="proof-list">
-        <li><b>Independent.</b> We are not owners and not optimizers. We own no batteries and never will.</li>
-        <li><b>Based on your own data.</b> Results come from your optimizer report and meter data, not from a theoretical battery.</li>
-        <li><b>Connected live.</b> We link directly to your energy management system and meters, so we can follow what your battery does as it happens.</li>
-        <li><b>Checked by people.</b> Every result is quality controlled before it reaches you.</li>
-      </ul>
     </div>
+    <ul class="proof-list">
+      <li><b>Independent.</b> We are not owners and not optimizers. We own no batteries and never will.</li>
+      <li><b>Based on your own data.</b> Results come from your optimizer report and meter data, not from a theoretical battery.</li>
+      <li><b>Connected live.</b> We link directly to your energy management system and meters, so we can follow what your battery does as it happens.</li>
+      <li><b>Checked by people.</b> Every result is quality controlled before it reaches you.</li>
+    </ul>
   </div>
 </section>
 
@@ -649,19 +650,77 @@ def configurator_page(t):
        ('You see the business case', 'A clear comparison of options, with the assumptions written down, ready for your bank, partner or board.')],
       'Owners and developers planning a battery next to solar, wind or a large energy user, and installers who size systems for customers.')
 
-def why_left(t):
-    return f"""<div class="why-left">
-    <span class="eyebrow why-eyebrow">Our why</span>
-    <div class="story" id="calculator" aria-live="polite">
-      <p class="story-h">It's a waste to miss out on <b class="out" id="s-missed">EUR 555,000</b> a year.</p>
-      <p class="story-p">A similar BESS asset, same size and setup, can deliver <a class="story-link" href="https://www.flower.se/insights/case/ra-energy-switch-optimizer/" target="_blank" rel="noopener">30% more revenue</a>. A <label class="pill"><input class="in" id="s-mw" type="number" min="1" max="500" step="1" value="10" aria-label="Project size in MW"><svg class="pen" viewBox="0 0 16 16" aria-hidden="true"><path d="M11.5 2.5l2 2L6 12l-2.8.8L4 10z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></label> MW project could have earned <b class="out" id="s-should">EUR 240.5k</b> per MW per year, instead of the EUR <label class="pill"><input class="in" id="s-rev" type="number" min="1" step="1" value="185" aria-label="Revenue in thousand EUR per MW per year"><svg class="pen" viewBox="0 0 16 16" aria-hidden="true"><path d="M11.5 2.5l2 2L6 12l-2.8.8L4 10z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></label>k per MW per year it delivered. That's a missed opportunity of <b class="out" id="s-gap">EUR 55.5k</b> per MW.</p>
-      <p class="hint"><svg class="pen" viewBox="0 0 16 16" aria-hidden="true"><path d="M11.5 2.5l2 2L6 12l-2.8.8L4 10z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>{t['story_note']}</p>
+FLOWER = 'https://www.flower.se/insights/case/ra-energy-switch-optimizer/'
+PEN = '<svg class="pen" viewBox="0 0 16 16" aria-hidden="true"><path d="M11.5 2.5l2 2L6 12l-2.8.8L4 10z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>'
+
+def w_pill(cls, label, val, mx=''):
+    return f'<label class="pill"><input class="in fit {cls}" type="number" min="1" {mx} step="1" value="{val}" aria-label="{label}">{PEN}</label>'
+
+def w_sentence():
+    return f"""A similar BESS asset, same size and setup, can deliver <a class="story-link" href="{FLOWER}" target="_blank" rel="noopener">30% more revenue</a>. A {w_pill('js-mw','Project size in MW',10,'max="500"')} MW project could have earned <b class="out js-should">EUR 240.5k</b> per MW per year, instead of the EUR {w_pill('js-rev','Revenue in thousand EUR per MW per year',185)}k per MW per year it delivered. That's a missed opportunity of <b class="out js-gap">EUR 55.5k</b> per MW."""
+
+def w_hint():
+    return f'<p class="hint">{PEN}Enter figures to adjust. Illustrative example.</p>'
+
+def w_dots(rows=10):
+    return f"""<figure class="why-fig" aria-hidden="true"><svg class="js-dots" data-rows="{rows}" role="presentation"></svg>
+      <figcaption class="why-legend"><span><i class="d"></i>Delivered <b class="js-del">EUR 1,850,000</b></span><span><i class="m"></i>Missed <b class="js-mis">EUR 555,000</b></span><span class="unit js-unit">1 dot = EUR 10,000 a year</span></figcaption></figure>"""
+
+WCAUSES = [('The wrong configuration', 'The battery is not sized or set up for what your site allows.', '/bess-configurator/', 'BESS Configurator'),
+           ('The wrong optimizer', 'Another optimizer would earn more with the same battery.', '/bess-broker/', 'BESS Broker'),
+           ('Too little monitoring', 'Underperformance goes unnoticed, so it carries on.', '/bess-backtest/', 'BESS Backtest')]
+
+def w_can():
+    return f"""<p class="wy-can"><b>We can help because we are independent.</b> We own no batteries and are not an optimizer, we look at your unique set-up and context, and the 30% uplift comes from <a class="story-link" href="{FLOWER}" target="_blank" rel="noopener">a comparable case</a>.</p>"""
+
+def w_head(tag='h2'):
+    return '<%s class="story-h">It\'s a waste to miss out on <b class="out js-missed">EUR 555,000</b> a year.</%s>' % (tag, tag)
+
+def why_section(v='1'):
+    cs = WCAUSES
+    if v == '1':   # sentence + dots left, causes right
+        causes = ''.join(f'<li><b>{a}</b><span>{b}</span><a href="{h}">{n} →</a></li>' for a, b, h, n in cs)
+        inner = f"""<div class="wy-head">{w_head()}</div>
+    <div class="wy-grid">
+      <div class="story"><p class="story-p">{w_sentence()}</p>{w_hint()}{w_dots()}</div>
+      <div class="wy-card"><h3>Where revenue leaks</h3><ul class="wy-causes">{causes}</ul></div>
     </div>
-    <figure class="why-fig" aria-hidden="true">
-      <svg id="why-dots" role="presentation"></svg>
-      <figcaption class="why-legend"><span><i class="d"></i>Delivered <b id="f-del">EUR 1,850,000</b></span><span><i class="m"></i>Missed <b id="f-mis">EUR 555,000</b></span><span class="unit" id="f-unit">1 dot = EUR 10,000 a year</span></figcaption>
-    </figure>
-</div>"""
+    {w_can()}"""
+    elif v == '2':  # dots hero, compact input bar, three columns
+        causes = ''.join(f'<div><b>{a}</b><p>{b}</p><a href="{h}">{n} →</a></div>' for a, b, h, n in cs)
+        inner = f"""<div class="wy-head">{w_head()}</div>
+    <div class="wy-bar"><span>My battery</span><label>{w_pill('js-mw','Project size in MW',10,'max="500"')} MW</label><label>{w_pill('js-rev','Revenue in thousand EUR per MW per year',185)} EUR k per MW per year</label><span class="wy-bar-r">A similar asset can deliver <a class="story-link" href="{FLOWER}" target="_blank" rel="noopener">30% more</a>: <b class="out js-gap">EUR 55.5k</b> per MW</span></div>
+    <div class="story wy-wide">{w_dots(8)}</div>
+    <div class="wy-cols">{causes}</div>
+    {w_can()}"""
+    elif v == '3':  # big number + light form card
+        causes = ''.join(f'<a class="wy-chip" href="{h}"><b>{a}</b><span>{n} →</span></a>' for a, b, h, n in cs)
+        inner = f"""<div class="wy-split">
+      <div><p class="wy-k">Missed a year</p><p class="wy-big out js-missed">EUR 555,000</p><p class="wy-lead">It's a waste to miss out. A similar BESS asset, same size and setup, can deliver <a class="story-link" href="{FLOWER}" target="_blank" rel="noopener">30% more revenue</a>.</p>{w_can()}</div>
+      <div class="wy-form"><h3>Your battery</h3>
+        <label>Project size<span>{w_pill('js-mw','Project size in MW',10,'max="500"')} MW</span></label>
+        <label>Revenue delivered<span>{w_pill('js-rev','Revenue in thousand EUR per MW per year',185)} EUR k per MW per year</span></label>
+        <p class="wy-res">A similar asset could earn <b class="js-should">EUR 240.5k</b> per MW per year, <b class="js-gap">EUR 55.5k</b> more.</p>
+        <p class="hint">{PEN}Enter figures to adjust. Illustrative example.</p></div>
+    </div>
+    <p class="wy-k wy-k2">Where it leaks, and what fixes it</p><div class="wy-chips">{causes}</div>"""
+    elif v == '4':  # dark dots card left, light card right
+        causes = ''.join(f'<li><b>{a}.</b> {b} <a href="{h}">{n} →</a></li>' for a, b, h, n in cs)
+        inner = f"""<div class="wy-split wy-split4">
+      <div class="wy-dark">{w_head('h2')}{w_dots()}</div>
+      <div class="wy-light"><p class="wy-k">Check your own battery</p><p class="story-p story">{w_sentence()}</p>{w_hint()}<h3>Three places it leaks</h3><ol class="wy-causes">{causes}</ol></div>
+    </div>
+    {w_can()}"""
+    else:           # '5' editorial, no dots, big numerals
+        causes = ''.join(f'<li><span class="wy-n">{i+1:02d}</span><div><b>{a}</b><p>{b}</p><a href="{h}">{n} →</a></div></li>' for i, (a, b, h, n) in enumerate(cs))
+        inner = f"""<div class="wy-head">{w_head()}</div>
+    <div class="story wy-center"><p class="story-p">{w_sentence()}</p>{w_hint()}</div>
+    <ol class="wy-num">{causes}</ol>
+    {w_can()}"""
+    return f"""<section class="dark why-sec wy-{v}" id="why"><div class="wrap why-calc"><span class="eyebrow why-eyebrow">Our why</span>
+    {inner}
+  </div></section>"""
+
 
 def backtest_page(t):
     example = '''<section class="example-sec">
@@ -763,6 +822,9 @@ for lang in LANGS:
     t = T[lang]
     pre = '' if lang == 'en' else 'nl/'
     write(pre + 'index.html', home(t))
+    if os.environ.get('WHY_OPTIONS'):
+        opts = ''.join(f'<div class="dark"><p class="tp-label">Version {v}</p></div>' + why_section(v) for v in '12345')
+        write('why-options/index.html', page_shell(t, '/why-options/', 'Options', '', '<div class="page-hero" id="main"><h1>Our why: 5 versions</h1><p>Choose one for the homepage. All figures can be changed.</p></div>', opts))
     write(pre + 'terms/index.html', terms(t))
     write(pre + 'privacy/index.html', privacy(t))
     if lang == 'en':

@@ -41,25 +41,17 @@
   dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
 })();
 
-// Missed-opportunity sentence (illustrative: a similar asset can deliver 30% more revenue per MW).
-(function () {
+// Missed-opportunity calculator (illustrative: a similar asset can deliver 30% more revenue per MW). Works per .why-calc block.
+document.querySelectorAll('.why-calc').forEach(function (root) {
   var UPLIFT = 0.30;
-  var $ = function (id) { return document.getElementById(id); };
-  if (!$('s-mw')) return;
+  var Q = function (c) { return root.querySelectorAll('.' + c); };
+  var mwEl = Q('js-mw')[0], revEl = Q('js-rev')[0];
+  if (!mwEl || !revEl) return;
+  var set = function (c, t) { Q(c).forEach(function (e) { e.textContent = t; }); };
   var num = function (el) { return Math.max(0, +String(el.value).replace(/[^0-9.]/g, '') || 0); };
   var k = function (v) { return (Math.round(v * 10) / 10).toLocaleString('en-GB', { maximumFractionDigits: 1 }) + 'k'; };
-  function size(el) { el.style.width = (Math.max(1, String(el.value).length) + 0.4) + 'ch'; }
-  function calc() {
-    var mw = num($('s-mw')), revK = num($('s-rev'));
-    var upK = revK * UPLIFT;
-    if ($('s-should')) $('s-should').textContent = 'EUR ' + k(revK + upK);
-    if ($('s-gap')) $('s-gap').textContent = 'EUR ' + k(upK);
-    $('s-missed').textContent = 'EUR ' + (Math.round(upK * 1000 * mw / 100) * 100).toLocaleString('en-GB');
-    ['s-mw', 's-rev'].forEach(function (id) { size($(id)); });
-    dots(revK * 1000 * mw, upK * 1000 * mw);
-  }
-  // Abstract figure: one dot per fixed amount of yearly revenue; filled = delivered, outlined = missed.
-  var svg = $('why-dots');
+  function size(el) { if (el.classList.contains('fit')) el.style.width = (Math.max(1, String(el.value).length) + 0.4) + 'ch'; }
+  var svg = Q('js-dots')[0];
   function eur(v) { return 'EUR ' + (Math.round(v / 100) * 100).toLocaleString('en-GB'); }
   function dots(del, mis) {
     if (!svg) return;
@@ -67,31 +59,36 @@
     var unit = units[units.length - 1];
     for (var i = 0; i < units.length; i++) { if (total / units[i] <= 300) { unit = units[i]; break; } }
     var nD = Math.round(del / unit), nM = Math.max(0, Math.floor(total / unit) - nD);
-    var rows = 10, n = nD + nM, cols = Math.max(12, Math.ceil(n / rows)), g = 20, r = 6.2;
+    var rows = +svg.getAttribute('data-rows') || 10, n = nD + nM, cols = Math.max(12, Math.ceil(n / rows)), g = 20, r = 6.2;
     svg.setAttribute('viewBox', '0 0 ' + (cols * g) + ' ' + (rows * g));
     var out = '';
-    for (var k = 0; k < n; k++) {
-      var c = Math.floor(k / rows), y = k % rows, cx = c * g + g / 2, cy = y * g + g / 2;
+    for (var j = 0; j < n; j++) {
+      var c = Math.floor(j / rows), y = j % rows, cx = c * g + g / 2, cy = y * g + g / 2;
       var d = (c * 0.06 + y * 0.015).toFixed(2);
-      out += k < nD
+      out += j < nD
         ? '<circle class="dd" cx="' + cx + '" cy="' + cy + '" r="' + r + '" style="transition-delay:' + d + 's"/>'
         : '<circle class="dm" cx="' + cx + '" cy="' + cy + '" r="' + (r - 0.8) + '" style="transition-delay:' + d + 's"/>';
     }
     svg.innerHTML = out;
-    $('f-del').textContent = eur(del);
-    $('f-mis').textContent = eur(mis);
-    $('f-unit').textContent = '1 dot = ' + eur(unit) + ' a year';
+    set('js-del', eur(del)); set('js-mis', eur(mis)); set('js-unit', '1 dot = ' + eur(unit) + ' a year');
   }
-  ['s-mw', 's-rev'].forEach(function (id) { $(id).addEventListener('input', calc); });
+  function calc() {
+    var mw = num(mwEl), revK = num(revEl), upK = revK * UPLIFT;
+    set('js-should', 'EUR ' + k(revK + upK));
+    set('js-gap', 'EUR ' + k(upK));
+    set('js-missed', 'EUR ' + (Math.round(upK * 1000 * mw / 100) * 100).toLocaleString('en-GB'));
+    [mwEl, revEl].forEach(size);
+    dots(revK * 1000 * mw, upK * 1000 * mw);
+  }
+  [mwEl, revEl].forEach(function (el) { el.addEventListener('input', calc); });
   calc();
-  // show the dots once, calmly, when the figure first scrolls into view; afterwards they stay still
   var fig = svg && svg.parentNode;
   if (fig && 'IntersectionObserver' in window) {
     fig.classList.add('pre');
     var io = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { fig.classList.remove('pre'); io.disconnect(); } }, { threshold: 0.3 });
     io.observe(fig);
   }
-})();
+});
 
 // Info tooltips: tap to toggle on touch screens.
 document.querySelectorAll('.info-i button').forEach(function (b) {
