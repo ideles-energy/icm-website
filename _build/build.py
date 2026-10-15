@@ -525,7 +525,7 @@ def home(t):
 {nav(t, other)}
     <div class="hero" id="main">
       <div>
-        <h1>Secure the true value<br>of a BESS asset</h1>
+        <h1>Secure the true value <br>of a BESS asset</h1>
         <p class="lead">For those with a nagging sense they could earn more with their battery. Find the optimal system for your context, outsource the search for a trusted optimizer and monitor your performance proactively.</p>
         <div class="hero-ctas">
           <a class="btn btn-lilac" href="{TALK}">{t['talk']}</a>
@@ -541,7 +541,7 @@ def home(t):
 <section class="dark props-sec" id="how">
   <div class="wrap">
     <div class="section-head center">
-      <span class="eyebrow why-eyebrow">How it works</span>
+      <span class="eyebrow why-eyebrow">How we can work together</span>
       <h2>An independent perspective</h2>
     </div>
     <div class="props">
@@ -659,9 +659,11 @@ def w_sentence():
 def w_hint():
     return f'<p class="hint">{PEN}Enter figures to adjust. Illustrative example.</p>'
 
-def w_dots(rows=10):
-    return f"""<figure class="why-fig" aria-hidden="true"><svg class="js-dots" data-rows="{rows}" role="presentation"></svg>
-      <figcaption class="why-legend"><span><i class="d"></i>Delivered <b class="js-del">EUR 1,850,000</b></span><span><i class="m"></i>Missed <b class="js-mis">EUR 555,000</b></span><span class="unit js-unit">1 dot = EUR 10,000 a year</span></figcaption></figure>"""
+WLEG = """<span><i class="d"></i>Delivered <b class="js-del">EUR 1,850,000</b></span><span><i class="m"></i>Missed <b class="js-mis">EUR 555,000</b></span><span class="unit js-unit">1 dot = EUR 10,000 a year</span>"""
+
+def w_dots(rows=10, legend=True):
+    cap = f'<figcaption class="why-legend">{WLEG}</figcaption>' if legend else ''
+    return f"""<figure class="why-fig" aria-hidden="true"><svg class="js-dots" data-rows="{rows}" role="presentation"></svg>{cap}</figure>"""
 
 WCAUSES = [('The wrong configuration', 'The battery is not sized or set up for what your site allows.', '/bess-configurator/', 'BESS Configurator'),
            ('The wrong optimizer', 'Another optimizer would earn more with the same battery.', '/bess-broker/', 'BESS Broker'),
@@ -672,6 +674,8 @@ def w_can():
 
 def w_head(tag='h2'):
     return '<%s class="story-h">It\'s a waste to miss out on <b class="out js-missed">EUR 555,000</b> a year.</%s>' % (tag, tag)
+
+BL1, BL2, BL3 = ('<b>Suboptimal configuration.</b> The MW/MWh you\'ll build directly affect your return on investment. A suboptimal mix costs you from day one.', '<b>Underperforming optimizer.</b> New players with better algorithms keep entering the market. Staying with yours can carry a serious opportunity cost.', '<b>Too little monitoring.</b> Without a reference, low revenue looks like a bad month. Underperformance can go unnoticed for years.')
 
 def why_section(v='1'):
     cs = WCAUSES
@@ -709,11 +713,11 @@ def why_section(v='1'):
     </div>
     {w_can()}"""
     elif v == '13':
-        bl = ''.join(f'<li>{x}</li>' for x in ('<b>Suboptimal configuration.</b> The MW/MWh you\'ll build directly affect your return on investment. A suboptimal mix costs you from day one.', '<b>Underperforming optimizer.</b> New players with better algorithms keep entering the market. Staying with yours can carry a serious opportunity cost.', '<b>Too little monitoring.</b> Without a reference, low revenue looks like a bad month. Underperformance can go unnoticed for years.'))
-        inner = f"""<div class="wy-head">{w_head()}</div>
-    <div class="story wy-wide wy-v13">{w_dots(8)}
+        bl = ''.join(f'<li>{x}</li>' for x in (BL1, BL2, BL3))
+        inner = f"""<div class="wy-top"><div class="wy-top-l">{w_head()}</div><div class="wy-top-r"><div class="why-legend">{WLEG}</div>{w_hint()}</div></div>
+    <div class="story wy-wide wy-v13">{w_dots(6, legend=False)}
       <div class="wy-two wy-plain">
-        <div><p class="wy-k">Check your own battery</p><p class="story-p story">{w_sentence()}</p>{w_hint()}</div>
+        <div><p class="wy-k">Check your own battery</p><p class="story-p story">{w_sentence()}</p></div>
         <div><p class="wy-k">Where it leaks</p><ul class="wy-bul">{bl}</ul></div>
       </div></div>"""
     elif v in ('10', '11', '12'):

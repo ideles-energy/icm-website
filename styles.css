@@ -1141,3 +1141,22 @@ h2, .cta-band h2, .section-head h2, .props-sec .section-head h2, .wy-head h2, .s
 b.out, .out { font-size: inherit !important; }
 .story .story-p b.js-del, .story .story-p b.js-mis, .story-p b { font-size: inherit; }
 header.nav a b { font-size: 14px !important; } header.nav a span:not(.nw) { font-size: 13px !important; }
+
+/* v20: Our why left-aligned, legend top right */
+.why-sec.wy-13 .why-eyebrow { text-align: left; }
+.wy-top { display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; margin: 0 0 36px; flex-wrap: wrap; }
+.wy-top-l .story-h { text-align: left; margin: 0; text-wrap: balance; }
+.wy-top-r { text-align: left; }
+.wy-top-r .why-legend { margin-top: 0; }
+.wy-top-r .hint { margin: 10px 0 0; }
+@media (max-width: 760px) { .wy-top { flex-direction: column; align-items: flex-start; gap: 18px; } }
+@media (min-width: 900px) {
+  .wy-top { flex-wrap: nowrap; }
+  .wy-top-l { flex: 1 1 0; min-width: 0; }
+  .wy-top-r { flex: 0 0 auto; }
+  .wy-top-r .why-legend { flex-direction: column; align-items: flex-start; gap: 6px; }
+}
+.wy-top { align-items: flex-start; }
+.wy-top-r { max-width: 300px; padding-top: 6px; }
+.wy-top-r .hint { white-space: normal; }
+.wy-v13 .why-fig { margin-top: 0; }
