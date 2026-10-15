@@ -839,3 +839,16 @@ body > footer { margin-top: auto; }
 .dots-fig .story-link { color: #fff; }
 @media (max-width: 900px) { .proof-grid .about-visual { order: 2; } }
 .props-sec .section-head { max-width: 1120px; }
+
+/* v6: Salt & Chalk style guide: headings bold with -25 tracking; logo at least 300px wide, icon only on small screens; no cyan next to violet */
+h1, h2, h3 { letter-spacing: -0.025em; font-weight: 700; }
+.hero h1, .page-hero h1, .section-head h2, .story-h, .res h2, .co-big, .co-why h2, .contact h2, .cta-band h2 { font-weight: 700; letter-spacing: -0.025em; }
+.logo img.logo-full { height: 46px; width: auto; }
+.logo img.logo-icon { display: none; }
+@media (max-width: 900px) {
+  .logo img.logo-full { display: none; }
+  .logo img.logo-icon { display: block; height: 38px; width: 38px; border-radius: 9px; }
+}
+.dots i { background: var(--mist); }
+.dots i.m { background: transparent; border: 2px dashed #D392EB; }
+@media (max-width: 600px) { .hero h1 br { display: none; } }

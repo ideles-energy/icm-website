@@ -221,7 +221,7 @@ def nav(t, other_href):
     subs = ''.join(f'<li><a href="{h}"><b>{n}</b><span>{s}</span></a></li>' for n, s, h in SOLUTIONS)
     msubs = ''.join(f'<a class="m-sub" href="{h}">{n}</a>' for n, s, h in SOLUTIONS)
     return f"""    <header class="nav">
-      <a class="logo" href="{b}" aria-label="The Independent Capacity Market, home"><img src="/assets/logo-header.png" alt="The Independent Capacity Market" width="796" height="119"></a>
+      <a class="logo" href="{b}" aria-label="The Independent Capacity Market, home"><img class="logo-full" src="/assets/logo-header.png" alt="The Independent Capacity Market" width="796" height="119"><img class="logo-icon" src="/assets/favicon.svg" alt="" width="36" height="36"></a>
       <nav aria-label="{t['menu']}">
         <ul class="nav-links">
           <li class="has-sub hide-sm"><button type="button" class="sub-btn" aria-expanded="false" aria-haspopup="true">Solutions</button><ul class="sub">{subs}</ul></li>
