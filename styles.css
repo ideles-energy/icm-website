@@ -843,7 +843,7 @@ body > footer { margin-top: auto; }
 /* v6: Salt & Chalk style guide: headings bold with -25 tracking; logo at least 300px wide, icon only on small screens; no cyan next to violet */
 h1, h2, h3 { letter-spacing: -0.025em; font-weight: 700; }
 .hero h1, .page-hero h1, .section-head h2, .story-h, .res h2, .co-big, .co-why h2, .contact h2, .cta-band h2 { font-weight: 700; letter-spacing: -0.025em; }
-.logo img.logo-full { height: 38px; width: auto; }
+.logo img.logo-full { height: 26px; width: auto; }
 .logo img.logo-icon { display: none; }
 @media (max-width: 900px) {
   .logo img.logo-full { display: none; }
@@ -1015,3 +1015,8 @@ h1, h2, h3 { letter-spacing: -0.025em; font-weight: 700; }
 .wy-4 .why-eyebrow { text-align: left; }
 .wy-light .wy-k { color: var(--teal); }
 .wy-bar { border-radius: 28px; }
+
+/* v11: match Canva proportions: smaller hero type, white section title */
+.hero h1 { font-size: clamp(32px, 3.7vw, 47px); }
+.hero .lead { font-size: 17px; max-width: 480px; }
+.props-sec .section-head h2 { color: var(--white); font-size: clamp(26px, 2.9vw, 36px); }
