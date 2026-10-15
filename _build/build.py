@@ -219,7 +219,7 @@ def nav(t, other_href):
     subs = ''.join(f'<li><a href="{h}"><b>{n}</b><span>{s}</span></a></li>' for n, s, h in SOLUTIONS)
     msubs = ''.join(f'<a class="m-sub" href="{h}">{n}</a>' for n, s, h in SOLUTIONS)
     return f'''    <header class="nav">
-      <a class="logo" href="{b}" aria-label="The Independent Capacity Market, home"><img src="/assets/logo-header.png" alt="The Independent Capacity Market" width="863" height="129"></a>
+      <a class="logo" href="{b}" aria-label="The Independent Capacity Market, home"><img src="/assets/logo-header.png" alt="The Independent Capacity Market" width="796" height="119"></a>
       <nav aria-label="{t['menu']}">
         <ul class="nav-links">
           <li class="has-sub hide-sm"><button type="button" class="sub-btn" aria-expanded="false" aria-haspopup="true">Solutions</button><ul class="sub">{subs}</ul></li>
@@ -227,7 +227,6 @@ def nav(t, other_href):
           <li class="hide-sm"><a href="/company/">Company</a></li>
           <li><a class="btn btn-lilac" href="{b}#contact">{t['talk']}</a></li>
           <li class="show-sm"><button type="button" class="menu-btn" aria-expanded="false" aria-label="Open menu"><span></span><span></span><span></span></button></li>
-          <li><a class="btn btn-lilac" href="/register/">Talk to us</a></li>
         </ul>
       </nav>
       <div class="m-menu" hidden><p class="m-h">Solutions</p>{msubs}<a href="/resources/">Resources</a><a href="/company/">Company</a></div>
@@ -247,7 +246,6 @@ def footer(t, other_href):
       <a href="/solutions/">Solutions</a>
       <a href="/resources/">Resources</a>
       <a href="/company/">Company</a>
-      <a href="/register/">Talk to us</a>
     </nav>
     <div class="f-legal">
       <p>Website designed by <a href="https://www.saltandchalk.co.uk" target="_blank" rel="noopener">Salt &amp; Chalk</a></p>
@@ -302,8 +300,6 @@ def home(t):
         <div class="hero-ctas">
           <a class="btn btn-lilac" href="#contact">{t['book']}</a>
           <a class="btn btn-outline" href="#demo">{t['how_link']}</a>
-          <a class="btn btn-lilac" href="/register/">Talk to us</a>
-          <a class="btn btn-outline" href="#why">Check the numbers</a>
         </div>
       </div>
     </div>
@@ -321,7 +317,6 @@ def home(t):
       <p class="hint"><svg class="pen" viewBox="0 0 16 16" aria-hidden="true"><path d="M11.5 2.5l2 2L6 12l-2.8.8L4 10z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>{t['story_note']}</p>
     </div>
     <div class="cta-row"><a class="btn btn-lilac" href="#contact">{t['book']}</a><a class="btn btn-outline" href="#demo">{t['more']}</a></div>
-    <div class="cta-row"><a class="btn btn-lilac" href="/register/">Talk to us</a><a class="btn btn-outline" href="#about">{t['more']}</a></div>
     </div>
     <figure class="why-fig" aria-hidden="true">
       <svg id="why-dots" role="presentation"></svg>
@@ -376,7 +371,6 @@ def home(t):
         <a class="btn btn-lilac" href="#contact">{t['book']}</a>
         <a class="btn btn-outline" href="/solutions/">Our solutions</a>
         <a class="btn btn-outline" href="/company/#careers">{t['roles']}</a>
-        <a class="btn btn-lilac" href="/register/">Talk to us</a>
       </div>
     </div>
     <div class="about-visual"><img class="about-img" src="/assets/img/about-pylon.jpg" alt="High-voltage pylon against the evening sky" width="960" height="1080" loading="lazy"></div>
@@ -584,23 +578,6 @@ def solutions(t):
 </body>
 </html>
 '''
-
-def register(t):
-    hero = '''    <div class="page-hero" id="main">
-      <h1>Talk to us</h1>
-      <p>Tell us about your BESS asset. A 45-minute call is our starting point to understand context and objectives.</p>
-    </div>'''
-    body = f'''<section class="talk-form" id="form">
-  <div class="wrap">
-    <div class="form fillout">
-      <div style="width:100%;height:640px" data-fillout-id="icWpPN8hsgus" data-fillout-embed-type="standard" data-fillout-inherit-parameters data-fillout-dynamic-resize></div>
-      <script src="https://server.fillout.com/embed/v1/" defer></script>
-      <noscript><a href="https://forms.fillout.com/t/icWpPN8hsgus">Open the form</a></noscript>
-    </div>
-    <p class="cta-alt">{t['prefer']} <a href="mailto:{EMAIL}">{EMAIL}</a></p>
-  </div>
-</section>'''
-    return page_shell(t, '/register/', 'Talk to us | The Independent Capacity Market', 'Talk to us about your BESS asset with the Independent Capacity Market.', hero, body)
 
 REDIRECT = '''<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Careers | The ICM</title><meta name="robots" content="noindex"><link rel="canonical" href="https://icm.energy/company/#careers"><meta http-equiv="refresh" content="0; url=/company/#careers"></head><body><a href="/company/#careers">Careers have moved to our company page.</a></body></html>'''
 
