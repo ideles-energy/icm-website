@@ -520,7 +520,7 @@ def home(t):
         <h3>{n}</h3>
         <p class="prop-lead">{lead}</p>
         <p>{body}</p>
-        <a class="prop-link" href="{h}">Learn more →</a>{'<button type="button" class="btn btn-lilac js-gate-open prop-demo">See a demo</button>' if k == 'backtest' else ''}
+        <div class="prop-actions"><a class="prop-link" href="{h}">Learn more →</a>{'<button type="button" class="btn btn-lilac js-gate-open prop-demo">See a demo</button>' if k == 'backtest' else ''}</div>
       </article>
 """ for k, n, h, lead, body in PROPS)
     title = 'BESS performance and optimizer insight: secure the true value of a BESS asset | The ICM'
@@ -699,20 +699,18 @@ def solutions(t):
     blocks = ''.join(sol_block(i, k, n, h, lead, body, extras[k]) for i, (k, n, h, lead, body) in enumerate(PROPS))
     hero = f"""    <div class="page-hero sol-hero2" id="main">
       <div class="sh-l">
-        <h1>Stop leaving money<br>on the table</h1>
-        <p>Know what your battery could earn, switch to a better optimizer when there is more to earn, and share numbers your bank, installer and insurer trust. No manual entry. No wasted hours.</p>
+        <h1>See how the ICM works</h1>
+        <p>The ICM compares your battery's revenue with its full potential, finds a better optimizer when there is more to earn, and gives you numbers your bank, installer and insurer trust. No manual entry. No wasted hours.</p>
         {gs_form('a')}
       </div>
       <div class="sh-r"><img src="/assets/img/solutions-veins-bright.jpg" alt="" width="1600" height="900"></div>
     </div>"""
     body = f"""<section class="sol-light sol-wrap" id="solutions">
   <div class="wrap">
-    <h2 class="sol-h">Which one is you?</h2>
 {blocks}  </div>
 </section>
 {GS_STEPS}
 {GS_SECURE}
-{PARTNER_STRIP}
 {faq_block(SOL_FAQS, 'Frequently asked questions')}
 {GATE}"""
     return page_shell(t, '/solutions/', 'Solutions: BESS Configurator, BESS Backtest and BESS Broker | The ICM',
@@ -765,7 +763,7 @@ def w_pill(cls, label, val, mx=''):
     return f'<label class="pill"><input class="in fit {cls}" type="number" min="1" {mx} step="1" value="{val}" aria-label="{label}">{PEN}</label>'
 
 def w_sentence():
-    return f"""<span class="ws1"><span class="ws-stat">+30%</span><b>more revenue. Same battery, same site.</b> <a class="story-src" href="{FLOWER}" target="_blank" rel="noopener">Source: Flower case</a></span>That could be up to <b class="out js-missedk">EUR 555k</b> a year for a {w_pill('js-mw','Battery size in MW',10,'max="500"')} MW battery that delivers EUR {w_pill('js-rev','Revenue in thousand EUR per MW per year',185)}k per MW per year.<span class="ws3">Choose to know what you are leaving on the table.</span>"""
+    return f"""<span class="ws1"><b>Same battery, same site, 30% more revenue.</b> It's more common than one might think. <a class="story-src" href="{FLOWER}" target="_blank" rel="noopener">Source: Flower case</a></span><span class="ws2">Are you missing out on <b class="out js-gap">EUR 55k</b> per MW per year? That's the case for a {w_pill('js-mw','Battery size in MW',10,'max="500"')} MW battery that delivered EUR {w_pill('js-rev','Revenue in thousand EUR per MW per year',185)}k per MW per year.</span><span class="ws3">Choose to know what you are leaving on the table.</span>"""
 
 def w_hint():
     return f'<p class="hint">{PEN}Enter figures to adjust. Illustrative example.</p>'
@@ -820,7 +818,7 @@ def why_section(v='1'):
         causes = ''.join(f'<li><b>{a}.</b> {b} <a href="{h}">{n} →</a></li>' for a, b, h, n in cs)
         inner = f"""<div class="wy-split wy-split4">
       <div class="wy-dark">{w_head('h2')}{w_dots()}</div>
-      <div class="wy-light"><p class="wy-k">What your battery is missing</p><p class="story-p story">{w_sentence()}</p>{w_hint()}<h3>Three places it leaks</h3><ol class="wy-causes">{causes}</ol></div>
+      <div class="wy-light"><p class="wy-k">What is missing</p><p class="story-p story">{w_sentence()}</p>{w_hint()}<h3>Three places it leaks</h3><ol class="wy-causes">{causes}</ol></div>
     </div>
     {w_can()}"""
     elif v == '13':
@@ -829,7 +827,7 @@ def why_section(v='1'):
     <div class="story wy-wide wy-v13">
       <div class="wy-dotsrow">{w_dots(9, legend=False)}<div class="wy-side"><div class="why-legend wy-legr">{WLEG}</div>{w_hint()}</div></div>
       <div class="wy-two wy-plain wy-cards">
-        <div><p class="wy-k">What your battery is missing</p><p class="story-p story">{w_sentence()}</p></div>
+        <div><p class="wy-k">What is missing</p><p class="story-p story">{w_sentence()}</p></div>
         <div><p class="wy-k">Where it leaks</p><ul class="wy-bul">{bl}</ul></div>
       </div>
     </div>"""
@@ -838,7 +836,7 @@ def why_section(v='1'):
         leaks = (f'Revenue leaks in three places. <b>The wrong configuration:</b> the battery is not sized or set up for what your site allows ({lk("/solutions/#configurator", "BESS Configurator")}). '
                  f'<b>The wrong optimizer:</b> another optimizer would earn more with the same battery ({lk("/solutions/#broker", "BESS Broker")}). '
                  f'<b>Too little monitoring:</b> underperformance goes unnoticed, so it carries on ({lk("/solutions/#backtest", "BESS Backtest")}).')
-        check = f"""<p class="wy-k">What your battery is missing</p><p class="story-p story">{w_sentence()}</p>{w_hint()}"""
+        check = f"""<p class="wy-k">What is missing</p><p class="story-p story">{w_sentence()}</p>{w_hint()}"""
         leaksb = f"""<p class="wy-k">Where it leaks</p><p class="story-p story">{leaks}</p>"""
         if v == '10':   # two equal light cards, dots below
             inner = f"""<div class="wy-head">{w_head()}</div>
@@ -853,7 +851,7 @@ def why_section(v='1'):
     <div class="wy-light wy-one"><div class="wy-two wy-halves"><div>{check}</div><div>{leaksb}</div></div>{w_dots(6)}</div>"""
     elif v in ('6', '7', '8', '9'):
         cols = ''.join(f'<div><b>{a}</b><p>{b}</p><a href="{h}">{n} →</a></div>' for a, b, h, n in cs)
-        check = f"""<p class="wy-k">What your battery is missing</p><p class="story-p story">{w_sentence()}</p>{w_hint()}"""
+        check = f"""<p class="wy-k">What is missing</p><p class="story-p story">{w_sentence()}</p>{w_hint()}"""
         if v == '6':    # 4's split with 2's clean columns below
             inner = f"""<div class="wy-split wy-split4">
       <div class="wy-dark">{w_head('h2')}{w_dots()}</div>

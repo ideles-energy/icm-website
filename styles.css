@@ -1472,3 +1472,9 @@ body.nav-light.nav-fixed header.nav .btn-lilac{color:#040D1F}
 /* v42 featured Backtest card with callout */
 .featured{position:relative;border-color:#D392EB !important;border-width:2px !important}
 .callout{position:absolute;top:-15px;right:28px;background:#D392EB;color:#040D1F;font-size:13px;font-weight:700;letter-spacing:.02em;padding:6px 14px;border-radius:999px;transform:rotate(-2deg);box-shadow:0 4px 14px rgba(211,146,235,.35)}
+
+/* v43 */
+.ws2{display:block;margin-top:14px}
+.ws2 b{color:#fff}
+.prop-actions{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-top:auto}
+.prop-demo{margin:0}
