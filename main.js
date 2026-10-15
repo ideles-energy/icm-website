@@ -77,6 +77,7 @@ document.querySelectorAll('.why-calc').forEach(function (root) {
     set('js-should', 'EUR ' + k(revK + upK));
     set('js-gap', 'EUR ' + k(upK));
     set('js-missed', 'EUR ' + (Math.round(upK * 1000 * mw / 100) * 100).toLocaleString('en-GB'));
+    set('js-missedk', 'EUR ' + Math.round(upK * mw).toLocaleString('en-GB') + 'k');
     [mwEl, revEl].forEach(size);
     dots(revK * 1000 * mw, upK * 1000 * mw);
   }

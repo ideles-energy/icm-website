@@ -681,7 +681,7 @@ def w_pill(cls, label, val, mx=''):
     return f'<label class="pill"><input class="in fit {cls}" type="number" min="1" {mx} step="1" value="{val}" aria-label="{label}">{PEN}</label>'
 
 def w_sentence():
-    return f"""A similar BESS asset, same size and setup, can deliver <a class="story-link" href="{FLOWER}" target="_blank" rel="noopener">30% more revenue</a>. A {w_pill('js-mw','Project size in MW',10,'max="500"')} MW project could have earned <b class="out js-should">EUR 240.5k</b> per MW per year, instead of the EUR {w_pill('js-rev','Revenue in thousand EUR per MW per year',185)}k per MW per year it delivered. That's a missed opportunity of <b class="out js-gap">EUR 55.5k</b> per MW."""
+    return f"""<span class="ws1">Same battery, same site, 30% more revenue. <a class="story-src" href="{FLOWER}" target="_blank" rel="noopener">Source: Flower and RA Energy case</a></span>Missed revenue can add up to <b class="out js-missedk">EUR 555k</b> per year. That's for a {w_pill('js-mw','Battery size in MW',10,'max="500"')} MW battery that delivered EUR {w_pill('js-rev','Revenue in thousand EUR per MW per year',185)}k per MW per year. Choose to know what you are leaving on the table. We'll get to work."""
 
 def w_hint():
     return f'<p class="hint">{PEN}Enter figures to adjust. Illustrative example.</p>'
