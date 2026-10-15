@@ -1279,3 +1279,34 @@ a.member:hover b { text-decoration: underline; text-underline-offset: 4px; }
 @media (max-width:860px){.sol-img{height:260px;min-height:240px}}
 .hero-shell:has(.sol-hero-mark){background:linear-gradient(90deg,rgba(4,13,31,.72) 0%,rgba(4,13,31,.25) 60%,rgba(4,13,31,0) 100%),#040D1F url(/assets/img/solutions-veins-bright.jpg) center/cover no-repeat !important}
 .sol-hero-mark .btn-lilac{color:#040D1F}
+
+/* v30 partner strip (Solutions) */
+.partner-wrap{padding:0 0 72px}
+.partner-strip{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1.2fr) auto;gap:32px;align-items:center;border:2px solid rgba(255,255,255,.9);border-radius:28px;padding:34px}
+.partner-strip .eyebrow-w{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#fff;margin-bottom:12px}
+.partner-strip h2{font-size:clamp(28px,3vw,35px);font-weight:700;letter-spacing:-.02em;color:#fff;text-wrap:balance}
+.partner-strip h2 em{font-style:normal;color:var(--lilac,#D392EB)}
+.ps-slide label{display:flex;justify-content:space-between;gap:12px;font-size:13px;color:rgba(255,255,255,.7)}
+.ps-slide output{color:#fff;font-weight:700;font-size:17px;font-variant-numeric:tabular-nums}
+.ps-slide input[type=range]{width:100%;accent-color:#D392EB;height:28px;margin:4px 0 0}
+.ps-ticks{display:flex;justify-content:space-between;font-size:13px;color:rgba(255,255,255,.6)}
+.ps-out{text-align:right;display:grid;gap:6px;justify-items:end}
+.ps-sm{font-size:13px;color:rgba(255,255,255,.7)}
+.ps-pay{font-size:clamp(28px,3vw,35px);font-weight:700;color:#97F2F5;letter-spacing:-.02em;font-variant-numeric:tabular-nums;line-height:1.1;margin-bottom:8px}
+.ps-fine{font-size:13px;color:rgba(255,255,255,.6);margin-top:14px}
+@media(max-width:860px){.partner-strip{grid-template-columns:minmax(0,1fr);padding:26px}.ps-out{text-align:left;justify-items:start}}
+
+/* v30 partner strip */
+.partner-wrap{padding:0 0 88px}
+.partner-strip{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1.2fr) auto;gap:32px;align-items:center;border:2px solid rgba(255,255,255,.9);border-radius:28px;padding:36px 32px}
+.partner-strip .eyebrow-w{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--white);margin-bottom:12px}
+.partner-strip h2{font-size:clamp(28px,3vw,35px);font-weight:700;letter-spacing:-.02em;color:var(--white);text-wrap:balance}
+.partner-strip h2 em{font-style:normal;color:var(--lilac)}
+.ps-slide label{display:flex;justify-content:space-between;gap:12px;font-size:13px;color:rgba(255,255,255,.7)}
+.ps-slide output{color:var(--white);font-weight:700;font-size:var(--body);font-variant-numeric:tabular-nums}
+.ps-slide input[type=range]{width:100%;accent-color:var(--lilac);height:28px;margin:6px 0 0}
+.ps-out{text-align:right}
+.ps-sm{font-size:13px;color:rgba(255,255,255,.7)}
+.ps-pay{font-size:clamp(28px,3vw,35px);font-weight:700;color:var(--cyan);letter-spacing:-.02em;font-variant-numeric:tabular-nums;line-height:1.1;margin:2px 0 14px}
+.ps-fine{font-size:13px;color:rgba(255,255,255,.6);margin-top:14px}
+@media (max-width:860px){.partner-strip{grid-template-columns:minmax(0,1fr);padding:26px}.ps-out{text-align:left}}

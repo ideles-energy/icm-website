@@ -591,6 +591,27 @@ def sol_block(i, k, n, href, lead, body, extra):
     card = sol_card(k, n, href, lead, body, extra)
     return f'    <div class="sol-row sol-r{i % 2}">\n      {card}\n      {img}\n    </div>\n'
 
+PARTNER_STRIP = '''<section class="dark partner-wrap" id="partners">
+  <div class="wrap">
+    <div class="partner-strip js-partner">
+      <div class="ps-q">
+        <p class="eyebrow-w">Partners</p>
+        <h2>Know an owner who <em>earns too little?</em></h2>
+      </div>
+      <div class="ps-slide">
+        <label for="ps-mw"><span>Battery size of your referral</span><output class="js-ps-mw" for="ps-mw">10 MW</output></label>
+        <input id="ps-mw" class="js-ps-range" type="range" min="0.25" max="50" step="0.25" value="10">
+      </div>
+      <div class="ps-out">
+        <p class="ps-sm">Your reward</p>
+        <p class="ps-pay js-ps-pay">EUR 5,000</p>
+        <a class="btn btn-lilac" href="/talk-to-us/?topic=partner">Refer an owner</a>
+      </div>
+    </div>
+    <p class="ps-fine">EUR 500 per MW, one time, paid after your referral's first invoice has been paid.</p>
+  </div>
+</section>'''
+
 def solutions(t):
     extras = {
       'configurator': 'For owners and developers who plan a battery on a site with solar, wind or a large energy use, and for installers who size systems for customers.',
@@ -607,6 +628,7 @@ def solutions(t):
   <div class="wrap">
 {blocks}  </div>
 </section>
+{PARTNER_STRIP}
 {faq_block(NEWFAQS, 'Frequently asked questions')}
 {cta_band(t)}"""
     return page_shell(t, '/solutions/', 'Solutions: BESS Configurator, BESS Backtest and BESS Broker | The ICM',

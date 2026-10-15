@@ -138,3 +138,8 @@ document.querySelectorAll('.info-i button').forEach(function (b) {
   top(); window.addEventListener('load', top);
   [300, 900, 1800, 3000].forEach(function (t) { setTimeout(top, t); });
 })();
+
+/* Partner reward slider (Solutions) */
+(function(){var w=document.querySelector('.js-partner');if(!w)return;var r=w.querySelector('.js-ps-range'),o=w.querySelector('.js-ps-mw'),p=w.querySelector('.js-ps-pay');
+function u(){var v=+r.value;o.textContent=(v<1?Math.round(v*1000)+' kW':v+' MW');p.textContent='EUR '+(v*500).toString().replace(/\B(?=(\d{3})+(?!\d))/g,',');}
+r.addEventListener('input',u);u();})();
