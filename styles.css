@@ -890,3 +890,28 @@ h1, h2, h3 { letter-spacing: -0.025em; font-weight: 700; }
 .res-cols .res-sec { display: flex; flex-direction: column; }
 .res-cols .res-card { flex: 1; }
 .res-cols .res-thumb img { aspect-ratio: 16 / 7; object-fit: cover; object-position: top left; }
+
+/* v9: Talk to us as in the Canva design: copy left, form right, proof block below */
+.talk-hero { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 56px; align-items: start; padding: 24px 0 72px; }
+.talk-copy h1 { font-size: clamp(36px, 4.2vw, 52px); color: var(--cyan); font-weight: 700; margin: 6px 0 24px; }
+.talk-copy p { color: rgba(255,255,255,.9); font-size: 17px; margin: 0 0 18px; }
+.talk-copy a { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
+.talk-hero .form.fillout { background: var(--mist); border-radius: 18px; padding: 10px; min-height: 300px; }
+@media (max-width: 900px) { .talk-hero { grid-template-columns: minmax(0, 1fr); gap: 32px; } }
+.talk-proof { padding: 0 0 72px; }
+.tp-card { display: flex; align-items: center; gap: 36px; border: 1.5px solid rgba(255,255,255,.9); border-radius: 18px; padding: 32px 36px; }
+.tp-card h2 { color: var(--cyan); font-size: clamp(24px, 2.6vw, 32px); font-weight: 700; margin: 0 0 12px; }
+.tp-card p { color: rgba(255,255,255,.9); font-size: 17px; margin: 0; max-width: 720px; }
+.tp-logo { background: var(--white); border-radius: 14px; padding: 16px 24px; width: 280px; height: auto; flex: none; }
+.tp-photo { width: 260px; height: 190px; object-fit: cover; border-radius: 14px; flex: none; }
+.tp-face { width: 120px; height: 120px; object-fit: cover; border-radius: 50%; flex: none; }
+.tp-stat { flex: none; text-align: center; min-width: 200px; }
+.tp-stat b { display: block; font-size: 72px; line-height: 1; color: var(--lilac); font-weight: 800; }
+.tp-stat span { color: rgba(255,255,255,.85); font-size: 17px; }
+.tp-src { margin-top: 12px !important; font-size: 14px !important; }
+.tp-src a { color: rgba(255,255,255,.8); }
+.tp-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; color: rgba(255,255,255,.9); font-size: 17px; }
+.tp-list b { color: #fff; }
+.tp-label { color: var(--cyan); font-weight: 700; letter-spacing: .06em; text-transform: uppercase; font-size: 13px; padding: 36px var(--pad) 12px; max-width: var(--max); margin: 0 auto; background: var(--night); }
+@media (max-width: 760px) { .tp-card { flex-direction: column; align-items: flex-start; padding: 26px; } .tp-photo { width: 100%; height: 180px; } }
+.tp-label { padding-bottom: 12px; }

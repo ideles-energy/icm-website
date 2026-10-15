@@ -702,22 +702,42 @@ def broker_page(t):
        ('Move with confidence', 'We help you agree the contract and stay with you until the first month of trading with your new optimizer.')],
       'Owners whose battery objectively earns less than it could, and who want a trusted partner without running the search themselves.')
 
-def talk(t):
-    hero = """    <div class="page-hero" id="main">
-      <span class="eyebrow">Talk to us</span>
-      <h1>Find the right fit as an owner, installer or optimizer</h1>
-      <p>You are ready to learn more. Use the form to give us a bit more information about your context and objectives. Alternatively, you can email us directly at <a href="mailto:ideles@icm.energy">ideles@icm.energy</a>.</p>
+def talk_proof(v):
+    """Block under the form (where the Canva design has a review). Variants A-E for review."""
+    if v == 'A':
+        inner = '''<img class="tp-logo" src="/assets/img/provincie-noord-holland.png" alt="Province of Noord-Holland" width="1200" height="233" loading="lazy">
+      <div><h2>Supported by the Province of Noord-Holland</h2><p>The ICM received early-phase funding (Vroegefasefinanciering) from the Province of Noord-Holland.</p></div>'''
+    elif v == 'B':
+        inner = '''<img class="tp-photo" src="/assets/img/about-pylon.jpg" alt="Electricity pylon against the sky" width="1200" height="900" loading="lazy">
+      <div><h2>An independent view at every stage of a battery's life</h2><p>Size the right system before you build, monitor its performance while it operates and find a trusted optimizer when there is more to earn.</p></div>'''
+    elif v == 'C':
+        inner = '''<div class="tp-stat"><b>30%</b><span>more revenue</span></div>
+      <div><h2>Comparable batteries can earn very different amounts</h2><p>A similar BESS asset, same size and setup, delivered 30% more revenue after switching optimizer. We help you find out where your battery stands.</p><p class="tp-src"><a href="https://www.flower.se/insights/case/ra-energy-switch-optimizer/" target="_blank" rel="noopener">Source: Flower and RA Energy case →</a></p></div>'''
+    elif v == 'D':
+        inner = '''<div><h2>What you can expect from us</h2><ul class="tp-list"><li><b>Independent.</b> We own no batteries and are not an optimizer.</li><li><b>No obligation.</b> A 45-minute call about your context and objectives.</li><li><b>Then a full proposal.</b> You decide what to do next.</li></ul></div>'''
+    else:
+        inner = '''<img class="tp-face" src="/assets/team-ideles.jpg" alt="Idelès Kaandorp" width="600" height="600" loading="lazy">
+      <div><h2>You talk to the founder</h2><p>Idelès Kaandorp, founder of the ICM, walks through your context and objectives with you. Afterwards you receive a full proposal.</p></div>'''
+    return f'''<section class="dark talk-proof"><div class="wrap"><div class="tp-card tp-{v}">
+      {inner}
+    </div></div></section>'''
+
+def talk(t, variant=None):
+    variant = variant or os.environ.get('TALK_VARIANT', 'A')
+    hero = """    <div class="talk-hero" id="main">
+      <div class="talk-copy">
+        <span class="eyebrow">Talk to us</span>
+        <h1>Find the right fit as an owner, optimizer or partner</h1>
+        <p>You are ready to learn more. Use the form to give us a bit more information about your context and objectives.</p>
+        <p>Alternatively, you can email us directly at <a href="mailto:ideles@icm.energy">ideles@icm.energy</a>.</p>
+      </div>
+      <div class="form fillout">
+        <div style="width:100%;height:640px" data-fillout-id="icWpPN8hsgus" data-fillout-embed-type="standard" data-fillout-inherit-parameters data-fillout-dynamic-resize></div>
+        <script src="https://server.fillout.com/embed/v1/" defer></script>
+        <noscript><a href="https://forms.fillout.com/t/icWpPN8hsgus">Open the form</a></noscript>
+      </div>
     </div>"""
-    body = f"""<section class="talk-form" id="form">
-  <div class="wrap">
-    <div class="form fillout">
-      <div style="width:100%;height:640px" data-fillout-id="icWpPN8hsgus" data-fillout-embed-type="standard" data-fillout-inherit-parameters data-fillout-dynamic-resize></div>
-      <script src="https://server.fillout.com/embed/v1/" defer></script>
-      <noscript><a href="https://forms.fillout.com/t/icWpPN8hsgus">Open the form</a></noscript>
-    </div>
-    <p class="cta-alt">{t['prefer']} <a href="mailto:{EMAIL}">{EMAIL}</a></p>
-  </div>
-</section>
+    body = f"""{talk_proof(variant)}
 <section class="talk-sec">
   <div class="wrap">
     <div class="section-head center"><h2>What happens next</h2></div>
@@ -751,6 +771,9 @@ for lang in LANGS:
         write('bess-backtest/index.html', backtest_page(t))
         write('bess-broker/index.html', broker_page(t))
         write('talk-to-us/index.html', talk(t))
+        if os.environ.get('TALK_OPTIONS'):
+            opts = ''.join(f'<div class="dark"><p class="tp-label">Option {v}</p></div>' + talk_proof(v) for v in 'ABCDE')
+            write('talk-to-us/options/index.html', page_shell(t, '/talk-to-us/options/', 'Options', '', '<div class="page-hero" id="main"><h1>Proof block: 5 options</h1><p>Choose one for under the form on Talk to us.</p></div>', opts))
 print('built')
 
 # Methodology page, generated from _build/methodology.md (same text as the Methodology doc).
