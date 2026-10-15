@@ -1042,3 +1042,31 @@ h1, h2, h3 { letter-spacing: -0.025em; font-weight: 700; }
 .wy-split8 .wy-dark { justify-content: flex-start; gap: 28px; }
 .wy-6 .why-eyebrow, .wy-8 .why-eyebrow { text-align: left; }
 .wy-6 .wy-light { align-self: start; }
+
+/* v13: leaks and check share one format */
+.wy-two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; align-items: stretch; max-width: 1200px; margin: 0 auto; }
+.wy-light .story-p b { color: var(--teal); }
+.wy-plain { gap: 0; }
+.wy-plain > div { padding: 0 40px; }
+.wy-plain > div:first-child { padding-left: 0; }
+.wy-plain > div + div { border-left: 1px solid rgba(255,255,255,.25); }
+.wy-plain .story-p b { color: #fff; }
+.wy-plain .wy-k { color: var(--cyan); }
+.wy-one { max-width: 1200px; margin: 0 auto; padding: 36px 40px 32px; }
+.wy-halves { gap: 0; }
+.wy-halves > div { padding: 0 32px 0 0; }
+.wy-halves > div + div { padding: 0 0 0 32px; border-left: 1px solid var(--line); }
+.wy-one .why-fig { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--line); }
+@media (max-width: 900px) {
+  .wy-two { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  .wy-plain > div, .wy-plain > div:first-child { padding: 0; }
+  .wy-plain > div + div { border-left: 0; border-top: 1px solid rgba(255,255,255,.25); padding-top: 20px; }
+  .wy-halves > div, .wy-halves > div + div { padding: 0; border-left: 0; }
+  .wy-halves > div + div { border-top: 1px solid var(--line); padding-top: 20px; }
+}
+/* About us as in the Canva design: small eyebrow, narrower text column, smaller body */
+.about-card { padding: clamp(32px, 4vw, 64px) clamp(28px, 4vw, 56px) clamp(32px, 4vw, 64px) clamp(32px, 5vw, 64px); }
+.about-card .eyebrow { font-size: 12px; font-weight: 400; letter-spacing: .04em; }
+.about-card h2 { font-size: clamp(26px, 2.6vw, 34px); font-weight: 600; max-width: 14em; }
+.about-card p { font-size: 15px; line-height: 1.55; max-width: 25em; margin-bottom: 18px; }
+.about-card .cta-row .btn { font-size: 14px; padding: 12px 22px; }

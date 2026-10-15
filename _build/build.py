@@ -711,6 +711,24 @@ def why_section(v='1'):
       <div class="wy-light"><p class="wy-k">Check your own battery</p><p class="story-p story">{w_sentence()}</p>{w_hint()}<h3>Three places it leaks</h3><ol class="wy-causes">{causes}</ol></div>
     </div>
     {w_can()}"""
+    elif v in ('10', '11', '12'):
+        lk = lambda h, n: f'<a class="story-link" href="{h}">{n}</a>'
+        leaks = (f'Revenue leaks in three places. <b>The wrong configuration:</b> the battery is not sized or set up for what your site allows ({lk("/bess-configurator/", "BESS Configurator")}). '
+                 f'<b>The wrong optimizer:</b> another optimizer would earn more with the same battery ({lk("/bess-broker/", "BESS Broker")}). '
+                 f'<b>Too little monitoring:</b> underperformance goes unnoticed, so it carries on ({lk("/bess-backtest/", "BESS Backtest")}).')
+        check = f"""<p class="wy-k">Check your own battery</p><p class="story-p story">{w_sentence()}</p>{w_hint()}"""
+        leaksb = f"""<p class="wy-k">Where it leaks</p><p class="story-p story">{leaks}</p>"""
+        if v == '10':   # two equal light cards, dots below
+            inner = f"""<div class="wy-head">{w_head()}</div>
+    <div class="wy-two"><div class="wy-light">{check}</div><div class="wy-light">{leaksb}</div></div>
+    <div class="story wy-wide">{w_dots(8)}</div>"""
+        elif v == '11': # two plain columns separated by a rule, same type
+            inner = f"""<div class="wy-head">{w_head()}</div>
+    <div class="wy-two wy-plain"><div>{check}</div><div>{leaksb}</div></div>
+    <div class="story wy-wide">{w_dots(8)}</div>"""
+        else:           # one light card, two halves, dots inside
+            inner = f"""<div class="wy-head">{w_head()}</div>
+    <div class="wy-light wy-one"><div class="wy-two wy-halves"><div>{check}</div><div>{leaksb}</div></div>{w_dots(6)}</div>"""
     elif v in ('6', '7', '8', '9'):
         cols = ''.join(f'<div><b>{a}</b><p>{b}</p><a href="{h}">{n} →</a></div>' for a, b, h, n in cs)
         check = f"""<p class="wy-k">Check your own battery</p><p class="story-p story">{w_sentence()}</p>{w_hint()}"""
@@ -850,7 +868,7 @@ for lang in LANGS:
     pre = '' if lang == 'en' else 'nl/'
     write(pre + 'index.html', home(t))
     if os.environ.get('WHY_OPTIONS'):
-        opts = ''.join(f'<div class="dark"><p class="tp-label">Version {v}</p></div>' + why_section(v) for v in '246789')
+        opts = ''.join(f'<div class="dark"><p class="tp-label">Version {v}</p></div>' + why_section(v) for v in ('10','11','12'))
         write('why-options/index.html', page_shell(t, '/why-options/', 'Options', '', '<div class="page-hero" id="main"><h1>Our why: 5 versions</h1><p>Choose one for the homepage. All figures can be changed.</p></div>', opts))
     write(pre + 'terms/index.html', terms(t))
     write(pre + 'privacy/index.html', privacy(t))
