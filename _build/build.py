@@ -368,7 +368,7 @@ def resources(t):
 
 ROLES = [
   ('Commercial Lead', 'Amsterdam',
-   'Win and serve BESS owners and the installers who build for them, from the first conversation to a client who is live and stays happy.',
+   'Sell the ICM's solutions to BESS owners and the installers who work with them, and get the first clients live. You own the pipeline, from first call to signed contract.',
    ['Build relationships with installers and developers who bring us BESS owners (3-30 MW)',
     'Run discovery calls and present Configurator, Backtest and Broker results',
     'Lead technical onboarding: data intake, EMS and meter connection, switch plan',
@@ -378,7 +378,7 @@ ROLES = [
     'Fluent in Dutch and English',
     'Knows imbalance, FCR and aFRR, or learns fast']),
   ('BESS Analyst', 'Amsterdam',
-   'Own the numbers behind every ICM result: the market models, the perfect-foresight backtest and the data pipelines that feed them.',
+   'Build the revenue models, the backtest and the data pipelines behind every ICM result, and explain the outcome to clients.',
    ['Build and maintain the revenue models for imbalance, FCR, aFRR and day-ahead',
     'Collect, clean and automate battery and market data',
     'Follow market design and regulation (TenneT, ACM, grid congestion) and translate it into our methodology',
@@ -413,9 +413,9 @@ def company(t):
   <div class="wrap">
     <p class="co-label">The team</p>
     <div class="team">
-      <a class="member" href="https://www.linkedin.com/in/idel%C3%A8s-kaandorp/" target="_blank" rel="noopener"><img class="ph" src="/assets/team-ideles.jpg" alt="Idelès Kaandorp" width="600" height="600" loading="lazy"><b>Idelès Kaandorp</b><span class="m-bio">Founder. Owns overall strategy, culture, team and commercial development, builds participant relationships and leads fundraising. MSc in Pure Mathematics from King's College London and MBA from Harvard Business School. Worked at McKinsey &amp; Company from 2017 to 2019 and from 2022 to 2025, on energy projects.</span></a>
-      <a class="member" href="https://www.linkedin.com/in/edo-rivai-78b66a17/" target="_blank" rel="noopener"><img class="ph" src="/assets/team-edo.jpg" alt="Edo Rivai" width="512" height="512" loading="lazy"><b>Edo Rivai</b><span class="m-bio">Senior software developer with a track record building scalable software. Responsible for platform design, partner integrations, infrastructure and DevOps, and API delivery: ensures API integration with selected EMS and metering service providers (MSPs), develops the API sandbox and owns technical onboarding.</span></a>
-      <div class="member"><span class="ph ph-empty ph-init" aria-hidden="true"><i>JW</i></span><b>Jesse Willis</b><span class="m-bio">Project manager with a background as industrial design engineer. Plans deliverables, scope, budget and time across the ICM's work, and supports commercial development: discovery calls with BESS owners and installers, presenting results and closing the first clients.</span></div>
+      <a class="member" href="https://www.linkedin.com/in/idel%C3%A8s-kaandorp/" target="_blank" rel="noopener"><img class="ph" src="/assets/team-ideles.jpg" alt="Idelès Kaandorp" width="600" height="600" loading="lazy"><b>Idelès Kaandorp</b><span class="m-bio">Founder. Owns strategy, culture, team, commercial development and fundraising. MSc in Pure Mathematics (King's College London), MBA (Harvard Business School) and McKinsey &amp; Company (2017-2019, 2022-2025), on energy projects.</span></a>
+      <a class="member" href="https://www.linkedin.com/in/edo-rivai-78b66a17/" target="_blank" rel="noopener"><img class="ph" src="/assets/team-edo.jpg" alt="Edo Rivai" width="512" height="512" loading="lazy"><b>Edo Rivai</b><span class="m-bio">Senior software developer. Owns platform design, API integrations with EMS and metering providers, the API sandbox, infrastructure and technical onboarding. Track record building scalable software.</span></a>
+      <div class="member"><span class="ph ph-empty ph-init" aria-hidden="true"><i>JW</i></span><b>Jesse Willis</b><span class="m-bio">Project manager. Owns delivery planning, scope and budget, discovery calls with BESS owners and installers, and closing the first clients. Background as industrial design engineer (Delft).</span></div>
       <div class="member tbc"><span class="ph ph-empty ph-init" aria-hidden="true"><i>+</i></span><b>Coming soon</b><span class="m-bio">A new teammate joins us.</span></div>
       <div class="member tbc"><span class="ph ph-empty ph-init" aria-hidden="true"><i>+</i></span><b>Coming soon</b><span class="m-bio">A new teammate joins us.</span></div>
     </div>
