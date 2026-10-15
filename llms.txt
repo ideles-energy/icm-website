@@ -15,11 +15,14 @@
 - BESS Bridge: an API platform that connects optimizers with local infrastructure, so switching optimizers is less costly and less risky.
 
 ## Pages
-- [Home](https://icm.energy/): the BESS Benchmark, how membership works, interactive demo with fictional data
-- [Solutions](https://icm.energy/solutions/): BESS Benchmark (open now), BESS Backtest, BESS Broker and BESS Bridge (waitlist)
-- [BESS Benchmark FAQ](https://icm.energy/faq/)
+- [Home](https://icm.energy/): independent insight for BESS owners: calculator, backtest and broker
+- [How we can help](https://icm.energy/how-we-can-help/): BESS Calculator, BESS Backtest and BESS Broker
+- [BESS Calculator](https://icm.energy/bess-calculator/)
+- [BESS Backtest](https://icm.energy/bess-backtest/)
+- [BESS Broker](https://icm.energy/bess-broker/)
+- [Talk to us](https://icm.energy/talk-to-us/)
 - [Resources](https://icm.energy/resources/): documents and brand assets
-- [Company](https://icm.energy/company/): who we are, team and open roles
+- [Our story](https://icm.energy/our-story/): who we are, team and open roles
 
 ## Contact
 - ideles@icm.energy

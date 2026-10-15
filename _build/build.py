@@ -226,12 +226,12 @@ def nav(t, other_href):
       <nav aria-label="{t['menu']}">
         <ul class="nav-links">
           <li class="has-sub hide-sm"><button type="button" class="sub-btn" aria-expanded="false" aria-haspopup="true">How we can help</button><ul class="sub">{subs}</ul></li>
-          <li class="hide-sm"><a href="/about-us/">About us</a></li>
+          <li class="hide-sm"><a href="/our-story/">Our story</a></li>
           <li><a class="btn btn-lilac" href="{TALK}">{t['talk']}</a></li>
           <li class="show-sm"><button type="button" class="menu-btn" aria-expanded="false" aria-label="Open menu"><span></span><span></span><span></span></button></li>
         </ul>
       </nav>
-      <div class="m-menu" hidden><p class="m-h">How we can help</p><a class="m-sub" href="/how-we-can-help/">Overview</a>{msubs}<a href="/about-us/">About us</a></div>
+      <div class="m-menu" hidden><p class="m-h">How we can help</p><a class="m-sub" href="/how-we-can-help/">Overview</a>{msubs}<a href="/our-story/">Our story</a></div>
     </header>
 """
 
@@ -246,7 +246,7 @@ def footer(t, other_href):
     <a class="f-logo" href="/" aria-label="The ICM, home"><img src="/assets/submark.png" alt="The ICM" width="302" height="449" loading="lazy"></a>
     <nav class="f-links" aria-label="Footer">
       <a href="/how-we-can-help/">How we can help</a>
-      <a href="/about-us/">About us</a>
+      <a href="/our-story/">Our story</a>
       <a href="/resources/">Resources</a>
       <a href="{TALK}">Talk to us</a>
     </nav>
@@ -365,7 +365,7 @@ ROLES = [('Founders Associate', 'Amsterdam'), ('Commercial Lead', 'Amsterdam'), 
 def company(t):
     rows = '\n'.join(f'        <li><span><b>{r}</b><em>{c}</em></span><a class="btn btn-lilac" href="/talk-to-us/?role={r.replace(" ", "%20")}">Apply →</a></li>' for r, c in ROLES)
     hero = '''    <div class="page-hero" id="main">
-      <h1>About us</h1>
+      <h1>Our story</h1>
       <img class="co-img" src="/assets/img/company-grid.jpg" alt="High-voltage substation against the evening sky" width="1920" height="1080">
     </div>'''
     body = f'''<section class="dark co-who">
@@ -401,10 +401,10 @@ def company(t):
     <p class="co-open">Open applications are welcome. Please email <a href="mailto:{EMAIL}">{EMAIL}</a>, including a CV and what you want to achieve at the ICM.</p>
   </div>
 </section>'''
-    ld = {"@context": "https://schema.org", "@type": "AboutPage", "url": "https://icm.energy/about-us/", "mainEntity": {"@type": "Organization", "@id": "https://icm.energy/#org", "name": "Independent Capacity Market B.V.", "alternateName": "The ICM", "logo": "https://icm.energy/assets/logo-header.png", "url": "https://icm.energy/",
+    ld = {"@context": "https://schema.org", "@type": "AboutPage", "url": "https://icm.energy/our-story/", "mainEntity": {"@type": "Organization", "@id": "https://icm.energy/#org", "name": "Independent Capacity Market B.V.", "alternateName": "The ICM", "logo": "https://icm.energy/assets/logo-header.png", "url": "https://icm.energy/",
           "founder": {"@type": "Person", "name": "Idelès Kaandorp", "sameAs": "https://www.linkedin.com/in/idel%C3%A8s-kaandorp/"},
           "employee": [{"@type": "Person", "name": "Idelès Kaandorp", "sameAs": "https://www.linkedin.com/in/idel%C3%A8s-kaandorp/"}, {"@type": "Person", "name": "Edo Rivai", "sameAs": "https://www.linkedin.com/in/edo-rivai-78b66a17/"}]}}
-    return page_shell(t, '/about-us/', 'About us: the team behind the Independent Capacity Market | The ICM', 'About the Independent Capacity Market: who we are, our team and open roles in Amsterdam.', hero, body, ld)
+    return page_shell(t, '/our-story/', 'Our story: the team behind the Independent Capacity Market | The ICM', 'About the Independent Capacity Market: who we are, our team and open roles in Amsterdam.', hero, body, ld)
 
 ICONS = {
   'calculator': '<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 11h.01M12 11h.01M16 11h.01M8 15h.01M12 15h.01M16 15h.01M8 18h4"/>',
@@ -515,27 +515,24 @@ def home(t):
   <div class="wrap">
     <div class="section-head center">
       <span class="eyebrow">Why trust the ICM</span>
-      <h2>Independent by design, supported by the Province of Noord-Holland</h2>
+      <h2>A method you can check, an independent view you can rely on</h2>
     </div>
-    <div class="proof">
-      <div class="proof-logo" role="img" aria-label="Provincie Noord-Holland"><span>Provincie</span><b>Noord-Holland</b></div>
-      <ul class="proof-list">
-        <li><b>Independent.</b> We are not owners and not optimizers. We own no batteries and never will.</li>
-        <li><b>Transparent.</b> Our method and its assumptions are written down and open to scrutiny.</li>
-        <li><b>Based on your own data.</b> Results come from your optimizer report and meter data, not from a theoretical battery.</li>
-      </ul>
-    </div>
+    <ul class="proof-list proof-3">
+      <li><b>Independent.</b> We are not owners and not optimizers. We own no batteries and never will.</li>
+      <li><b>Transparent.</b> Our method and its assumptions are written down and open to scrutiny.</li>
+      <li><b>Based on your own data.</b> Results come from your optimizer report and meter data, not from a theoretical battery.</li>
+    </ul>
   </div>
 </section>
 
 <section class="dark about-sec" id="about">
   <div class="wrap about-grid2">
     <div class="about-card">
-      <span class="eyebrow why-eyebrow">About us</span>
+      <span class="eyebrow why-eyebrow">Our story</span>
       <h2>Why an Independent Capacity Market matters</h2>
       <p>We are not owners. We are not optimizers. Nor will we ever be.</p>
       <p>We are an energy tech company. We serve those who add capacity to the grid, but are in the dark on the potential of their assets. We compare BESS-to-BESS, introduce owners to optimizers and oversee the switch, so your battery keeps earning.</p>
-      <div class="cta-row" style="justify-content:flex-start"><a class="btn btn-lilac" href="{TALK}">{t['talk']}</a><a class="btn btn-outline" href="/about-us/">About us</a></div>
+      <div class="cta-row" style="justify-content:flex-start"><a class="btn btn-lilac" href="{TALK}">{t['talk']}</a><a class="btn btn-outline" href="/our-story/">Our story</a></div>
     </div>
     <div class="about-visual"><img class="about-img" src="/assets/img/about-pylon.jpg" alt="High-voltage pylon against the evening sky" width="960" height="1080" loading="lazy"></div>
   </div>
@@ -689,14 +686,7 @@ def talk(t):
       <h1>Find the right fit as an owner, installer or optimizer</h1>
       <p>You are ready to learn more. Use the form to give us a bit more information about your context and objectives. Alternatively, you can email us directly at <a href="mailto:ideles@icm.energy">ideles@icm.energy</a>.</p>
     </div>"""
-    topics = ''.join(f'<a class="topic" href="{TALK}?topic={k}#form">{n}</a>' for k, n, *_ in PROPS)
-    body = f"""<section class="talk-sec">
-  <div class="wrap">
-    <div class="section-head center"><h2>What would you like to talk about?</h2></div>
-    <div class="topics">{topics}</div>
-  </div>
-</section>
-<section class="talk-form" id="form">
+    body = f"""<section class="talk-form" id="form">
   <div class="wrap">
     <div class="form fillout">
       <div style="width:100%;height:640px" data-fillout-id="icWpPN8hsgus" data-fillout-embed-type="standard" data-fillout-inherit-parameters data-fillout-dynamic-resize></div>
@@ -717,7 +707,7 @@ def talk(t):
         'Talk to the ICM about the BESS Calculator, BESS Backtest or BESS Broker. Book a 45-minute call to share your context and objectives and receive a full proposal.', hero, body)
 
 
-REDIRECT = '''<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Careers | The ICM</title><meta name="robots" content="noindex"><link rel="canonical" href="https://icm.energy/about-us/#careers"><meta http-equiv="refresh" content="0; url=/about-us/#careers"></head><body><a href="/about-us/#careers">Careers have moved to our company page.</a></body></html>'''
+REDIRECT = '''<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Careers | The ICM</title><meta name="robots" content="noindex"><link rel="canonical" href="https://icm.energy/our-story/#careers"><meta http-equiv="refresh" content="0; url=/our-story/#careers"></head><body><a href="/our-story/#careers">Careers have moved to our company page.</a></body></html>'''
 
 def write(rel, html):
     p = os.path.join(ROOT, rel)
@@ -733,7 +723,7 @@ for lang in LANGS:
     if lang == 'en':
         write('careers/index.html', REDIRECT)
         write('resources/index.html', resources(t))
-        write('about-us/index.html', company(t))
+        write('our-story/index.html', company(t))
         write('how-we-can-help/index.html', solutions(t))
         write('bess-calculator/index.html', calculator_page(t))
         write('bess-backtest/index.html', backtest_page(t))
