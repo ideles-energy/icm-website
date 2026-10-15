@@ -1107,3 +1107,18 @@ footer { padding: 48px 0 32px; }
 .f-mail, .f-mail a { font-size: 11px; }
 .section-head p, .props-sec .section-head p { font-size: 15px; }
 .prop p { font-size: 14px; font-weight: 500; }
+
+/* v17: sizes slightly up again, copyright under the email */
+.cta-band h2 { font-size: clamp(28px, 3.2vw, 35px); }
+.cta-band p { font-size: 16px; }
+.about-card p { font-size: 14.5px; }
+.foot2 { font-size: 12px; }
+.f-name, .f-tag { font-size: 12px; }
+.f-links a { font-size: 12.5px; }
+.f-legal, .f-legal p { font-size: 10.5px; }
+.f-mail, .f-mail a { font-size: 12px; }
+.f-mail p { margin: 0 0 6px; font-size: 12px; color: rgba(255,255,255,.8); }
+.f-mail .f-copy { font-size: 10.5px; color: rgba(255,255,255,.7); margin: 0; }
+.wy-bul li b { color: #fff; }
+.wy-bul { font-size: 17px; line-height: 1.6; }
+.wy-bul li { margin-bottom: 14px; }

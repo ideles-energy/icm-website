@@ -69,7 +69,7 @@ T = {
   f_submit='Send', f_fine='Details are used only to get in touch about the ICM.', f_ok='Thank you – we will be in touch.',
   foot_tag='The ICM brings clarity, trusted partners and continuity to those adding capacity to the grid.',
   founded='Founded by', foot_bench='Learn more', methodology='Methodology', contact='Contact',
-  terms='Terms & Conditions', privacy='Privacy statement', disclaimer='Benchmark figures are outcome data as reported by optimizers, not advice.',
+  terms='Terms & Conditions', privacy='Privacy statement', cookie='Cookie policy', disclaimer='Benchmark figures are outcome data as reported by optimizers, not advice.',
   faq_title='Frequently asked questions about the BESS Benchmark | The ICM', faq_desc='Answers to common questions about the BESS Benchmark: data, costs, privacy and who can join.',
   faq_h='Frequently asked questions', faq_lead='Real, anonymised revenues, compared BESS-to-BESS. Missing something? Just ask us.', faq_more='Still have a question?',
   faqs=[
@@ -132,7 +132,7 @@ T = {
   f_submit='Vraag een intake aan', f_fine='We gebruiken je gegevens alleen om contact met je op te nemen over de ICM.', f_ok='Dank je – we nemen contact met je op.',
   foot_tag='The Independent Capacity Market (“de ICM”) brengt duidelijkheid, betrouwbare partners en continuïteit voor wie capaciteit toevoegt aan het net.',
   founded='Independent Capacity Market B.V., Amsterdam. Opgericht door', foot_bench='BESS Benchmark', methodology='Methodologie (Engels)', contact='Contact',
-  terms='Algemene voorwaarden', privacy='Privacyverklaring', disclaimer='Benchmarkcijfers zijn uitkomstdata zoals gerapporteerd door optimizers, geen advies.',
+  terms='Algemene voorwaarden', privacy='Privacyverklaring', cookie='Cookiebeleid', disclaimer='Benchmarkcijfers zijn uitkomstdata zoals gerapporteerd door optimizers, geen advies.',
   faq_title='Veelgestelde vragen – BESS Benchmark | de ICM', faq_desc='Antwoorden op veelgestelde vragen over de BESS Benchmark: data, kosten, privacy en wie mee kan doen.',
   faq_h='Veelgestelde vragen', faq_lead='Korte antwoorden over de BESS Benchmark. Mis je iets? Vraag het ons in de intake.', faq_more='Nog een vraag?',
   faqs=[
@@ -152,24 +152,30 @@ T = {
  ),
 }
 
-PRIVACY = {
- 'en': [
-  ('Who we are', 'Independent Capacity Market B.V. (“the ICM”), Amsterdam, is responsible for the personal data described here. Contact: <a href="mailto:ideles@icm.energy">ideles@icm.energy</a>.'),
-  ('What we collect', 'When you use the contact form: your name, company, email address, portfolio or project size and message. The website does not use tracking or analytics cookies.'),
-  ('Why', 'To answer your request and plan an intake. We do not sell your data or use it for other purposes.'),
-  ('Who processes it for us', 'Fillout receives the contact form on our behalf and stores it in the United States.'),
-  ('How long we keep it', 'Contact details are kept as long as needed to follow up on your request, and at most two years after our last contact, unless you become a member.'),
-  ('Your rights', 'You can ask to see, correct or delete your data, or object to its use, by emailing <a href="mailto:ideles@icm.energy">ideles@icm.energy</a>. You can also file a complaint with the Dutch Data Protection Authority (Autoriteit Persoonsgegevens).'),
- ],
- 'nl': [
-  ('Wie we zijn', 'Independent Capacity Market B.V. (“de ICM”), Amsterdam, is verantwoordelijk voor de persoonsgegevens die hier worden beschreven. Contact: <a href="mailto:ideles@icm.energy">ideles@icm.energy</a>.'),
-  ('Wat we verzamelen', 'Via het contactformulier: je naam, bedrijf, e-mailadres, omvang van je portefeuille en je bericht. De website gebruikt geen tracking- of analytische cookies.'),
-  ('Waarom', 'Om je verzoek te beantwoorden en een intake te plannen. We verkopen je gegevens niet en gebruiken ze niet voor andere doelen.'),
-  ('Wie ze voor ons verwerkt', 'Fillout ontvangt het contactformulier namens ons en slaat het op in de Verenigde Staten.'),
-  ('Hoe lang we ze bewaren', 'Contactgegevens bewaren we zolang nodig is om je verzoek op te volgen, en maximaal twee jaar na ons laatste contact, tenzij je lid wordt.'),
-  ('Jouw rechten', 'Je kunt je gegevens inzien, laten corrigeren of verwijderen, of bezwaar maken tegen het gebruik, via <a href="mailto:ideles@icm.energy">ideles@icm.energy</a>. Je kunt ook een klacht indienen bij de Autoriteit Persoonsgegevens.'),
- ],
-}
+PRIVACY_EN = [
+ ('About this statement', 'This privacy statement explains how Independent Capacity Market B.V. (“the ICM”, “we”, “us”), Amsterdam, handles personal data collected through icm.energy and through our contact with owners, installers, optimizers and other visitors. It applies to this website. Other ICM services, such as the BESS Benchmark app or a BESS Backtest, may come with additional terms or notices.'),
+ ('Who is responsible', 'The ICM is the controller of the personal data described here. You can reach us at <a href="mailto:info@icm.energy">info@icm.energy</a>.'),
+ ('Personal data we collect', 'We collect the data you give us when you use the contact form or email us: your name, company, email address, the size of your portfolio or project, and your message. We also receive technical data that every website receives, such as your IP address and browser type, when your browser requests a page. We do not ask for special categories of personal data and we ask you not to send them to us.'),
+ ('How we use personal data', 'We use your data to answer your request, plan a 45-minute call and prepare a proposal, to keep our website secure and working, and to meet legal obligations. We do not sell your data, we do not use it for advertising and we do not use it for automated decision-making.'),
+ ('Legal bases', 'We rely on our legitimate interest in answering business enquiries and keeping our website secure, on steps taken at your request before entering into a contract, on a legal obligation where one applies, and on your consent where we ask for it.'),
+ ('Who we share it with', 'We share personal data only with service providers that help us run our business, under agreements that protect your data. Fillout receives the contact form on our behalf. Our hosting provider, GitHub Pages, serves the website. We may also share data with advisers or authorities where the law requires.'),
+ ('Transfers outside the EEA', 'Some of these providers are based in, or store data in, the United States. Where that is the case we rely on safeguards such as the EU-US Data Privacy Framework or standard contractual clauses.'),
+ ('How long we keep it', 'We keep contact details for as long as needed to follow up on your request and at most two years after our last contact, unless you become a client or member, or the law requires us to keep them longer.'),
+ ('How we protect it', 'We limit access to personal data to people who need it, use trusted providers and keep our systems up to date. No online service is completely secure, so please do not send us confidential data you do not need to share.'),
+ ('Your rights', 'You can ask to see, correct, delete or receive a copy of your personal data, restrict or object to its use, and withdraw consent you have given. Email <a href="mailto:info@icm.energy">info@icm.energy</a> and we will respond within one month. You can also file a complaint with the Dutch Data Protection Authority (Autoriteit Persoonsgegevens).'),
+ ('Cookies', 'The ICM website does not use analytics or advertising cookies. See our <a href="/cookies/">cookie policy</a> for details.'),
+ ('Changes to this statement', 'We may update this statement from time to time. The date below shows when it was last changed.'),
+]
+PRIVACY = {'en': PRIVACY_EN, 'nl': PRIVACY_EN}
+
+COOKIES_EN = [
+ ('What are cookies', 'Cookies are small text files that a website stores on your device when you visit it. Similar technologies, such as local storage and pixels, work in the same way. We use the word “cookies” for all of them.'),
+ ('How we use cookies', 'The ICM website is built to work without tracking. We do not use analytics cookies, advertising cookies or social media tracking, and we do not build profiles of visitors.'),
+ ('Cookies on our website', '<b>Our own website.</b> The pages of icm.energy do not set cookies of their own and do not store data in your browser to identify you.<br><b>Third-party content.</b> The contact form on our Talk to us page is provided by Fillout. When you load the form, Fillout may set cookies or similar technologies needed to show and submit it. Their use is governed by Fillout’s own policies.'),
+ ('Managing cookies', 'You can block or delete cookies in your browser settings. If you do, parts of the website, such as the contact form, may not work as intended. If you prefer, you can also email us at <a href="mailto:info@icm.energy">info@icm.energy</a> instead of using the form.'),
+ ('If this changes', 'If we start using analytics or other cookies that need consent, we will ask for your permission first and update this policy.'),
+ ('More information', 'See our <a href="/privacy/">privacy statement</a> for how we handle personal data, or contact us at <a href="mailto:info@icm.energy">info@icm.energy</a>.'),
+]
 
 GA = '''<script async src="https://www.googletagmanager.com/gtag/js?id=G-8RMBG4V4VG"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-8RMBG4V4VG');</script>'''
@@ -250,11 +256,10 @@ def footer(t, other_href):
       <a href="/resources/">Resources</a>
       <a href="{TALK}">Talk to us</a>
     </nav>
-    <p class="f-mail"><a href="mailto:info@icm.energy">info@icm.energy</a></p>
+    <div class="f-mail"><p><a href="mailto:info@icm.energy">info@icm.energy</a></p><p class="f-copy">© 2026 Independent Capacity Market B.V.</p></div>
     <div class="f-legal">
       <p>Website designed by <a href="https://www.saltandchalk.co.uk" target="_blank" rel="noopener">Salt &amp; Chalk</a></p>
-      <p><a href="{b}terms/">{t['terms']}</a> | <a href="{b}privacy/">{t['privacy']}</a></p>
-      <p>© 2026 Independent Capacity Market B.V.</p>
+      <p><a href="{b}terms/">{t['terms']}</a> | <a href="{b}privacy/">{t['privacy']}</a> | <a href="{b}cookies/">{t['cookie']}</a></p>
     </div>
   </div>
 </footer>
@@ -314,9 +319,14 @@ def terms(t):
     body = f'    <div class="prose">{t["terms_body"]}</div>'
     return simple_page(t, t['base'] + 'terms/', t['other'] + 'terms/', t['terms_title'], 'How to receive the Terms & Conditions of the BESS Benchmark by the Independent Capacity Market.', t['terms_h'], '', body)
 
+def cookies(t):
+    secs = ''.join(f'<h2>{h}</h2><p>{p}</p>' for h, p in COOKIES_EN)
+    body = f'    <div class="prose">{secs}<p style="color:var(--muted);font-size:14px">Last updated: 15 October 2026</p></div>'
+    return simple_page(t, t['base'] + 'cookies/', t['other'] + 'cookies/', 'Cookie policy | The ICM', 'How the Independent Capacity Market website uses cookies and similar technologies.', 'Cookie policy', '', body)
+
 def privacy(t):
     secs = ''.join(f'<h2>{h}</h2><p>{p}</p>' for h, p in PRIVACY[t['lang']])
-    body = f'    <div class="prose">{secs}<p style="color:var(--muted);font-size:14px">29-09-2026</p></div>'
+    body = f'    <div class="prose">{secs}<p style="color:var(--muted);font-size:14px">Last updated: 15 October 2026</p></div>'
     return simple_page(t, t['base'] + 'privacy/', t['other'] + 'privacy/', t['privacy_title'], 'How the Independent Capacity Market handles personal data from its website and contact form.', t['privacy_h'], '', body)
 
 
@@ -541,20 +551,7 @@ def home(t):
 </section>
 
 
-<section class="dark trust-sec">
-  <div class="wrap trust-grid">
-    <div>
-      <span class="eyebrow why-eyebrow">Why trust the ICM</span>
-      <h2>Independent, and connected to your battery</h2>
-    </div>
-    <ul class="proof-list">
-      <li><b>Independent.</b> We are not owners and not optimizers. We own no batteries and never will.</li>
-      <li><b>Based on your own data.</b> Results come from your optimizer report and meter data, not from a theoretical battery.</li>
-      <li><b>Connected live.</b> We link directly to your energy management system and meters, so we can follow what your battery does as it happens.</li>
-      <li><b>Checked by people.</b> Every result is quality controlled before it reaches you.</li>
-    </ul>
-  </div>
-</section>
+
 
 <section class="dark about-sec" id="about">
   <div class="wrap about-grid2">
@@ -713,7 +710,7 @@ def why_section(v='1'):
     </div>
     {w_can()}"""
     elif v == '13':
-        bl = ''.join(f'<li>{x}</li>' for x in ('The battery is not set up for what your site allows.', 'Another optimizer would earn more with the same battery.', 'Underperformance goes unnoticed, so it carries on.'))
+        bl = ''.join(f'<li>{x}</li>' for x in ('<b>The set-up.</b> The number of batteries, the MW and MWh and the C-rate decide what a site can earn. A set-up that does not fit your site\'s restrictions leaves revenue on the table from day one.', '<b>The optimizer.</b> Optimizers do not earn the same with the same battery, and without a like-for-like comparison you cannot tell whether yours is among the weaker ones.', '<b>The follow-up.</b> Without a clear reference, a shortfall looks like a bad month. It can run for years before anyone notices.'))
         inner = f"""<div class="wy-head">{w_head()}</div>
     <div class="story wy-wide wy-v13">{w_dots(8)}
       <div class="wy-two wy-plain">
@@ -881,6 +878,7 @@ for lang in LANGS:
         write('why-options/index.html', page_shell(t, '/why-options/', 'Options', '', '<div class="page-hero" id="main"><h1>Our why: 5 versions</h1><p>Choose one for the homepage. All figures can be changed.</p></div>', opts))
     write(pre + 'terms/index.html', terms(t))
     write(pre + 'privacy/index.html', privacy(t))
+    if lang == 'en': write('cookies/index.html', cookies(t))
     if lang == 'en':
         write('careers/index.html', REDIRECT)
         write('resources/index.html', resources(t))
