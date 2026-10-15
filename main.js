@@ -126,3 +126,15 @@ document.querySelectorAll('.info-i button').forEach(function (b) {
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 })();
+
+/* Talk to us: always start at the top (the Fillout embed can pull the page down) */
+(function () {
+  if (!/^\/talk-to-us\/?$/.test(location.pathname) || location.hash) return;
+  var moved = false;
+  function mark() { moved = true; }
+  ['wheel', 'touchstart', 'keydown', 'mousedown'].forEach(function (e) { window.addEventListener(e, mark, { passive: true, once: true }); });
+  try { history.scrollRestoration = 'manual'; } catch (e) {}
+  function top() { if (!moved) window.scrollTo(0, 0); }
+  top(); window.addEventListener('load', top);
+  [300, 900, 1800, 3000].forEach(function (t) { setTimeout(top, t); });
+})();

@@ -1227,3 +1227,30 @@ header.nav a b { font-size: 14px !important; } header.nav a span:not(.nw) { font
 .member .ph-init i { font-style: normal; font-size: 56px; font-weight: 700; color: var(--cyan); opacity: .6; letter-spacing: -.02em; }
 .member.tbc { display: block; }
 @media (max-width: 760px) { .team { grid-template-columns: minmax(0, 1fr); } }
+
+/* v26: open roles as accordion on a light panel; team responsibilities */
+.co-careers { background: #F1F6F8; color: var(--teal); padding: 72px 0 96px; }
+.co-careers .co-label, .co-careers .co-big, .co-careers .co-big span { color: var(--teal); }
+.co-careers hr { border-top: 1.5px solid rgba(39,74,80,.35); }
+.co-acc { display: grid; gap: 14px; margin-top: 8px; }
+.co-role { border: 2px solid var(--teal); border-radius: 28px; background: #fff; }
+.co-role summary { display: flex; align-items: center; gap: 16px; padding: 22px 28px; cursor: pointer; list-style: none; }
+.co-role summary::-webkit-details-marker { display: none; }
+.co-role summary b { font-size: 26px; font-weight: 600; color: var(--teal); }
+.co-role summary em { font-style: normal; color: var(--teal); opacity: .75; font-size: var(--body); }
+.co-pm { margin-left: auto; width: 20px; height: 20px; position: relative; flex: none; }
+.co-pm::before, .co-pm::after { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 2px; background: var(--teal); transition: transform .2s; }
+.co-pm::after { transform: rotate(90deg); }
+.co-role[open] .co-pm::after { transform: rotate(0); }
+.co-role summary:focus-visible { outline: 3px solid var(--violet); outline-offset: 2px; border-radius: 28px; }
+.co-body { display: grid; grid-template-columns: 1.1fr 1fr 1fr; gap: 32px; padding: 4px 28px 28px; }
+.co-body p { color: var(--teal); font-size: var(--body); line-height: 1.55; margin: 0 0 20px; }
+.co-body h4 { margin: 0 0 8px; font-size: 13px; letter-spacing: .06em; text-transform: uppercase; font-weight: 700; color: var(--teal); }
+.co-body ul { margin: 0; padding-left: 1.1em; color: var(--teal); font-size: 15px; line-height: 1.55; }
+.co-body li { margin: 0 0 6px; }
+@media (max-width: 900px) { .co-body { grid-template-columns: minmax(0, 1fr); gap: 20px; } .co-role summary { padding: 18px 20px; flex-wrap: wrap; } .co-role summary b { font-size: 22px; } .co-body { padding: 0 20px 22px; } }
+.member .m-resp { display: block; color: rgba(255,255,255,.7); font-size: 15px; line-height: 1.5; margin-top: 10px; }
+.co-role > .co-body { display: grid; grid-template-columns: 1.1fr 1fr 1fr; flex-direction: initial; gap: 32px; }
+.co-role .co-body > div { display: block; }
+.co-role .co-body h4 { margin-top: 0; }
+@media (max-width: 900px) { .co-role > .co-body { grid-template-columns: minmax(0, 1fr); gap: 20px; } }

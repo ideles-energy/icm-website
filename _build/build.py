@@ -392,9 +392,9 @@ ROLES = [
 
 def company(t):
     def li(items): return ''.join(f'<li>{i}</li>' for i in items)
-    rows = '\n'.join(f'''        <li class="co-role"><div><b>{r}</b><em>{c}</em></div><p>{m}</p><h4>What you will do</h4><ul>{li(do)}</ul><h4>Who you are</h4><ul>{li(you)}</ul><a class="btn btn-lilac" href="/talk-to-us/?role={r.replace(" ", "%20")}">Apply →</a></li>''' for r, c, m, do, you in ROLES)
+    rows = '\n'.join(f'''      <details class="co-role" name="roles"><summary><b>{r}</b><em>{c}</em><i class="co-pm" aria-hidden="true"></i></summary><div class="co-body"><div><p>{m}</p><a class="btn btn-lilac" href="/talk-to-us/?role={r.replace(" ", "%20")}">Apply →</a></div><div><h4>What you will do</h4><ul>{li(do)}</ul></div><div><h4>Who you are</h4><ul>{li(you)}</ul></div></div></details>''' for r, c, m, do, you in ROLES)
     rows += f'''
-        <li class="co-role co-open-app"><div><b>Open application</b><em>Amsterdam</em></div><p>Don't see your role? Open applications are welcome. Tell us what you want to achieve at the ICM.</p><a class="btn btn-lilac" href="mailto:{EMAIL}">Email us →</a></li>'''
+      <details class="co-role co-open-app" name="roles"><summary><b>Open application</b><em>Amsterdam</em><i class="co-pm" aria-hidden="true"></i></summary><div class="co-body"><div><p>Don't see your role? Open applications are welcome. Tell us what you want to achieve at the ICM.</p><a class="btn btn-lilac" href="mailto:{EMAIL}">Email us →</a></div></div></details>'''
     hero = '''    <div class="page-hero" id="main">
       <h1>Our story</h1>
       <img class="co-img" src="/assets/img/company-grid.jpg" alt="High-voltage substation against the evening sky" width="1920" height="1080">
@@ -413,28 +413,21 @@ def company(t):
   <div class="wrap">
     <p class="co-label">The team</p>
     <div class="team">
-      <a class="member" href="https://www.linkedin.com/in/idel%C3%A8s-kaandorp/" target="_blank" rel="noopener"><img class="ph" src="/assets/team-ideles.jpg" alt="Idelès Kaandorp" width="600" height="600" loading="lazy"><b>Idelès Kaandorp</b><span class="m-role">Founder and CEO</span><span class="m-bio">Studied mathematics at the UvA, at King's College London and at Harvard Business School. Previously at McKinsey and InvestNL.</span><em>LinkedIn →</em></a>
-      <a class="member" href="https://www.linkedin.com/in/edo-rivai-78b66a17/" target="_blank" rel="noopener"><img class="ph" src="/assets/team-edo.jpg" alt="Edo Rivai" width="512" height="512" loading="lazy"><b>Edo Rivai</b><span class="m-role">Senior software developer</span><span class="m-bio">Works at Spot AI and builds the ICM platform.</span><em>LinkedIn →</em></a>
-      <div class="member"><span class="ph ph-empty ph-init" aria-hidden="true"><i>JW</i></span><b>Jesse Willis</b><span class="m-role">Project manager</span><span class="m-bio">Background in Delft.</span><em>&nbsp;</em></div>
+      <a class="member" href="https://www.linkedin.com/in/idel%C3%A8s-kaandorp/" target="_blank" rel="noopener"><img class="ph" src="/assets/team-ideles.jpg" alt="Idelès Kaandorp" width="600" height="600" loading="lazy"><b>Idelès Kaandorp</b><span class="m-role">Founder</span><span class="m-bio">MSc in Pure Mathematics from King's College London and an MBA from Harvard Business School. Worked at McKinsey &amp; Company from 2017 to 2019 and from 2022 to 2025, on energy projects.</span><span class="m-resp">Owns overall strategy, culture, team and commercial development. Develops and maintains participant relationships and leads fundraising.</span><em>LinkedIn →</em></a>
+      <a class="member" href="https://www.linkedin.com/in/edo-rivai-78b66a17/" target="_blank" rel="noopener"><img class="ph" src="/assets/team-edo.jpg" alt="Edo Rivai" width="512" height="512" loading="lazy"><b>Edo Rivai</b><span class="m-role">Senior software developer</span><span class="m-bio">Works at Spot AI as senior software developer.</span><span class="m-resp">Responsible for platform design, partner integrations, infrastructure and DevOps, and API delivery. Ensures API integration with selected EMS providers and metering service providers (MSPs), develops the API sandbox and owns technical onboarding.</span><em>LinkedIn →</em></a>
+      <div class="member"><span class="ph ph-empty ph-init" aria-hidden="true"><i>JW</i></span><b>Jesse Willis</b><span class="m-role">Project manager</span><span class="m-bio">Background in Delft.</span><span class="m-resp">Project manager at the ICM, and leads the outreach to installers.</span><em>&nbsp;</em></div>
     </div>
     <div class="team-cta"><a class="btn btn-lilac" href="/talk-to-us/">Get in touch →</a></div>
   </div>
 </section>
-<section class="co-careers co-support-l dark">
-  <div class="wrap support-l">
-    <p class="co-label dark-t">Supported by</p>
-    <img src="/assets/img/provincie-noord-holland.png" alt="Province of Noord-Holland" width="1200" height="233" loading="lazy">
-    <p>The ICM was awarded early-phase funding (Vroegefasefinanciering) by the Province of Noord-Holland.</p>
-  </div>
-</section>
-<section class="co-careers dark" id="careers">
+<section class="co-careers" id="careers">
   <div class="wrap">
     <p class="co-label dark-t">Open roles</p>
     <h2 class="co-big">A more equitable grid.<span>Do work that matters with people who care.</span></h2>
     <hr>
-    <ul class="co-roles">
+    <div class="co-acc">
 {rows}
-    </ul>
+    </div>
   </div>
 </section>'''
     ld = {"@context": "https://schema.org", "@type": "AboutPage", "url": "https://icm.energy/company/", "mainEntity": {"@type": "Organization", "@id": "https://icm.energy/#org", "name": "Independent Capacity Market B.V.", "alternateName": "The ICM", "logo": "https://icm.energy/assets/logo-header.png", "url": "https://icm.energy/",
