@@ -1212,3 +1212,10 @@ header.nav a b { font-size: 14px !important; } header.nav a span:not(.nw) { font
 .res .res-card { border: 2px solid var(--teal); border-radius: 28px; color: var(--teal); }
 .res .res-thumb > div span { font-size: 17px; font-weight: 700; }
 .res .res-thumb small { color: var(--teal); opacity: .75; font-size: 13px; }
+
+/* v24: Who we are, scannable */
+.co-grid .co-lead b { color: var(--white); font-weight: 700; }
+.co-do { list-style: disc; margin: 0 0 26px; padding-left: 1.2em; color: rgba(255,255,255,.92); font-size: var(--body); line-height: 1.6; }
+.co-do li { margin: 0 0 10px; padding-left: 4px; }
+.co-do li::marker { color: var(--cyan); }
+.co-do b { color: var(--white); font-weight: 700; }
