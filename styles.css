@@ -1462,3 +1462,13 @@ body.nav-light.nav-fixed header.nav .btn-lilac{color:#040D1F}
 .prop-demo{margin-top:14px;align-self:flex-start}
 .prop .prop-link{display:inline-block}
 .member .ph,.member .ph-init{max-width:280px}
+
+/* v41 */
+.ws-stat{display:block;font-size:clamp(48px,5vw,64px);font-weight:700;line-height:1;color:var(--cyan);letter-spacing:-.03em;margin-bottom:8px}
+.wy-cards .ws1 b{font-size:var(--body);line-height:1.5;font-weight:600}
+.team{max-width:none}
+.member .ph,.member .ph-init{max-width:none;width:100%;aspect-ratio:14/15 !important}
+
+/* v42 featured Backtest card with callout */
+.featured{position:relative;border-color:#D392EB !important;border-width:2px !important}
+.callout{position:absolute;top:-15px;right:28px;background:#D392EB;color:#040D1F;font-size:13px;font-weight:700;letter-spacing:.02em;padding:6px 14px;border-radius:999px;transform:rotate(-2deg);box-shadow:0 4px 14px rgba(211,146,235,.35)}

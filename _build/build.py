@@ -372,7 +372,7 @@ def resources(t):
 ROLES = [
   ('Commercial Lead', 'Amsterdam',
    'Sell our solutions to BESS owners and the installers who work with them. You own the pipeline, from first call to signed contract and beyond.',
-   ['Connect the ICM with owners, optimizers and the wider BESS ecosystem, and optimizers with owners',
+   ['Be the connector: build and nurture lasting relationships across the BESS ecosystem',
     'Build relationships with installers and developers who bring us BESS owners (3-30 MW)',
     'Run discovery calls and present Configurator, Backtest and Broker results',
     'Guide clients from first call through onboarding, and keep them with us',
@@ -515,7 +515,7 @@ def home(t):
         {"@type": "Organization", "@id": "https://icm.energy/#org", "name": "Independent Capacity Market B.V.", "alternateName": "The ICM", "logo": "https://icm.energy/assets/logo-header.png",
          "url": "https://icm.energy/", "email": EMAIL, "address": {"@type": "PostalAddress", "addressLocality": "Amsterdam", "addressCountry": "NL"},
          "founder": {"@type": "Person", "name": "Idelès Kaandorp", "sameAs": LINKEDIN}}]}
-    cards = ''.join(f"""      <article class="prop">
+    cards = ''.join(f"""      <article class="prop{' featured' if k == 'backtest' else ''}">{CALLOUT if k == 'backtest' else ''}
         <span class="sol-icon" aria-hidden="true">{icon_svg(k)}</span>
         <h3>{n}</h3>
         <p class="prop-lead">{lead}</p>
@@ -583,12 +583,14 @@ def home(t):
 </html>
 '''
 
+CALLOUT = '<span class="callout">Understand where it leaks</span>'
+
 SOL_IMG = {'configurator': ('/assets/img/sol-owner.jpg', 'Wind turbine against a blue sky'),
            'broker': ('/assets/img/sol-optimizer.jpg', 'Abstract grid of glowing data points'),
            'backtest': ('/assets/img/sol-partner.jpg', 'High-voltage substation against the evening sky')}
 
 def sol_card(k, n, href, lead, body, extra):
-    return f"""<article class="sol" id="{k}">
+    return f"""<article class="sol{' featured' if k == 'backtest' else ''}" id="{k}">{CALLOUT if k == 'backtest' else ''}
         <span class="sol-icon" aria-hidden="true">{icon_svg(k)}</span>
         <div class="sol-body">
           <h2>{n}</h2>
@@ -692,7 +694,7 @@ def solutions(t):
     extras = {
       'configurator': 'For owners and developers who plan a battery on a site with solar, wind or a large energy use, and for installers who size systems for customers.',
       'backtest': 'For owners of operating batteries, and for installers who want to give every customer an independent view on what the battery earns.',
-      'broker': 'For owners whose battery objectively earns less than it could. We know the optimizers and keep a finger on the pulse, so you get a better deal in less time.',
+      'broker': 'For owners whose battery objectively earns less than it could, and who want a better deal without spending weeks on the search.',
     }
     blocks = ''.join(sol_block(i, k, n, h, lead, body, extras[k]) for i, (k, n, h, lead, body) in enumerate(PROPS))
     hero = f"""    <div class="page-hero sol-hero2" id="main">
@@ -763,7 +765,7 @@ def w_pill(cls, label, val, mx=''):
     return f'<label class="pill"><input class="in fit {cls}" type="number" min="1" {mx} step="1" value="{val}" aria-label="{label}">{PEN}</label>'
 
 def w_sentence():
-    return f"""<span class="ws1"><b>Same battery, same site, 30% more revenue.</b> <a class="story-src" href="{FLOWER}" target="_blank" rel="noopener">Source: Flower case</a></span>Missed revenue can add up to <b class="out js-missedk">EUR 555k</b> per year. That's for a {w_pill('js-mw','Battery size in MW',10,'max="500"')} MW battery that delivered EUR {w_pill('js-rev','Revenue in thousand EUR per MW per year',185)}k per MW per year. <span class="ws3">Choose to know what you are leaving on the table.</span>"""
+    return f"""<span class="ws1"><span class="ws-stat">+30%</span><b>more revenue. Same battery, same site.</b> <a class="story-src" href="{FLOWER}" target="_blank" rel="noopener">Source: Flower case</a></span>That could be up to <b class="out js-missedk">EUR 555k</b> a year for a {w_pill('js-mw','Battery size in MW',10,'max="500"')} MW battery that delivers EUR {w_pill('js-rev','Revenue in thousand EUR per MW per year',185)}k per MW per year.<span class="ws3">Choose to know what you are leaving on the table.</span>"""
 
 def w_hint():
     return f'<p class="hint">{PEN}Enter figures to adjust. Illustrative example.</p>'
@@ -938,7 +940,7 @@ def talk_proof(v):
         inner = '''<div class="tp-stat"><b>30%</b><span>more revenue</span></div>
       <div><h2>Comparable batteries can earn very different amounts</h2><p>A similar BESS asset, same size and setup, delivered 30% more revenue after switching optimizer. We help you find out where your battery stands.</p><p class="tp-src"><a href="https://www.flower.se/insights/case/ra-energy-switch-optimizer/" target="_blank" rel="noopener">Source: Flower and RA Energy case →</a></p></div>'''
     elif v == 'D':
-        inner = '''<div><h2>What you can expect from us</h2><ul class="tp-list"><li><b>Independent.</b> We don't own batteries and we're not an optimizer.</li><li><b>No obligation.</b> A 45-minute call about your context and objectives.</li><li><b>Then a full proposal.</b> You decide what to do next.</li></ul></div>'''
+        inner = '''<div><h2>What you can expect from us</h2><ul class="tp-list"><li><b>Independent.</b> We do not own, install or optimize.</li><li><b>No obligation.</b> A 45-minute call about your context and objectives.</li><li><b>Then a full proposal.</b> You decide what to do next.</li></ul></div>'''
     else:
         inner = '''<img class="tp-face" src="/assets/team-ideles.jpg" alt="Idelès Kaandorp" width="600" height="600" loading="lazy">
       <div><h2>You talk to the founder</h2><p>Idelès Kaandorp, founder of the ICM, walks through your context and objectives with you. Afterwards you receive a full proposal.</p></div>'''
@@ -966,8 +968,8 @@ def talk(t, variant=None):
     <div class="section-head center"><h2>What to expect</h2></div>
     <div class="expect">
       <div><b>1</b><h3>An open 45-minute conversation</h3><p>An expert from the team talks you through the options for your context and objectives.</p></div>
-      <div><b>2</b><h3>An independent perspective</h3><p>We don't own batteries and we're not an optimizer. Our advice is about your return, not about selling a product.</p></div>
-      <div><b>3</b><h3>A clear plan for your battery</h3><p>You leave knowing what we would do, what it delivers and what it takes from you.</p></div>
+      <div><b>2</b><h3>An independent perspective</h3><p>We do not own, install or optimize. Our advice is about your return, not about selling a product.</p></div>
+      <div><b>3</b><h3>A written proposal</h3><p>Afterwards we send you a written proposal, so you know exactly what happens next.</p></div>
     </div>
   </div>
 </section>
