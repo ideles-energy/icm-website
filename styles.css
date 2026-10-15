@@ -824,3 +824,18 @@ body > footer { margin-top: auto; }
 
 .section-head p, .cta-band p, .hero .lead { text-wrap: pretty; }
 .section-head.center p { text-wrap: balance; }
+
+/* v5 */
+.props-sec .section-head p { max-width: 1080px; text-wrap: balance; }
+.proof-sec { background: #091529; }
+.proof-sec .proof-list { margin: 8px 0 24px; }
+.proof-grid .about-card { padding: clamp(28px, 4vw, 64px); }
+.proof-grid .proof-list li { font-size: 17px; }
+.dots { display: flex; flex-wrap: wrap; gap: 8px; max-width: 360px; }
+.dots i { width: 18px; height: 18px; border-radius: 50%; background: var(--cyan); display: block; }
+.dots i.m { background: #D392EB; }
+.dots-fig { margin: 0; }
+.dots-fig figcaption { margin-top: 12px; color: rgba(255,255,255,.85); font-size: 15px; }
+.dots-fig .story-link { color: #fff; }
+@media (max-width: 900px) { .proof-grid .about-visual { order: 2; } }
+.props-sec .section-head { max-width: 1120px; }

@@ -436,11 +436,11 @@ def icon_svg(k):
 
 PROPS = [
   ('configurator', 'BESS Configurator', '/bess-configurator/', 'Find the optimal system for your context.',
-   'Find out how big your battery should be and whether it pays off. We test sizes against your site and show the expected revenues, payback time and return.'),
+   'Plan a battery that fits your site. We size it, simulate the revenues and show the payback and return, so you know what you invest in.'),
   ('backtest', 'BESS Backtest', '/bess-backtest/', 'Monitor the performance of your BESS.',
-   'See how much of its full potential your battery captures. An independent view on what a trader with perfect foresight could have reasonably earned.'),
+   'See how much of its potential your battery earns, compared with what a trader with perfect foresight could reasonably have earned.'),
   ('broker', 'BESS Broker', '/bess-broker/', 'Outsource the research for a trusted optimizer.',
-   'Fill in one form and we ask trusted optimizers for a quote. You get the offers side by side, and we help you move to the one you choose.'),
+   'Fill in one form and trusted optimizers send you a quote. Compare the offers side by side, and we help you move to the one you choose.'),
 ]
 
 NEWFAQS = [
@@ -509,7 +509,7 @@ def home(t):
     <div class="hero" id="main">
       <div>
         <h1>Secure the true value<br>of a BESS asset</h1>
-        <p class="lead">For owners with a nagging sense their BESS asset could earn more. Find the optimal system for your context, monitor the performance and outsource the research for a trusted optimizer. We are independent: we own no batteries and are not an optimizer.</p>
+        <p class="lead">For owners with a nagging sense their BESS asset could earn more. Find the optimal system for your context, monitor the performance and outsource the research for a trusted optimizer.</p>
         <div class="hero-ctas">
           <a class="btn btn-lilac" href="{TALK}">{t['talk']}</a>
           <a class="btn btn-outline" href="#how">How it works</a>
@@ -531,6 +531,26 @@ def home(t):
   </div>
 </section>
 
+
+<section class="dark proof-sec">
+  <div class="wrap about-grid2 proof-grid">
+    <div class="about-visual"><img class="about-img" src="/assets/img/company-grid.jpg" alt="High-voltage substation against the evening sky" width="960" height="1080" loading="lazy"></div>
+    <div class="about-card">
+      <span class="eyebrow why-eyebrow">Why trust the ICM</span>
+      <h2>Independent, and connected to your battery</h2>
+      <ul class="proof-list">
+        <li><b>Independent.</b> We are not owners and not optimizers. We own no batteries and never will.</li>
+        <li><b>Based on your own data.</b> Results come from your optimizer report and meter data, not from a theoretical battery.</li>
+        <li><b>Connected live.</b> We link directly to your energy management system and meters, so we can follow what your battery does as it happens.</li>
+        <li><b>Checked by people.</b> Every result is quality controlled before it reaches you.</li>
+      </ul>
+      <figure class="dots-fig" aria-label="Ten dots show what a battery earns, three more dots show what a similar battery earned after a better choice">
+        <div class="dots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="m"></i><i class="m"></i><i class="m"></i></div>
+        <figcaption>A similar BESS, same size and setup, can earn <a class="story-link" href="https://www.flower.se/insights/case/ra-energy-switch-optimizer/" target="_blank" rel="noopener">30% more</a> with the right choice.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
 
 <section class="dark about-sec" id="about">
   <div class="wrap about-grid2">
