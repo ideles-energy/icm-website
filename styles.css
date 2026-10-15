@@ -1070,3 +1070,26 @@ h1, h2, h3 { letter-spacing: -0.025em; font-weight: 700; }
 .about-card h2 { font-size: clamp(26px, 2.6vw, 34px); font-weight: 600; max-width: 14em; }
 .about-card p { font-size: 15px; line-height: 1.55; max-width: 25em; margin-bottom: 18px; }
 .about-card .cta-row .btn { font-size: 14px; padding: 12px 22px; }
+
+/* v14: Our why (version 13) and footer closer to Canva */
+.wy-v13 { max-width: none !important; }
+.wy-v13 .wy-two { max-width: none; margin-top: 36px; }
+.wy-v13 .wy-plain > div:first-child { padding-left: 0; }
+.wy-bul { list-style: disc; margin: 0; padding-left: 1.2em; font-size: 18px; line-height: 1.7; color: rgba(255,255,255,.92); }
+.wy-bul li { margin: 0 0 6px; padding-left: 4px; }
+.wy-bul li::marker { color: var(--cyan); }
+footer { padding: 48px 0 32px; }
+.foot2 { font-size: 12.5px; row-gap: 28px; }
+.f-name { font-size: 13px; margin-bottom: 8px; }
+.f-links { gap: 0; line-height: 1.55; }
+.f-legal { font-size: 11px; }
+.f-legal p { margin: 1px 0; }
+.f-mail { font-size: 12.5px; align-self: end; }
+@media (min-width: 761px) { .f-logo img { width: 54px; height: 80px; } }
+
+/* v15: footer with info@ bottom-left, as in Canva */
+@media (min-width: 761px) {
+  .foot2 { grid-template-areas: "about logo links" "mail logo legal"; row-gap: 22px; }
+  .f-mail { align-self: end; justify-self: start; }
+  .f-legal { align-self: end; }
+}

@@ -250,6 +250,7 @@ def footer(t, other_href):
       <a href="/resources/">Resources</a>
       <a href="{TALK}">Talk to us</a>
     </nav>
+    <p class="f-mail"><a href="mailto:info@icm.energy">info@icm.energy</a></p>
     <div class="f-legal">
       <p>Website designed by <a href="https://www.saltandchalk.co.uk" target="_blank" rel="noopener">Salt &amp; Chalk</a></p>
       <p><a href="{b}terms/">{t['terms']}</a> | <a href="{b}privacy/">{t['privacy']}</a></p>
@@ -473,7 +474,7 @@ def faq_block(items, title=None):
   </div>
 </section>"""
 
-def cta_band(t, h="Let's talk about your project", p='Start with a 45-minute call about your context and objectives (for example a portfolio of 3-30 MW BESS assets, or trading revenues below expectations).', topic=None):
+def cta_band(t, h="Let's talk about your project", p='Our starting point is a 45-min call to understand your context and objectives (e.g., portfolio of 3-30 MW assets, trading revenues below expectations). We then get to work.', topic=None):
     q = f'?topic={topic}' if topic else ''
     return f"""<section class="cta-band">
   <div class="wrap">
@@ -518,12 +519,14 @@ def home(t):
         <p class="lead">For those with a nagging sense they could earn more with their battery. Find the optimal system for your context, outsource the search for a trusted optimizer and monitor your performance proactively.</p>
         <div class="hero-ctas">
           <a class="btn btn-lilac" href="{TALK}">{t['talk']}</a>
-          <a class="btn btn-outline" href="#how">How it works</a>
+          <a class="btn btn-outline" href="#how">Learn more</a>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+{why_section(os.environ.get('WHY_VARIANT', '13'))}
 
 <section class="dark props-sec" id="how">
   <div class="wrap">
@@ -537,8 +540,6 @@ def home(t):
   </div>
 </section>
 
-
-{why_section(os.environ.get('WHY_VARIANT', '1'))}
 
 <section class="dark trust-sec">
   <div class="wrap trust-grid">
@@ -711,6 +712,14 @@ def why_section(v='1'):
       <div class="wy-light"><p class="wy-k">Check your own battery</p><p class="story-p story">{w_sentence()}</p>{w_hint()}<h3>Three places it leaks</h3><ol class="wy-causes">{causes}</ol></div>
     </div>
     {w_can()}"""
+    elif v == '13':
+        bl = ''.join(f'<li>{x}</li>' for x in ('The battery is not set up for what your site allows.', 'Another optimizer would earn more with the same battery.', 'Underperformance goes unnoticed, so it carries on.'))
+        inner = f"""<div class="wy-head">{w_head()}</div>
+    <div class="story wy-wide wy-v13">{w_dots(8)}
+      <div class="wy-two wy-plain">
+        <div><p class="wy-k">Check your own battery</p><p class="story-p story">{w_sentence()}</p>{w_hint()}</div>
+        <div><p class="wy-k">Where it leaks</p><ul class="wy-bul">{bl}</ul></div>
+      </div></div>"""
     elif v in ('10', '11', '12'):
         lk = lambda h, n: f'<a class="story-link" href="{h}">{n}</a>'
         leaks = (f'Revenue leaks in three places. <b>The wrong configuration:</b> the battery is not sized or set up for what your site allows ({lk("/bess-configurator/", "BESS Configurator")}). '
