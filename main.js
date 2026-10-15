@@ -116,13 +116,30 @@ document.querySelectorAll('.info-i button').forEach(function (b) {
   var nav = document.querySelector('header.nav');
   if (!nav) return;
   var shell = nav.closest('.hero-shell'), h = 0, fixed = false;
+  function lum(el) {
+    while (el) {
+      var c = getComputedStyle(el).backgroundColor.match(/[\d.]+/g);
+      if (c && (c.length < 4 || +c[3] > 0.5)) return (0.299 * c[0] + 0.587 * c[1] + 0.114 * c[2]) / 255;
+      el = el.parentElement;
+    }
+    return 1;
+  }
+  function tone() {
+    var y = nav.offsetHeight + 2, secs = document.querySelectorAll('.hero-shell, body > section, body > main > section, body > div'), light = false;
+    for (var i = 0; i < secs.length; i++) {
+      var r = secs[i].getBoundingClientRect();
+      if (r.top <= y && r.bottom > y && secs[i] !== nav) { light = lum(secs[i]) > 0.6; }
+    }
+    document.body.classList.toggle('nav-light', light);
+  }
   function onScroll() {
     var should = window.scrollY > (nav.offsetTop + nav.offsetHeight);
-    if (should === fixed) return;
+    if (should === fixed) { if (fixed) tone(); return; }
     if (should) { h = nav.offsetHeight; if (shell) shell.style.paddingTop = h + 'px'; }
     else if (shell) shell.style.paddingTop = '';
     document.body.classList.toggle('nav-fixed', should);
     fixed = should;
+    if (should) tone(); else document.body.classList.remove('nav-light');
   }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
@@ -165,5 +182,21 @@ r.addEventListener('input',u);u();})();
     if(ep){try{navigator.sendBeacon(ep,new Blob([JSON.stringify({email:v,source:'backtest-prototype'})],{type:'application/json'}));}catch(x){}}
     window.open(g.getAttribute('data-target'),'_blank','noopener');
     close();
+  });
+})();
+
+/* Work-email forms on Solutions: validate, then go on to the intake form */
+(function(){
+  var free=/@(gmail|googlemail|hotmail|outlook|live|yahoo|icloud|me|proton|protonmail|aol|gmx|msn)\./i;
+  document.querySelectorAll('.gs-form').forEach(function(f){
+    f.addEventListener('submit',function(e){
+      e.preventDefault();
+      var i=f.querySelector('input'),err=f.querySelector('.gate-err'),v=i.value.trim();
+      if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)||free.test(v)){err.hidden=false;i.focus();return;}
+      err.hidden=true;
+      var ep=window.ICM_GATE_ENDPOINT;
+      if(ep){try{navigator.sendBeacon(ep,new Blob([JSON.stringify({email:v,source:'solutions-get-started'})],{type:'application/json'}));}catch(x){}}
+      location.href='/talk-to-us/?topic=start';
+    });
   });
 })();
