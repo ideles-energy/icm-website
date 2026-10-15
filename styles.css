@@ -886,3 +886,7 @@ h1, h2, h3 { letter-spacing: -0.025em; font-weight: 700; }
 @media (min-width: 801px) { .res-cols .res-lead { min-height: 3.4em; } }
 .res-cols .res-card { height: auto; }
 @media (min-width: 801px) and (max-width: 1100px) { .res-cols .res-lead { min-height: 4.9em; } }
+.res-cols { align-items: stretch; }
+.res-cols .res-sec { display: flex; flex-direction: column; }
+.res-cols .res-card { flex: 1; }
+.res-cols .res-thumb img { aspect-ratio: 16 / 7; object-fit: cover; object-position: top left; }

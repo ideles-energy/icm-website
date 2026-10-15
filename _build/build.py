@@ -344,11 +344,11 @@ def resources(t):
     <section class="res-sec">
       <h2>Documents</h2>
       <p class="res-lead">Read our API documents. Anything missing? Just ask.</p>
-      <div class="res-card res-thumb"><img src="/assets/brand/thumb-api.jpg" alt="" width="1425" height="552" loading="lazy"><div><span>API documents</span><small>Guides and reference for the ICM Platform API</small></div><a class="btn btn-lilac" href="https://docs.icm.energy/" target="_blank" rel="noopener">Access →</a></div>
+      <div class="res-card res-thumb"><img src="/assets/brand/thumb-api.jpg" alt="" width="1400" height="612" loading="lazy"><div><span>API documents</span><small>Guides and reference for the ICM Platform API</small></div><a class="btn btn-lilac" href="https://docs.icm.energy/" target="_blank" rel="noopener">Access →</a></div>
     </section>
     <section class="res-sec">
       <h2>Brand assets</h2>
-      <p class="res-lead">Download the official logos of the ICM for a consistent representation in your designs and communications.</p>
+      <p class="res-lead">Download the official logos of the ICM.</p>
       <div class="res-card res-thumb"><img src="/assets/brand/thumb-logos.jpg" alt="" width="640" height="360" loading="lazy"><div><span>Logos</span><small>PNG and SVG, header and footer versions</small></div><a class="btn btn-lilac" href="/assets/brand/ICM-logos.zip" download>Download →</a></div>
     </section>
   </div>
