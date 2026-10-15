@@ -852,3 +852,10 @@ h1, h2, h3 { letter-spacing: -0.025em; font-weight: 700; }
 .dots i { background: var(--mist); }
 .dots i.m { background: transparent; border: 2px dashed #D392EB; }
 @media (max-width: 600px) { .hero h1 br { display: none; } }
+
+/* v7: original "Our why" (editable sentence + dots) on the home page, left of Why trust the ICM */
+.why-left .why-eyebrow { text-align: left; }
+.why-left .story { text-align: left; margin: 18px 0 0; max-width: none; }
+.why-left .why-fig { margin-top: 28px; }
+.proof-grid { align-items: center; }
+@media (max-width: 900px) { .proof-grid .why-left { order: 0; } }

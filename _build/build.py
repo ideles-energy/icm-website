@@ -435,12 +435,12 @@ def icon_svg(k):
     return f'<svg viewBox="0 0 24 24" fill="none" stroke="#97F2F5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">{ICONS[k]}</svg>'
 
 PROPS = [
-  ('configurator', 'BESS Configurator', '/bess-configurator/', 'Find the optimal system for your context.',
-   'Plan a battery that fits your site. We size it, simulate the revenues and show the payback and return, so you know what you invest in.'),
-  ('backtest', 'BESS Backtest', '/bess-backtest/', 'Monitor the performance of your BESS.',
-   'See how much of its potential your battery earns, compared with what a trader with perfect foresight could reasonably have earned.'),
-  ('broker', 'BESS Broker', '/bess-broker/', 'Outsource the research for a trusted optimizer.',
-   'Fill in one form and trusted optimizers send you a quote. Compare the offers side by side, and we help you move to the one you choose.'),
+  ('configurator', 'BESS Configurator', '/bess-configurator/', 'Design a battery that fits your site.',
+   'We translate your site and objectives into BESS configurations, simulate the revenues and show which MW/MWh gives the highest return.'),
+  ('backtest', 'BESS Backtest', '/bess-backtest/', 'Understand how well your battery is earning.',
+   'We compare your realised revenues with those of a trader with perfect foresight on your site, and alert you when performance persistently falls short.'),
+  ('broker', 'BESS Broker', '/bess-broker/', 'Switch to the optimizer that fits your battery.',
+   'We run a standardised process to source and compare quotes, and manage the switch so your battery keeps trading without interruption.'),
 ]
 
 NEWFAQS = [
@@ -534,7 +534,7 @@ def home(t):
 
 <section class="dark proof-sec">
   <div class="wrap about-grid2 proof-grid">
-    <div class="about-visual"><img class="about-img" src="/assets/img/company-grid.jpg" alt="High-voltage substation against the evening sky" width="960" height="1080" loading="lazy"></div>
+    {why_left(t)}
     <div class="about-card">
       <span class="eyebrow why-eyebrow">Why trust the ICM</span>
       <h2>Independent, and connected to your battery</h2>
@@ -544,10 +544,6 @@ def home(t):
         <li><b>Connected live.</b> We link directly to your energy management system and meters, so we can follow what your battery does as it happens.</li>
         <li><b>Checked by people.</b> Every result is quality controlled before it reaches you.</li>
       </ul>
-      <figure class="dots-fig" aria-label="Ten dots show what a battery earns, three more dots show what a similar battery earned after a better choice">
-        <div class="dots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="m"></i><i class="m"></i><i class="m"></i></div>
-        <figcaption>A similar BESS, same size and setup, can earn <a class="story-link" href="https://www.flower.se/insights/case/ra-energy-switch-optimizer/" target="_blank" rel="noopener">30% more</a> with the right choice.</figcaption>
-      </figure>
     </div>
   </div>
 </section>
@@ -647,26 +643,21 @@ def configurator_page(t):
        ('You see the business case', 'A clear comparison of options, with the assumptions written down, ready for your bank, partner or board.')],
       'Owners and developers planning a battery next to solar, wind or a large energy user, and installers who size systems for customers.')
 
-def backtest_page(t):
-    why = f"""<section class="dark" style="border-top:1px solid rgba(255,255,255,.08)">
-  <div class="wrap">
-    <div class="why-grid">
-    <div>
+def why_left(t):
+    return f"""<div class="why-left">
     <span class="eyebrow why-eyebrow">Our why</span>
     <div class="story" id="calculator" aria-live="polite">
       <p class="story-h">It's a waste to miss out on <b class="out" id="s-missed">EUR 555,000</b> a year.</p>
       <p class="story-p">A similar BESS asset, same size and setup, can deliver <a class="story-link" href="https://www.flower.se/insights/case/ra-energy-switch-optimizer/" target="_blank" rel="noopener">30% more revenue</a>. A <label class="pill"><input class="in" id="s-mw" type="number" min="1" max="500" step="1" value="10" aria-label="Project size in MW"><svg class="pen" viewBox="0 0 16 16" aria-hidden="true"><path d="M11.5 2.5l2 2L6 12l-2.8.8L4 10z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></label> MW project could have earned <b class="out" id="s-should">EUR 240.5k</b> per MW per year, instead of the EUR <label class="pill"><input class="in" id="s-rev" type="number" min="1" step="1" value="185" aria-label="Revenue in thousand EUR per MW per year"><svg class="pen" viewBox="0 0 16 16" aria-hidden="true"><path d="M11.5 2.5l2 2L6 12l-2.8.8L4 10z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></label>k per MW per year it delivered. That's a missed opportunity of <b class="out" id="s-gap">EUR 55.5k</b> per MW.</p>
       <p class="hint"><svg class="pen" viewBox="0 0 16 16" aria-hidden="true"><path d="M11.5 2.5l2 2L6 12l-2.8.8L4 10z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>{t['story_note']}</p>
     </div>
-    </div>
     <figure class="why-fig" aria-hidden="true">
       <svg id="why-dots" role="presentation"></svg>
       <figcaption class="why-legend"><span><i class="d"></i>Delivered <b id="f-del">EUR 1,850,000</b></span><span><i class="m"></i>Missed <b id="f-mis">EUR 555,000</b></span><span class="unit" id="f-unit">1 dot = EUR 10,000 a year</span></figcaption>
     </figure>
-    </div>
-  </div>
-</section>
-"""
+</div>"""
+
+def backtest_page(t):
     example = '''<section class="example-sec">
   <div class="wrap">
     <div class="section-head center"><span class="eyebrow">See it for yourself</span><h2>An example BESS Backtest report</h2><p>Open an interactive report with fictional data: the capture rate, what drives it and the downtime, with the method written underneath.</p></div>
@@ -689,7 +680,7 @@ def backtest_page(t):
        ('We calculate the full potential', 'We model the best result your site could achieve, hour by hour, and compare it with what the battery earned.'),
        ('You see the result and its drivers', 'The capture rate, split into trading, downtime and site limits. If it falls short, you choose what to do next.')],
       'Owners of operating batteries, and installers who deliver a BESS Backtest with each installation to give customers an independent verdict.',
-      extra_top=why + example, faq=NEWFAQS)
+      extra_top=example, faq=NEWFAQS)
 
 def broker_page(t):
     return prop_page(t, 'broker', '/bess-broker/', 'BESS Broker',
