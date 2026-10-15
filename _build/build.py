@@ -403,9 +403,9 @@ def company(t):
   <div class="wrap co-grid">
     <p class="co-label">Who we are</p>
     <div>
-      <p>The ICM is independent insight for BESS owners, installers and developers in the Netherlands: we own no batteries and are not an optimizer. We serve those who add capacity to the grid, but are in the dark on the potential of their assets.</p>
-      <p>We believe in a new standard: a configurator that starts from your site and objectives, backtesting that looks at all constraints, access to trusted optimizers, and switching made less costly and less risky.</p>
-      <p>A more transparent flex space rewards optimizers that perform, builds a stronger grid in uncertain times, and delivers more affordable power to us all. The result is a BESS that keeps earning, backed by an independent view you can share with your bank, installer or insurer.</p>
+      <p>The ICM gives BESS owners, installers and developers in the Netherlands an independent view of what a battery can earn. We own no batteries and we are not an optimizer. We serve those who add capacity to the grid, but are in the dark on the potential of their assets.</p>
+      <p>We think this should be the standard: a configurator that starts from your site and goals, a backtest that checks your revenues against what is reasonably achievable, a trusted route to a better optimizer, and a switch that costs less and carries less risk.</p>
+      <p>A more transparent flex market rewards the optimizers that perform. That builds a stronger grid and makes power more affordable for all of us. For you, it means a battery that keeps earning, backed by an independent view you can share with your bank, installer or insurer.</p>
       <a class="btn btn-lilac" href="/talk-to-us/">Talk to us</a>
     </div>
   </div>
