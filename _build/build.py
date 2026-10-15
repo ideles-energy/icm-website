@@ -569,9 +569,9 @@ def home(t):
 </html>
 '''
 
-SOL_IMG = {'configurator': ('/assets/img/about-pylon.jpg', 'Power lines against the evening sky'),
-           'broker': ('/assets/img/hero-bulb.jpg', 'Glowing light bulb filament'),
-           'backtest': ('/assets/img/company-grid.jpg', 'High-voltage substation against the evening sky')}
+SOL_IMG = {'configurator': ('/assets/img/sol-owner.jpg', 'Wind turbine against a blue sky'),
+           'broker': ('/assets/img/sol-optimizer.jpg', 'Abstract grid of glowing data points'),
+           'backtest': ('/assets/img/sol-partner.jpg', 'High-voltage substation against the evening sky')}
 
 def sol_card(k, n, href, lead, body, extra):
     return f"""<article class="sol" id="{k}">
