@@ -350,7 +350,7 @@ def resources(t):
       <h1>Resources</h1>
       <p>API documents and brand assets of the Independent Capacity Market.</p>
     </div>'''
-    body = f'''<main class="res">
+    body = f'''<main class="res dark">
   <div class="wrap res-cols">
     <section class="res-sec">
       <h2>Documents</h2>
@@ -421,14 +421,14 @@ def company(t):
     <div class="team-cta"><a class="btn btn-lilac" href="/talk-to-us/">Get in touch →</a></div>
   </div>
 </section>
-<section class="co-careers co-support-l">
+<section class="co-careers co-support-l dark">
   <div class="wrap support-l">
     <p class="co-label dark-t">Supported by</p>
     <img src="/assets/img/provincie-noord-holland.png" alt="Province of Noord-Holland" width="1200" height="233" loading="lazy">
     <p>The ICM was awarded early-phase funding (Vroegefasefinanciering) by the Province of Noord-Holland.</p>
   </div>
 </section>
-<section class="co-careers" id="careers">
+<section class="co-careers dark" id="careers">
   <div class="wrap">
     <p class="co-label dark-t">Open roles</p>
     <h2 class="co-big">A more equitable grid.<span>Do work that matters with people who care.</span></h2>

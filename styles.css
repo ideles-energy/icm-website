@@ -1172,3 +1172,35 @@ header.nav a b { font-size: 14px !important; } header.nav a span:not(.nw) { font
 @media (min-width: 901px) { .about-card { aspect-ratio: 482 / 590; } }
 .about-card p { max-width: 23em; }
 @media (min-width: 901px) { .about-card { aspect-ratio: auto; min-height: clamp(520px, 44vw, 640px); } }
+
+/* v22: inner pages follow the homepage format (dark, same cards, same type scale) */
+.page-hero h1 { font-size: clamp(32px, 3.7vw, 47px) !important; color: var(--cyan); }
+.page-hero p { font-size: var(--body); max-width: 560px; }
+/* Solutions */
+.sol { border: 2px solid rgba(255,255,255,.9); border-radius: 28px; padding: 36px 32px; }
+.sol h2 { font-size: 26px !important; font-weight: 600; }
+.sol .sol-lead { font-size: var(--body); font-weight: 700; }
+.sol p { font-size: var(--body); line-height: 1.6; }
+/* Resources */
+.res.dark { background: var(--night); }
+.res.dark h2 { color: var(--white); }
+.res.dark .res-lead { color: rgba(255,255,255,.82); font-size: var(--body); max-width: none; }
+.res.dark .res-card { border: 2px solid rgba(255,255,255,.9); border-radius: 28px; color: var(--white); }
+.res.dark .res-thumb small { color: rgba(255,255,255,.75); opacity: 1; font-size: 13px; }
+.res.dark .res-thumb > div span { font-size: 17px; font-weight: 700; }
+/* Company */
+.co-careers.dark { background: var(--night); color: var(--white); }
+.co-careers.dark h3, .co-careers.dark .co-big, .co-careers.dark .co-open, .co-careers.dark .co-label.dark-t { color: var(--white); }
+.co-careers.dark .co-big { font-size: clamp(28px, 3vw, 35px); }
+.co-careers.dark hr { border-top-color: rgba(255,255,255,.35); }
+.co-careers.dark .co-roles li { border: 2px solid rgba(255,255,255,.9); border-radius: 28px; }
+.co-careers.dark .co-role b { color: var(--cyan); font-size: 26px; }
+.co-careers.dark .co-role > p, .co-careers.dark .co-role ul { color: rgba(255,255,255,.85); font-size: 15px; }
+.co-careers.dark .co-role h4 { color: var(--white); }
+.co-careers.dark .co-roles em { color: rgba(255,255,255,.7); }
+.co-careers.dark .co-roles .co-role ul li { border: 0; }
+.support-l.dark-t p, .co-support-l.dark .support-l p:last-child { color: rgba(255,255,255,.85); font-size: var(--body); }
+.co-support-l.dark .co-label { color: var(--white); }
+.co-grid p, .co-who p { font-size: var(--body); }
+.res.dark { padding-top: 0; } .res.dark .res-sec { padding-top: 8px; } .page-hero { padding-bottom: 40px; }
+.sol .sol-body p + p { margin-top: 12px; }
