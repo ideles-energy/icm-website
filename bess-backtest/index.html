@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BESS Backtest: how much of its full potential does your battery capture? | The ICM</title>
+<meta name="description" content="The BESS Backtest compares what a battery earned with the most it could have earned on its site. An independent view on BESS performance, optimizer results and downtime.">
+<link rel="canonical" href="https://icm.energy/bess-backtest/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://icm.energy/bess-backtest/">
+<meta property="og:title" content="BESS Backtest: how much of its full potential does your battery capture? | The ICM">
+<meta property="og:description" content="The BESS Backtest compares what a battery earned with the most it could have earned on its site. An independent view on BESS performance, optimizer results and downtime.">
+<meta property="og:image" content="https://icm.energy/assets/og-image.png">
+<meta property="og:site_name" content="The Independent Capacity Market">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css?v=8ec7d19b">
+</head>
+<body>
+<a class="sr-only" href="#main">Skip to content</a>
+
+<div class="hero-shell">
+  <div class="wrap">
+    <header class="nav">
+      <a class="logo" href="/" aria-label="The Independent Capacity Market, home"><img src="/assets/logo-header.png" alt="The Independent Capacity Market" width="796" height="119"></a>
+      <nav aria-label="Main">
+        <ul class="nav-links">
+          <li class="has-sub hide-sm"><button type="button" class="sub-btn" aria-expanded="false" aria-haspopup="true">How we can help</button><ul class="sub"><li><a href="/how-we-can-help/"><b>How we can help</b><span>Overview of our solutions</span></a></li><li><a href="/bess-calculator/"><b>BESS Calculator</b><span>Size and value the right system</span></a></li><li><a href="/bess-backtest/"><b>BESS Backtest</b><span>Measure what a battery captures</span></a></li><li><a href="/bess-broker/"><b>BESS Broker</b><span>Find a trusted optimizer</span></a></li></ul></li>
+          <li class="hide-sm"><a href="/about-us/">About us</a></li>
+          <li><a class="btn btn-lilac" href="/talk-to-us/">Talk to us</a></li>
+          <li class="show-sm"><button type="button" class="menu-btn" aria-expanded="false" aria-label="Open menu"><span></span><span></span><span></span></button></li>
+        </ul>
+      </nav>
+      <div class="m-menu" hidden><p class="m-h">How we can help</p><a class="m-sub" href="/how-we-can-help/">Overview</a><a class="m-sub" href="/bess-calculator/">BESS Calculator</a><a class="m-sub" href="/bess-backtest/">BESS Backtest</a><a class="m-sub" href="/bess-broker/">BESS Broker</a><a href="/about-us/">About us</a></div>
+    </header>
+
+    <div class="page-hero" id="main">
+      <span class="eyebrow">BESS Backtest</span>
+      <h1>Monitor the performance of your BESS</h1>
+      <p>An independent view on what a live battery earns: the share of its full potential that is captured, and what holds it back.</p>
+      <div class="hero-ctas"><a class="btn btn-lilac" href="/talk-to-us/?topic=backtest">Talk to us</a></div>
+    </div>
+  </div>
+</div>
+<section class="dark" style="border-top:1px solid rgba(255,255,255,.08)">
+  <div class="wrap">
+    <div class="why-grid">
+    <div>
+    <span class="eyebrow why-eyebrow">Our why</span>
+    <div class="story" id="calculator" aria-live="polite">
+      <p class="story-h">It's a waste to miss out on <b class="out" id="s-missed">EUR 555,000</b> a year.</p>
+      <p class="story-p">A similar BESS asset, same size and setup, can deliver <a class="story-link" href="https://www.flower.se/insights/case/ra-energy-switch-optimizer/" target="_blank" rel="noopener">30% more revenue</a>. A <label class="pill"><input class="in" id="s-mw" type="number" min="1" max="500" step="1" value="10" aria-label="Project size in MW"><svg class="pen" viewBox="0 0 16 16" aria-hidden="true"><path d="M11.5 2.5l2 2L6 12l-2.8.8L4 10z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></label> MW project could have earned <b class="out" id="s-should">EUR 240.5k</b> per MW per year, instead of the EUR <label class="pill"><input class="in" id="s-rev" type="number" min="1" step="1" value="185" aria-label="Revenue in thousand EUR per MW per year"><svg class="pen" viewBox="0 0 16 16" aria-hidden="true"><path d="M11.5 2.5l2 2L6 12l-2.8.8L4 10z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></label>k per MW per year it delivered. That's a missed opportunity of <b class="out" id="s-gap">EUR 55.5k</b> per MW.</p>
+      <p class="hint"><svg class="pen" viewBox="0 0 16 16" aria-hidden="true"><path d="M11.5 2.5l2 2L6 12l-2.8.8L4 10z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>Enter figures to adjust. Illustrative example.</p>
+    </div>
+    </div>
+    <figure class="why-fig" aria-hidden="true">
+      <svg id="why-dots" role="presentation"></svg>
+      <figcaption class="why-legend"><span><i class="d"></i>Delivered <b id="f-del">EUR 1,850,000</b></span><span><i class="m"></i>Missed <b id="f-mis">EUR 555,000</b></span><span class="unit" id="f-unit">1 dot = EUR 10,000 a year</span></figcaption>
+    </figure>
+    </div>
+  </div>
+</section>
+<section class="prop-what">
+  <div class="wrap two">
+    <div class="section-head"><span class="eyebrow">What you get</span><h2>BESS Backtest in short</h2></div>
+    <ul class="check"><li>Capture rate: realised results compared with the full potential of your site, within its grid, warranty and dispatch limits.</li><li>Clear expectations: expected results are set at 80% of the full potential, so you know what good looks like.</li><li>Downtime apart: hardware faults are reported as their own driver and are not held against your optimizer.</li><li>Checked by people: every result is quality controlled before it reaches you, and final after three months.</li></ul>
+  </div>
+</section>
+<section class="rules-wrap">
+  <div class="wrap">
+    <div class="section-head"><span class="eyebrow">How it works</span><h2>Simple steps, from first call to result</h2></div>
+    <div class="rules-row"><div class="rule"><h3>Share your data</h3><p>Your optimizer report and quarter-hour meter data, plus the documents on your connection. We give you the list.</p></div><div class="rule"><h3>We calculate the full potential</h3><p>We model the best result your site could achieve, hour by hour, and compare it with what the battery earned.</p></div><div class="rule"><h3>You see the result and its drivers</h3><p>The capture rate, split into trading, downtime and site limits. If it falls short, you choose what to do next.</p></div></div>
+    <p class="prop-who"><b>Who it is for.</b> Owners of operating batteries, and installers who deliver a BESS Backtest with each installation to give customers an independent verdict.</p>
+  </div>
+</section>
+<section class="faq-sec">
+  <div class="wrap">
+    <div class="section-head center"><h2>Frequently asked questions</h2></div>
+    <div class="faq">
+      <details><summary>What is the BESS Backtest?</summary><p>The BESS Backtest compares what your battery earned with the most it could have earned on your site. The result is a capture rate: the share of the full potential that was realised. It shows whether a battery earns what it should, and what holds it back.</p></details>
+      <details><summary>What is the "full potential"?</summary><p>The highest result achievable on your site, calculated with perfect foresight within the limits of the site: grid connection, warranty limits, dispatch restrictions and actual downtime. It is an upper bound, not a promise. We set the expected result at 80% of it.</p></details>
+      <details><summary>Why 80%?</summary><p>No optimizer has perfect foresight. The 80% for expected results is based on interviews with industry experts, and is stated openly in our methodology.</p></details>
+      <details><summary>Is downtime counted against my optimizer?</summary><p>No. Downtime is reported as a separate driver, so that a fault is not attributed to trading performance, and the other way around.</p></details>
+      <details><summary>What data do you need?</summary><p>The optimizer report, quarter-hour meter data, data from the energy management system for downtime, and the documents on your grid connection and optimizer mandate. We guide you through the list, and your installer or metering service provider can often deliver most of it.</p></details>
+      <details><summary>Who orders a BESS Backtest?</summary><p>Installers can include a BESS Backtest at delivery, so every customer gets an independent view of what the battery earns. Owners can also order one directly. Talk to us about how this works for you.</p></details>
+      <details><summary>What if my battery earns less than expected?</summary><p>You decide what happens next. If the result objectively falls short, the BESS Broker can help you request and compare quotes from other optimizers, test what they would have earned, and guide the switch.</p></details>
+      <details><summary>Is the ICM independent?</summary><p>Yes. We do not own BESS assets. We are not an optimizer. Nor will we ever be.</p></details>
+    </div>
+  </div>
+</section>
+<section class="cta-band">
+  <div class="wrap">
+    <h2>Ready to talk?</h2>
+    <p>Our starting point is a 45-minute call to understand your context and objectives (e.g., a portfolio of 3-30 MW, trading revenues below expectations). We then get to work.</p>
+    <a class="btn btn-lilac" href="/talk-to-us/?topic=backtest">Talk to us</a>
+  </div>
+</section>
+<footer>
+  <div class="wrap foot2">
+    <div class="f-about">
+      <p class="f-name">The Independent Capacity Market</p>
+      <p class="f-tag">The ICM brings clarity, trusted partners and continuity to those adding capacity to the grid. We help BESS owners size the right battery, backtest its performance and find a trusted optimizer.</p>
+    </div>
+    <a class="f-logo" href="/" aria-label="The ICM, home"><img src="/assets/submark.png" alt="The ICM" width="302" height="449" loading="lazy"></a>
+    <nav class="f-links" aria-label="Footer">
+      <a href="/how-we-can-help/">How we can help</a>
+      <a href="/about-us/">About us</a>
+      <a href="/resources/">Resources</a>
+      <a href="/talk-to-us/">Talk to us</a>
+    </nav>
+    <div class="f-legal">
+      <p>Website designed by <a href="https://www.saltandchalk.co.uk" target="_blank" rel="noopener">Salt &amp; Chalk</a></p>
+      <p><a href="/terms/">Terms & Conditions</a> | <a href="/privacy/">Privacy statement</a></p>
+      <p>© 2026 Independent Capacity Market B.V.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="/main.js?v=fec985f3" defer></script>
+</body>
+</html>
