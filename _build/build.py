@@ -436,11 +436,11 @@ def icon_svg(k):
 
 PROPS = [
   ('configurator', 'BESS Configurator', '/bess-configurator/', 'Find the optimal system for your context.',
-   'Size the battery for your site and see the business case: payback, return and revenue streams over its lifetime.'),
+   'Find out how big your battery should be and whether it pays off. We test sizes against your site and show the expected revenues, payback time and return.'),
   ('backtest', 'BESS Backtest', '/bess-backtest/', 'Monitor the performance of your BESS.',
-   'See how much of its full potential your battery captures, and why. An independent view on what a live battery earns.'),
+   'See how much of its full potential your battery captures. An independent view on what a trader with perfect foresight could have reasonably earned.'),
   ('broker', 'BESS Broker', '/bess-broker/', 'Outsource the research for a trusted optimizer.',
-   'One form, a standardised process and quotes you can compare, with guidance through the switch when there is more to earn.'),
+   'Fill in one form and we ask trusted optimizers for a quote. You get the offers side by side, and we help you move to the one you choose.'),
 ]
 
 NEWFAQS = [
@@ -467,7 +467,7 @@ def faq_block(items, title=None):
   </div>
 </section>"""
 
-def cta_band(t, h="Let's talk about your BESS", p='Start with a 45-minute call about your context and objectives (for example a portfolio of 3-30 MW BESS assets, or trading revenues below expectations). Afterwards you receive a full proposal.', topic=None):
+def cta_band(t, h="Let's talk about your project", p='Start with a 45-minute call about your context and objectives (for example a portfolio of 3-30 MW BESS assets, or trading revenues below expectations). Afterwards you receive a full proposal.', topic=None):
     q = f'?topic={topic}' if topic else ''
     return f"""<section class="cta-band">
   <div class="wrap">
@@ -509,7 +509,7 @@ def home(t):
     <div class="hero" id="main">
       <div>
         <h1>Secure the true value<br>of a BESS asset</h1>
-        <p class="lead">For owners with a nagging sense their BESS asset could earn more. Find the optimal system for your context, monitor the performance and outsource the research for a trusted optimizer.</p>
+        <p class="lead">For owners with a nagging sense their BESS asset could earn more. Find the optimal system for your context, monitor the performance and outsource the research for a trusted optimizer. We are independent: we own no batteries and are not an optimizer.</p>
         <div class="hero-ctas">
           <a class="btn btn-lilac" href="{TALK}">{t['talk']}</a>
           <a class="btn btn-outline" href="#how">How it works</a>
@@ -531,28 +531,6 @@ def home(t):
   </div>
 </section>
 
-<section class="dark proof-sec">
-  <div class="wrap">
-    <div class="section-head center">
-      <span class="eyebrow why-eyebrow">Why trust the ICM</span>
-      <h2>An independent view you can check</h2>
-    </div>
-    <div class="proof">
-      <ul class="proof-list">
-        <li><b>Independent.</b> We are not owners and not optimizers. We own no batteries and never will.</li>
-        <li><b>Transparent.</b> Our method and its assumptions are written down and open to scrutiny.</li>
-        <li><b>Based on your own data.</b> Results come from your optimizer report and meter data, not from a theoretical battery.</li>
-        <li><b>Checked by people.</b> Every result is quality controlled before it reaches you.</li>
-      </ul>
-      <figure class="proof-fig" role="img" aria-label="Illustration: the full potential of a site is 100 percent, the expected result is 80 percent, and your battery's realised result is compared with both.">
-        <div class="pbar"><span>Full potential</span><i class="b1" style="width:100%"></i><em>100%</em></div>
-        <div class="pbar"><span>Expected result</span><i class="b2" style="width:80%"></i><em>80%</em></div>
-        <div class="pbar"><span>Your battery</span><i class="b3" style="width:66%"></i><em>capture rate</em></div>
-        <figcaption>How the BESS Backtest reads a battery. Illustration, not a result.</figcaption>
-      </figure>
-    </div>
-  </div>
-</section>
 
 <section class="dark about-sec" id="about">
   <div class="wrap about-grid2">
@@ -682,7 +660,7 @@ def backtest_page(t):
     return prop_page(t, 'backtest', '/bess-backtest/', 'BESS Backtest',
       'BESS Backtest: how much of its full potential does your battery capture? | The ICM',
       'The BESS Backtest compares what a battery earned with the most it could have earned on its site. An independent view on BESS performance, optimizer results and downtime.',
-      ('Monitor the performance of your BESS', 'An independent view on what a live battery earns: the share of its full potential that is captured, and what holds it back.'),
+      ('Monitor the performance of your BESS', 'An independent view on what a trader with perfect foresight could have reasonably earned, and the share of that your battery captured.'),
       ['Capture rate: realised results compared with the full potential of your site, within its grid, warranty and dispatch limits.',
        'Clear expectations: expected results are set at 80% of the full potential, so you know what good looks like.',
        'Downtime apart: hardware faults are reported as their own driver and are not held against your optimizer.',
@@ -696,15 +674,15 @@ def backtest_page(t):
 def broker_page(t):
     return prop_page(t, 'broker', '/bess-broker/', 'BESS Broker',
       'BESS Broker: find and compare a trusted optimizer for your BESS | The ICM',
-      'Outsource the search for a trusted BESS optimizer: one form, a standardised process and quotes you can compare, with guidance through the switch.',
-      ('Outsource the research for a trusted optimizer', 'One form, a standardised process and quotes you can compare, so you do not have to run the search yourself.'),
+      'Outsource the search for a trusted BESS optimizer: fill in one form, compare offers side by side and get help moving to the optimizer you choose.',
+      ('Outsource the research for a trusted optimizer', 'Fill in one form. We ask trusted optimizers for a quote and show you the offers side by side, so you do not have to run the search yourself.'),
       ['One form that captures what optimizers need to know to make you an offer.',
-       'A standardised request for quotes, so offers are comparable on the terms that matter.',
+       'Offers side by side, written to the same format, so you can compare them on the terms that matter.',
        'Optionally, a backtest of what the other optimizers would have earned on your site.',
-       'Guidance through the switch, so your battery keeps earning while it moves.'],
+       'Help with the move to your new optimizer, so your battery keeps earning while it changes hands.'],
       [('Complete one form', 'Your asset, your set-up and what you need from an optimizer, captured once.'),
        ('Compare the quotes', 'We request quotes from trusted optimizers, put them side by side and help you assess them.'),
-       ('Switch with confidence', 'Terms banks appreciate, and support from contract to the first month of trading.')],
+       ('Move with confidence', 'We help you agree the contract and stay with you until the first month of trading with your new optimizer.')],
       'Owners whose battery objectively earns less than it could, and who want a trusted partner without running the search themselves.')
 
 def talk(t):

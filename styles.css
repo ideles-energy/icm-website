@@ -821,3 +821,6 @@ body > footer { margin-top: auto; }
   .f-logo img { width: 75px; height: 112px; }
   .f-logo { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); align-self: auto; }
 }
+
+.section-head p, .cta-band p, .hero .lead { text-wrap: pretty; }
+.section-head.center p { text-wrap: balance; }
