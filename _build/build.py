@@ -217,9 +217,9 @@ def _v(f):
     return hashlib.md5(open(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), f),'rb').read()).hexdigest()[:8]
 V_CSS, V_JS = _v('styles.css'), _v('main.js')
 
-SOLUTIONS = [('BESS Configurator', 'Size and value the right system', '/bess-configurator/'),
-             ('BESS Broker', 'Find a trusted optimizer', '/bess-broker/'),
-             ('BESS Backtest', 'Measure what a battery captures', '/bess-backtest/')]
+SOLUTIONS = [('BESS Configurator', 'Size and value the right system', '/solutions/#configurator'),
+             ('BESS Broker', 'Find a trusted optimizer', '/solutions/#broker'),
+             ('BESS Backtest', 'Measure what a battery captures', '/solutions/#backtest')]
 TALK = '/talk-to-us/'
 
 def nav(t, other_href):
@@ -447,11 +447,11 @@ def icon_svg(k):
     return f'<svg viewBox="0 0 24 24" fill="none" stroke="#97F2F5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">{ICONS[k]}</svg>'
 
 PROPS = [
-  ('configurator', 'BESS Configurator', '/bess-configurator/', 'Find the optimal system for your context.',
+  ('configurator', 'BESS Configurator', '/solutions/#configurator', 'Find the optimal system for your context.',
    'We simulate the revenues of different configurations (number of batteries, MW/MWh) within the restrictions on your site, so you see which one could earn the most.'),
-  ('broker', 'BESS Broker', '/bess-broker/', 'Outsource the search for a trusted optimizer.',
+  ('broker', 'BESS Broker', '/solutions/#broker', 'Outsource the search for a trusted optimizer.',
    'We run a standardised process to source, compare and contract optimizers, and manage the switch so your battery keeps earning without interruption.'),
-  ('backtest', 'BESS Backtest', '/bess-backtest/', 'Monitor your performance proactively.',
+  ('backtest', 'BESS Backtest', '/solutions/#backtest', 'Monitor your performance proactively.',
    'We compare your realised revenues with what is reasonably achievable on your site, and alert you when performance consistently falls short.'),
 ]
 
@@ -581,7 +581,7 @@ def sol_card(k, n, href, lead, body, extra):
           <p class="sol-lead">{lead}</p>
           <p>{body}</p>
           <p>{extra}</p>
-          <div class="cta-row" style="justify-content:flex-start;margin-top:22px"><a class="btn btn-lilac" href="{href}">Learn more</a><a class="btn btn-outline" href="{TALK}?topic={k}">Talk to us</a></div>
+          <div class="cta-row" style="justify-content:flex-start;margin-top:22px"><a class="btn btn-lilac" href="{TALK}?topic={k}">Talk to us</a>{'<a class="btn btn-outline" href="/bess-backtest/example/">See an example report</a>' if k == 'backtest' else ''}</div>
         </div>
       </article>"""
 
@@ -661,7 +661,7 @@ def prop_page(t, k, path, name, title, desc, lead, what, steps, who, extra_top='
     return page_shell(t, path, title, desc, hero, body)
 
 def configurator_page(t):
-    return prop_page(t, 'configurator', '/bess-configurator/', 'BESS Configurator',
+    return prop_page(t, 'configurator', '/solutions/#configurator', 'BESS Configurator',
       'BESS Configurator: size a battery and value the business case | The ICM',
       'Find the optimal battery storage system for your site: size power and capacity, simulate revenue streams and degradation, and see payback and return.',
       ('Find the optimal system for your context', 'A BESS configurator and calculator that sizes the battery for your site and shows whether the investment is technically and financially feasible.'),
@@ -692,9 +692,9 @@ def w_dots(rows=10, legend=True):
     cap = f'<figcaption class="why-legend">{WLEG}</figcaption>' if legend else ''
     return f"""<figure class="why-fig" aria-hidden="true"><svg class="js-dots" data-rows="{rows}" role="presentation"></svg>{cap}</figure>"""
 
-WCAUSES = [('The wrong configuration', 'The battery is not sized or set up for what your site allows.', '/bess-configurator/', 'BESS Configurator'),
-           ('The wrong optimizer', 'Another optimizer would earn more with the same battery.', '/bess-broker/', 'BESS Broker'),
-           ('Too little monitoring', 'Underperformance goes unnoticed, so it carries on.', '/bess-backtest/', 'BESS Backtest')]
+WCAUSES = [('The wrong configuration', 'The battery is not sized or set up for what your site allows.', '/solutions/#configurator', 'BESS Configurator'),
+           ('The wrong optimizer', 'Another optimizer would earn more with the same battery.', '/solutions/#broker', 'BESS Broker'),
+           ('Too little monitoring', 'Underperformance goes unnoticed, so it carries on.', '/solutions/#backtest', 'BESS Backtest')]
 
 def w_can():
     return ''
@@ -749,9 +749,9 @@ def why_section(v='1'):
       </div></div>"""
     elif v in ('10', '11', '12'):
         lk = lambda h, n: f'<a class="story-link" href="{h}">{n}</a>'
-        leaks = (f'Revenue leaks in three places. <b>The wrong configuration:</b> the battery is not sized or set up for what your site allows ({lk("/bess-configurator/", "BESS Configurator")}). '
-                 f'<b>The wrong optimizer:</b> another optimizer would earn more with the same battery ({lk("/bess-broker/", "BESS Broker")}). '
-                 f'<b>Too little monitoring:</b> underperformance goes unnoticed, so it carries on ({lk("/bess-backtest/", "BESS Backtest")}).')
+        leaks = (f'Revenue leaks in three places. <b>The wrong configuration:</b> the battery is not sized or set up for what your site allows ({lk("/solutions/#configurator", "BESS Configurator")}). '
+                 f'<b>The wrong optimizer:</b> another optimizer would earn more with the same battery ({lk("/solutions/#broker", "BESS Broker")}). '
+                 f'<b>Too little monitoring:</b> underperformance goes unnoticed, so it carries on ({lk("/solutions/#backtest", "BESS Backtest")}).')
         check = f"""<p class="wy-k">Check your own battery</p><p class="story-p story">{w_sentence()}</p>{w_hint()}"""
         leaksb = f"""<p class="wy-k">Where it leaks</p><p class="story-p story">{leaks}</p>"""
         if v == '10':   # two equal light cards, dots below
@@ -814,7 +814,7 @@ def backtest_page(t):
   </div>
 </section>
 '''
-    return prop_page(t, 'backtest', '/bess-backtest/', 'BESS Backtest',
+    return prop_page(t, 'backtest', '/solutions/#backtest', 'BESS Backtest',
       'BESS Backtest: how much of its full potential does your battery capture? | The ICM',
       'The BESS Backtest compares what a battery earned with the most it could have earned on its site. An independent view on BESS performance, optimizer results and downtime.',
       ('Monitor the performance of your BESS', 'An independent view on what a trader with perfect foresight could have reasonably earned, and the share of that your battery captured.'),
@@ -829,7 +829,7 @@ def backtest_page(t):
       extra_top=example, faq=NEWFAQS)
 
 def broker_page(t):
-    return prop_page(t, 'broker', '/bess-broker/', 'BESS Broker',
+    return prop_page(t, 'broker', '/solutions/#broker', 'BESS Broker',
       'BESS Broker: find and compare a trusted optimizer for your BESS | The ICM',
       'Outsource the search for a trusted BESS optimizer: fill in one form, compare offers side by side and get help moving to the optimizer you choose.',
       ('Outsource the research for a trusted optimizer', 'Fill in one form. We ask trusted optimizers for a quote and show you the offers side by side, so you do not have to run the search yourself.'),
@@ -892,6 +892,7 @@ def talk(t, variant=None):
         'Talk to the ICM about the BESS Configurator, BESS Backtest or BESS Broker. Book a 45-minute call to share your context and objectives and receive a full proposal.', hero, body)
 
 
+SOL_REDIRECT = '''<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Solutions | The ICM</title><meta name="robots" content="noindex"><link rel="canonical" href="https://icm.energy/solutions/#KEY"><meta http-equiv="refresh" content="0; url=/solutions/#KEY"></head><body><a href="/solutions/#KEY">All solutions are on one page.</a></body></html>'''
 REDIRECT = '''<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Careers | The ICM</title><meta name="robots" content="noindex"><link rel="canonical" href="https://icm.energy/company/#careers"><meta http-equiv="refresh" content="0; url=/company/#careers"></head><body><a href="/company/#careers">Careers have moved to our company page.</a></body></html>'''
 
 def write(rel, html):
@@ -914,9 +915,8 @@ for lang in LANGS:
         write('resources/index.html', resources(t))
         write('company/index.html', company(t))
         write('solutions/index.html', solutions(t))
-        write('bess-configurator/index.html', configurator_page(t))
-        write('bess-backtest/index.html', backtest_page(t))
-        write('bess-broker/index.html', broker_page(t))
+        for k in ('configurator', 'backtest', 'broker'):
+            write(f'bess-{k}/index.html', SOL_REDIRECT.replace('KEY', k))
         write('talk-to-us/index.html', talk(t))
         if os.environ.get('TALK_OPTIONS'):
             opts = ''.join(f'<div class="dark"><p class="tp-label">Option {v}</p></div>' + talk_proof(v) for v in 'ABCDE')
