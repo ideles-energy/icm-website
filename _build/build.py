@@ -709,7 +709,7 @@ def why_section(v='1'):
     </div>
     {w_can()}"""
     elif v == '13':
-        bl = ''.join(f'<li>{x}</li>' for x in ('<b>Suboptimal configuration.</b> The MW/MWh you choose directly affect your return on investment. A suboptimal mix costs you from day one.', '<b>Underperforming optimizer.</b> Two optimizers do not earn the same with the same battery. Without a comparison, you cannot tell whether yours is behind.', '<b>Too little monitoring.</b> Without a reference, low revenue looks like a bad month. Underperformance can go unnoticed for years.'))
+        bl = ''.join(f'<li>{x}</li>' for x in ('<b>Suboptimal configuration.</b> The MW/MWh you\'ll build directly affect your return on investment. A suboptimal mix costs you from day one.', '<b>Underperforming optimizer.</b> New players with better algorithms keep entering the market. Staying with yours can carry a serious opportunity cost.', '<b>Too little monitoring.</b> Without a reference, low revenue looks like a bad month. Underperformance can go unnoticed for years.'))
         inner = f"""<div class="wy-head">{w_head()}</div>
     <div class="story wy-wide wy-v13">{w_dots(8)}
       <div class="wy-two wy-plain">
