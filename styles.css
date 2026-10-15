@@ -1160,3 +1160,15 @@ header.nav a b { font-size: 14px !important; } header.nav a span:not(.nw) { font
 .wy-top-r { max-width: 300px; padding-top: 6px; }
 .wy-top-r .hint { white-space: normal; }
 .wy-v13 .why-fig { margin-top: 0; }
+
+/* v21: About us positioned like Canva: empty space top left, text block low and tight */
+@media (min-width: 901px) {
+  .about-card { aspect-ratio: 482 / 532; justify-content: flex-end; padding: 0 clamp(28px, 4vw, 58px) clamp(32px, 3.4vw, 50px); }
+}
+.about-card .eyebrow { margin-bottom: 14px; }
+.about-card h2 { line-height: 1.1; margin: 0 0 18px; letter-spacing: -.02em; }
+.about-card p { line-height: 1.4 !important; max-width: 21.5em; margin: 0 0 1.4em; }
+.about-card .cta-row { margin-top: 4px; }
+@media (min-width: 901px) { .about-card { aspect-ratio: 482 / 590; } }
+.about-card p { max-width: 23em; }
+@media (min-width: 901px) { .about-card { aspect-ratio: auto; min-height: clamp(520px, 44vw, 640px); } }
