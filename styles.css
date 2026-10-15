@@ -1265,3 +1265,17 @@ a.member:hover b { text-decoration: underline; text-underline-offset: 4px; }
 .co-note{margin-top:28px;font-size:var(--body);line-height:1.5}.co-note a{text-decoration:underline}
 .member.tbc{opacity:.6}
 .member.tbc .ph{display:none}.member.tbc{border:1px dashed rgba(255,255,255,.25);border-radius:12px;padding:22px;align-self:start}.member.tbc b{margin-top:0}
+
+/* v29 solutions in Canva format */
+.hero-shell:has(.sol-hero-mark){background:#040D1F url(/assets/img/solutions-veins-bright.jpg) center/cover no-repeat}
+.sol-hero-mark{padding-bottom:64px}.sol-hero-mark .hero-ctas{display:flex;gap:12px;flex-wrap:wrap}
+.sol-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;margin-bottom:24px;align-items:stretch}
+.sol-row .sol{margin:0;display:block}.sol-row .sol-icon{margin-bottom:14px}
+.sol-img{width:100%;height:100%;min-height:360px;object-fit:cover;border-radius:28px;display:block}
+.sol-row.sol-r1 .sol{order:2}
+@media (max-width:860px){.sol-row{grid-template-columns:minmax(0,1fr)}.sol-row.sol-r1 .sol{order:0}.sol-img{min-height:240px;height:260px}}
+.hero-shell:has(.sol-hero-mark){background:#040D1F url(/assets/img/solutions-veins-bright.jpg) center/cover no-repeat !important}
+.sol-img{height:0;min-height:100%}
+@media (max-width:860px){.sol-img{height:260px;min-height:240px}}
+.hero-shell:has(.sol-hero-mark){background:linear-gradient(90deg,rgba(4,13,31,.72) 0%,rgba(4,13,31,.25) 60%,rgba(4,13,31,0) 100%),#040D1F url(/assets/img/solutions-veins-bright.jpg) center/cover no-repeat !important}
+.sol-hero-mark .btn-lilac{color:#040D1F}

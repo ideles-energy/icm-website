@@ -413,9 +413,9 @@ def company(t):
   <div class="wrap">
     <p class="co-label">The team</p>
     <div class="team">
-      <a class="member" href="https://www.linkedin.com/in/idel%C3%A8s-kaandorp/" target="_blank" rel="noopener"><img class="ph" src="/assets/team-ideles.jpg" alt="Idelès Kaandorp" width="600" height="600" loading="lazy"><b>Idelès Kaandorp</b><span class="m-bio">Founder. Owns strategy, culture, team, commercial development and fundraising. MSc in Pure Mathematics (King's College London), MBA (Harvard Business School) and McKinsey &amp; Company (2017-2019, 2022-2025), on energy projects.</span></a>
-      <a class="member" href="https://www.linkedin.com/in/edo-rivai-78b66a17/" target="_blank" rel="noopener"><img class="ph" src="/assets/team-edo.jpg" alt="Edo Rivai" width="512" height="512" loading="lazy"><b>Edo Rivai</b><span class="m-bio">Senior software developer. Owns platform design, API integrations with EMS and metering providers, the API sandbox, infrastructure and technical onboarding. Track record building scalable software.</span></a>
-      <div class="member"><img class="ph" src="/assets/team-jesse.jpg" alt="Jesse Willis" width="498" height="600" loading="lazy"><b>Jesse Willis</b><span class="m-bio">Project manager. Owns delivery planning, scope and budget, discovery calls with BESS owners and installers, and closing the first clients. Background as industrial design engineer (Delft).</span></div>
+      <a class="member" href="https://www.linkedin.com/in/idel%C3%A8s-kaandorp/" target="_blank" rel="noopener"><img class="ph" src="/assets/team-ideles.jpg" alt="Idelès Kaandorp" width="600" height="600" loading="lazy"><b>Idelès Kaandorp</b><span class="m-bio">Founder. Owns strategy, culture, team and fundraising, and closes the first clients. Ex-McKinsey on energy projects, MBA Harvard Business School.</span></a>
+      <a class="member" href="https://www.linkedin.com/in/edo-rivai-78b66a17/" target="_blank" rel="noopener"><img class="ph" src="/assets/team-edo.jpg" alt="Edo Rivai" width="512" height="512" loading="lazy"><b>Edo Rivai</b><span class="m-bio">Senior software developer. Owns platform design, API integrations with EMS and metering providers, infrastructure and technical onboarding. Builds scalable software at Spot AI.</span></a>
+      <a class="member" href="https://www.linkedin.com/in/jesse-h-willis/" target="_blank" rel="noopener"><img class="ph" src="/assets/team-jesse.jpg" alt="Jesse Willis" width="600" height="720" loading="lazy"><b>Jesse Willis</b><span class="m-bio">Project manager. Owns the process and makes sure every deliverable is delivered, on scope, budget and time. Runs Everlab, an industrial design engineering firm in Amsterdam.</span></a>
       <div class="member tbc"><span class="ph ph-empty ph-init" aria-hidden="true"><i>+</i></span><b>Coming soon</b><span class="m-bio">A new teammate joins us.</span></div>
       <div class="member tbc"><span class="ph ph-empty ph-init" aria-hidden="true"><i>+</i></span><b>Coming soon</b><span class="m-bio">A new teammate joins us.</span></div>
     </div>
@@ -569,18 +569,27 @@ def home(t):
 </html>
 '''
 
-def sol_block(k, n, href, lead, body, extra):
-    return f"""    <article class="sol" id="{k}">
-      <span class="sol-icon" aria-hidden="true">{icon_svg(k)}</span>
-      <div class="sol-body">
-        <h2>{n}</h2>
-        <p class="sol-lead">{lead}</p>
-        <p>{body}</p>
-        <p>{extra}</p>
-        <div class="cta-row" style="justify-content:flex-start;margin-top:22px"><a class="btn btn-lilac" href="{href}">Learn more</a><a class="btn btn-outline" href="{TALK}?topic={k}">Talk to us</a></div>
-      </div>
-    </article>
-"""
+SOL_IMG = {'configurator': ('/assets/img/about-pylon.jpg', 'Power lines against the evening sky'),
+           'broker': ('/assets/img/hero-bulb.jpg', 'Glowing light bulb filament'),
+           'backtest': ('/assets/img/company-grid.jpg', 'High-voltage substation against the evening sky')}
+
+def sol_card(k, n, href, lead, body, extra):
+    return f"""<article class="sol" id="{k}">
+        <span class="sol-icon" aria-hidden="true">{icon_svg(k)}</span>
+        <div class="sol-body">
+          <h2>{n}</h2>
+          <p class="sol-lead">{lead}</p>
+          <p>{body}</p>
+          <p>{extra}</p>
+          <div class="cta-row" style="justify-content:flex-start;margin-top:22px"><a class="btn btn-lilac" href="{href}">Learn more</a><a class="btn btn-outline" href="{TALK}?topic={k}">Talk to us</a></div>
+        </div>
+      </article>"""
+
+def sol_block(i, k, n, href, lead, body, extra):
+    src, alt = SOL_IMG[k]
+    img = f'<img class="sol-img" src="{src}" alt="{alt}" width="960" height="1080" loading="lazy">'
+    card = sol_card(k, n, href, lead, body, extra)
+    return f'    <div class="sol-row sol-r{i % 2}">\n      {card}\n      {img}\n    </div>\n'
 
 def solutions(t):
     extras = {
@@ -588,10 +597,11 @@ def solutions(t):
       'backtest': 'For owners of operating batteries, and for installers who want to give every customer an independent view on what the battery earns.',
       'broker': 'For owners whose battery objectively earns less than it could and who want to compare optimizers without doing the research themselves.',
     }
-    blocks = ''.join(sol_block(k, n, h, lead, body, extras[k]) for k, n, h, lead, body in PROPS)
-    hero = """    <div class="page-hero" id="main">
-      <h1>Solutions</h1>
+    blocks = ''.join(sol_block(i, k, n, h, lead, body, extras[k]) for i, (k, n, h, lead, body) in enumerate(PROPS))
+    hero = """    <div class="page-hero sol-hero-mark" id="main">
+      <h1>Which one is you?</h1>
       <p>Three solutions for those who add capacity to the grid but are in the dark on the potential of their assets: size the right system, monitor its performance and find a trusted optimizer when there is more to earn.</p>
+      <div class="hero-ctas"><a class="btn btn-lilac" href="#configurator">BESS Configurator</a><a class="btn btn-lilac" href="#broker">BESS Broker</a><a class="btn btn-lilac" href="#backtest">BESS Backtest</a></div>
     </div>"""
     body = f"""<section class="dark sol-wrap">
   <div class="wrap">
