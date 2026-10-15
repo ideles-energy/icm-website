@@ -1093,3 +1093,17 @@ footer { padding: 48px 0 32px; }
   .f-mail { align-self: end; justify-self: start; }
   .f-legal { align-self: end; }
 }
+
+/* v16: type sizes closer to the Canva design */
+.cta-band h2 { font-size: clamp(26px, 2.9vw, 32px); font-weight: 600; letter-spacing: -.02em; }
+.cta-band p { font-size: 15px; line-height: 1.6; max-width: 640px; margin-left: auto; margin-right: auto; }
+.cta-band .btn, .about-card .btn, .hero-ctas .btn { font-size: 13px; padding: 11px 22px; }
+.about-card p { font-size: 14px; line-height: 1.55; }
+.foot2 { font-size: 11px; }
+.f-name { font-size: 11px; margin-bottom: 6px; }
+.f-tag { font-size: 11px; line-height: 1.5; max-width: 300px; }
+.f-links a { font-size: 11.5px; line-height: 1.5; }
+.f-legal, .f-legal p { font-size: 9.5px; }
+.f-mail, .f-mail a { font-size: 11px; }
+.section-head p, .props-sec .section-head p { font-size: 15px; }
+.prop p { font-size: 14px; font-weight: 500; }
