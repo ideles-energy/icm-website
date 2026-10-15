@@ -318,7 +318,6 @@ def privacy(t):
     body = f'    <div class="prose">{secs}<p style="color:var(--muted);font-size:14px">29-09-2026</p></div>'
     return simple_page(t, t['base'] + 'privacy/', t['other'] + 'privacy/', t['privacy_title'], 'How the Independent Capacity Market handles personal data from its website and contact form.', t['privacy_h'], '', body)
 
-ROLES = [('Founders Associate', 'Amsterdam'), ('Commercial Lead', 'Amsterdam'), ('Legal Counsel', 'Amsterdam'), ('Software Engineer', 'Amsterdam')]
 
 def page_shell(t, path, title, desc, hero, body, jsonld=None):
     return head(t, title, desc, path, None, jsonld) + f'''
@@ -338,32 +337,53 @@ def page_shell(t, path, title, desc, hero, body, jsonld=None):
 def resources(t):
     hero = '''    <div class="page-hero" id="main">
       <h1>Resources</h1>
-      <p>All Independent Capacity Market resources are listed below, including documents and brand assets.</p>
+      <p>API documents and brand assets of the Independent Capacity Market.</p>
     </div>'''
     body = f'''<main class="res">
-  <section class="wrap res-sec">
-    <h2>Documents</h2>
-    <p class="res-lead">Find answers to common questions about the BESS Backtest, or read our API documents. Anything missing? Just ask.</p>
-    <div class="res-cards">
+  <div class="wrap res-cols">
+    <section class="res-sec">
+      <h2>Documents</h2>
+      <p class="res-lead">Read our API documents. Anything missing? Just ask.</p>
       <div class="res-card res-thumb"><img src="/assets/brand/thumb-api.jpg" alt="" width="1425" height="552" loading="lazy"><div><span>API documents</span><small>Guides and reference for the ICM Platform API</small></div><a class="btn btn-lilac" href="https://docs.icm.energy/" target="_blank" rel="noopener">Access →</a></div>
-      <div class="res-card res-thumb"><img src="/assets/brand/thumb-faq.jpg" alt="" width="1000" height="428" loading="lazy"><div><span>BESS Backtest FAQ</span><small>Answers on data, results and the role of the installer</small></div><a class="btn btn-lilac" href="/bess-backtest/#faq">Read →</a></div>
-    </div>
-  </section>
-  <section class="wrap res-sec">
-    <h2>Brand assets</h2>
-    <p class="res-lead">Download the official brand assets of the ICM. Use these resources to ensure a consistent and professional representation of the ICM in all designs and communications.</p>
-    <div class="res-cards">
+    </section>
+    <section class="res-sec">
+      <h2>Brand assets</h2>
+      <p class="res-lead">Download the official logos of the ICM for a consistent representation in your designs and communications.</p>
       <div class="res-card res-thumb"><img src="/assets/brand/thumb-logos.jpg" alt="" width="640" height="360" loading="lazy"><div><span>Logos</span><small>PNG and SVG, header and footer versions</small></div><a class="btn btn-lilac" href="/assets/brand/ICM-logos.zip" download>Download →</a></div>
-      <div class="res-card res-thumb"><img src="/assets/brand/thumb-images.jpg" alt="" width="640" height="360" loading="lazy"><div><span>Images</span><small>Seven brand photos, high resolution</small></div><a class="btn btn-lilac" href="/assets/brand/ICM-images.zip" download>Download →</a></div>
-    </div>
-  </section>
+    </section>
+  </div>
 </main>'''
-    return page_shell(t, '/resources/', 'Resources | The ICM', 'Documents and brand assets of the Independent Capacity Market.', hero, body)
+    return page_shell(t, '/resources/', 'Resources | The ICM', 'API documents and brand assets of the Independent Capacity Market.', hero, body)
 
-ROLES = [('Founders Associate', 'Amsterdam'), ('Commercial Lead', 'Amsterdam'), ('Legal Counsel', 'Amsterdam'), ('Software Engineer', 'Amsterdam')]
+ROLES = [
+  ('Commercial Lead', 'Amsterdam',
+   'Win and serve BESS owners and the installers who build for them, from the first conversation to a client who is live and stays happy.',
+   ['Build relationships with installers and developers who bring us BESS owners (3-30 MW)',
+    'Run discovery calls and present Configurator, Backtest and Broker results',
+    'Lead technical onboarding: data intake, EMS and meter connection, switch plan',
+    'Close the first clients and turn them into cases'],
+   ['3-6 years in B2B consultative sales, solutions engineering or implementation (SaaS, energy or finance)',
+    'Explains technical topics clearly to asset owners and installers',
+    'Fluent in Dutch and English',
+    'Knows imbalance, FCR and aFRR, or learns fast']),
+  ('BESS Analyst', 'Amsterdam',
+   'Own the numbers behind every ICM result: the market models, the perfect-foresight backtest and the data pipelines that feed them.',
+   ['Build and maintain the revenue models for imbalance, FCR, aFRR and day-ahead',
+    'Collect, clean and automate battery and market data',
+    'Follow market design and regulation (TenneT, ACM, grid congestion) and translate it into our methodology',
+    'Explain results to clients and write market updates'],
+   ['MSc in econometrics, physics, energy or similar',
+    'Python and SQL; 2-5 years at a trader, optimizer or consultancy',
+    'Knows the Dutch and European power markets',
+    'Writes clearly for people who are not analysts']),
+]
+
 
 def company(t):
-    rows = '\n'.join(f'        <li><span><b>{r}</b><em>{c}</em></span><a class="btn btn-lilac" href="/talk-to-us/?role={r.replace(" ", "%20")}">Apply →</a></li>' for r, c in ROLES)
+    def li(items): return ''.join(f'<li>{i}</li>' for i in items)
+    rows = '\n'.join(f'''        <li class="co-role"><div><b>{r}</b><em>{c}</em></div><p>{m}</p><h4>What you will do</h4><ul>{li(do)}</ul><h4>Who you are</h4><ul>{li(you)}</ul><a class="btn btn-lilac" href="/talk-to-us/?role={r.replace(" ", "%20")}">Apply →</a></li>''' for r, c, m, do, you in ROLES)
+    rows += f'''
+        <li class="co-role co-open-app"><div><b>Open application</b><em>Amsterdam</em></div><p>Don't see your role? Open applications are welcome. Tell us what you want to achieve at the ICM.</p><a class="btn btn-lilac" href="mailto:{EMAIL}">Email us →</a></li>'''
     hero = '''    <div class="page-hero" id="main">
       <h1>Our story</h1>
       <img class="co-img" src="/assets/img/company-grid.jpg" alt="High-voltage substation against the evening sky" width="1920" height="1080">
@@ -372,25 +392,13 @@ def company(t):
   <div class="wrap co-grid">
     <p class="co-label">Who we are</p>
     <div>
-      <p>The ICM serves those who add capacity to the grid, but are in the dark on the potential of their assets.</p>
-      <p>We believe in a new standard: an independent benchmark based on real assets, backtesting that looks at all constraints, access to trusted optimizers, and switching made less costly and less risky.</p>
-      <p>A more transparent flex space rewards optimizers that perform, builds a stronger grid in uncertain times, and delivers more affordable power to us all.</p>
+      <p>The ICM is independent insight for BESS owners, installers and developers in the Netherlands: we own no batteries and are not an optimizer. We serve those who add capacity to the grid, but are in the dark on the potential of their assets.</p>
+      <p>We believe in a new standard: a configurator that starts from your site and objectives, backtesting that looks at all constraints, access to trusted optimizers, and switching made less costly and less risky.</p>
+      <p>A more transparent flex space rewards optimizers that perform, builds a stronger grid in uncertain times, and delivers more affordable power to us all. The result is a BESS that keeps earning, backed by an independent view you can share with your bank, installer or insurer.</p>
       <a class="btn btn-lilac" href="/talk-to-us/">Talk to us</a>
     </div>
   </div>
 </section>
-<section class="story-sec">
-  <div class="wrap">
-    <div class="section-head center">
-      <h2>Independent insight for BESS owners in the Netherlands</h2>
-    </div>
-    <div class="story-long">
-      <p>Owners of battery energy storage systems (BESS) share one question: is my battery earning what it should? Revenues per MW differ widely between comparable batteries, and an optimizer report rarely shows why.</p>
-      <p>The Independent Capacity Market (the ICM) is an independent energy tech company that helps BESS owners, installers and developers answer that question. We are not an optimizer and we own no batteries. With the BESS Configurator we size and value the right system for your site. With the BESS Backtest we measure how much of your battery's full potential its optimizer captures. With the BESS Broker we request and compare quotes from trusted optimizers and guide the switch when there is more to earn.</p>
-      <p>The result is a BESS that keeps earning, backed by an independent view you can share with your bank, installer or insurer.</p>
-    </div>
-  </div></section>
-
 <section class="dark co-team">
   <div class="wrap">
     <p class="co-label">The team</p>
@@ -402,12 +410,11 @@ def company(t):
     <div class="team-cta"><a class="btn btn-lilac" href="/talk-to-us/">Get in touch →</a></div>
   </div>
 </section>
-<section class="dark co-support">
-  <div class="wrap">
-    <div class="support-box">
-      <span class="co-label">Supported by</span>
-      <img src="/assets/img/provincie-noord-holland.png" alt="Province of Noord-Holland" width="1200" height="233" loading="lazy">
-    </div>
+<section class="co-careers co-support-l">
+  <div class="wrap support-l">
+    <p class="co-label dark-t">Supported by</p>
+    <img src="/assets/img/provincie-noord-holland.png" alt="Province of Noord-Holland" width="1200" height="233" loading="lazy">
+    <p>The ICM was awarded early-phase funding (Vroegefasefinanciering) by the Province of Noord-Holland.</p>
   </div>
 </section>
 <section class="co-careers" id="careers">
@@ -418,7 +425,6 @@ def company(t):
     <ul class="co-roles">
 {rows}
     </ul>
-    <p class="co-open">Open applications are welcome. Please email <a href="mailto:{EMAIL}">{EMAIL}</a>, including a CV and what you want to achieve at the ICM.</p>
   </div>
 </section>'''
     ld = {"@context": "https://schema.org", "@type": "AboutPage", "url": "https://icm.energy/company/", "mainEntity": {"@type": "Organization", "@id": "https://icm.energy/#org", "name": "Independent Capacity Market B.V.", "alternateName": "The ICM", "logo": "https://icm.energy/assets/logo-header.png", "url": "https://icm.energy/",

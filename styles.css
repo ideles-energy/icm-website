@@ -859,3 +859,27 @@ h1, h2, h3 { letter-spacing: -0.025em; font-weight: 700; }
 .why-left .why-fig { margin-top: 28px; }
 .proof-grid { align-items: center; }
 @media (max-width: 900px) { .proof-grid .why-left { order: 0; } }
+
+/* v8: resources side by side; company light support block and role cards */
+.res-cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 48px; }
+.res-cols .res-sec + .res-sec { border-top: 0; margin-top: 0; }
+.res-cols .res-lead { margin: -12px 0 24px; }
+@media (max-width: 800px) { .res-cols { grid-template-columns: minmax(0, 1fr); gap: 8px; } }
+.co-support-l { padding: 64px 0 8px; }
+.support-l { display: flex; align-items: center; gap: 32px; flex-wrap: wrap; }
+.support-l .co-label { margin: 0; }
+.support-l img { background: var(--white); border-radius: 16px; padding: 16px 26px; width: min(300px, 80vw); height: auto; }
+.support-l p:last-child { color: var(--teal); font-size: 17px; max-width: 460px; }
+.co-support-l + .co-careers { padding-top: 56px; }
+.co-roles { grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: stretch; }
+.co-roles li.co-role { flex-direction: column; align-items: flex-start; justify-content: flex-start; gap: 12px; padding: 26px; }
+.co-role > div { display: flex; flex-direction: column; gap: 2px; }
+.co-role b { font-size: 24px; font-weight: 600; }
+.co-role > p { color: var(--teal); font-size: 17px; margin: 0; }
+.co-role h4 { margin: 6px 0 0; font-size: 13px; letter-spacing: .06em; text-transform: uppercase; font-weight: 700; color: var(--teal); }
+.co-role ul { margin: 0; padding-left: 18px; color: var(--teal); font-size: 15px; line-height: 1.5; }
+.co-role li { margin: 3px 0; }
+.co-role .btn { margin-top: auto; }
+.co-role ul + h4 + ul { margin-top: 0; }
+@media (max-width: 1000px) { .co-roles { grid-template-columns: minmax(0, 1fr); } }
+.co-roles .co-role ul li { display: list-item; border: 0; border-radius: 0; padding: 0; margin: 4px 0; }
