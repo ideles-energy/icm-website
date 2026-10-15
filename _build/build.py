@@ -371,31 +371,32 @@ def resources(t):
 
 ROLES = [
   ('Commercial Lead', 'Amsterdam',
-   'Sell our solutions to BESS owners and the installers who work with them, and get the first clients live. You own the pipeline, from first call to signed contract.',
+   'Sell our solutions to BESS owners and the installers who work with them. You own the pipeline, from first call to signed contract and beyond.',
    ['Build relationships with installers and developers who bring us BESS owners (3-30 MW)',
     'Run discovery calls and present Configurator, Backtest and Broker results',
-    'Lead technical onboarding: data intake, EMS and meter connection, switch plan',
-    'Close the first clients and turn them into cases'],
-   ['3-6 years in B2B consultative sales, solutions engineering or implementation (SaaS, energy or finance)',
-    'Explains technical topics clearly to asset owners and installers',
+    'Guide clients from first call through onboarding, and keep them with us',
+    'Turn successfully served clients into case examples'],
+   ['3-6 years in B2B consultative sales (SaaS, energy or finance)',
+    'Connects people: builds trust with asset owners, installers and partners',
+    'Explains technical topics clearly',
     'Fluent in Dutch and English',
-    'Knows imbalance, FCR and aFRR, or learns fast']),
+    'Knows BRP and aFRR, or learns fast']),
   ('BESS Analyst', 'Amsterdam',
-   'Build the revenue models, the backtest and the data pipelines behind every ICM result, and explain the outcome to clients.',
-   ['Build and maintain the revenue models for imbalance, FCR, aFRR and day-ahead',
-    'Collect, clean and automate battery and market data',
+   'Accelerate the revenue models, the BESS Backtest and the data pipelines behind every ICM result, and discuss the outcomes with clients.',
+   ['Improve and extend the revenue models for imbalance, FCR, aFRR and day-ahead',
+    'Speed up the BESS Backtest back-end and automate battery and market data',
     'Follow market design and regulation (TenneT, ACM, grid congestion) and translate it into our methodology',
-    'Explain results to clients and write market updates'],
-   ['MSc in econometrics, physics, energy or similar',
-    'Python and SQL; 2-5 years at a trader, optimizer or consultancy',
+    'Talk with clients about their results and what they mean for them'],
+   ['MSc in econometrics, physics, energy or similar, with Python and SQL',
+    '2-5 years at a trader, optimizer or consultancy',
     'Knows the Dutch and European power markets',
-    'Writes clearly for people who are not analysts']),
+    'Explains clearly to people who are not analysts']),
 ]
 
 
 def company(t):
     def li(items): return ''.join(f'<li>{i}</li>' for i in items)
-    rows = '\n'.join(f'''      <details class="co-role" name="roles"><summary><b>{r}</b><em>{c}</em><i class="co-pm" aria-hidden="true"></i></summary><div class="co-body"><div><p>{m}</p><a class="btn btn-lilac" href="/talk-to-us/?role={r.replace(" ", "%20")}">Apply →</a></div><div><h4>What you will do</h4><ul>{li(do)}</ul></div><div><h4>Who you are</h4><ul>{li(you)}</ul></div></div></details>''' for r, c, m, do, you in ROLES)
+    rows = '\n'.join(f'''      <details class="co-role" name="roles"><summary><b>{r}</b><em>{c}</em><i class="co-pm" aria-hidden="true"></i></summary><div class="co-body"><div><p>{m}</p><a class="btn btn-lilac" href="mailto:ideles@icm.energy?subject=Application%3A%20{r.replace(" ", "%20")}">Apply →</a></div><div><h4>What you will do</h4><ul>{li(do)}</ul></div><div><h4>Who you are</h4><ul>{li(you)}</ul></div></div></details>''' for r, c, m, do, you in ROLES)
 
     hero = '''    <div class="page-hero" id="main">
       <h1>Our story</h1>
@@ -416,11 +417,9 @@ def company(t):
   <div class="wrap">
     <p class="co-label">The team</p>
     <div class="team">
-      <a class="member" href="https://www.linkedin.com/in/idel%C3%A8s-kaandorp/" target="_blank" rel="noopener"><img class="ph" src="/assets/team-ideles.jpg" alt="Idelès Kaandorp" width="600" height="600" loading="lazy"><b>Idelès Kaandorp</b><span class="m-bio">Founder. Owns strategy, culture, team and fundraising, and closes the first clients. Ex-McKinsey on energy projects, MBA Harvard Business School.</span></a>
-      <a class="member" href="https://www.linkedin.com/in/edo-rivai-78b66a17/" target="_blank" rel="noopener"><img class="ph" src="/assets/team-edo.jpg" alt="Edo Rivai" width="512" height="512" loading="lazy"><b>Edo Rivai</b><span class="m-bio">Senior software developer. Owns platform design, API integrations with EMS and metering providers, infrastructure and technical onboarding. Builds scalable software at Spot AI.</span></a>
-      <a class="member" href="https://www.linkedin.com/in/jesse-h-willis/" target="_blank" rel="noopener"><img class="ph" src="/assets/team-jesse.jpg" alt="Jesse Willis" width="600" height="720" loading="lazy"><b>Jesse Willis</b><span class="m-bio">Project manager. Owns the process and makes sure every deliverable is delivered, on scope, budget and time. Runs Everlab, an industrial design engineering firm in Amsterdam.</span></a>
-      <div class="member tbc"><span class="ph ph-empty ph-init" aria-hidden="true"><i>+</i></span><b>Coming soon</b><span class="m-bio">A new teammate joins us.</span></div>
-      <div class="member tbc"><span class="ph ph-empty ph-init" aria-hidden="true"><i>+</i></span><b>Coming soon</b><span class="m-bio">A new teammate joins us.</span></div>
+      <a class="member" href="https://www.linkedin.com/in/idel%C3%A8s-kaandorp/" target="_blank" rel="noopener"><img class="ph" src="/assets/team-ideles.jpg" alt="Idelès Kaandorp" width="600" height="600" loading="lazy"><b>Idelès Kaandorp</b><span class="m-bio">Founder. Owns strategy, team and fundraising, and closes the first clients. Previously McKinsey, MBA Harvard Business School.</span></a>
+      <a class="member" href="https://www.linkedin.com/in/edo-rivai-78b66a17/" target="_blank" rel="noopener"><img class="ph" src="/assets/team-edo.jpg" alt="Edo Rivai" width="512" height="512" loading="lazy"><b>Edo Rivai</b><span class="m-bio">Senior software developer. Owns platform design, integrations and infrastructure. Builds scalable software at Spot AI.</span></a>
+      <a class="member" href="https://www.linkedin.com/in/jesse-h-willis/" target="_blank" rel="noopener"><img class="ph" src="/assets/team-jesse.jpg" alt="Jesse Willis" width="600" height="720" loading="lazy"><b>Jesse Willis</b><span class="m-bio">Project manager. Owns process, delivery and quality, on scope, budget and time. Runs Everlab, an industrial design engineering firm.</span></a>
     </div>
     <div class="team-cta"><a class="btn btn-lilac" href="/talk-to-us/">Get in touch →</a></div>
   </div>
@@ -451,7 +450,7 @@ def icon_svg(k):
 
 PROPS = [
   ('configurator', 'BESS Configurator', '/solutions/#configurator', 'Find the optimal system for your context.',
-   'We simulate the revenues of different configurations (number of batteries, MW/MWh) within the restrictions on your site, so you see which one could earn the most.'),
+   'We simulate the revenues of different MW/MWh configurations within your site\'s restrictions and show which one earns the most.'),
   ('broker', 'BESS Broker', '/solutions/#broker', 'Outsource the search for a trusted optimizer.',
    'We run a standardised process to source, compare and contract optimizers, and manage the switch so your battery keeps earning without interruption.'),
   ('backtest', 'BESS Backtest', '/solutions/#backtest', 'Monitor your performance proactively.',
@@ -468,6 +467,16 @@ NEWFAQS = [
  ('What is the role of the installer?', 'Installers can use the ICM in three ways: size a system with the BESS Configurator before the sale, include a BESS Backtest at delivery so every customer gets an independent view of what the battery earns, and refer owners who want a better optimizer to the BESS Broker. Talk to us to see what fits your way of working.'),
  ('What if my battery earns less than expected?', 'You decide what happens next. If the result objectively falls short, the BESS Broker can help you request and compare quotes from other optimizers, test what they would have earned, and guide the switch.'),
  ('Is the ICM independent?', 'Yes. We do not own BESS assets. We are not an optimizer. Nor will we ever be.'),
+]
+
+SOL_FAQS = [
+ ('What does the ICM do?', 'We help BESS owners get the most out of their battery: size the right system with the BESS Configurator, monitor performance with the BESS Backtest, and find a better optimizer with the BESS Broker when there is more to earn.'),
+ ('Who is it for?', 'Owners and developers of batteries of roughly 3 to 30 MW, and the installers who work with them. You do not need to be an expert in power markets.'),
+ ('Is the ICM independent?', 'Yes. We do not own BESS assets. We are not an optimizer. Nor will we ever be. That is why our numbers can be shared with your bank, installer and insurer.'),
+ ('What do I need to get started?', 'Your work email and a few project details. After approval we ask for read access to your optimizer, or three months of settlements, plus an authorisation to read your meter data from your metering company.'),
+ ('What does the BESS Backtest measure?', 'It compares what your battery earned with the most it could have earned on your site. The result is a capture rate: the share of the full potential that was realised, and what holds it back.'),
+ ('What if my battery earns less than expected?', 'You decide what happens next. If the result objectively falls short, the BESS Broker can help you compare optimizers, test what they would have earned and guide the switch.'),
+ ('How do installers work with the ICM?', 'Installers can size a system with the BESS Configurator before the sale, include a BESS Backtest at delivery, and refer owners who want a better optimizer to the BESS Broker.'),
 ]
 
 def faq_block(items, title=None):
@@ -584,7 +593,7 @@ def sol_card(k, n, href, lead, body, extra):
           <p class="sol-lead">{lead}</p>
           <p>{body}</p>
           <p>{extra}</p>
-          <div class="cta-row" style="justify-content:flex-start;margin-top:22px"><a class="btn btn-lilac" href="{TALK}?topic={k}">Talk to us</a>{'<button type="button" class="btn btn-outline js-gate-open">Explore the prototype</button>' if k == 'backtest' else ''}</div>
+          <div class="cta-row" style="justify-content:flex-start;margin-top:22px"><a class="btn btn-lilac" href="{TALK}?topic={k}">Talk to us</a>{'<button type="button" class="btn btn-outline js-gate-open">Explore the product</button>' if k == 'backtest' else ''}</div>
         </div>
       </article>"""
 
@@ -646,9 +655,9 @@ GS_STEPS = f'''<section class="dark gs-steps" id="steps">
   <div class="wrap">
     <h2>Get started in three easy steps.</h2>
     <div class="gs-grid">
-      <div>{GS_ICONS['mail']}<p><b>Step 1: Enter your work email.</b> <span>We use it to set up your intake. Personal email addresses aren't accepted.</span></p></div>
-      <div>{GS_ICONS['form']}<p><b>Step 2: Complete the intake form.</b> <span>Share your asset details and authorise us to read your meter data from your metering company.</span></p></div>
-      <div>{GS_ICONS['key']}<p><b>Step 3: Give us access to your optimizer.</b> <span>Read access is enough. No access? Send your last three months of settlements instead. That is all we need to start.</span></p></div>
+      <div>{GS_ICONS['mail']}<p><b>Step 1: Enter your work email.</b> <span>Enter your business email to begin. You'll be prompted to provide your project details. Personal email addresses aren't accepted.</span></p></div>
+      <div>{GS_ICONS['form']}<p><b>Step 2: Provide your project details.</b> <span>We ask for basic information about your asset, such as site, capacity (MW/MWh) and optimizer, and for your authorisation to read your meter data from your metering company.</span></p></div>
+      <div>{GS_ICONS['key']}<p><b>Step 3: Get approved.</b> <span>We review your details and confirm whether we can start. Only then do we ask for read access to your optimizer, or your last three months of settlements.</span></p></div>
     </div>
   </div>
 </section>'''
@@ -662,16 +671,17 @@ GS_SECURE = f'''<section class="dark gs-secure" id="get-started">
 
 PROTO_URL = 'https://claude.ai/artifact/4JJ9cpLm8pJMx9ZwknDKti'
 GATE = f'''<div class="gate" id="gate" hidden data-target="{PROTO_URL}">
+  <img class="gate-bg" src="/assets/img/backtest-example.jpg" alt="" width="1440" height="900">
   <div class="gate-card" role="dialog" aria-modal="true" aria-labelledby="gate-h">
     <button type="button" class="gate-x js-gate-close" aria-label="Close">&times;</button>
     <h2 id="gate-h">Welcome to the ICM</h2>
-    <p>Explore our prototype to see how the ICM helps you monitor your BESS performance proactively.</p>
+    <p>Explore our product to see how the ICM helps you monitor your BESS performance proactively.</p>
     <form class="gate-form" novalidate>
       <label for="gate-email" class="sr-only">Work email address</label>
       <input id="gate-email" type="email" name="email" placeholder="Work email address*" autocomplete="email" required>
       <p class="gate-err" role="alert" hidden>Please use your work email address.</p>
-      <button type="submit" class="btn btn-lilac">Explore prototype</button>
-      <p class="gate-fine">We use your email to follow up on the prototype, nothing else. See our <a href="/privacy/">privacy statement</a>.</p>
+      <button type="submit" class="btn btn-lilac">Explore product</button>
+      <p class="gate-fine">We use your email to follow up on the product, nothing else. See our <a href="/privacy/">privacy statement</a>.</p>
     </form>
   </div>
 </div>'''
@@ -685,8 +695,9 @@ def solutions(t):
     blocks = ''.join(sol_block(i, k, n, h, lead, body, extras[k]) for i, (k, n, h, lead, body) in enumerate(PROPS))
     hero = f"""    <div class="page-hero sol-hero2" id="main">
       <div class="sh-l">
-        <h1>Stop leaving money on the table</h1>
+        <h1>Stop leaving money<br>on the table</h1>
         <p>The ICM serves those who add capacity to the grid, but are in the dark on their potential.</p>
+        <p>Our clients access the intel they need to secure the true value of their BESS asset, backed by reliable numbers that can be shared with their bank, installer and insurer. No manual entry. No wasted hours.</p>
         {gs_form('a')}
       </div>
       <div class="sh-r"><img src="/assets/img/solutions-veins-bright.jpg" alt="" width="1600" height="900"></div>
@@ -699,7 +710,7 @@ def solutions(t):
 {GS_STEPS}
 {GS_SECURE}
 {PARTNER_STRIP}
-{faq_block(NEWFAQS, 'Frequently asked questions')}
+{faq_block(SOL_FAQS, 'Frequently asked questions')}
 {GATE}"""
     return page_shell(t, '/solutions/', 'Solutions: BESS Configurator, BESS Backtest and BESS Broker | The ICM',
         'How the ICM helps BESS owners: size the right battery system, backtest its performance against its full potential and find a trusted optimizer.', hero, body)
@@ -806,7 +817,7 @@ def why_section(v='1'):
         causes = ''.join(f'<li><b>{a}.</b> {b} <a href="{h}">{n} →</a></li>' for a, b, h, n in cs)
         inner = f"""<div class="wy-split wy-split4">
       <div class="wy-dark">{w_head('h2')}{w_dots()}</div>
-      <div class="wy-light"><p class="wy-k">See what your battery is missing</p><p class="story-p story">{w_sentence()}</p>{w_hint()}<h3>Three places it leaks</h3><ol class="wy-causes">{causes}</ol></div>
+      <div class="wy-light"><p class="wy-k">What your battery is missing</p><p class="story-p story">{w_sentence()}</p>{w_hint()}<h3>Three places it leaks</h3><ol class="wy-causes">{causes}</ol></div>
     </div>
     {w_can()}"""
     elif v == '13':
@@ -815,7 +826,7 @@ def why_section(v='1'):
     <div class="story wy-wide wy-v13">
       <div class="wy-dotsrow">{w_dots(10, legend=False)}<div class="wy-side"><div class="why-legend wy-legr">{WLEG}</div>{w_hint()}</div></div>
       <div class="wy-two wy-plain wy-cards">
-        <div><p class="wy-k">See what your battery is missing</p><p class="story-p story">{w_sentence()}</p></div>
+        <div><p class="wy-k">What your battery is missing</p><p class="story-p story">{w_sentence()}</p></div>
         <div><p class="wy-k">Where it leaks</p><ul class="wy-bul">{bl}</ul></div>
       </div>
     </div>"""
@@ -824,7 +835,7 @@ def why_section(v='1'):
         leaks = (f'Revenue leaks in three places. <b>The wrong configuration:</b> the battery is not sized or set up for what your site allows ({lk("/solutions/#configurator", "BESS Configurator")}). '
                  f'<b>The wrong optimizer:</b> another optimizer would earn more with the same battery ({lk("/solutions/#broker", "BESS Broker")}). '
                  f'<b>Too little monitoring:</b> underperformance goes unnoticed, so it carries on ({lk("/solutions/#backtest", "BESS Backtest")}).')
-        check = f"""<p class="wy-k">See what your battery is missing</p><p class="story-p story">{w_sentence()}</p>{w_hint()}"""
+        check = f"""<p class="wy-k">What your battery is missing</p><p class="story-p story">{w_sentence()}</p>{w_hint()}"""
         leaksb = f"""<p class="wy-k">Where it leaks</p><p class="story-p story">{leaks}</p>"""
         if v == '10':   # two equal light cards, dots below
             inner = f"""<div class="wy-head">{w_head()}</div>
@@ -839,7 +850,7 @@ def why_section(v='1'):
     <div class="wy-light wy-one"><div class="wy-two wy-halves"><div>{check}</div><div>{leaksb}</div></div>{w_dots(6)}</div>"""
     elif v in ('6', '7', '8', '9'):
         cols = ''.join(f'<div><b>{a}</b><p>{b}</p><a href="{h}">{n} →</a></div>' for a, b, h, n in cs)
-        check = f"""<p class="wy-k">See what your battery is missing</p><p class="story-p story">{w_sentence()}</p>{w_hint()}"""
+        check = f"""<p class="wy-k">What your battery is missing</p><p class="story-p story">{w_sentence()}</p>{w_hint()}"""
         if v == '6':    # 4's split with 2's clean columns below
             inner = f"""<div class="wy-split wy-split4">
       <div class="wy-dark">{w_head('h2')}{w_dots()}</div>
