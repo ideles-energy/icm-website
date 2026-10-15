@@ -368,7 +368,7 @@ def resources(t):
 
 ROLES = [
   ('Commercial Lead', 'Amsterdam',
-   'Sell the ICM's solutions to BESS owners and the installers who work with them, and get the first clients live. You own the pipeline, from first call to signed contract.',
+   'Sell our solutions to BESS owners and the installers who work with them, and get the first clients live. You own the pipeline, from first call to signed contract.',
    ['Build relationships with installers and developers who bring us BESS owners (3-30 MW)',
     'Run discovery calls and present Configurator, Backtest and Broker results',
     'Lead technical onboarding: data intake, EMS and meter connection, switch plan',
