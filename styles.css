@@ -1020,3 +1020,25 @@ h1, h2, h3 { letter-spacing: -0.025em; font-weight: 700; }
 .hero h1 { font-size: clamp(32px, 3.7vw, 47px); }
 .hero .lead { font-size: 17px; max-width: 480px; }
 .props-sec .section-head h2 { color: var(--white); font-size: clamp(26px, 2.9vw, 36px); }
+
+/* v12: combinations of 2 and 4 */
+.wy-light .why-fig .dd { fill: var(--teal); }
+.wy-light .why-fig .dm { stroke: #A24FC4; }
+.wy-light .why-legend { color: var(--muted); }
+.wy-light .why-legend b { color: var(--teal); }
+.wy-light .why-legend i.d { background: var(--teal); }
+.wy-light .why-legend i.m { border-color: #A24FC4; }
+.wy-light .why-legend .unit { color: var(--muted); opacity: .8; }
+.wy-ondots .why-fig { margin-top: 24px; }
+.wy-split7 { align-items: stretch; }
+.wy-split7 .why-fig { margin: 0; }
+.wy-stack { display: grid; gap: 22px; margin-top: 8px; }
+.wy-stack > div { border-top: 2px solid var(--cyan); padding-top: 14px; color: rgba(255,255,255,.85); font-size: 17px; }
+.wy-stack b { display: block; color: #fff; font-size: 20px; margin-bottom: 4px; }
+.wy-stack p { margin: 0 0 8px; }
+.wy-stack a { color: var(--cyan); font-weight: 600; text-decoration: none; }
+.wy-strip { max-width: 1100px; margin: 0 auto; }
+.wy-strip .story-p { font-size: 19px; }
+.wy-split8 .wy-dark { justify-content: flex-start; gap: 28px; }
+.wy-6 .why-eyebrow, .wy-8 .why-eyebrow { text-align: left; }
+.wy-6 .wy-light { align-self: start; }

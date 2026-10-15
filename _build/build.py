@@ -671,7 +671,7 @@ WCAUSES = [('The wrong configuration', 'The battery is not sized or set up for w
            ('Too little monitoring', 'Underperformance goes unnoticed, so it carries on.', '/bess-backtest/', 'BESS Backtest')]
 
 def w_can():
-    return f"""<p class="wy-can"><b>We can help because we are independent.</b> We own no batteries and are not an optimizer, we look at your unique set-up and context, and the 30% uplift comes from <a class="story-link" href="{FLOWER}" target="_blank" rel="noopener">a comparable case</a>.</p>"""
+    return ''
 
 def w_head(tag='h2'):
     return '<%s class="story-h">It\'s a waste to miss out on <b class="out js-missed">EUR 555,000</b> a year.</%s>' % (tag, tag)
@@ -711,6 +711,33 @@ def why_section(v='1'):
       <div class="wy-light"><p class="wy-k">Check your own battery</p><p class="story-p story">{w_sentence()}</p>{w_hint()}<h3>Three places it leaks</h3><ol class="wy-causes">{causes}</ol></div>
     </div>
     {w_can()}"""
+    elif v in ('6', '7', '8', '9'):
+        cols = ''.join(f'<div><b>{a}</b><p>{b}</p><a href="{h}">{n} →</a></div>' for a, b, h, n in cs)
+        check = f"""<p class="wy-k">Check your own battery</p><p class="story-p story">{w_sentence()}</p>{w_hint()}"""
+        if v == '6':    # 4's split with 2's clean columns below
+            inner = f"""<div class="wy-split wy-split4">
+      <div class="wy-dark">{w_head('h2')}{w_dots()}</div>
+      <div class="wy-light">{check}</div>
+    </div>
+    <p class="wy-k wy-k2">Where it leaks</p><div class="wy-cols">{cols}</div>"""
+        elif v == '7':  # check card left, dots right, columns below
+            inner = f"""<div class="wy-head">{w_head()}</div>
+    <div class="wy-split wy-split7">
+      <div class="wy-light">{check}</div>
+      <div class="story">{w_dots()}</div>
+    </div>
+    <p class="wy-k wy-k2">Where it leaks</p><div class="wy-cols">{cols}</div>"""
+        elif v == '8':  # dark left: headline + clean leaks, light right: check + dots on light
+            leaks = ''.join(f'<div><b>{a}</b><p>{b}</p><a href="{h}">{n} →</a></div>' for a, b, h, n in cs)
+            inner = f"""<div class="wy-split wy-split4 wy-split8">
+      <div class="wy-dark">{w_head('h2')}<div class="wy-stack">{leaks}</div></div>
+      <div class="wy-light wy-ondots">{check}{w_dots()}</div>
+    </div>"""
+        else:           # 9: headline, light strip with the check, full-width dots, columns
+            inner = f"""<div class="wy-head">{w_head()}</div>
+    <div class="wy-light wy-strip">{check}</div>
+    <div class="story wy-wide">{w_dots(8)}</div>
+    <p class="wy-k wy-k2">Where it leaks</p><div class="wy-cols">{cols}</div>"""
     else:           # '5' editorial, no dots, big numerals
         causes = ''.join(f'<li><span class="wy-n">{i+1:02d}</span><div><b>{a}</b><p>{b}</p><a href="{h}">{n} →</a></div></li>' for i, (a, b, h, n) in enumerate(cs))
         inner = f"""<div class="wy-head">{w_head()}</div>
@@ -823,7 +850,7 @@ for lang in LANGS:
     pre = '' if lang == 'en' else 'nl/'
     write(pre + 'index.html', home(t))
     if os.environ.get('WHY_OPTIONS'):
-        opts = ''.join(f'<div class="dark"><p class="tp-label">Version {v}</p></div>' + why_section(v) for v in '12345')
+        opts = ''.join(f'<div class="dark"><p class="tp-label">Version {v}</p></div>' + why_section(v) for v in '246789')
         write('why-options/index.html', page_shell(t, '/why-options/', 'Options', '', '<div class="page-hero" id="main"><h1>Our why: 5 versions</h1><p>Choose one for the homepage. All figures can be changed.</p></div>', opts))
     write(pre + 'terms/index.html', terms(t))
     write(pre + 'privacy/index.html', privacy(t))
