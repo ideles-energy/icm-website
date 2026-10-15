@@ -233,11 +233,12 @@ def nav(t, other_href):
           <li class="has-sub hide-sm"><button type="button" class="sub-btn" aria-expanded="false" aria-haspopup="true">Solutions</button><ul class="sub">{subs}</ul></li>
           <li class="hide-sm"><a href="/resources/">Resources</a></li>
           <li class="hide-sm"><a href="/company/">Company</a></li>
+          <li class="hide-sm"><a class="nav-signin" href="https://app.icm.energy/">Sign in</a></li>
           <li><a class="btn btn-lilac" href="{TALK}">{t['talk']}</a></li>
           <li class="show-sm"><button type="button" class="menu-btn" aria-expanded="false" aria-label="Open menu"><span></span><span></span><span></span></button></li>
         </ul>
       </nav>
-      <div class="m-menu" hidden><p class="m-h">Solutions</p>{msubs}<a href="/resources/">Resources</a><a href="/company/">Company</a></div>
+      <div class="m-menu" hidden><p class="m-h">Solutions</p>{msubs}<a href="/resources/">Resources</a><a href="/company/">Company</a><a href="https://app.icm.energy/">Sign in</a></div>
     </header>
 """
 

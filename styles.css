@@ -1317,3 +1317,6 @@ a.member:hover b { text-decoration: underline; text-underline-offset: 4px; }
 .story-src::after{content:" →"}
 .story-src:hover{color:var(--cyan)}
 .story-src{display:block;margin:4px 0 0}
+
+/* v32 sign in */
+.nav-links a.nav-signin{color:var(--white);opacity:.9;padding:8px 2px}
