@@ -915,3 +915,5 @@ h1, h2, h3 { letter-spacing: -0.025em; font-weight: 700; }
 .tp-label { color: var(--cyan); font-weight: 700; letter-spacing: .06em; text-transform: uppercase; font-size: 13px; padding: 36px var(--pad) 12px; max-width: var(--max); margin: 0 auto; background: var(--night); }
 @media (max-width: 760px) { .tp-card { flex-direction: column; align-items: flex-start; padding: 26px; } .tp-photo { width: 100%; height: 180px; } }
 .tp-label { padding-bottom: 12px; }
+.talk-expect { padding-top: 0; }
+.talk-hero { padding-bottom: 56px; }

@@ -221,7 +221,7 @@ def nav(t, other_href):
     subs = ''.join(f'<li><a href="{h}"><b>{n}</b><span>{s}</span></a></li>' for n, s, h in SOLUTIONS)
     msubs = ''.join(f'<a class="m-sub" href="{h}">{n}</a>' for n, s, h in SOLUTIONS)
     return f"""    <header class="nav">
-      <a class="logo" href="{b}" aria-label="The Independent Capacity Market, home"><img class="logo-full" src="/assets/logo-header.png" alt="The Independent Capacity Market" width="796" height="119"><img class="logo-icon" src="/assets/favicon.svg" alt="" width="36" height="36"></a>
+      <a class="logo" href="{b}" aria-label="The Independent Capacity Market, home"><img class="logo-full" src="/assets/logo-header.svg" alt="The Independent Capacity Market" width="796" height="119"><img class="logo-icon" src="/assets/favicon.svg" alt="" width="36" height="36"></a>
       <nav aria-label="{t['menu']}">
         <ul class="nav-links">
           <li class="has-sub hide-sm"><button type="button" class="sub-btn" aria-expanded="false" aria-haspopup="true">Solutions</button><ul class="sub">{subs}</ul></li>
@@ -737,11 +737,14 @@ def talk(t, variant=None):
         <noscript><a href="https://forms.fillout.com/t/icWpPN8hsgus">Open the form</a></noscript>
       </div>
     </div>"""
-    body = f"""{talk_proof(variant)}
-<section class="talk-sec">
+    body = f"""<section class="talk-sec talk-expect">
   <div class="wrap">
-    <div class="section-head center"><h2>What happens next</h2></div>
-    {expect_cards()}
+    <div class="section-head center"><h2>What to expect</h2></div>
+    <div class="expect">
+      <div><b>1</b><h3>An open 45-minute conversation</h3><p>An expert from the team talks you through the options for your context and objectives.</p></div>
+      <div><b>2</b><h3>An independent perspective</h3><p>We own no batteries and are not an optimizer. That matters: our advice is about your return, not about selling a product.</p></div>
+      <div><b>3</b><h3>A clearly scoped proposal</h3><p>We work towards a proposal with clear next steps and deliverables, so nothing comes as a surprise.</p></div>
+    </div>
   </div>
 </section>
 {faq_block(NEWFAQS, 'Frequently asked questions')}"""
