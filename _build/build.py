@@ -452,7 +452,7 @@ PROPS = [
   ('configurator', 'BESS Configurator', '/solutions/#configurator', 'Find the optimal system for your context.',
    'We simulate the revenues of different MW/MWh configurations within your site\'s dispatch constraints and show which one delivers the highest returns.'),
   ('broker', 'BESS Broker', '/solutions/#broker', 'Outsource the search for a trusted optimizer.',
-   'We run a standardised process to source, compare and contract optimizers, and manage the switch so your battery keeps earning without interruption.'),
+   'We run a standardised process to source, compare and contract optimizers, and oversee the switch so your battery keeps earning without interruption.'),
   ('backtest', 'BESS Backtest', '/solutions/#backtest', 'Monitor your performance proactively.',
    'We compare your realised revenues with what can be reasonably achieved within your dispatch constraints, and alert you when performance consistently falls short.'),
 ]
