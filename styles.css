@@ -1503,3 +1503,20 @@ body.nav-light.nav-fixed header.nav .nav-right .btn-outline{color:#274A51;border
 .gate-card{max-width:680px;padding:44px 12px 18px;background:#F3F4F6;text-align:center}
 .gate-frame{display:block;width:100%;height:420px;border:0;background:transparent}
 .gate-go{display:inline-block;margin:4px 0 10px;font-size:14px;color:#274A51;text-decoration:underline}
+
+/* v48: Solutions CTAs (buttons instead of email field) + mobile readability */
+.gs-cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.gs-secure .gs-cta{justify-content:center}
+@media (max-width:600px){
+  .hero-ctas,.gs-cta,.sol-wrap .cta-row{flex-direction:column;align-items:stretch;gap:10px}
+  .hero-ctas .btn,.gs-cta .btn,.sol-wrap .cta-row .btn,.prop-actions .btn{width:100%;justify-content:center;text-align:center;padding:15px 22px}
+  .prop-actions{flex-direction:column;align-items:stretch;gap:12px}
+  .prop-actions .prop-link{align-self:flex-start}
+  .sol-flat{min-height:150px;border-radius:20px}
+  .sol-flat svg{width:80px;height:80px}
+  .cta-band .cta-row{flex-direction:column;align-items:stretch}
+  .cta-band .cta-row .btn{width:100%;text-align:center}
+  .gate-card{padding:40px 6px 12px}
+  .gate-frame{height:460px}
+}
+.gs-cta .btn-lilac,.hero-ctas .btn-lilac{color:#040D1F !important}

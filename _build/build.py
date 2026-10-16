@@ -638,12 +638,10 @@ PARTNER_STRIP = '''<section class="dark partner-wrap" id="partners">
   </div>
 </section>'''
 
-GS_FORM = '''<form class="gs-form" novalidate>
-  <label class="sr-only" for="gs-email-ID">Work email address</label>
-  <input id="gs-email-ID" type="email" name="email" placeholder="What's your work email?" autocomplete="email" required>
-  <button type="submit" class="btn btn-lilac">Get started for free</button>
-  <p class="gate-err" role="alert" hidden>Please use your work email address.</p>
-</form>'''
+GS_FORM = '''<div class="gs-cta">
+  <button type="button" class="btn btn-lilac js-gate-open" data-gate="start">Get started</button>
+  <button type="button" class="btn btn-outline js-gate-open" data-gate="demo">See an example report</button>
+</div>'''
 
 def gs_form(i):
     return GS_FORM.replace('ID', i)
