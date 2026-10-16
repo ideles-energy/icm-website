@@ -683,7 +683,6 @@ GS_STEPS = f'''<section class="dark gs-steps" id="steps">
 
 GS_SECURE = f'''<section class="dark gs-secure" id="get-started">
   <div class="wrap">
-    <h2>Secure the true value of your BESS asset</h2>
     {gs_form('b')}
   </div>
 </section>'''

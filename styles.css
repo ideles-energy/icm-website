@@ -1574,3 +1574,6 @@ body.nav-light.nav-fixed header.nav .nav-right .btn-outline{color:#274A51;border
 .calc-ph b{font-size:18px}.calc-ph small{color:rgba(255,255,255,.75);font-size:14px}
 .calc-dot{width:12px;height:12px;border-radius:50%;background:#97F2F5;box-shadow:0 0 0 6px rgba(151,242,245,.18)}
 @media (max-width:900px){.calc-block{grid-template-columns:minmax(0,1fr);padding:24px;gap:24px}.calc-slot{min-height:220px}}
+
+/* v57 closing buttons on Solutions sit directly under the steps */
+.gs-steps{padding-bottom:24px !important}.gs-secure{padding-top:28px !important}
