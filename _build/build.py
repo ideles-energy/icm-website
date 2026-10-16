@@ -676,7 +676,7 @@ GATE = f'''<div class="gate" id="gate" hidden data-target="{PROTO_URL}">
   <div class="gate-card" role="dialog" aria-modal="true" aria-labelledby="gate-h">
     <button type="button" class="gate-x js-gate-close" aria-label="Close">&times;</button>
     <h2 id="gate-h" class="sr-only">Welcome to the ICM</h2>
-    <iframe class="gate-frame" title="Work email form" data-src="https://form.fillout.com/t/4W7Pk7S5YTus" loading="lazy"></iframe>
+    <div class="gate-frame" data-fillout-id="4W7Pk7S5YTus" data-fillout-embed-type="standard" data-fillout-inherit-parameters data-fillout-dynamic-resize></div>
     <a class="gate-go js-gate-go" href="{PROTO_URL}" target="_blank" rel="noopener">Entered your email? Open the product &rarr;</a>
   </div>
 </div>'''

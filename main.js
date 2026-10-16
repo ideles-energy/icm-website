@@ -165,9 +165,9 @@ r.addEventListener('input',u);u();})();
 /* Email gate before the Backtest product: work-email form (Fillout) in a pop-up */
 (function(){
   var g=document.getElementById('gate'); if(!g) return;
-  var fr=g.querySelector('.gate-frame'), go=g.querySelector('.js-gate-go');
-  function open(mode){mode=mode||'demo';g.hidden=false;document.body.style.overflow='hidden';
-    if(fr){var u=fr.getAttribute('data-src')+'?source='+mode;if(fr.getAttribute('src')!==u)fr.src=u;}
+  var go=g.querySelector('.js-gate-go'), loaded=false;
+  function open(mode){g.hidden=false;document.body.style.overflow='hidden';
+    if(!loaded){loaded=true;var s=document.createElement('script');s.src='https://server.fillout.com/embed/v1/';document.body.appendChild(s);}
     if(go)go.hidden=(mode==='start');}
   function close(){g.hidden=true;document.body.style.overflow='';}
   document.querySelectorAll('.js-gate-open').forEach(function(b){b.addEventListener('click',function(e){e.preventDefault();open(b.getAttribute('data-gate'));});});

@@ -1544,3 +1544,5 @@ body.nav-light.nav-fixed header.nav .nav-right .btn-outline{color:#274A51;border
   .prop .callout{grid-row:auto}
   .prop .prop-actions{align-self:end}
 }
+
+.gate-frame{min-height:420px;width:100%}
