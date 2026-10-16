@@ -450,11 +450,11 @@ def icon_svg(k):
 
 PROPS = [
   ('configurator', 'BESS Configurator', '/solutions/#configurator', 'Find the optimal system for your context.',
-   'We simulate the revenues of different MW/MWh configurations within your site\'s restrictions and show which one earns the most.'),
+   'We simulate the revenues of different MW/MWh configurations within your site\'s dispatch constraints and show which one earns the most.'),
   ('broker', 'BESS Broker', '/solutions/#broker', 'Outsource the search for a trusted optimizer.',
    'We run a standardised process to source, compare and contract optimizers, and manage the switch so your battery keeps earning without interruption.'),
   ('backtest', 'BESS Backtest', '/solutions/#backtest', 'Monitor your performance proactively.',
-   'We compare your realised revenues with what can be reasonably achieved within your restrictions, and alert you when performance consistently falls short.'),
+   'We compare your realised revenues with what can be reasonably achieved within your dispatch constraints, and alert you when performance consistently falls short.'),
 ]
 
 NEWFAQS = [
