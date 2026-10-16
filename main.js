@@ -174,7 +174,7 @@ r.addEventListener('input',u);u();})();
   g.querySelector('.js-gate-close').addEventListener('click',close);
   g.addEventListener('click',function(e){if(e.target===g)close();});
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!g.hidden)close();});
-  if(go)go.addEventListener('click',function(){setTimeout(close,100);});
+  
 })();
 
 /* Work-email forms on Solutions: validate, then go on to the intake form */
