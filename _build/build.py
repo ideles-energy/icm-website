@@ -237,7 +237,7 @@ def nav(t, other_href):
         <ul class="nav-links nav-right">
           <li class="hide-sm"><a class="nav-signin" href="https://app.icm.energy/">Sign in</a></li>
           <li class="hide-sm"><a class="btn btn-outline js-gate-open" data-gate="demo" href="/solutions/#backtest">See an example report</a></li>
-          <li><a class="btn btn-lilac js-gate-open" data-gate="start" href="{TALK}">Get started</a></li>
+          {'' if other_href == TALK else '<li><a class="btn btn-lilac js-gate-open" data-gate="start" href="' + TALK + '">Get started</a></li>'}
           <li class="show-sm"><button type="button" class="menu-btn" aria-expanded="false" aria-label="Open menu"><span></span><span></span><span></span></button></li>
         </ul>
       </nav>
@@ -597,7 +597,7 @@ def sol_card(k, n, href, lead, body, extra):
           <p class="sol-lead">{lead}</p>
           <p>{body}</p>
           <p>{extra}</p>
-          <div class="cta-row" style="justify-content:flex-start;margin-top:22px"><a class="btn btn-lilac" href="{TALK}?topic={k}">Talk to an expert</a>{'<button type="button" class="btn btn-outline js-gate-open" data-gate="demo">See an example report</button>' if k == 'backtest' else ''}</div>
+          <div class="cta-row" style="justify-content:flex-start;margin-top:22px">{'<button type="button" class="btn btn-lilac js-gate-open" data-gate="demo">See an example report</button>' if k == 'backtest' else '<a class="btn btn-lilac" href="' + TALK + '?topic=' + k + '">Talk to an expert</a>'}</div>
         </div>
       </article>"""
 
