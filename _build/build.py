@@ -445,7 +445,7 @@ ICONS = {
   'broker': '<circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/><path d="M8 10.5l2 2 3.5-4"/>',
 }
 def icon_svg(k):
-    return f'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">{ICONS[k]}</svg>'
+    return f'<svg viewBox="0 0 24 24" fill="none" stroke="#97F2F5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">{ICONS[k]}</svg>'
 
 PROPS = [
   ('configurator', 'BESS Configurator', '/solutions/#configurator', 'Find the optimal system for your context.',
@@ -516,7 +516,7 @@ def home(t):
          "url": "https://icm.energy/", "email": EMAIL, "address": {"@type": "PostalAddress", "addressLocality": "Amsterdam", "addressCountry": "NL"},
          "founder": {"@type": "Person", "name": "Idelès Kaandorp", "sameAs": LINKEDIN}}]}
     cards = ''.join(f"""      <article class="prop{' featured' if k == 'backtest' else ''}">{CALLOUT if k == 'backtest' else ''}
-        <span class="sol-icon ic-{k}" aria-hidden="true">{icon_svg(k)}</span>
+        <span class="sol-icon" aria-hidden="true">{icon_svg(k)}</span>
         <h3>{n}</h3>
         <p class="prop-lead">{lead}</p>
         <p>{body}</p>
@@ -590,7 +590,7 @@ SOL_IMG = {'configurator': ('/assets/img/sol-owner.jpg', 'Wind turbine against a
 
 def sol_card(k, n, href, lead, body, extra):
     return f"""<article class="sol{' featured' if k == 'backtest' else ''}" id="{k}">{CALLOUT if k == 'backtest' else ''}
-        <span class="sol-icon ic-{k}" aria-hidden="true">{icon_svg(k)}</span>
+        <span class="sol-icon" aria-hidden="true">{icon_svg(k)}</span>
         <div class="sol-body">
           <h2>{n}</h2>
           <p class="sol-lead">{lead}</p>

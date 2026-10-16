@@ -1546,9 +1546,6 @@ body.nav-light.nav-fixed header.nav .nav-right .btn-outline{color:#274A51;border
 }
 
 .gate-frame{min-height:420px;width:100%}
-
-/* v53 icon colours per proposition: three backgrounds, three icon colours (brand colours only) */
-.sol-icon.ic-configurator{color:#97F2F5;background:rgba(151,242,245,.10);border-color:rgba(151,242,245,.45)}
-.sol-icon.ic-backtest{color:#D392EB;background:rgba(211,146,235,.14);border-color:rgba(211,146,235,.6)}
-.sol-icon.ic-broker{color:#F2F8F9;background:#274A51;border-color:#274A51}
-.sol-icon svg{stroke:currentColor}
+/* v53 Solutions tiles: Backtest violet, Broker slate */
+.sol-flat-backtest{background:#D392EB}.sol-flat-backtest svg{stroke:#040D1F}
+.sol-flat-broker{background:#274A51}.sol-flat-broker svg{stroke:#97F2F5}
