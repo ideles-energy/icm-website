@@ -498,7 +498,7 @@ def cta_band(t, h="Secure your battery's full potential", p='Tell us about your 
   <div class="wrap">
     <h2>{h}</h2>
     <p>{p}</p>
-    <div class="cta-row"><a class="btn btn-lilac" href="{TALK}{q}">Get started</a><a class="btn btn-outline" href="{TALK}{q}">Talk to an expert</a></div>
+    <div class="cta-row"><a class="btn btn-lilac" href="{TALK}{q}">Get started</a><button type="button" class="btn btn-outline js-gate-open" data-gate="demo">See an example report</button></div>
   </div>
 </section>"""
 
