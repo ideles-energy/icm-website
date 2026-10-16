@@ -236,7 +236,8 @@ def nav(t, other_href):
         </ul>
         <ul class="nav-links nav-right">
           <li class="hide-sm"><a class="nav-signin" href="https://app.icm.energy/">Sign in</a></li>
-          <li><a class="btn btn-lilac" href="/solutions/#get-started">Check my battery</a></li>
+          <li class="hide-sm"><a class="btn btn-outline js-gate-open" href="/solutions/#backtest">See a demo</a></li>
+          <li><a class="btn btn-lilac" href="{TALK}">Get started</a></li>
           <li class="show-sm"><button type="button" class="menu-btn" aria-expanded="false" aria-label="Open menu"><span></span><span></span><span></span></button></li>
         </ul>
       </nav>
@@ -246,7 +247,7 @@ def nav(t, other_href):
 
 def footer(t, other_href):
     b = t['base']
-    return f"""<footer>
+    return GATE + f"""<footer>
   <div class="wrap foot2">
     <div class="f-about">
       <p class="f-name">The Independent Capacity Market</p>
@@ -491,13 +492,13 @@ def faq_block(items, title=None):
   </div>
 </section>"""
 
-def cta_band(t, h="Check what your battery is missing", p='Start with your work email. We guide you through the rest.', topic=None):
+def cta_band(t, h="Find your battery's full potential", p='Tell us about your battery. We guide you through the rest.', topic=None):
     q = f'?topic={topic}' if topic else ''
     return f"""<section class="cta-band">
   <div class="wrap">
     <h2>{h}</h2>
     <p>{p}</p>
-    <a class="btn btn-outline" href="/solutions/#get-started">Check my battery</a>
+    <div class="cta-row"><a class="btn btn-lilac" href="{TALK}{q}">Get started</a><a class="btn btn-outline js-gate-open" href="/solutions/#backtest">See a demo</a></div>
   </div>
 </section>"""
 
@@ -535,8 +536,8 @@ def home(t):
         <h1>Secure the true value <br>of a BESS asset</h1>
         <p class="lead">For those with a nagging sense they could earn more with their battery. Find the optimal system for your context, outsource the search for a trusted optimizer and monitor your performance proactively.</p>
         <div class="hero-ctas">
-          <a class="btn btn-lilac" href="/solutions/#get-started">Check my battery</a>
-          <a class="btn btn-outline" href="#how">Learn more</a>
+          <a class="btn btn-lilac" href="{TALK}">Get started</a>
+          <a class="btn btn-outline js-gate-open" href="/solutions/#backtest">See a demo</a>
         </div>
       </div>
     </div>
@@ -576,7 +577,6 @@ def home(t):
 
 {cta_band(t)}
 
-{GATE}
 {footer(t, other)}
 <script src="/main.js?v={V_JS}" defer></script>
 </body>
@@ -704,14 +704,13 @@ def solutions(t):
       </div>
       <div class="sh-r"><img src="/assets/img/solutions-veins-bright.jpg" alt="" width="1600" height="900"></div>
     </div>"""
-    body = f"""<section class="sol-light sol-wrap" id="solutions">
+    body = f"""<section class="sol-light sol-wrap sol-noicon" id="solutions">
   <div class="wrap">
 {blocks}  </div>
 </section>
 {GS_STEPS}
 {GS_SECURE}
-{faq_block(SOL_FAQS, 'Frequently asked questions')}
-{GATE}"""
+{faq_block(SOL_FAQS, 'Frequently asked questions')}"""
     return page_shell(t, '/solutions/', 'Solutions: BESS Configurator, BESS Backtest and BESS Broker | The ICM',
         'How the ICM helps BESS owners: size the right battery system, backtest its performance against its full potential and find a trusted optimizer.', hero, body)
 

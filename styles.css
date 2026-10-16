@@ -1491,3 +1491,10 @@ body.nav-light.nav-fixed header.nav .btn-lilac{color:#040D1F}
 .prop-actions .prop-link{padding:0 !important;margin:0 !important;font-size:14px !important;line-height:1;display:inline-flex;align-items:center}
 .prop-actions .prop-demo{margin:0 !important}
 .prop-actions .prop-demo{color:#040D1F !important}
+
+/* v46 */
+.sol-noicon .sol-icon{display:none}
+.cta-band .cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.nav-right .btn-outline{color:#fff;border-color:rgba(255,255,255,.7)}
+body.nav-light.nav-fixed header.nav .nav-right .btn-outline{color:#274A51;border-color:#274A51}
+.nav-right .btn{padding:10px 20px;line-height:1.2}.nav-right .btn-lilac{color:#040D1F !important}

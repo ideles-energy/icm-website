@@ -169,7 +169,7 @@ r.addEventListener('input',u);u();})();
   var free=/@(gmail|googlemail|hotmail|outlook|live|yahoo|icloud|me|proton|protonmail|aol|gmx|msn)\./i;
   function open(){g.hidden=false;document.body.style.overflow='hidden';inp.focus();}
   function close(){g.hidden=true;document.body.style.overflow='';}
-  document.querySelectorAll('.js-gate-open').forEach(function(b){b.addEventListener('click',open);});
+  document.querySelectorAll('.js-gate-open').forEach(function(b){b.addEventListener('click',function(e){e.preventDefault();open();});});
   g.querySelector('.js-gate-close').addEventListener('click',close);
   g.addEventListener('click',function(e){if(e.target===g)close();});
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!g.hidden)close();});

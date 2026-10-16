@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css?v=374796eb">
+<link rel="stylesheet" href="/styles.css?v=5a606409">
 </head>
 <body>
 <a class="sr-only" href="#main">Skip to content</a>
@@ -34,7 +34,8 @@
         </ul>
         <ul class="nav-links nav-right">
           <li class="hide-sm"><a class="nav-signin" href="https://app.icm.energy/">Sign in</a></li>
-          <li><a class="btn btn-lilac" href="/solutions/#get-started">Check my battery</a></li>
+          <li class="hide-sm"><a class="btn btn-outline js-gate-open" href="/solutions/#backtest">See a demo</a></li>
+          <li><a class="btn btn-lilac" href="/talk-to-us/">Get started</a></li>
           <li class="show-sm"><button type="button" class="menu-btn" aria-expanded="false" aria-label="Open menu"><span></span><span></span><span></span></button></li>
         </ul>
       </nav>
@@ -53,7 +54,21 @@
     <div class="prose"><h2>What are cookies</h2><p>Cookies are small text files that a website stores on your device when you visit it. Similar technologies, such as local storage and pixels, work in the same way. We use the word “cookies” for all of them.</p><h2>How we use cookies</h2><p>The ICM website is built to work without tracking. We do not use analytics cookies, advertising cookies or social media tracking, and we do not build profiles of visitors.</p><h2>Cookies on our website</h2><p><b>Our own website.</b> The pages of icm.energy do not set cookies of their own and do not store data in your browser to identify you.<br><b>Third-party content.</b> The contact form on our Talk to us page is provided by Fillout. When you load the form, Fillout may set cookies or similar technologies needed to show and submit it. Their use is governed by Fillout’s own policies.</p><h2>Managing cookies</h2><p>You can block or delete cookies in your browser settings. If you do, parts of the website, such as the contact form, may not work as intended. If you prefer, you can also email us at <a href="mailto:info@icm.energy">info@icm.energy</a> instead of using the form.</p><h2>If this changes</h2><p>If we start using analytics or other cookies that need consent, we will ask for your permission first and update this policy.</p><h2>More information</h2><p>See our <a href="/privacy/">privacy statement</a> for how we handle personal data, or contact us at <a href="mailto:info@icm.energy">info@icm.energy</a>.</p><p style="color:var(--muted);font-size:14px">Last updated: 15 October 2026</p></div>
   </div>
 </main>
-<footer>
+<div class="gate" id="gate" hidden data-target="https://claude.ai/artifact/4JJ9cpLm8pJMx9ZwknDKti">
+  <img class="gate-bg" src="/assets/img/backtest-example.jpg" alt="" width="1440" height="900">
+  <div class="gate-card" role="dialog" aria-modal="true" aria-labelledby="gate-h">
+    <button type="button" class="gate-x js-gate-close" aria-label="Close">&times;</button>
+    <h2 id="gate-h">Welcome to the ICM</h2>
+    <p>Explore our product to see how the ICM helps you monitor your BESS performance proactively.</p>
+    <form class="gate-form" novalidate>
+      <label for="gate-email" class="sr-only">Work email address</label>
+      <input id="gate-email" type="email" name="email" placeholder="Work email address*" autocomplete="email" required>
+      <p class="gate-err" role="alert" hidden>Please use your work email address.</p>
+      <button type="submit" class="btn btn-lilac">Explore product</button>
+      <p class="gate-fine">We use your email to follow up on the product, nothing else. See our <a href="/privacy/">privacy statement</a>.</p>
+    </form>
+  </div>
+</div><footer>
   <div class="wrap foot2">
     <div class="f-about">
       <p class="f-name">The Independent Capacity Market</p>
@@ -74,6 +89,6 @@
   </div>
 </footer>
 
-<script src="/main.js?v=a35093fc" defer></script>
+<script src="/main.js?v=bc4bcd23" defer></script>
 </body>
 </html>
