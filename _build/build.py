@@ -684,7 +684,7 @@ def solutions(t):
     extras = {
       'configurator': 'For owners and developers who plan a battery, stand-alone or co-located with solar, wind or other assets, and for installers who size systems for customers.',
       'backtest': 'For owners of operating batteries, and for installers who want to give every customer an independent view on what the battery earns.',
-      'broker': 'For owners whose battery objectively earns less than it could, and who want a better deal without spending weeks on the search.',
+      'broker': 'For owners who are keen to understand which high performing optimizers exist and what they offer to optimize their battery.',
     }
     blocks = ''.join(sol_block(i, k, n, h, lead, body, extras[k]) for i, (k, n, h, lead, body) in enumerate(PROPS))
     hero = f"""    <div class="page-hero sol-hero2" id="main">
