@@ -236,7 +236,7 @@ def nav(t, other_href):
         </ul>
         <ul class="nav-links nav-right">
           <li class="hide-sm"><a class="nav-signin" href="https://app.icm.energy/">Sign in</a></li>
-          <li><a class="btn btn-lilac" href="{TALK}">{t['talk']}</a></li>
+          <li><a class="btn btn-lilac" href="/solutions/#get-started">Check my battery</a></li>
           <li class="show-sm"><button type="button" class="menu-btn" aria-expanded="false" aria-label="Open menu"><span></span><span></span><span></span></button></li>
         </ul>
       </nav>
@@ -491,13 +491,13 @@ def faq_block(items, title=None):
   </div>
 </section>"""
 
-def cta_band(t, h="Let's talk about your project", p='Our starting point is a 45-min call to understand your context and objectives (e.g., portfolio of 3-30 MW assets, trading revenues below expectations). We then get to work.', topic=None):
+def cta_band(t, h="Check what your battery is missing", p='Start with your work email. We guide you through the rest.', topic=None):
     q = f'?topic={topic}' if topic else ''
     return f"""<section class="cta-band">
   <div class="wrap">
     <h2>{h}</h2>
     <p>{p}</p>
-    <a class="btn btn-outline" href="{TALK}{q}">{t['talk']}</a>
+    <a class="btn btn-outline" href="/solutions/#get-started">Check my battery</a>
   </div>
 </section>"""
 
@@ -535,7 +535,7 @@ def home(t):
         <h1>Secure the true value <br>of a BESS asset</h1>
         <p class="lead">For those with a nagging sense they could earn more with their battery. Find the optimal system for your context, outsource the search for a trusted optimizer and monitor your performance proactively.</p>
         <div class="hero-ctas">
-          <a class="btn btn-lilac" href="{TALK}">{t['talk']}</a>
+          <a class="btn btn-lilac" href="/solutions/#get-started">Check my battery</a>
           <a class="btn btn-outline" href="#how">Learn more</a>
         </div>
       </div>
@@ -602,8 +602,7 @@ def sol_card(k, n, href, lead, body, extra):
       </article>"""
 
 def sol_block(i, k, n, href, lead, body, extra):
-    src, alt = SOL_IMG[k]
-    img = f'<img class="sol-img" src="{src}" alt="{alt}" width="960" height="1080" loading="lazy">'
+    img = f'<div class="sol-img sol-flat sol-flat-{k}" aria-hidden="true">{icon_svg(k)}</div>'
     card = sol_card(k, n, href, lead, body, extra)
     return f'    <div class="sol-row sol-r{i % 2}">\n      {card}\n      {img}\n    </div>\n'
 

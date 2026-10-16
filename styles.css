@@ -1478,3 +1478,11 @@ body.nav-light.nav-fixed header.nav .btn-lilac{color:#040D1F}
 .ws2 b{color:#fff}
 .prop-actions{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-top:auto}
 .prop-demo{margin:0}
+
+/* v44 flat colour panels on Solutions */
+.sol-flat{display:flex;align-items:center;justify-content:center;border-radius:28px;min-height:360px;height:auto}
+.sol-flat svg{width:132px;height:132px;stroke-width:1.1}
+.sol-flat-configurator{background:#97F2F5}.sol-flat-configurator svg{stroke:#040D1F}
+.sol-flat-broker{background:#D392EB}.sol-flat-broker svg{stroke:#040D1F}
+.sol-flat-backtest{background:#274A51}.sol-flat-backtest svg{stroke:#97F2F5}
+@media (max-width:860px){.sol-flat{min-height:200px}}
