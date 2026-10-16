@@ -6,11 +6,10 @@
 - BESS Configurator: simulates the revenues of different MW/MWh configurations within a site's dispatch constraints and shows which one delivers the highest returns. For owners and developers who plan a battery, stand-alone or co-located with solar, wind or other assets, and for installers who size systems for customers.
 - BESS Backtest: compares realised revenues with what can be reasonably achieved within a site's dispatch constraints, and flags when performance consistently falls short. For owners of operating batteries, and for installers who give every customer an independent view of what the battery earns.
 - BESS Broker: a standardised process to source, compare and contract optimizers, and to oversee the switch so the battery keeps earning without interruption.
-- BESS Calculator (beta, community project): estimates what a set-up could have earned on the Dutch day-ahead and imbalance markets from January to September 2026, within its dispatch constraints.
 
 ## How to get started
 1. Enter a work email (personal email addresses are not accepted).
-2. Provide basic details: battery size (MW/MWh), connection restrictions (import/export MW) and grid operator.
+2. Provide basic details: battery size (MW/MWh), dispatch constraints (import/export MW) and grid operator.
 3. Most businesses receive a custom report with expected revenues within one working day.
 
 ## Pages
@@ -18,7 +17,7 @@
 - [Solutions](https://icm.energy/solutions/): BESS Configurator, BESS Backtest and BESS Broker
 - [Example report](https://icm.energy/bess-backtest/example/): BESS Backtest with fictional data
 - [Talk to us](https://icm.energy/talk-to-us/)
-- [Resources](https://icm.energy/resources/): BESS Calculator (beta), API documents and brand assets
+- [Resources](https://icm.energy/resources/): API documents and brand assets
 - [Company](https://icm.energy/company/): our story, team and open roles
 
 ## Contact

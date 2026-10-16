@@ -171,7 +171,7 @@ PRIVACY = {'en': PRIVACY_EN, 'nl': PRIVACY_EN}
 COOKIES_EN = [
  ('What are cookies', 'Cookies are small text files that a website stores on your device when you visit it. Similar technologies, such as local storage and pixels, work in the same way. We use the word “cookies” for all of them.'),
  ('How we use cookies', 'The ICM website is built to work without tracking. We do not use analytics cookies, advertising cookies or social media tracking, and we do not build profiles of visitors.'),
- ('Cookies on our website', '<b>Our own website.</b> The pages of icm.energy do not set cookies of their own and do not store data in your browser to identify you.<br><b>Third-party content.</b> The forms on our Talk to us page, in the example report pop-up and on the Resources page are provided by Fillout. When you load a form, Fillout may set cookies or similar technologies needed to show and submit it. Their use is governed by Fillout’s own policies.'),
+ ('Cookies on our website', '<b>Our own website.</b> The pages of icm.energy do not set cookies of their own and do not store data in your browser to identify you.<br><b>Third-party content.</b> The forms on our Talk to us page and in the example report pop-up are provided by Fillout. When you load a form, Fillout may set cookies or similar technologies needed to show and submit it. Their use is governed by Fillout’s own policies.'),
  ('Managing cookies', 'You can block or delete cookies in your browser settings. If you do, parts of the website, such as the forms, may not work as intended. If you prefer, you can also email us at <a href="mailto:info@icm.energy">info@icm.energy</a> instead of using the form.'),
  ('If this changes', 'If we start using analytics or other cookies that need consent, we will ask for your permission first and update this policy.'),
  ('More information', 'See our <a href="/privacy/">privacy statement</a> for how we handle personal data, or contact us at <a href="mailto:info@icm.energy">info@icm.energy</a>.'),
@@ -363,13 +363,12 @@ def nl_report_chart():
     pts=''.join(f'<g class="nlr-pt"><rect x="{x(i)-24:.1f}" y="{T}" width="48" height="{H-T-B}" fill="transparent"/><circle cx="{x(i):.1f}" cy="{y(v):.1f}" r="4"/><title>{m} 2026: median EUR {v}k per MW per year (middle half EUR {a}k to {b}k). Illustrative.</title></g>' for i,(m,v,a,b) in enumerate(zip(months,med,p25,p75)))
     return f'<svg viewBox="0 0 {W} {H}" role="img" aria-label="Illustrative chart: median revenue per MW per year of Dutch batteries, January to September 2026, with the range of the middle half of assets">{grid}<polygon points="{band}" class="nlr-band"/><polyline points="{line}" class="nlr-line"/>{xl}{pts}</svg>'
 
+# Resources extras (BESS Calculator, NL BESS Revenue Report): built, hidden until launch. Set True to show.
+RES_EXTRAS = False
+FILLOUT_JS = '\n<script src="https://server.fillout.com/embed/v1/" defer></script>'
+
 def resources(t):
-    hero = '''    <div class="page-hero" id="main">
-      <h1>Resources</h1>
-      <p>A community BESS Calculator, a periodic NL revenue report, API documents and brand assets of the Independent Capacity Market.</p>
-    </div>'''
-    body = f'''<main class="res">
-  <div class="wrap">
+    RES_EXTRAS_HTML = f'''  <div class="wrap">
     <section class="calc-block" id="calculator" aria-labelledby="calc-h">
       <div class="calc-copy">
         <div class="calc-tags"><span>Beta</span></div>
@@ -409,7 +408,13 @@ def resources(t):
       </figure>
     </section>
   </div>
-  <div class="wrap res-cols">
+'''
+    hero = f'''    <div class="page-hero" id="main">
+      <h1>Resources</h1>
+      <p>{'A community BESS Calculator, a periodic NL revenue report, API documents and brand assets of the Independent Capacity Market.' if RES_EXTRAS else 'API documents and brand assets of the Independent Capacity Market.'}</p>
+    </div>'''
+    body = f'''<main class="res">
+{RES_EXTRAS_HTML if RES_EXTRAS else ''}  <div class="wrap res-cols">
     <section class="res-sec">
       <h2>Documents</h2>
       <p class="res-lead">Read our API documents. Anything missing? Just ask.</p>
@@ -421,9 +426,8 @@ def resources(t):
       <div class="res-card res-thumb"><img src="/assets/brand/thumb-logos.jpg" alt="" width="640" height="360" loading="lazy"><div><span>Logos</span><small>PNG and SVG, header and footer versions</small></div><a class="btn btn-dark" href="/assets/brand/ICM-logos.zip" download>Download</a></div>
     </section>
   </div>
-</main>
-<script src="https://server.fillout.com/embed/v1/" defer></script>'''
-    return page_shell(t, '/resources/', 'Resources: BESS Calculator, API documents and brand assets | The ICM', 'A community BESS Calculator, the NL BESS Revenue Report, API documents and brand assets of the Independent Capacity Market.', hero, body)
+</main>{FILLOUT_JS if RES_EXTRAS else ''}'''
+    return page_shell(t, '/resources/', 'Resources | The ICM' if not RES_EXTRAS else 'Resources: BESS Calculator, API documents and brand assets | The ICM', 'API documents and brand assets of the Independent Capacity Market.' if not RES_EXTRAS else 'A community BESS Calculator, the NL BESS Revenue Report, API documents and brand assets of the Independent Capacity Market.', hero, body)
 
 ROLES = [
   ('Commercial Lead', 'Amsterdam',
