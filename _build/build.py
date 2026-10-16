@@ -153,7 +153,7 @@ T = {
 }
 
 PRIVACY_EN = [
- ('About this statement', 'This privacy statement explains how Independent Capacity Market B.V. (“the ICM”, “we”, “us”), Amsterdam, handles personal data collected through icm.energy and through our contact with owners, installers, optimizers and other visitors. It applies to this website. Other ICM services, such as the BESS Benchmark app or a BESS Backtest, may come with additional terms or notices.'),
+ ('About this statement', 'This privacy statement explains how Independent Capacity Market B.V. (“the ICM”, “we”, “us”), Amsterdam, handles personal data collected through icm.energy and through our contact with owners, installers, optimizers and other visitors. It applies to this website. Other ICM services, such as the BESS Backtest, may come with additional terms or notices.'),
  ('Who is responsible', 'The ICM is the controller of the personal data described here. You can reach us at <a href="mailto:info@icm.energy">info@icm.energy</a>.'),
  ('Personal data we collect', 'We collect the data you give us when you use the contact form or email us: your name, company, email address, the size of your portfolio or project, and your message. We also receive technical data that every website receives, such as your IP address and browser type, when your browser requests a page. We do not ask for special categories of personal data and we ask you not to send them to us.'),
  ('How we use personal data', 'We use your data to answer your request, plan a 45-minute call and prepare a proposal, to keep our website secure and working, and to meet legal obligations. We do not sell your data, we do not use it for advertising and we do not use it for automated decision-making.'),
@@ -291,7 +291,6 @@ def simple_page(t, path, other_path, title, desc, h1, lead, body, jsonld=None):
   <div class="wrap">
 {nav(t, other_path)}
     <div class="page-hero" id="main">
-      <span class="eyebrow">{t['eyebrow']}</span>
       <h1>{h1}</h1>
       {f'<p>{lead}</p>' if lead else ''}
     </div>
@@ -320,7 +319,7 @@ def faq(t):
 
 def terms(t):
     body = f'    <div class="prose">{t["terms_body"]}</div>'
-    return simple_page(t, t['base'] + 'terms/', t['other'] + 'terms/', t['terms_title'], 'How to receive the Terms & Conditions of the BESS Benchmark by the Independent Capacity Market.', t['terms_h'], '', body)
+    return simple_page(t, t['base'] + 'terms/', t['other'] + 'terms/', t['terms_title'], 'How to receive the Terms & Conditions of the Independent Capacity Market.', t['terms_h'], '', body)
 
 def cookies(t):
     secs = ''.join(f'<h2>{h}</h2><p>{p}</p>' for h, p in COOKIES_EN)
