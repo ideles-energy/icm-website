@@ -653,11 +653,11 @@ GS_ICONS = {
 
 GS_STEPS = f'''<section class="dark gs-steps" id="steps">
   <div class="wrap">
-    <h2>Get started in three easy steps.</h2>
+    <h2>Get started in three easy steps</h2>
     <div class="gs-grid">
-      <div>{GS_ICONS['mail']}<p><b>Step 1: Enter your work email.</b> <span>Use your business email to start. Personal email addresses don't work.</span></p></div>
-      <div>{GS_ICONS['form']}<p><b>Step 2: Provide your project details.</b> <span>Tell us about your battery: where it is, its size (MW/MWh) and who optimizes it. Also give us permission to read your meter data.</span></p></div>
-      <div>{GS_ICONS['key']}<p><b>Step 3: Get approved.</b> <span>We check your details and tell you if we can start. Only then do we ask for access to your optimizer, or your last three months of settlements.</span></p></div>
+      <div>{GS_ICONS['mail']}<p><b>Step 1: Enter your work email.</b> <span>Enter your business email to begin. You'll be prompted to complete an application. Personal email addresses aren't accepted.</span></p></div>
+      <div>{GS_ICONS['form']}<p><b>Step 2: Provide your details.</b> <span>We'll ask for basic information: the size of the battery (MW/MWh), connection restrictions (import/export MW), the name of your grid operator.</span></p></div>
+      <div>{GS_ICONS['key']}<p><b>Step 3: Get started.</b> <span>Most businesses receive a custom report with expected revenues within 1 working day.</span></p></div>
     </div>
   </div>
 </section>'''
