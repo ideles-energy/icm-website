@@ -537,7 +537,7 @@ def home(t):
         <p class="lead">For those with a nagging sense their battery could earn more. Find the optimal system for your context, outsource the search for a trusted optimizer and monitor your performance proactively.</p>
         <div class="hero-ctas">
           <a class="btn btn-lilac" href="{TALK}">Get started</a>
-          <a class="btn btn-outline js-gate-open" data-gate="demo" href="/solutions/#backtest">See an example report</a>
+          <a class="btn btn-outline" href="/solutions/">Learn more</a>
         </div>
       </div>
     </div>
