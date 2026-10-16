@@ -1578,3 +1578,33 @@ body.nav-light.nav-fixed header.nav .nav-right .btn-outline{color:#274A51;border
 /* v57 closing buttons on Solutions sit directly under the steps */
 .gs-steps{padding-bottom:24px !important}.gs-secure{padding-top:28px !important}
 .calc-tags span:first-child{background:#97F2F5;color:#040D1F}.calc-help a{color:#274A51;text-decoration:underline}
+
+/* v58 readable lilac buttons everywhere; subtle KvK */
+.btn-lilac,.btn-lilac:hover{color:#040D1F !important}
+.f-kvk{margin-left:10px;opacity:.55;font-size:.92em}
+/* v59 Resources: NL BESS Revenue Report signup */
+.nlr-block{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:48px;align-items:start;margin-top:32px;padding:40px;border:2px solid #274A51;border-radius:28px;background:#fff;color:#274A51}
+.nlr-block h2{color:#274A51;margin:0 0 12px}
+.nlr-form{margin-top:4px}
+.nlr-fig{margin:0;background:#F2F8F9;border-radius:20px;padding:24px}
+.nlr-fig figcaption{display:flex;flex-direction:column;gap:2px;margin-bottom:12px}
+.nlr-fig figcaption b{font-size:16px}.nlr-fig figcaption span{font-size:13px;opacity:.75}
+.nlr-fig svg{width:100%;height:auto;display:block}
+.nlr-grid{stroke:rgba(39,74,81,.15);stroke-width:1}
+.nlr-ax{fill:#526E74;font-size:12px;font-family:inherit}
+.nlr-band{fill:#BEC9CB;opacity:.7}
+.nlr-line{fill:none;stroke:#274A51;stroke-width:2.5;stroke-linejoin:round;stroke-linecap:round}
+.nlr-pt circle{fill:#274A51;stroke:#F2F8F9;stroke-width:2;opacity:0;transition:opacity .15s}
+.nlr-pt:hover circle{opacity:1}
+.nlr-legend{display:flex;gap:18px;font-size:13px;margin-top:8px}
+.nlr-legend i{display:inline-block;vertical-align:middle;margin-right:6px}
+.nlr-k-line{width:18px;height:3px;background:#274A51;border-radius:2px}
+.nlr-k-band{width:14px;height:10px;background:#BEC9CB;border-radius:2px}
+.nlr-note{font-size:12px;opacity:.7;margin:8px 0 0}
+@media (max-width:900px){.nlr-block{grid-template-columns:minmax(0,1fr);padding:24px;gap:24px}.nlr-fig{padding:16px}}
+/* v60 mobile fixes: dots chart, team, KvK */
+@media (max-width:900px){.wy-v13 .wy-dotsrow{grid-template-columns:minmax(0,1fr) !important;gap:20px !important}}
+@media (max-width:700px){.team{grid-template-columns:minmax(0,1fr) !important;gap:36px !important}.team .member .ph{max-width:260px}}
+.f-kvk{white-space:nowrap}
+@media (max-width:700px){.f-kvk{display:block;margin:2px 0 0}}
+.nlr-ax{font-size:14px}

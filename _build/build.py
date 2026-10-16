@@ -158,7 +158,7 @@ PRIVACY_EN = [
  ('Personal data we collect', 'We collect the data you give us when you use the contact form or email us: your name, company, email address, the size of your portfolio or project, and your message. We also receive technical data that every website receives, such as your IP address and browser type, when your browser requests a page. We do not ask for special categories of personal data and we ask you not to send them to us.'),
  ('How we use personal data', 'We use your data to answer your request, prepare a custom report, follow up by email about our services, to keep our website secure and working, and to meet legal obligations. We do not sell your data, we do not use it for advertising and we do not use it for automated decision-making.'),
  ('Legal bases', 'We rely on our legitimate interest in answering business enquiries and keeping our website secure, on steps taken at your request before entering into a contract, on a legal obligation where one applies, and on your consent where we ask for it.'),
- ('Who we share it with', 'We share personal data only with service providers that help us run our business, under agreements that protect your data. Fillout receives the contact form on our behalf. Our hosting provider, GitHub Pages, serves the website. We may also share data with advisers or authorities where the law requires.'),
+ ('Who we share it with', 'We share personal data only with service providers that help us run our business, under agreements that protect your data. Fillout receives our forms on our behalf. Our hosting provider, GitHub Pages, serves the website. We may also share data with advisers or authorities where the law requires.'),
  ('Transfers outside the EEA', 'Some of these providers are based in, or store data in, the United States. Where that is the case we rely on safeguards such as the EU-US Data Privacy Framework or standard contractual clauses.'),
  ('How long we keep it', 'We keep contact details for as long as needed to follow up on your request and at most two years after our last contact unless you become a client, or the law requires us to keep them longer.'),
  ('How we protect it', 'We limit access to personal data to people who need it, use trusted providers and keep our systems up to date. No online service is completely secure, so please do not send us confidential data you do not need to share.'),
@@ -171,7 +171,7 @@ PRIVACY = {'en': PRIVACY_EN, 'nl': PRIVACY_EN}
 COOKIES_EN = [
  ('What are cookies', 'Cookies are small text files that a website stores on your device when you visit it. Similar technologies, such as local storage and pixels, work in the same way. We use the word “cookies” for all of them.'),
  ('How we use cookies', 'The ICM website is built to work without tracking. We do not use analytics cookies, advertising cookies or social media tracking, and we do not build profiles of visitors.'),
- ('Cookies on our website', '<b>Our own website.</b> The pages of icm.energy do not set cookies of their own and do not store data in your browser to identify you.<br><b>Third-party content.</b> The contact form on our Talk to us page is provided by Fillout. When you load the form, Fillout may set cookies or similar technologies needed to show and submit it. Their use is governed by Fillout’s own policies.'),
+ ('Cookies on our website', '<b>Our own website.</b> The pages of icm.energy do not set cookies of their own and do not store data in your browser to identify you.<br><b>Third-party content.</b> The forms on our Talk to us page, in the example report pop-up and on the Resources page are provided by Fillout. When you load a form, Fillout may set cookies or similar technologies needed to show and submit it. Their use is governed by Fillout’s own policies.'),
  ('Managing cookies', 'You can block or delete cookies in your browser settings. If you do, parts of the website, such as the contact form, may not work as intended. If you prefer, you can also email us at <a href="mailto:info@icm.energy">info@icm.energy</a> instead of using the form.'),
  ('If this changes', 'If we start using analytics or other cookies that need consent, we will ask for your permission first and update this policy.'),
  ('More information', 'See our <a href="/privacy/">privacy statement</a> for how we handle personal data, or contact us at <a href="mailto:info@icm.energy">info@icm.energy</a>.'),
@@ -259,7 +259,7 @@ def footer(t, other_href):
       <a href="/resources/">Resources</a>
       <a href="{TALK}">Talk to us</a>
     </nav>
-    <div class="f-mail"><p><a href="mailto:info@icm.energy">info@icm.energy</a></p><p class="f-copy">© 2026 Independent Capacity Market B.V.</p></div>
+    <div class="f-mail"><p><a href="mailto:info@icm.energy">info@icm.energy</a></p><p class="f-copy">© 2026 Independent Capacity Market B.V.<span class="f-kvk">KvK 99958775</span></p></div>
     <div class="f-legal">
       <p>Website designed by <a href="https://www.saltandchalk.co.uk" target="_blank" rel="noopener">Salt &amp; Chalk</a></p>
       <p><a href="{b}terms/">{t['terms']}</a> | <a href="{b}privacy/">{t['privacy']}</a> | <a href="{b}cookies/">{t['cookie']}</a></p>
@@ -347,10 +347,26 @@ def page_shell(t, path, title, desc, hero, body, jsonld=None):
 </html>
 '''
 
+def nl_report_chart():
+    months=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep']
+    med=[172,165,181,158,149,176,190,184,197]
+    p25=[141,137,150,129,121,144,158,150,163]
+    p75=[203,196,214,189,178,207,224,219,231]
+    W,H,L,R,T,B=560,260,44,16,16,34
+    lo,hi=100,250
+    x=lambda i: L+i*(W-L-R)/(len(months)-1)
+    y=lambda v: T+(hi-v)*(H-T-B)/(hi-lo)
+    band=' '.join(f'{x(i):.1f},{y(v):.1f}' for i,v in enumerate(p75))+' '+' '.join(f'{x(i):.1f},{y(v):.1f}' for i,v in reversed(list(enumerate(p25))))
+    line=' '.join(f'{x(i):.1f},{y(v):.1f}' for i,v in enumerate(med))
+    grid=''.join(f'<line x1="{L}" x2="{W-R}" y1="{y(v):.1f}" y2="{y(v):.1f}" class="nlr-grid"/><text x="{L-8}" y="{y(v)+4:.1f}" text-anchor="end" class="nlr-ax">{v}</text>' for v in (100,150,200,250))
+    xl=''.join(f'<text x="{x(i):.1f}" y="{H-12}" text-anchor="middle" class="nlr-ax">{m}</text>' for i,m in enumerate(months))
+    pts=''.join(f'<g class="nlr-pt"><rect x="{x(i)-24:.1f}" y="{T}" width="48" height="{H-T-B}" fill="transparent"/><circle cx="{x(i):.1f}" cy="{y(v):.1f}" r="4"/><title>{m} 2026: median EUR {v}k per MW per year (middle half EUR {a}k to {b}k). Illustrative.</title></g>' for i,(m,v,a,b) in enumerate(zip(months,med,p25,p75)))
+    return f'<svg viewBox="0 0 {W} {H}" role="img" aria-label="Illustrative chart: median revenue per MW per year of Dutch batteries, January to September 2026, with the range of the middle half of assets">{grid}<polygon points="{band}" class="nlr-band"/><polyline points="{line}" class="nlr-line"/>{xl}{pts}</svg>'
+
 def resources(t):
     hero = '''    <div class="page-hero" id="main">
       <h1>Resources</h1>
-      <p>A community BESS Calculator, API documents and brand assets of the Independent Capacity Market.</p>
+      <p>A community BESS Calculator, a periodic NL revenue report, API documents and brand assets of the Independent Capacity Market.</p>
     </div>'''
     body = f'''<main class="res">
   <div class="wrap">
@@ -372,30 +388,52 @@ def resources(t):
       </div>
     </section>
   </div>
+  <div class="wrap">
+    <section class="nlr-block" id="nl-report" aria-labelledby="nlr-h">
+      <div class="nlr-copy">
+        <div class="calc-tags"><span>Coming soon</span></div>
+        <h2 id="nlr-h">NL BESS Revenue Report</h2>
+        <p class="calc-lead">A periodic, anonymised view of what batteries in the Netherlands earn per MW, based on aggregated data. No asset, owner or optimizer is ever named.</p>
+        <ul class="calc-points">
+          <li><b>Aggregated and anonymised.</b> Results are only shown for groups of assets, never for a single battery.</li>
+          <li><b>Like for like.</b> Revenues are compared per MW and per duration, so a 1-hour and a 2-hour battery are not lumped together.</li>
+          <li><b>In your inbox.</b> Free, with each new edition.</li>
+        </ul>
+        <div class="nlr-form"><div data-fillout-id="3xLzpWnKW7us" data-fillout-embed-type="standard" data-fillout-inherit-parameters data-fillout-dynamic-resize style="width:100%;min-height:200px"></div><noscript><a href="https://forms.fillout.com/t/3xLzpWnKW7us">Sign up for the report</a></noscript></div>
+      </div>
+      <figure class="nlr-fig">
+        <figcaption><b>Revenue per MW per year, NL batteries</b><span>EUR thousand · median and middle half of assets · 2026</span></figcaption>
+        {nl_report_chart()}
+        <div class="nlr-legend"><span><i class="nlr-k-line"></i>Median</span><span><i class="nlr-k-band"></i>Middle half of assets</span></div>
+        <p class="nlr-note">Illustrative data. Shows the format of the report, not real results.</p>
+      </figure>
+    </section>
+  </div>
   <div class="wrap res-cols">
     <section class="res-sec">
       <h2>Documents</h2>
       <p class="res-lead">Read our API documents. Anything missing? Just ask.</p>
-      <div class="res-card res-thumb"><img src="/assets/brand/thumb-api.jpg" alt="" width="1400" height="612" loading="lazy"><div><span>API documents</span><small>Guides and reference for the ICM Platform API</small></div><a class="btn btn-dark" href="https://docs.icm.energy/" target="_blank" rel="noopener">Access →</a></div>
+      <div class="res-card res-thumb"><img src="/assets/brand/thumb-api.jpg" alt="" width="1400" height="612" loading="lazy"><div><span>API documents</span><small>Guides and reference for the ICM Platform API</small></div><a class="btn btn-dark" href="https://docs.icm.energy/" target="_blank" rel="noopener">Access</a></div>
     </section>
     <section class="res-sec">
       <h2>Brand assets</h2>
       <p class="res-lead">Download the official logos of the ICM.</p>
-      <div class="res-card res-thumb"><img src="/assets/brand/thumb-logos.jpg" alt="" width="640" height="360" loading="lazy"><div><span>Logos</span><small>PNG and SVG, header and footer versions</small></div><a class="btn btn-dark" href="/assets/brand/ICM-logos.zip" download>Download →</a></div>
+      <div class="res-card res-thumb"><img src="/assets/brand/thumb-logos.jpg" alt="" width="640" height="360" loading="lazy"><div><span>Logos</span><small>PNG and SVG, header and footer versions</small></div><a class="btn btn-dark" href="/assets/brand/ICM-logos.zip" download>Download</a></div>
     </section>
   </div>
-</main>'''
-    return page_shell(t, '/resources/', 'Resources: BESS Calculator, API documents and brand assets | The ICM', 'A community BESS Calculator for the Dutch wholesale markets, API documents and brand assets of the Independent Capacity Market.', hero, body)
+</main>
+<script src="https://server.fillout.com/embed/v1/" defer></script>'''
+    return page_shell(t, '/resources/', 'Resources: BESS Calculator, API documents and brand assets | The ICM', 'A community BESS Calculator, the NL BESS Revenue Report, API documents and brand assets of the Independent Capacity Market.', hero, body)
 
 ROLES = [
   ('Commercial Lead', 'Amsterdam',
    'Sell our solutions to BESS owners and the installers who work with them. You own the pipeline, from first call to signed contract and beyond.',
    ['Be the connector: build and nurture lasting relationships across the BESS ecosystem',
-    'Build relationships with installers and developers who bring us BESS owners (3-30 MW)',
+    'Build relationships with installers and developers who bring us BESS owners (3–30 MW)',
     'Run discovery calls and present Configurator, Backtest and Broker results',
     'Guide clients from first call through onboarding, and keep them with us',
     'Turn successfully served clients into case examples'],
-   ['3-6 years in B2B consultative sales (SaaS, energy or finance)',
+   ['3–6 years in B2B consultative sales (SaaS, energy or finance)',
     'Explains technical topics clearly',
     'Fluent in Dutch and English',
     'Knows BRP and aFRR, or learns fast']),
@@ -406,7 +444,7 @@ ROLES = [
     'Follow market design and regulation (TenneT, ACM, grid congestion) and translate it into our methodology',
     'Talk with clients about their results and what they mean for them'],
    ['MSc in econometrics, physics, energy or similar, with Python and SQL',
-    '2-5 years at a trader, optimizer or consultancy',
+    '2–5 years at a trader, optimizer or consultancy',
     'Knows the Dutch and European power markets',
     'Explains clearly to people who are not analysts']),
 ]
@@ -414,7 +452,7 @@ ROLES = [
 
 def company(t):
     def li(items): return ''.join(f'<li>{i}</li>' for i in items)
-    rows = '\n'.join(f'''      <details class="co-role" name="roles"><summary><b>{r}</b><em>{c}</em><i class="co-pm" aria-hidden="true"></i></summary><div class="co-body"><div><p>{m}</p><a class="btn btn-lilac" href="mailto:ideles@icm.energy?subject=Application%3A%20{r.replace(" ", "%20")}">Apply →</a></div><div><h4>What you will do</h4><ul>{li(do)}</ul></div><div><h4>Who you are</h4><ul>{li(you)}</ul></div></div></details>''' for r, c, m, do, you in ROLES)
+    rows = '\n'.join(f'''      <details class="co-role" name="roles"><summary><b>{r}</b><em>{c}</em><i class="co-pm" aria-hidden="true"></i></summary><div class="co-body"><div><p>{m}</p><a class="btn btn-dark" href="mailto:ideles@icm.energy?subject=Application%3A%20{r.replace(" ", "%20")}">Apply</a></div><div><h4>What you will do</h4><ul>{li(do)}</ul></div><div><h4>Who you are</h4><ul>{li(you)}</ul></div></div></details>''' for r, c, m, do, you in ROLES)
 
     hero = '''    <div class="page-hero" id="main">
       <h1>Our story</h1>
@@ -439,7 +477,7 @@ def company(t):
       <a class="member" href="https://www.linkedin.com/in/edo-rivai-78b66a17/" target="_blank" rel="noopener"><img class="ph" src="/assets/team-edo.jpg" alt="Edo Rivai" width="512" height="512" loading="lazy"><b>Edo Rivai</b><span class="m-bio">Senior software developer. Owns platform design, integrations and infrastructure. Built and scaled software, most recently at SpotAI (network of intelligent security cameras).</span></a>
       <a class="member" href="https://www.linkedin.com/in/jesse-h-willis/" target="_blank" rel="noopener"><img class="ph" src="/assets/team-jesse.jpg" alt="Jesse Willis" width="600" height="720" loading="lazy"><b>Jesse Willis</b><span class="m-bio">Project Engineer. Translates your dispatch constraints to custom insights that drive decisions. Studied Industrial Design Engineering in Delft and started Everlab to build meaningful products from scratch.</span></a>
     </div>
-    <div class="team-cta"><a class="btn btn-lilac" href="/talk-to-us/">Get in touch →</a></div>
+    <div class="team-cta"><a class="btn btn-lilac" href="/talk-to-us/">Get in touch</a></div>
   </div>
 </section>
 <section class="co-careers" id="careers">
@@ -480,7 +518,7 @@ NEWFAQS = [
  ('Why do installers offer the BESS Backtest to their customers?', 'It is a gift that builds trust. Installers can include a BESS Backtest at delivery, so every customer gets an independent view of what the battery earns. It shows you stand behind your system, and it costs you no extra work.'),
  ('Why can I trust the ICM\'s numbers?', 'We do not own BESS assets. We are not an optimizer. Nor will we ever be.'),
 ('What is the BESS Backtest?', 'The BESS Backtest compares what your battery earned with the most it could have earned on your site. The result is a capture rate: the share of the full potential that was realised. It shows whether a battery earns what it should, and what holds it back.'),
-('What is the "full potential"?', 'The highest result achievable on your site, calculated with perfect foresight within the limits of the site: grid connection, warranty limits, dispatch restrictions and actual downtime. It is an upper bound, not a promise. We set the expected result at 80% of it.'),
+('What is the "full potential"?', 'The highest result achievable on your site, calculated with perfect foresight within the limits of the site: grid connection, warranty limits, dispatch constraints and actual downtime. It is an upper bound, not a promise. We set the expected result at 80% of it.'),
 ('What data do I need to provide?', 'The optimizer report, quarter-hour meter data, data from the energy management system for downtime, and the documents on your grid connection and optimizer mandate. We guide you through the list, and your installer or metering service provider can often deliver most of it.'),
 ('Who orders a BESS Backtest, me or my installer?', 'Installers can include a BESS Backtest at delivery, so every customer gets an independent view of what the battery earns. Owners can also order one directly. Talk to us about how this works for you.'),
 ('How can my installer work with the ICM?', 'Installers can use the ICM in three ways: size a system with the BESS Configurator before the sale, include a BESS Backtest at delivery so every customer gets an independent view of what the battery earns, and refer owners who want a better optimizer to the BESS Broker. Talk to us to see what fits your way of working.'),
@@ -675,8 +713,8 @@ GS_STEPS = f'''<section class="dark gs-steps" id="steps">
     <h2>Get started in three easy steps</h2>
     <div class="gs-grid">
       <div>{GS_ICONS['mail']}<p><b>Step 1: Enter your work email.</b> <span>Enter your business email to begin. You'll be prompted to complete an application. Personal email addresses aren't accepted.</span></p></div>
-      <div>{GS_ICONS['form']}<p><b>Step 2: Provide your details.</b> <span>We'll ask for basic information: the size of the battery (MW/MWh), connection restrictions (import/export MW), the name of your grid operator.</span></p></div>
-      <div>{GS_ICONS['key']}<p><b>Step 3: Get started.</b> <span>Most businesses receive a custom report with expected revenues within 1 working day. It's the draft we start from.</span></p></div>
+      <div>{GS_ICONS['form']}<p><b>Step 2: Provide your details.</b> <span>We'll ask for basic information: the size of the battery (MW/MWh), dispatch constraints (import/export MW) and the name of your grid operator.</span></p></div>
+      <div>{GS_ICONS['key']}<p><b>Step 3: Navigate your reality.</b> <span>Most businesses receive a custom report with expected revenues within 1 working day. It's the draft we start from.</span></p></div>
     </div>
   </div>
 </section>'''
@@ -701,8 +739,8 @@ GATE = f'''<div class="gate" id="gate" hidden data-target="{PROTO_URL}">
 def solutions(t):
     extras = {
       'configurator': 'For owners and developers who plan a battery, stand-alone or co-located with solar, wind or other assets, and for installers who size systems for customers.',
-      'backtest': 'For owners of operating batteries, and for installers who want to give every customer an independent view on what the battery earns.',
-      'broker': 'For owners who are keen to understand which high performing optimizers exist and what they offer to optimize their battery.',
+      'backtest': 'For owners of operating batteries, and for installers who want to give every customer an independent view of what the battery earns.',
+      'broker': 'For owners who are keen to understand which high-performing optimizers exist and what they offer to optimize their battery.',
     }
     blocks = ''.join(sol_block(i, k, n, h, lead, body, extras[k]) for i, (k, n, h, lead, body) in enumerate(PROPS))
     hero = f"""    <div class="page-hero sol-hero2" id="main">
@@ -719,7 +757,7 @@ def solutions(t):
 </section>
 {GS_STEPS}
 {GS_SECURE}
-{faq_block(SOL_FAQS, 'Frequently asked questions')}"""
+{faq_block(NEWFAQS, 'Frequently asked questions')}"""
     return page_shell(t, '/solutions/', 'Solutions: BESS Configurator, BESS Backtest and BESS Broker | The ICM',
         'How the ICM helps BESS owners: size the right battery system, backtest its performance against its full potential and find a trusted optimizer.', hero, body)
 
@@ -791,7 +829,7 @@ def w_can():
 def w_head(tag='h2'):
     return '<%s class="story-h">It\'s a waste to miss out on <b class="out js-missed">EUR 555,000</b> a year.</%s>' % (tag, tag)
 
-BL1, BL2, BL3 = ('<b>Suboptimal configuration.</b> The MW/MWh installed directly affects your return on investment. The set up can cost you from day one.', '<b>Underperforming optimizer.</b> New players with better algorithms keep entering the market. Staying with yours can carry a serious opportunity cost.', '<b>Too little monitoring.</b> Without a reference, low revenue looks like a bad month. Underperformance can go unnoticed for years.')
+BL1, BL2, BL3 = ('<b>Suboptimal configuration.</b> The MW/MWh installed directly affects your return on investment. The set-up can cost you from day one.', '<b>Underperforming optimizer.</b> New players with better algorithms keep entering the market. Staying with yours can carry a serious opportunity cost.', '<b>Too little monitoring.</b> Without a reference, low revenue looks like a bad month. Underperformance can go unnoticed for years.')
 
 def why_section(v='1'):
     cs = WCAUSES
@@ -973,12 +1011,12 @@ def talk(t, variant=None):
     <div class="section-head center"><h2>Get started in three easy steps</h2></div>
     <div class="expect">
       <div><b>1</b><h3>Enter your work email.</h3><p>Enter your business email to begin. You'll be prompted to complete an application. Personal email addresses aren't accepted.</p></div>
-      <div><b>2</b><h3>Provide your details.</h3><p>We'll ask for basic information: the size of the battery (MW/MWh), connection restrictions (import/export MW), the name of your grid operator.</p></div>
-      <div><b>3</b><h3>Get started.</h3><p>Most businesses receive a custom report with expected revenues within 1 working day. It's the draft we start from.</p></div>
+      <div><b>2</b><h3>Provide your details.</h3><p>We'll ask for basic information: the size of the battery (MW/MWh), dispatch constraints (import/export MW) and the name of your grid operator.</p></div>
+      <div><b>3</b><h3>Navigate your reality.</h3><p>Most businesses receive a custom report with expected revenues within 1 working day. It's the draft we start from.</p></div>
     </div>
   </div>
 </section>
-{faq_block(NEWFAQS, 'Frequently asked questions')}"""
+"""
     return page_shell(t, TALK, 'Talk to us: get started with your BESS | The ICM',
         'Get started with the ICM in three steps: enter a work email, share the basic details of your battery and receive a custom report with expected revenues within one working day.', hero, body)
 
