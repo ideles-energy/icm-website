@@ -1553,3 +1553,6 @@ body.nav-light.nav-fixed header.nav .nav-right .btn-outline{color:#274A51;border
 /* v54 dark button for Talk to an expert on Solutions */
 .btn-dark{background:#274A51;color:#fff !important;border:2px solid #274A51}
 .btn-dark:hover{background:#040D1F;border-color:#040D1F;color:#fff !important}
+
+/* v55 more room between team name and bio (Canva) */
+.member .m-bio{margin-top:22px !important}
