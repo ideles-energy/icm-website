@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>BESS Benchmark: understand the true value of a BESS asset | The ICM</title>
-<meta name="description" content="See how a battery compares, BESS-to-BESS, with comparable batteries in the Netherlands, and outsource the research for a trusted optimizer when there is more to earn.">
+<title>BESS performance and optimizer insight: secure the true value of a BESS asset | The ICM</title>
+<meta name="description" content="The ICM helps BESS owners in the Netherlands size the right battery, backtest its performance and find a trusted optimizer. Independent: we own no batteries and are not an optimizer.">
 <link rel="canonical" href="https://icm.energy/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://icm.energy/">
-<meta property="og:title" content="Understand and secure the true value of a BESS asset">
-<meta property="og:description" content="See how a battery compares, BESS-to-BESS, with comparable batteries in the Netherlands, and outsource the research for a trusted optimizer when there is more to earn.">
+<meta property="og:title" content="Secure the true value of a BESS asset">
+<meta property="og:description" content="The ICM helps BESS owners in the Netherlands size the right battery, backtest its performance and find a trusted optimizer. Independent: we own no batteries and are not an optimizer.">
 <meta property="og:image" content="https://icm.energy/assets/og-image.png">
 <meta property="og:site_name" content="The Independent Capacity Market">
 <meta name="twitter:card" content="summary_large_image">
@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css?v=79a06c0a">
+<link rel="stylesheet" href="/styles.css?v=bc5f3a1c">
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -27,7 +27,7 @@
    "@id": "https://icm.energy/#org",
    "name": "Independent Capacity Market B.V.",
    "alternateName": "The ICM",
-   "logo": "https://icm.energy/assets/logo-footer.png",
+   "logo": "https://icm.energy/assets/logo-header.png",
    "url": "https://icm.energy/",
    "email": "ideles@icm.energy",
    "address": {
@@ -40,16 +40,6 @@
     "name": "Idelès Kaandorp",
     "sameAs": "https://www.linkedin.com/in/idel%C3%A8s-kaandorp/"
    }
-  },
-  {
-   "@type": "Service",
-   "name": "BESS Benchmark",
-   "provider": {
-    "@id": "https://icm.energy/#org"
-   },
-   "areaServed": "NL",
-   "serviceType": "Battery energy storage revenue benchmark",
-   "description": "See how a battery compares, BESS-to-BESS, with comparable batteries in the Netherlands, and outsource the research for a trusted optimizer when there is more to earn."
   }
  ]
 }
@@ -62,79 +52,133 @@
   <img class="hero-img" src="/assets/img/hero-bulb.jpg" alt="" width="1920" height="1080" fetchpriority="high">
   <div class="wrap">
     <header class="nav">
-      <a class="logo" href="/" aria-label="The Independent Capacity Market, home"><img src="/assets/logo-header.png" alt="The Independent Capacity Market" width="796" height="119"></a>
+      <a class="logo" href="/" aria-label="The Independent Capacity Market, home"><img class="logo-full logo-on-dark" src="/assets/logo-header.svg" alt="The Independent Capacity Market" width="796" height="119"><img class="logo-full logo-on-light" src="/assets/logo-header-dark.svg" alt="" width="796" height="119"><img class="logo-icon" src="/assets/favicon.svg" alt="" width="36" height="36"></a>
       <nav aria-label="Main">
-        <ul class="nav-links">
-          <li><a class="btn btn-lilac" href="/register/">Register</a></li>
+        <ul class="nav-links nav-main">
+          <li class="hide-sm"><a href="/solutions/">Solutions</a></li>
+          <li class="hide-sm"><a href="/resources/">Resources</a></li>
+          <li class="hide-sm"><a href="/company/">Company</a></li>
+        </ul>
+        <ul class="nav-links nav-right">
+          <li class="hide-sm"><a class="nav-signin" href="https://app.icm.energy/">Sign in</a></li>
+          <li><a class="btn btn-lilac" href="/talk-to-us/">Get started</a></li>
+          <li class="show-sm"><button type="button" class="menu-btn" aria-expanded="false" aria-label="Open menu"><span></span><span></span><span></span></button></li>
         </ul>
       </nav>
+      <div class="m-menu" hidden><a href="/solutions/">Solutions</a><a href="/resources/">Resources</a><a href="/company/">Company</a><a href="https://app.icm.energy/">Sign in</a><a class="js-gate-open" data-gate="demo" href="/solutions/#backtest">See an example report</a></div>
     </header>
 
     <div class="hero" id="main">
       <div>
-        <h1>Understand and<br>secure the true value<br>of a BESS asset</h1>
-        <p class="lead">For owners with a nagging sense their BESS could earn more. See how an asset compares, BESS-to-BESS, and outsource the research for a trusted optimizer when there is more to earn.</p>
+        <h1>Secure the true value <br>of a BESS asset</h1>
+        <p class="lead">For those with a nagging sense their battery could earn more. Find the optimal system for your context, outsource the search for a trusted optimizer and monitor your performance proactively.</p>
         <div class="hero-ctas">
-          <a class="btn btn-lilac" href="/register/">Register</a>
-          <a class="btn btn-outline" href="#why">Check the numbers</a>
+          <a class="btn btn-lilac" href="/talk-to-us/">Get started</a>
+          <a class="btn btn-outline" href="/solutions/">Learn more</a>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<section class="dark" id="why" style="border-top:1px solid rgba(255,255,255,.08)">
+<section class="dark why-sec wy-13" id="why"><div class="wrap why-calc"><span class="eyebrow why-eyebrow">Our why</span>
+    <div class="wy-top"><div class="wy-top-l"><h2 class="story-h">It's a waste to miss out on <b class="out js-missed">EUR 555,000</b> a year.</h2></div></div>
+    <div class="story wy-wide wy-v13">
+      <div class="wy-dotsrow"><figure class="why-fig" aria-hidden="true"><svg class="js-dots" data-rows="9" role="presentation"></svg></figure><div class="wy-side"><div class="why-legend wy-legr"><span><i class="d"></i>Delivered <b class="js-del">EUR 1,850,000</b></span><span><i class="m"></i>Missed <b class="js-mis">EUR 555,000</b></span><span class="unit js-unit">1 dot = EUR 10,000 a year</span></div><p class="hint"><svg class="pen" viewBox="0 0 16 16" aria-hidden="true"><path d="M11.5 2.5l2 2L6 12l-2.8.8L4 10z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>Enter figures to adjust. Illustrative example.</p></div></div>
+      <div class="wy-two wy-plain wy-cards">
+        <div><p class="wy-k">What is missing</p><p class="story-p story"><span class="ws1"><b>Same battery, same site, 30% more revenue.</b> Many have a nagging sense that they are leaving money on the table, fed by anecdotes of businesses realising +30% higher revenues. <a class="story-src" href="https://www.flower.se/insights/case/ra-energy-switch-optimizer/" target="_blank" rel="noopener">Source: Flower case</a></span><span class="ws2">It can add up to <b class="out js-gap">EUR 55k</b> per MW per year. That's the case for a <label class="pill"><input class="in fit js-mw" type="number" min="1" max="500" step="1" value="10" aria-label="Battery size in MW"><svg class="pen" viewBox="0 0 16 16" aria-hidden="true"><path d="M11.5 2.5l2 2L6 12l-2.8.8L4 10z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></label> MW battery that delivered EUR <label class="pill"><input class="in fit js-rev" type="number" min="1"  step="1" value="185" aria-label="Revenue in thousand EUR per MW per year"><svg class="pen" viewBox="0 0 16 16" aria-hidden="true"><path d="M11.5 2.5l2 2L6 12l-2.8.8L4 10z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></label>k per MW per year.</span></p></div>
+        <div><p class="wy-k">Where it leaks</p><ul class="wy-bul"><li><b>Suboptimal configuration.</b> The MW/MWh installed directly affects your return on investment. The set-up can cost you from day one.</li><li><b>Underperforming optimizer.</b> New players with better algorithms keep entering the market. Staying with yours can carry a serious opportunity cost.</li><li><b>Too little monitoring.</b> Without a reference, low revenue looks like a bad month. Underperformance can go unnoticed for years.</li></ul></div>
+      </div>
+    </div>
+  </div></section>
+
+<section class="dark props-sec" id="how">
   <div class="wrap">
-    <div class="why-grid">
-    <div>
-    <span class="eyebrow why-eyebrow">Why it matters</span>
-    <div class="story" id="calculator" aria-live="polite">
-      <p class="story-h">It's a waste to miss out on <b class="out" id="s-missed">EUR 555,000</b> a year.</p>
-      <p class="story-p">A similar BESS asset, same size and setup, can deliver <a class="story-link" href="https://www.flower.se/insights/case/ra-energy-switch-optimizer/" target="_blank" rel="noopener">30% more revenue</a>. A <label class="pill"><input class="in" id="s-mw" type="number" min="1" max="500" step="1" value="10" aria-label="Project size in MW"><svg class="pen" viewBox="0 0 16 16" aria-hidden="true"><path d="M11.5 2.5l2 2L6 12l-2.8.8L4 10z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></label> MW project could have earned <b class="out" id="s-peer">EUR 240.5k</b> per MW per year, instead of the EUR <label class="pill"><input class="in" id="s-rev" type="number" min="1" max="1000" step="1" value="185" aria-label="Revenue it delivered, in thousand euro per MW per year"><svg class="pen" viewBox="0 0 16 16" aria-hidden="true"><path d="M11.5 2.5l2 2L6 12l-2.8.8L4 10z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></label>k per MW per year it delivered. That's a missed opportunity of <b class="out" id="s-up">EUR 55.5k</b> per MW.</p>
-      <p class="hint"><svg class="pen" viewBox="0 0 16 16" aria-hidden="true"><path d="M11.5 2.5l2 2L6 12l-2.8.8L4 10z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>Enter figures to adjust. Illustrative example.</p>
+    <div class="section-head center">
+      <span class="eyebrow why-eyebrow">How we can work together</span>
+      <h2>An independent perspective</h2>
     </div>
-    <div class="cta-row"><a class="btn btn-lilac" href="/register/">Register</a><a class="btn btn-outline" href="#about">Learn more</a></div>
-    </div>
-    <figure class="why-fig" aria-hidden="true">
-      <svg id="why-dots" role="presentation"></svg>
-      <figcaption class="why-legend"><span><i class="d"></i>Delivered <b id="f-del">EUR 1,850,000</b></span><span><i class="m"></i>Missed <b id="f-mis">EUR 555,000</b></span><span class="unit" id="f-unit">1 dot = EUR 10,000 a year</span></figcaption>
-    </figure>
+    <div class="props">
+      <article class="prop">
+        <span class="sol-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#97F2F5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/><path d="M4 12h5M13 12h7"/><circle cx="11" cy="12" r="2"/></svg></span>
+        <h3>BESS Configurator</h3>
+        <p class="prop-lead">Find the optimal system for your context.</p>
+        <p>We simulate the revenues of different MW/MWh configurations within your site's dispatch constraints and show which one delivers the highest returns.</p>
+        <div class="prop-actions"><a class="prop-link" href="/solutions/#configurator">Learn more →</a></div>
+      </article>
+      <article class="prop">
+        <span class="sol-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#97F2F5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/><path d="M8 10.5l2 2 3.5-4"/></svg></span>
+        <h3>BESS Broker</h3>
+        <p class="prop-lead">Outsource the search for a trusted optimizer.</p>
+        <p>We run a standardised process to source, compare and contract optimizers, and oversee the switch so your battery keeps earning without interruption.</p>
+        <div class="prop-actions"><a class="prop-link" href="/solutions/#broker">Learn more →</a></div>
+      </article>
+      <article class="prop featured"><span class="callout">Understand where it leaks</span>
+        <span class="sol-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#97F2F5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 12a8.5 8.5 0 1 0 2.6-6.1"/><path d="M3.5 4.5v4h4"/><path d="M12 7.5V12l3 2"/></svg></span>
+        <h3>BESS Backtest</h3>
+        <p class="prop-lead">Monitor your performance proactively.</p>
+        <p>We compare your realised revenues with what can be reasonably achieved within your dispatch constraints, and alert you when performance consistently falls short.</p>
+        <div class="prop-actions"><a class="prop-link" href="/solutions/#backtest">Learn more →</a><button type="button" class="btn btn-lilac js-gate-open prop-demo" data-gate="demo">See an example report</button></div>
+      </article>
     </div>
   </div>
 </section>
 
-<section class="more" id="about">
-  <div class="wrap about-grid">
-    <div class="section-head">
-      <span class="eyebrow">About the ICM</span>
+
+
+
+<section class="dark about-sec" id="about">
+  <div class="wrap about-grid2">
+    <div class="about-card">
+      <span class="eyebrow why-eyebrow">About us</span>
       <h2>Why an Independent Capacity Market matters</h2>
-      <p>We are not owners. We are not optimizers. Nor will we ever be.<br><br>We are an energy tech company. We compare BESS-to-BESS, introduce owners to optimizers and oversee the switch, so batteries keep earning.</p>
-      <div class="cta-row" style="justify-content:flex-start;margin-top:28px">
-        <a class="btn btn-lilac" href="/register/">Register</a>
-      </div>
+      <p>We are not owners. We are not optimizers. Nor will we ever be.</p>
+      <p>We are an energy tech company.</p>
+      <p>We serve those who add capacity to the grid, but are in the dark about the potential of their assets. We compare BESS-to-BESS, introduce owners to optimizers and oversee the switch, so your battery keeps earning.</p>
+      <div class="cta-row" style="justify-content:flex-start"><a class="btn btn-lilac" href="/talk-to-us/">Talk to us</a><a class="btn btn-outline" href="/company/">Our story</a></div>
     </div>
     <div class="about-visual"><img class="about-img" src="/assets/img/about-pylon.jpg" alt="High-voltage pylon against the evening sky" width="960" height="1080" loading="lazy"></div>
   </div>
 </section>
 
-<footer>
+
+<section class="cta-band">
+  <div class="wrap">
+    <h2>Secure your battery's full potential</h2>
+    <p>Tell us about your project. We guide you through the rest.</p>
+    <div class="cta-row"><a class="btn btn-lilac" href="/talk-to-us/">Get started</a><a class="btn btn-outline" href="/solutions/">Learn more</a></div>
+  </div>
+</section>
+
+<div class="gate" id="gate" hidden data-target="https://claude.ai/artifact/4JJ9cpLm8pJMx9ZwknDKti">
+  <img class="gate-bg" src="/assets/img/backtest-example.jpg" alt="" width="1440" height="900">
+  <div class="gate-card" role="dialog" aria-modal="true" aria-labelledby="gate-h">
+    <button type="button" class="gate-x js-gate-close" aria-label="Close">&times;</button>
+    <h2 id="gate-h" class="sr-only">Welcome to the ICM</h2>
+    <div class="gate-frame" data-fillout-id="4W7Pk7S5YTus" data-fillout-embed-type="standard" data-fillout-inherit-parameters data-fillout-dynamic-resize></div>
+    <a class="gate-go js-gate-go" href="/bess-backtest/example/">Entered your email? Open the example report</a>
+  </div>
+</div><footer>
   <div class="wrap foot2">
     <div class="f-about">
       <p class="f-name">The Independent Capacity Market</p>
       <p class="f-tag">The ICM brings clarity, trusted partners and continuity to those adding capacity to the grid.</p>
     </div>
-    <a class="f-logo" href="/" aria-label="The ICM, home"><img src="/assets/logo-footer.png" alt="The ICM" width="302" height="449" loading="lazy"></a>
+    <a class="f-logo" href="/" aria-label="The ICM, home"><img src="/assets/submark.png" alt="The ICM" width="302" height="449" loading="lazy"></a>
     <nav class="f-links" aria-label="Footer">
-      <a href="/register/">Register</a>
+      <a href="/solutions/">Solutions</a>
+      <a href="/company/">Company</a>
+      <a href="/resources/">Resources</a>
+      <a href="/talk-to-us/">Talk to us</a>
     </nav>
+    <div class="f-mail"><p><a href="mailto:info@icm.energy">info@icm.energy</a></p><p class="f-copy">© 2026 Independent Capacity Market B.V.<span class="f-kvk">KvK 99958775</span></p></div>
     <div class="f-legal">
-      <p>Website designed by Salt &amp; Chalk</p>
-      <p><a href="/terms/">Terms & Conditions</a> | <a href="/privacy/">Privacy statement</a></p>
-      <p>© 2026 Independent Capacity Market B.V.</p>
+      <p>Website designed by <a href="https://www.saltandchalk.co.uk" target="_blank" rel="noopener">Salt &amp; Chalk</a></p>
+      <p><a href="/terms/">Terms & Conditions</a> | <a href="/privacy/">Privacy statement</a> | <a href="/cookies/">Cookie policy</a></p>
     </div>
   </div>
 </footer>
 
-<script src="/main.js?v=fec985f3" defer></script>
+<script src="/main.js?v=fc778777" defer></script>
 </body>
 </html>

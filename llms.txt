@@ -1,23 +1,25 @@
 # The Independent Capacity Market (the ICM)
 
-> The ICM is an independent energy tech company in Amsterdam. It helps owners of battery energy storage systems (BESS) in the Netherlands understand and secure the true value of their assets. The ICM owns no batteries and is not an optimizer.
+> The ICM is an independent energy tech company in Amsterdam. It helps owners of battery energy storage systems (BESS) in the Netherlands, and the installers who work with them, secure the true value of their assets. The ICM owns no batteries and is not an optimizer.
 
-## BESS Benchmark (open now)
-- A BESS-to-BESS comparison of real monthly revenues per MW, based on optimizers' statements, anonymised and checked by an ICM analyst.
-- For merchant-traded BESS assets from 3 MW in the Netherlands.
-- Give-to-get: members see the benchmark for the months they contributed data.
-- Members pay a handling fee of 0.5% of monthly gross revenue (excluding VAT); minimum membership 3 months, then monthly.
-- Results are never shown per named optimizer; optimizers are not ranked.
+## Solutions
+- BESS Configurator: simulates the revenues of different MW/MWh configurations within a site's dispatch constraints and shows which one delivers the highest returns. For owners and developers who plan a battery, stand-alone or co-located with solar, wind or other assets, and for installers who size systems for customers.
+- BESS Backtest: compares realised revenues with what can be reasonably achieved within a site's dispatch constraints, and flags when performance consistently falls short. For owners of operating batteries, and for installers who give every customer an independent view of what the battery earns.
+- BESS Broker: a standardised process to source, compare and contract optimizers, and to oversee the switch so the battery keeps earning without interruption.
 
-## Coming soon (waitlist)
-- BESS Backtest: drivers of capture rate for complex, co-located set-ups.
-- BESS Broker: a standardized process to source and evaluate trusted optimizers.
-- BESS Bridge: an API platform that connects optimizers with local infrastructure, so switching optimizers is less costly and less risky.
+## How to get started
+1. Enter a work email (personal email addresses are not accepted).
+2. Provide basic details: battery size (MW/MWh), dispatch constraints (import/export MW) and grid operator.
+3. Most businesses receive a custom report with expected revenues within one working day.
 
 ## Pages
-- [Home](https://icm.energy/): what a BESS asset could earn, and about the ICM
-- [Register](https://icm.energy/register/): register a BESS asset
+- [Home](https://icm.energy/)
+- [Solutions](https://icm.energy/solutions/): BESS Configurator, BESS Backtest and BESS Broker
+- [Example report](https://icm.energy/bess-backtest/example/): BESS Backtest with fictional data
+- [Talk to us](https://icm.energy/talk-to-us/)
+- [Resources](https://icm.energy/resources/): API documents and brand assets
+- [Company](https://icm.energy/company/): our story, team and open roles
 
 ## Contact
-- ideles@icm.energy
-- Independent Capacity Market B.V., Amsterdam
+- info@icm.energy
+- Independent Capacity Market B.V., Amsterdam, KvK 99958775
