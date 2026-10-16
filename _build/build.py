@@ -677,15 +677,9 @@ GATE = f'''<div class="gate" id="gate" hidden data-target="{PROTO_URL}">
   <img class="gate-bg" src="/assets/img/backtest-example.jpg" alt="" width="1440" height="900">
   <div class="gate-card" role="dialog" aria-modal="true" aria-labelledby="gate-h">
     <button type="button" class="gate-x js-gate-close" aria-label="Close">&times;</button>
-    <h2 id="gate-h">Welcome to the ICM</h2>
-    <p>Explore our product to see how the ICM helps you monitor your BESS performance proactively.</p>
-    <form class="gate-form" novalidate>
-      <label for="gate-email" class="sr-only">Work email address</label>
-      <input id="gate-email" type="email" name="email" placeholder="Work email address*" autocomplete="email" required>
-      <p class="gate-err" role="alert" hidden>Please use your work email address.</p>
-      <button type="submit" class="btn btn-lilac">Explore product</button>
-      <p class="gate-fine">We use your email to follow up on the product, nothing else. See our <a href="/privacy/">privacy statement</a>.</p>
-    </form>
+    <h2 id="gate-h" class="sr-only">Welcome to the ICM</h2>
+    <iframe class="gate-frame" title="Work email form" data-src="https://form.fillout.com/t/4W7Pk7S5YTus" loading="lazy"></iframe>
+    <a class="gate-go js-gate-go" href="{PROTO_URL}" target="_blank" rel="noopener">Entered your email? Open the product &rarr;</a>
   </div>
 </div>'''
 

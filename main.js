@@ -162,27 +162,17 @@ document.querySelectorAll('.info-i button').forEach(function (b) {
 function u(){var v=+r.value;o.textContent=(v<1?Math.round(v*1000)+' kW':v+' MW');p.textContent='EUR '+(v*500).toString().replace(/\B(?=(\d{3})+(?!\d))/g,',');}
 r.addEventListener('input',u);u();})();
 
-/* Email gate before the Backtest prototype */
+/* Email gate before the Backtest product: work-email form (Fillout) in a pop-up */
 (function(){
   var g=document.getElementById('gate'); if(!g) return;
-  var form=g.querySelector('form'), inp=g.querySelector('input'), err=g.querySelector('.gate-err');
-  var free=/@(gmail|googlemail|hotmail|outlook|live|yahoo|icloud|me|proton|protonmail|aol|gmx|msn)\./i;
-  function open(){g.hidden=false;document.body.style.overflow='hidden';inp.focus();}
+  var fr=g.querySelector('.gate-frame'), go=g.querySelector('.js-gate-go');
+  function open(){g.hidden=false;document.body.style.overflow='hidden';if(fr&&!fr.src)fr.src=fr.getAttribute('data-src');}
   function close(){g.hidden=true;document.body.style.overflow='';}
   document.querySelectorAll('.js-gate-open').forEach(function(b){b.addEventListener('click',function(e){e.preventDefault();open();});});
   g.querySelector('.js-gate-close').addEventListener('click',close);
   g.addEventListener('click',function(e){if(e.target===g)close();});
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!g.hidden)close();});
-  form.addEventListener('submit',function(e){
-    e.preventDefault();
-    var v=inp.value.trim();
-    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)||free.test(v)){err.hidden=false;inp.focus();return;}
-    err.hidden=true;
-    var ep=window.ICM_GATE_ENDPOINT;
-    if(ep){try{navigator.sendBeacon(ep,new Blob([JSON.stringify({email:v,source:'backtest-prototype'})],{type:'application/json'}));}catch(x){}}
-    window.open(g.getAttribute('data-target'),'_blank','noopener');
-    close();
-  });
+  if(go)go.addEventListener('click',function(){setTimeout(close,100);});
 })();
 
 /* Work-email forms on Solutions: validate, then go on to the intake form */
