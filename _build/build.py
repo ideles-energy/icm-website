@@ -774,7 +774,7 @@ def w_can():
 def w_head(tag='h2'):
     return '<%s class="story-h">It\'s a waste to miss out on <b class="out js-missed">EUR 555,000</b> a year.</%s>' % (tag, tag)
 
-BL1, BL2, BL3 = ('<b>Suboptimal configuration.</b> The MW/MWh you\'ll build directly affect your return on investment. A suboptimal mix costs you from day one.', '<b>Underperforming optimizer.</b> New players with better algorithms keep entering the market. Staying with yours can carry a serious opportunity cost.', '<b>Too little monitoring.</b> Without a reference, low revenue looks like a bad month. Underperformance can go unnoticed for years.')
+BL1, BL2, BL3 = ('<b>Suboptimal configuration.</b> The MW/MWh installed directly affects your return on investment. The set up can cost you from day one.', '<b>Underperforming optimizer.</b> New players with better algorithms keep entering the market. Staying with yours can carry a serious opportunity cost.', '<b>Too little monitoring.</b> Without a reference, low revenue looks like a bad month. Underperformance can go unnoticed for years.')
 
 def why_section(v='1'):
     cs = WCAUSES
