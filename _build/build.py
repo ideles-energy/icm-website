@@ -657,7 +657,7 @@ GS_STEPS = f'''<section class="dark gs-steps" id="steps">
     <div class="gs-grid">
       <div>{GS_ICONS['mail']}<p><b>Step 1: Enter your work email.</b> <span>Enter your business email to begin. You'll be prompted to complete an application. Personal email addresses aren't accepted.</span></p></div>
       <div>{GS_ICONS['form']}<p><b>Step 2: Provide your details.</b> <span>We'll ask for basic information: the size of the battery (MW/MWh), connection restrictions (import/export MW), the name of your grid operator.</span></p></div>
-      <div>{GS_ICONS['key']}<p><b>Step 3: Get started.</b> <span>Most businesses receive a custom report with expected revenues within 1 working day.</span></p></div>
+      <div>{GS_ICONS['key']}<p><b>Step 3: Get started.</b> <span>Most businesses receive a custom report with expected revenues within 1 working day. It's the draft we start from.</span></p></div>
     </div>
   </div>
 </section>'''
@@ -956,7 +956,7 @@ def talk(t, variant=None):
     <div class="expect">
       <div><b>1</b><h3>Enter your work email.</h3><p>Enter your business email to begin. You'll be prompted to complete an application. Personal email addresses aren't accepted.</p></div>
       <div><b>2</b><h3>Provide your details.</h3><p>We'll ask for basic information: the size of the battery (MW/MWh), connection restrictions (import/export MW), the name of your grid operator.</p></div>
-      <div><b>3</b><h3>Get started.</h3><p>Most businesses receive a custom report with expected revenues within 1 working day.</p></div>
+      <div><b>3</b><h3>Get started.</h3><p>Most businesses receive a custom report with expected revenues within 1 working day. It's the draft we start from.</p></div>
     </div>
   </div>
 </section>
