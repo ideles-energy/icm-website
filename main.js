@@ -166,9 +166,11 @@ r.addEventListener('input',u);u();})();
 (function(){
   var g=document.getElementById('gate'); if(!g) return;
   var fr=g.querySelector('.gate-frame'), go=g.querySelector('.js-gate-go');
-  function open(){g.hidden=false;document.body.style.overflow='hidden';if(fr&&!fr.src)fr.src=fr.getAttribute('data-src');}
+  function open(mode){mode=mode||'demo';g.hidden=false;document.body.style.overflow='hidden';
+    if(fr){var u=fr.getAttribute('data-src')+'?source='+mode;if(fr.getAttribute('src')!==u)fr.src=u;}
+    if(go)go.hidden=(mode==='start');}
   function close(){g.hidden=true;document.body.style.overflow='';}
-  document.querySelectorAll('.js-gate-open').forEach(function(b){b.addEventListener('click',function(e){e.preventDefault();open();});});
+  document.querySelectorAll('.js-gate-open').forEach(function(b){b.addEventListener('click',function(e){e.preventDefault();open(b.getAttribute('data-gate'));});});
   g.querySelector('.js-gate-close').addEventListener('click',close);
   g.addEventListener('click',function(e){if(e.target===g)close();});
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!g.hidden)close();});

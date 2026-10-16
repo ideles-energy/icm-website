@@ -236,8 +236,8 @@ def nav(t, other_href):
         </ul>
         <ul class="nav-links nav-right">
           <li class="hide-sm"><a class="nav-signin" href="https://app.icm.energy/">Sign in</a></li>
-          <li class="hide-sm"><a class="btn btn-outline js-gate-open" href="/solutions/#backtest">See a demo</a></li>
-          <li><a class="btn btn-lilac" href="{TALK}">Get started</a></li>
+          <li class="hide-sm"><a class="btn btn-outline js-gate-open" data-gate="demo" href="/solutions/#backtest">See an example report</a></li>
+          <li><a class="btn btn-lilac js-gate-open" data-gate="start" href="{TALK}">Get started</a></li>
           <li class="show-sm"><button type="button" class="menu-btn" aria-expanded="false" aria-label="Open menu"><span></span><span></span><span></span></button></li>
         </ul>
       </nav>
@@ -410,7 +410,7 @@ def company(t):
       <p>The ICM serves those who add capacity to the grid, but are in the dark on their potential.</p>
       <p>By bringing transparency, we contribute to a stronger grid: one that rewards optimizers that perform, makes batteries easier to finance and gives system operators access to more flexibility.</p>
       <p>We value our independence. We don't own, install or optimize to keep our intentions pure and our heads clear. For our clients, that means securing the true value of their battery, backed by reliable numbers that can be shared with your bank, installer and insurer.</p>
-      <a class="btn btn-lilac" href="/talk-to-us/">Talk to us</a>
+      <a class="btn btn-lilac" href="/talk-to-us/">Talk to an expert</a>
     </div>
   </div>
 </section>
@@ -498,7 +498,7 @@ def cta_band(t, h="Secure your battery's full potential", p='Tell us about your 
   <div class="wrap">
     <h2>{h}</h2>
     <p>{p}</p>
-    <div class="cta-row"><a class="btn btn-lilac" href="{TALK}{q}">Get started</a><a class="btn btn-outline js-gate-open" href="/solutions/#backtest">See a demo</a></div>
+    <div class="cta-row"><a class="btn btn-lilac js-gate-open" data-gate="start" href="{TALK}{q}">Get started</a><a class="btn btn-outline" href="{TALK}{q}">Talk to an expert</a></div>
   </div>
 </section>"""
 
@@ -521,7 +521,7 @@ def home(t):
         <h3>{n}</h3>
         <p class="prop-lead">{lead}</p>
         <p>{body}</p>
-        <div class="prop-actions"><a class="prop-link" href="{h}">Learn more →</a>{'<button type="button" class="btn btn-lilac js-gate-open prop-demo">See a demo</button>' if k == 'backtest' else ''}</div>
+        <div class="prop-actions"><a class="prop-link" href="{h}">Learn more →</a>{'<button type="button" class="btn btn-lilac js-gate-open prop-demo" data-gate="demo">See an example report</button>' if k == 'backtest' else ''}</div>
       </article>
 """ for k, n, h, lead, body in PROPS)
     title = 'BESS performance and optimizer insight: secure the true value of a BESS asset | The ICM'
@@ -536,8 +536,8 @@ def home(t):
         <h1>Secure the true value <br>of a BESS asset</h1>
         <p class="lead">For those with a nagging sense they could earn more with their battery. Find the optimal system for your context, outsource the search for a trusted optimizer and monitor your performance proactively.</p>
         <div class="hero-ctas">
-          <a class="btn btn-lilac" href="{TALK}">Get started</a>
-          <a class="btn btn-outline js-gate-open" href="/solutions/#backtest">See a demo</a>
+          <a class="btn btn-lilac js-gate-open" data-gate="start" href="{TALK}">Get started</a>
+          <a class="btn btn-outline js-gate-open" data-gate="demo" href="/solutions/#backtest">See an example report</a>
         </div>
       </div>
     </div>
@@ -597,7 +597,7 @@ def sol_card(k, n, href, lead, body, extra):
           <p class="sol-lead">{lead}</p>
           <p>{body}</p>
           <p>{extra}</p>
-          <div class="cta-row" style="justify-content:flex-start;margin-top:22px"><a class="btn btn-lilac" href="{TALK}?topic={k}">Talk to us</a>{'<button type="button" class="btn btn-outline js-gate-open">Explore the product</button>' if k == 'backtest' else ''}</div>
+          <div class="cta-row" style="justify-content:flex-start;margin-top:22px"><a class="btn btn-lilac" href="{TALK}?topic={k}">Talk to an expert</a>{'<button type="button" class="btn btn-outline js-gate-open" data-gate="demo">See an example report</button>' if k == 'backtest' else ''}</div>
         </div>
       </article>"""
 
