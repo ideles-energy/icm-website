@@ -515,10 +515,9 @@ PROPS = [
 
 NEWFAQS = [
  ('Why do battery owners work with the ICM?', 'To know what their battery could earn, and whether it earns that. We compare your revenue with the full potential of your site, and when there is more to earn we help you find a better optimizer. Because we own no batteries and are not an optimizer, you can share our numbers with your bank, installer and insurer.'),
- ('Why do installers offer the BESS Backtest to their customers?', 'It is a gift that builds trust. Installers can include a BESS Backtest at delivery, so every customer gets an independent view of what the battery earns. It shows you stand behind your system, and it costs you no extra work.'),
+ ('Why do installers offer the BESS Backtest to their customers?', 'It is a gift that builds trust. Installers can include a BESS Backtest at delivery, so every customer gets an independent view of what the battery earns. It shows you stand behind your system.'),
  ('Why can I trust the ICM\'s numbers?', 'We do not own BESS assets. We are not an optimizer. Nor will we ever be.'),
 ('What is the BESS Backtest?', 'The BESS Backtest compares what your battery earned with the most it could have earned on your site. The result is a capture rate: the share of the full potential that was realised. It shows whether a battery earns what it should, and what holds it back.'),
-('What is the "full potential"?', 'The highest result achievable on your site, calculated with perfect foresight within the limits of the site: grid connection, warranty limits, dispatch constraints and actual downtime. It is an upper bound, not a promise. We set the expected result at 80% of it.'),
 ('What data do I need to provide?', 'The optimizer report, quarter-hour meter data, data from the energy management system for downtime, and the documents on your grid connection and optimizer mandate. We guide you through the list, and your installer or metering service provider can often deliver most of it.'),
 ('Who orders a BESS Backtest, me or my installer?', 'Installers can include a BESS Backtest at delivery, so every customer gets an independent view of what the battery earns. Owners can also order one directly. Talk to us about how this works for you.'),
 ('How can my installer work with the ICM?', 'Installers can use the ICM in three ways: size a system with the BESS Configurator before the sale, include a BESS Backtest at delivery so every customer gets an independent view of what the battery earns, and refer owners who want a better optimizer to the BESS Broker. Talk to us to see what fits your way of working.'),
@@ -808,7 +807,7 @@ def w_pill(cls, label, val, mx=''):
     return f'<label class="pill"><input class="in fit {cls}" type="number" min="1" {mx} step="1" value="{val}" aria-label="{label}">{PEN}</label>'
 
 def w_sentence():
-    return f"""<span class="ws1"><b>Same battery, same site, 30% more revenue.</b> Many have a nagging sense they are leaving money on the table, fed by anecdotes of businesses gaining +30%. <a class="story-src" href="{FLOWER}" target="_blank" rel="noopener">Source: Flower case</a></span><span class="ws2">It can add up to <b class="out js-gap">EUR 55k</b> per MW per year. That's the case for a {w_pill('js-mw','Battery size in MW',10,'max="500"')} MW battery that delivered EUR {w_pill('js-rev','Revenue in thousand EUR per MW per year',185)}k per MW per year.</span>"""
+    return f"""<span class="ws1"><b>Same battery, same site, 30% more revenue.</b> Many have a nagging sense that they are leaving money on the table, fed by anecdotes of businesses realising +30% higher revenues. <a class="story-src" href="{FLOWER}" target="_blank" rel="noopener">Source: Flower case</a></span><span class="ws2">It can add up to <b class="out js-gap">EUR 55k</b> per MW per year. That's the case for a {w_pill('js-mw','Battery size in MW',10,'max="500"')} MW battery that delivered EUR {w_pill('js-rev','Revenue in thousand EUR per MW per year',185)}k per MW per year.</span>"""
 
 def w_hint():
     return f'<p class="hint">{PEN}Enter figures to adjust. Illustrative example.</p>'
