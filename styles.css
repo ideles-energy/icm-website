@@ -1549,3 +1549,7 @@ body.nav-light.nav-fixed header.nav .nav-right .btn-outline{color:#274A51;border
 /* v53 Solutions tiles: Backtest violet, Broker slate */
 .sol-flat-backtest{background:#D392EB}.sol-flat-backtest svg{stroke:#040D1F}
 .sol-flat-broker{background:#274A51}.sol-flat-broker svg{stroke:#97F2F5}
+
+/* v54 dark button for Talk to an expert on Solutions */
+.btn-dark{background:#274A51;color:#fff !important;border:2px solid #274A51}
+.btn-dark:hover{background:#040D1F;border-color:#040D1F;color:#fff !important}

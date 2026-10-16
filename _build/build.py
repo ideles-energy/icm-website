@@ -596,7 +596,7 @@ def sol_card(k, n, href, lead, body, extra):
           <p class="sol-lead">{lead}</p>
           <p>{body}</p>
           <p>{extra}</p>
-          <div class="cta-row" style="justify-content:flex-start;margin-top:22px">{'<button type="button" class="btn btn-lilac js-gate-open" data-gate="demo">See an example report</button>' if k == 'backtest' else '<a class="btn btn-lilac" href="' + TALK + '?topic=' + k + '">Talk to an expert</a>'}</div>
+          <div class="cta-row" style="justify-content:flex-start;margin-top:22px">{'<button type="button" class="btn btn-lilac js-gate-open" data-gate="demo">See an example report</button>' if k == 'backtest' else '<a class="btn btn-dark" href="' + TALK + '?topic=' + k + '">Talk to an expert</a>'}</div>
         </div>
       </article>"""
 
