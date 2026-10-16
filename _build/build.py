@@ -956,7 +956,7 @@ def talk(t, variant=None):
     <div class="section-head center"><h2>Get started in three easy steps</h2></div>
     <div class="expect">
       <div><b>1</b><h3>Enter your work email.</h3><p>Enter your business email to begin. You'll be prompted to complete an application. Personal email addresses aren't accepted.</p></div>
-      <div><b>2</b><h3>Provide your project details.</h3><p>We'll ask for basic information: the size of the battery (MW/MWh), connection restrictions (import/export MW), the name of your grid operator.</p></div>
+      <div><b>2</b><h3>Provide your details.</h3><p>We'll ask for basic information: the size of the battery (MW/MWh), connection restrictions (import/export MW), the name of your grid operator.</p></div>
       <div><b>3</b><h3>Get started.</h3><p>Most businesses receive a custom report with expected revenues within 1 working day.</p></div>
     </div>
   </div>

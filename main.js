@@ -145,9 +145,9 @@ document.querySelectorAll('.info-i button').forEach(function (b) {
   onScroll();
 })();
 
-/* Talk to us: always start at the top (the Fillout embed can pull the page down) */
+/* Talk to us and Solutions: always start at the top (the Fillout embed can pull the page down) */
 (function () {
-  if (!document.querySelector('.talk-hero') || location.hash) return;
+  if (!document.querySelector('.talk-hero, .sol-hero2') || location.hash) return;
   var moved = false;
   function mark() { moved = true; }
   ['wheel', 'touchstart', 'keydown', 'mousedown'].forEach(function (e) { window.addEventListener(e, mark, { passive: true, once: true }); });
