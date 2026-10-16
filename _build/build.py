@@ -461,23 +461,24 @@ PROPS = [
 NEWFAQS = [
  ('What is the BESS Backtest?', 'The BESS Backtest compares what your battery earned with the most it could have earned on your site. The result is a capture rate: the share of the full potential that was realised. It shows whether a battery earns what it should, and what holds it back.'),
  ('What is the "full potential"?', 'The highest result achievable on your site, calculated with perfect foresight within the limits of the site: grid connection, warranty limits, dispatch restrictions and actual downtime. It is an upper bound, not a promise. We set the expected result at 80% of it.'),
- ('Why 80%?', 'No optimizer has perfect foresight. The 80% for expected results is based on interviews with industry experts, and is stated openly in our methodology.'),
- ('Is downtime counted against my optimizer?', 'No. Downtime is reported as a separate driver, so that a fault is not attributed to trading performance, and the other way around.'),
- ('What data do you need?', 'The optimizer report, quarter-hour meter data, data from the energy management system for downtime, and the documents on your grid connection and optimizer mandate. We guide you through the list, and your installer or metering service provider can often deliver most of it.'),
- ('Who orders a BESS Backtest?', 'Installers can include a BESS Backtest at delivery, so every customer gets an independent view of what the battery earns. Owners can also order one directly. Talk to us about how this works for you.'),
- ('What is the role of the installer?', 'Installers can use the ICM in three ways: size a system with the BESS Configurator before the sale, include a BESS Backtest at delivery so every customer gets an independent view of what the battery earns, and refer owners who want a better optimizer to the BESS Broker. Talk to us to see what fits your way of working.'),
- ('What if my battery earns less than expected?', 'You decide what happens next. If the result objectively falls short, the BESS Broker can help you request and compare quotes from other optimizers, test what they would have earned, and guide the switch.'),
- ('Is the ICM independent?', 'Yes. We do not own BESS assets. We are not an optimizer. Nor will we ever be.'),
+ ('Why is the expected result 80% and not 100%?', 'No optimizer has perfect foresight. The 80% for expected results is based on interviews with industry experts, and is stated openly in our methodology.'),
+ ('Will my optimizer be blamed for downtime?', 'No. Downtime is reported as a separate driver, so that a fault is not attributed to trading performance, and the other way around.'),
+ ('What data do I need to provide?', 'The optimizer report, quarter-hour meter data, data from the energy management system for downtime, and the documents on your grid connection and optimizer mandate. We guide you through the list, and your installer or metering service provider can often deliver most of it.'),
+ ('Who orders a BESS Backtest, me or my installer?', 'Installers can include a BESS Backtest at delivery, so every customer gets an independent view of what the battery earns. Owners can also order one directly. Talk to us about how this works for you.'),
+ ('How can my installer work with the ICM?', 'Installers can use the ICM in three ways: size a system with the BESS Configurator before the sale, include a BESS Backtest at delivery so every customer gets an independent view of what the battery earns, and refer owners who want a better optimizer to the BESS Broker. Talk to us to see what fits your way of working.'),
+ ('What if my battery earns less than it could?', 'You decide what happens next. If the result objectively falls short, the BESS Broker can help you request and compare quotes from other optimizers, test what they would have earned, and guide the switch.'),
+ ('Is the ICM really independent?', 'Yes. We do not own BESS assets. We are not an optimizer. Nor will we ever be.'),
 ]
 
 SOL_FAQS = [
- ('What does the ICM do?', 'We help BESS owners get the most out of their battery: size the right system with the BESS Configurator, monitor performance with the BESS Backtest, and find a better optimizer with the BESS Broker when there is more to earn.'),
- ('Who is it for?', 'Owners and developers of batteries of roughly 3 to 30 MW, and the installers who work with them. You do not need to be an expert in power markets.'),
- ('Is the ICM independent?', 'Yes. We do not own BESS assets. We are not an optimizer. Nor will we ever be. That is why our numbers can be shared with your bank, installer and insurer.'),
- ('What do I need to get started?', 'Your work email and a few project details. After approval we ask for read access to your optimizer, or three months of settlements, plus an authorisation to read your meter data from your metering company.'),
- ('What does the BESS Backtest measure?', 'It compares what your battery earned with the most it could have earned on your site. The result is a capture rate: the share of the full potential that was realised, and what holds it back.'),
- ('What if my battery earns less than expected?', 'You decide what happens next. If the result objectively falls short, the BESS Broker can help you compare optimizers, test what they would have earned and guide the switch.'),
- ('How do installers work with the ICM?', 'Installers can size a system with the BESS Configurator before the sale, include a BESS Backtest at delivery, and refer owners who want a better optimizer to the BESS Broker.'),
+ ('Why do battery owners use the ICM?', 'To know what their battery could earn, and whether it earns that. We compare your revenue with the full potential of your site, and when there is more to earn we help you find a better optimizer. Because we own no batteries and are not an optimizer, you can share our numbers with your bank, installer and insurer.'),
+ ('Is the ICM for my battery?', 'The ICM serves owners and developers of batteries of roughly 3 to 30 MW, and the installers who work with them. You do not need to be an expert in power markets.'),
+ ("I don't know if my optimizer is any good. Can the ICM tell me?", 'Yes. The BESS Backtest compares what your battery earned with the most it could have earned on your site. The result is a capture rate: the share of the full potential that was realised, and what holds it back.'),
+ ('What if my battery earns less than it could?', 'You decide what happens next. If the result objectively falls short, the BESS Broker can help you compare optimizers, test what they would have earned and guide the switch.'),
+ ('Is the ICM really independent?', 'Yes. We do not own BESS assets. We are not an optimizer. Nor will we ever be.'),
+ ('What do I need to get approved?', 'Your work email and a few project details. After approval we ask for read access to your optimizer, or three months of settlements, plus an authorisation to read your meter data from your metering company.'),
+ ('When does it make sense to start with the ICM?', 'Before you build, to size the right system with the BESS Configurator. After your battery is running, to see whether it earns what it should with the BESS Backtest. And whenever the numbers say there is more to earn, to find a better optimizer with the BESS Broker.'),
+ ('How do installers work with the ICM?', 'Installers can size a system with the BESS Configurator before the sale, include a BESS Backtest at delivery so every customer gets an independent view of what the battery earns, and refer owners who want a better optimizer to the BESS Broker.'),
 ]
 
 def faq_block(items, title=None):
