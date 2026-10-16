@@ -1537,3 +1537,10 @@ body.nav-light.nav-fixed header.nav .nav-right .btn-outline{color:#274A51;border
 
 /* v51: header never wraps; collapses to menu below 1100px */
 .nav-links a,.nav-links li{white-space:nowrap}
+/* v52: align title, lead, text and links across the three proposition cards */
+@media (min-width: 901px){
+  .props{grid-template-rows:auto}
+  .prop{display:grid;grid-row:span 5;grid-template-rows:subgrid;row-gap:10px;align-content:start}
+  .prop .callout{grid-row:auto}
+  .prop .prop-actions{align-self:end}
+}
