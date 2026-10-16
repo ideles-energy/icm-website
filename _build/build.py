@@ -350,9 +350,28 @@ def page_shell(t, path, title, desc, hero, body, jsonld=None):
 def resources(t):
     hero = '''    <div class="page-hero" id="main">
       <h1>Resources</h1>
-      <p>API documents and brand assets of the Independent Capacity Market.</p>
+      <p>A community BESS Calculator, API documents and brand assets of the Independent Capacity Market.</p>
     </div>'''
     body = f'''<main class="res">
+  <div class="wrap">
+    <section class="calc-block" id="calculator" aria-labelledby="calc-h">
+      <div class="calc-copy">
+        <div class="calc-tags"><span>Community project</span><span>Beta</span><span>Day-ahead and imbalance</span></div>
+        <h2 id="calc-h">BESS Calculator</h2>
+        <p class="calc-lead">What could a battery have earned on the Dutch wholesale markets over the last six months? The calculator answers that for one specific set-up: MW/MWh, grid connection and dispatch constraints included.</p>
+        <ul class="calc-points">
+          <li><b>Real context, not a virtual battery.</b> Results follow the limits of the actual site, such as import and export caps and contract terms.</li>
+          <li><b>Better with every contribution.</b> Each owner, installer or analyst who checks it against real numbers makes it more accurate for everyone.</li>
+          <li><b>Open about its limits.</b> It covers day-ahead and imbalance only, as intraday data is not publicly available.</li>
+        </ul>
+        <div class="calc-help"><b>We are looking for help.</b> Test the calculator against your own settlements and tell us where it is off.</div>
+        <div class="cta-row" style="justify-content:flex-start"><a class="btn btn-dark" href="/talk-to-us/?topic=calculator">Help improve the calculator</a></div>
+      </div>
+      <div class="calc-slot" aria-label="BESS Calculator (opens soon)">
+        <div class="calc-ph"><span class="calc-dot"></span><b>The calculator opens here soon</b><small>Built in the open, improved by the people who use it.</small></div>
+      </div>
+    </section>
+  </div>
   <div class="wrap res-cols">
     <section class="res-sec">
       <h2>Documents</h2>
@@ -366,7 +385,7 @@ def resources(t):
     </section>
   </div>
 </main>'''
-    return page_shell(t, '/resources/', 'Resources | The ICM', 'API documents and brand assets of the Independent Capacity Market.', hero, body)
+    return page_shell(t, '/resources/', 'Resources: BESS Calculator, API documents and brand assets | The ICM', 'A community BESS Calculator for the Dutch wholesale markets, API documents and brand assets of the Independent Capacity Market.', hero, body)
 
 ROLES = [
   ('Commercial Lead', 'Amsterdam',
