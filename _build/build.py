@@ -407,7 +407,7 @@ def company(t):
     <div>
       <p>The ICM serves those who add capacity to the grid, but are in the dark on their potential.</p>
       <p>By bringing transparency, we contribute to a stronger grid: one that rewards optimizers that perform, makes batteries easier to finance and gives system operators access to more flexibility.</p>
-      <p>We value our independence. We don't own, install or optimize to keep our intentions pure and our heads clear. For our clients, that means securing the true value of their battery, backed by reliable numbers that can be shared with your bank, installer and insurer.</p>
+      <p>We value our independence. We don't own, install or optimize to keep our intentions pure and our heads clear. For our clients, that means securing the true value of their battery, backed by reliable numbers.</p>
       <a class="btn btn-lilac" href="/talk-to-us/">Talk to an expert</a>
     </div>
   </div>
