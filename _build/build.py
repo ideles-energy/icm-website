@@ -690,7 +690,7 @@ def solutions(t):
     hero = f"""    <div class="page-hero sol-hero2" id="main">
       <div class="sh-l">
         <h1>See how the ICM works</h1>
-        <p>The ICM brings clarity, trusted partners and continuity to those adding capacity to the grid. Our independent insights unlock the best deal with your bank, installer and optimizer. Together, we secure the true value of your BESS assets.</p>
+        <p>The ICM brings clarity, trusted partners and continuity to those adding capacity to the grid. Together, we secure the true value of your BESS assets. No manual entry. No wasted hours.</p>
         {gs_form('a')}
       </div>
       <div class="sh-r"><img src="/assets/img/solutions-veins-bright.jpg" alt="" width="1600" height="900"></div>
