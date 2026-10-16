@@ -236,12 +236,11 @@ def nav(t, other_href):
         </ul>
         <ul class="nav-links nav-right">
           <li class="hide-sm"><a class="nav-signin" href="https://app.icm.energy/">Sign in</a></li>
-          <li class="hide-sm"><a class="btn btn-outline js-gate-open" data-gate="demo" href="/solutions/#backtest">See an example report</a></li>
           {'' if other_href == TALK else '<li><a class="btn btn-lilac" href="' + TALK + '">Get started</a></li>'}
           <li class="show-sm"><button type="button" class="menu-btn" aria-expanded="false" aria-label="Open menu"><span></span><span></span><span></span></button></li>
         </ul>
       </nav>
-      <div class="m-menu" hidden><a href="/solutions/">Solutions</a><a href="/resources/">Resources</a><a href="/company/">Company</a><a href="https://app.icm.energy/">Sign in</a></div>
+      <div class="m-menu" hidden><a href="/solutions/">Solutions</a><a href="/resources/">Resources</a><a href="/company/">Company</a><a href="https://app.icm.energy/">Sign in</a><a class="js-gate-open" data-gate="demo" href="/solutions/#backtest">See an example report</a></div>
     </header>
 """
 

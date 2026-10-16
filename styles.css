@@ -76,7 +76,7 @@ p { margin: 0; }
 .nav-links a { text-decoration: none; font-size: 15px; font-weight: 500; opacity: .9; }
 .nav-links a:hover { opacity: 1; text-decoration: underline; text-underline-offset: 4px; }
 .lang { font-size: 14px; font-weight: 600; border: 1px solid rgba(255,255,255,.3); border-radius: 999px; padding: 6px 12px; }
-@media (max-width: 900px) { .nav-links li.hide-sm { display: none; } }
+@media (max-width: 1100px) { .nav-links li.hide-sm { display: none; } }
 
 /* Hero */
 .hero { display: grid; grid-template-columns: 1.05fr .95fr; gap: 56px; align-items: center; padding: 48px 0 96px; }
@@ -488,7 +488,7 @@ footer { background: #020B1C; padding: 64px 0 40px; border-top: 1px solid rgba(2
 .m-menu a { color: var(--white); text-decoration: none; font-weight: 500; }
 .m-menu .m-sub { padding-left: 12px; font-weight: 400; color: rgba(255,255,255,.85); }
 .m-h { margin: 0; color: var(--cyan); font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
-@media (max-width: 900px) { .show-sm { display: list-item; } .nav-links { gap: 12px; } }
+@media (max-width: 1100px) { .show-sm { display: list-item; } .nav-links { gap: 12px; } }
 /* v10: resources page */
 .res { background: #F1F6F8; padding: 24px 0 96px; }
 .res-sec { padding-top: 56px; }
@@ -1534,3 +1534,6 @@ body.nav-light.nav-fixed header.nav .nav-right .btn-outline{color:#274A51;border
 .faq-sec .faq details[open] summary::after{content:"";transform:rotate(180deg)}
 .faq-sec .faq details p{max-width:760px;padding:0 64px 26px 0;color:#274A51}
 @media (max-width:600px){.faq-sec .faq summary{font-size:17px;padding-right:54px}.faq-sec .faq details p{padding-right:0}}
+
+/* v51: header never wraps; collapses to menu below 1100px */
+.nav-links a,.nav-links li{white-space:nowrap}
