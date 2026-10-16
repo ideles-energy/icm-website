@@ -498,7 +498,7 @@ def cta_band(t, h="Secure your battery's full potential", p='Tell us about your 
   <div class="wrap">
     <h2>{h}</h2>
     <p>{p}</p>
-    <div class="cta-row"><a class="btn btn-lilac" href="{TALK}{q}">Get started</a><button type="button" class="btn btn-outline js-gate-open" data-gate="demo">See an example report</button></div>
+    <div class="cta-row"><a class="btn btn-lilac" href="{TALK}{q}">Get started</a><a class="btn btn-outline" href="/solutions/">Learn more</a></div>
   </div>
 </section>"""
 
@@ -677,7 +677,7 @@ GATE = f'''<div class="gate" id="gate" hidden data-target="{PROTO_URL}">
     <button type="button" class="gate-x js-gate-close" aria-label="Close">&times;</button>
     <h2 id="gate-h" class="sr-only">Welcome to the ICM</h2>
     <div class="gate-frame" data-fillout-id="4W7Pk7S5YTus" data-fillout-embed-type="standard" data-fillout-inherit-parameters data-fillout-dynamic-resize></div>
-    <a class="gate-go js-gate-go" href="/bess-backtest/example/">Entered your email? Open the example report &rarr;</a>
+    <a class="gate-go js-gate-go" href="/bess-backtest/example/">Entered your email? Open the example report</a>
   </div>
 </div>'''
 
