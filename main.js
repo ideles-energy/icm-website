@@ -147,7 +147,7 @@ document.querySelectorAll('.info-i button').forEach(function (b) {
 
 /* Talk to us and Solutions: always start at the top (the Fillout embed can pull the page down) */
 (function () {
-  if (!document.querySelector('.talk-hero, .page-hero') || location.hash) return;
+  if (location.hash) return;
   var moved = false;
   function mark() { moved = true; }
   ['wheel', 'touchstart', 'keydown', 'mousedown'].forEach(function (e) { window.addEventListener(e, mark, { passive: true, once: true }); });
