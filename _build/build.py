@@ -156,11 +156,11 @@ PRIVACY_EN = [
  ('About this statement', 'This privacy statement explains how Independent Capacity Market B.V. (“the ICM”, “we”, “us”), Amsterdam, handles personal data collected through icm.energy and through our contact with owners, installers, optimizers and other visitors. It applies to this website. Other ICM services, such as the BESS Backtest, may come with additional terms or notices.'),
  ('Who is responsible', 'The ICM is the controller of the personal data described here. You can reach us at <a href="mailto:info@icm.energy">info@icm.energy</a>.'),
  ('Personal data we collect', 'We collect the data you give us when you use the contact form or email us: your name, company, email address, the size of your portfolio or project, and your message. We also receive technical data that every website receives, such as your IP address and browser type, when your browser requests a page. We do not ask for special categories of personal data and we ask you not to send them to us.'),
- ('How we use personal data', 'We use your data to answer your request, plan a 45-minute call and prepare a proposal, to keep our website secure and working, and to meet legal obligations. We do not sell your data, we do not use it for advertising and we do not use it for automated decision-making.'),
+ ('How we use personal data', 'We use your data to answer your request, prepare a custom report, follow up by email about our services, to keep our website secure and working, and to meet legal obligations. We do not sell your data, we do not use it for advertising and we do not use it for automated decision-making.'),
  ('Legal bases', 'We rely on our legitimate interest in answering business enquiries and keeping our website secure, on steps taken at your request before entering into a contract, on a legal obligation where one applies, and on your consent where we ask for it.'),
  ('Who we share it with', 'We share personal data only with service providers that help us run our business, under agreements that protect your data. Fillout receives the contact form on our behalf. Our hosting provider, GitHub Pages, serves the website. We may also share data with advisers or authorities where the law requires.'),
  ('Transfers outside the EEA', 'Some of these providers are based in, or store data in, the United States. Where that is the case we rely on safeguards such as the EU-US Data Privacy Framework or standard contractual clauses.'),
- ('How long we keep it', 'We keep contact details for as long as needed to follow up on your request and at most two years after our last contact, unless you become a client or member, or the law requires us to keep them longer.'),
+ ('How long we keep it', 'We keep contact details for as long as needed to follow up on your request and at most two years after our last contact unless you become a client, or the law requires us to keep them longer.'),
  ('How we protect it', 'We limit access to personal data to people who need it, use trusted providers and keep our systems up to date. No online service is completely secure, so please do not send us confidential data you do not need to share.'),
  ('Your rights', 'You can ask to see, correct, delete or receive a copy of your personal data, restrict or object to its use, and withdraw consent you have given. Email <a href="mailto:info@icm.energy">info@icm.energy</a> and we will respond within one month. You can also file a complaint with the Dutch Data Protection Authority (Autoriteit Persoonsgegevens).'),
  ('Cookies', 'The ICM website does not use analytics or advertising cookies. See our <a href="/cookies/">cookie policy</a> for details.'),
@@ -478,7 +478,7 @@ PROPS = [
 NEWFAQS = [
  ('Why do battery owners work with the ICM?', 'To know what their battery could earn, and whether it earns that. We compare your revenue with the full potential of your site, and when there is more to earn we help you find a better optimizer. Because we own no batteries and are not an optimizer, you can share our numbers with your bank, installer and insurer.'),
  ('Why do installers offer the BESS Backtest to their customers?', 'It is a gift that builds trust. Installers can include a BESS Backtest at delivery, so every customer gets an independent view of what the battery earns. It shows you stand behind your system, and it costs you no extra work.'),
- ('Why can I trust the ICM\'s numbers?', 'We do not own BESS assets. We are not an optimizer. Nor will we ever be. Our methodology is open, so you can see how every number is calculated.'),
+ ('Why can I trust the ICM\'s numbers?', 'We do not own BESS assets. We are not an optimizer. Nor will we ever be.'),
 ('What is the BESS Backtest?', 'The BESS Backtest compares what your battery earned with the most it could have earned on your site. The result is a capture rate: the share of the full potential that was realised. It shows whether a battery earns what it should, and what holds it back.'),
 ('What is the "full potential"?', 'The highest result achievable on your site, calculated with perfect foresight within the limits of the site: grid connection, warranty limits, dispatch restrictions and actual downtime. It is an upper bound, not a promise. We set the expected result at 80% of it.'),
 ('What data do I need to provide?', 'The optimizer report, quarter-hour meter data, data from the energy management system for downtime, and the documents on your grid connection and optimizer mandate. We guide you through the list, and your installer or metering service provider can often deliver most of it.'),
@@ -979,8 +979,8 @@ def talk(t, variant=None):
   </div>
 </section>
 {faq_block(NEWFAQS, 'Frequently asked questions')}"""
-    return page_shell(t, TALK, 'Talk to us: book a 45-minute call about your BESS | The ICM',
-        'Talk to the ICM about the BESS Configurator, BESS Backtest or BESS Broker. Book a 45-minute call to share your context and objectives and receive a full proposal.', hero, body)
+    return page_shell(t, TALK, 'Talk to us: get started with your BESS | The ICM',
+        'Get started with the ICM in three steps: enter a work email, share the basic details of your battery and receive a custom report with expected revenues within one working day.', hero, body)
 
 
 SOL_REDIRECT = '''<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Solutions | The ICM</title><meta name="robots" content="noindex"><link rel="canonical" href="https://icm.energy/solutions/#KEY"><meta http-equiv="refresh" content="0; url=/solutions/#KEY"></head><body><a href="/solutions/#KEY">All solutions are on one page.</a></body></html>'''
@@ -1072,7 +1072,7 @@ page = head(te, 'BESS Benchmark methodology: how we calculate revenue per MW | T
 </body>
 </html>
 """
-write('methodology/index.html', '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>The ICM</title><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0; url=/#demo"></head><body><a href="/#demo">Go to the BESS Benchmark</a></body></html>')
+write('methodology/index.html', '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Solutions | The ICM</title><meta name="robots" content="noindex"><link rel="canonical" href="https://icm.energy/solutions/"><meta http-equiv="refresh" content="0; url=/solutions/"></head><body><a href="/solutions/">Go to our solutions</a></body></html>')
 print('methodology built, v' + version.group(1), len(toc), 'sections')
 
 
@@ -1090,7 +1090,7 @@ demo = demo.replace('<div class="wrap" id="page1">', back + '\n<div class="wrap"
 demo = demo.replace('<body>', '<body class="light">', 1)
 demo = demo.replace('data-v="dark" aria-pressed="true">Dark</button><button type="button" data-v="light" aria-pressed="false">', 'data-v="dark" aria-pressed="false">Dark</button><button type="button" data-v="light" aria-pressed="true">', 1)
 demo = demo.replace('</body>', "<script>if('scrollRestoration' in history)history.scrollRestoration='manual';window.scrollTo(0,0);addEventListener('load',function(){window.scrollTo(0,0)});</script>\n</body>", 1)
-write('demo/index.html', demo)
+write('demo/index.html', '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Example report | The ICM</title><meta name="robots" content="noindex"><link rel="canonical" href="https://icm.energy/bess-backtest/example/"><meta http-equiv="refresh" content="0; url=/bess-backtest/example/"></head><body><a href="/bess-backtest/example/">See an example report</a></body></html>')
 
 # BESS Backtest example report (fictional data), served at /bess-backtest/example/ with a way back to the site.
 write('bess-backtest/example/index.html', open(os.path.join(ROOT, '_build', 'backtest-example.html'), encoding='utf-8').read())
