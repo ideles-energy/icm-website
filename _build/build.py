@@ -1044,6 +1044,7 @@ for lang in LANGS:
     if lang == 'en': write('cookies/index.html', cookies(t))
     if lang == 'en':
         write('careers/index.html', REDIRECT)
+        write('register/index.html', '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Get started | The ICM</title><meta name="robots" content="noindex"><link rel="canonical" href="https://icm.energy/talk-to-us/"><meta http-equiv="refresh" content="0; url=/talk-to-us/"></head><body><a href="/talk-to-us/">Get started</a></body></html>')
         write('resources/index.html', resources(t))
         write('company/index.html', company(t))
         write('solutions/index.html', solutions(t))
