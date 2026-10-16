@@ -155,12 +155,12 @@ T = {
 PRIVACY_EN = [
  ('About this statement', 'This privacy statement explains how Independent Capacity Market B.V. (“the ICM”, “we”, “us”), Amsterdam, handles personal data collected through icm.energy and through our contact with owners, installers, optimizers and other visitors. It applies to this website. Other ICM services, such as the BESS Backtest, may come with additional terms or notices.'),
  ('Who is responsible', 'The ICM is the controller of the personal data described here. You can reach us at <a href="mailto:info@icm.energy">info@icm.energy</a>.'),
- ('Personal data we collect', 'We collect the data you give us when you use the contact form or email us: your name, company, email address, the size of your portfolio or project, and your message. We also receive technical data that every website receives, such as your IP address and browser type, when your browser requests a page. We do not ask for special categories of personal data and we ask you not to send them to us.'),
- ('How we use personal data', 'We use your data to answer your request, prepare a custom report, follow up by email about our services, to keep our website secure and working, and to meet legal obligations. We do not sell your data, we do not use it for advertising and we do not use it for automated decision-making.'),
+ ('Personal data we collect', 'We collect the data you give us when you use one of our forms or email us: your name, company, email address, the size of your portfolio or project, and your message. We also receive technical data that every website receives, such as your IP address and browser type, when your browser requests a page. We do not ask for special categories of personal data and we ask you not to send them to us.'),
+ ('How we use personal data', 'We use your data to answer your request, prepare a custom report, follow up by email about our services, keep our website secure and working, and meet legal obligations. We do not sell your data, we do not use it for advertising and we do not use it for automated decision-making.'),
  ('Legal bases', 'We rely on our legitimate interest in answering business enquiries and keeping our website secure, on steps taken at your request before entering into a contract, on a legal obligation where one applies, and on your consent where we ask for it.'),
  ('Who we share it with', 'We share personal data only with service providers that help us run our business, under agreements that protect your data. Fillout receives our forms on our behalf. Our hosting provider, GitHub Pages, serves the website. We may also share data with advisers or authorities where the law requires.'),
  ('Transfers outside the EEA', 'Some of these providers are based in, or store data in, the United States. Where that is the case we rely on safeguards such as the EU-US Data Privacy Framework or standard contractual clauses.'),
- ('How long we keep it', 'We keep contact details for as long as needed to follow up on your request and at most two years after our last contact unless you become a client, or the law requires us to keep them longer.'),
+ ('How long we keep it', 'We keep contact details for as long as needed to follow up on your request and at most two years after our last contact, unless you become a client or the law requires us to keep them longer.'),
  ('How we protect it', 'We limit access to personal data to people who need it, use trusted providers and keep our systems up to date. No online service is completely secure, so please do not send us confidential data you do not need to share.'),
  ('Your rights', 'You can ask to see, correct, delete or receive a copy of your personal data, restrict or object to its use, and withdraw consent you have given. Email <a href="mailto:info@icm.energy">info@icm.energy</a> and we will respond within one month. You can also file a complaint with the Dutch Data Protection Authority (Autoriteit Persoonsgegevens).'),
  ('Cookies', 'The ICM website does not use analytics or advertising cookies. See our <a href="/cookies/">cookie policy</a> for details.'),
@@ -172,7 +172,7 @@ COOKIES_EN = [
  ('What are cookies', 'Cookies are small text files that a website stores on your device when you visit it. Similar technologies, such as local storage and pixels, work in the same way. We use the word “cookies” for all of them.'),
  ('How we use cookies', 'The ICM website is built to work without tracking. We do not use analytics cookies, advertising cookies or social media tracking, and we do not build profiles of visitors.'),
  ('Cookies on our website', '<b>Our own website.</b> The pages of icm.energy do not set cookies of their own and do not store data in your browser to identify you.<br><b>Third-party content.</b> The forms on our Talk to us page, in the example report pop-up and on the Resources page are provided by Fillout. When you load a form, Fillout may set cookies or similar technologies needed to show and submit it. Their use is governed by Fillout’s own policies.'),
- ('Managing cookies', 'You can block or delete cookies in your browser settings. If you do, parts of the website, such as the contact form, may not work as intended. If you prefer, you can also email us at <a href="mailto:info@icm.energy">info@icm.energy</a> instead of using the form.'),
+ ('Managing cookies', 'You can block or delete cookies in your browser settings. If you do, parts of the website, such as the forms, may not work as intended. If you prefer, you can also email us at <a href="mailto:info@icm.energy">info@icm.energy</a> instead of using the form.'),
  ('If this changes', 'If we start using analytics or other cookies that need consent, we will ask for your permission first and update this policy.'),
  ('More information', 'See our <a href="/privacy/">privacy statement</a> for how we handle personal data, or contact us at <a href="mailto:info@icm.energy">info@icm.energy</a>.'),
 ]
@@ -323,12 +323,12 @@ def terms(t):
 
 def cookies(t):
     secs = ''.join(f'<h2>{h}</h2><p>{p}</p>' for h, p in COOKIES_EN)
-    body = f'    <div class="prose">{secs}<p style="color:var(--muted);font-size:14px">Last updated: 15 October 2026</p></div>'
+    body = f'    <div class="prose">{secs}<p style="color:var(--muted);font-size:14px">Last updated: 16 October 2026</p></div>'
     return simple_page(t, t['base'] + 'cookies/', t['other'] + 'cookies/', 'Cookie policy | The ICM', 'How the Independent Capacity Market website uses cookies and similar technologies.', 'Cookie policy', '', body)
 
 def privacy(t):
     secs = ''.join(f'<h2>{h}</h2><p>{p}</p>' for h, p in PRIVACY[t['lang']])
-    body = f'    <div class="prose">{secs}<p style="color:var(--muted);font-size:14px">Last updated: 15 October 2026</p></div>'
+    body = f'    <div class="prose">{secs}<p style="color:var(--muted);font-size:14px">Last updated: 16 October 2026</p></div>'
     return simple_page(t, t['base'] + 'privacy/', t['other'] + 'privacy/', t['privacy_title'], 'How the Independent Capacity Market handles personal data from its website and contact form.', t['privacy_h'], '', body)
 
 
@@ -462,9 +462,9 @@ def company(t):
   <div class="wrap co-grid">
     <p class="co-label">Who we are</p>
     <div>
-      <p>The ICM serves those who add capacity to the grid, but are in the dark on their potential.</p>
+      <p>The ICM serves those who add capacity to the grid, but are in the dark about their potential.</p>
       <p>By bringing transparency, we contribute to a stronger grid: one that rewards optimizers that perform, makes batteries easier to finance and gives system operators access to more flexibility.</p>
-      <p>We value our independence. We don't own, install or optimize to keep our intentions pure and our heads clear. For our clients, that means securing the true value of their battery, backed by reliable numbers.</p>
+      <p>We value our independence. We don't own, install or optimize, which keeps our intentions pure and our heads clear. For our clients, that means securing the true value of their battery, backed by reliable numbers.</p>
       <a class="btn btn-lilac" href="/talk-to-us/">Talk to us</a>
     </div>
   </div>
@@ -473,9 +473,9 @@ def company(t):
   <div class="wrap">
     <p class="co-label">The team</p>
     <div class="team">
-      <a class="member" href="https://www.linkedin.com/in/idel%C3%A8s-kaandorp/" target="_blank" rel="noopener"><img class="ph" src="/assets/team-ideles.jpg" alt="Idelès Kaandorp" width="600" height="600" loading="lazy"><b>Idelès Kaandorp</b><span class="m-bio">Founder. Is fighting the lack of transparency in the BESS market. Trained as mathematician, holds an MBA from Harvard Business School and served energy clients at McKinsey.</span></a>
+      <a class="member" href="https://www.linkedin.com/in/idel%C3%A8s-kaandorp/" target="_blank" rel="noopener"><img class="ph" src="/assets/team-ideles.jpg" alt="Idelès Kaandorp" width="600" height="600" loading="lazy"><b>Idelès Kaandorp</b><span class="m-bio">Founder. Fights the lack of transparency in the BESS market. Trained as a mathematician, holds an MBA from Harvard Business School and served energy clients at McKinsey.</span></a>
       <a class="member" href="https://www.linkedin.com/in/edo-rivai-78b66a17/" target="_blank" rel="noopener"><img class="ph" src="/assets/team-edo.jpg" alt="Edo Rivai" width="512" height="512" loading="lazy"><b>Edo Rivai</b><span class="m-bio">Senior software developer. Owns platform design, integrations and infrastructure. Built and scaled software, most recently at SpotAI (network of intelligent security cameras).</span></a>
-      <a class="member" href="https://www.linkedin.com/in/jesse-h-willis/" target="_blank" rel="noopener"><img class="ph" src="/assets/team-jesse.jpg" alt="Jesse Willis" width="600" height="720" loading="lazy"><b>Jesse Willis</b><span class="m-bio">Project Engineer. Translates your dispatch constraints to custom insights that drive decisions. Studied Industrial Design Engineering in Delft and started Everlab to build meaningful products from scratch.</span></a>
+      <a class="member" href="https://www.linkedin.com/in/jesse-h-willis/" target="_blank" rel="noopener"><img class="ph" src="/assets/team-jesse.jpg" alt="Jesse Willis" width="600" height="720" loading="lazy"><b>Jesse Willis</b><span class="m-bio">Project Engineer. Translates your dispatch constraints into custom insights that drive decisions. Studied Industrial Design Engineering in Delft and started Everlab to build meaningful products from scratch.</span></a>
     </div>
     <div class="team-cta"><a class="btn btn-lilac" href="/talk-to-us/">Get in touch</a></div>
   </div>
@@ -623,7 +623,7 @@ def home(t):
       <h2>Why an Independent Capacity Market matters</h2>
       <p>We are not owners. We are not optimizers. Nor will we ever be.</p>
       <p>We are an energy tech company.</p>
-      <p>We serve those who add capacity to the grid, but are in the dark on the potential of their assets. We compare BESS-to-BESS, introduce owners to optimizers and oversee the switch, so your battery keeps earning.</p>
+      <p>We serve those who add capacity to the grid, but are in the dark about the potential of their assets. We compare BESS-to-BESS, introduce owners to optimizers and oversee the switch, so your battery keeps earning.</p>
       <div class="cta-row" style="justify-content:flex-start"><a class="btn btn-lilac" href="{TALK}">{t['talk']}</a><a class="btn btn-outline" href="/company/">Our story</a></div>
     </div>
     <div class="about-visual"><img class="about-img" src="/assets/img/about-pylon.jpg" alt="High-voltage pylon against the evening sky" width="960" height="1080" loading="lazy"></div>
