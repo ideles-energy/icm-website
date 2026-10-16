@@ -682,7 +682,7 @@ GATE = f'''<div class="gate" id="gate" hidden data-target="{PROTO_URL}">
 
 def solutions(t):
     extras = {
-      'configurator': 'For owners and developers who plan a battery on a site with solar, wind or a large energy use, and for installers who size systems for customers.',
+      'configurator': 'For owners and developers who plan a battery, stand-alone or co-located with solar, wind or other assets, and for installers who size systems for customers.',
       'backtest': 'For owners of operating batteries, and for installers who want to give every customer an independent view on what the battery earns.',
       'broker': 'For owners whose battery objectively earns less than it could, and who want a better deal without spending weeks on the search.',
     }
