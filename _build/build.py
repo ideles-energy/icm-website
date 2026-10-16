@@ -492,7 +492,7 @@ def faq_block(items, title=None):
   </div>
 </section>"""
 
-def cta_band(t, h="Secure your battery's full potential", p='Tell us about your battery. We guide you through the rest.', topic=None):
+def cta_band(t, h="Secure your battery's full potential", p='Tell us about your project. We guide you through the rest.', topic=None):
     q = f'?topic={topic}' if topic else ''
     return f"""<section class="cta-band">
   <div class="wrap">
@@ -753,7 +753,7 @@ def w_pill(cls, label, val, mx=''):
     return f'<label class="pill"><input class="in fit {cls}" type="number" min="1" {mx} step="1" value="{val}" aria-label="{label}">{PEN}</label>'
 
 def w_sentence():
-    return f"""<span class="ws1"><b>Same battery, same site, 30% more revenue.</b> It's more common than one might think. <a class="story-src" href="{FLOWER}" target="_blank" rel="noopener">Source: Flower case</a></span><span class="ws2">Are you missing out on <b class="out js-gap">EUR 55k</b> per MW per year? That's the case for a {w_pill('js-mw','Battery size in MW',10,'max="500"')} MW battery that delivered EUR {w_pill('js-rev','Revenue in thousand EUR per MW per year',185)}k per MW per year.</span><span class="ws3">Choose to know what you are leaving on the table.</span>"""
+    return f"""<span class="ws1"><b>Same battery, same site, 30% more revenue.</b> Many are not aware of the money they are leaving on the table. <a class="story-src" href="{FLOWER}" target="_blank" rel="noopener">Source: Flower case</a></span><span class="ws2">It can add up to <b class="out js-gap">EUR 55k</b> per MW per year. That's the case for a {w_pill('js-mw','Battery size in MW',10,'max="500"')} MW battery that delivered EUR {w_pill('js-rev','Revenue in thousand EUR per MW per year',185)}k per MW per year.</span>"""
 
 def w_hint():
     return f'<p class="hint">{PEN}Enter figures to adjust. Illustrative example.</p>'
