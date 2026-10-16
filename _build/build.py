@@ -492,7 +492,7 @@ def faq_block(items, title=None):
   </div>
 </section>"""
 
-def cta_band(t, h="Find your battery's full potential", p='Tell us about your battery. We guide you through the rest.', topic=None):
+def cta_band(t, h="Secure your battery's full potential", p='Tell us about your battery. We guide you through the rest.', topic=None):
     q = f'?topic={topic}' if topic else ''
     return f"""<section class="cta-band">
   <div class="wrap">
@@ -658,9 +658,9 @@ GS_STEPS = f'''<section class="dark gs-steps" id="steps">
   <div class="wrap">
     <h2>Get started in three easy steps.</h2>
     <div class="gs-grid">
-      <div>{GS_ICONS['mail']}<p><b>Step 1: Enter your work email.</b> <span>Enter your business email to begin. You'll be prompted to provide your project details. Personal email addresses aren't accepted.</span></p></div>
-      <div>{GS_ICONS['form']}<p><b>Step 2: Provide your project details.</b> <span>We ask for basic information about your asset, such as site, capacity (MW/MWh) and optimizer, and for your authorisation to read your meter data from your metering company.</span></p></div>
-      <div>{GS_ICONS['key']}<p><b>Step 3: Get approved.</b> <span>We review your details and confirm whether we can start. Only then do we ask for read access to your optimizer, or your last three months of settlements.</span></p></div>
+      <div>{GS_ICONS['mail']}<p><b>Step 1: Enter your work email.</b> <span>Use your business email to start. Personal email addresses don't work.</span></p></div>
+      <div>{GS_ICONS['form']}<p><b>Step 2: Provide your project details.</b> <span>Tell us about your battery: where it is, its size (MW/MWh) and who optimizes it. Also give us permission to read your meter data.</span></p></div>
+      <div>{GS_ICONS['key']}<p><b>Step 3: Get approved.</b> <span>We check your details and tell you if we can start. Only then do we ask for access to your optimizer, or your last three months of settlements.</span></p></div>
     </div>
   </div>
 </section>'''
