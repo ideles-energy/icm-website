@@ -167,7 +167,17 @@ r.addEventListener('input',u);u();})();
   var g=document.getElementById('gate'); if(!g) return;
   var go=g.querySelector('.js-gate-go'), loaded=false;
   function open(mode){g.hidden=false;document.body.style.overflow='hidden';
-    if(!loaded){loaded=true;var s=document.createElement('script');s.src='https://server.fillout.com/embed/v1/';document.body.appendChild(s);}
+    if(!loaded){loaded=true;var box=g.querySelector('.gate-frame');if(box){
+      var u=new URL('https://embed.fillout.com/t/'+box.getAttribute('data-form'));
+      new URLSearchParams(location.search).forEach(function(v,k){u.searchParams.set(k,v);});
+      u.searchParams.set('fillout-embed-id','icmgate');u.searchParams.set('fillout-embed-dynamic-resize','true');
+      var f=document.createElement('iframe');f.src=u.toString();f.title='Work email form';f.setAttribute('allow','microphone; camera; geolocation');
+      f.style.cssText='width:100%;height:420px;border:0;border-radius:10px;display:block';box.appendChild(f);
+      window.addEventListener('message',function(e){
+        if(e.origin!=='https://embed.fillout.com'||!e.data||e.data.embedId!=='icmgate')return;
+        if(e.data.type==='form_resized'&&typeof e.data.size==='number')f.style.height=Math.max(e.data.size,260)+'px';
+        if(e.data.type==='form_submit')location.href='/bess-backtest/example/';
+      });}}
     if(go)go.hidden=(mode==='start');}
   function close(){g.hidden=true;document.body.style.overflow='';}
   document.querySelectorAll('.js-gate-open').forEach(function(b){b.addEventListener('click',function(e){e.preventDefault();open(b.getAttribute('data-gate'));});});

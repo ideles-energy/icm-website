@@ -364,7 +364,8 @@ def nl_report_chart():
     return f'<svg viewBox="0 0 {W} {H}" role="img" aria-label="Illustrative chart: median revenue per MW per year of Dutch batteries, January to September 2026, with the range of the middle half of assets">{grid}<polygon points="{band}" class="nlr-band"/><polyline points="{line}" class="nlr-line"/>{xl}{pts}</svg>'
 
 # Resources extras (BESS Calculator, NL BESS Revenue Report): built, hidden until launch. Set True to show.
-RES_EXTRAS = False
+RES_EXTRAS = os.environ.get('ICM_PREVIEW') == '1'  # shown only in the Claude preview until launch
+COMPANY_STORY = os.environ.get('ICM_PREVIEW') == '1'
 FILLOUT_JS = '\n<script src="https://server.fillout.com/embed/v1/" defer></script>'
 
 def resources(t):
@@ -484,6 +485,7 @@ def company(t):
     <div class="team-cta"><a class="btn btn-lilac" href="/talk-to-us/">Get in touch</a></div>
   </div>
 </section>
+{'<section class="co-story" id="story"><div class="wrap"><div class="co-story-grid"><div><span class="eyebrow">Our story</span><h2>How the ICM started</h2><div class="ph-box">Placeholder: the story of the ICM, from the first conversations with battery owners to today. Text to follow.</div></div><div><span class="eyebrow">Supported by</span><div class="sup-card"><img src="/assets/img/provincie-noord-holland.png" alt="Province of Noord-Holland" width="1188" height="236" loading="lazy"><p>Early-phase funding (Vroegefasefinanciering) from the Province of Noord-Holland.</p></div><div class="ph-box ph-small">Placeholder: room for further partners, investors and programmes.</div></div></div></div></section>' if COMPANY_STORY else ''}
 <section class="co-careers" id="careers">
   <div class="wrap">
     <p class="co-label dark-t">Open roles</p>
@@ -734,7 +736,7 @@ GATE = f'''<div class="gate" id="gate" hidden data-target="{PROTO_URL}">
   <div class="gate-card" role="dialog" aria-modal="true" aria-labelledby="gate-h">
     <button type="button" class="gate-x js-gate-close" aria-label="Close">&times;</button>
     <h2 id="gate-h" class="sr-only">Welcome to the ICM</h2>
-    <div class="gate-frame" data-fillout-id="4W7Pk7S5YTus" data-fillout-embed-type="standard" data-fillout-inherit-parameters data-fillout-dynamic-resize></div>
+    <div class="gate-frame" data-form="4W7Pk7S5YTus"></div>
     <a class="gate-go js-gate-go" href="/bess-backtest/example/">Entered your email? Open the example report</a>
   </div>
 </div>'''
