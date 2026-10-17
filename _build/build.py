@@ -736,7 +736,7 @@ GATE = f'''<div class="gate" id="gate" hidden data-target="{PROTO_URL}">
   <div class="gate-card" role="dialog" aria-modal="true" aria-labelledby="gate-h">
     <button type="button" class="gate-x js-gate-close" aria-label="Close">&times;</button>
     <h2 id="gate-h" class="sr-only">Welcome to the ICM</h2>
-    <div class="gate-frame" data-fillout-id="4W7Pk7S5YTus" data-fillout-embed-type="standard" data-fillout-inherit-parameters data-fillout-dynamic-resize></div>
+    <div class="gate-frame" data-form="4W7Pk7S5YTus"></div>
     <a class="gate-go js-gate-go" href="/bess-backtest/example/">Entered your email? Open the example report</a>
   </div>
 </div>'''
