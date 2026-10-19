@@ -1648,3 +1648,18 @@ body.nav-light.nav-fixed header.nav .nav-right .btn-outline{color:#274A51;border
 .calc-sticker{position:absolute;top:-15px;right:28px;background:#97F2F5;color:#040D1F;font-size:13px;font-weight:700;letter-spacing:.02em;padding:6px 14px;border-radius:999px;transform:rotate(-2deg);box-shadow:0 4px 14px rgba(151,242,245,.35);text-decoration:none;z-index:2}
 .calc-sticker:hover{transform:rotate(-2deg) translateY(-1px)}
 .about-sec h2{color:#fff !important}
+
+/* v65 calculator: simple Talk to us button; Resources thumbnails show the whole image */
+.calc-talk{margin-top:24px}
+.res-cols .res-thumb img{aspect-ratio:16/9 !important;object-position:center !important}
+
+/* v65 calculator: simple Talk to us button bottom-left; full logo thumbnail */
+.calc-simple{align-items:stretch}
+.calc-simple .calc-copy{display:flex;flex-direction:column}
+.calc-cta{margin-top:auto;padding-top:24px;padding-bottom:8px}
+.res-cols .res-thumb img{aspect-ratio:16/9 !important}
+
+/* v66 story text, smaller province logo, MIT note */
+.story-txt p{margin:0 0 14px;line-height:1.6;max-width:36em}
+.sup-card img{max-width:170px !important}
+.sup-small{margin-top:14px;padding:18px 24px}.sup-small b{font-size:16px}

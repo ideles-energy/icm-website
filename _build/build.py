@@ -372,12 +372,12 @@ FILLOUT_JS = '\n<script src="https://server.fillout.com/embed/v1/" defer></scrip
 def resources(t):
     RES_EXTRAS_HTML = f'''  <div class="wrap">
     <section class="calc-block calc-simple" id="calculator" aria-labelledby="calc-h">
-      <a class="calc-sticker" href="/talk-to-us/">Talk to us</a>
       <div class="calc-copy">
         <div class="calc-tags"><span>Beta</span></div>
         <h2 id="calc-h">BESS Calculator</h2>
         <p class="calc-lead">Stop not knowing. See what your battery could have earned. No one has the perfect 2-hour BESS with a full grid connection that delivered EUR 305k/MW/yr. Our full potential looks at your dispatch constraints.</p>
         <p class="calc-note">Subject to change, methodology to be refined.</p>
+        <div class="calc-cta"><a class="btn btn-dark" href="/talk-to-us/">Talk to us</a></div>
       </div>
       <div class="calc-side">
         <button type="button" class="calc-shot js-calc-open" aria-label="Open the BESS Calculator"><img src="/assets/img/calculator-preview.jpg" alt="BESS Calculator: full potential and expected revenues per month (fictional example)" width="1440" height="900" loading="lazy"><span class="calc-shot-cta">Open the calculator</span></button>
@@ -490,7 +490,7 @@ def company(t):
     <div class="team-cta"><a class="btn btn-lilac" href="/talk-to-us/">Get in touch</a></div>
   </div>
 </section>
-{'<section class="co-story" id="story"><div class="wrap"><div class="co-story-grid"><div><span class="eyebrow">Our story</span><h2>How the ICM started</h2><div class="ph-box">Placeholder: the story of the ICM, from the first conversations with battery owners to today. Text to follow.</div></div><div><span class="eyebrow">Supported by</span><div class="sup-card"><img src="/assets/img/provincie-noord-holland.png" alt="Province of Noord-Holland" width="1188" height="236" loading="lazy"><p>Early-phase funding (Vroegefasefinanciering) from the Province of Noord-Holland.</p></div><div class="ph-box ph-small">Placeholder: room for further partners, investors and programmes.</div></div></div></div></section>' if COMPANY_STORY else ''}
+{'<section class="co-story" id="story"><div class="wrap"><div class="co-story-grid"><div><span class="eyebrow">Our story</span><h2>How the ICM started</h2><div class="story-txt"><p>The ICM started in 2026 with a question battery owners kept asking: is my battery earning what it should? Revenues were opaque, optimizer reports hard to compare and switching felt risky.</p><p>A first pilot, an auction for the dispatch rights of a 10 MW battery in Amsterdam, made one thing clear: before owners can choose, they need an independent view of what their battery could earn.</p><p>That is what the ICM builds today: tools that compare realised revenues with the full potential of a site, and a trusted process to find and switch optimizers.</p></div></div><div><span class="eyebrow">Supported by</span><div class="sup-card"><img src="/assets/img/provincie-noord-holland.png" alt="Province of Noord-Holland" width="1188" height="236" loading="lazy"><p>Early-phase funding (Vroegefasefinanciering) from the Province of Noord-Holland.</p></div><div class="sup-card sup-small"><b>MIT feasibility grant</b><p>The feasibility study of the ICM was co-funded by an MIT grant (MKB-innovatiestimulering Regio en Topsectoren).</p></div></div></div></div></section>' if COMPANY_STORY else ''}
 <section class="co-careers" id="careers">
   <div class="wrap">
     <p class="co-label dark-t">Open roles</p>
