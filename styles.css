@@ -1669,3 +1669,16 @@ h2, .cta-band h2, .section-head h2, .props-sec .section-head h2, .wy-head h2, .s
 .eyebrow{font-size:16px !important}
 .btn{font-size:16px !important}
 .nav-links a,.nav-signin{font-size:16px !important}
+
+/* v68 Resources: calculator formatted like Documents / Brand assets */
+.calc-sec{padding-top:56px}
+.calc-beta{display:inline-block;vertical-align:middle;font-size:13px;font-weight:700;letter-spacing:.02em;padding:4px 12px;border-radius:999px;background:#97F2F5;color:#040D1F;margin-left:10px;transform:translateY(-4px)}
+.calc-card{flex-wrap:wrap}
+.calc-shot-btn{display:block;width:100%;padding:0;border:0;background:none;cursor:pointer}
+.calc-shot-btn img{display:block;width:100%;height:auto;aspect-ratio:21/8 !important;object-fit:cover;object-position:top left}
+.calc-actions{display:flex;gap:10px;align-self:center;margin-right:20px}
+.btn-outline-dark{background:transparent;color:#274A51 !important;border:2px solid #274A51}
+.btn-outline-dark:hover{background:#274A51;color:#fff !important}
+@media (max-width:700px){.calc-actions{margin:0 20px 18px;width:100%;flex-wrap:wrap}}
+.res-thumb > div.calc-actions{flex:none;flex-direction:row;padding:16px 0;gap:10px}.calc-actions .btn{margin-right:0 !important}
+.ws1 .story-src{display:inline !important;margin:0 0 0 8px !important;vertical-align:baseline}

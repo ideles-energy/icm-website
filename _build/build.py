@@ -371,17 +371,14 @@ FILLOUT_JS = '\n<script src="https://server.fillout.com/embed/v1/" defer></scrip
 
 def resources(t):
     RES_EXTRAS_HTML = f'''  <div class="wrap">
-    <section class="calc-block calc-simple" id="calculator" aria-labelledby="calc-h">
-      <div class="calc-copy">
-        <div class="calc-tags"><span>Beta</span></div>
-        <h2 id="calc-h">BESS Calculator</h2>
-        <p class="calc-lead">Stop guessing what your battery should earn. The perfect 2-hour battery on a full grid connection made EUR 305k/MW/yr. Yours has its own limits. See what it could have earned within them.</p>
-        <p class="calc-note">Subject to change, methodology to be refined.</p>
-        <div class="calc-cta"><a class="btn btn-dark" href="/talk-to-us/">Talk to us</a></div>
+    <section class="res-sec calc-sec" id="calculator" aria-labelledby="calc-h">
+      <h2 id="calc-h">BESS Calculator <span class="calc-beta">Beta</span></h2>
+      <p class="res-lead">Stop guessing what your battery should earn. The perfect 2-hour battery on a full grid connection made EUR 305k/MW/yr. Yours has its own limits. See what it could have earned within them.</p>
+      <div class="res-card res-thumb calc-card">
+        <button type="button" class="calc-shot-btn js-calc-open" aria-label="Open the BESS Calculator"><img src="/assets/img/calculator-preview.jpg" alt="BESS Calculator: full potential and expected revenues per month (fictional example)" width="1440" height="900" loading="lazy"></button>
+        <div><span>BESS Calculator</span><small>Subject to change, methodology to be refined.</small></div>
+        <div class="calc-actions"><a class="btn btn-outline-dark" href="/talk-to-us/">Talk to us</a><button type="button" class="btn btn-dark js-calc-open">Open the calculator</button></div>
       </div>
-      <div class="calc-side">
-        <button type="button" class="calc-shot js-calc-open" aria-label="Open the BESS Calculator"><img src="/assets/img/calculator-preview.jpg" alt="BESS Calculator: full potential and expected revenues per month (fictional example)" width="1440" height="900" loading="lazy"><span class="calc-shot-cta">Open the calculator</span></button>
-              </div>
       <dialog class="calc-dlg" id="calc-dlg" aria-labelledby="calc-dlg-h">
         <button type="button" class="gate-x js-calc-close" aria-label="Close">&times;</button>
         <img src="/assets/img/calculator-preview.jpg" alt="" width="1440" height="900" loading="lazy">
@@ -490,7 +487,7 @@ def company(t):
     <div class="team-cta"><a class="btn btn-lilac" href="/talk-to-us/">Get in touch</a></div>
   </div>
 </section>
-{'<section class="co-story" id="story"><div class="wrap"><div class="co-story-grid"><div><span class="eyebrow">Our story</span><h2>How the ICM started</h2><div class="story-txt"><p>Batteries are becoming the backbone of a flexible grid, yet most owners cannot tell whether theirs performs. The ICM was founded in Amsterdam in 2026 to close that gap.</p><p>Independent of owners, installers and optimizers, the ICM measures what a battery earns against what its site allows, and helps owners act on the result.</p><p>Better-informed owners reward optimizers that perform, batteries become easier to finance and the grid gains reliable flexible capacity.</p></div></div><div><span class="eyebrow">Supported by</span><div class="sup-card"><img src="/assets/img/provincie-noord-holland.png" alt="Province of Noord-Holland" width="1188" height="236" loading="lazy"><p>MIT feasibility grant from the Province of Noord-Holland.</p></div></div></div></div></section>' if COMPANY_STORY else ''}
+{'<section class="co-story" id="story"><div class="wrap"><div class="co-story-grid"><div><span class="eyebrow">Our story</span><h2>How the ICM started</h2><div class="story-txt"><p>Batteries are becoming the backbone of a flexible grid. The Netherlands alone is expected to have around 25 GWh installed by 2030. Yet most owners cannot tell whether their battery performs. They rely on multi-year contracts with an optimizer they happen to know, without a reference for what their site could earn.</p><p>The ICM was founded in Amsterdam in March 2026 to close that gap. The first idea was an auction for the right to dispatch a 10 MW battery. Twelve potential bidders, from utilities to traders, were invited; none was ready to take part. The lesson was clear: before a market can work, owners need an independent view of what their battery is worth.</p><p>That is where the ICM starts today. Independent of owners, installers and optimizers, the ICM measures what a battery earns against what its site allows, and helps owners act on the result, from sizing a new system to switching optimizer.</p><p>Better-informed owners reward optimizers that perform, batteries become easier to finance and the grid gains reliable flexible capacity. A more equitable grid, one battery at a time.</p></div></div><div><span class="eyebrow">Supported by</span><div class="sup-card"><img src="/assets/img/provincie-noord-holland.png" alt="Province of Noord-Holland" width="1188" height="236" loading="lazy"><p>MIT feasibility grant from the Province of Noord-Holland.</p></div></div></div></div></section>' if COMPANY_STORY else ''}
 <section class="co-careers" id="careers">
   <div class="wrap">
     <p class="co-label dark-t">Open roles</p>
@@ -817,7 +814,7 @@ def w_pill(cls, label, val, mx=''):
     return f'<label class="pill"><input class="in fit {cls}" type="number" min="1" {mx} step="1" value="{val}" aria-label="{label}">{PEN}</label>'
 
 def w_sentence():
-    return f"""<span class="ws1"><b>Same battery, same site, +30% more revenue.</b><br>Many have a nagging sense that they are leaving money on the table, fed by anecdotes of businesses realising +30% higher revenues. <a class="story-src" href="{FLOWER}" target="_blank" rel="noopener">Source: Flower case</a></span><span class="ws2">A +30% delta can add up to <b class="out js-gap">EUR 55.5k</b> per MW per year for a {w_pill('js-mw','Battery size in MW',10,'max="500"')} MW battery that delivered EUR {w_pill('js-rev','Revenue in thousand EUR per MW per year',185)}k per MW per year.</span>"""
+    return f"""<span class="ws1"><b>Same battery, same site, +30% more revenue.</b> <a class="story-src" href="{FLOWER}" target="_blank" rel="noopener">Source: Flower case</a><br>Many have a nagging sense that they are leaving money on the table, fed by anecdotes of businesses realising +30% higher revenues.</span><span class="ws2">A +30% delta can add up to <b class="out js-gap">EUR 55.5k</b> per MW per year for a {w_pill('js-mw','Battery size in MW',10,'max="500"')} MW battery that delivered EUR {w_pill('js-rev','Revenue in thousand EUR per MW per year',185)}k per MW per year.</span>"""
 
 def w_hint():
     return f'<p class="hint">{PEN}Enter figures to adjust. Illustrative example.</p>'
