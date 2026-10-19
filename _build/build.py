@@ -440,10 +440,9 @@ def resources(t):
 ROLES = [
   ('Commercial Lead', 'Amsterdam',
    'Sell our solutions to BESS owners and the installers who work with them. You own the pipeline, from first call to signed contract and beyond.',
-   ['Be the connector: build and nurture lasting relationships across the BESS ecosystem',
-    'Build relationships with installers and developers who bring us BESS owners (3–30 MW)',
+   ['Be the connector: build lasting relationships with the installers and developers who bring us BESS owners (3–30 MW)',
     'Run discovery calls and present Configurator, Backtest and Broker results',
-    'Guide clients from first call through onboarding, and keep them with us',
+    'Guide clients from first call through onboarding, and make sure they get lasting value',
     'Turn successfully served clients into case examples'],
    ['3–6 years in B2B consultative sales (SaaS, energy or finance)',
     'Explains technical topics clearly',
