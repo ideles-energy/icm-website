@@ -1691,3 +1691,4 @@ h2, .cta-band h2, .section-head h2, .props-sec .section-head h2, .wy-head h2, .s
 .calc-shot-btn img{aspect-ratio:16/9 !important}
 .calc-shot-btn img{object-position:top center !important}
 .res-cols .res-thumb .calc-shot-btn img{object-position:top center !important}
+.calc-left .res-lead{max-width:30em !important}
