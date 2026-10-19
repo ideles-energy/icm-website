@@ -1642,3 +1642,9 @@ body.nav-light.nav-fixed header.nav .nav-right .btn-outline{color:#274A51;border
 .calc-dlg .gate-x{position:absolute;top:10px;right:14px;background:none;border:0;font-size:28px;color:#274A51;cursor:pointer}
 .calc-simple{align-items:start}
 .hl{color:#97F2F5;font-weight:700}
+
+/* v64 calculator sticker; About heading white */
+.calc-simple{position:relative}
+.calc-sticker{position:absolute;top:-15px;right:28px;background:#97F2F5;color:#040D1F;font-size:13px;font-weight:700;letter-spacing:.02em;padding:6px 14px;border-radius:999px;transform:rotate(-2deg);box-shadow:0 4px 14px rgba(151,242,245,.35);text-decoration:none;z-index:2}
+.calc-sticker:hover{transform:rotate(-2deg) translateY(-1px)}
+.about-sec h2{color:#fff !important}

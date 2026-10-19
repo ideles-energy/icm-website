@@ -372,6 +372,7 @@ FILLOUT_JS = '\n<script src="https://server.fillout.com/embed/v1/" defer></scrip
 def resources(t):
     RES_EXTRAS_HTML = f'''  <div class="wrap">
     <section class="calc-block calc-simple" id="calculator" aria-labelledby="calc-h">
+      <a class="calc-sticker" href="/talk-to-us/">Talk to us</a>
       <div class="calc-copy">
         <div class="calc-tags"><span>Beta</span></div>
         <h2 id="calc-h">BESS Calculator</h2>
@@ -380,14 +381,13 @@ def resources(t):
       </div>
       <div class="calc-side">
         <button type="button" class="calc-shot js-calc-open" aria-label="Open the BESS Calculator"><img src="/assets/img/calculator-preview.jpg" alt="BESS Calculator: full potential and expected revenues per month (fictional example)" width="1440" height="900" loading="lazy"><span class="calc-shot-cta">Open the calculator</span></button>
-        <div class="calc-form"><b>Want to know more?</b><div class="fillout-inline" data-form="3xLzpWnKW7us" data-embed="calc"></div></div>
-      </div>
+              </div>
       <dialog class="calc-dlg" id="calc-dlg" aria-labelledby="calc-dlg-h">
         <button type="button" class="gate-x js-calc-close" aria-label="Close">&times;</button>
         <img src="/assets/img/calculator-preview.jpg" alt="" width="1440" height="900" loading="lazy">
         <h3 id="calc-dlg-h">The BESS Calculator opens soon</h3>
-        <p>Leave a work email and be the first to try it.</p>
-        <div class="fillout-inline" data-form="3xLzpWnKW7us" data-embed="calcdlg"></div>
+        <p>Curious what it shows for your battery? We are happy to walk you through it.</p>
+        <a class="btn btn-dark" href="/talk-to-us/">Talk to us</a>
       </dialog>
     </section>
   </div>
@@ -472,7 +472,7 @@ def company(t):
   <div class="wrap co-grid">
     <p class="co-label">Who we are</p>
     <div>
-      <p>The ICM serves those who add capacity to the grid, but are in the dark about their potential. We focus on getting the most value out of their batteries.</p>
+      <p>The ICM serves those who add capacity to the grid, but are in the dark about their potential. We help them get the most value out of their batteries.</p>
       <p>By bringing transparency, we contribute to a stronger grid: one that rewards optimizers that perform, makes batteries easier to finance and gives system operators access to more reliable flexible capacity.</p>
       <p>We value our independence. We don't own, install or optimize, which keeps our intentions pure and our heads clear. For our clients, that means securing the true value of their battery, backed by reliable numbers.</p>
       <a class="btn btn-lilac" href="/talk-to-us/">Talk to us</a>
@@ -632,7 +632,7 @@ def home(t):
       <span class="eyebrow why-eyebrow">About us</span>
       <h2>Why an Independent Capacity Market matters</h2>
       <p>We are not owners. We are not optimizers. Nor will we ever be. We are an <span class="hl">energy tech company</span>.</p>
-      <p>We serve those who add capacity to the grid, but are in the dark about the potential of their assets. By getting the most value out of their batteries, we contribute to a stronger grid.</p>
+      <p>We serve those who add capacity to the grid, but are in the dark about the potential of their assets. By helping them get the most value out of their batteries, we contribute to a stronger grid.</p>
       <div class="cta-row" style="justify-content:flex-start"><a class="btn btn-lilac" href="{TALK}">{t['talk']}</a><a class="btn btn-outline" href="/company/">Our story</a></div>
     </div>
     <div class="about-visual"><img class="about-img" src="/assets/img/about-pylon.jpg" alt="High-voltage pylon against the evening sky" width="960" height="1080" loading="lazy"></div>
