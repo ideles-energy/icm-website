@@ -202,3 +202,24 @@ r.addEventListener('input',u);u();})();
     });
   });
 })();
+
+/* Inline Fillout forms (e.g. Resources): direct iframe, resized by the form */
+(function(){
+  document.querySelectorAll('.fillout-inline[data-form]').forEach(function(box){
+    var id='icm-'+(box.getAttribute('data-embed')||'form');
+    var u=new URL('https://embed.fillout.com/t/'+box.getAttribute('data-form'));
+    u.searchParams.set('fillout-embed-id',id);u.searchParams.set('fillout-embed-dynamic-resize','true');
+    var f=document.createElement('iframe');f.src=u.toString();f.title='Email form';f.loading='lazy';
+    f.style.cssText='width:100%;height:220px;border:0;border-radius:10px;display:block;background:transparent';box.appendChild(f);
+    window.addEventListener('message',function(e){
+      if(e.origin!=='https://embed.fillout.com'||!e.data||e.data.embedId!==id)return;
+      if(e.data.type==='form_resized'&&typeof e.data.size==='number')f.style.height=Math.max(e.data.size,160)+'px';
+    });
+  });
+})();
+
+/* BESS Calculator preview (Resources): screenshot opens a dialog with the email form */
+(function(){var d=document.getElementById('calc-dlg');if(!d||!d.showModal)return;
+  document.querySelectorAll('.js-calc-open').forEach(function(b){b.addEventListener('click',function(){d.showModal();});});
+  d.querySelector('.js-calc-close').addEventListener('click',function(){d.close();});
+  d.addEventListener('click',function(e){if(e.target===d)d.close();});})();

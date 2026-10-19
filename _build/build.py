@@ -200,7 +200,7 @@ def head(t, title, desc, path, alt_path=None, jsonld=None, og_title=None):
 <meta property="og:url" content="https://icm.energy{path}">
 <meta property="og:title" content="{og_title or title}">
 <meta property="og:description" content="{desc}">
-<meta property="og:image" content="https://icm.energy/assets/og-image.png">
+<meta property="og:image" content="https://icm.energy/assets/og-image.png?v=2">
 <meta property="og:site_name" content="The Independent Capacity Market">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
@@ -365,27 +365,32 @@ def nl_report_chart():
 
 # Resources extras (BESS Calculator, NL BESS Revenue Report): built, hidden until launch. Set True to show.
 RES_EXTRAS = os.environ.get('ICM_PREVIEW') == '1'  # shown only in the Claude preview until launch
-COMPANY_STORY = os.environ.get('ICM_PREVIEW') == '1'
+COMPANY_STORY = True  # Our story + Supported by: live
+NL_REPORT = False  # NL BESS Revenue Report signup: parked (built, not shown anywhere)
 FILLOUT_JS = '\n<script src="https://server.fillout.com/embed/v1/" defer></script>'
 
 def resources(t):
     RES_EXTRAS_HTML = f'''  <div class="wrap">
-    <section class="calc-block" id="calculator" aria-labelledby="calc-h">
-      <div class="calc-copy">
-        <div class="calc-tags"><span>Beta</span></div>
-        <h2 id="calc-h">BESS Calculator</h2>
-        <p class="calc-lead">What could a battery have earned on the Dutch wholesale markets from January to September 2026? The calculator answers that for one specific set-up: MW/MWh, grid connection and dispatch constraints included.</p>
-        <ul class="calc-points">
-          <li><b>Real context, not a virtual battery.</b> Results follow the limits of the actual site, such as import and export caps and contract terms.</li>
-          <li><b>Calibrated with realised revenues.</b> Each comparison with actual settlements from owners, installers and analysts sharpens the model.</li>
-          <li><b>Open about its limits.</b> It covers day-ahead and imbalance only, as intraday data is not publicly available.</li>
-        </ul>
-        <div class="calc-help"><b>Open to contributions.</b> Realised revenues shared by owners, installers and analysts are used to calibrate the model. Please email <a href="mailto:ideles@icm.energy">ideles@icm.energy</a> to contribute.</div>
-        <div class="cta-row" style="justify-content:flex-start"><a class="btn btn-dark" href="#calc-app">Explore the beta calculator</a></div>
+    <section class="calc-sec res-cols" id="calculator" aria-labelledby="calc-h">
+      <div class="res-sec calc-left">
+        <h2 id="calc-h">BESS Calculator <span class="calc-beta">Beta</span></h2>
+        <p class="res-lead">Stop not knowing. See what your battery could have earned. No one has the perfect 2-hour BESS with a full grid connection that delivered EUR 305k/MW/yr. Your battery has its own limits. See what it could have earned within them.</p>
+        <div><a class="btn btn-outline-dark" href="/talk-to-us/">Talk to us</a></div>
       </div>
-      <div class="calc-slot" id="calc-app" aria-label="BESS Calculator (opens soon)">
-        <div class="calc-ph"><span class="calc-dot"></span><b>The calculator opens here soon</b><small>Built in the open, improved by the people who use it.</small></div>
+      <div class="res-sec">
+        <div class="res-card res-thumb calc-card">
+          <button type="button" class="calc-shot-btn js-calc-open" aria-label="Open the BESS Calculator"><img src="/assets/img/calculator-preview.jpg" alt="BESS Calculator: full potential and expected revenues per month (fictional example)" width="1440" height="900" loading="lazy"></button>
+          <div><span>BESS Calculator</span><small>Subject to change, methodology to be refined.</small></div>
+          <button type="button" class="btn btn-dark js-calc-open">Open</button>
+        </div>
       </div>
+      <dialog class="calc-dlg" id="calc-dlg" aria-labelledby="calc-dlg-h">
+        <button type="button" class="gate-x js-calc-close" aria-label="Close">&times;</button>
+        <img src="/assets/img/calculator-preview.jpg" alt="" width="1440" height="900" loading="lazy">
+        <h3 id="calc-dlg-h">The BESS Calculator opens soon</h3>
+        <p>Curious what it shows for your battery? We are happy to walk you through it.</p>
+        <a class="btn btn-dark" href="/talk-to-us/">Talk to us</a>
+      </dialog>
     </section>
   </div>
   <div class="wrap">
@@ -410,9 +415,11 @@ def resources(t):
     </section>
   </div>
 '''
+    if not NL_REPORT:
+        RES_EXTRAS_HTML = re.sub(r'\n    <section class="nlr-block".*?</section>', '', RES_EXTRAS_HTML, flags=re.S)
     hero = f'''    <div class="page-hero" id="main">
       <h1>Resources</h1>
-      <p>{'A community BESS Calculator, a periodic NL revenue report, API documents and brand assets of the Independent Capacity Market.' if RES_EXTRAS else 'API documents and brand assets of the Independent Capacity Market.'}</p>
+      <p>{('A community BESS Calculator, a periodic NL revenue report, API documents and brand assets of the Independent Capacity Market.' if NL_REPORT else 'A community BESS Calculator, API documents and brand assets of the Independent Capacity Market.') if RES_EXTRAS else 'API documents and brand assets of the Independent Capacity Market.'}</p>
     </div>'''
     body = f'''<main class="res">
 {RES_EXTRAS_HTML if RES_EXTRAS else ''}  <div class="wrap res-cols">
@@ -427,16 +434,15 @@ def resources(t):
       <div class="res-card res-thumb"><img src="/assets/brand/thumb-logos.jpg" alt="" width="640" height="360" loading="lazy"><div><span>Logos</span><small>PNG and SVG, header and footer versions</small></div><a class="btn btn-dark" href="/assets/brand/ICM-logos.zip" download>Download</a></div>
     </section>
   </div>
-</main>{FILLOUT_JS if RES_EXTRAS else ''}'''
+</main>{FILLOUT_JS if (RES_EXTRAS and NL_REPORT) else ''}'''
     return page_shell(t, '/resources/', 'Resources | The ICM' if not RES_EXTRAS else 'Resources: BESS Calculator, API documents and brand assets | The ICM', 'API documents and brand assets of the Independent Capacity Market.' if not RES_EXTRAS else 'A community BESS Calculator, the NL BESS Revenue Report, API documents and brand assets of the Independent Capacity Market.', hero, body)
 
 ROLES = [
   ('Commercial Lead', 'Amsterdam',
    'Sell our solutions to BESS owners and the installers who work with them. You own the pipeline, from first call to signed contract and beyond.',
-   ['Be the connector: build and nurture lasting relationships across the BESS ecosystem',
-    'Build relationships with installers and developers who bring us BESS owners (3–30 MW)',
+   ['Be the connector: build lasting relationships with the installers and developers who bring us BESS owners (3–30 MW)',
     'Run discovery calls and present Configurator, Backtest and Broker results',
-    'Guide clients from first call through onboarding, and keep them with us',
+    'Guide clients from first call through onboarding, and make sure they get lasting value',
     'Turn successfully served clients into case examples'],
    ['3–6 years in B2B consultative sales (SaaS, energy or finance)',
     'Explains technical topics clearly',
@@ -460,7 +466,7 @@ def company(t):
     rows = '\n'.join(f'''      <details class="co-role" name="roles"><summary><b>{r}</b><em>{c}</em><i class="co-pm" aria-hidden="true"></i></summary><div class="co-body"><div><p>{m}</p><a class="btn btn-dark" href="mailto:ideles@icm.energy?subject=Application%3A%20{r.replace(" ", "%20")}">Apply</a></div><div><h4>What you will do</h4><ul>{li(do)}</ul></div><div><h4>Who you are</h4><ul>{li(you)}</ul></div></div></details>''' for r, c, m, do, you in ROLES)
 
     hero = '''    <div class="page-hero" id="main">
-      <h1>Our story</h1>
+      <h1>About The Independent Capacity Market</h1>
       <img class="co-img" src="/assets/img/company-grid.jpg" alt="High-voltage substation against the evening sky" width="1920" height="1080">
     </div>'''
     body = f'''<section class="dark co-who">
@@ -468,7 +474,7 @@ def company(t):
     <p class="co-label">Who we are</p>
     <div>
       <p>The ICM serves those who add capacity to the grid, but are in the dark about their potential.</p>
-      <p>By bringing transparency, we contribute to a stronger grid: one that rewards optimizers that perform, makes batteries easier to finance and gives system operators access to more flexibility.</p>
+      <p>By bringing transparency, we contribute to a stronger grid: one that rewards optimizers that perform, makes batteries easier to finance and gives system operators access to more reliable flexible capacity.</p>
       <p>We value our independence. We don't own, install or optimize, which keeps our intentions pure and our heads clear. For our clients, that means securing the true value of their battery, backed by reliable numbers.</p>
       <a class="btn btn-lilac" href="/talk-to-us/">Talk to us</a>
     </div>
@@ -478,14 +484,14 @@ def company(t):
   <div class="wrap">
     <p class="co-label">The team</p>
     <div class="team">
-      <a class="member" href="https://www.linkedin.com/in/idel%C3%A8s-kaandorp/" target="_blank" rel="noopener"><img class="ph" src="/assets/team-ideles.jpg" alt="Idelès Kaandorp" width="600" height="600" loading="lazy"><b>Idelès Kaandorp</b><span class="m-bio">Founder. Fights the lack of transparency in the BESS market. Trained as a mathematician, holds an MBA from Harvard Business School and served energy clients at McKinsey.</span></a>
+      <a class="member" href="https://www.linkedin.com/in/idel%C3%A8s-kaandorp/" target="_blank" rel="noopener"><img class="ph" src="/assets/team-ideles.jpg" alt="Idelès Kaandorp" width="600" height="600" loading="lazy"><b>Idelès Kaandorp</b><span class="m-bio">Founder. Leads the push for transparency in the BESS market. Trained as a mathematician, holds an MBA from Harvard Business School and served energy clients at McKinsey.</span></a>
       <a class="member" href="https://www.linkedin.com/in/edo-rivai-78b66a17/" target="_blank" rel="noopener"><img class="ph" src="/assets/team-edo.jpg" alt="Edo Rivai" width="512" height="512" loading="lazy"><b>Edo Rivai</b><span class="m-bio">Senior software developer. Owns platform design, integrations and infrastructure. Built and scaled software, most recently at SpotAI (network of intelligent security cameras).</span></a>
       <a class="member" href="https://www.linkedin.com/in/jesse-h-willis/" target="_blank" rel="noopener"><img class="ph" src="/assets/team-jesse.jpg" alt="Jesse Willis" width="600" height="720" loading="lazy"><b>Jesse Willis</b><span class="m-bio">Project Engineer. Translates your dispatch constraints into custom insights that drive decisions. Studied Industrial Design Engineering in Delft and started Everlab to build meaningful products from scratch.</span></a>
     </div>
     <div class="team-cta"><a class="btn btn-lilac" href="/talk-to-us/">Get in touch</a></div>
   </div>
 </section>
-{'<section class="co-story" id="story"><div class="wrap"><div class="co-story-grid"><div><span class="eyebrow">Our story</span><h2>How the ICM started</h2><div class="ph-box">Placeholder: the story of the ICM, from the first conversations with battery owners to today. Text to follow.</div></div><div><span class="eyebrow">Supported by</span><div class="sup-card"><img src="/assets/img/provincie-noord-holland.png" alt="Province of Noord-Holland" width="1188" height="236" loading="lazy"><p>Early-phase funding (Vroegefasefinanciering) from the Province of Noord-Holland.</p></div><div class="ph-box ph-small">Placeholder: room for further partners, investors and programmes.</div></div></div></div></section>' if COMPANY_STORY else ''}
+{'<section class="co-story" id="story"><div class="wrap"><div class="co-story-grid"><div><span class="eyebrow">Our story</span><h2>How the ICM started</h2><div class="story-txt"><p>Batteries are becoming the backbone of a flexible grid. Europe already has more than 100 GWh of battery storage installed, and the Netherlands is expected to reach around 25 GWh by 2030.</p><p>Batteries strengthen the grid in three ways. They keep supply and demand in balance from second to second, store surplus solar and wind power instead of curtailing it, and relieve congested grids by charging and discharging when and where capacity is scarce, which can delay costly grid reinforcements.</p><p>Yet most battery owners are flying blind. They have no overview of the optimizers on the market or how they compare, and no reference for what their own site could deliver.</p><p>The ICM was founded in Amsterdam in March 2026 to close this information gap. We serve those who add capacity to the grid, but are in the dark about the potential of their assets.</p><p class="story-src-line">Sources: <a href="https://www.ees-europe.com/publications/european-market-outlook-for-battery-storage-2026" target="_blank" rel="noopener">SolarPower Europe, European Market Outlook for Battery Storage</a>; <a href="https://taiyangnews.info/storage/europe-battery-storage-capacity-exceeds-100-gwh" target="_blank" rel="noopener">TaiyangNews, Europe’s battery storage capacity exceeds 100 GWh</a>.</p></div></div><div><span class="eyebrow">Supported by</span><div class="sup-card"><img src="/assets/img/provincie-noord-holland.png" alt="Province of Noord-Holland" width="1188" height="236" loading="lazy"><p><a href="https://www.noord-holland.nl/Producten_op_alfabet/MKB_innovatiestimulering_topsectoren_MIT_Noord_Holland_Haalbaarheidsproject_subsidie" target="_blank" rel="noopener">MIT feasibility grant</a> from the Province of Noord-Holland.</p></div></div></div></div></section>' if COMPANY_STORY else ''}
 <section class="co-careers" id="careers">
   <div class="wrap">
     <p class="co-label dark-t">Open roles</p>
@@ -626,9 +632,8 @@ def home(t):
     <div class="about-card">
       <span class="eyebrow why-eyebrow">About us</span>
       <h2>Why an Independent Capacity Market matters</h2>
-      <p>We are not owners. We are not optimizers. Nor will we ever be.</p>
-      <p>We are an energy tech company.</p>
-      <p>We serve those who add capacity to the grid, but are in the dark about the potential of their assets. We compare BESS-to-BESS, introduce owners to optimizers and oversee the switch, so your battery keeps earning.</p>
+      <p>We are not owners. We are not optimizers. Nor will we ever be. We are an energy tech company.</p>
+      <p>We serve those who add capacity to the grid, but are in the dark about the potential of their assets.</p>
       <div class="cta-row" style="justify-content:flex-start"><a class="btn btn-lilac" href="{TALK}">{t['talk']}</a><a class="btn btn-outline" href="/company/">Our story</a></div>
     </div>
     <div class="about-visual"><img class="about-img" src="/assets/img/about-pylon.jpg" alt="High-voltage pylon against the evening sky" width="960" height="1080" loading="lazy"></div>
@@ -717,8 +722,8 @@ GS_STEPS = f'''<section class="dark gs-steps" id="steps">
   <div class="wrap">
     <h2>Get started in three easy steps</h2>
     <div class="gs-grid">
-      <div>{GS_ICONS['mail']}<p><b>Step 1: Enter your work email.</b> <span>Enter your business email to begin. You'll be prompted to complete an application. Personal email addresses aren't accepted.</span></p></div>
-      <div>{GS_ICONS['form']}<p><b>Step 2: Provide your details.</b> <span>We'll ask for basic information: the size of the battery (MW/MWh), dispatch constraints (import/export MW) and the name of your grid operator.</span></p></div>
+      <div>{GS_ICONS['mail']}<p><b>Step 1: Enter your work email.</b> <span>Enter your business email to begin. You'll be prompted to answer a few questions.</span></p></div>
+      <div>{GS_ICONS['form']}<p><b>Step 2: Provide your details.</b> <span>We'll ask for basic information: the size of the battery (MW/MWh) and dispatch constraints (import/export MW).</span></p></div>
       <div>{GS_ICONS['key']}<p><b>Step 3: Navigate your reality.</b> <span>Most businesses receive a custom report with expected revenues within 1 working day. It's the draft we start from.</span></p></div>
     </div>
   </div>
@@ -751,7 +756,7 @@ def solutions(t):
     hero = f"""    <div class="page-hero sol-hero2" id="main">
       <div class="sh-l">
         <h1>See how the ICM works</h1>
-        <p>The ICM brings clarity, trusted partners and continuity to those adding capacity to the grid. Together, we secure the true value of your BESS assets. No manual entry. No wasted hours.</p>
+        <p>The ICM brings clarity, trusted partners and continuity to those adding capacity to the grid. Together, we secure the true value of your BESS assets.</p>
         {gs_form('a')}
       </div>
       <div class="sh-r"><img src="/assets/img/solutions-veins-bright.jpg" alt="" width="1600" height="900"></div>
@@ -813,7 +818,7 @@ def w_pill(cls, label, val, mx=''):
     return f'<label class="pill"><input class="in fit {cls}" type="number" min="1" {mx} step="1" value="{val}" aria-label="{label}">{PEN}</label>'
 
 def w_sentence():
-    return f"""<span class="ws1"><b>Same battery, same site, 30% more revenue.</b> Many have a nagging sense that they are leaving money on the table, fed by anecdotes of businesses realising +30% higher revenues. <a class="story-src" href="{FLOWER}" target="_blank" rel="noopener">Source: Flower case</a></span><span class="ws2">It can add up to <b class="out js-gap">EUR 55k</b> per MW per year. That's the case for a {w_pill('js-mw','Battery size in MW',10,'max="500"')} MW battery that delivered EUR {w_pill('js-rev','Revenue in thousand EUR per MW per year',185)}k per MW per year.</span>"""
+    return f"""<span class="ws1"><b>Same battery, same site, +30% more revenue.</b> <a class="story-src" href="{FLOWER}" target="_blank" rel="noopener">Source: Flower case</a><br><br>Many have a nagging sense that they are leaving money on the table, fed by anecdotes of businesses realising +30% higher revenues.</span><span class="ws2">A +30% delta adds up to <b class="out js-gap">EUR 55.5k</b> per MW per year for a {w_pill('js-mw','Battery size in MW',10,'max="500"')} MW battery that delivered EUR {w_pill('js-rev','Revenue in thousand EUR per MW per year',185)}k per MW per year.</span>"""
 
 def w_hint():
     return f'<p class="hint">{PEN}Enter figures to adjust. Illustrative example.</p>'
@@ -834,7 +839,7 @@ def w_can():
 def w_head(tag='h2'):
     return '<%s class="story-h">It\'s a waste to miss out on <b class="out js-missed">EUR 555,000</b> a year.</%s>' % (tag, tag)
 
-BL1, BL2, BL3 = ('<b>Suboptimal configuration.</b> The MW/MWh installed directly affects your return on investment. The set-up can cost you from day one.', '<b>Underperforming optimizer.</b> New players with better algorithms keep entering the market. Staying with yours can carry a serious opportunity cost.', '<b>Too little monitoring.</b> Without a reference, low revenue looks like a bad month. Underperformance can go unnoticed for years.')
+BL1, BL2, BL3 = ('<b>Suboptimal configuration.</b> The MW/MWh installed directly affects your return on investment. A poor set-up can cost you from day one.', '<b>Underperforming optimizer.</b> New players with better algorithms keep entering the market. Staying with yours can pose a risk.', '<b>Too little monitoring.</b> Without knowing how far you are from your full potential, your BESS revenue is a black box. Underperformance can go unnoticed for years.')
 
 def why_section(v='1'):
     cs = WCAUSES
@@ -1015,8 +1020,8 @@ def talk(t, variant=None):
   <div class="wrap">
     <div class="section-head center"><h2>Get started in three easy steps</h2></div>
     <div class="expect">
-      <div><b>1</b><h3>Enter your work email.</h3><p>Enter your business email to begin. You'll be prompted to complete an application. Personal email addresses aren't accepted.</p></div>
-      <div><b>2</b><h3>Provide your details.</h3><p>We'll ask for basic information: the size of the battery (MW/MWh), dispatch constraints (import/export MW) and the name of your grid operator.</p></div>
+      <div><b>1</b><h3>Enter your work email.</h3><p>Enter your business email to begin. You'll be prompted to answer a few questions.</p></div>
+      <div><b>2</b><h3>Provide your details.</h3><p>We'll ask for basic information: the size of the battery (MW/MWh) and dispatch constraints (import/export MW).</p></div>
       <div><b>3</b><h3>Navigate your reality.</h3><p>Most businesses receive a custom report with expected revenues within 1 working day. It's the draft we start from.</p></div>
     </div>
   </div>

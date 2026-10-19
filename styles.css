@@ -1620,3 +1620,76 @@ body.nav-light.nav-fixed header.nav .nav-right .btn-outline{color:#274A51;border
 .sup-card p{margin:0;line-height:1.5}
 @media (max-width:900px){.co-story{padding:56px 0}.co-story-grid{grid-template-columns:minmax(0,1fr);gap:32px}}
 .gate-frame{height:auto !important;min-height:0 !important}
+
+/* v62 simpler BESS Calculator block with email signup */
+.calc-simple{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:40px;padding:32px 36px;align-items:center}
+.calc-simple .calc-lead{margin-bottom:10px}
+.calc-note{margin:0;font-size:15px;opacity:.8}
+.calc-form{background:#F2F8F9;border-radius:20px;padding:22px 22px 12px}
+.calc-form b{font-size:17px}.calc-form p{margin:4px 0 10px;font-size:15px;line-height:1.45}
+@media (max-width:900px){.calc-simple{grid-template-columns:minmax(0,1fr);padding:24px;gap:20px}}
+
+/* v63 calculator side: screenshot tile + form + dialog; About highlight */
+.calc-side{display:flex;flex-direction:column;gap:16px}
+.calc-shot{position:relative;display:block;padding:0;border:2px solid #274A51;border-radius:18px;overflow:hidden;cursor:pointer;background:#F2F8F9}
+.calc-shot img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;object-position:top left;transition:transform .3s}
+.calc-shot:hover img{transform:scale(1.02)}
+.calc-shot-cta{position:absolute;right:14px;bottom:14px;background:#274A51;color:#fff;font-weight:700;font-size:14px;padding:10px 18px;border-radius:999px}
+.calc-dlg{border:0;border-radius:24px;padding:28px;max-width:560px;width:calc(100% - 32px);color:#274A51;background:#fff}
+.calc-dlg::backdrop{background:rgba(4,13,31,.6)}
+.calc-dlg img{width:100%;height:auto;border-radius:12px;border:1px solid rgba(39,74,81,.2);margin-bottom:16px}
+.calc-dlg h3{margin:0 0 6px;color:#274A51}.calc-dlg p{margin:0 0 12px}
+.calc-dlg .gate-x{position:absolute;top:10px;right:14px;background:none;border:0;font-size:28px;color:#274A51;cursor:pointer}
+.calc-simple{align-items:start}
+.hl{color:#97F2F5;font-weight:700}
+
+/* v64 calculator sticker; About heading white */
+.calc-simple{position:relative}
+.calc-sticker{position:absolute;top:-15px;right:28px;background:#97F2F5;color:#040D1F;font-size:13px;font-weight:700;letter-spacing:.02em;padding:6px 14px;border-radius:999px;transform:rotate(-2deg);box-shadow:0 4px 14px rgba(151,242,245,.35);text-decoration:none;z-index:2}
+.calc-sticker:hover{transform:rotate(-2deg) translateY(-1px)}
+
+/* v65 calculator: simple Talk to us button; Resources thumbnails show the whole image */
+.calc-talk{margin-top:24px}
+.res-cols .res-thumb img{aspect-ratio:16/9 !important;object-position:center !important}
+
+/* v65 calculator: simple Talk to us button bottom-left; full logo thumbnail */
+.calc-simple{align-items:stretch}
+.calc-simple .calc-copy{display:flex;flex-direction:column}
+.calc-cta{margin-top:auto;padding-top:24px;padding-bottom:8px}
+.res-cols .res-thumb img{aspect-ratio:16/9 !important}
+
+/* v66 story text, smaller province logo, MIT note */
+.story-txt p{margin:0 0 14px;line-height:1.6;max-width:36em}
+.sup-card img{max-width:170px !important}
+.sup-small{margin-top:14px;padding:18px 24px}.sup-small b{font-size:16px}
+/* v67 type scale aligned with Canva (H1 ~64px, section H2 ~46px, body 18px, buttons/nav 16px) */
+:root{--body:18px}
+.hero h1,.page-hero h1{font-size:clamp(36px,4.4vw,64px) !important;line-height:1.08}
+h2, .cta-band h2, .section-head h2, .props-sec .section-head h2, .wy-head h2, .story-h, .about-card h2{font-size:clamp(28px,3.2vw,46px) !important;line-height:1.12}
+.eyebrow{font-size:16px !important}
+.btn{font-size:16px !important}
+.nav-links a,.nav-signin{font-size:16px !important}
+
+/* v68 Resources: calculator formatted like Documents / Brand assets */
+.calc-sec{padding-top:56px}
+.calc-beta{display:inline-block;vertical-align:middle;font-size:13px;font-weight:700;letter-spacing:.02em;padding:4px 12px;border-radius:999px;background:#97F2F5;color:#040D1F;margin-left:10px;transform:translateY(-4px)}
+.calc-card{flex-wrap:wrap}
+.calc-shot-btn{display:block;width:100%;padding:0;border:0;background:none;cursor:pointer}
+.calc-shot-btn img{display:block;width:100%;height:auto;aspect-ratio:21/8 !important;object-fit:cover;object-position:top left}
+.calc-actions{display:flex;gap:10px;align-self:center;margin-right:20px}
+.btn-outline-dark{background:transparent;color:#274A51 !important;border:2px solid #274A51}
+.btn-outline-dark:hover{background:#274A51;color:#fff !important}
+@media (max-width:700px){.calc-actions{margin:0 20px 18px;width:100%;flex-wrap:wrap}}
+.res-thumb > div.calc-actions{flex:none;flex-direction:row;padding:16px 0;gap:10px}.calc-actions .btn{margin-right:0 !important}
+.ws1 .story-src{display:inline !important;margin:0 0 0 8px !important;vertical-align:baseline}
+.story-src-line{font-size:13px !important;opacity:.7}.story-src-line a{color:inherit;text-decoration:underline}
+
+/* v69 calculator: title left, card right (same width as Documents/Brand assets) */
+.calc-sec.res-cols{padding-top:0;align-items:start}
+.calc-left{display:flex;flex-direction:column;gap:6px}
+.calc-left .res-lead{margin:0 0 18px !important;min-height:0 !important}
+.calc-shot-btn img{aspect-ratio:16/9 !important}
+.calc-shot-btn img{object-position:top center !important}
+.res-cols .res-thumb .calc-shot-btn img{object-position:top center !important}
+.calc-left .res-lead{max-width:30em !important}
+.sup-card a{color:#274A51;text-decoration:underline;font-weight:600}
