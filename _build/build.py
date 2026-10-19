@@ -635,7 +635,6 @@ def home(t):
       <h2>Why an Independent Capacity Market matters</h2>
       <p>We are not owners. We are not optimizers. Nor will we ever be. We are an energy tech company.</p>
       <p>We serve those who add capacity to the grid, but are in the dark about the potential of their assets.</p>
-      <p>Every battery that performs makes the grid stronger.</p>
       <div class="cta-row" style="justify-content:flex-start"><a class="btn btn-lilac" href="{TALK}">{t['talk']}</a><a class="btn btn-outline" href="/company/">Our story</a></div>
     </div>
     <div class="about-visual"><img class="about-img" src="/assets/img/about-pylon.jpg" alt="High-voltage pylon against the evening sky" width="960" height="1080" loading="lazy"></div>
