@@ -1682,3 +1682,4 @@ h2, .cta-band h2, .section-head h2, .props-sec .section-head h2, .wy-head h2, .s
 @media (max-width:700px){.calc-actions{margin:0 20px 18px;width:100%;flex-wrap:wrap}}
 .res-thumb > div.calc-actions{flex:none;flex-direction:row;padding:16px 0;gap:10px}.calc-actions .btn{margin-right:0 !important}
 .ws1 .story-src{display:inline !important;margin:0 0 0 8px !important;vertical-align:baseline}
+.story-src-line{font-size:13px !important;opacity:.7}.story-src-line a{color:inherit;text-decoration:underline}
