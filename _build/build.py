@@ -371,13 +371,18 @@ FILLOUT_JS = '\n<script src="https://server.fillout.com/embed/v1/" defer></scrip
 
 def resources(t):
     RES_EXTRAS_HTML = f'''  <div class="wrap">
-    <section class="res-sec calc-sec" id="calculator" aria-labelledby="calc-h">
-      <h2 id="calc-h">BESS Calculator <span class="calc-beta">Beta</span></h2>
-      <p class="res-lead">Stop guessing what your battery should earn. The perfect 2-hour battery on a full grid connection made EUR 305k/MW/yr. Yours has its own limits. See what it could have earned within them.</p>
-      <div class="res-card res-thumb calc-card">
-        <button type="button" class="calc-shot-btn js-calc-open" aria-label="Open the BESS Calculator"><img src="/assets/img/calculator-preview.jpg" alt="BESS Calculator: full potential and expected revenues per month (fictional example)" width="1440" height="900" loading="lazy"></button>
-        <div><span>BESS Calculator</span><small>Subject to change, methodology to be refined.</small></div>
-        <div class="calc-actions"><a class="btn btn-outline-dark" href="/talk-to-us/">Talk to us</a><button type="button" class="btn btn-dark js-calc-open">Open the calculator</button></div>
+    <section class="calc-sec res-cols" id="calculator" aria-labelledby="calc-h">
+      <div class="res-sec calc-left">
+        <h2 id="calc-h">BESS Calculator <span class="calc-beta">Beta</span></h2>
+        <p class="res-lead">Stop guessing what your battery should earn. The perfect 2-hour battery on a full grid connection made EUR 305k/MW/yr. Yours has its own limits. See what it could have earned within them.</p>
+        <div><a class="btn btn-outline-dark" href="/talk-to-us/">Talk to us</a></div>
+      </div>
+      <div class="res-sec">
+        <div class="res-card res-thumb calc-card">
+          <button type="button" class="calc-shot-btn js-calc-open" aria-label="Open the BESS Calculator"><img src="/assets/img/calculator-preview.jpg" alt="BESS Calculator: full potential and expected revenues per month (fictional example)" width="1440" height="900" loading="lazy"></button>
+          <div><span>BESS Calculator</span><small>Subject to change, methodology to be refined.</small></div>
+          <button type="button" class="btn btn-dark js-calc-open">Open</button>
+        </div>
       </div>
       <dialog class="calc-dlg" id="calc-dlg" aria-labelledby="calc-dlg-h">
         <button type="button" class="gate-x js-calc-close" aria-label="Close">&times;</button>
@@ -487,7 +492,7 @@ def company(t):
     <div class="team-cta"><a class="btn btn-lilac" href="/talk-to-us/">Get in touch</a></div>
   </div>
 </section>
-{'<section class="co-story" id="story"><div class="wrap"><div class="co-story-grid"><div><span class="eyebrow">Our story</span><h2>How the ICM started</h2><div class="story-txt"><p>Batteries are becoming the backbone of a flexible grid. The Netherlands is expected to install around 25 GWh of battery storage by 2030, and TenneT sees room for 14 to 27 GW of batteries by 2050.</p><p>Yet most owners cannot tell whether their battery performs. They have no overview of which optimizers exist, nor how they perform. What their battery could earn remains a mystery.</p><p>The ICM was founded in Amsterdam in March 2026 to close this information gap. We serve those who add capacity to the grid, but are in the dark about the potential of their assets.</p><p>Our goal is to get the most value out of every battery. Think of the ICM as an independent adviser for battery assets: owners share their portfolio, the ICM shows what each asset could earn, compares the optimizers that could run it and oversees the switch, without owning, installing or optimizing a single battery itself.</p><p class="story-src-line">Sources: <a href="https://www.ees-europe.com/publications/european-market-outlook-for-battery-storage-2026" target="_blank" rel="noopener">SolarPower Europe, European Market Outlook for Battery Storage</a>; <a href="https://solarmagazine.nl/nieuws-zonne-energie/i42286/tennet-batterijen-cruciaal-voor-toekomstig-elektriciteitssysteem-5-tot-7-gigawatt-nodig" target="_blank" rel="noopener">TenneT, via Solar Magazine (Nov 2025)</a>.</p></div></div><div><span class="eyebrow">Supported by</span><div class="sup-card"><img src="/assets/img/provincie-noord-holland.png" alt="Province of Noord-Holland" width="1188" height="236" loading="lazy"><p>MIT feasibility grant from the Province of Noord-Holland.</p></div></div></div></div></section>' if COMPANY_STORY else ''}
+{'<section class="co-story" id="story"><div class="wrap"><div class="co-story-grid"><div><span class="eyebrow">Our story</span><h2>How the ICM started</h2><div class="story-txt"><p>Batteries are becoming the backbone of a flexible grid. Europe already has more than 100 GWh of battery storage installed, and the Netherlands is expected to reach around 25 GWh by 2030. Owners install batteries to trade on the power markets, to cut peak costs and grid fees, to store their own solar power and to make the most of a congested grid connection.</p><p>Yet most owners are flying blind. They have no overview of the optimizers on the market or how they compare, and no reference for what their own site could deliver.</p><p>The ICM was founded in Amsterdam in March 2026 to close this information gap. We serve those who add capacity to the grid, but are in the dark about the potential of their assets.</p><p>Our goal is to get the most value out of every battery. Think of the ICM as an independent adviser for battery assets: owners share their portfolio, the ICM shows what each asset could earn, compares the optimizers that could run it and oversees the switch, without owning, installing or optimizing a single battery itself.</p><p class="story-src-line">Sources: <a href="https://www.ees-europe.com/publications/european-market-outlook-for-battery-storage-2026" target="_blank" rel="noopener">SolarPower Europe, European Market Outlook for Battery Storage</a>; <a href="https://taiyangnews.info/storage/europe-battery-storage-capacity-exceeds-100-gwh" target="_blank" rel="noopener">TaiyangNews, Europe’s battery storage capacity exceeds 100 GWh</a>.</p></div></div><div><span class="eyebrow">Supported by</span><div class="sup-card"><img src="/assets/img/provincie-noord-holland.png" alt="Province of Noord-Holland" width="1188" height="236" loading="lazy"><p>MIT feasibility grant from the Province of Noord-Holland.</p></div></div></div></div></section>' if COMPANY_STORY else ''}
 <section class="co-careers" id="careers">
   <div class="wrap">
     <p class="co-label dark-t">Open roles</p>
