@@ -1620,3 +1620,11 @@ body.nav-light.nav-fixed header.nav .nav-right .btn-outline{color:#274A51;border
 .sup-card p{margin:0;line-height:1.5}
 @media (max-width:900px){.co-story{padding:56px 0}.co-story-grid{grid-template-columns:minmax(0,1fr);gap:32px}}
 .gate-frame{height:auto !important;min-height:0 !important}
+
+/* v62 simpler BESS Calculator block with email signup */
+.calc-simple{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:40px;padding:32px 36px;align-items:center}
+.calc-simple .calc-lead{margin-bottom:10px}
+.calc-note{margin:0;font-size:15px;opacity:.8}
+.calc-form{background:#F2F8F9;border-radius:20px;padding:22px 22px 12px}
+.calc-form b{font-size:17px}.calc-form p{margin:4px 0 10px;font-size:15px;line-height:1.45}
+@media (max-width:900px){.calc-simple{grid-template-columns:minmax(0,1fr);padding:24px;gap:20px}}

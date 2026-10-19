@@ -371,21 +371,17 @@ FILLOUT_JS = '\n<script src="https://server.fillout.com/embed/v1/" defer></scrip
 
 def resources(t):
     RES_EXTRAS_HTML = f'''  <div class="wrap">
-    <section class="calc-block" id="calculator" aria-labelledby="calc-h">
+    <section class="calc-block calc-simple" id="calculator" aria-labelledby="calc-h">
       <div class="calc-copy">
         <div class="calc-tags"><span>Beta</span></div>
         <h2 id="calc-h">BESS Calculator</h2>
-        <p class="calc-lead">What could a battery have earned on the Dutch wholesale markets from January to September 2026? The calculator answers that for one specific set-up: MW/MWh, grid connection and dispatch constraints included.</p>
-        <ul class="calc-points">
-          <li><b>Real context, not a virtual battery.</b> Results follow the limits of the actual site, such as import and export caps and contract terms.</li>
-          <li><b>Calibrated with realised revenues.</b> Each comparison with actual settlements from owners, installers and analysts sharpens the model.</li>
-          <li><b>Open about its limits.</b> It covers day-ahead and imbalance only, as intraday data is not publicly available.</li>
-        </ul>
-        <div class="calc-help"><b>Open to contributions.</b> Realised revenues shared by owners, installers and analysts are used to calibrate the model. Please email <a href="mailto:ideles@icm.energy">ideles@icm.energy</a> to contribute.</div>
-        <div class="cta-row" style="justify-content:flex-start"><a class="btn btn-dark" href="#calc-app">Explore the beta calculator</a></div>
+        <p class="calc-lead">What could a battery have earned in 2026? Enter the grid connection, the assets and the markets in the optimizer's mandate to see the full potential and the expected revenues per month, from January to September 2026.</p>
+        <p class="calc-note">Day-ahead, imbalance, FCR and aFRR, within the limits of the site.</p>
       </div>
-      <div class="calc-slot" id="calc-app" aria-label="BESS Calculator (opens soon)">
-        <div class="calc-ph"><span class="calc-dot"></span><b>The calculator opens here soon</b><small>Built in the open, improved by the people who use it.</small></div>
+      <div class="calc-form">
+        <b>Want to know more?</b>
+        <p>Leave a work email and we will let you know when the calculator opens.</p>
+        <div class="fillout-inline" data-form="3xLzpWnKW7us" data-embed="calc"></div>
       </div>
     </section>
   </div>
