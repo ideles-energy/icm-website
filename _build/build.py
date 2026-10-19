@@ -631,7 +631,7 @@ def home(t):
     <div class="about-card">
       <span class="eyebrow why-eyebrow">About us</span>
       <h2>Why an Independent Capacity Market matters</h2>
-      <p>We are not owners. We are not optimizers. Nor will we ever be. We are an <span class="hl">energy tech company</span>.</p>
+      <p>We are not owners. We are not optimizers. Nor will we ever be. We are an energy tech company.</p>
       <p>We serve those who add capacity to the grid, but are in the dark about the potential of their assets. By helping them get the most value out of their batteries, we contribute to a stronger grid.</p>
       <div class="cta-row" style="justify-content:flex-start"><a class="btn btn-lilac" href="{TALK}">{t['talk']}</a><a class="btn btn-outline" href="/company/">Our story</a></div>
     </div>
@@ -817,7 +817,7 @@ def w_pill(cls, label, val, mx=''):
     return f'<label class="pill"><input class="in fit {cls}" type="number" min="1" {mx} step="1" value="{val}" aria-label="{label}">{PEN}</label>'
 
 def w_sentence():
-    return f"""<span class="ws1"><b>Same battery, same site, +30% more revenue.</b> Many have a nagging sense that they are leaving money on the table, fed by anecdotes of businesses realising +30% higher revenues. <a class="story-src" href="{FLOWER}" target="_blank" rel="noopener">Source: Flower case</a></span><span class="ws2">A +30% delta can add up to <b class="out js-gap">EUR 55.5k</b> per MW per year for a {w_pill('js-mw','Battery size in MW',10,'max="500"')} MW battery that delivered EUR {w_pill('js-rev','Revenue in thousand EUR per MW per year',185)}k per MW per year.</span>"""
+    return f"""<span class="ws1"><b>Same battery, same site, +30% more revenue.</b><br>Many have a nagging sense that they are leaving money on the table, fed by anecdotes of businesses realising +30% higher revenues. <a class="story-src" href="{FLOWER}" target="_blank" rel="noopener">Source: Flower case</a></span><span class="ws2">A +30% delta can add up to <b class="out js-gap">EUR 55.5k</b> per MW per year for a {w_pill('js-mw','Battery size in MW',10,'max="500"')} MW battery that delivered EUR {w_pill('js-rev','Revenue in thousand EUR per MW per year',185)}k per MW per year.</span>"""
 
 def w_hint():
     return f'<p class="hint">{PEN}Enter figures to adjust. Illustrative example.</p>'
