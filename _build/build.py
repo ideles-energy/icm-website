@@ -815,7 +815,7 @@ def w_pill(cls, label, val, mx=''):
     return f'<label class="pill"><input class="in fit {cls}" type="number" min="1" {mx} step="1" value="{val}" aria-label="{label}">{PEN}</label>'
 
 def w_sentence():
-    return f"""<span class="ws1"><b>Same battery, same site, +30% more revenue.</b> <a class="story-src" href="{FLOWER}" target="_blank" rel="noopener">Source: Flower case</a><br>Many have a nagging sense that they are leaving money on the table, fed by anecdotes of businesses realising +30% higher revenues.</span><span class="ws2">A +30% delta can add up to <b class="out js-gap">EUR 55.5k</b> per MW per year for a {w_pill('js-mw','Battery size in MW',10,'max="500"')} MW battery that delivered EUR {w_pill('js-rev','Revenue in thousand EUR per MW per year',185)}k per MW per year.</span>"""
+    return f"""<span class="ws1"><b>Same battery, same site, +30% more revenue.</b> <a class="story-src" href="{FLOWER}" target="_blank" rel="noopener">Source: Flower case</a><br><br>Many have a nagging sense that they are leaving money on the table, fed by anecdotes of businesses realising +30% higher revenues.</span><span class="ws2">A +30% delta adds up to <b class="out js-gap">EUR 55.5k</b> per MW per year for a {w_pill('js-mw','Battery size in MW',10,'max="500"')} MW battery that delivered EUR {w_pill('js-rev','Revenue in thousand EUR per MW per year',185)}k per MW per year.</span>"""
 
 def w_hint():
     return f'<p class="hint">{PEN}Enter figures to adjust. Illustrative example.</p>'
@@ -836,7 +836,7 @@ def w_can():
 def w_head(tag='h2'):
     return '<%s class="story-h">It\'s a waste to miss out on <b class="out js-missed">EUR 555,000</b> a year.</%s>' % (tag, tag)
 
-BL1, BL2, BL3 = ('<b>Suboptimal configuration.</b> The MW/MWh installed directly affects your return on investment. A poor set-up can cost you from day one.', '<b>Underperforming optimizer.</b> New players with better algorithms keep entering the market. Staying with yours can carry a serious opportunity cost.', '<b>Too little monitoring.</b> Without a reference of your full potential, low revenue looks like a bad month. Underperformance can go unnoticed for years.')
+BL1, BL2, BL3 = ('<b>Suboptimal configuration.</b> The MW/MWh installed directly affects your return on investment. A poor set-up can cost you from day one.', '<b>Underperforming optimizer.</b> New players with better algorithms keep entering the market. Staying with yours can pose a risk.', '<b>Too little monitoring.</b> Without knowing how far you are from your full potential, your BESS revenue is a black box. Underperformance can go unnoticed for years.')
 
 def why_section(v='1'):
     cs = WCAUSES
