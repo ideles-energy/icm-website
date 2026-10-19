@@ -217,3 +217,9 @@ r.addEventListener('input',u);u();})();
     });
   });
 })();
+
+/* BESS Calculator preview (Resources): screenshot opens a dialog with the email form */
+(function(){var d=document.getElementById('calc-dlg');if(!d||!d.showModal)return;
+  document.querySelectorAll('.js-calc-open').forEach(function(b){b.addEventListener('click',function(){d.showModal();});});
+  d.querySelector('.js-calc-close').addEventListener('click',function(){d.close();});
+  d.addEventListener('click',function(e){if(e.target===d)d.close();});})();

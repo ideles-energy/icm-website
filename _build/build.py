@@ -375,14 +375,20 @@ def resources(t):
       <div class="calc-copy">
         <div class="calc-tags"><span>Beta</span></div>
         <h2 id="calc-h">BESS Calculator</h2>
-        <p class="calc-lead">What could a battery have earned in 2026? Enter the grid connection, the assets and the markets in the optimizer's mandate to see the full potential and the expected revenues per month, from January to September 2026.</p>
-        <p class="calc-note">Day-ahead, imbalance, FCR and aFRR, within the limits of the site.</p>
+        <p class="calc-lead">Stop not knowing. See what your battery could have earned. No one has the perfect 2-hour BESS with a full grid connection that delivered EUR 305k/MW/yr. Our full potential looks at your dispatch constraints.</p>
+        <p class="calc-note">Subject to change, methodology to be refined.</p>
       </div>
-      <div class="calc-form">
-        <b>Want to know more?</b>
-        <p>Leave a work email and we will let you know when the calculator opens.</p>
-        <div class="fillout-inline" data-form="3xLzpWnKW7us" data-embed="calc"></div>
+      <div class="calc-side">
+        <button type="button" class="calc-shot js-calc-open" aria-label="Open the BESS Calculator"><img src="/assets/img/calculator-preview.jpg" alt="BESS Calculator: full potential and expected revenues per month (fictional example)" width="1440" height="900" loading="lazy"><span class="calc-shot-cta">Open the calculator</span></button>
+        <div class="calc-form"><b>Want to know more?</b><div class="fillout-inline" data-form="3xLzpWnKW7us" data-embed="calc"></div></div>
       </div>
+      <dialog class="calc-dlg" id="calc-dlg" aria-labelledby="calc-dlg-h">
+        <button type="button" class="gate-x js-calc-close" aria-label="Close">&times;</button>
+        <img src="/assets/img/calculator-preview.jpg" alt="" width="1440" height="900" loading="lazy">
+        <h3 id="calc-dlg-h">The BESS Calculator opens soon</h3>
+        <p>Leave a work email and be the first to try it.</p>
+        <div class="fillout-inline" data-form="3xLzpWnKW7us" data-embed="calcdlg"></div>
+      </dialog>
     </section>
   </div>
   <div class="wrap">
@@ -466,8 +472,8 @@ def company(t):
   <div class="wrap co-grid">
     <p class="co-label">Who we are</p>
     <div>
-      <p>The ICM serves those who add capacity to the grid, but are in the dark about their potential.</p>
-      <p>By bringing transparency, we contribute to a stronger grid: one that rewards optimizers that perform, makes batteries easier to finance and gives system operators access to more flexibility.</p>
+      <p>The ICM serves those who add capacity to the grid, but are in the dark about their potential. We focus on getting the most value out of their batteries.</p>
+      <p>By bringing transparency, we contribute to a stronger grid: one that rewards optimizers that perform, makes batteries easier to finance and gives system operators access to more reliable flexible capacity.</p>
       <p>We value our independence. We don't own, install or optimize, which keeps our intentions pure and our heads clear. For our clients, that means securing the true value of their battery, backed by reliable numbers.</p>
       <a class="btn btn-lilac" href="/talk-to-us/">Talk to us</a>
     </div>
@@ -625,9 +631,8 @@ def home(t):
     <div class="about-card">
       <span class="eyebrow why-eyebrow">About us</span>
       <h2>Why an Independent Capacity Market matters</h2>
-      <p>We are not owners. We are not optimizers. Nor will we ever be.</p>
-      <p>We are an energy tech company.</p>
-      <p>We serve those who add capacity to the grid, but are in the dark about the potential of their assets. We compare BESS-to-BESS, introduce owners to optimizers and oversee the switch, so your battery keeps earning.</p>
+      <p>We are not owners. We are not optimizers. Nor will we ever be. We are an <span class="hl">energy tech company</span>.</p>
+      <p>We serve those who add capacity to the grid, but are in the dark about the potential of their assets. By getting the most value out of their batteries, we contribute to a stronger grid.</p>
       <div class="cta-row" style="justify-content:flex-start"><a class="btn btn-lilac" href="{TALK}">{t['talk']}</a><a class="btn btn-outline" href="/company/">Our story</a></div>
     </div>
     <div class="about-visual"><img class="about-img" src="/assets/img/about-pylon.jpg" alt="High-voltage pylon against the evening sky" width="960" height="1080" loading="lazy"></div>

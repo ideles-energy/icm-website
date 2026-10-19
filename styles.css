@@ -1628,3 +1628,17 @@ body.nav-light.nav-fixed header.nav .nav-right .btn-outline{color:#274A51;border
 .calc-form{background:#F2F8F9;border-radius:20px;padding:22px 22px 12px}
 .calc-form b{font-size:17px}.calc-form p{margin:4px 0 10px;font-size:15px;line-height:1.45}
 @media (max-width:900px){.calc-simple{grid-template-columns:minmax(0,1fr);padding:24px;gap:20px}}
+
+/* v63 calculator side: screenshot tile + form + dialog; About highlight */
+.calc-side{display:flex;flex-direction:column;gap:16px}
+.calc-shot{position:relative;display:block;padding:0;border:2px solid #274A51;border-radius:18px;overflow:hidden;cursor:pointer;background:#F2F8F9}
+.calc-shot img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;object-position:top left;transition:transform .3s}
+.calc-shot:hover img{transform:scale(1.02)}
+.calc-shot-cta{position:absolute;right:14px;bottom:14px;background:#274A51;color:#fff;font-weight:700;font-size:14px;padding:10px 18px;border-radius:999px}
+.calc-dlg{border:0;border-radius:24px;padding:28px;max-width:560px;width:calc(100% - 32px);color:#274A51;background:#fff}
+.calc-dlg::backdrop{background:rgba(4,13,31,.6)}
+.calc-dlg img{width:100%;height:auto;border-radius:12px;border:1px solid rgba(39,74,81,.2);margin-bottom:16px}
+.calc-dlg h3{margin:0 0 6px;color:#274A51}.calc-dlg p{margin:0 0 12px}
+.calc-dlg .gate-x{position:absolute;top:10px;right:14px;background:none;border:0;font-size:28px;color:#274A51;cursor:pointer}
+.calc-simple{align-items:start}
+.hl{color:#97F2F5;font-weight:700}
