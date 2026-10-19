@@ -200,7 +200,7 @@ def head(t, title, desc, path, alt_path=None, jsonld=None, og_title=None):
 <meta property="og:url" content="https://icm.energy{path}">
 <meta property="og:title" content="{og_title or title}">
 <meta property="og:description" content="{desc}">
-<meta property="og:image" content="https://icm.energy/assets/og-image.png">
+<meta property="og:image" content="https://icm.energy/assets/og-image.png?v=2">
 <meta property="og:site_name" content="The Independent Capacity Market">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
@@ -365,7 +365,7 @@ def nl_report_chart():
 
 # Resources extras (BESS Calculator, NL BESS Revenue Report): built, hidden until launch. Set True to show.
 RES_EXTRAS = os.environ.get('ICM_PREVIEW') == '1'  # shown only in the Claude preview until launch
-COMPANY_STORY = os.environ.get('ICM_PREVIEW') == '1'
+COMPANY_STORY = True  # Our story + Supported by: live
 NL_REPORT = False  # NL BESS Revenue Report signup: parked (built, not shown anywhere)
 FILLOUT_JS = '\n<script src="https://server.fillout.com/embed/v1/" defer></script>'
 
@@ -491,7 +491,7 @@ def company(t):
     <div class="team-cta"><a class="btn btn-lilac" href="/talk-to-us/">Get in touch</a></div>
   </div>
 </section>
-{'<section class="co-story" id="story"><div class="wrap"><div class="co-story-grid"><div><span class="eyebrow">Our story</span><h2>How the ICM started</h2><div class="story-txt"><p>Batteries are becoming the backbone of a flexible grid. Europe already has more than 100 GWh of battery storage installed, and the Netherlands is expected to reach around 25 GWh by 2030.</p><p>Batteries strengthen the grid in three ways. They keep supply and demand in balance from second to second, store surplus solar and wind power instead of curtailing it, and relieve congested grids by charging and discharging when and where capacity is scarce, which can delay costly grid reinforcements.</p><p>Yet most battery owners are flying blind. They have no overview of the optimizers on the market or how they compare, and no reference for what their own site could deliver.</p><p>The ICM was founded in Amsterdam in March 2026 to close this information gap. We serve those who add capacity to the grid, but are in the dark about the potential of their assets.</p><p class="story-src-line">Sources: <a href="https://www.ees-europe.com/publications/european-market-outlook-for-battery-storage-2026" target="_blank" rel="noopener">SolarPower Europe, European Market Outlook for Battery Storage</a>; <a href="https://taiyangnews.info/storage/europe-battery-storage-capacity-exceeds-100-gwh" target="_blank" rel="noopener">TaiyangNews, Europe’s battery storage capacity exceeds 100 GWh</a>.</p></div></div><div><span class="eyebrow">Supported by</span><div class="sup-card"><img src="/assets/img/provincie-noord-holland.png" alt="Province of Noord-Holland" width="1188" height="236" loading="lazy"><p>MIT feasibility grant from the Province of Noord-Holland.</p></div></div></div></div></section>' if COMPANY_STORY else ''}
+{'<section class="co-story" id="story"><div class="wrap"><div class="co-story-grid"><div><span class="eyebrow">Our story</span><h2>How the ICM started</h2><div class="story-txt"><p>Batteries are becoming the backbone of a flexible grid. Europe already has more than 100 GWh of battery storage installed, and the Netherlands is expected to reach around 25 GWh by 2030.</p><p>Batteries strengthen the grid in three ways. They keep supply and demand in balance from second to second, store surplus solar and wind power instead of curtailing it, and relieve congested grids by charging and discharging when and where capacity is scarce, which can delay costly grid reinforcements.</p><p>Yet most battery owners are flying blind. They have no overview of the optimizers on the market or how they compare, and no reference for what their own site could deliver.</p><p>The ICM was founded in Amsterdam in March 2026 to close this information gap. We serve those who add capacity to the grid, but are in the dark about the potential of their assets.</p><p class="story-src-line">Sources: <a href="https://www.ees-europe.com/publications/european-market-outlook-for-battery-storage-2026" target="_blank" rel="noopener">SolarPower Europe, European Market Outlook for Battery Storage</a>; <a href="https://taiyangnews.info/storage/europe-battery-storage-capacity-exceeds-100-gwh" target="_blank" rel="noopener">TaiyangNews, Europe’s battery storage capacity exceeds 100 GWh</a>.</p></div></div><div><span class="eyebrow">Supported by</span><div class="sup-card"><img src="/assets/img/provincie-noord-holland.png" alt="Province of Noord-Holland" width="1188" height="236" loading="lazy"><p><a href="https://www.noord-holland.nl/Producten_op_alfabet/MKB_innovatiestimulering_topsectoren_MIT_Noord_Holland_Haalbaarheidsproject_subsidie" target="_blank" rel="noopener">MIT feasibility grant</a> from the Province of Noord-Holland.</p></div></div></div></div></section>' if COMPANY_STORY else ''}
 <section class="co-careers" id="careers">
   <div class="wrap">
     <p class="co-label dark-t">Open roles</p>
