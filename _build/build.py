@@ -375,7 +375,7 @@ def resources(t):
       <div class="calc-copy">
         <div class="calc-tags"><span>Beta</span></div>
         <h2 id="calc-h">BESS Calculator</h2>
-        <p class="calc-lead">Stop not knowing. See what your battery could have earned. No one has the perfect 2-hour BESS with a full grid connection that delivered EUR 305k/MW/yr. Our full potential looks at your dispatch constraints.</p>
+        <p class="calc-lead">Stop guessing what your battery should earn. The perfect 2-hour battery on a full grid connection made EUR 305k/MW/yr. Yours has its own limits. See what it could have earned within them.</p>
         <p class="calc-note">Subject to change, methodology to be refined.</p>
         <div class="calc-cta"><a class="btn btn-dark" href="/talk-to-us/">Talk to us</a></div>
       </div>
@@ -472,7 +472,7 @@ def company(t):
   <div class="wrap co-grid">
     <p class="co-label">Who we are</p>
     <div>
-      <p>The ICM serves those who add capacity to the grid, but are in the dark about their potential. We help them get the most value out of their batteries.</p>
+      <p>The ICM serves those who add capacity to the grid, but are in the dark about their potential.</p>
       <p>By bringing transparency, we contribute to a stronger grid: one that rewards optimizers that perform, makes batteries easier to finance and gives system operators access to more reliable flexible capacity.</p>
       <p>We value our independence. We don't own, install or optimize, which keeps our intentions pure and our heads clear. For our clients, that means securing the true value of their battery, backed by reliable numbers.</p>
       <a class="btn btn-lilac" href="/talk-to-us/">Talk to us</a>
@@ -483,14 +483,14 @@ def company(t):
   <div class="wrap">
     <p class="co-label">The team</p>
     <div class="team">
-      <a class="member" href="https://www.linkedin.com/in/idel%C3%A8s-kaandorp/" target="_blank" rel="noopener"><img class="ph" src="/assets/team-ideles.jpg" alt="Idelès Kaandorp" width="600" height="600" loading="lazy"><b>Idelès Kaandorp</b><span class="m-bio">Founder. Fights the lack of transparency in the BESS market. Trained as a mathematician, holds an MBA from Harvard Business School and served energy clients at McKinsey.</span></a>
+      <a class="member" href="https://www.linkedin.com/in/idel%C3%A8s-kaandorp/" target="_blank" rel="noopener"><img class="ph" src="/assets/team-ideles.jpg" alt="Idelès Kaandorp" width="600" height="600" loading="lazy"><b>Idelès Kaandorp</b><span class="m-bio">Founder. Leads the push for transparency in the BESS market. Trained as a mathematician, holds an MBA from Harvard Business School and served energy clients at McKinsey.</span></a>
       <a class="member" href="https://www.linkedin.com/in/edo-rivai-78b66a17/" target="_blank" rel="noopener"><img class="ph" src="/assets/team-edo.jpg" alt="Edo Rivai" width="512" height="512" loading="lazy"><b>Edo Rivai</b><span class="m-bio">Senior software developer. Owns platform design, integrations and infrastructure. Built and scaled software, most recently at SpotAI (network of intelligent security cameras).</span></a>
       <a class="member" href="https://www.linkedin.com/in/jesse-h-willis/" target="_blank" rel="noopener"><img class="ph" src="/assets/team-jesse.jpg" alt="Jesse Willis" width="600" height="720" loading="lazy"><b>Jesse Willis</b><span class="m-bio">Project Engineer. Translates your dispatch constraints into custom insights that drive decisions. Studied Industrial Design Engineering in Delft and started Everlab to build meaningful products from scratch.</span></a>
     </div>
     <div class="team-cta"><a class="btn btn-lilac" href="/talk-to-us/">Get in touch</a></div>
   </div>
 </section>
-{'<section class="co-story" id="story"><div class="wrap"><div class="co-story-grid"><div><span class="eyebrow">Our story</span><h2>How the ICM started</h2><div class="story-txt"><p>The ICM started in 2026 with a question battery owners kept asking: is my battery earning what it should? Revenues were opaque, optimizer reports hard to compare and switching felt risky.</p><p>A first pilot, an auction for the dispatch rights of a 10 MW battery in Amsterdam, made one thing clear: before owners can choose, they need an independent view of what their battery could earn.</p><p>That is what the ICM builds today: tools that compare realised revenues with the full potential of a site, and a trusted process to find and switch optimizers.</p></div></div><div><span class="eyebrow">Supported by</span><div class="sup-card"><img src="/assets/img/provincie-noord-holland.png" alt="Province of Noord-Holland" width="1188" height="236" loading="lazy"><p>Early-phase funding (Vroegefasefinanciering) from the Province of Noord-Holland.</p></div><div class="sup-card sup-small"><b>MIT feasibility grant</b><p>The feasibility study of the ICM was co-funded by an MIT grant (MKB-innovatiestimulering Regio en Topsectoren).</p></div></div></div></div></section>' if COMPANY_STORY else ''}
+{'<section class="co-story" id="story"><div class="wrap"><div class="co-story-grid"><div><span class="eyebrow">Our story</span><h2>How the ICM started</h2><div class="story-txt"><p>Batteries are becoming the backbone of a flexible grid, yet most owners cannot tell whether theirs performs. The ICM was founded in Amsterdam in 2026 to close that gap.</p><p>Independent of owners, installers and optimizers, the ICM measures what a battery earns against what its site allows, and helps owners act on the result.</p><p>Better-informed owners reward optimizers that perform, batteries become easier to finance and the grid gains reliable flexible capacity.</p></div></div><div><span class="eyebrow">Supported by</span><div class="sup-card"><img src="/assets/img/provincie-noord-holland.png" alt="Province of Noord-Holland" width="1188" height="236" loading="lazy"><p>Early-phase funding (Vroegefasefinanciering) and an MIT feasibility grant from the Province of Noord-Holland.</p></div></div></div></div></section>' if COMPANY_STORY else ''}
 <section class="co-careers" id="careers">
   <div class="wrap">
     <p class="co-label dark-t">Open roles</p>
