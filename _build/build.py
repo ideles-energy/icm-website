@@ -366,6 +366,7 @@ def nl_report_chart():
 # Resources extras (BESS Calculator, NL BESS Revenue Report): built, hidden until launch. Set True to show.
 RES_EXTRAS = os.environ.get('ICM_PREVIEW') == '1'  # shown only in the Claude preview until launch
 COMPANY_STORY = os.environ.get('ICM_PREVIEW') == '1'
+NL_REPORT = False  # NL BESS Revenue Report signup: parked (built, not shown anywhere)
 FILLOUT_JS = '\n<script src="https://server.fillout.com/embed/v1/" defer></script>'
 
 def resources(t):
@@ -410,9 +411,11 @@ def resources(t):
     </section>
   </div>
 '''
+    if not NL_REPORT:
+        RES_EXTRAS_HTML = re.sub(r'\n    <section class="nlr-block".*?</section>', '', RES_EXTRAS_HTML, flags=re.S)
     hero = f'''    <div class="page-hero" id="main">
       <h1>Resources</h1>
-      <p>{'A community BESS Calculator, a periodic NL revenue report, API documents and brand assets of the Independent Capacity Market.' if RES_EXTRAS else 'API documents and brand assets of the Independent Capacity Market.'}</p>
+      <p>{('A community BESS Calculator, a periodic NL revenue report, API documents and brand assets of the Independent Capacity Market.' if NL_REPORT else 'A community BESS Calculator, API documents and brand assets of the Independent Capacity Market.') if RES_EXTRAS else 'API documents and brand assets of the Independent Capacity Market.'}</p>
     </div>'''
     body = f'''<main class="res">
 {RES_EXTRAS_HTML if RES_EXTRAS else ''}  <div class="wrap res-cols">
@@ -427,7 +430,7 @@ def resources(t):
       <div class="res-card res-thumb"><img src="/assets/brand/thumb-logos.jpg" alt="" width="640" height="360" loading="lazy"><div><span>Logos</span><small>PNG and SVG, header and footer versions</small></div><a class="btn btn-dark" href="/assets/brand/ICM-logos.zip" download>Download</a></div>
     </section>
   </div>
-</main>{FILLOUT_JS if RES_EXTRAS else ''}'''
+</main>{FILLOUT_JS if (RES_EXTRAS and NL_REPORT) else ''}'''
     return page_shell(t, '/resources/', 'Resources | The ICM' if not RES_EXTRAS else 'Resources: BESS Calculator, API documents and brand assets | The ICM', 'API documents and brand assets of the Independent Capacity Market.' if not RES_EXTRAS else 'A community BESS Calculator, the NL BESS Revenue Report, API documents and brand assets of the Independent Capacity Market.', hero, body)
 
 ROLES = [
@@ -717,8 +720,8 @@ GS_STEPS = f'''<section class="dark gs-steps" id="steps">
   <div class="wrap">
     <h2>Get started in three easy steps</h2>
     <div class="gs-grid">
-      <div>{GS_ICONS['mail']}<p><b>Step 1: Enter your work email.</b> <span>Enter your business email to begin. You'll be prompted to complete an application. Personal email addresses aren't accepted.</span></p></div>
-      <div>{GS_ICONS['form']}<p><b>Step 2: Provide your details.</b> <span>We'll ask for basic information: the size of the battery (MW/MWh), dispatch constraints (import/export MW) and the name of your grid operator.</span></p></div>
+      <div>{GS_ICONS['mail']}<p><b>Step 1: Enter your work email.</b> <span>Enter your business email to begin. You'll be prompted to answer a few questions.</span></p></div>
+      <div>{GS_ICONS['form']}<p><b>Step 2: Provide your details.</b> <span>We'll ask for basic information: the size of the battery (MW/MWh) and dispatch constraints (import/export MW).</span></p></div>
       <div>{GS_ICONS['key']}<p><b>Step 3: Navigate your reality.</b> <span>Most businesses receive a custom report with expected revenues within 1 working day. It's the draft we start from.</span></p></div>
     </div>
   </div>
@@ -751,7 +754,7 @@ def solutions(t):
     hero = f"""    <div class="page-hero sol-hero2" id="main">
       <div class="sh-l">
         <h1>See how the ICM works</h1>
-        <p>The ICM brings clarity, trusted partners and continuity to those adding capacity to the grid. Together, we secure the true value of your BESS assets. No manual entry. No wasted hours.</p>
+        <p>The ICM brings clarity, trusted partners and continuity to those adding capacity to the grid. Together, we secure the true value of your BESS assets.</p>
         {gs_form('a')}
       </div>
       <div class="sh-r"><img src="/assets/img/solutions-veins-bright.jpg" alt="" width="1600" height="900"></div>
@@ -813,7 +816,7 @@ def w_pill(cls, label, val, mx=''):
     return f'<label class="pill"><input class="in fit {cls}" type="number" min="1" {mx} step="1" value="{val}" aria-label="{label}">{PEN}</label>'
 
 def w_sentence():
-    return f"""<span class="ws1"><b>Same battery, same site, +30% more revenue.</b> Many have a nagging sense that they are leaving money on the table, fed by anecdotes of businesses realising +30% higher revenues. <a class="story-src" href="{FLOWER}" target="_blank" rel="noopener">Source: Flower case</a></span><span class="ws2">It can add up to <b class="out js-gap">EUR 55k</b> per MW per year. That's the case for a {w_pill('js-mw','Battery size in MW',10,'max="500"')} MW battery that delivered EUR {w_pill('js-rev','Revenue in thousand EUR per MW per year',185)}k per MW per year.</span>"""
+    return f"""<span class="ws1"><b>Same battery, same site, +30% more revenue.</b> Many have a nagging sense that they are leaving money on the table, fed by anecdotes of businesses realising +30% higher revenues. <a class="story-src" href="{FLOWER}" target="_blank" rel="noopener">Source: Flower case</a></span><span class="ws2">A +30% delta can add up to <b class="out js-gap">EUR 55.5k</b> per MW per year for a {w_pill('js-mw','Battery size in MW',10,'max="500"')} MW battery that delivered EUR {w_pill('js-rev','Revenue in thousand EUR per MW per year',185)}k per MW per year.</span>"""
 
 def w_hint():
     return f'<p class="hint">{PEN}Enter figures to adjust. Illustrative example.</p>'
@@ -834,7 +837,7 @@ def w_can():
 def w_head(tag='h2'):
     return '<%s class="story-h">It\'s a waste to miss out on <b class="out js-missed">EUR 555,000</b> a year.</%s>' % (tag, tag)
 
-BL1, BL2, BL3 = ('<b>Suboptimal configuration.</b> The MW/MWh installed directly affects your return on investment. The set-up can cost you from day one.', '<b>Underperforming optimizer.</b> New players with better algorithms keep entering the market. Staying with yours can carry a serious opportunity cost.', '<b>Too little monitoring.</b> Without a reference, low revenue looks like a bad month. Underperformance can go unnoticed for years.')
+BL1, BL2, BL3 = ('<b>Suboptimal configuration.</b> The MW/MWh installed directly affects your return on investment. A poor set-up can cost you from day one.', '<b>Underperforming optimizer.</b> New players with better algorithms keep entering the market. Staying with yours can carry a serious opportunity cost.', '<b>Too little monitoring.</b> Without a reference of your full potential, low revenue looks like a bad month. Underperformance can go unnoticed for years.')
 
 def why_section(v='1'):
     cs = WCAUSES
@@ -1015,8 +1018,8 @@ def talk(t, variant=None):
   <div class="wrap">
     <div class="section-head center"><h2>Get started in three easy steps</h2></div>
     <div class="expect">
-      <div><b>1</b><h3>Enter your work email.</h3><p>Enter your business email to begin. You'll be prompted to complete an application. Personal email addresses aren't accepted.</p></div>
-      <div><b>2</b><h3>Provide your details.</h3><p>We'll ask for basic information: the size of the battery (MW/MWh), dispatch constraints (import/export MW) and the name of your grid operator.</p></div>
+      <div><b>1</b><h3>Enter your work email.</h3><p>Enter your business email to begin. You'll be prompted to answer a few questions.</p></div>
+      <div><b>2</b><h3>Provide your details.</h3><p>We'll ask for basic information: the size of the battery (MW/MWh) and dispatch constraints (import/export MW).</p></div>
       <div><b>3</b><h3>Navigate your reality.</h3><p>Most businesses receive a custom report with expected revenues within 1 working day. It's the draft we start from.</p></div>
     </div>
   </div>
