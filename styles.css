@@ -1662,3 +1662,10 @@ body.nav-light.nav-fixed header.nav .nav-right .btn-outline{color:#274A51;border
 .story-txt p{margin:0 0 14px;line-height:1.6;max-width:36em}
 .sup-card img{max-width:170px !important}
 .sup-small{margin-top:14px;padding:18px 24px}.sup-small b{font-size:16px}
+/* v67 type scale aligned with Canva (H1 ~64px, section H2 ~46px, body 18px, buttons/nav 16px) */
+:root{--body:18px}
+.hero h1,.page-hero h1{font-size:clamp(36px,4.4vw,64px) !important;line-height:1.08}
+h2, .cta-band h2, .section-head h2, .props-sec .section-head h2, .wy-head h2, .story-h, .about-card h2{font-size:clamp(28px,3.2vw,46px) !important;line-height:1.12}
+.eyebrow{font-size:16px !important}
+.btn{font-size:16px !important}
+.nav-links a,.nav-signin{font-size:16px !important}

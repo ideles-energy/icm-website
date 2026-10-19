@@ -465,7 +465,7 @@ def company(t):
     rows = '\n'.join(f'''      <details class="co-role" name="roles"><summary><b>{r}</b><em>{c}</em><i class="co-pm" aria-hidden="true"></i></summary><div class="co-body"><div><p>{m}</p><a class="btn btn-dark" href="mailto:ideles@icm.energy?subject=Application%3A%20{r.replace(" ", "%20")}">Apply</a></div><div><h4>What you will do</h4><ul>{li(do)}</ul></div><div><h4>Who you are</h4><ul>{li(you)}</ul></div></div></details>''' for r, c, m, do, you in ROLES)
 
     hero = '''    <div class="page-hero" id="main">
-      <h1>Our story</h1>
+      <h1>About The Independent Capacity Market</h1>
       <img class="co-img" src="/assets/img/company-grid.jpg" alt="High-voltage substation against the evening sky" width="1920" height="1080">
     </div>'''
     body = f'''<section class="dark co-who">
