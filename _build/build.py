@@ -217,7 +217,7 @@ def _v(f):
     return hashlib.md5(open(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), f),'rb').read()).hexdigest()[:8]
 V_CSS, V_JS = _v('styles.css'), _v('main.js')
 
-SOLUTIONS = [('BESS Configurator', 'Size and value the right system', '/solutions/#configurator'),
+SOLUTIONS = [('BESS Calculator', 'Size and value the right system', '/solutions/#configurator'),
              ('BESS Broker', 'Find a trusted optimizer', '/solutions/#broker'),
              ('BESS Backtest', 'Measure what a battery captures', '/solutions/#backtest')]
 TALK = '/talk-to-us/'
@@ -434,7 +434,7 @@ ROLES = [
   ('Commercial Lead', 'Amsterdam',
    'Sell our solutions to BESS owners and the installers who work with them. You own the pipeline, from first call to signed contract and beyond.',
    ['Be the connector: build lasting relationships with the installers and developers who bring us BESS owners (3–30 MW)',
-    'Run discovery calls and present Configurator, Backtest and Broker results',
+    'Run discovery calls and present Calculator, Backtest and Broker results',
     'Guide clients from first call through onboarding, and make sure they get lasting value',
     'Turn successfully served clients into case examples'],
    ['3–6 years in B2B consultative sales (SaaS, energy or finance)',
@@ -510,7 +510,7 @@ def icon_svg(k):
     return f'<svg viewBox="0 0 24 24" fill="none" stroke="#97F2F5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">{ICONS[k]}</svg>'
 
 PROPS = [
-  ('configurator', 'BESS Configurator', '/solutions/#configurator', 'Find the optimal system for your context.',
+  ('configurator', 'BESS Calculator', '/solutions/#configurator', 'Find the optimal system for your context.',
    'We simulate the revenues of different MW/MWh configurations within your site\'s dispatch constraints and show which one delivers the highest returns.'),
   ('broker', 'BESS Broker', '/solutions/#broker', 'Outsource the search for a trusted optimizer.',
    'We run a standardised process to source, compare and contract optimizers, and oversee the switch so your battery keeps earning without interruption.'),
@@ -525,7 +525,7 @@ NEWFAQS = [
 ('What is the BESS Backtest?', 'The BESS Backtest compares what your battery earned with the most it could have earned on your site. The result is a capture rate: the share of the full potential that was realised. It shows whether a battery earns what it should, and what holds it back.'),
 ('What data do I need to provide?', 'The optimizer report, quarter-hour meter data, data from the energy management system for downtime, and the documents on your grid connection and optimizer mandate. We guide you through the list, and your installer or metering service provider can often deliver most of it.'),
 ('Who orders a BESS Backtest, me or my installer?', 'Installers can include a BESS Backtest at delivery, so every customer gets an independent view of what the battery earns. Owners can also order one directly. Talk to us about how this works for you.'),
-('How can my installer work with the ICM?', 'Installers can use the ICM in three ways: size a system with the BESS Configurator before the sale, include a BESS Backtest at delivery so every customer gets an independent view of what the battery earns, and refer owners who want a better optimizer to the BESS Broker. Talk to us to see what fits your way of working.'),
+('How can my installer work with the ICM?', 'Installers can use the ICM in three ways: size a system with the BESS Calculator before the sale, include a BESS Backtest at delivery so every customer gets an independent view of what the battery earns, and refer owners who want a better optimizer to the BESS Broker. Talk to us to see what fits your way of working.'),
 ('What if my battery earns less than it could?', 'You decide what happens next. If the result objectively falls short, the BESS Broker can help you request and compare quotes from other optimizers, test what they would have earned, and guide the switch.'),
 ]
 
@@ -536,8 +536,8 @@ SOL_FAQS = [
  ('What if my battery earns less than it could?', 'You decide what happens next. If the result objectively falls short, the BESS Broker can help you compare optimizers, test what they would have earned and guide the switch.'),
  ('Is the ICM really independent?', 'Yes. We do not own BESS assets. We are not an optimizer. Nor will we ever be.'),
  ('What do I need to get approved?', 'Your work email and a few project details. After approval we ask for read access to your optimizer, or three months of settlements, plus an authorisation to read your meter data from your metering company.'),
- ('When does it make sense to start with the ICM?', 'Before you build, to size the right system with the BESS Configurator. After your battery is running, to see whether it earns what it should with the BESS Backtest. And whenever the numbers say there is more to earn, to find a better optimizer with the BESS Broker.'),
- ('How do installers work with the ICM?', 'Installers can size a system with the BESS Configurator before the sale, include a BESS Backtest at delivery so every customer gets an independent view of what the battery earns, and refer owners who want a better optimizer to the BESS Broker.'),
+ ('When does it make sense to start with the ICM?', 'Before you build, to size the right system with the BESS Calculator. After your battery is running, to see whether it earns what it should with the BESS Backtest. And whenever the numbers say there is more to earn, to find a better optimizer with the BESS Broker.'),
+ ('How do installers work with the ICM?', 'Installers can size a system with the BESS Calculator before the sale, include a BESS Backtest at delivery so every customer gets an independent view of what the battery earns, and refer owners who want a better optimizer to the BESS Broker.'),
 ]
 
 def faq_block(items, title=None):
@@ -910,7 +910,7 @@ def solutions(t):
 {GS_STEPS}
 {GS_SECURE}
 {faq_block(NEWFAQS, 'Frequently asked questions')}"""
-    return page_shell(t, '/solutions/', 'Solutions: BESS Configurator, BESS Backtest and BESS Broker | The ICM',
+    return page_shell(t, '/solutions/', 'Solutions: BESS Calculator, BESS Backtest and BESS Broker | The ICM',
         'How the ICM helps BESS owners: size the right battery system, backtest its performance against its full potential and find a trusted optimizer.', hero, body)
 
 def prop_page(t, k, path, name, title, desc, lead, what, steps, who, extra_top='', faq=None):
@@ -940,8 +940,8 @@ def prop_page(t, k, path, name, title, desc, lead, what, steps, who, extra_top='
     return page_shell(t, path, title, desc, hero, body)
 
 def configurator_page(t):
-    return prop_page(t, 'configurator', '/solutions/#configurator', 'BESS Configurator',
-      'BESS Configurator: size a battery and value the business case | The ICM',
+    return prop_page(t, 'configurator', '/solutions/#configurator', 'BESS Calculator',
+      'BESS Calculator: size a battery and value the business case | The ICM',
       'Find the optimal battery storage system for your site: size power and capacity, simulate revenue streams and degradation, and see payback and return.',
       ('Find the optimal system for your context', 'A BESS configurator and calculator that sizes the battery for your site and shows whether the investment is technically and financially feasible.'),
       ['Size: how many MW of power and MWh of storage fit your site, your load and your PV or wind profile.',
@@ -971,7 +971,7 @@ def w_dots(rows=10, legend=True):
     cap = f'<figcaption class="why-legend">{WLEG}</figcaption>' if legend else ''
     return f"""<figure class="why-fig" aria-hidden="true"><svg class="js-dots" data-rows="{rows}" role="presentation"></svg>{cap}</figure>"""
 
-WCAUSES = [('The wrong configuration', 'The battery is not sized or set up for what your site allows.', '/solutions/#configurator', 'BESS Configurator'),
+WCAUSES = [('The wrong configuration', 'The battery is not sized or set up for what your site allows.', '/solutions/#configurator', 'BESS Calculator'),
            ('The wrong optimizer', 'Another optimizer would earn more with the same battery.', '/solutions/#broker', 'BESS Broker'),
            ('Too little monitoring', 'Underperformance goes unnoticed, so it carries on.', '/solutions/#backtest', 'BESS Backtest')]
 
@@ -1030,7 +1030,7 @@ def why_section(v='1'):
     </div>"""
     elif v in ('10', '11', '12'):
         lk = lambda h, n: f'<a class="story-link" href="{h}">{n}</a>'
-        leaks = (f'Revenue leaks in three places. <b>The wrong configuration:</b> the battery is not sized or set up for what your site allows ({lk("/solutions/#configurator", "BESS Configurator")}). '
+        leaks = (f'Revenue leaks in three places. <b>The wrong configuration:</b> the battery is not sized or set up for what your site allows ({lk("/solutions/#configurator", "BESS Calculator")}). '
                  f'<b>The wrong optimizer:</b> another optimizer would earn more with the same battery ({lk("/solutions/#broker", "BESS Broker")}). '
                  f'<b>Too little monitoring:</b> underperformance goes unnoticed, so it carries on ({lk("/solutions/#backtest", "BESS Backtest")}).')
         check = f"""<p class="wy-k">What is missing</p><p class="story-p story">{w_sentence()}</p>{w_hint()}"""
