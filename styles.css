@@ -2361,3 +2361,12 @@ body{line-height:1.6}
 .f-sep{margin:0 8px;color:#7E9599}
 .f-li{display:inline-flex;align-items:center;gap:5px}
 .f-li svg{flex:none}
+/* v95 footer LinkedIn icon only; Solutions hero image fades into the dark like the LinkedIn cover */
+.f-li{margin-left:12px;vertical-align:-3px;opacity:.75;transition:opacity .2s}
+.f-li:hover{opacity:1}
+.sol-hero2 .sh-r img{border-radius:0 !important;box-shadow:none !important;height:460px;opacity:.75;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 45%),linear-gradient(180deg,transparent 0%,#000 22%,#000 78%,transparent 100%);
+  -webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent 0%,#000 45%),linear-gradient(180deg,transparent 0%,#000 22%,#000 78%,transparent 100%);mask-composite:intersect}
+
+@media (max-width:860px){.sol-hero2 .sh-r img{height:240px;-webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 25%,#000 75%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0%,#000 25%,#000 75%,transparent 100%)}}
+@media (min-width:861px){.hero-shell{overflow-x:clip}.sol-hero2 .sh-r{margin-right:calc((100vw - 100%) / -2)}}

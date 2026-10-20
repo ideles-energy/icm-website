@@ -259,7 +259,7 @@ def footer(t, other_href):
       <a href="/resources/">Resources</a>
       <a href="{TALK}">Talk to us</a>
     </nav>
-    <div class="f-mail"><p><a href="mailto:info@icm.energy">info@icm.energy</a><span class="f-sep" aria-hidden="true">·</span><a class="f-li" href="https://www.linkedin.com/company/112941912/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true" width="14" height="14"><path fill="currentColor" d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C20.6 8.65 21 11.2 21 14.5V21h-4v-5.8c0-1.4 0-3.2-1.95-3.2S12.8 13.5 12.8 15.1V21H9z"/></svg>LinkedIn</a></p><p class="f-copy">© 2026 Independent Capacity Market B.V.<span class="f-kvk">KvK 99958775</span></p></div>
+    <div class="f-mail"><p><a href="mailto:info@icm.energy">info@icm.energy</a><a class="f-li" href="https://www.linkedin.com/company/112941912/" target="_blank" rel="noopener" aria-label="The ICM on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true" width="16" height="16"><path fill="currentColor" d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C20.6 8.65 21 11.2 21 14.5V21h-4v-5.8c0-1.4 0-3.2-1.95-3.2S12.8 13.5 12.8 15.1V21H9z"/></svg></a></p><p class="f-copy">© 2026 Independent Capacity Market B.V.<span class="f-kvk">KvK 99958775</span></p></div>
     <div class="f-legal">
       <p>Website designed by <a href="https://www.saltandchalk.co.uk" target="_blank" rel="noopener">Salt &amp; Chalk</a></p>
       <p><a href="{b}terms/">{t['terms']}</a> | <a href="{b}privacy/">{t['privacy']}</a> | <a href="{b}cookies/">{t['cookie']}</a></p>
@@ -1280,8 +1280,6 @@ def notfound(t):
     hero = f"""    <div class="page-hero nf-hero" id="main">
       <h1>This page could not be found</h1>
       <p>The link may be out of date, or the page has moved. Everything else is still here.</p>
-      <div class="hero-ctas"><a class="btn btn-lilac" href="/">Go to the homepage</a><a class="btn btn-outline" href="/talk-to-us/">Talk to us</a></div>
-      <ul class="nf-links"><li><a href="/solutions/">Solutions</a></li><li><a href="/resources/">Resources</a></li><li><a href="/company/">Company</a></li></ul>
     </div>"""
     html = page_shell(t, '/404.html', 'Page not found | The ICM', 'This page could not be found.', hero, '')
     return html.replace('<head>', '<head>\n<meta name="robots" content="noindex"><style>body{background:#040D1F !important}</style>', 1)
