@@ -1714,3 +1714,39 @@ body{line-height:1.6}
 .co-story .eyebrow,.sol-light .eyebrow,.faq-sec .eyebrow,.co-careers .eyebrow,.res .eyebrow{color:#526E74 !important}
 .co-label{font-size:16px !important;font-weight:600 !important;letter-spacing:.14em !important;text-transform:uppercase;color:#A9B9BC !important}
 .co-label.dark-t{color:#526E74 !important}
+
+/* v72 Handbook: light home middle (Platinum / white / Platinum) between dark hero and dark CTA band */
+.why-light{background:#F2F8F9;color:#040D1F}
+.why-light .why-eyebrow{color:#526E74 !important}
+.why-light .wy-panel{background:#040D1F;color:#F2F8F9;border-radius:28px;padding:clamp(28px,4vw,56px);margin:0 0 32px}
+.why-light .wy-panel .story-h{color:#F2F8F9}
+.why-light .wy-panel .wy-dotsrow{margin:24px 0 0 !important}
+.why-light .wy-v13 .wy-cards > div,.why-light .wy-v13 .wy-cards > div + div{background:#FFFFFF;border:1px solid #D5E1E3;color:#040D1F}
+.why-light .wy-cards .wy-k{color:#526E74 !important}
+.why-light .wy-cards p,.why-light .wy-cards li,.why-light .wy-cards b,.why-light .wy-cards .story-p{color:#040D1F !important}
+.why-light .wy-cards .out,.why-light .wy-cards .js-gap{color:#274A51 !important}
+.why-light .wy-cards .story-src{color:#526E74 !important}
+.why-light .wy-cards .pill{background:#FFFFFF;border-color:rgba(39,74,81,.45)}
+.why-light .wy-cards .pill input{color:#040D1F}
+.why-light .wy-cards .pill svg{stroke:#274A51;color:#274A51}
+.why-light .wy-bul li::marker{color:#274A51}
+.props-light{background:#FFFFFF;color:#040D1F}
+.props-light .section-head .eyebrow,.props-light .why-eyebrow{color:#526E74 !important}
+.props-light .section-head h2{color:#040D1F !important}
+.props-light .prop{background:#F2F8F9 !important;border:1px solid #D5E1E3 !important;color:#040D1F}
+.props-light .prop.featured{border:2px solid #D392EB !important}
+.props-light .prop h3,.props-light .prop h2{color:#040D1F !important}
+.props-light .prop p,.props-light .prop .prop-lead{color:#040D1F !important}
+.props-light .prop .prop-link{color:#274A51 !important}
+.props-light .prop-icon,.props-light .prop .p-icon{background:#274A51 !important;border-color:#274A51 !important}
+.about-light{background:#F2F8F9;color:#040D1F}
+.about-light .about-card{background:#FFFFFF !important;border:1px solid #D5E1E3 !important}
+.about-light .about-card .eyebrow{color:#526E74 !important}
+.about-light .about-card h2{color:#274A51 !important}
+.about-light .about-card p{color:#040D1F !important}
+.about-light .btn-outline{color:#040D1F !important;border-color:#040D1F !important}
+/* v72 Solutions tiles: all Dark Slate Grey with cyan icon */
+.sol-flat-configurator,.sol-flat-broker,.sol-flat-backtest{background:#274A51 !important}
+.sol-flat-configurator svg,.sol-flat-broker svg,.sol-flat-backtest svg{stroke:#97F2F5 !important}
+.props-light .sol-icon{background:#274A51 !important;border-color:#274A51 !important;opacity:1 !important}
+.props-light .sol-icon svg{stroke:#97F2F5 !important;color:#97F2F5 !important;opacity:1 !important}
