@@ -364,7 +364,7 @@ def nl_report_chart():
     return f'<svg viewBox="0 0 {W} {H}" role="img" aria-label="Illustrative chart: median revenue per MW per year of Dutch batteries, January to September 2026, with the range of the middle half of assets">{grid}<polygon points="{band}" class="nlr-band"/><polyline points="{line}" class="nlr-line"/>{xl}{pts}</svg>'
 
 # Resources extras (BESS Calculator, NL BESS Revenue Report): built, hidden until launch. Set True to show.
-RES_EXTRAS = os.environ.get('ICM_PREVIEW') == '1'  # shown only in the Claude preview until launch
+RES_EXTRAS = True  # BESS Calculator and the capture-rate film are live (launched 20 Oct 2026)
 COMPANY_STORY = True  # Our story + Supported by: live
 NL_REPORT = False  # NL BESS Revenue Report signup: parked (built, not shown anywhere)
 FILLOUT_JS = '\n<script src="https://server.fillout.com/embed/v1/" defer></script>'
@@ -380,7 +380,7 @@ def resources(t):
       <div class="res-sec">
         <div class="res-card res-thumb calc-card">
           <button type="button" class="calc-shot-btn js-gate-open" data-gate="calc" aria-label="Open the BESS Calculator"><img src="/assets/img/calculator-preview.jpg" alt="BESS Calculator: full potential and expected revenues per month (fictional example)" width="1440" height="900" loading="lazy"></button>
-          <div><span>BESS Calculator</span><small>Subject to change, methodology to be refined.</small></div>
+          <div><span>BESS Calculator</span><small>Subject to change, methodology to be refined. Project data are never shown to other parties.</small></div>
           <button type="button" class="btn btn-dark js-gate-open" data-gate="calc">Open</button>
         </div>
       </div>

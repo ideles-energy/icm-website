@@ -621,7 +621,7 @@ const MONTHS=['January','February','March','April','May','June','July','August',
 const MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 const DOW=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
 const eur=v=>(v<0?'−':'')+'EUR '+Math.round(Math.abs(v)).toLocaleString('en-GB');
-const k=v=>(v<0?'−':'')+Math.round(Math.abs(v)).toLocaleString('en-GB');
+const k=v=>(Math.round(v)<0?'−':'')+Math.round(Math.abs(v)).toLocaleString('en-GB');
 const kfmt=v=>{const a=Math.abs(v);return (v<0?'−':'')+(a>=1000?(Math.round(a/100)/10).toLocaleString('en-GB')+'k':Math.round(a).toLocaleString('en-GB'))};
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const fmtDate=d=>{const x=new Date(d);return x.getUTCDate()+' '+MONTHS[x.getUTCMonth()]+' '+x.getUTCFullYear()};
@@ -664,7 +664,7 @@ const BOX_URL='https://app.box.com/s/c6xq70fgoj802a2kvgo0qba2g5gomcxk';
 const DOCS=[
  {k:'ato',en:'Connection and transport agreement',gain:'confirms import and export capacity and the connection category.',name:'Aansluit- en transportovereenkomst (ATO)',who:'System operator',freq:'once'},
  {k:'warranty',gain:'confirms cycles and the State of Charge window.',name:'Battery warranty terms',who:'Manufacturer or installer',freq:'once'},
- {k:'sde',en:'SDE++ subsidy decision',gain:'decides when solar may be curtailed.',name:'SDE++ beschikking',who:'RVO',freq:'once'},
+ {k:'sde',en:'SDE++ subsidy decision',gain:'determines when solar output may be curtailed.',name:'SDE++ beschikking',who:'RVO',freq:'once'},
  {k:'eb',en:'Energy-tax declaration for storage',gain:'energy tax on charging can drop to zero.',name:'Verklaring energiebelasting: energieopslag',who:'{client}, to the supplier',freq:'once'},
  {k:'transport',gain:'confirms the grid tariffs per month.',name:'Invoice for connection and transport',who:'System operator',freq:'monthly'},
  {k:'energy',gain:'confirms the energy-tax bracket.',name:'Energy invoice',who:'Supplier',freq:'monthly'},
@@ -692,7 +692,7 @@ for(const [id,p] of Object.entries(PROJECTS)){
 }
 const save=()=>{const s=S[cur];store.set('bcalc9.'+cur,{published:s.published,draft:s.draft,res:s.res,events:s.events,status:s.status,pubAt:s.pubAt,docs:s.docs,verifyReq:s.verifyReq});};
 const clientName=()=>(S[cur].draft.client||'').trim();
-const CL=t=>t.replace(/\{client\}/g,clientName()||'the asset owner').replace(/\.\./g,'.');
+const CL=t=>t.replace(/\{client\}/g,clientName()||'the asset owner').replace(/\.\./g,'.').replace(/^the /,'The ');
 const owner=()=>esc(clientName()||'the asset owner');const ownerDot=()=>{const n=owner();return /\.$/.test(n)?n:n+'.'};
 
 let selAsset='b1';
@@ -786,8 +786,8 @@ function renderHero(skel){
  const sk=skel?' skel':'',NA='<b class="na">Not yet available</b>';
  const BAR='<div class="crbar"><div class="z1"></div><div class="z2"></div><i class="m80"></i><i class="m100"></i><span style="left:0">0%</span><span style="left:60%">60%</span><span style="left:80%">80%</span><span style="left:100%">100%</span></div>';
  $('#hero').innerHTML=
-  '<div class="kt"><div class="kth">'+(VARIANT.expTitle||'Expected revenues')+I('80% of the full potential of '+eur(T.total)+'. The full potential is what a trader with perfect foresight could reasonably have earned. See the Methodology to learn more.')+'</div><div class="ktv exp'+sk+'">'+eur(T.exp)+'</div><div class="kts">Derived from 2026 market prices and the inputs entered for this project. <a href="#improve" id="toImp">See the data that would improve the accuracy</a>.</div><div class="kts'+sk+'">Expected revenues translate to '+Math.round(perMW/1000)+'k EUR/MW/yr, annualised from '+span+', and are gross figures.</div></div>'
- +(baseOf(s)?(()=>{const [wa,wb]=win();let b=0;for(const [dt,v] of Object.entries(baseOf(s))){const t=Date.parse(dt+'T00:00:00Z');if(t>=wa&&t<wb)b+=v}const tot=b+T.exp,up=b>0?Math.round(T.exp/b*100):0;const pc=v=>(tot>0?v/tot*100:0).toFixed(1)+'%';const bar=(l,v,cls,off,txt)=>'<div class="cbr"><div class="cbl"><b>'+l+'</b><span>'+(txt||eur(v))+'</span></div><div class="cbt"><i class="'+cls+'" style="margin-left:'+pc(off||0)+';width:'+pc(v)+'"></i></div></div>';return '<div class="kt big"><div class="kth">'+(VARIANT.cmpTitle||'Solar park with and without the battery')+I('Solar park alone: day-ahead value of the solar output, curtailed at negative prices and where the connection cannot export it. With the battery: the same plus the expected revenues the battery adds.')+'</div>'+bar(VARIANT.lblBase||'Solar park alone',b,'a')+bar((VARIANT.lblAdd||'Added by the battery').replace('{bat}',batLbl(s.published)),T.exp,'d',b,'+'+eur(T.exp)+(b>0?' (+'+up+'%)':''))+bar(VARIANT.lblTot||'With the battery',tot,'b')+'</div>'})():f1bTile(T,s));
+  '<div class="kt"><div class="kth">'+(VARIANT.expTitle||'Expected revenues from the battery')+', '+(()=>{const [a0,b0]=win();return a0<=PERIOD.a&&b0>=LAST?'2026 YTD':(!zoom&&range!=='all')?'last 6 months':winTxt()})()+I('80% of the full potential of '+eur(T.total)+'. The full potential is what a trader with perfect foresight could reasonably have earned. See the Methodology to learn more.')+'</div><div class="ktv exp'+sk+'">'+eur(T.exp)+'</div><div class="kts">Derived from 2026 market prices and the inputs entered for this project. <a href="#improve" id="toImp">See the data that would improve the accuracy</a>.</div><div class="kts'+sk+'">Expected revenues translate to '+Math.round(perMW/1000)+'k EUR/MW/yr, annualised from '+span+', and are gross figures.</div></div>'
+ +(baseOf(s)?(()=>{const [wa,wb]=win();let b=0;for(const [dt,v] of Object.entries(baseOf(s))){const t=Date.parse(dt+'T00:00:00Z');if(t>=wa&&t<wb)b+=v}const tot=b+T.exp,up=b>0?Math.round(T.exp/b*100):0;const pc=v=>(tot>0?v/tot*100:0).toFixed(1)+'%';const bar=(l,v,cls,off,txt)=>'<div class="cbr"><div class="cbl"><b>'+l+'</b><span>'+(txt||eur(v))+'</span></div><div class="cbt"><i class="'+cls+'" style="margin-left:'+pc(off||0)+';width:'+pc(v)+'"></i></div></div>';return '<div class="kt big"><div class="kth">'+(VARIANT.cmpTitle||'Solar park with and without the battery')+I('Solar park only: the day-ahead value of the solar output, curtailed at negative prices and where the connection cannot export it. Total revenues: the same plus the expected revenues the battery adds.')+'</div>'+bar(VARIANT.lblBase||'Solar park alone',b,'a')+bar((VARIANT.lblAdd||'Added by the battery').replace('{bat}',batLbl(s.published)),T.exp,'d',b,'+'+eur(T.exp)+(b>0?' (+'+up+'%)':''))+bar(VARIANT.lblTot||'With the battery',tot,'b')+'</div>'})():f1bTile(T,s));
  wireCum();document.querySelectorAll('.addopt').forEach(a=>{a.href='#improve';a.removeAttribute('target');a.onclick=e=>{e.preventDefault();gotoData(['optres'])}});
  $('#basisNote').hidden=true;
 }
@@ -942,7 +942,7 @@ function renderImprove(){
  const all=[...meas.map(m=>m.st),...docs.filter(d=>d.st!=='na').map(d=>d.st),optSt];const nOn=all.filter(x=>x==='on').length,nP=all.filter(x=>x==='p').length;
  const nextT=[...meas,...docs].find(t=>t.st===''&&t.st!=='na');$('#impSub').textContent=nOn+' of '+all.length+' verified'+(nextT?' · start with '+nextT.name.replace(/^EMS/,'EMS').replace(/^Meter data/,'meter data'):'');
  $('#impBar').innerHTML=all.slice().sort((a,b)=>(b==='on')-(a==='on')||(b==='p')-(a==='p')).map(x=>'<i class="'+x+'"></i>').join('');
- $('#impIntro').innerHTML='Expected revenues are derived from 2026 market prices and the inputs entered for this project. The data below replace assumptions and improve the accuracy of the estimated expected revenues. All data are shared only with the ICM. Project data are never shown to other parties.';
+ $('#impIntro').innerHTML='Expected revenues are derived from 2026 market prices and the inputs entered for this project. The data below replace assumptions and improve the accuracy of the expected revenues. All data are shared only with the ICM. Project data are never shown to other parties.';
  const GI='<i class="gi" title="What it improves"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M1 8 L4 5 L6 7 L9 2 M6 2 H9 V5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></i>';
  const tile=(t,fold)=>(fold?'<details class="item '+(t.st==='na'?'':t.st)+'"'+(t.k?' data-k="'+t.k+'"':'')+(impOpen.has(t.k)?' open':'')+'><summary class="t">':'<div class="item '+(t.st==='na'?'':t.st)+'"'+(t.k?' data-k="'+t.k+'"':'')+'><div class="t">')+'<span>'+esc(t.name)+(t.tip?I(t.tip):'')+'</span><span class="badge'+(t.st==='on'?' l3':t.st==='p'?' l2':'')+'">'+(t.st==='na'?'Not applicable':STXT[t.st])+'</span>'+(fold?'</summary><div class="ib">':'</div>')+'<div class="d">'+esc(t.d)+'</div>'+(t.gain?'<div class="gain">'+GI+esc(t.gain[0].toUpperCase()+t.gain.slice(1))+'</div>':'')+(t.note?'<div class="d">'+esc(t.note)+'</div>':'')+(t.act||'')+(fold?'</div></details>':'</div>');
  const cnt=a=>a.filter(x=>x.st==='on').length+' of '+a.filter(x=>x.st!=='na').length;
@@ -962,15 +962,15 @@ function renderImprove(){
  $('#impCols').querySelectorAll('[data-more]').forEach(b=>b.onclick=()=>{const id=b.dataset.more;impOpen.has(id)?impOpen.delete(id):impOpen.add(id);renderImprove()});
 }
 function renderEvents(){
- const s=S[cur];const as=$('#actSub');if(as){const l=s.events[s.events.length-1];as.textContent=l?'· '+s.events.length+' events · last: '+l.type+', '+fmtDate(l.t.slice(0,10)):''}const TIP={Published:'{client} published changed inputs; the estimate was recalculated.',Verified:'An ICM expert checked the inputs against documents and data.',Revised:'The outcomes changed after a correction of data or a methodological review. Earlier figures remain available.'};
+ const s=S[cur];const as=$('#actSub');if(as){const l=s.events[s.events.length-1];as.textContent=l?'· '+s.events.length+(s.events.length===1?' event':' events')+' · last: '+l.type+', '+fmtDate(l.t.slice(0,10)):''}const TIP={Published:'{client} published changed inputs; the estimate was recalculated.',Verified:'An ICM expert checked the inputs against documents and data.',Revised:'The outcomes changed after a correction of data or a methodological review. Earlier figures remain available.'};
  $('#events').innerHTML=s.events.slice().reverse().map(e=>'<div class="ev"><div><b>'+e.type+'</b>'+I(TIP[e.type])+'<div class="muted small">'+fmtStamp(e.t)+'</div></div><div>'+esc(CL(e.txt))+'</div></div>').join('');
 }
 
 /* ---------- inputs panel ---------- */
-const BFIELDS=[['P','Power','MW','As on the datasheet.'],['E','Capacity','MWh','Usable energy, as on the datasheet.'],['socMin','Minimum State of Charge','%','Including any back-up reserve.'],['socMax','Maximum State of Charge','%',''],['rte','Estimated round-trip efficiency','%','Including conversion losses; 88% is typical.'],['cyc','Max cycles per day','','Under the warranty; 548 a year is 1.5 a day.'],['pqFcr','Prequalified for FCR','MW','Empty means the full power.'],['pqAfrr','Prequalified for a/mFRR','MW','Empty means the full power.']];
+const BFIELDS=[['P','Power','MW','As on the datasheet.'],['E','Capacity','MWh','Usable energy, as on the datasheet.'],['socMin','Minimum State of Charge','%','Including any back-up reserve.'],['socMax','Maximum State of Charge','%',''],['rte','Estimated round-trip efficiency','%','Including conversion losses; 88% is typical.'],['cyc','Max cycles per day','','Under the warranty; 548 cycles a year equals 1.5 a day.'],['pqFcr','Prequalified for FCR','MW','Empty means the full power.'],['pqAfrr','Prequalified for a/mFRR','MW','Empty means the full power.']];
 const SFIELDS=[['mwp','Capacity','MWp',''],['azimuth','Orientation','°','Used in the calculation from the next version.'],['tilt','Tilt','°','Used in the calculation from the next version.']];
 const CFIELDS=[['minKW','Minimum','kW','At night and at weekends.'],['maxKW','Maximum','kW','On weekdays from 08:00 to 17:00.']];
-const ABOUT={battery:'Without EMS data, expected revenues assume the battery had no downtime and started on its commissioning date (1 January 2026 unless entered under Technical settings) halfway between its minimum and maximum State of Charge (50% with the pre-filled settings).',solar:'Without the address and the meter data of the solar panels, expected revenues assume a standard irradiance profile for the central Netherlands.',consumption:'Consumption covers any electricity use on site, such as a factory. Without consumption meter data, expected revenues assume a standard profile: the maximum on weekdays from 08:00 to 17:00 and the minimum at all other times.',connection:'Without the underlying contracts, expected revenues assume standard grid fees, full availability of the GTV and no CSC or CBC revenues.'};
+const ABOUT={battery:'Without EMS data, expected revenues assume the battery had no downtime and started operating on its commissioning date (1 January 2026 unless entered under Technical settings), at a State of Charge halfway between its minimum and maximum (50% with the pre-filled settings).',solar:'Without the address and the meter data of the solar panels, expected revenues assume a standard irradiance profile for the central Netherlands.',consumption:'Consumption covers any electricity use on site, such as a factory. Without consumption meter data, expected revenues assume a standard profile: the maximum on weekdays from 08:00 to 17:00 and the minimum at all other times.',connection:'Without the underlying contracts, expected revenues assume standard grid fees, full availability of the GTV and no CSC or CBC revenues.'};
 const CORE=['P','E','mwp','minKW','maxKW','gi','ge'];const DEF={socMin:5,socMax:95,rte:88,cyc:1.5,pqFcr:'',pqAfrr:'',azimuth:180,tilt:15,brand:''};
 const VERBY={socMin:['ems','warranty'],socMax:['ems','warranty'],rte:['ems'],cyc:['warranty'],gi:['ato'],ge:['ato']};
 function srcOf(path,val){const s=S[cur];if(!s)return '';const [a,f]=path.split('.');const key=f||a;if(key==='name')return '';
@@ -1107,7 +1107,7 @@ async function drawCard(){const c=$('#card'),x=c.getContext('2d');const s=S[cur]
 }
 function wrapText(x,t,X,Y,w,lh){const ws=String(t).split(' ');let line='';for(const word of ws){const tst=line?line+' '+word:word;if(x.measureText(tst).width>w&&line){x.fillText(line,X,Y);line=word;Y+=lh}else line=tst}x.fillText(line,X,Y);return Y}
 function caption(){const s=S[cur],T=totals(s.res),ver=s.status==='ver';
- return (VARIANT.capHead||'In 2026, my battery could have earned ')+eur(T.exp)+' ('+PERIOD_TXT+'): '+summaryText(s.published).replace(/^./,c=>c.toLowerCase()).replace(/\.$/,'')+'. '+(ver?'Verified':'Preliminary')+' estimate by the Independent Capacity Market (ICM), subject to change. Calculate the revenues of a battery at icm.energy'}
+ return (VARIANT.capHead||'In 2026, my battery could have earned ')+eur(T.exp)+' ('+PERIOD_TXT+'): '+summaryText(s.published).replace(/^./,c=>c.toLowerCase()).replace(/\.$/,'')+'. '+(ver?'Verified':'Preliminary')+' estimate by the Independent Capacity Market (ICM), subject to change. Calculate the revenues of a battery at icm.energy.'}
 function openShare(){$('#shareModal').hidden=false;$('#shText').value=caption();drawCard();$('#shSave').focus()}
 function closeShare(){$('#shareModal').hidden=true}
 $('#btnShare').onclick=openShare;$('#shClose').onclick=closeShare;
@@ -1152,7 +1152,7 @@ window._ready=true;render();
   <div class="frbox">
     <button class="link small" type="button" id="frBack">← Back to the calculator</button>
     <h1 id="frH">Request a feature</h1>
-    <p class="muted">For example several connections, inverters, or other assets such as wind, CHP, an e-boiler, heat pumps or EV chargers.</p>
+    <p class="muted">For example, several connections or inverters, or other assets such as wind, CHP, an e-boiler, heat pumps or EV chargers.</p>
     <textarea id="frText" rows="6" aria-label="Feature request" placeholder="Describe the feature"></textarea>
     <div><a class="btn dark" id="frSend" href="mailto:ideles@icm.energy?subject=Feature%20request%20BESS%20Calculator">Send request</a></div>
   </div>
