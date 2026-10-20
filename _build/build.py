@@ -663,7 +663,7 @@ def sol_card(k, n, href, lead, body, extra):
           <p class="sol-lead">{lead}</p>
           <p>{body}</p>
           <p>{extra}</p>
-          <div class="cta-row" style="justify-content:flex-start;margin-top:22px">{'<button type="button" class="btn btn-lilac js-gate-open" data-gate="demo">See an example report</button>' if k == 'backtest' else '<a class="btn btn-dark" href="' + TALK + '?topic=' + k + '">Talk to an expert</a>'}</div>
+          <div class="cta-row" style="justify-content:flex-start;margin-top:22px">{'<button type="button" class="btn btn-lilac js-gate-open" data-gate="demo">See an example report</button>' if k == 'backtest' else '<a class="btn btn-dark" href="' + TALK + '?topic=' + k + '">Learn more</a>'}</div>
         </div>
       </article>"""
 
@@ -718,6 +718,77 @@ GS_ICONS = {
   'key': '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="16" r="12"/><path d="m10.5 16.5 4 4 7-8"/></svg>',
 }
 
+
+CR_H = '<h2>The best capture rate, at all times.</h2>'
+CR_P = '<p class="cr-p">The ICM proactively monitors your performance and switches optimizers when there is more to earn. Together, we secure the true value of your battery.</p>'
+
+def _cr_line():
+    pts = [88, 87, 85, 82, 78, 75, 86, 90, 92, 93, 93, 94]
+    X = lambda i: 70 + i * 78
+    Y = lambda v: 290 - (v - 60) * 6.5
+    path = ' '.join(('M' if i == 0 else 'L') + f'{X(i)},{Y(v):.0f}' for i, v in enumerate(pts))
+    dots = ''.join(f'<circle cx="{X(i)}" cy="{Y(v):.0f}" r="5" class="{"cr-dot-low" if v < 80 else "cr-dot"}"/>' for i, v in enumerate(pts))
+    months = ''.join(f'<text x="{X(i)}" y="318" class="cr-ax" text-anchor="middle">{m}</text>' for i, m in enumerate('JFMAMJJASOND'))
+    return f"""<svg viewBox="0 0 1000 330" class="cr-svg" role="img" aria-label="Capture rate drops below the expected level, the ICM switches optimizer and it recovers">
+      <text x="40" y="{Y(100)+4:.0f}" class="cr-ax" text-anchor="end">100%</text><text x="40" y="{Y(80)+4:.0f}" class="cr-ax" text-anchor="end">80%</text><text x="40" y="{Y(60)+4:.0f}" class="cr-ax" text-anchor="end">60%</text>
+      <line x1="55" x2="960" y1="{Y(80):.0f}" y2="{Y(80):.0f}" class="cr-exp"/><text x="960" y="{Y(80)-10:.0f}" class="cr-lab" text-anchor="end">Expected</text>
+      <line x1="{(X(5)+X(6))/2}" x2="{(X(5)+X(6))/2}" y1="40" y2="295" class="cr-switch"/>
+      <rect x="{(X(5)+X(6))/2 - 78}" y="22" width="156" height="32" rx="16" class="cr-pill"/><text x="{(X(5)+X(6))/2}" y="43" class="cr-pill-t" text-anchor="middle">Switch optimizer</text>
+      <path d="{path}" class="cr-path"/>{dots}{months}
+      <text x="{X(4)}" y="{Y(78)+34:.0f}" class="cr-lab cr-lab-v" text-anchor="middle">Falls short</text>
+      <text x="{X(11)}" y="{Y(94)-18:.0f}" class="cr-lab" text-anchor="middle">94%</text>
+    </svg>"""
+
+def _cr_bars():
+    real = [74, 76, 73, 75, 72, 74, 91, 93, 92, 94, 93, 95]
+    pot = [100, 96, 104, 98, 102, 100, 97, 103, 99, 101, 98, 100]
+    out = ''
+    for i, (r, p_) in enumerate(zip(real, pot)):
+        x = 60 + i * 76; H = p_ * 2.3; h = H * r / 100
+        out += f'<rect x="{x}" y="{290-H:.0f}" width="48" height="{H:.0f}" rx="6" class="cr-pot"/>'
+        out += f'<rect x="{x}" y="{290-H:.0f}" width="48" height="{H-h:.0f}" rx="6" class="cr-miss"/>'
+        out += f'<rect x="{x}" y="{290-h:.0f}" width="48" height="{h:.0f}" rx="6" class="cr-real"/>'
+        out += f'<text x="{x+24}" y="316" class="cr-ax" text-anchor="middle">{"JFMAMJJASOND"[i]}</text>'
+    sx = 60 + 6 * 76 - 14
+    return f"""<svg viewBox="0 0 1000 330" class="cr-svg" role="img" aria-label="Monthly revenue against full potential: the missed share shrinks after the switch">
+      {out}<line x1="{sx}" x2="{sx}" y1="20" y2="296" class="cr-switch"/>
+      <rect x="{sx-78}" y="0" width="156" height="32" rx="16" class="cr-pill"/><text x="{sx}" y="21" class="cr-pill-t" text-anchor="middle">Switch optimizer</text>
+    </svg>
+    <div class="cr-leg"><span><i class="cr-k-real"></i>Realised</span><span><i class="cr-k-miss"></i>Missed</span><span><i class="cr-k-pot"></i>Full potential</span></div>"""
+
+def _cr_loop():
+    ic = {'m': '<path d="M4 18h4l3-8 4 12 3-6h2"/>', 'c': '<path d="M5 20V10M12 20V4M19 20v-7"/>', 's': '<path d="M4 8h13l-3-3M20 16H7l3 3"/>'}
+    steps = [('m', 'Monitor', 'Your realised revenues, every month, against the full potential of your site.'),
+             ('c', 'Compare', 'What other optimizers would have earned with the same battery.'),
+             ('s', 'Switch', 'A new optimizer when there is more to earn, without interruption.')]
+    cards = ''.join(f'<div class="cr-step"><span class="cr-ic"><svg viewBox="0 0 24 24">{ic[k]}</svg></span><h3>{t}</h3><p>{d}</p></div>' for k, t, d in steps)
+    return f"""<div class="cr-loop"><div class="cr-steps">{cards}</div>
+      <svg viewBox="0 0 1000 70" class="cr-ret" aria-hidden="true"><path d="M860 6 C860 60, 840 60, 780 60 L220 60 C160 60, 140 60, 140 10" class="cr-retp"/><path d="M128 22 L140 6 L152 22" class="cr-retp"/><text x="500" y="50" text-anchor="middle" class="cr-lab">and back to monitoring</text></svg></div>"""
+
+def _cr_gauge():
+    import math
+    def pt(v, r):
+        a = math.pi * (1 - v / 100)
+        return 300 + r * math.cos(a), 300 - r * math.sin(a)
+    x0, y0 = pt(0, 230); x1, y1 = pt(94, 230); ex, ey = pt(80, 262); ex2, ey2 = pt(80, 198)
+    return f"""<div class="cr-gauge"><svg viewBox="0 0 680 330" class="cr-svg cr-g" role="img" aria-label="Capture rate gauge at 94 percent">
+      <path d="M70,300 A230,230 0 0 1 530,300" class="cr-g-bg"/>
+      <path d="M{x0:.0f},{y0:.0f} A230,230 0 0 1 {x1:.1f},{y1:.1f}" class="cr-g-fg"/>
+      <line x1="{ex:.1f}" y1="{ey:.1f}" x2="{ex2:.1f}" y2="{ey2:.1f}" class="cr-g-exp"/>
+      <text x="{pt(80,276)[0]+6:.0f}" y="{pt(80,276)[1]-6:.0f}" class="cr-lab" text-anchor="start">Expected 80%</text>
+      <text x="300" y="268" class="cr-g-num" text-anchor="middle">94%</text><text x="300" y="305" class="cr-g-cap" text-anchor="middle">capture rate</text>
+    </svg>
+    <ul class="cr-ticks"><li><b>Monitor</b>against the full potential of your site</li><li><b>Compare</b>with what other optimizers would earn</li><li><b>Switch</b>when there is more to earn</li></ul></div>"""
+
+CR_VARIANTS = {'A': ('Line: capture rate over a year', _cr_line), 'B': ('Bars: realised vs missed', _cr_bars),
+               'C': ('Loop: monitor, compare, switch', _cr_loop), 'D': ('Gauge with three steps', _cr_gauge)}
+
+def cr_section(v, label=False):
+    tag = f'<span class="cr-var">Variant {v}: {CR_VARIANTS[v][0]}</span>' if label else ''
+    return f"""<section class="dark cr-sec cr-{v}">{tag}<div class="wrap">{CR_H}<div class="cr-vis">{CR_VARIANTS[v][1]()}</div>{CR_P}</div></section>"""
+
+CR_CHOICE = os.environ.get('CR_VARIANT', '')
+
 GS_STEPS = f'''<section class="dark gs-steps" id="steps">
   <div class="wrap">
     <h2>Get started in three easy steps</h2>
@@ -765,6 +836,7 @@ def solutions(t):
   <div class="wrap">
 {blocks}  </div>
 </section>
+{(''.join(cr_section(v, True) for v in CR_VARIANTS) if RES_EXTRAS and not CR_CHOICE else (cr_section(CR_CHOICE) if CR_CHOICE else ''))}
 {GS_STEPS}
 {GS_SECURE}
 {faq_block(NEWFAQS, 'Frequently asked questions')}"""
