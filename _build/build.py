@@ -8,7 +8,7 @@ import json, os, re, hashlib
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 LANGS = ['en']  # add 'nl' once the Dutch texts are proofread
-EMAIL = 'info@icm.energy'
+EMAIL = 'ideles@icm.energy'
 LINKEDIN = 'https://www.linkedin.com/in/idel%C3%A8s-kaandorp/'
 
 T = {
@@ -81,14 +81,14 @@ T = {
    ('How long is the commitment?', 'New members are asked to stay at least 3 months. After that, membership renews monthly.'),
    ('Who sees the data?', 'Only the member and the ICM see the raw data. The ICM anonymises submitted information before it adds it to the BESS Benchmark. We do not share individual member data with other members, or third parties. The BESS Benchmark itself is based on aggregated, anonymised information.'),
    ('Can members share their results?', 'Yes. Members may share their BESS Benchmark freely. It belongs to the member and may benefit conversations with installers, advisers and financiers.'),
-   ('I advise or finance BESS assets. Can we work together?', 'Yes. Reach out to <a href="mailto:info@icm.energy">info@icm.energy</a> to explore the options to work together and join our partner network.'),
+   ('I advise or finance BESS assets. Can we work together?', 'Yes. Reach out to <a href="mailto:ideles@icm.energy">ideles@icm.energy</a> to explore the options to work together and join our partner network.'),
    ('How is the BESS Benchmark calculated?', 'The BESS Benchmark divides revenues by MW and annualises the result to show EUR per MW per year. Several filters allow members to compare batteries with a similar duration and set-up. Unavailable hours are excluded (maintenance, fault). Results are preliminary for 3 months, anticipating potential corrections.'),
    ('Why do BESS assets earn differently?', 'Various factors restrict the full earnings potential of a battery: (i) the battery itself (e.g., round-trip efficiency, minimum/maximum state of charge) and its local set-up (e.g., size of the grid connection, congestion contract), (ii) the markets it is active in and (iii) maintenance and malfunctions are the most commonly mentioned factors.'),
    ('Can members see which optimizer performs best?', 'No. The BESS Benchmark does not show results per optimizer, or rankings of optimizers. Members can compare their battery with peers that use the same or other optimizers, without names. Our BESS Broker proposition is designed to source and evaluate optimizers for owners.'),
-   ('Is the ICM independent?', 'Yes. We do not own BESS assets. We are not an optimizer. Nor will we ever be. For more information about our governance, please reach out to <a href="mailto:info@icm.energy">info@icm.energy</a>.'),
+   ('Is the ICM independent?', 'Yes. We do not own BESS assets. We are not an optimizer. Nor will we ever be. For more information about our governance, please reach out to <a href="mailto:ideles@icm.energy">ideles@icm.energy</a>.'),
   ],
   terms_title='Terms & Conditions | The ICM', terms_h='Terms & Conditions',
-  terms_body='<p>Please email <a href="mailto:info@icm.energy">info@icm.energy</a> to request a version of our Terms &amp; Conditions.</p>',
+  terms_body='<p>Please email <a href="mailto:ideles@icm.energy">ideles@icm.energy</a> to request a version of our Terms &amp; Conditions.</p>',
   privacy_title='Privacy statement | The ICM', privacy_h='Privacy statement',
  ),
  'nl': dict(
@@ -147,7 +147,7 @@ T = {
    ('Hoe berekenen jullie de benchmark?', 'We tellen de opbrengst van alle vergelijkbare batterijen op en delen die door hun MW en de uren dat ze beschikbaar waren. De uitkomst staat in euro per MW per jaar. Alle regels staan in de <a href="/methodology/" hreflang="en">methodologie</a> (Engels).'),
   ],
   terms_title='Algemene voorwaarden | de ICM', terms_h='Algemene voorwaarden',
-  terms_body='<p>De algemene voorwaarden (Terms &amp; Conditions) van de BESS Benchmark ontvangt elk aspirant-lid vóór het tekenen, samen met de methodologie.</p><p>Wil je ze eerst lezen? Mail naar <a href="mailto:info@icm.energy">info@icm.energy</a>, dan sturen we je de actuele versie.</p>',
+  terms_body='<p>De algemene voorwaarden (Terms &amp; Conditions) van de BESS Benchmark ontvangt elk aspirant-lid vóór het tekenen, samen met de methodologie.</p><p>Wil je ze eerst lezen? Mail naar <a href="mailto:ideles@icm.energy">ideles@icm.energy</a>, dan sturen we je de actuele versie.</p>',
   privacy_title='Privacyverklaring | de ICM', privacy_h='Privacyverklaring',
  ),
 }
@@ -463,7 +463,7 @@ ROLES = [
 
 def company(t):
     def li(items): return ''.join(f'<li>{i}</li>' for i in items)
-    rows = '\n'.join(f'''      <details class="co-role" name="roles"><summary><b>{r}</b><em>{c}</em><i class="co-pm" aria-hidden="true"></i></summary><div class="co-body"><div><p>{m}</p><a class="btn btn-dark" href="mailto:info@icm.energy?subject=Application%3A%20{r.replace(" ", "%20")}">Apply</a></div><div><h4>What you will do</h4><ul>{li(do)}</ul></div><div><h4>Who you are</h4><ul>{li(you)}</ul></div></div></details>''' for r, c, m, do, you in ROLES)
+    rows = '\n'.join(f'''      <details class="co-role" name="roles"><summary><b>{r}</b><em>{c}</em><i class="co-pm" aria-hidden="true"></i></summary><div class="co-body"><div><p>{m}</p><a class="btn btn-dark" href="mailto:ideles@icm.energy?subject=Application%3A%20{r.replace(" ", "%20")}">Apply</a></div><div><h4>What you will do</h4><ul>{li(do)}</ul></div><div><h4>Who you are</h4><ul>{li(you)}</ul></div></div></details>''' for r, c, m, do, you in ROLES)
 
     hero = '''    <div class="page-hero" id="main">
       <h1>About The Independent Capacity Market</h1>
@@ -500,7 +500,7 @@ def company(t):
     <div class="co-acc">
 {rows}
     </div>
-    <p class="co-note">If no position suits you, you're welcome to submit an open application with your CV and what you'd want to achieve at the ICM to <a href="mailto:info@icm.energy">info@icm.energy</a>.</p>
+    <p class="co-note">If no position suits you, you're welcome to submit an open application with your CV and what you'd want to achieve at the ICM to <a href="mailto:ideles@icm.energy">ideles@icm.energy</a>.</p>
   </div>
 </section>'''
     ld = {"@context": "https://schema.org", "@type": "AboutPage", "url": "https://icm.energy/company/", "mainEntity": {"@type": "Organization", "@id": "https://icm.energy/#org", "name": "Independent Capacity Market B.V.", "alternateName": "The ICM", "logo": "https://icm.energy/assets/logo-header.png", "url": "https://icm.energy/",
@@ -1008,7 +1008,7 @@ def talk(t, variant=None):
         <span class="eyebrow">Talk to us</span>
         <h1><span class="nw">Secure the true value</span><br><span class="nw">of your BESS asset</span></h1>
         <p>You are ready to learn more. Use the form to give us a bit more information about your context and objectives.</p>
-        <p>Alternatively, you can email us directly at <a href="mailto:info@icm.energy">info@icm.energy</a>.</p>
+        <p>Alternatively, you can email us directly at <a href="mailto:ideles@icm.energy">ideles@icm.energy</a>.</p>
       </div>
       <div class="form fillout">
         <div style="width:100%;height:640px" data-fillout-id="icWpPN8hsgus" data-fillout-embed-type="standard" data-fillout-inherit-parameters data-fillout-dynamic-resize></div>
