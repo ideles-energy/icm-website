@@ -200,7 +200,7 @@ def head(t, title, desc, path, alt_path=None, jsonld=None, og_title=None):
 <meta property="og:url" content="https://icm.energy{path}">
 <meta property="og:title" content="{og_title or title}">
 <meta property="og:description" content="{desc}">
-<meta property="og:image" content="https://icm.energy/assets/og-image.png?v=2">
+<meta property="og:image" content="https://icm.energy/assets/og-image.png?v=3">
 <meta property="og:site_name" content="The Independent Capacity Market">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
