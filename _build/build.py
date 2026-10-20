@@ -793,59 +793,64 @@ def _cr_anim():
     </div>"""
 
 def _cr_film():
-    fp = [300, 290, 285, 295, 280, 300, 310, 295, 290, 285, 300, 295]          # full potential, EUR k/MW/yr (annualised)
-    cr = [66, 65, 64, 62, 61, 60, 80, 82, 83, 82, 83, 82]                      # capture rate per month, %
-    rv = [f * c / 100 for f, c in zip(fp, cr)]
-    W, H, L, R, T, B = 620, 300, 52, 12, 16, 34
+    # All figures are for one illustrative battery. Expected revenues are known only after each month.
+    ex = [214, 208, 205, 211, 218, 222, 225, 219, 212, 207, 215, 224]          # expected revenues, EUR k per MW per year (annualised)
+    CA, CB, CE = 63, 82, 80                                                     # capture rate with A, with B, expected
+    ra = [e * CA / CE for e in ex]; rb = [e * CB / CE for e in ex]
+    before = round(sum(ex) / 12 * CA / CE * 10) * 100
+    after = round(sum(ex) / 12 * CB / CE * 10) * 100
+    gain = after - before
+    fmt = lambda v: f'{v:,.0f}'
+    W, H, L, R, T, B = 520, 300, 46, 10, 14, 30
     X = lambda i: L + i * (W - L - R) / 11
-    Y = lambda v: T + (320 - v) / (320 - 150) * (H - T - B)
-    line = lambda pts, idx: ' '.join(('M' if k == 0 else 'L') + f'{X(i):.1f},{Y(v):.1f}' for k, (i, v) in enumerate(zip(idx, pts)))
-    band = 'M' + ' L'.join(f'{X(i):.1f},{Y(f):.1f}' for i, f in enumerate(fp)) + ' L' + ' L'.join(f'{X(i):.1f},{Y(f*0.8):.1f}' for i, f in reversed(list(enumerate(fp)))) + ' Z'
-    fpl = line(fp, range(12))
-    a = line(rv[:6], range(6)); b = line(rv[5:], range(5, 12))
-    grid = ''.join(f'<line x1="{L}" x2="{W-R}" y1="{Y(v):.1f}" y2="{Y(v):.1f}" class="ap-grid"/><text x="{L-8}" y="{Y(v)+4:.1f}" text-anchor="end" class="ap-ax">{v}k</text>' for v in (150, 200, 250, 300))
-    months = ''.join(f'<text x="{X(i):.1f}" y="{H-8}" text-anchor="middle" class="ap-ax">{m}</text>' for i, m in enumerate(['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']))
-    dots = ''.join(f'<circle cx="{X(i):.1f}" cy="{Y(v):.1f}" r="4.5" class="{"ap-dlo ap-d1" if i < 6 else "ap-dok ap-d2"}" style="--k:{i}"/>' for i, v in enumerate(rv))
-    chart = f"""<svg viewBox="0 0 {W} {H}" class="ap-chart" aria-hidden="true">{grid}
-          <path d="{band}" class="ap-band"/><path d="{fpl}" class="ap-fp"/>
-          <path d="{a}" class="ap-rv js-ap-a" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100"/>
-          <path d="{b}" class="ap-rv js-ap-b" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100"/>{dots}{months}</svg>"""
-    rows = [('Optimizer B', '84%', '', True), ('Optimizer C', '81%', '', False), ('Optimizer D', '78%', '', False)]
-    qr = ''.join(f'<div class="ap-q{" ap-qsel" if sel else ""}" style="--k:{k}"><b>{n}</b><span class="ap-qe">Expected {e}</span>' + ('<span class="ap-btn">Switch</span>' if sel else '<span></span>') + '</div>' for k, (n, e, x, sel) in enumerate(rows))
-    nav = [('0', 'Monitor', 'Capture rate at 63%, below the expected 80%. Owner alerted.'),
-           ('2700', 'Compare', 'We ask trusted optimizers for a quote and compare their offers side by side.'),
-           ('6200', 'Switch', 'Optimizer B takes over. Capture rate up to 82%.'),
-           ('9200', 'Result', 'Your battery earns EUR 55,500 more per MW per year.')]
+    Y = lambda v: T + (255 - v) / (255 - 150) * (H - T - B)
+    pl = lambda pts, idx: ' '.join(('M' if k == 0 else 'L') + f'{X(i):.1f},{Y(v):.1f}' for k, (i, v) in enumerate(zip(idx, pts)))
+    band = 'M' + ' L'.join(f'{X(i):.1f},{Y(e*1.1):.1f}' for i, e in enumerate(ex)) + ' L' + ' L'.join(f'{X(i):.1f},{Y(e*0.9):.1f}' for i, e in reversed(list(enumerate(ex)))) + ' Z'
+    grid = ''.join(f'<line x1="{L}" x2="{W-R}" y1="{Y(v):.1f}" y2="{Y(v):.1f}" class="ax-grid"/><text x="{L-7}" y="{Y(v)+4:.1f}" text-anchor="end" class="ax-ax">{v}k</text>' for v in (150, 175, 200, 225, 250))
+    months = ''.join(f'<text x="{X(i):.1f}" y="{H-8}" text-anchor="middle" class="ax-ax">{m}</text>' for i, m in enumerate('JFMAMJJASOND'))
+    x1, x2 = X(5) + 2, W
+    chart = f"""<svg viewBox="0 0 {W} {H}" class="ax-chart" aria-hidden="true" data-x0="{L}" data-x1="{x1:.1f}" data-x2="{x2}">
+          <defs><clipPath id="ax-clip"><rect class="js-ax-clip" x="0" y="0" width="{L}" height="{H}"/></clipPath></defs>{grid}{months}
+          <g clip-path="url(#ax-clip)"><path d="{band}" class="ax-band"/><path d="{pl(ex, range(12))}" class="ax-ex"/>
+          <path d="{pl(ra[:6], range(6))}" class="ax-ra"/><path d="{pl([ra[5]] + rb[6:], range(5, 12))}" class="ax-rbh"/><path d="{pl([ra[5]] + rb[6:], range(5, 12))}" class="ax-rb"/>
+          <line x1="{(X(5)+X(6))/2:.1f}" x2="{(X(5)+X(6))/2:.1f}" y1="{T}" y2="{H-B}" class="ax-sw"/></g></svg>"""
+    quotes = [('Optimizer B', 84, True), ('Optimizer C', 81, False), ('Optimizer D', 79, False), ('Optimizer E', 76, False)]
+    qr = ''.join(f'<div class="ax-q{" ax-qsel" if sel else ""}" style="--k:{k}"><b>{n}</b><span class="ax-qe">Expected <strong>{e}%</strong></span>' + ('<span class="ax-btn">Switch</span>' if sel else '<span></span>') + '</div>' for k, (n, e, sel) in enumerate(quotes))
+    nav = [('0', 'Monitor', f'Capture rate at {CA}%, below the expected {CE}%. Owner alerted.'),
+           ('6000', 'Compare', 'Trusted optimizers, quotes compared side by side.'),
+           ('9800', 'Switch', f'Optimizer B takes over. Capture rate up to {CB}%.'),
+           ('13600', 'Result', f'Your battery earns EUR {fmt(gain)} more per MW per year.')]
     navh = ''.join(f'<li><button type="button" data-t="{t}"><span>{k+1}</span>{h}</button><p>{d}</p></li>' for k, (t, h, d) in enumerate(nav))
-    return f"""<div class="film app js-film" data-from="63" data-to="82" data-base="185000" data-gain="55500">
-      <div class="ap-win">
-        <aside class="ap-side"><div class="ap-brand"><img src="/assets/logo-header-dark.svg" alt="The Independent Capacity Market" width="796" height="119"></div><ol class="fm-ch ap-nav">{navh}</ol></aside>
-        <div class="ap-main">
-          <div class="ap-bar"><span class="crx-dot"></span><b>Your battery</b><em>10 MW / 20 MWh</em>
-            <span class="ap-opt"><span class="crx-o fm-oa">Optimizer A</span><span class="crx-o fm-ob">Optimizer B</span></span></div>
-          <p class="fm-cap ap-cap js-fm-cap"></p>
-          <div class="ap-panes">
-            <section class="ap-pane ap-p1">
-              <div class="ap-kpi">
-                <div class="crx-gw"><svg viewBox="0 0 400 215" class="crx-g" aria-hidden="true">
-                  <path d="M40,200 A160,160 0 0 1 360,200" class="crx-g-bg" pathLength="100"/>
-                  <path d="M40,200 A160,160 0 0 1 360,200" class="crx-g-fg fm-arc js-fm-arc" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100"/>
-                  <line x1="311.6" y1="118.9" x2="347.2" y2="93.0" class="crx-g-exp"/>
-                </svg><div class="crx-num"><b class="js-fm-num">0%</b><span>capture rate</span></div></div>
-                <div class="crx-status"><span class="crx-s fm-slo">Below expected</span><span class="crx-s fm-sok">On track</span></div>
-              </div>
-              <div class="ap-chartbox"><p class="ap-ct">Revenue per MW per year <em>monthly, annualised</em></p>{chart}
-                <div class="ap-leg"><span><i class="ap-k-rv"></i>Your battery</span><span><i class="ap-k-fp"></i>Full potential</span><span><i class="ap-k-band"></i>Expected, 80% to 100%</span></div></div>
-              <div class="ap-toast"><span class="cu-bell"><svg viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4zM10 20a2 2 0 0 0 4 0"/></svg></span><div><b>Capture rate below expected for 3 months</b><span>Owner alerted. We ask trusted optimizers for a quote.</span></div></div>
-            </section>
-            <section class="ap-pane ap-p2"><p class="ap-ct">Quotes, side by side <em>4 trusted optimizers asked, 3 offers</em></p>{qr}
-              <p class="ap-note">Expected capture rate on your site, from a backtest of each optimizer.</p></section>
-            <section class="ap-pane ap-p3">
-              <div class="cs-card cs-off"><p class="cs-tag">Without the ICM</p><p class="cs-big">EUR 185,000</p><p class="cs-cap">per MW per year</p>
-                <ul><li><span>Full potential</span><b>Unknown</b></li><li><span>Capture rate</span><b>Unknown</b></li><li><span>Other optimizers</span><b>Unknown</b></li></ul></div>
-              <div class="cs-card cs-on"><p class="cs-tag">With the ICM</p><p class="cs-big fm-gain"><span class="js-fm-gain">EUR 185,000</span></p><p class="cs-cap">per MW per year</p>
-                <ul><li><span>Extra revenue</span><b class="fm-plus js-fm-plus">+EUR 0</b></li><li><span>Capture rate</span><b>82%</b></li><li><span>Offers compared</span><b>3</b></li></ul></div>
-            </section>
+    return f"""<div class="film ax js-film" data-from="{CA}" data-to="{CB}" data-base="{before}" data-gain="{gain}">
+      <div class="ax-win">
+        <aside class="ax-side"><div class="ax-brand"><img src="/assets/favicon.svg" alt="" width="28" height="28"><span>ICM</span></div><ol class="fm-ch ax-nav">{navh}</ol></aside>
+        <div class="ax-main">
+          <p class="ax-cap js-fm-cap"></p>
+          <div class="ax-grid2">
+            <div class="ax-card ax-kpi">
+              <div class="ax-kh"><b>Your battery</b><em>10 MW / 20 MWh</em></div>
+              <div class="ax-opt"><span class="ax-o ax-oa">Optimizer A</span><span class="ax-o ax-ob">Optimizer B</span></div>
+              <div class="ax-gw"><svg viewBox="0 0 400 210" class="ax-g" aria-hidden="true">
+                <path d="M44,196 A156,156 0 0 1 356,196" class="ax-g-bg" pathLength="100"/>
+                <path d="M44,196 A156,156 0 0 1 356,196" class="ax-g-fg js-fm-arc" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100"/>
+                <line x1="311.6" y1="114.9" x2="342.4" y2="92.5" class="ax-g-exp"/><text x="355.3" y="83.1" class="ax-g-el">80%</text>
+              </svg><div class="ax-num"><b class="js-fm-num">0%</b><span>capture rate</span></div></div>
+              <div class="ax-status"><span class="ax-s ax-slo">Below expected</span><span class="ax-s ax-sok">On track</span></div>
+            </div>
+            <div class="ax-right">
+              <div class="ax-card ax-pchart"><p class="ax-ct">Revenue per MW per year <em>monthly, annualised</em></p>{chart}
+                <div class="ax-leg"><span class="ax-l-ra"><i></i>Realised, A</span><span class="ax-l-rb"><i></i>Realised, B</span><span class="ax-l-ex"><i></i>Expected revenues</span><span class="ax-l-band"><i></i>±10%</span></div></div>
+              <div class="ax-card ax-pq"><p class="ax-ct">Quotes, side by side <em>4 offers from trusted optimizers</em></p>{qr}
+                <p class="ax-note">Expected capture rate on your site, from a backtest of each optimizer. Optimizer A is your current optimizer.</p></div>
+            </div>
+            <div class="ax-toast ax-t1"><span class="ax-bell"><svg viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4zM10 20a2 2 0 0 0 4 0"/></svg></span>
+              <div><b>Capture rate below expected for 6 months</b><span class="ax-t1b">Owner alerted. We ask trusted optimizers for a quote.</span></div></div>
+            <div class="ax-res">
+              <div class="ax-rc ax-off"><p class="cs-tag">Without the ICM</p><p class="ax-big">EUR {fmt(before)}</p><p class="ax-rcap">per MW per year</p>
+                <ul><li><span>Missed opportunity</span><b>Unknown</b></li><li><span>Capture rate</span><b>Unknown</b></li><li><span>Other optimizers</span><b>Unknown</b></li></ul></div>
+              <div class="ax-rc ax-on"><p class="cs-tag">With the ICM</p><p class="ax-big"><span class="js-fm-gain">EUR {fmt(before)}</span></p><p class="ax-rcap">per MW per year</p>
+                <ul><li><span>Extra revenue</span><b class="js-fm-plus">+EUR 0</b></li><li><span>Capture rate</span><b>{CB}%</b></li><li><span>Offers compared</span><b>4</b></li></ul></div>
+            </div>
           </div>
         </div>
       </div>

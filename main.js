@@ -251,25 +251,30 @@ r.addEventListener('input',u);u();})();
 (function(){
   var els=document.querySelectorAll('.js-film'); if(!els.length) return;
   var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var END=11000, STEPS=[[400,'f0'],[1500,'f1'],[2700,'f2'],[4000,'f3'],[5300,'f4'],[6200,'f5'],[9200,'f6'],[END,'done']], CH=[0,2700,6200,9200];
-  function ease(p){ return 1-Math.pow(1-Math.max(0,Math.min(1,p)),3); }
+  var MON=0, CMP=6000, SWI=9800, RES=13600, END=15600;
+  var STEPS=[[2000,'f1'],[3800,'f1b'],[CMP,'f2'],[CMP+400,'f3'],[CMP+2600,'f4'],[SWI,'f5'],[SWI+2000,'f5b'],[RES,'f6'],[END,'done']], CH=[MON,CMP,SWI,RES];
+  function ease(p){ p=Math.max(0,Math.min(1,p)); return 1-Math.pow(1-p,3); }
   function eur(v){ return (Math.round(v/100)*100).toLocaleString('en-GB'); }
   els.forEach(function(el){
     var a=+el.dataset.from, b=+el.dataset.to, base=+el.dataset.base, g=+el.dataset.gain;
-    var la=el.querySelector('.js-ap-a'), lb=el.querySelector('.js-ap-b'), arc=el.querySelector('.js-fm-arc'), num=el.querySelector('.js-fm-num'), tot=el.querySelector('.js-fm-gain'), plus=el.querySelector('.js-fm-plus');
+    var arc=el.querySelector('.js-fm-arc'), num=el.querySelector('.js-fm-num'), tot=el.querySelector('.js-fm-gain'), plus=el.querySelector('.js-fm-plus');
+    var svg=el.querySelector('.ax-chart'), clip=el.querySelector('.js-ax-clip');
+    var x0=+svg.dataset.x0, x1=+svg.dataset.x1, x2=+svg.dataset.x2;
     var play=el.querySelector('.js-fm-play'), chs=el.querySelectorAll('.fm-ch li'), sp=el.querySelectorAll('.fm-speed button'), cap=el.querySelector('.js-fm-cap');
     var t=0, speed=1, running=false, last=0;
     function render(){
-      var v = t<6200 ? a*ease(t/1400) : a+(b-a)*ease((t-6200)/1600);
+      var v = t<SWI ? a*ease(t/1800) : a+(b-a)*ease((t-SWI)/1800);
       arc.setAttribute('stroke-dashoffset',(100-v).toFixed(2)); num.textContent=Math.round(v)+'%';
-      if(la){ la.setAttribute('stroke-dashoffset',(100-100*Math.max(0,Math.min(1,t/1400))).toFixed(2)); lb.setAttribute('stroke-dashoffset',(100-100*Math.max(0,Math.min(1,(t-6200)/1600))).toFixed(2)); }
-      var k=ease((t-9200)/1600); tot.textContent='EUR '+eur(base+g*k); plus.textContent='+EUR '+eur(g*k);
+      var w = t<SWI ? x0+(x1-x0)*ease(t/1800) : x1+(x2-x1)*ease((t-SWI)/1800);
+      clip.setAttribute('width', w.toFixed(1));
+      var k=ease((t-RES-300)/1600); tot.textContent='EUR '+eur(base+g*k); plus.textContent='+EUR '+eur(g*k);
       STEPS.forEach(function(s){ el.classList.toggle(s[1], t>=s[0]); });
       var c=0; CH.forEach(function(x,i){ if(t>=x) c=i; });
-      chs.forEach(function(li,i){ li.classList.toggle('on', i===c); li.classList.toggle('past', i<c); }); if(cap) cap.textContent=chs[c].querySelector('p').textContent;
+      chs.forEach(function(li,i){ li.classList.toggle('on', i===c); li.classList.toggle('past', i<c); });
+      cap.textContent=chs[c].querySelector('p').textContent;
       play.textContent = running ? 'Pause' : (t>=END ? 'Play again' : 'Play');
     }
-    function frame(ts){ if(!running) return; t+= (ts-last)*speed; last=ts; if(t>=END){ t=END; running=false; } render(); if(running) requestAnimationFrame(frame); }
+    function frame(ts){ if(!running) return; t+=(ts-last)*speed; last=ts; if(t>=END){ t=END; running=false; } render(); if(running) requestAnimationFrame(frame); }
     function start(){ if(t>=END) t=0; running=true; last=performance.now(); requestAnimationFrame(frame); render(); }
     function stop(){ running=false; render(); }
     play.addEventListener('click',function(){ running?stop():start(); });
