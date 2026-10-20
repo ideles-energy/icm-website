@@ -722,70 +722,82 @@ GS_ICONS = {
 CR_H = '<h2>The best capture rate, at all times.</h2>'
 CR_P = '<p class="cr-p">The ICM proactively monitors your performance and switches optimizers when there is more to earn. Together, we secure the true value of your battery.</p>'
 
-def _cr_line():
-    pts = [88, 87, 85, 82, 78, 75, 86, 90, 92, 93, 93, 94]
-    X = lambda i: 70 + i * 78
-    Y = lambda v: 290 - (v - 60) * 6.5
-    path = ' '.join(('M' if i == 0 else 'L') + f'{X(i)},{Y(v):.0f}' for i, v in enumerate(pts))
-    dots = ''.join(f'<circle cx="{X(i)}" cy="{Y(v):.0f}" r="5" class="{"cr-dot-low" if v < 80 else "cr-dot"}"/>' for i, v in enumerate(pts))
-    months = ''.join(f'<text x="{X(i)}" y="318" class="cr-ax" text-anchor="middle">{m}</text>' for i, m in enumerate('JFMAMJJASOND'))
-    return f"""<svg viewBox="0 0 1000 330" class="cr-svg" role="img" aria-label="Capture rate drops below the expected level, the ICM switches optimizer and it recovers">
-      <text x="40" y="{Y(100)+4:.0f}" class="cr-ax" text-anchor="end">100%</text><text x="40" y="{Y(80)+4:.0f}" class="cr-ax" text-anchor="end">80%</text><text x="40" y="{Y(60)+4:.0f}" class="cr-ax" text-anchor="end">60%</text>
-      <line x1="55" x2="960" y1="{Y(80):.0f}" y2="{Y(80):.0f}" class="cr-exp"/><text x="960" y="{Y(80)-10:.0f}" class="cr-lab" text-anchor="end">Expected</text>
-      <line x1="{(X(5)+X(6))/2}" x2="{(X(5)+X(6))/2}" y1="40" y2="295" class="cr-switch"/>
-      <rect x="{(X(5)+X(6))/2 - 78}" y="22" width="156" height="32" rx="16" class="cr-pill"/><text x="{(X(5)+X(6))/2}" y="43" class="cr-pill-t" text-anchor="middle">Switch optimizer</text>
-      <path d="{path}" class="cr-path"/>{dots}{months}
-      <text x="{X(4)}" y="{Y(78)+34:.0f}" class="cr-lab cr-lab-v" text-anchor="middle">Falls short</text>
-      <text x="{X(11)}" y="{Y(94)-18:.0f}" class="cr-lab" text-anchor="middle">94%</text>
-    </svg>"""
+def _cr_ui():
+    bars = [88, 87, 85, 82, 78, 75]
+    bh = ''.join(f'<i style="height:{(v-60)*2.2:.0f}px" class="{"lo" if v < 80 else ""}"></i>' for v in bars)
+    return f"""<div class="cr-ui">
+      <div class="cu-card cu-kpi"><div class="cu-top"><span class="cu-dot"></span>Your battery <em>10 MW / 20 MWh</em></div>
+        <p class="cu-l">Capture rate, last 6 months</p><p class="cu-big">75%<small>Expected 80%</small></p>
+        <div class="cu-bars">{bh}<span class="cu-exp"></span></div><div class="cu-m"><span>Jan</span><span>Jun</span></div></div>
+      <div class="cu-card cu-note"><span class="cu-bell"><svg viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4zM10 20a2 2 0 0 0 4 0"/></svg></span>
+        <div><b>Capture rate below expected for 3 months</b><p>We asked 4 trusted optimizers for a quote.</p></div><time>Today</time></div>
+      <div class="cu-card cu-quotes"><p class="cu-l">Quotes, side by side</p>
+        <div class="cu-row cu-sel"><span>Optimizer B</span><span>Expected 93%</span><button type="button" tabindex="-1">Switch</button></div>
+        <div class="cu-row"><span>Optimizer C</span><span>Expected 89%</span><span></span></div>
+        <div class="cu-row"><span>Optimizer D</span><span>Expected 86%</span><span></span></div></div>
+    </div>"""
 
-def _cr_bars():
-    real = [74, 76, 73, 75, 72, 74, 91, 93, 92, 94, 93, 95]
-    pot = [100, 96, 104, 98, 102, 100, 97, 103, 99, 101, 98, 100]
+def _cr_feed():
+    items = [('Jan', 'Monthly check', 'Capture rate 88%. On track.', ''),
+             ('Apr', 'Alert', 'Capture rate 78%, below the expected 80%.', 'v'),
+             ('May', 'Quotes compared', 'Four trusted optimizers, side by side.', ''),
+             ('Jun', 'Optimizer switched', 'Your battery keeps earning during the move.', ''),
+             ('Sep', 'Monthly check', 'Capture rate 94%.', 'c')]
+    li = ''.join(f'<li class="cf-{k or "n"}"><time>{m}</time><div><b>{t}</b><span>{d}</span></div></li>' for m, t, d, k in items)
+    return f'<div class="cr-feed"><p class="cf-head"><span class="cf-live"></span>The ICM at work for your battery</p><ol>{li}</ol></div>'
+
+def _cr_split():
+    return """<div class="cr-split">
+      <div class="cs-card cs-off"><p class="cs-tag">Without the ICM</p><p class="cs-big">EUR 1,850,000</p><p class="cs-cap">revenue last year</p>
+        <ul><li><span>Full potential</span><b>Unknown</b></li><li><span>Missed</span><b>Unknown</b></li><li><span>Other optimizers</span><b>Unknown</b></li></ul></div>
+      <div class="cs-card cs-on"><p class="cs-tag">With the ICM</p><p class="cs-big">94%</p><p class="cs-cap">capture rate</p>
+        <ul><li><span>Full potential</span><b>EUR 2,405,000</b></li><li><span>Missed</span><b class="v">EUR 145,000</b></li><li><span>Other optimizers</span><b>Compared</b></li></ul></div>
+    </div>"""
+
+def _cr_dots():
+    real = [7, 7, 7, 7, 7, 7, 9, 9, 10, 9, 10, 10]
+    X = lambda i: 40 + i * 78 + (24 if i >= 6 else 0)
     out = ''
-    for i, (r, p_) in enumerate(zip(real, pot)):
-        x = 60 + i * 76; H = p_ * 2.3; h = H * r / 100
-        out += f'<rect x="{x}" y="{290-H:.0f}" width="48" height="{H:.0f}" rx="6" class="cr-pot"/>'
-        out += f'<rect x="{x}" y="{290-H:.0f}" width="48" height="{H-h:.0f}" rx="6" class="cr-miss"/>'
-        out += f'<rect x="{x}" y="{290-h:.0f}" width="48" height="{h:.0f}" rx="6" class="cr-real"/>'
-        out += f'<text x="{x+24}" y="316" class="cr-ax" text-anchor="middle">{"JFMAMJJASOND"[i]}</text>'
-    sx = 60 + 6 * 76 - 14
-    return f"""<svg viewBox="0 0 1000 330" class="cr-svg" role="img" aria-label="Monthly revenue against full potential: the missed share shrinks after the switch">
-      {out}<line x1="{sx}" x2="{sx}" y1="20" y2="296" class="cr-switch"/>
-      <rect x="{sx-78}" y="0" width="156" height="32" rx="16" class="cr-pill"/><text x="{sx}" y="21" class="cr-pill-t" text-anchor="middle">Switch optimizer</text>
+    for i, r in enumerate(real):
+        for j in range(10):
+            y = 290 - j * 24
+            out += f'<circle cx="{X(i)}" cy="{y}" r="8" class="{"cd-d" if j < r else "cd-m"}"/>'
+        out += f'<text x="{X(i)}" y="322" class="cr-ax" text-anchor="middle">{"JFMAMJJASOND"[i]}</text>'
+    sx = (X(5) + X(6)) / 2
+    return f"""<svg viewBox="0 0 1000 335" class="cr-svg" role="img" aria-label="Each column is a month; violet dots are revenue missed, which shrink after the switch">
+      {out}<line x1="{sx}" x2="{sx}" y1="44" y2="300" class="cr-switch"/>
+      <rect x="{sx-78}" y="8" width="156" height="32" rx="16" class="cr-pill"/><text x="{sx}" y="29" class="cr-pill-t" text-anchor="middle">Switch optimizer</text>
     </svg>
-    <div class="cr-leg"><span><i class="cr-k-real"></i>Realised</span><span><i class="cr-k-miss"></i>Missed</span><span><i class="cr-k-pot"></i>Full potential</span></div>"""
+    <div class="cr-leg"><span><i class="cr-k-real" style="border-radius:50%"></i>Delivered</span><span><i class="cd-k-m"></i>Missed</span><span>1 dot = 10% of the full potential that month</span></div>"""
 
-def _cr_loop():
-    ic = {'m': '<path d="M4 18h4l3-8 4 12 3-6h2"/>', 'c': '<path d="M5 20V10M12 20V4M19 20v-7"/>', 's': '<path d="M4 8h13l-3-3M20 16H7l3 3"/>'}
-    steps = [('m', 'Monitor', 'Your realised revenues, every month, against the full potential of your site.'),
-             ('c', 'Compare', 'What other optimizers would have earned with the same battery.'),
-             ('s', 'Switch', 'A new optimizer when there is more to earn, without interruption.')]
-    cards = ''.join(f'<div class="cr-step"><span class="cr-ic"><svg viewBox="0 0 24 24">{ic[k]}</svg></span><h3>{t}</h3><p>{d}</p></div>' for k, t, d in steps)
-    return f"""<div class="cr-loop"><div class="cr-steps">{cards}</div>
-      <svg viewBox="0 0 1000 70" class="cr-ret" aria-hidden="true"><path d="M860 6 C860 60, 840 60, 780 60 L220 60 C160 60, 140 60, 140 10" class="cr-retp"/><path d="M128 22 L140 6 L152 22" class="cr-retp"/><text x="500" y="50" text-anchor="middle" class="cr-lab">and back to monitoring</text></svg></div>"""
+def _cr_anim():
+    return """<div class="crx js-crx" data-from="46" data-to="83">
+      <div class="crx-card">
+        <div class="crx-top"><span class="crx-dot"></span>Your battery <em>10 MW / 20 MWh</em></div>
+        <div class="crx-opt"><span class="crx-o crx-oa">Optimizer A</span><span class="crx-o crx-ob">Optimizer B</span></div>
+        <div class="crx-gw"><svg viewBox="0 0 400 215" class="crx-g" aria-hidden="true">
+          <path d="M40,200 A160,160 0 0 1 360,200" class="crx-g-bg" pathLength="100"/>
+          <path d="M40,200 A160,160 0 0 1 360,200" class="crx-g-fg js-crx-arc" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100"/>
+          <line x1="311.6" y1="118.9" x2="347.2" y2="93.0" class="crx-g-exp"/>
+        </svg>
+        <div class="crx-num"><b class="js-crx-num">0%</b><span>capture rate</span></div>
+        <span class="crx-explab">Expected 80%</span></div>
+        <div class="crx-status"><span class="crx-s crx-slo">Below expected</span><span class="crx-s crx-sok">On track</span></div>
+      </div>
+      <ol class="crx-log">
+        <li class="crx-e1"><i></i><div><b>Alert</b><span>Capture rate 46%, below the expected 80%.</span></div></li>
+        <li class="crx-e2"><i></i><div><b>Quotes compared</b><span>Trusted optimizers, side by side.</span></div></li>
+        <li class="crx-e3"><i></i><div><b>Optimizer switched</b><span>Capture rate up to 83%.</span></div></li>
+      </ol>
+      <button type="button" class="crx-replay js-crx-replay">Replay</button>
+    </div>"""
 
-def _cr_gauge():
-    import math
-    def pt(v, r):
-        a = math.pi * (1 - v / 100)
-        return 300 + r * math.cos(a), 300 - r * math.sin(a)
-    x0, y0 = pt(0, 230); x1, y1 = pt(94, 230); ex, ey = pt(80, 262); ex2, ey2 = pt(80, 198)
-    return f"""<div class="cr-gauge"><svg viewBox="0 0 680 330" class="cr-svg cr-g" role="img" aria-label="Capture rate gauge at 94 percent">
-      <path d="M70,300 A230,230 0 0 1 530,300" class="cr-g-bg"/>
-      <path d="M{x0:.0f},{y0:.0f} A230,230 0 0 1 {x1:.1f},{y1:.1f}" class="cr-g-fg"/>
-      <line x1="{ex:.1f}" y1="{ey:.1f}" x2="{ex2:.1f}" y2="{ey2:.1f}" class="cr-g-exp"/>
-      <text x="{pt(80,276)[0]+6:.0f}" y="{pt(80,276)[1]-6:.0f}" class="cr-lab" text-anchor="start">Expected 80%</text>
-      <text x="300" y="268" class="cr-g-num" text-anchor="middle">94%</text><text x="300" y="305" class="cr-g-cap" text-anchor="middle">capture rate</text>
-    </svg>
-    <ul class="cr-ticks"><li><b>Monitor</b>against the full potential of your site</li><li><b>Compare</b>with what other optimizers would earn</li><li><b>Switch</b>when there is more to earn</li></ul></div>"""
-
-CR_VARIANTS = {'A': ('Line: capture rate over a year', _cr_line), 'B': ('Bars: realised vs missed', _cr_bars),
-               'C': ('Loop: monitor, compare, switch', _cr_loop), 'D': ('Gauge with three steps', _cr_gauge)}
+CR_VARIANTS = {'I': ('Animated: 46% to 83% after the switch', _cr_anim), 'E': ('Product cards, Ramp style', _cr_ui), 'F': ('Activity feed', _cr_feed),
+               'G': ('Without vs with the ICM', _cr_split), 'H': ('Dots per month, like the home page', _cr_dots)}
 
 def cr_section(v, label=False):
     tag = f'<span class="cr-var">Variant {v}: {CR_VARIANTS[v][0]}</span>' if label else ''
-    return f"""<section class="dark cr-sec cr-{v}">{tag}<div class="wrap">{CR_H}<div class="cr-vis">{CR_VARIANTS[v][1]()}</div>{CR_P}</div></section>"""
+    return f"""<section class="dark cr-sec cr-{v}">{tag}<div class="wrap">{CR_H}<div class="cr-vis">{CR_VARIANTS[v][1]()}</div>{CR_P}<p class="cr-note-ill">Illustrative example.</p></div></section>"""
 
 CR_CHOICE = os.environ.get('CR_VARIANT', '')
 
