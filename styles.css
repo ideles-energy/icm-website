@@ -2340,3 +2340,6 @@ body{line-height:1.6}
 .gs-white .btn-outline{color:#040D1F !important;border-color:#040D1F !important}
 .gs-white .btn-outline:hover{background:#040D1F;color:#F2F8F9 !important}
 .gs-white .gs-grid p,.gs-white .gs-grid p b,.gs-white .gs-grid p span{color:#040D1F !important}.gs-white .gs-grid svg{color:#274A51 !important}
+/* v92 Home: How we can work together on Platinum with white cards (contrast with white About us) */
+.props-light{background:#F2F8F9 !important}
+.props-light .prop{background:#FFFFFF !important}
