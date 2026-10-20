@@ -2343,3 +2343,10 @@ body{line-height:1.6}
 /* v92 Home: How we can work together on Platinum with white cards (contrast with white About us) */
 .props-light{background:#F2F8F9 !important}
 .props-light .prop{background:#FFFFFF !important}
+/* v93 eyebrows added to Solutions, Resources, Talk to us, CTA band */
+.cr-sec .cr-eb,.gs-steps .eyebrow,.cta-band .eyebrow,.faq-sec .section-head .eyebrow,.sol-head .eyebrow{display:block;text-align:center;margin:0 0 12px}
+.faq-sec .section-head{text-align:left}
+.faq-sec .section-head .eyebrow{text-align:left}
+.sol-head{margin:0 0 28px}
+.res-sec .eyebrow,.calc-left .eyebrow{display:block;margin:0 0 10px}
+.sol-head{max-width:none !important;width:100%;text-align:center !important}.sol-head .eyebrow{text-align:center !important}

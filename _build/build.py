@@ -373,7 +373,7 @@ def resources(t):
     RES_EXTRAS_HTML = f'''  <div class="wrap">
     <section class="calc-sec res-cols" id="calculator" aria-labelledby="calc-h">
       <div class="res-sec calc-left">
-        <h2 id="calc-h">BESS Calculator <span class="calc-beta">Beta</span></h2>
+        <span class="eyebrow">Tools</span><h2 id="calc-h">BESS Calculator <span class="calc-beta">Beta</span></h2>
         <p class="res-lead">Stop not knowing. See what your battery could have earned. No one has the perfect 2-hour BESS with a full grid connection that delivered EUR 305k per MW per year. Your battery has its own limits. See what it could have earned within them.</p>
         <div><a class="btn btn-outline-dark" href="/talk-to-us/">Talk to us</a></div>
       </div>
@@ -417,12 +417,12 @@ def resources(t):
     body = f'''<main class="res">
 {RES_EXTRAS_HTML if RES_EXTRAS else ''}  <div class="wrap res-cols">
     <section class="res-sec">
-      <h2>Documents</h2>
+      <span class="eyebrow">For developers</span><h2>Documents</h2>
       <p class="res-lead">Read our API documents. Anything missing? Just ask.</p>
       <div class="res-card res-thumb"><img src="/assets/brand/thumb-api.jpg" alt="" width="1400" height="612" loading="lazy"><div><span>API documents</span><small>Guides and reference for the ICM Platform API</small></div><a class="btn btn-dark" href="https://docs.icm.energy/" target="_blank" rel="noopener">Access</a></div>
     </section>
     <section class="res-sec">
-      <h2>Brand assets</h2>
+      <span class="eyebrow">Brand</span><h2>Brand assets</h2>
       <p class="res-lead">Download the official logos of the ICM.</p>
       <div class="res-card res-thumb"><img src="/assets/brand/thumb-logos.jpg" alt="" width="640" height="360" loading="lazy"><div><span>Logos</span><small>PNG and SVG, header and footer versions</small></div><a class="btn btn-dark" href="/assets/brand/ICM-logos.zip" download>Download</a></div>
     </section>
@@ -542,7 +542,7 @@ SOL_FAQS = [
 
 def faq_block(items, title=None):
     rows = '\n'.join(f'      <details><summary>{q}</summary><p>{a}</p></details>' for q, a in items)
-    h = f'<h2>{title}</h2>' if title else ''
+    h = (f'<span class="eyebrow">Good to know</span><h2>{title}</h2>') if title else ''
     return f"""<section class="faq-sec" id="faq">
   <div class="wrap">
     <div class="section-head center">{h}</div>
@@ -556,6 +556,7 @@ def cta_band(t, h="Secure your battery's full potential", p='Tell us about your 
     q = f'?topic={topic}' if topic else ''
     return f"""<section class="cta-band">
   <div class="wrap">
+    <span class="eyebrow">Get started</span>
     <h2>{h}</h2>
     <p>{p}</p>
     <div class="cta-row"><a class="btn btn-lilac" href="{TALK}{q}">Get started</a><a class="btn btn-outline" href="/solutions/">Learn more</a></div>
@@ -712,7 +713,7 @@ GS_ICONS = {
 }
 
 
-CR_H = '<h2>The best capture rate, at all times.</h2>'
+CR_H = '<span class="eyebrow cr-eb">How we deliver value</span><h2>The best capture rate, at all times.</h2>'
 CR_P = '<p class="cr-p">The ICM proactively monitors your performance and switches optimizers when there is more to earn.</p>'
 
 def _cr_ui():
@@ -862,6 +863,7 @@ FILM_LIVE = False  # set True once approved to show the film on the live site
 
 GS_STEPS = f'''<section class="dark gs-steps" id="steps">
   <div class="wrap">
+    <span class="eyebrow">Next steps</span>
     <h2>Get started in three easy steps</h2>
     <div class="gs-grid">
       <div>{GS_ICONS['mail']}<p><b>Step 1: Enter your work email.</b> <span>Enter your business email to begin. You'll be prompted to answer a few questions about your context and objectives.</span></p></div>
@@ -905,6 +907,7 @@ def solutions(t):
     </div>"""
     body = f"""{cr_section('J') if (RES_EXTRAS or FILM_LIVE) else ''}<section class="sol-light sol-wrap sol-noicon" id="solutions">
   <div class="wrap">
+    <div class="section-head center sol-head"><span class="eyebrow">Our solutions</span></div>
 {blocks}  </div>
 </section>
 {GS_STEPS.replace('class="dark gs-steps"', 'class="gs-steps gs-white"')}
@@ -1147,7 +1150,6 @@ def talk(t, variant=None):
     variant = variant or os.environ.get('TALK_VARIANT', 'A')
     hero = """    <div class="talk-hero" id="main">
       <div class="talk-copy">
-        <span class="eyebrow">Talk to us</span>
         <h1><span class="nw">Secure the true value</span><br><span class="nw">of your BESS asset</span></h1>
         <p>Ready to learn more? Use the form to give us a bit more information about your context and objectives.</p>
         <p>Alternatively, you can email us directly at <a href="mailto:ideles@icm.energy">ideles@icm.energy</a>.</p>
