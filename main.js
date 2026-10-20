@@ -247,30 +247,35 @@ r.addEventListener('input',u);u();})();
   });
 })();
 
-/* Capture-rate film (Solutions): monitor -> alert -> quotes -> switch -> without vs with */
+/* Capture-rate film (Solutions): one clock drives everything, so speed changes and chapter jumps just work */
 (function(){
   var els=document.querySelectorAll('.js-film'); if(!els.length) return;
   var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  function run(el){
-    var a=+el.getAttribute('data-from'), b=+el.getAttribute('data-to'), g=+el.getAttribute('data-gain');
-    var arc=el.querySelector('.js-fm-arc'), num=el.querySelector('.js-fm-num'), gain=el.querySelector('.js-fm-gain');
-    (el._t||[]).forEach(clearTimeout); el._t=[]; var T=el._t;
-    function set(v){ arc.setAttribute('stroke-dashoffset',(100-v).toFixed(2)); num.textContent=Math.round(v)+'%'; }
-    function money(v){ gain.textContent='+EUR '+(Math.round(v/1000)*1000).toLocaleString('en-GB'); }
-    function tween(f,t,ms,fn,done){ var s=null; function st(ts){ if(!s)s=ts; var p=Math.min(1,(ts-s)/ms), e=1-Math.pow(1-p,3); fn(f+(t-f)*e); if(p<1)requestAnimationFrame(st); else if(done)done(); } requestAnimationFrame(st); }
-    el.className=el.className.replace(/\s?(f\d|done)/g,''); set(0); money(0);
-    if(reduce){ set(b); money(g); el.classList.add('f1','f2','f3','f4','f5','f6','done'); return; }
-    function at(ms,fn){ T.push(setTimeout(fn,ms)); }
-    tween(0,a,1400,set);
-    at(1500,function(){el.classList.add('f1');});
-    at(2700,function(){el.classList.add('f2');});
-    at(4000,function(){el.classList.add('f3');});
-    at(5300,function(){el.classList.add('f4');});
-    at(6200,function(){el.classList.add('f5'); tween(a,b,1600,set);});
-    at(9200,function(){el.classList.add('f6'); tween(0,g,1600,money,function(){el.classList.add('done');});});
-  }
+  var END=11000, STEPS=[[1500,'f1'],[2700,'f2'],[4000,'f3'],[5300,'f4'],[6200,'f5'],[9200,'f6'],[END,'done']], CH=[0,2700,6200,9200];
+  function ease(p){ return 1-Math.pow(1-Math.max(0,Math.min(1,p)),3); }
+  function eur(v){ return (Math.round(v/100)*100).toLocaleString('en-GB'); }
   els.forEach(function(el){
-    var btn=el.querySelector('.js-fm-replay'); if(btn) btn.addEventListener('click',function(){run(el);});
-    if('IntersectionObserver' in window){ var io=new IntersectionObserver(function(es){ if(es[0].isIntersecting){ run(el); io.disconnect(); } },{threshold:.35}); io.observe(el); } else run(el);
+    var a=+el.dataset.from, b=+el.dataset.to, base=+el.dataset.base, g=+el.dataset.gain;
+    var arc=el.querySelector('.js-fm-arc'), num=el.querySelector('.js-fm-num'), tot=el.querySelector('.js-fm-gain'), plus=el.querySelector('.js-fm-plus');
+    var play=el.querySelector('.js-fm-play'), chs=el.querySelectorAll('.fm-ch li'), sp=el.querySelectorAll('.fm-speed button'), cap=el.querySelector('.js-fm-cap');
+    var t=0, speed=1, running=false, last=0;
+    function render(){
+      var v = t<6200 ? a*ease(t/1400) : a+(b-a)*ease((t-6200)/1600);
+      arc.setAttribute('stroke-dashoffset',(100-v).toFixed(2)); num.textContent=Math.round(v)+'%';
+      var k=ease((t-9200)/1600); tot.textContent='EUR '+eur(base+g*k); plus.textContent='+EUR '+eur(g*k);
+      STEPS.forEach(function(s){ el.classList.toggle(s[1], t>=s[0]); });
+      var c=0; CH.forEach(function(x,i){ if(t>=x) c=i; });
+      chs.forEach(function(li,i){ li.classList.toggle('on', i===c); li.classList.toggle('past', i<c); }); if(cap) cap.textContent=chs[c].querySelector('p').textContent;
+      play.textContent = running ? 'Pause' : (t>=END ? 'Play again' : 'Play');
+    }
+    function frame(ts){ if(!running) return; t+= (ts-last)*speed; last=ts; if(t>=END){ t=END; running=false; } render(); if(running) requestAnimationFrame(frame); }
+    function start(){ if(t>=END) t=0; running=true; last=performance.now(); requestAnimationFrame(frame); render(); }
+    function stop(){ running=false; render(); }
+    play.addEventListener('click',function(){ running?stop():start(); });
+    chs.forEach(function(li){ li.querySelector('button').addEventListener('click',function(){ t=+this.dataset.t; if(!running) start(); else render(); }); });
+    sp.forEach(function(btn){ btn.addEventListener('click',function(){ speed=+btn.dataset.s; sp.forEach(function(x){x.classList.toggle('on',x===btn);}); }); });
+    if(reduce){ t=END; render(); return; }
+    render();
+    if('IntersectionObserver' in window){ var io=new IntersectionObserver(function(es){ if(es[0].isIntersecting){ start(); io.disconnect(); } },{threshold:.35}); io.observe(el); } else start();
   });
 })();
