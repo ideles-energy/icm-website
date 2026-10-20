@@ -2332,3 +2332,11 @@ body{line-height:1.6}
 .film:not(.f6) .ax-mg-b{stroke-dashoffset:36}
 .ax-rc .ax-big{font-size:clamp(26px,2.6vw,34px)}
 @media (max-width:640px){.ax-rc .ax-mg{width:130px}.ax-rc .ax-mg b{top:34px;font-size:21px}.ax-rc .ax-big{font-size:26px}}
+/* v91 Solutions: three steps on white (handbook: light content between the dark bands) */
+.gs-white{background:#FFFFFF;color:#040D1F}
+.gs-white h2{color:#040D1F !important}
+.gs-white p,.gs-white span,.gs-white b{color:#040D1F}
+.gs-white svg{color:#274A51;stroke:#274A51}
+.gs-white .btn-outline{color:#040D1F !important;border-color:#040D1F !important}
+.gs-white .btn-outline:hover{background:#040D1F;color:#F2F8F9 !important}
+.gs-white .gs-grid p,.gs-white .gs-grid p b,.gs-white .gs-grid p span{color:#040D1F !important}.gs-white .gs-grid svg{color:#274A51 !important}

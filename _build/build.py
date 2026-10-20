@@ -713,7 +713,7 @@ GS_ICONS = {
 
 
 CR_H = '<h2>The best capture rate, at all times.</h2>'
-CR_P = '<p class="cr-p">The ICM proactively monitors your performance and switches optimizers when there is more to earn. Together, we secure the true value of your battery.</p>'
+CR_P = '<p class="cr-p">The ICM proactively monitors your performance and switches optimizers when there is more to earn.</p>'
 
 def _cr_ui():
     bars = [88, 87, 85, 82, 78, 75]
@@ -907,8 +907,8 @@ def solutions(t):
   <div class="wrap">
 {blocks}  </div>
 </section>
-{GS_STEPS}
-{GS_SECURE}
+{GS_STEPS.replace('class="dark gs-steps"', 'class="gs-steps gs-white"')}
+{GS_SECURE.replace('class="dark gs-secure"', 'class="gs-secure gs-white"')}
 {faq_block(NEWFAQS, 'Frequently asked questions')}"""
     return page_shell(t, '/solutions/', 'Solutions: BESS Calculator, BESS Backtest and BESS Broker | The ICM',
         'How the ICM helps BESS owners: size the right battery system, backtest its performance against its full potential and find a trusted optimizer.', hero, body)
