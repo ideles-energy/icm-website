@@ -796,7 +796,7 @@ def _cr_film():
     rows = [('Optimizer B', '84%', True), ('Optimizer C', '81%', False), ('Optimizer D', '78%', False)]
     qr = ''.join(f'<div class="fm-row{" fm-sel" if sel else ""}"><span>{n}</span><span>Expected {e}</span>' + ('<span class="fm-btn">Switch</span>' if sel else '<span></span>') + '</div>' for n, e, sel in rows)
     return f"""<div class="film js-film" data-from="64" data-to="83" data-base="185000" data-gain="55500">
-      <ol class="fm-ch"><li><button type="button" data-t="0"><span>1</span>Monitor</button><p>Capture rate at 64%, below the expected 80%. Owner alerted.</p></li><li><button type="button" data-t="2700"><span>2</span>Compare</button><p>Trusted optimizers, side by side.</p></li><li><button type="button" data-t="6200"><span>3</span>Switch</button><p>Optimizer B takes over. Capture rate up to 83%.</p></li><li><button type="button" data-t="9200"><span>4</span>Result</button><p>EUR 55,500 more per MW a year.</p></li></ol><p class="fm-cap js-fm-cap"></p>
+      <ol class="fm-ch"><li><button type="button" data-t="0"><span>1</span>Monitor</button><p>Capture rate at 64%, below the expected 80%. Owner alerted.</p></li><li><button type="button" data-t="2700"><span>2</span>Compare</button><p>We ask trusted optimizers for a quote and compare their offers side by side.</p></li><li><button type="button" data-t="6200"><span>3</span>Switch</button><p>Optimizer B takes over. Capture rate up to 83%.</p></li><li><button type="button" data-t="9200"><span>4</span>Result</button><p>Your battery earns EUR 55,500 more per MW per year.</p></li></ol><p class="fm-cap js-fm-cap"></p>
       <div class="fm-stage">
         <div class="fm-sc fm-sc1">
           <div class="fm-card fm-gauge">
@@ -816,9 +816,9 @@ def _cr_film():
           </div>
         </div>
         <div class="fm-sc fm-sc2">
-          <div class="cs-card cs-off"><p class="cs-tag">Without the ICM</p><p class="cs-big">EUR 185,000</p><p class="cs-cap">per MW in the last 12 months</p>
+          <div class="cs-card cs-off"><p class="cs-tag">Without the ICM</p><p class="cs-big">EUR 185,000</p><p class="cs-cap">per MW per year</p>
             <ul><li><span>Full potential</span><b>Unknown</b></li><li><span>Capture rate</span><b>Unknown</b></li><li><span>Other optimizers</span><b>Unknown</b></li></ul></div>
-          <div class="cs-card cs-on"><p class="cs-tag">With the ICM</p><p class="cs-big fm-gain"><span class="js-fm-gain">EUR 185,000</span></p><p class="cs-cap">per MW in the next 12 months</p>
+          <div class="cs-card cs-on"><p class="cs-tag">With the ICM</p><p class="cs-big fm-gain"><span class="js-fm-gain">EUR 185,000</span></p><p class="cs-cap">per MW per year</p>
             <ul><li><span>Extra revenue</span><b class="fm-plus js-fm-plus">+EUR 0</b></li><li><span>Capture rate</span><b>83%</b></li><li><span>Other optimizers</span><b>4 compared</b></li></ul></div>
         </div>
       </div>

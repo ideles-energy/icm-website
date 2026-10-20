@@ -1988,3 +1988,13 @@ body{line-height:1.6}
   .fm-ch p{display:none}
   .fm-cap{display:block;margin:0 0 16px;color:#F2F8F9;font-size:15px;line-height:1.45;min-height:2.9em}
 }
+/* v80 film scene 1: overlapping tiles like variant E */
+@media (min-width:861px){
+  .fm-sc1{display:block;position:relative;height:470px}
+  .fm-sc1 .fm-gauge{position:absolute;left:0;top:10px;width:44%;z-index:1}
+  .fm-sc1 .fm-right{display:block}
+  .fm-sc1 .fm-note{position:absolute;right:0;top:0;width:50%;z-index:2}
+  .fm-sc1 .fm-quotes{position:absolute;right:5%;top:150px;width:54%;z-index:3}
+  .fm-sc2{align-self:center}
+}
+@media (min-width:861px){.fm-sc1{height:400px}}
