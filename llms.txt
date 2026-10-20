@@ -3,18 +3,18 @@
 > The ICM is an independent energy tech company in Amsterdam. It helps owners of battery energy storage systems (BESS) in the Netherlands, and the installers who work with them, secure the true value of their assets. The ICM owns no batteries and is not an optimizer.
 
 ## Solutions
-- BESS Configurator: simulates the revenues of different MW/MWh configurations within a site's dispatch constraints and shows which one delivers the highest returns. For owners and developers who plan a battery, stand-alone or co-located with solar, wind or other assets, and for installers who size systems for customers.
+- BESS Calculator: simulates the revenues of different MW/MWh configurations within a site's dispatch constraints and shows which one delivers the highest returns. For owners and developers who plan a battery, stand-alone or co-located with solar, wind or other assets, and for installers who size systems for customers.
 - BESS Backtest: compares realised revenues with what can be reasonably achieved within a site's dispatch constraints, and flags when performance consistently falls short. For owners of operating batteries, and for installers who give every customer an independent view of what the battery earns.
 - BESS Broker: a standardised process to source, compare and contract optimizers, and to oversee the switch so the battery keeps earning without interruption.
 
 ## How to get started
 1. Enter a work email and answer a few questions.
-2. Provide the basics: battery (MW/MWh), grid connection (import/export MW), other assets on site and the markets the optimizer trades in.
+2. Provide basic information, such as the battery size (MW/MWh) and the dispatch constraints (GTV).
 3. Most businesses receive a custom view of their potential earnings within one working day.
 
 ## Pages
 - [Home](https://icm.energy/)
-- [Solutions](https://icm.energy/solutions/): BESS Configurator, BESS Backtest and BESS Broker
+- [Solutions](https://icm.energy/solutions/): BESS Calculator, BESS Backtest and BESS Broker
 - [Example report](https://icm.energy/bess-backtest/example/): BESS Backtest with fictional data
 - [Talk to us](https://icm.energy/talk-to-us/)
 - [Resources](https://icm.energy/resources/): API documents and brand assets

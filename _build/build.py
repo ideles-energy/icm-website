@@ -200,7 +200,7 @@ def head(t, title, desc, path, alt_path=None, jsonld=None, og_title=None):
 <meta property="og:url" content="https://icm.energy{path}">
 <meta property="og:title" content="{og_title or title}">
 <meta property="og:description" content="{desc}">
-<meta property="og:image" content="https://icm.energy/assets/og-image.png?v=2">
+<meta property="og:image" content="https://icm.energy/assets/og-image.png?v=4">
 <meta property="og:site_name" content="The Independent Capacity Market">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
@@ -217,7 +217,7 @@ def _v(f):
     return hashlib.md5(open(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), f),'rb').read()).hexdigest()[:8]
 V_CSS, V_JS = _v('styles.css'), _v('main.js')
 
-SOLUTIONS = [('BESS Configurator', 'Size and value the right system', '/solutions/#configurator'),
+SOLUTIONS = [('BESS Calculator', 'Size and value the right system', '/solutions/#configurator'),
              ('BESS Broker', 'Find a trusted optimizer', '/solutions/#broker'),
              ('BESS Backtest', 'Measure what a battery captures', '/solutions/#backtest')]
 TALK = '/talk-to-us/'
@@ -364,7 +364,7 @@ def nl_report_chart():
     return f'<svg viewBox="0 0 {W} {H}" role="img" aria-label="Illustrative chart: median revenue per MW per year of Dutch batteries, January to September 2026, with the range of the middle half of assets">{grid}<polygon points="{band}" class="nlr-band"/><polyline points="{line}" class="nlr-line"/>{xl}{pts}</svg>'
 
 # Resources extras (BESS Calculator, NL BESS Revenue Report): built, hidden until launch. Set True to show.
-RES_EXTRAS = os.environ.get('ICM_PREVIEW') == '1'  # shown only in the Claude preview until launch
+RES_EXTRAS = True  # BESS Calculator and the capture-rate film are live (launched 20 Oct 2026)
 COMPANY_STORY = True  # Our story + Supported by: live
 NL_REPORT = False  # NL BESS Revenue Report signup: parked (built, not shown anywhere)
 FILLOUT_JS = '\n<script src="https://server.fillout.com/embed/v1/" defer></script>'
@@ -374,23 +374,16 @@ def resources(t):
     <section class="calc-sec res-cols" id="calculator" aria-labelledby="calc-h">
       <div class="res-sec calc-left">
         <h2 id="calc-h">BESS Calculator <span class="calc-beta">Beta</span></h2>
-        <p class="res-lead">Stop not knowing. See what your battery could have earned. No one has the perfect 2-hour BESS with a full grid connection that delivered EUR 305k/MW/yr. Your battery has its own limits. See what it could have earned within them.</p>
+        <p class="res-lead">Stop not knowing. See what your battery could have earned. No one has the perfect 2-hour BESS with a full grid connection that delivered EUR 305k per MW per year. Your battery has its own limits. See what it could have earned within them.</p>
         <div><a class="btn btn-outline-dark" href="/talk-to-us/">Talk to us</a></div>
       </div>
       <div class="res-sec">
         <div class="res-card res-thumb calc-card">
-          <button type="button" class="calc-shot-btn js-calc-open" aria-label="Open the BESS Calculator"><img src="/assets/img/calculator-preview.jpg" alt="BESS Calculator: full potential and expected revenues per month (fictional example)" width="1440" height="900" loading="lazy"></button>
-          <div><span>BESS Calculator</span><small>Subject to change, methodology to be refined.</small></div>
-          <button type="button" class="btn btn-dark js-calc-open">Open</button>
+          <button type="button" class="calc-shot-btn js-gate-open" data-gate="calc" aria-label="Open the BESS Calculator"><img src="/assets/img/calculator-preview.jpg" alt="BESS Calculator: full potential and expected revenues per month (fictional example)" width="1440" height="900" loading="lazy"></button>
+          <div><span>BESS Calculator</span><small>Subject to change, methodology to be refined. Project data are never shown to other parties.</small></div>
+          <button type="button" class="btn btn-dark js-gate-open" data-gate="calc">Open</button>
         </div>
       </div>
-      <dialog class="calc-dlg" id="calc-dlg" aria-labelledby="calc-dlg-h">
-        <button type="button" class="gate-x js-calc-close" aria-label="Close">&times;</button>
-        <img src="/assets/img/calculator-preview.jpg" alt="" width="1440" height="900" loading="lazy">
-        <h3 id="calc-dlg-h">The BESS Calculator opens soon</h3>
-        <p>Curious what it shows for your battery? We are happy to walk you through it.</p>
-        <a class="btn btn-dark" href="/talk-to-us/">Talk to us</a>
-      </dialog>
     </section>
   </div>
   <div class="wrap">
@@ -419,13 +412,13 @@ def resources(t):
         RES_EXTRAS_HTML = re.sub(r'\n    <section class="nlr-block".*?</section>', '', RES_EXTRAS_HTML, flags=re.S)
     hero = f'''    <div class="page-hero" id="main">
       <h1>Resources</h1>
-      <p>{('A community BESS Calculator, a periodic NL revenue report, API documents and brand assets of the Independent Capacity Market.' if NL_REPORT else 'A community BESS Calculator, API documents and brand assets of the Independent Capacity Market.') if RES_EXTRAS else 'API documents and brand assets of the Independent Capacity Market.'}</p>
+      <p>{('A free BESS Calculator, a periodic NL revenue report, API documents and brand assets of the Independent Capacity Market.' if NL_REPORT else 'A free BESS Calculator, API documents and brand assets of the Independent Capacity Market.') if RES_EXTRAS else 'API documents and brand assets of the Independent Capacity Market.'}</p>
     </div>'''
     body = f'''<main class="res">
 {RES_EXTRAS_HTML if RES_EXTRAS else ''}  <div class="wrap res-cols">
     <section class="res-sec">
       <h2>Documents</h2>
-      <p class="res-lead">Read our API documents. Anything missing? Just ask.</p>
+      <p class="res-lead">Our API documents, written for and by developers.</p>
       <div class="res-card res-thumb"><img src="/assets/brand/thumb-api.jpg" alt="" width="1400" height="612" loading="lazy"><div><span>API documents</span><small>Guides and reference for the ICM Platform API</small></div><a class="btn btn-dark" href="https://docs.icm.energy/" target="_blank" rel="noopener">Access</a></div>
     </section>
     <section class="res-sec">
@@ -435,13 +428,13 @@ def resources(t):
     </section>
   </div>
 </main>{FILLOUT_JS if (RES_EXTRAS and NL_REPORT) else ''}'''
-    return page_shell(t, '/resources/', 'Resources | The ICM' if not RES_EXTRAS else 'Resources: BESS Calculator, API documents and brand assets | The ICM', 'API documents and brand assets of the Independent Capacity Market.' if not RES_EXTRAS else 'A community BESS Calculator, the NL BESS Revenue Report, API documents and brand assets of the Independent Capacity Market.', hero, body)
+    return page_shell(t, '/resources/', 'Resources | The ICM' if not RES_EXTRAS else 'Resources: BESS Calculator, API documents and brand assets | The ICM', 'API documents and brand assets of the Independent Capacity Market.' if not RES_EXTRAS else 'A free BESS Calculator, the NL BESS Revenue Report, API documents and brand assets of the Independent Capacity Market.', hero, body)
 
 ROLES = [
   ('Commercial Lead', 'Amsterdam',
    'Sell our solutions to BESS owners and the installers who work with them. You own the pipeline, from first call to signed contract and beyond.',
    ['Be the connector: build lasting relationships with the installers and developers who bring us BESS owners (3–30 MW)',
-    'Run discovery calls and present Configurator, Backtest and Broker results',
+    'Run discovery calls and present Calculator, Backtest and Broker results',
     'Guide clients from first call through onboarding, and make sure they get lasting value',
     'Turn successfully served clients into case examples'],
    ['3–6 years in B2B consultative sales (SaaS, energy or finance)',
@@ -449,15 +442,15 @@ ROLES = [
     'Fluent in Dutch and English',
     'Knows BRP and aFRR, or learns fast']),
   ('BESS Analyst', 'Amsterdam',
-   'Accelerate the revenue models, the BESS Backtest and the data pipelines behind every ICM result, and discuss the outcomes with clients.',
+   'Improve the revenue models, the BESS Backtest and the data pipelines behind every ICM result, and discuss the outcomes with clients.',
    ['Improve and extend the revenue models for imbalance, FCR, aFRR and day-ahead',
     'Speed up the BESS Backtest back-end and automate battery and market data',
     'Follow market design and regulation (TenneT, ACM, grid congestion) and translate it into our methodology',
     'Talk with clients about their results and what they mean for them'],
    ['MSc in econometrics, physics, energy or similar, with Python and SQL',
     '2–5 years at a trader, optimizer or consultancy',
-    'Knows the Dutch and European power markets',
-    'Explains clearly to people who are not analysts']),
+    'Knowledge of the Dutch and European power markets',
+    'Able to explain results clearly to people who are not analysts']),
 ]
 
 
@@ -484,14 +477,14 @@ def company(t):
   <div class="wrap">
     <p class="co-label">The team</p>
     <div class="team">
-      <a class="member" href="https://www.linkedin.com/in/idel%C3%A8s-kaandorp/" target="_blank" rel="noopener"><img class="ph" src="/assets/team-ideles.jpg" alt="Idelès Kaandorp" width="600" height="600" loading="lazy"><b>Idelès Kaandorp</b><span class="m-bio">Founder. Leads the push for transparency in the BESS market. Trained as a mathematician, holds an MBA from Harvard Business School and served energy clients at McKinsey.</span></a>
-      <a class="member" href="https://www.linkedin.com/in/edo-rivai-78b66a17/" target="_blank" rel="noopener"><img class="ph" src="/assets/team-edo.jpg" alt="Edo Rivai" width="512" height="512" loading="lazy"><b>Edo Rivai</b><span class="m-bio">Senior software developer. Owns platform design, integrations and infrastructure. Built and scaled software, most recently at SpotAI (network of intelligent security cameras).</span></a>
+      <a class="member" href="https://www.linkedin.com/in/idel%C3%A8s-kaandorp/" target="_blank" rel="noopener"><img class="ph" src="/assets/team-ideles.jpg" alt="Idelès Kaandorp" width="600" height="600" loading="lazy"><b>Idelès Kaandorp</b><span class="m-bio">Founder. Leads the push for transparency in the BESS market. Trained as a mathematician, holds an MBA from Harvard Business School and served energy clients as a manager at McKinsey.</span></a>
+      <a class="member" href="https://www.linkedin.com/in/edo-rivai-78b66a17/" target="_blank" rel="noopener"><img class="ph" src="/assets/team-edo.jpg" alt="Edo Rivai" width="512" height="512" loading="lazy"><b>Edo Rivai</b><span class="m-bio">Senior Software Developer. Owns platform design, integrations and infrastructure. Built and scaled software, most recently as Staff Software Engineer at Spot AI (intelligent security cameras).</span></a>
       <a class="member" href="https://www.linkedin.com/in/jesse-h-willis/" target="_blank" rel="noopener"><img class="ph" src="/assets/team-jesse.jpg" alt="Jesse Willis" width="600" height="720" loading="lazy"><b>Jesse Willis</b><span class="m-bio">Project Engineer. Translates your dispatch constraints into custom insights that drive decisions. Studied Industrial Design Engineering in Delft and started Everlab to build meaningful products from scratch.</span></a>
     </div>
-    <div class="team-cta"><a class="btn btn-lilac" href="/talk-to-us/">Get in touch</a></div>
+    <div class="team-cta"><a class="btn btn-lilac" href="/talk-to-us/">Talk to us</a></div>
   </div>
 </section>
-{'<section class="co-story" id="story"><div class="wrap"><div class="co-story-grid"><div><span class="eyebrow">Our story</span><h2>How the ICM started</h2><div class="story-txt"><p>Batteries are becoming the backbone of a flexible grid. Europe already has more than 100 GWh of battery storage installed, and the Netherlands is expected to reach around 25 GWh by 2030.</p><p>Batteries strengthen the grid. They store surplus solar and wind power, relieve congested grids and keep the grid at 50 Hz.</p><p>Yet most battery owners are flying blind. They have no overview of the optimizers on the market or how they compare, and no reference for what their own site could deliver.</p><p>The ICM was founded in Amsterdam in March 2026 to close this information gap. We serve those who add capacity to the grid, but are in the dark about the potential of their assets.</p><p class="story-src-line">Sources: <a href="https://www.ees-europe.com/publications/european-market-outlook-for-battery-storage-2026" target="_blank" rel="noopener">SolarPower Europe, European Market Outlook for Battery Storage</a>; <a href="https://taiyangnews.info/storage/europe-battery-storage-capacity-exceeds-100-gwh" target="_blank" rel="noopener">TaiyangNews, Europe’s battery storage capacity exceeds 100 GWh</a>.</p></div></div><div><span class="eyebrow">Supported by</span><div class="sup-card"><img src="/assets/img/provincie-noord-holland.png" alt="Province of Noord-Holland" width="1188" height="236" loading="lazy"><p><a href="https://www.noord-holland.nl/Producten_op_alfabet/MKB_innovatiestimulering_topsectoren_MIT_Noord_Holland_Haalbaarheidsproject_subsidie" target="_blank" rel="noopener">MIT feasibility grant</a> from the Province of Noord-Holland.</p></div></div></div></div></section>' if COMPANY_STORY else ''}
+{'<section class="co-story" id="story"><div class="wrap"><div class="co-story-grid"><div><span class="eyebrow">Our story</span><h2>How the ICM started</h2><div class="story-txt"><p>Batteries are becoming the backbone of a flexible grid. Europe already has more than 100 GWh of battery storage installed, and the Netherlands is expected to reach around 25 GWh by 2030.</p><p>Batteries strengthen the grid. They store surplus solar and wind power, relieve congested grids and help keep the frequency at 50 Hz.</p><p>Yet most battery owners are flying blind. They have no overview of the optimizers on the market or how they compare, and no reference for what their own site could deliver.</p><p>The ICM was founded in Amsterdam in March 2026 to close this information gap. We serve those who add capacity to the grid, but are in the dark about the potential of their assets.</p><p class="story-src-line">Sources: <a href="https://www.ees-europe.com/publications/european-market-outlook-for-battery-storage-2026" target="_blank" rel="noopener">SolarPower Europe, European Market Outlook for Battery Storage</a>; <a href="https://taiyangnews.info/storage/europe-battery-storage-capacity-exceeds-100-gwh" target="_blank" rel="noopener">TaiyangNews, Europe’s battery storage capacity exceeds 100 GWh</a>.</p></div></div><div><span class="eyebrow">Supported by</span><div class="sup-card"><img src="/assets/img/provincie-noord-holland.png" alt="Province of Noord-Holland" width="1188" height="236" loading="lazy"><p><a href="https://www.noord-holland.nl/Producten_op_alfabet/MKB_innovatiestimulering_topsectoren_MIT_Noord_Holland_Haalbaarheidsproject_subsidie" target="_blank" rel="noopener">MIT feasibility grant</a> from the Province of Noord-Holland.</p></div></div></div></div></section>' if COMPANY_STORY else ''}
 <section class="co-careers" id="careers">
   <div class="wrap">
     <p class="co-label dark-t">Open roles</p>
@@ -517,7 +510,7 @@ def icon_svg(k):
     return f'<svg viewBox="0 0 24 24" fill="none" stroke="#97F2F5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">{ICONS[k]}</svg>'
 
 PROPS = [
-  ('configurator', 'BESS Configurator', '/solutions/#configurator', 'Find the optimal system for your context.',
+  ('configurator', 'BESS Calculator', '/solutions/#configurator', 'Find the optimal system for your context.',
    'We simulate the revenues of different MW/MWh configurations within your site\'s dispatch constraints and show which one delivers the highest returns.'),
   ('broker', 'BESS Broker', '/solutions/#broker', 'Outsource the search for a trusted optimizer.',
    'We run a standardised process to source, compare and contract optimizers, and oversee the switch so your battery keeps earning without interruption.'),
@@ -532,7 +525,7 @@ NEWFAQS = [
 ('What is the BESS Backtest?', 'The BESS Backtest compares what your battery earned with the most it could have earned on your site. The result is a capture rate: the share of the full potential that was realised. It shows whether a battery earns what it should, and what holds it back.'),
 ('What data do I need to provide?', 'The optimizer report, quarter-hour meter data, data from the energy management system for downtime, and the documents on your grid connection and optimizer mandate. We guide you through the list, and your installer or metering service provider can often deliver most of it.'),
 ('Who orders a BESS Backtest, me or my installer?', 'Installers can include a BESS Backtest at delivery, so every customer gets an independent view of what the battery earns. Owners can also order one directly. Talk to us about how this works for you.'),
-('How can my installer work with the ICM?', 'Installers can use the ICM in three ways: size a system with the BESS Configurator before the sale, include a BESS Backtest at delivery so every customer gets an independent view of what the battery earns, and refer owners who want a better optimizer to the BESS Broker. Talk to us to see what fits your way of working.'),
+('How can my installer work with the ICM?', 'Installers can use the ICM in three ways: size a system with the BESS Calculator before the sale, include a BESS Backtest at delivery so every customer gets an independent view of what the battery earns, and refer owners who want a better optimizer to the BESS Broker. Talk to us to see what fits your way of working.'),
 ('What if my battery earns less than it could?', 'You decide what happens next. If the result objectively falls short, the BESS Broker can help you request and compare quotes from other optimizers, test what they would have earned, and guide the switch.'),
 ]
 
@@ -543,13 +536,13 @@ SOL_FAQS = [
  ('What if my battery earns less than it could?', 'You decide what happens next. If the result objectively falls short, the BESS Broker can help you compare optimizers, test what they would have earned and guide the switch.'),
  ('Is the ICM really independent?', 'Yes. We do not own BESS assets. We are not an optimizer. Nor will we ever be.'),
  ('What do I need to get approved?', 'Your work email and a few project details. After approval we ask for read access to your optimizer, or three months of settlements, plus an authorisation to read your meter data from your metering company.'),
- ('When does it make sense to start with the ICM?', 'Before you build, to size the right system with the BESS Configurator. After your battery is running, to see whether it earns what it should with the BESS Backtest. And whenever the numbers say there is more to earn, to find a better optimizer with the BESS Broker.'),
- ('How do installers work with the ICM?', 'Installers can size a system with the BESS Configurator before the sale, include a BESS Backtest at delivery so every customer gets an independent view of what the battery earns, and refer owners who want a better optimizer to the BESS Broker.'),
+ ('When does it make sense to start with the ICM?', 'Before you build, to size the right system with the BESS Calculator. After your battery is running, to see whether it earns what it should with the BESS Backtest. And whenever the numbers say there is more to earn, to find a better optimizer with the BESS Broker.'),
+ ('How do installers work with the ICM?', 'Installers can size a system with the BESS Calculator before the sale, include a BESS Backtest at delivery so every customer gets an independent view of what the battery earns, and refer owners who want a better optimizer to the BESS Broker.'),
 ]
 
 def faq_block(items, title=None):
     rows = '\n'.join(f'      <details><summary>{q}</summary><p>{a}</p></details>' for q, a in items)
-    h = f'<h2>{title}</h2>' if title else ''
+    h = (f'<span class="eyebrow">Good to know</span><h2>{title}</h2>') if title else ''
     return f"""<section class="faq-sec" id="faq">
   <div class="wrap">
     <div class="section-head center">{h}</div>
@@ -591,16 +584,16 @@ def home(t):
         <div class="prop-actions"><a class="prop-link" href="{h}">Learn more →</a>{'<button type="button" class="btn btn-lilac js-gate-open prop-demo" data-gate="demo">See an example report</button>' if k == 'backtest' else ''}</div>
       </article>
 """ for k, n, h, lead, body in PROPS)
-    title = 'BESS performance and optimizer insight: secure the true value of a BESS asset | The ICM'
+    title = 'BESS performance and optimizer insight: secure the true value of your BESS asset | The ICM'
     desc = 'The ICM helps BESS owners in the Netherlands size the right battery, backtest its performance and find a trusted optimizer. Independent: we own no batteries and are not an optimizer.'
-    return head(t, title, desc, b, None, ld, 'Secure the true value of a BESS asset') + f'''
+    return head(t, title, desc, b, None, ld, 'Secure the true value of your BESS asset') + f'''
 <div class="hero-shell hero-photo">
   <img class="hero-img" src="/assets/img/hero-bulb.jpg" alt="" width="1920" height="1080" fetchpriority="high">
   <div class="wrap">
 {nav(t, other)}
     <div class="hero" id="main">
       <div>
-        <h1>Secure the true value <br>of a BESS asset</h1>
+        <h1>Secure the true value <br>of your BESS asset</h1>
         <p class="lead">For those with a nagging sense their battery could earn more. Find the optimal system for your context, outsource the search for a trusted optimizer and monitor your performance proactively.</p>
         <div class="hero-ctas">
           <a class="btn btn-lilac" href="{TALK}">Get started</a>
@@ -663,7 +656,7 @@ def sol_card(k, n, href, lead, body, extra):
           <p class="sol-lead">{lead}</p>
           <p>{body}</p>
           <p>{extra}</p>
-          <div class="cta-row" style="justify-content:flex-start;margin-top:22px">{'<button type="button" class="btn btn-lilac js-gate-open" data-gate="demo">See an example report</button>' if k == 'backtest' else '<a class="btn btn-dark" href="' + TALK + '?topic=' + k + '">Talk to an expert</a>'}</div>
+          <div class="cta-row" style="justify-content:flex-start;margin-top:22px">{'<button type="button" class="btn btn-lilac js-gate-open" data-gate="demo">See an example report</button>' if k == 'backtest' else '<a class="btn btn-dark" href="' + TALK + '?topic=' + k + '">Learn more</a>'}</div>
         </div>
       </article>"""
 
@@ -718,13 +711,163 @@ GS_ICONS = {
   'key': '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="16" r="12"/><path d="m10.5 16.5 4 4 7-8"/></svg>',
 }
 
+
+CR_H = '<span class="eyebrow cr-eb">How we deliver value</span><h2>The best capture rate, at all times.</h2>'
+CR_P = '<p class="cr-p">The ICM proactively monitors your performance and switches optimizers when there is more to earn. <span class="cr-ill">Illustrative example.</span></p>'
+
+def _cr_ui():
+    bars = [88, 87, 85, 82, 78, 75]
+    bh = ''.join(f'<i style="height:{(v-60)*2.2:.0f}px" class="{"lo" if v < 80 else ""}"></i>' for v in bars)
+    return f"""<div class="cr-ui">
+      <div class="cu-card cu-kpi"><div class="cu-top"><span class="cu-dot"></span>Your battery <em>10 MW / 20 MWh</em></div>
+        <p class="cu-l">Capture rate, last 6 months</p><p class="cu-big">75%<small>Expected 80%</small></p>
+        <div class="cu-bars">{bh}<span class="cu-exp"></span></div><div class="cu-m"><span>Jan</span><span>Jun</span></div></div>
+      <div class="cu-card cu-note"><span class="cu-bell"><svg viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4zM10 20a2 2 0 0 0 4 0"/></svg></span>
+        <div><b>Capture rate below expected for 3 months</b><p>We asked 4 trusted optimizers for a quote.</p></div><time>Today</time></div>
+      <div class="cu-card cu-quotes"><p class="cu-l">Quotes, side by side</p>
+        <div class="cu-row cu-sel"><span>Optimizer B</span><span>Expected 93%</span><button type="button" tabindex="-1">Switch</button></div>
+        <div class="cu-row"><span>Optimizer C</span><span>Expected 89%</span><span></span></div>
+        <div class="cu-row"><span>Optimizer D</span><span>Expected 86%</span><span></span></div></div>
+    </div>"""
+
+def _cr_feed():
+    items = [('Jan', 'Monthly check', 'Capture rate 88%. On track.', ''),
+             ('Apr', 'Alert', 'Capture rate 78%, below the expected 80%.', 'v'),
+             ('May', 'Quotes compared', 'Four trusted optimizers, side by side.', ''),
+             ('Jun', 'Optimizer switched', 'Your battery keeps earning during the move.', ''),
+             ('Sep', 'Monthly check', 'Capture rate 94%.', 'c')]
+    li = ''.join(f'<li class="cf-{k or "n"}"><time>{m}</time><div><b>{t}</b><span>{d}</span></div></li>' for m, t, d, k in items)
+    return f'<div class="cr-feed"><p class="cf-head"><span class="cf-live"></span>The ICM at work for your battery</p><ol>{li}</ol></div>'
+
+def _cr_split():
+    return """<div class="cr-split">
+      <div class="cs-card cs-off"><p class="cs-tag">Without the ICM</p><p class="cs-big">EUR 1,850,000</p><p class="cs-cap">revenue last year</p>
+        <ul><li><span>Full potential</span><b>Unknown</b></li><li><span>Missed</span><b>Unknown</b></li><li><span>Other optimizers</span><b>Unknown</b></li></ul></div>
+      <div class="cs-card cs-on"><p class="cs-tag">With the ICM</p><p class="cs-big">94%</p><p class="cs-cap">capture rate</p>
+        <ul><li><span>Full potential</span><b>EUR 2,405,000</b></li><li><span>Missed</span><b class="v">EUR 145,000</b></li><li><span>Other optimizers</span><b>Compared</b></li></ul></div>
+    </div>"""
+
+def _cr_dots():
+    real = [7, 7, 7, 7, 7, 7, 9, 9, 10, 9, 10, 10]
+    X = lambda i: 40 + i * 78 + (24 if i >= 6 else 0)
+    out = ''
+    for i, r in enumerate(real):
+        for j in range(10):
+            y = 290 - j * 24
+            out += f'<circle cx="{X(i)}" cy="{y}" r="8" class="{"cd-d" if j < r else "cd-m"}"/>'
+        out += f'<text x="{X(i)}" y="322" class="cr-ax" text-anchor="middle">{"JFMAMJJASOND"[i]}</text>'
+    sx = (X(5) + X(6)) / 2
+    return f"""<svg viewBox="0 0 1000 335" class="cr-svg" role="img" aria-label="Each column is a month; violet dots are revenue missed, which shrink after the switch">
+      {out}<line x1="{sx}" x2="{sx}" y1="44" y2="300" class="cr-switch"/>
+      <rect x="{sx-78}" y="8" width="156" height="32" rx="16" class="cr-pill"/><text x="{sx}" y="29" class="cr-pill-t" text-anchor="middle">Switch optimizer</text>
+    </svg>
+    <div class="cr-leg"><span><i class="cr-k-real" style="border-radius:50%"></i>Delivered</span><span><i class="cd-k-m"></i>Missed</span><span>1 dot = 10% of the full potential that month</span></div>"""
+
+def _cr_anim():
+    return """<div class="crx js-crx" data-from="46" data-to="83">
+      <div class="crx-card">
+        <div class="crx-top"><span class="crx-dot"></span>Your battery <em>10 MW / 20 MWh</em></div>
+        <div class="crx-opt"><span class="crx-o crx-oa">Optimizer A</span><span class="crx-o crx-ob">Optimizer B</span></div>
+        <div class="crx-gw"><svg viewBox="0 0 400 215" class="crx-g" aria-hidden="true">
+          <path d="M40,200 A160,160 0 0 1 360,200" class="crx-g-bg" pathLength="100"/>
+          <path d="M40,200 A160,160 0 0 1 360,200" class="crx-g-fg js-crx-arc" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100"/>
+          <line x1="311.6" y1="118.9" x2="347.2" y2="93.0" class="crx-g-exp"/>
+        </svg>
+        <div class="crx-num"><b class="js-crx-num">0%</b><span>capture rate</span></div>
+        <span class="crx-explab">Expected 80%</span></div>
+        <div class="crx-status"><span class="crx-s crx-slo">Below expected</span><span class="crx-s crx-sok">On track</span></div>
+      </div>
+      <ol class="crx-log">
+        <li class="crx-e1"><i></i><div><b>Alert</b><span>Capture rate 46%, below the expected 80%.</span></div></li>
+        <li class="crx-e2"><i></i><div><b>Quotes compared</b><span>Trusted optimizers, side by side.</span></div></li>
+        <li class="crx-e3"><i></i><div><b>Optimizer switched</b><span>Capture rate up to 83%.</span></div></li>
+      </ol>
+      <button type="button" class="crx-replay js-crx-replay">Replay</button>
+    </div>"""
+
+def _cr_film():
+    # All figures are for one illustrative battery. Expected revenues are known only after each month.
+    ex = [228, 223, 222, 229, 236, 240, 240, 235, 230, 225, 234, 233]          # expected revenues, EUR k per MW per year (annualised)
+    CA, CB, CE = 64, 83, 80                                                     # capture rate with A, with B, expected (83/64 = +30%)
+    ra = [e * CA / CE for e in ex]; rb = [e * CB / CE for e in ex]
+    before, gain = 185000, 55500                                                # same battery as the home page: EUR 185k, +30% = EUR 55.5k
+    fmt = lambda v: f'{v:,.0f}'
+    W, H, L, R, T, B = 520, 300, 60, 10, 14, 30
+    X = lambda i: L + i * (W - L - R) / 11
+    Y = lambda v: T + (270 - v) / (270 - 150) * (H - T - B)
+    pl = lambda pts, idx: ' '.join(('M' if k == 0 else 'L') + f'{X(i):.1f},{Y(v):.1f}' for k, (i, v) in enumerate(zip(idx, pts)))
+    band = 'M' + ' L'.join(f'{X(i):.1f},{Y(e*1.1):.1f}' for i, e in enumerate(ex)) + ' L' + ' L'.join(f'{X(i):.1f},{Y(e*0.9):.1f}' for i, e in reversed(list(enumerate(ex)))) + ' Z'
+    grid = ''.join(f'<line x1="{L}" x2="{W-R}" y1="{Y(v):.1f}" y2="{Y(v):.1f}" class="ax-grid"/><text x="{L-7}" y="{Y(v)+4:.1f}" text-anchor="end" class="ax-ax">{v}k</text>' for v in (150, 175, 200, 225, 250))
+    months = ''.join(f'<text x="{X(i):.1f}" y="{H-8}" text-anchor="middle" class="ax-ax">{m}</text>' for i, m in enumerate('JFMAMJJASOND'))
+    x1, x2 = X(5) + 2, W
+    chart = f"""<svg viewBox="0 0 {W} {H}" class="ax-chart" aria-hidden="true" data-x0="{L}" data-x1="{x1:.1f}" data-x2="{x2}">
+          <defs><clipPath id="ax-clip"><rect class="js-ax-clip" x="0" y="0" width="{L}" height="{H}"/></clipPath></defs>{grid}{months}
+          <g clip-path="url(#ax-clip)"><path d="{band}" class="ax-band"/><path d="{pl(ex, range(12))}" class="ax-ex"/>
+          <path d="{pl(ra[:6], range(6))}" class="ax-ra"/><path d="{pl([ra[5]] + rb[6:], range(5, 12))}" class="ax-rb"/>
+          <line x1="{(X(5)+X(6))/2:.1f}" x2="{(X(5)+X(6))/2:.1f}" y1="{T}" y2="{H-B}" class="ax-sw"/></g></svg>"""
+    quotes = [('Optimizer B', 84, True), ('Optimizer C', 81, False), ('Optimizer D', 79, False), ('Optimizer E', 76, False)]
+    qr = ''.join(f'<div class="ax-q{" ax-qsel" if sel else ""}" style="--k:{k}"><b>{n}</b><span class="ax-qe">Expected <strong>{e}%</strong></span>' + ('<span class="ax-btn">Switch</span>' if sel else '<span></span>') + '</div>' for k, (n, e, sel) in enumerate(quotes))
+    nav = [('0', 'Monitor', f'Capture rate at {CA}%, below the expected {CE}%. Owner alerted.'),
+           ('6000', 'Compare', 'Trusted optimizers, quotes compared side by side.'),
+           ('9800', 'Switch', f'Optimizer B takes over. Capture rate up to {CB}%.'),
+           ('13600', 'Result', f'Your battery earns an extra EUR {fmt(gain)} per MW per year.')]
+    navh = ''.join(f'<li><button type="button" data-t="{t}"><span>{k+1}</span>{h}</button><p>{d}</p></li>' for k, (t, h, d) in enumerate(nav))
+    return f"""<div class="film ax js-film" data-from="{CA}" data-to="{CB}" data-base="{before}" data-gain="{gain}">
+      <div class="ax-win">
+        <aside class="ax-side"><ol class="fm-ch ax-nav">{navh}</ol></aside>
+        <div class="ax-main">
+          <img class="ax-mark" src="/assets/icm-mark.svg" alt="The Independent Capacity Market" width="40" height="40">
+          <p class="ax-cap js-fm-cap"></p>
+          <div class="ax-grid2">
+            <div class="ax-card ax-kpi">
+              <div class="ax-kh"><b>Capture rate, %</b></div>
+              <div class="ax-opt"><span class="ax-o ax-oa">Optimizer A</span><span class="ax-o ax-ob">Optimizer B</span></div>
+              <div class="ax-gw"><svg viewBox="0 0 400 210" class="ax-g" aria-hidden="true">
+                <path d="M44,196 A156,156 0 0 1 356,196" class="ax-g-bg" pathLength="100"/>
+                <path d="M44,196 A156,156 0 0 1 356,196" class="ax-g-fg js-fm-arc" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100"/>
+                <line x1="311.6" y1="114.9" x2="342.4" y2="92.5" class="ax-g-exp"/><text x="355.3" y="83.1" class="ax-g-el">80%</text>
+              </svg><div class="ax-num"><b class="js-fm-num">0%</b></div></div>
+              <div class="ax-status"><span class="ax-s ax-slo">Below expected</span><span class="ax-s ax-sok">On track</span></div>
+            </div>
+            <div class="ax-right">
+              <div class="ax-card ax-pchart"><p class="ax-ct">Revenue per MW per year <em>monthly, annualised</em></p>{chart}
+                <div class="ax-leg"><span class="ax-l-ra"><i></i>Realised, A</span><span class="ax-l-rb"><i></i>Realised, B</span><span class="ax-l-ex"><i></i>Expected revenues</span><span class="ax-l-band"><i></i>±10%</span></div></div>
+              <div class="ax-card ax-pq"><p class="ax-ct">Quotes, side by side <em>4 offers from trusted optimizers</em></p>{qr}
+                <p class="ax-note">Expected capture rate on your site, from a backtest of each optimizer. Optimizer A is your current optimizer.</p></div>
+            </div>
+            <div class="ax-toast ax-t1"><span class="ax-bell"><svg viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4zM10 20a2 2 0 0 0 4 0"/></svg></span>
+              <div><b>Capture rate below expected for 6 months</b><span class="ax-t1b">Owner alerted. We ask trusted optimizers for a quote.</span></div></div>
+            <div class="ax-res">
+              <div class="ax-rc ax-off"><p class="cs-tag">Without the ICM</p><p class="ax-big">EUR {fmt(before)}</p><p class="ax-rcap">per MW per year</p>
+                <ul><li><span>Missed opportunity</span><b>Unknown</b></li><li><span>Other optimizers</span><b>Unknown</b></li></ul><div class="ax-mg"><svg viewBox="0 0 400 215" aria-hidden="true"><path d="M44,196 A156,156 0 0 1 356,196" class="ax-mg-bg" pathLength="100"/><path d="M44,196 A156,156 0 0 1 356,196" class="ax-mg-fg ax-mg-a" pathLength="100" stroke-dasharray="100" stroke-dashoffset="{100-CA}"/></svg><b>{CA}%</b><span>capture rate</span></div></div>
+              <div class="ax-rc ax-on"><p class="cs-tag">With the ICM</p><p class="ax-big"><span class="js-fm-gain">EUR {fmt(before)}</span></p><p class="ax-rcap">per MW per year</p>
+                <ul><li><span>Extra revenue</span><b class="js-fm-plus">+EUR 0</b></li><li><span>Offers compared</span><b>4</b></li></ul><div class="ax-mg"><svg viewBox="0 0 400 215" aria-hidden="true"><path d="M44,196 A156,156 0 0 1 356,196" class="ax-mg-bg" pathLength="100"/><path d="M44,196 A156,156 0 0 1 356,196" class="ax-mg-fg ax-mg-b" pathLength="100" stroke-dasharray="100" stroke-dashoffset="{100-CB}"/></svg><b>{CB}%</b><span>capture rate</span></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="fm-ctrl"><button type="button" class="fm-play js-fm-play" aria-label="Pause">Pause</button>
+        <div class="fm-speed" role="group" aria-label="Playback speed"><button type="button" data-s="0.5">0.5×</button><button type="button" data-s="0.75">0.75×</button><button type="button" data-s="1" class="on">1×</button><button type="button" data-s="1.5">1.5×</button><button type="button" data-s="2">2×</button></div></div>
+    </div>"""
+
+CR_VARIANTS = {'J': ('Film: I, E and G combined', _cr_film), 'I': ('Animated: 46% to 83% after the switch', _cr_anim), 'E': ('Product cards, Ramp style', _cr_ui),
+               'G': ('Without vs with the ICM', _cr_split), 'H': ('Dots per month, like the home page', _cr_dots)}
+
+def cr_section(v, label=False):
+    tag = f'<span class="cr-var">Variant {v}: {CR_VARIANTS[v][0]}</span>' if label else ''
+    return f"""<section class="dark cr-sec cr-{v}">{tag}<div class="wrap">{CR_H}{CR_P}<div class="cr-vis">{CR_VARIANTS[v][1]()}</div></div></section>"""
+
+CR_CHOICE = os.environ.get('CR_VARIANT', '')
+FILM_LIVE = False  # set True once approved to show the film on the live site
+
 GS_STEPS = f'''<section class="dark gs-steps" id="steps">
   <div class="wrap">
+    <span class="eyebrow">Next steps</span>
     <h2>Get started in three easy steps</h2>
     <div class="gs-grid">
       <div>{GS_ICONS['mail']}<p><b>Step 1: Enter your work email.</b> <span>Enter your business email to begin. You'll be prompted to answer a few questions about your context and objectives.</span></p></div>
-      <div>{GS_ICONS['form']}<p><b>Step 2: Provide your details.</b> <span>We'll ask for the basics: the battery (MW/MWh), the grid connection (import/export MW), other assets on site such as solar panels, and the markets your optimizer trades in.</span></p></div>
-      <div>{GS_ICONS['key']}<p><b>Step 3: Navigate your reality.</b> <span>Most businesses receive a custom view of their potential earnings within 1 working day. It's the draft we start from.</span></p></div>
+      <div>{GS_ICONS['form']}<p><b>Step 2: Provide your details.</b> <span>We'll ask for basic information such as the battery size (MW/MWh) and your dispatch constraints (GTV).</span></p></div>
+      <div>{GS_ICONS['key']}<p><b>Step 3: Navigate your reality.</b> <span>Most businesses receive a custom view of their potential earnings within one working day. It's the draft we start from.</span></p></div>
     </div>
   </div>
 </section>'''
@@ -756,19 +899,20 @@ def solutions(t):
     hero = f"""    <div class="page-hero sol-hero2" id="main">
       <div class="sh-l">
         <h1>See how the ICM works</h1>
-        <p>The ICM brings clarity, trusted partners and continuity to those adding capacity to the grid. Together, we secure the true value of your BESS assets.</p>
+        <p>The ICM brings clarity, trusted partners and continuity to those adding capacity to the grid. Together, we secure the true value of your BESS asset.</p>
         {gs_form('a')}
       </div>
       <div class="sh-r"><img src="/assets/img/solutions-veins-bright.jpg" alt="" width="1600" height="900"></div>
     </div>"""
-    body = f"""<section class="sol-light sol-wrap sol-noicon" id="solutions">
+    body = f"""{cr_section('J') if (RES_EXTRAS or FILM_LIVE) else ''}<section class="sol-light sol-wrap sol-noicon" id="solutions">
   <div class="wrap">
+    <div class="section-head center sol-head"><span class="eyebrow">Our solutions</span></div>
 {blocks}  </div>
 </section>
-{GS_STEPS}
-{GS_SECURE}
+{GS_STEPS.replace('class="dark gs-steps"', 'class="gs-steps gs-white"')}
+{GS_SECURE.replace('class="dark gs-secure"', 'class="gs-secure gs-white"')}
 {faq_block(NEWFAQS, 'Frequently asked questions')}"""
-    return page_shell(t, '/solutions/', 'Solutions: BESS Configurator, BESS Backtest and BESS Broker | The ICM',
+    return page_shell(t, '/solutions/', 'Solutions: BESS Calculator, BESS Backtest and BESS Broker | The ICM',
         'How the ICM helps BESS owners: size the right battery system, backtest its performance against its full potential and find a trusted optimizer.', hero, body)
 
 def prop_page(t, k, path, name, title, desc, lead, what, steps, who, extra_top='', faq=None):
@@ -798,8 +942,8 @@ def prop_page(t, k, path, name, title, desc, lead, what, steps, who, extra_top='
     return page_shell(t, path, title, desc, hero, body)
 
 def configurator_page(t):
-    return prop_page(t, 'configurator', '/solutions/#configurator', 'BESS Configurator',
-      'BESS Configurator: size a battery and value the business case | The ICM',
+    return prop_page(t, 'configurator', '/solutions/#configurator', 'BESS Calculator',
+      'BESS Calculator: size a battery and value the business case | The ICM',
       'Find the optimal battery storage system for your site: size power and capacity, simulate revenue streams and degradation, and see payback and return.',
       ('Find the optimal system for your context', 'A BESS configurator and calculator that sizes the battery for your site and shows whether the investment is technically and financially feasible.'),
       ['Size: how many MW of power and MWh of storage fit your site, your load and your PV or wind profile.',
@@ -818,7 +962,7 @@ def w_pill(cls, label, val, mx=''):
     return f'<label class="pill"><input class="in fit {cls}" type="number" min="1" {mx} step="1" value="{val}" aria-label="{label}">{PEN}</label>'
 
 def w_sentence():
-    return f"""<span class="ws1"><b>Same battery, same site, +30% more revenue.</b> <a class="story-src" href="{FLOWER}" target="_blank" rel="noopener">Source: Flower case</a><br><br>Many have a nagging sense that they are leaving money on the table, fed by anecdotes of businesses realising +30% higher revenues.</span><span class="ws2">A +30% delta adds up to <b class="out js-gap">EUR 55.5k</b> per MW per year for a {w_pill('js-mw','Battery size in MW',10,'max="500"')} MW battery that delivered EUR {w_pill('js-rev','Revenue in thousand EUR per MW per year',185)}k per MW per year.</span>"""
+    return f"""<span class="ws1"><b>Same battery, same site, 30% more revenue.</b> <a class="story-src" href="{FLOWER}" target="_blank" rel="noopener">Source: Flower case</a></span><span class="ws1b">Many have a nagging sense that they are leaving money on the table, fed by anecdotes of businesses realising 30% higher revenues.</span><span class="ws2">A 30% gap adds up to <b class="out js-gap">EUR 55.5k</b> per MW per year for a {w_pill('js-mw','Battery size in MW',10,'max="500"')} MW battery that delivered EUR {w_pill('js-rev','Revenue in thousand EUR per MW per year',185)}k per MW per year.</span>"""
 
 def w_hint():
     return f'<p class="hint">{PEN}Enter figures to adjust. Illustrative example.</p>'
@@ -829,7 +973,7 @@ def w_dots(rows=10, legend=True):
     cap = f'<figcaption class="why-legend">{WLEG}</figcaption>' if legend else ''
     return f"""<figure class="why-fig" aria-hidden="true"><svg class="js-dots" data-rows="{rows}" role="presentation"></svg>{cap}</figure>"""
 
-WCAUSES = [('The wrong configuration', 'The battery is not sized or set up for what your site allows.', '/solutions/#configurator', 'BESS Configurator'),
+WCAUSES = [('The wrong configuration', 'The battery is not sized or set up for what your site allows.', '/solutions/#configurator', 'BESS Calculator'),
            ('The wrong optimizer', 'Another optimizer would earn more with the same battery.', '/solutions/#broker', 'BESS Broker'),
            ('Too little monitoring', 'Underperformance goes unnoticed, so it carries on.', '/solutions/#backtest', 'BESS Backtest')]
 
@@ -888,7 +1032,7 @@ def why_section(v='1'):
     </div>"""
     elif v in ('10', '11', '12'):
         lk = lambda h, n: f'<a class="story-link" href="{h}">{n}</a>'
-        leaks = (f'Revenue leaks in three places. <b>The wrong configuration:</b> the battery is not sized or set up for what your site allows ({lk("/solutions/#configurator", "BESS Configurator")}). '
+        leaks = (f'Revenue leaks in three places. <b>The wrong configuration:</b> the battery is not sized or set up for what your site allows ({lk("/solutions/#configurator", "BESS Calculator")}). '
                  f'<b>The wrong optimizer:</b> another optimizer would earn more with the same battery ({lk("/solutions/#broker", "BESS Broker")}). '
                  f'<b>Too little monitoring:</b> underperformance goes unnoticed, so it carries on ({lk("/solutions/#backtest", "BESS Backtest")}).')
         check = f"""<p class="wy-k">What is missing</p><p class="story-p story">{w_sentence()}</p>{w_hint()}"""
@@ -1005,9 +1149,8 @@ def talk(t, variant=None):
     variant = variant or os.environ.get('TALK_VARIANT', 'A')
     hero = """    <div class="talk-hero" id="main">
       <div class="talk-copy">
-        <span class="eyebrow">Talk to us</span>
         <h1><span class="nw">Secure the true value</span><br><span class="nw">of your BESS asset</span></h1>
-        <p>You are ready to learn more. Use the form to give us a bit more information about your context and objectives.</p>
+        <p>Ready to learn more? Use the form to give us a bit more information about your context and objectives.</p>
         <p>Alternatively, you can email us directly at <a href="mailto:ideles@icm.energy">ideles@icm.energy</a>.</p>
       </div>
       <div class="form fillout">
@@ -1016,16 +1159,7 @@ def talk(t, variant=None):
         <noscript><a href="https://forms.fillout.com/t/icWpPN8hsgus">Open the form</a></noscript>
       </div>
     </div>"""
-    body = f"""<section class="talk-sec talk-expect">
-  <div class="wrap">
-    <div class="section-head center"><h2>Get started in three easy steps</h2></div>
-    <div class="expect">
-      <div><b>1</b><h3>Enter your work email.</h3><p>Enter your business email to begin. You'll be prompted to answer a few questions about your context and objectives.</p></div>
-      <div><b>2</b><h3>Provide your details.</h3><p>We'll ask for the basics: the battery (MW/MWh), the grid connection (import/export MW), other assets on site such as solar panels, and the markets your optimizer trades in.</p></div>
-      <div><b>3</b><h3>Navigate your reality.</h3><p>Most businesses receive a custom view of their potential earnings within 1 working day. It's the draft we start from.</p></div>
-    </div>
-  </div>
-</section>
+    body = f"""{GS_STEPS.replace('class="dark gs-steps"', 'class="dark gs-steps talk-expect"')}
 """
     return page_shell(t, TALK, 'Talk to us: get started with your BESS | The ICM',
         'Get started with the ICM in three steps: enter a work email, share the basic details of your battery and receive a custom report with expected revenues within one working day.', hero, body)
@@ -1143,4 +1277,9 @@ write('demo/index.html', '<!DOCTYPE html><html lang="en"><head><meta charset="UT
 
 # BESS Backtest example report (fictional data), served at /bess-backtest/example/ with a way back to the site.
 write('bess-backtest/example/index.html', open(os.path.join(ROOT, '_build', 'backtest-example.html'), encoding='utf-8').read())
+import shutil
+if RES_EXTRAS:
+    write('bess-calculator/index.html', open(os.path.join(ROOT, '_build', 'bess-calculator.html'), encoding='utf-8').read())
+elif os.path.isdir(os.path.join(ROOT, 'bess-calculator')):
+    shutil.rmtree(os.path.join(ROOT, 'bess-calculator'))
 print('demo built')

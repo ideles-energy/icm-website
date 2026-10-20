@@ -165,8 +165,10 @@ r.addEventListener('input',u);u();})();
 /* Email gate before the Backtest product: work-email form (Fillout) in a pop-up */
 (function(){
   var g=document.getElementById('gate'); if(!g) return;
-  var go=g.querySelector('.js-gate-go'), loaded=false;
+  var go=g.querySelector('.js-gate-go'), loaded=false, target='/bess-backtest/example/', bg=g.querySelector('.gate-bg');
+  var T={calc:['/bess-calculator/','/assets/img/calculator-preview.jpg','Entered your email? Open the BESS Calculator'],demo:['/bess-backtest/example/','/assets/img/backtest-example.jpg','Entered your email? Open the example report']};
   function open(mode){g.hidden=false;document.body.style.overflow='hidden';
+    var c=T[mode]||T.demo; target=c[0]; if(bg)bg.src=c[1]; if(go){go.href=c[0];go.textContent=c[2];}
     if(!loaded){loaded=true;var box=g.querySelector('.gate-frame');if(box){
       var u=new URL('https://embed.fillout.com/t/'+box.getAttribute('data-form'));
       new URLSearchParams(location.search).forEach(function(v,k){u.searchParams.set(k,v);});
@@ -176,7 +178,7 @@ r.addEventListener('input',u);u();})();
       window.addEventListener('message',function(e){
         if(e.origin!=='https://embed.fillout.com'||!e.data||e.data.embedId!=='icmgate')return;
         if(e.data.type==='form_resized'&&typeof e.data.size==='number')f.style.height=Math.max(e.data.size,260)+'px';
-        if(e.data.type==='form_submit')location.href='/bess-backtest/example/';
+        if(e.data.type==='form_submit')location.href=target;
       });}}
     if(go)go.hidden=(mode==='start');}
   function close(){g.hidden=true;document.body.style.overflow='';}
@@ -223,3 +225,65 @@ r.addEventListener('input',u);u();})();
   document.querySelectorAll('.js-calc-open').forEach(function(b){b.addEventListener('click',function(){d.showModal();});});
   d.querySelector('.js-calc-close').addEventListener('click',function(){d.close();});
   d.addEventListener('click',function(e){if(e.target===d)d.close();});})();
+
+/* Capture-rate band (Solutions): animated card, 46% -> switch -> 83% */
+(function(){
+  var els=document.querySelectorAll('.js-crx'); if(!els.length) return;
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function run(el){
+    var a=+el.getAttribute('data-from'), b=+el.getAttribute('data-to');
+    var arc=el.querySelector('.js-crx-arc'), num=el.querySelector('.js-crx-num'), T=[];
+    function set(v){ arc.setAttribute('stroke-dashoffset', (100-v).toFixed(2)); num.textContent=Math.round(v)+'%'; }
+    function tween(f,t,ms,done){ var s=null; function st(ts){ if(!s)s=ts; var p=Math.min(1,(ts-s)/ms), e=1-Math.pow(1-p,3); set(f+(t-f)*e); if(p<1)requestAnimationFrame(st); else if(done)done(); } requestAnimationFrame(st); }
+    T.forEach(clearTimeout); el.className=el.className.replace(/\s?(s1|s2|s3|done)/g,''); set(0);
+    if(reduce){ set(b); el.classList.add('s1','s2','s3','done'); return; }
+    tween(0,a,1400,function(){
+      T.push(setTimeout(function(){el.classList.add('s1');},200));
+      T.push(setTimeout(function(){el.classList.add('s2');},1500));
+      T.push(setTimeout(function(){el.classList.add('s3'); tween(a,b,1600,function(){el.classList.add('done');});},2800));
+    });
+  }
+  els.forEach(function(el){
+    var btn=el.querySelector('.js-crx-replay'); if(btn) btn.addEventListener('click',function(){run(el);});
+    if('IntersectionObserver' in window){ var io=new IntersectionObserver(function(es){ if(es[0].isIntersecting){ run(el); io.disconnect(); } },{threshold:.4}); io.observe(el); } else run(el);
+  });
+})();
+
+/* Capture-rate film (Solutions): one clock drives everything, so speed changes and chapter jumps just work */
+(function(){
+  var els=document.querySelectorAll('.js-film'); if(!els.length) return;
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var MON=0, CMP=6000, SWI=9800, RES=13600, END=15600;
+  var STEPS=[[2000,'f1'],[3800,'f1b'],[CMP,'f2'],[CMP+400,'f3'],[CMP+2600,'f4'],[SWI,'f5'],[SWI+2000,'f5b'],[RES,'f6'],[END,'done']], CH=[MON,CMP,SWI,RES];
+  function ease(p){ p=Math.max(0,Math.min(1,p)); return 1-Math.pow(1-p,3); }
+  function eur(v){ return (Math.round(v/100)*100).toLocaleString('en-GB'); }
+  els.forEach(function(el){
+    var a=+el.dataset.from, b=+el.dataset.to, base=+el.dataset.base, g=+el.dataset.gain;
+    var arc=el.querySelector('.js-fm-arc'), num=el.querySelector('.js-fm-num'), tot=el.querySelector('.js-fm-gain'), plus=el.querySelector('.js-fm-plus');
+    var svg=el.querySelector('.ax-chart'), clip=el.querySelector('.js-ax-clip');
+    var x0=+svg.dataset.x0, x1=+svg.dataset.x1, x2=+svg.dataset.x2;
+    var play=el.querySelector('.js-fm-play'), chs=el.querySelectorAll('.fm-ch li'), sp=el.querySelectorAll('.fm-speed button'), cap=el.querySelector('.js-fm-cap');
+    var t=0, speed=1, running=false, last=0;
+    function render(){
+      var v = t<SWI ? a*ease(t/1800) : a+(b-a)*ease((t-SWI)/1800);
+      arc.setAttribute('stroke-dashoffset',(100-v).toFixed(2)); num.textContent=Math.round(v)+'%';
+      var w = t<SWI ? x0+(x1-x0)*ease(t/1800) : x1+(x2-x1)*ease((t-SWI)/1800);
+      clip.setAttribute('width', w.toFixed(1));
+      var k=ease((t-RES-300)/1600); tot.textContent='EUR '+eur(base+g*k); plus.textContent='+EUR '+eur(g*k);
+      STEPS.forEach(function(s){ el.classList.toggle(s[1], t>=s[0]); });
+      var c=0; CH.forEach(function(x,i){ if(t>=x) c=i; });
+      chs.forEach(function(li,i){ li.classList.toggle('on', i===c); li.classList.toggle('past', i<c); });
+      cap.textContent=chs[c].querySelector('p').textContent;
+      play.textContent = running ? 'Pause' : (t>=END ? 'Play again' : 'Play');
+    }
+    function frame(ts){ if(!running) return; t+=(ts-last)*speed; last=ts; if(t>=END){ t=END; running=false; } render(); if(running) requestAnimationFrame(frame); }
+    function start(){ if(t>=END) t=0; running=true; last=performance.now(); requestAnimationFrame(frame); render(); }
+    function stop(){ running=false; render(); }
+    play.addEventListener('click',function(){ running?stop():start(); });
+    chs.forEach(function(li){ li.querySelector('button').addEventListener('click',function(){ t=+this.dataset.t; if(!running) start(); else render(); }); });
+    sp.forEach(function(btn){ btn.addEventListener('click',function(){ speed=+btn.dataset.s; sp.forEach(function(x){x.classList.toggle('on',x===btn);}); }); });
+    if(reduce){ t=END; render(); return; }
+    render();
+    if('IntersectionObserver' in window){ var io=new IntersectionObserver(function(es){ if(es[0].isIntersecting){ start(); io.disconnect(); } },{threshold:.35}); io.observe(el); } else start();
+  });
+})();
