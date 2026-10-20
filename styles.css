@@ -2302,3 +2302,4 @@ body{line-height:1.6}
 .ax-mark{border-radius:0 !important}
 .ax-kh b{font-size:15px}
 @media (max-width:640px){.ax-cap{font-size:17px;min-height:4em}}
+.ax-mark{width:auto !important;height:34px !important}@media (max-width:640px){.ax-mark{height:28px !important}}
