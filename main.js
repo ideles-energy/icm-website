@@ -246,3 +246,31 @@ r.addEventListener('input',u);u();})();
     if('IntersectionObserver' in window){ var io=new IntersectionObserver(function(es){ if(es[0].isIntersecting){ run(el); io.disconnect(); } },{threshold:.4}); io.observe(el); } else run(el);
   });
 })();
+
+/* Capture-rate film (Solutions): monitor -> alert -> quotes -> switch -> without vs with */
+(function(){
+  var els=document.querySelectorAll('.js-film'); if(!els.length) return;
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function run(el){
+    var a=+el.getAttribute('data-from'), b=+el.getAttribute('data-to'), g=+el.getAttribute('data-gain');
+    var arc=el.querySelector('.js-fm-arc'), num=el.querySelector('.js-fm-num'), gain=el.querySelector('.js-fm-gain');
+    (el._t||[]).forEach(clearTimeout); el._t=[]; var T=el._t;
+    function set(v){ arc.setAttribute('stroke-dashoffset',(100-v).toFixed(2)); num.textContent=Math.round(v)+'%'; }
+    function money(v){ gain.textContent='+EUR '+(Math.round(v/1000)*1000).toLocaleString('en-GB'); }
+    function tween(f,t,ms,fn,done){ var s=null; function st(ts){ if(!s)s=ts; var p=Math.min(1,(ts-s)/ms), e=1-Math.pow(1-p,3); fn(f+(t-f)*e); if(p<1)requestAnimationFrame(st); else if(done)done(); } requestAnimationFrame(st); }
+    el.className=el.className.replace(/\s?(f\d|done)/g,''); set(0); money(0);
+    if(reduce){ set(b); money(g); el.classList.add('f1','f2','f3','f4','f5','f6','done'); return; }
+    function at(ms,fn){ T.push(setTimeout(fn,ms)); }
+    tween(0,a,1400,set);
+    at(1500,function(){el.classList.add('f1');});
+    at(2700,function(){el.classList.add('f2');});
+    at(4000,function(){el.classList.add('f3');});
+    at(5300,function(){el.classList.add('f4');});
+    at(6200,function(){el.classList.add('f5'); tween(a,b,1600,set);});
+    at(9200,function(){el.classList.add('f6'); tween(0,g,1600,money,function(){el.classList.add('done');});});
+  }
+  els.forEach(function(el){
+    var btn=el.querySelector('.js-fm-replay'); if(btn) btn.addEventListener('click',function(){run(el);});
+    if('IntersectionObserver' in window){ var io=new IntersectionObserver(function(es){ if(es[0].isIntersecting){ run(el); io.disconnect(); } },{threshold:.35}); io.observe(el); } else run(el);
+  });
+})();

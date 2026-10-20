@@ -792,7 +792,40 @@ def _cr_anim():
       <button type="button" class="crx-replay js-crx-replay">Replay</button>
     </div>"""
 
-CR_VARIANTS = {'I': ('Animated: 46% to 83% after the switch', _cr_anim), 'E': ('Product cards, Ramp style', _cr_ui), 'F': ('Activity feed', _cr_feed),
+def _cr_film():
+    rows = [('Optimizer B', '84%', True), ('Optimizer C', '81%', False), ('Optimizer D', '78%', False)]
+    qr = ''.join(f'<div class="fm-row{" fm-sel" if sel else ""}"><span>{n}</span><span>Expected {e}</span>' + ('<span class="fm-btn">Switch</span>' if sel else '<span></span>') + '</div>' for n, e, sel in rows)
+    return f"""<div class="film js-film" data-from="64" data-to="83" data-gain="555000">
+      <div class="fm-stage">
+        <div class="fm-sc fm-sc1">
+          <div class="fm-card fm-gauge">
+            <div class="crx-top"><span class="crx-dot"></span>Your battery <em>10 MW / 20 MWh</em></div>
+            <div class="crx-opt"><span class="crx-o fm-oa">Optimizer A</span><span class="crx-o fm-ob">Optimizer B</span></div>
+            <div class="crx-gw"><svg viewBox="0 0 400 215" class="crx-g" aria-hidden="true">
+              <path d="M40,200 A160,160 0 0 1 360,200" class="crx-g-bg" pathLength="100"/>
+              <path d="M40,200 A160,160 0 0 1 360,200" class="crx-g-fg fm-arc js-fm-arc" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100"/>
+              <line x1="311.6" y1="118.9" x2="347.2" y2="93.0" class="crx-g-exp"/>
+            </svg><div class="crx-num"><b class="js-fm-num">0%</b><span>capture rate</span></div><span class="crx-explab">Expected 80%</span></div>
+            <div class="crx-status"><span class="crx-s fm-slo">Below expected</span><span class="crx-s fm-sok">On track</span></div>
+          </div>
+          <div class="fm-right">
+            <div class="fm-card fm-note"><span class="cu-bell"><svg viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4zM10 20a2 2 0 0 0 4 0"/></svg></span>
+              <div><b>Capture rate below expected for 3 months</b><p>We asked 4 trusted optimizers for a quote.</p></div><time>Today</time></div>
+            <div class="fm-card fm-quotes"><p class="cu-l">Quotes, side by side</p>{qr}</div>
+          </div>
+        </div>
+        <div class="fm-sc fm-sc2">
+          <div class="cs-card cs-off"><p class="cs-tag">Without the ICM</p><p class="cs-big">EUR 1,850,000</p><p class="cs-cap">revenue last year</p>
+            <ul><li><span>Full potential</span><b>Unknown</b></li><li><span>Capture rate</span><b>Unknown</b></li><li><span>Other optimizers</span><b>Unknown</b></li></ul></div>
+          <div class="cs-card cs-on"><p class="cs-tag">With the ICM</p><p class="cs-big fm-gain"><span class="js-fm-gain">+EUR 0</span></p><p class="cs-cap">extra revenue a year</p>
+            <ul><li><span>Revenue</span><b>EUR 2,405,000</b></li><li><span>Capture rate</span><b>83%</b></li><li><span>Other optimizers</span><b>4 compared</b></li></ul></div>
+        </div>
+      </div>
+      <div class="fm-foot"><ol class="fm-ch"><li class="fm-c1">Monitor</li><li class="fm-c2">Compare</li><li class="fm-c3">Switch</li><li class="fm-c4">Result</li></ol>
+        <button type="button" class="crx-replay fm-replay js-fm-replay">Replay</button></div>
+    </div>"""
+
+CR_VARIANTS = {'J': ('Film: I, E and G combined', _cr_film), 'I': ('Animated: 46% to 83% after the switch', _cr_anim), 'E': ('Product cards, Ramp style', _cr_ui),
                'G': ('Without vs with the ICM', _cr_split), 'H': ('Dots per month, like the home page', _cr_dots)}
 
 def cr_section(v, label=False):
@@ -902,7 +935,7 @@ def w_pill(cls, label, val, mx=''):
     return f'<label class="pill"><input class="in fit {cls}" type="number" min="1" {mx} step="1" value="{val}" aria-label="{label}">{PEN}</label>'
 
 def w_sentence():
-    return f"""<span class="ws1"><b>Same battery, same site, +30% more revenue.</b> <a class="story-src" href="{FLOWER}" target="_blank" rel="noopener">Source: Flower case</a><br><br>Many have a nagging sense that they are leaving money on the table, fed by anecdotes of businesses realising +30% higher revenues.</span><span class="ws2">A +30% delta adds up to <b class="out js-gap">EUR 55.5k</b> per MW per year for a {w_pill('js-mw','Battery size in MW',10,'max="500"')} MW battery that delivered EUR {w_pill('js-rev','Revenue in thousand EUR per MW per year',185)}k per MW per year.</span>"""
+    return f"""<span class="ws1"><b>Same battery, same site, +30% more revenue.</b> <a class="story-src" href="{FLOWER}" target="_blank" rel="noopener">Source: Flower case</a></span><span class="ws1b">Many have a nagging sense that they are leaving money on the table, fed by anecdotes of businesses realising +30% higher revenues.</span><span class="ws2">A +30% delta adds up to <b class="out js-gap">EUR 55.5k</b> per MW per year for a {w_pill('js-mw','Battery size in MW',10,'max="500"')} MW battery that delivered EUR {w_pill('js-rev','Revenue in thousand EUR per MW per year',185)}k per MW per year.</span>"""
 
 def w_hint():
     return f'<p class="hint">{PEN}Enter figures to adjust. Illustrative example.</p>'
