@@ -806,7 +806,8 @@ def _cr_film():
           <path d="{pl(ra[:6], range(6))}" class="ax-ra"/><path d="{pl([ra[5]] + rb[6:], range(5, 12))}" class="ax-rb"/>
           <line x1="{(X(5)+X(6))/2:.1f}" x2="{(X(5)+X(6))/2:.1f}" y1="{T}" y2="{H-B}" class="ax-sw"/></g></svg>"""
     quotes = [('Optimizer B', 84, True), ('Optimizer C', 81, False), ('Optimizer D', 79, False), ('Optimizer E', 76, False)]
-    qr = ''.join(f'<div class="ax-q{" ax-qsel" if sel else ""}" style="--k:{k}"><b>{n}</b><span class="ax-qe">Expected <strong>{e}%</strong></span>' + ('<span class="ax-btn">Switch</span>' if sel else '<span></span>') + '</div>' for k, (n, e, sel) in enumerate(quotes))
+    fpot = before / CA * 100                                                    # full potential per MW per year
+    qr = ''.join(f'<div class="ax-q{" ax-qsel" if sel else ""}" style="--k:{k}"><div class="ax-qn"><b>{n}</b><small>EUR {round(fpot*e/100/1000):,}k per MW per year</small></div><span class="ax-qe"><strong>{e}%</strong><small>expected</small></span>' + ('<span class="ax-btn">Switch</span>' if sel else '<span></span>') + '</div>' for k, (n, e, sel) in enumerate(quotes))
     nav = [('0', 'Monitor', f'Capture rate at {CA}%, below the expected {CE}%. Owner alerted.'),
            ('6000', 'Compare', 'Trusted optimizers, quotes compared side by side.'),
            ('9800', 'Switch', f'Optimizer B takes over. Capture rate up to {CB}%.'),
