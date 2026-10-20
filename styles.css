@@ -1757,3 +1757,4 @@ body{line-height:1.6}
 .calc-sec .calc-left{display:flex;flex-direction:column}
 .calc-sec .calc-left > div:last-child{margin-top:auto}
 @media (min-width:901px){.calc-sec .calc-left > div:last-child{padding-bottom:19px}}
+.member img[src*="team-jesse"]{object-position:50% 0 !important}
