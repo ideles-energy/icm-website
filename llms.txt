@@ -9,7 +9,7 @@
 
 ## How to get started
 1. Enter a work email and answer a few questions.
-2. Provide basic details, such as the battery size (MW/MWh).
+2. Provide the basics: battery (MW/MWh), grid connection (import/export MW), other assets on site and the markets the optimizer trades in.
 3. Most businesses receive a custom view of their potential earnings within one working day.
 
 ## Pages
