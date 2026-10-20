@@ -276,10 +276,10 @@ def chart(t):
         <svg viewBox="0 0 520 260" role="img" aria-label="{t['chart_aria']}">
           <g stroke="#DDE6E8" stroke-width="1"><line x1="44" x2="508" y1="30" y2="30"/><line x1="44" x2="508" y1="90" y2="90"/><line x1="44" x2="508" y1="150" y2="150"/><line x1="44" x2="508" y1="210" y2="210"/></g>
           <g fill="#4E6167" font-size="11" text-anchor="end"><text x="38" y="34">300k</text><text x="38" y="94">200k</text><text x="38" y="154">100k</text><text x="38" y="214">0</text></g>
-          <g fill="#274A50"><rect x="54" y="98" width="22" height="112" rx="3"/><rect x="92" y="110" width="22" height="100" rx="3"/><rect x="130" y="86" width="22" height="124" rx="3"/><rect x="168" y="104" width="22" height="106" rx="3"/><rect x="206" y="128" width="22" height="82" rx="3"/><rect x="244" y="80" width="22" height="130" rx="3"/><rect x="282" y="92" width="22" height="118" rx="3"/><rect x="320" y="74" width="22" height="136" rx="3"/><rect x="358" y="118" width="22" height="92" rx="3"/><rect x="396" y="100" width="22" height="110" rx="3"/><rect x="434" y="88" width="22" height="122" rx="3"/><rect x="472" y="96" width="22" height="114" rx="3"/></g>
+          <g fill="#274A51"><rect x="54" y="98" width="22" height="112" rx="3"/><rect x="92" y="110" width="22" height="100" rx="3"/><rect x="130" y="86" width="22" height="124" rx="3"/><rect x="168" y="104" width="22" height="106" rx="3"/><rect x="206" y="128" width="22" height="82" rx="3"/><rect x="244" y="80" width="22" height="130" rx="3"/><rect x="282" y="92" width="22" height="118" rx="3"/><rect x="320" y="74" width="22" height="136" rx="3"/><rect x="358" y="118" width="22" height="92" rx="3"/><rect x="396" y="100" width="22" height="110" rx="3"/><rect x="434" y="88" width="22" height="122" rx="3"/><rect x="472" y="96" width="22" height="114" rx="3"/></g>
           <polyline fill="none" stroke="#D392EB" stroke-width="3" stroke-linejoin="round" points="65,86 103,92 141,80 179,84 217,90 255,70 293,78 331,62 369,82 407,86 445,74 483,80"/>
           <g fill="#4E6167" font-size="11" text-anchor="middle"><text x="65" y="230">{m[0]}</text><text x="141" y="230">{m[1]}</text><text x="217" y="230">{m[2]}</text><text x="293" y="230">{m[3]}</text><text x="369" y="230">{m[4]}</text><text x="445" y="230">{m[5]}</text></g>
-          <g font-size="12"><rect x="54" y="244" width="12" height="12" rx="2" fill="#274A50"/><text x="72" y="254" fill="#16242A">{t['chart_you']}</text><line x1="170" x2="190" y1="250" y2="250" stroke="#D392EB" stroke-width="3"/><text x="196" y="254" fill="#16242A">{t['chart_peer']}</text></g>
+          <g font-size="12"><rect x="54" y="244" width="12" height="12" rx="2" fill="#274A51"/><text x="72" y="254" fill="#040D1F">{t['chart_you']}</text><line x1="170" x2="190" y1="250" y2="250" stroke="#D392EB" stroke-width="3"/><text x="196" y="254" fill="#040D1F">{t['chart_peer']}</text></g>
         </svg>
         <p class="chart-note">{t['chart_note']}</p>
       </figure>
@@ -491,7 +491,7 @@ def company(t):
     <div class="team-cta"><a class="btn btn-lilac" href="/talk-to-us/">Get in touch</a></div>
   </div>
 </section>
-{'<section class="co-story" id="story"><div class="wrap"><div class="co-story-grid"><div><span class="eyebrow">Our story</span><h2>How the ICM started</h2><div class="story-txt"><p>Batteries are becoming the backbone of a flexible grid. Europe already has more than 100 GWh of battery storage installed, and the Netherlands is expected to reach around 25 GWh by 2030.</p><p>Batteries strengthen the grid. They store surplus solar and wind power instead of curtailing it, relieve congested grids by (dis)charging when and where capacity is scarce, and help balance supply and demand to keep the grid at 50 Hz.</p><p>Yet most battery owners are flying blind. They have no overview of the optimizers on the market or how they compare, and no reference for what their own site could deliver.</p><p>The ICM was founded in Amsterdam in March 2026 to close this information gap. We serve those who add capacity to the grid, but are in the dark about the potential of their assets.</p><p class="story-src-line">Sources: <a href="https://www.ees-europe.com/publications/european-market-outlook-for-battery-storage-2026" target="_blank" rel="noopener">SolarPower Europe, European Market Outlook for Battery Storage</a>; <a href="https://taiyangnews.info/storage/europe-battery-storage-capacity-exceeds-100-gwh" target="_blank" rel="noopener">TaiyangNews, Europe’s battery storage capacity exceeds 100 GWh</a>.</p></div></div><div><span class="eyebrow">Supported by</span><div class="sup-card"><img src="/assets/img/provincie-noord-holland.png" alt="Province of Noord-Holland" width="1188" height="236" loading="lazy"><p><a href="https://www.noord-holland.nl/Producten_op_alfabet/MKB_innovatiestimulering_topsectoren_MIT_Noord_Holland_Haalbaarheidsproject_subsidie" target="_blank" rel="noopener">MIT feasibility grant</a> from the Province of Noord-Holland.</p></div></div></div></div></section>' if COMPANY_STORY else ''}
+{'<section class="co-story" id="story"><div class="wrap"><div class="co-story-grid"><div><span class="eyebrow">Our story</span><h2>How the ICM started</h2><div class="story-txt"><p>Batteries are becoming the backbone of a flexible grid. Europe already has more than 100 GWh of battery storage installed, and the Netherlands is expected to reach around 25 GWh by 2030.</p><p>Batteries strengthen the grid. They store surplus solar and wind power, relieve congested grids and keep the grid at 50 Hz.</p><p>Yet most battery owners are flying blind. They have no overview of the optimizers on the market or how they compare, and no reference for what their own site could deliver.</p><p>The ICM was founded in Amsterdam in March 2026 to close this information gap. We serve those who add capacity to the grid, but are in the dark about the potential of their assets.</p><p class="story-src-line">Sources: <a href="https://www.ees-europe.com/publications/european-market-outlook-for-battery-storage-2026" target="_blank" rel="noopener">SolarPower Europe, European Market Outlook for Battery Storage</a>; <a href="https://taiyangnews.info/storage/europe-battery-storage-capacity-exceeds-100-gwh" target="_blank" rel="noopener">TaiyangNews, Europe’s battery storage capacity exceeds 100 GWh</a>.</p></div></div><div><span class="eyebrow">Supported by</span><div class="sup-card"><img src="/assets/img/provincie-noord-holland.png" alt="Province of Noord-Holland" width="1188" height="236" loading="lazy"><p><a href="https://www.noord-holland.nl/Producten_op_alfabet/MKB_innovatiestimulering_topsectoren_MIT_Noord_Holland_Haalbaarheidsproject_subsidie" target="_blank" rel="noopener">MIT feasibility grant</a> from the Province of Noord-Holland.</p></div></div></div></div></section>' if COMPANY_STORY else ''}
 <section class="co-careers" id="careers">
   <div class="wrap">
     <p class="co-label dark-t">Open roles</p>
@@ -613,7 +613,7 @@ def home(t):
 
 {why_section(os.environ.get('WHY_VARIANT', '13'))}
 
-<section class="dark props-sec" id="how">
+<section class="props-sec props-light" id="how">
   <div class="wrap">
     <div class="section-head center">
       <span class="eyebrow why-eyebrow">How we can work together</span>
@@ -627,14 +627,14 @@ def home(t):
 
 
 
-<section class="dark about-sec" id="about">
+<section class="about-sec about-light" id="about">
   <div class="wrap about-grid2">
     <div class="about-card">
       <span class="eyebrow why-eyebrow">About us</span>
       <h2>Why an Independent Capacity Market matters</h2>
       <p>We are not owners. We are not optimizers. Nor will we ever be. We are an energy tech company.</p>
       <p>We serve those who add capacity to the grid, but are in the dark about the potential of their assets.</p>
-      <div class="cta-row" style="justify-content:flex-start"><a class="btn btn-lilac" href="{TALK}">{t['talk']}</a><a class="btn btn-outline" href="/company/">Our story</a></div>
+      <div class="cta-row" style="justify-content:flex-start"><a class="btn btn-dark" href="{TALK}">{t['talk']}</a><a class="btn btn-outline" href="/company/">Our story</a></div>
     </div>
     <div class="about-visual"><img class="about-img" src="/assets/img/about-pylon.jpg" alt="High-voltage pylon against the evening sky" width="960" height="1080" loading="lazy"></div>
   </div>
@@ -878,9 +878,9 @@ def why_section(v='1'):
     {w_can()}"""
     elif v == '13':
         bl = ''.join(f'<li>{x}</li>' for x in (BL1, BL2, BL3))
-        inner = f"""<div class="wy-top"><div class="wy-top-l">{w_head()}</div></div>
-    <div class="story wy-wide wy-v13">
-      <div class="wy-dotsrow">{w_dots(9, legend=False)}<div class="wy-side"><div class="why-legend wy-legr">{WLEG}</div>{w_hint()}</div></div>
+        inner = f"""<div class="story wy-wide wy-v13">
+      <div class="wy-panel"><div class="wy-top"><div class="wy-top-l">{w_head()}</div></div>
+      <div class="wy-dotsrow">{w_dots(9, legend=False)}<div class="wy-side"><div class="why-legend wy-legr">{WLEG}</div>{w_hint()}</div></div></div>
       <div class="wy-two wy-plain wy-cards">
         <div><p class="wy-k">What is missing</p><p class="story-p story">{w_sentence()}</p></div>
         <div><p class="wy-k">Where it leaks</p><ul class="wy-bul">{bl}</ul></div>
