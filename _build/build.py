@@ -722,9 +722,9 @@ GS_STEPS = f'''<section class="dark gs-steps" id="steps">
   <div class="wrap">
     <h2>Get started in three easy steps</h2>
     <div class="gs-grid">
-      <div>{GS_ICONS['mail']}<p><b>Step 1: Enter your work email.</b> <span>Enter your business email to begin. You'll be prompted to answer a few questions.</span></p></div>
-      <div>{GS_ICONS['form']}<p><b>Step 2: Provide your details.</b> <span>We'll ask for basic information: the size of the battery (MW/MWh) and dispatch constraints (import/export MW).</span></p></div>
-      <div>{GS_ICONS['key']}<p><b>Step 3: Navigate your reality.</b> <span>Most businesses receive a custom report with expected revenues within 1 working day. It's the draft we start from.</span></p></div>
+      <div>{GS_ICONS['mail']}<p><b>Step 1: Enter your work email.</b> <span>Enter your business email to begin. You'll be prompted to answer a few questions about your context and objectives.</span></p></div>
+      <div>{GS_ICONS['form']}<p><b>Step 2: Provide your details.</b> <span>We'll ask for basic information, such as the size of the battery (MW/MWh).</span></p></div>
+      <div>{GS_ICONS['key']}<p><b>Step 3: Navigate your reality.</b> <span>Most businesses receive a custom view of their potential earnings within 1 working day. It's the draft we start from.</span></p></div>
     </div>
   </div>
 </section>'''
@@ -1006,7 +1006,7 @@ def talk(t, variant=None):
     hero = """    <div class="talk-hero" id="main">
       <div class="talk-copy">
         <span class="eyebrow">Talk to us</span>
-        <h1>Secure the true value of your BESS asset</h1>
+        <h1><span class="nw">Secure the true value</span><br><span class="nw">of your BESS asset</span></h1>
         <p>You are ready to learn more. Use the form to give us a bit more information about your context and objectives.</p>
         <p>Alternatively, you can email us directly at <a href="mailto:ideles@icm.energy">ideles@icm.energy</a>.</p>
       </div>
@@ -1020,9 +1020,9 @@ def talk(t, variant=None):
   <div class="wrap">
     <div class="section-head center"><h2>Get started in three easy steps</h2></div>
     <div class="expect">
-      <div><b>1</b><h3>Enter your work email.</h3><p>Enter your business email to begin. You'll be prompted to answer a few questions.</p></div>
-      <div><b>2</b><h3>Provide your details.</h3><p>We'll ask for basic information: the size of the battery (MW/MWh) and dispatch constraints (import/export MW).</p></div>
-      <div><b>3</b><h3>Navigate your reality.</h3><p>Most businesses receive a custom report with expected revenues within 1 working day. It's the draft we start from.</p></div>
+      <div><b>1</b><h3>Enter your work email.</h3><p>Enter your business email to begin. You'll be prompted to answer a few questions about your context and objectives.</p></div>
+      <div><b>2</b><h3>Provide your details.</h3><p>We'll ask for basic information, such as the size of the battery (MW/MWh).</p></div>
+      <div><b>3</b><h3>Navigate your reality.</h3><p>Most businesses receive a custom view of their potential earnings within 1 working day. It's the draft we start from.</p></div>
     </div>
   </div>
 </section>

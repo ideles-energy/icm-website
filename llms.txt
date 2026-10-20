@@ -9,8 +9,8 @@
 
 ## How to get started
 1. Enter a work email and answer a few questions.
-2. Provide basic details: battery size (MW/MWh) and dispatch constraints (import/export MW).
-3. Most businesses receive a custom report with expected revenues within one working day.
+2. Provide basic details, such as the battery size (MW/MWh).
+3. Most businesses receive a custom view of their potential earnings within one working day.
 
 ## Pages
 - [Home](https://icm.energy/)
