@@ -793,41 +793,64 @@ def _cr_anim():
     </div>"""
 
 def _cr_film():
-    rows = [('Optimizer B', '84%', True), ('Optimizer C', '81%', False), ('Optimizer D', '78%', False)]
-    qr = ''.join(f'<div class="fm-row{" fm-sel" if sel else ""}"><span>{n}</span><span>Expected {e}</span>' + ('<span class="fm-btn">Switch</span>' if sel else '<span></span>') + '</div>' for n, e, sel in rows)
-    return f"""<div class="film js-film" data-from="63" data-to="82" data-base="185000" data-gain="55500">
-      <ol class="fm-ch"><li><button type="button" data-t="0"><span>1</span>Monitor</button><p>Capture rate at 63%, below the expected 80%. Owner alerted.</p></li><li><button type="button" data-t="2700"><span>2</span>Compare</button><p>We ask trusted optimizers for a quote and compare their offers side by side.</p></li><li><button type="button" data-t="6200"><span>3</span>Switch</button><p>Optimizer B takes over. Capture rate up to 82%.</p></li><li><button type="button" data-t="9200"><span>4</span>Result</button><p>Your battery earns EUR 55,500 more per MW per year.</p></li></ol><p class="fm-cap js-fm-cap"></p>
-      <div class="fm-stage">
-        <div class="fm-sc fm-sc1">
-          <div class="fm-card fm-gauge">
-            <div class="crx-top"><span class="crx-dot"></span>Your battery <em>10 MW / 20 MWh</em></div>
-            <div class="crx-opt"><span class="crx-o fm-oa">Optimizer A</span><span class="crx-o fm-ob">Optimizer B</span></div>
-            <div class="crx-gw"><svg viewBox="0 0 400 215" class="crx-g" aria-hidden="true">
-              <path d="M40,200 A160,160 0 0 1 360,200" class="crx-g-bg" pathLength="100"/>
-              <path d="M40,200 A160,160 0 0 1 360,200" class="crx-g-fg fm-arc js-fm-arc" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100"/>
-              <line x1="311.6" y1="118.9" x2="347.2" y2="93.0" class="crx-g-exp"/>
-            </svg><div class="crx-num"><b class="js-fm-num">0%</b><span>capture rate</span></div><span class="crx-explab">Expected 80%</span></div>
-            <div class="crx-status"><span class="crx-s fm-slo">Below expected</span><span class="crx-s fm-sok">On track</span></div>
+    fp = [300, 290, 285, 295, 280, 300, 310, 295, 290, 285, 300, 295]          # full potential, EUR k/MW/yr (annualised)
+    cr = [66, 65, 64, 62, 61, 60, 80, 82, 83, 82, 83, 82]                      # capture rate per month, %
+    rv = [f * c / 100 for f, c in zip(fp, cr)]
+    W, H, L, R, T, B = 620, 300, 52, 12, 16, 34
+    X = lambda i: L + i * (W - L - R) / 11
+    Y = lambda v: T + (320 - v) / (320 - 150) * (H - T - B)
+    line = lambda pts, idx: ' '.join(('M' if k == 0 else 'L') + f'{X(i):.1f},{Y(v):.1f}' for k, (i, v) in enumerate(zip(idx, pts)))
+    band = 'M' + ' L'.join(f'{X(i):.1f},{Y(f):.1f}' for i, f in enumerate(fp)) + ' L' + ' L'.join(f'{X(i):.1f},{Y(f*0.8):.1f}' for i, f in reversed(list(enumerate(fp)))) + ' Z'
+    fpl = line(fp, range(12))
+    a = line(rv[:6], range(6)); b = line(rv[5:], range(5, 12))
+    grid = ''.join(f'<line x1="{L}" x2="{W-R}" y1="{Y(v):.1f}" y2="{Y(v):.1f}" class="ap-grid"/><text x="{L-8}" y="{Y(v)+4:.1f}" text-anchor="end" class="ap-ax">{v}k</text>' for v in (150, 200, 250, 300))
+    months = ''.join(f'<text x="{X(i):.1f}" y="{H-8}" text-anchor="middle" class="ap-ax">{m}</text>' for i, m in enumerate(['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']))
+    dots = ''.join(f'<circle cx="{X(i):.1f}" cy="{Y(v):.1f}" r="4.5" class="{"ap-dlo ap-d1" if i < 6 else "ap-dok ap-d2"}" style="--k:{i}"/>' for i, v in enumerate(rv))
+    chart = f"""<svg viewBox="0 0 {W} {H}" class="ap-chart" aria-hidden="true">{grid}
+          <path d="{band}" class="ap-band"/><path d="{fpl}" class="ap-fp"/>
+          <path d="{a}" class="ap-rv js-ap-a" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100"/>
+          <path d="{b}" class="ap-rv js-ap-b" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100"/>{dots}{months}</svg>"""
+    rows = [('Optimizer B', '84%', '', True), ('Optimizer C', '81%', '', False), ('Optimizer D', '78%', '', False)]
+    qr = ''.join(f'<div class="ap-q{" ap-qsel" if sel else ""}" style="--k:{k}"><b>{n}</b><span class="ap-qe">Expected {e}</span>' + ('<span class="ap-btn">Switch</span>' if sel else '<span></span>') + '</div>' for k, (n, e, x, sel) in enumerate(rows))
+    nav = [('0', 'Monitor', 'Capture rate at 63%, below the expected 80%. Owner alerted.'),
+           ('2700', 'Compare', 'We ask trusted optimizers for a quote and compare their offers side by side.'),
+           ('6200', 'Switch', 'Optimizer B takes over. Capture rate up to 82%.'),
+           ('9200', 'Result', 'Your battery earns EUR 55,500 more per MW per year.')]
+    navh = ''.join(f'<li><button type="button" data-t="{t}"><span>{k+1}</span>{h}</button><p>{d}</p></li>' for k, (t, h, d) in enumerate(nav))
+    return f"""<div class="film app js-film" data-from="63" data-to="82" data-base="185000" data-gain="55500">
+      <div class="ap-win">
+        <aside class="ap-side"><div class="ap-brand"><img src="/assets/logo-header-dark.svg" alt="The Independent Capacity Market" width="796" height="119"></div><ol class="fm-ch ap-nav">{navh}</ol></aside>
+        <div class="ap-main">
+          <div class="ap-bar"><span class="crx-dot"></span><b>Your battery</b><em>10 MW / 20 MWh</em>
+            <span class="ap-opt"><span class="crx-o fm-oa">Optimizer A</span><span class="crx-o fm-ob">Optimizer B</span></span></div>
+          <p class="fm-cap ap-cap js-fm-cap"></p>
+          <div class="ap-panes">
+            <section class="ap-pane ap-p1">
+              <div class="ap-kpi">
+                <div class="crx-gw"><svg viewBox="0 0 400 215" class="crx-g" aria-hidden="true">
+                  <path d="M40,200 A160,160 0 0 1 360,200" class="crx-g-bg" pathLength="100"/>
+                  <path d="M40,200 A160,160 0 0 1 360,200" class="crx-g-fg fm-arc js-fm-arc" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100"/>
+                  <line x1="311.6" y1="118.9" x2="347.2" y2="93.0" class="crx-g-exp"/>
+                </svg><div class="crx-num"><b class="js-fm-num">0%</b><span>capture rate</span></div></div>
+                <div class="crx-status"><span class="crx-s fm-slo">Below expected</span><span class="crx-s fm-sok">On track</span></div>
+              </div>
+              <div class="ap-chartbox"><p class="ap-ct">Revenue per MW per year <em>monthly, annualised</em></p>{chart}
+                <div class="ap-leg"><span><i class="ap-k-rv"></i>Your battery</span><span><i class="ap-k-fp"></i>Full potential</span><span><i class="ap-k-band"></i>Expected, 80% to 100%</span></div></div>
+              <div class="ap-toast"><span class="cu-bell"><svg viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4zM10 20a2 2 0 0 0 4 0"/></svg></span><div><b>Capture rate below expected for 3 months</b><span>Owner alerted. We ask trusted optimizers for a quote.</span></div></div>
+            </section>
+            <section class="ap-pane ap-p2"><p class="ap-ct">Quotes, side by side <em>4 trusted optimizers asked, 3 offers</em></p>{qr}
+              <p class="ap-note">Expected capture rate on your site, from a backtest of each optimizer.</p></section>
+            <section class="ap-pane ap-p3">
+              <div class="cs-card cs-off"><p class="cs-tag">Without the ICM</p><p class="cs-big">EUR 185,000</p><p class="cs-cap">per MW per year</p>
+                <ul><li><span>Full potential</span><b>Unknown</b></li><li><span>Capture rate</span><b>Unknown</b></li><li><span>Other optimizers</span><b>Unknown</b></li></ul></div>
+              <div class="cs-card cs-on"><p class="cs-tag">With the ICM</p><p class="cs-big fm-gain"><span class="js-fm-gain">EUR 185,000</span></p><p class="cs-cap">per MW per year</p>
+                <ul><li><span>Extra revenue</span><b class="fm-plus js-fm-plus">+EUR 0</b></li><li><span>Capture rate</span><b>82%</b></li><li><span>Offers compared</span><b>3</b></li></ul></div>
+            </section>
           </div>
-          <div class="fm-right">
-            <div class="fm-card fm-bars"><div class="crx-top"><span class="crx-dot"></span>Monthly report <em>Jan to Jun</em></div>
-              <p class="cu-l">Capture rate, last 6 months</p><p class="cu-big">63%<small>Expected 80%</small></p>
-              <div class="cu-bars fm-bb"><i style="--h:91px;transition-delay:0.00s"></i><i style="--h:77px;transition-delay:0.08s"></i><i style="--h:60px;transition-delay:0.16s"></i><i style="--h:43px;transition-delay:0.24s"></i><i style="--h:34px;transition-delay:0.32s"></i><i style="--h:26px;transition-delay:0.40s"></i><span class="cu-exp"></span></div><div class="cu-m"><span>Jan</span><span>Jun</span></div></div>
-            <div class="fm-card fm-note"><span class="cu-bell"><svg viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4zM10 20a2 2 0 0 0 4 0"/></svg></span>
-              <div><b>Capture rate below expected for 3 months</b><p>We asked 4 trusted optimizers for a quote.</p></div><time>Today</time></div>
-            <div class="fm-card fm-quotes"><p class="cu-l">Quotes, side by side</p>{qr}</div>
-          </div>
-        </div>
-        <div class="fm-sc fm-sc2">
-          <div class="cs-card cs-off"><p class="cs-tag">Without the ICM</p><p class="cs-big">EUR 185,000</p><p class="cs-cap">per MW per year</p>
-            <ul><li><span>Full potential</span><b>Unknown</b></li><li><span>Capture rate</span><b>Unknown</b></li><li><span>Other optimizers</span><b>Unknown</b></li></ul></div>
-          <div class="cs-card cs-on"><p class="cs-tag">With the ICM</p><p class="cs-big fm-gain"><span class="js-fm-gain">EUR 185,000</span></p><p class="cs-cap">per MW per year</p>
-            <ul><li><span>Extra revenue</span><b class="fm-plus js-fm-plus">+EUR 0</b></li><li><span>Capture rate</span><b>82%</b></li><li><span>Other optimizers</span><b>4 compared</b></li></ul></div>
         </div>
       </div>
       <div class="fm-ctrl"><button type="button" class="fm-play js-fm-play" aria-label="Pause">Pause</button>
-        <div class="fm-speed" role="group" aria-label="Playback speed"><button type="button" data-s="0.5">0.5×</button><button type="button" data-s="0.75">0.75×</button><button type="button" data-s="1" class="on">1×</button><button type="button" data-s="1.5">1.5×</button><button type="button" data-s="2">2×</button></div>
-</div>
+        <div class="fm-speed" role="group" aria-label="Playback speed"><button type="button" data-s="0.5">0.5×</button><button type="button" data-s="0.75">0.75×</button><button type="button" data-s="1" class="on">1×</button><button type="button" data-s="1.5">1.5×</button><button type="button" data-s="2">2×</button></div></div>
     </div>"""
 
 CR_VARIANTS = {'J': ('Film: I, E and G combined', _cr_film), 'I': ('Animated: 46% to 83% after the switch', _cr_anim), 'E': ('Product cards, Ramp style', _cr_ui),

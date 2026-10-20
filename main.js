@@ -256,12 +256,13 @@ r.addEventListener('input',u);u();})();
   function eur(v){ return (Math.round(v/100)*100).toLocaleString('en-GB'); }
   els.forEach(function(el){
     var a=+el.dataset.from, b=+el.dataset.to, base=+el.dataset.base, g=+el.dataset.gain;
-    var arc=el.querySelector('.js-fm-arc'), num=el.querySelector('.js-fm-num'), tot=el.querySelector('.js-fm-gain'), plus=el.querySelector('.js-fm-plus');
+    var la=el.querySelector('.js-ap-a'), lb=el.querySelector('.js-ap-b'), arc=el.querySelector('.js-fm-arc'), num=el.querySelector('.js-fm-num'), tot=el.querySelector('.js-fm-gain'), plus=el.querySelector('.js-fm-plus');
     var play=el.querySelector('.js-fm-play'), chs=el.querySelectorAll('.fm-ch li'), sp=el.querySelectorAll('.fm-speed button'), cap=el.querySelector('.js-fm-cap');
     var t=0, speed=1, running=false, last=0;
     function render(){
       var v = t<6200 ? a*ease(t/1400) : a+(b-a)*ease((t-6200)/1600);
       arc.setAttribute('stroke-dashoffset',(100-v).toFixed(2)); num.textContent=Math.round(v)+'%';
+      if(la){ la.setAttribute('stroke-dashoffset',(100-100*Math.max(0,Math.min(1,t/1400))).toFixed(2)); lb.setAttribute('stroke-dashoffset',(100-100*Math.max(0,Math.min(1,(t-6200)/1600))).toFixed(2)); }
       var k=ease((t-9200)/1600); tot.textContent='EUR '+eur(base+g*k); plus.textContent='+EUR '+eur(g*k);
       STEPS.forEach(function(s){ el.classList.toggle(s[1], t>=s[0]); });
       var c=0; CH.forEach(function(x,i){ if(t>=x) c=i; });
