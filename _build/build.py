@@ -1016,16 +1016,7 @@ def talk(t, variant=None):
         <noscript><a href="https://forms.fillout.com/t/icWpPN8hsgus">Open the form</a></noscript>
       </div>
     </div>"""
-    body = f"""<section class="talk-sec talk-expect">
-  <div class="wrap">
-    <div class="section-head center"><h2>Get started in three easy steps</h2></div>
-    <div class="expect">
-      <div><b>1</b><h3>Enter your work email.</h3><p>Enter your business email to begin. You'll be prompted to answer a few questions about your context and objectives.</p></div>
-      <div><b>2</b><h3>Provide your details.</h3><p>We'll ask for the basics: the battery (MW/MWh), the grid connection (import/export MW), other assets on site such as solar panels, and the markets your optimizer trades in.</p></div>
-      <div><b>3</b><h3>Navigate your reality.</h3><p>Most businesses receive a custom view of their potential earnings within 1 working day. It's the draft we start from.</p></div>
-    </div>
-  </div>
-</section>
+    body = f"""{GS_STEPS.replace('class="dark gs-steps"', 'class="dark gs-steps talk-expect"')}
 """
     return page_shell(t, TALK, 'Talk to us: get started with your BESS | The ICM',
         'Get started with the ICM in three steps: enter a work email, share the basic details of your battery and receive a custom report with expected revenues within one working day.', hero, body)
