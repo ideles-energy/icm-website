@@ -2247,3 +2247,50 @@ body{line-height:1.6}
 .ax-l-rb i{box-shadow:none !important}
 @media (max-width:860px){.cr-sec .cr-note-ill{margin-bottom:24px}.ax-main{padding-bottom:58px}}
 @media (max-width:860px){.ax-gw{max-width:300px;width:100%;margin:0 auto}.ax-kpi{align-items:stretch}}
+/* v87 film on phones: compact battery card (gauge left, details right), full-width chart, larger labels */
+@media (max-width:640px){
+  .cr-sec{padding:56px 0}
+  .film.ax{padding:10px;border-radius:24px}
+  .ax-win{border-radius:18px}
+  .ax-main{padding:12px 12px 50px}
+  .ax-cap{font-size:15px;line-height:1.35;min-height:4.1em;margin-bottom:10px}
+  .ax-grid2{gap:10px}
+  .ax-kpi{display:grid !important;grid-template-columns:128px minmax(0,1fr);grid-template-areas:"g h" "g o" "l s";column-gap:14px;row-gap:4px;align-items:center;padding:12px 14px}
+  .ax-kh{grid-area:h;align-self:end}
+  .ax-opt{grid-area:o;margin:4px 0 0;align-self:start}
+  .ax-gw{grid-area:g;max-width:none !important;margin:0 !important;padding-top:6px}
+  .ax-glab{grid-area:l;margin:0;font-size:12px}
+  .ax-status{grid-area:s;margin:0;justify-content:flex-start;height:28px}
+  .ax-num b{font-size:24px}
+  .ax-g-el{font-size:30px}
+  .ax-card{padding:12px}
+  .ax-ct{font-size:13px}.ax-ct em{display:block;margin:2px 0 0}
+  .ax-ax{font-size:20px !important}
+  .ax-leg{gap:4px 12px;font-size:11.5px}
+  .ax-toast{padding:10px 12px;gap:10px}.ax-toast b{font-size:14px}.ax-t1b{font-size:13px}
+  .ax-bell{width:34px;height:34px}
+  .ax-q{padding:10px 12px;margin-top:8px;gap:8px}
+  .ax-rc{padding:16px 18px}.ax-big{font-size:28px}.ax-rc li{font-size:14px;padding:8px 0}
+  .ax-mark{width:32px !important;height:32px !important;right:12px;bottom:10px}
+  .ax-nav button{font-size:11.5px !important}
+  .fm-ctrl{margin-top:12px;gap:8px}
+  .fm-speed button{padding:6px 9px}
+}
+@media (max-width:640px){
+  .ax-ax{font-size:18px !important}
+  .ax-g-el{display:none}
+  .ax-s{white-space:nowrap;font-size:12px;padding:5px 11px}
+  .ax-pchart,.ax-pq{align-self:start}
+  .ax-q{grid-template-columns:1fr auto auto !important;padding:9px 10px;font-size:13.5px}
+  .ax-q .ax-btn{grid-column:auto !important;padding:5px 10px;font-size:12px}
+  .ax-qe{font-size:12.5px}
+  .ax-note{display:none}
+}
+.ax-o{white-space:nowrap}
+@media (max-width:380px){
+  .ax-kpi{grid-template-columns:108px minmax(0,1fr);column-gap:10px}
+  .ax-kh b{font-size:13px}.ax-kh em{font-size:12px;white-space:nowrap}
+  .ax-o{font-size:12px;padding:4px 10px}
+  .ax-s{font-size:11.5px;padding:4px 9px}
+  .ax-num b{font-size:21px}
+}

@@ -799,7 +799,7 @@ def _cr_film():
     ra = [e * CA / CE for e in ex]; rb = [e * CB / CE for e in ex]
     before, gain = 185000, 55500                                                # same battery as the home page: EUR 185k, +30% = EUR 55.5k
     fmt = lambda v: f'{v:,.0f}'
-    W, H, L, R, T, B = 520, 300, 46, 10, 14, 30
+    W, H, L, R, T, B = 520, 300, 60, 10, 14, 30
     X = lambda i: L + i * (W - L - R) / 11
     Y = lambda v: T + (262 - v) / (262 - 150) * (H - T - B)
     pl = lambda pts, idx: ' '.join(('M' if k == 0 else 'L') + f'{X(i):.1f},{Y(v):.1f}' for k, (i, v) in enumerate(zip(idx, pts)))
