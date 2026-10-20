@@ -251,7 +251,7 @@ r.addEventListener('input',u);u();})();
 (function(){
   var els=document.querySelectorAll('.js-film'); if(!els.length) return;
   var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var END=11000, STEPS=[[1500,'f1'],[2700,'f2'],[4000,'f3'],[5300,'f4'],[6200,'f5'],[9200,'f6'],[END,'done']], CH=[0,2700,6200,9200];
+  var END=11000, STEPS=[[400,'f0'],[1500,'f1'],[2700,'f2'],[4000,'f3'],[5300,'f4'],[6200,'f5'],[9200,'f6'],[END,'done']], CH=[0,2700,6200,9200];
   function ease(p){ return 1-Math.pow(1-Math.max(0,Math.min(1,p)),3); }
   function eur(v){ return (Math.round(v/100)*100).toLocaleString('en-GB'); }
   els.forEach(function(el){

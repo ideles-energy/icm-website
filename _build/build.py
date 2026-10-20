@@ -795,8 +795,8 @@ def _cr_anim():
 def _cr_film():
     rows = [('Optimizer B', '84%', True), ('Optimizer C', '81%', False), ('Optimizer D', '78%', False)]
     qr = ''.join(f'<div class="fm-row{" fm-sel" if sel else ""}"><span>{n}</span><span>Expected {e}</span>' + ('<span class="fm-btn">Switch</span>' if sel else '<span></span>') + '</div>' for n, e, sel in rows)
-    return f"""<div class="film js-film" data-from="64" data-to="83" data-base="185000" data-gain="55500">
-      <ol class="fm-ch"><li><button type="button" data-t="0"><span>1</span>Monitor</button><p>Capture rate at 64%, below the expected 80%. Owner alerted.</p></li><li><button type="button" data-t="2700"><span>2</span>Compare</button><p>We ask trusted optimizers for a quote and compare their offers side by side.</p></li><li><button type="button" data-t="6200"><span>3</span>Switch</button><p>Optimizer B takes over. Capture rate up to 83%.</p></li><li><button type="button" data-t="9200"><span>4</span>Result</button><p>Your battery earns EUR 55,500 more per MW per year.</p></li></ol><p class="fm-cap js-fm-cap"></p>
+    return f"""<div class="film js-film" data-from="63" data-to="82" data-base="185000" data-gain="55500">
+      <ol class="fm-ch"><li><button type="button" data-t="0"><span>1</span>Monitor</button><p>Capture rate at 63%, below the expected 80%. Owner alerted.</p></li><li><button type="button" data-t="2700"><span>2</span>Compare</button><p>We ask trusted optimizers for a quote and compare their offers side by side.</p></li><li><button type="button" data-t="6200"><span>3</span>Switch</button><p>Optimizer B takes over. Capture rate up to 82%.</p></li><li><button type="button" data-t="9200"><span>4</span>Result</button><p>Your battery earns EUR 55,500 more per MW per year.</p></li></ol><p class="fm-cap js-fm-cap"></p>
       <div class="fm-stage">
         <div class="fm-sc fm-sc1">
           <div class="fm-card fm-gauge">
@@ -810,6 +810,9 @@ def _cr_film():
             <div class="crx-status"><span class="crx-s fm-slo">Below expected</span><span class="crx-s fm-sok">On track</span></div>
           </div>
           <div class="fm-right">
+            <div class="fm-card fm-bars"><div class="crx-top"><span class="crx-dot"></span>Monthly report <em>Jan to Jun</em></div>
+              <p class="cu-l">Capture rate, last 6 months</p><p class="cu-big">63%<small>Expected 80%</small></p>
+              <div class="cu-bars fm-bb"><i style="--h:91px;transition-delay:0.00s"></i><i style="--h:77px;transition-delay:0.08s"></i><i style="--h:60px;transition-delay:0.16s"></i><i style="--h:43px;transition-delay:0.24s"></i><i style="--h:34px;transition-delay:0.32s"></i><i style="--h:26px;transition-delay:0.40s"></i><span class="cu-exp"></span></div><div class="cu-m"><span>Jan</span><span>Jun</span></div></div>
             <div class="fm-card fm-note"><span class="cu-bell"><svg viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4zM10 20a2 2 0 0 0 4 0"/></svg></span>
               <div><b>Capture rate below expected for 3 months</b><p>We asked 4 trusted optimizers for a quote.</p></div><time>Today</time></div>
             <div class="fm-card fm-quotes"><p class="cu-l">Quotes, side by side</p>{qr}</div>
@@ -819,7 +822,7 @@ def _cr_film():
           <div class="cs-card cs-off"><p class="cs-tag">Without the ICM</p><p class="cs-big">EUR 185,000</p><p class="cs-cap">per MW per year</p>
             <ul><li><span>Full potential</span><b>Unknown</b></li><li><span>Capture rate</span><b>Unknown</b></li><li><span>Other optimizers</span><b>Unknown</b></li></ul></div>
           <div class="cs-card cs-on"><p class="cs-tag">With the ICM</p><p class="cs-big fm-gain"><span class="js-fm-gain">EUR 185,000</span></p><p class="cs-cap">per MW per year</p>
-            <ul><li><span>Extra revenue</span><b class="fm-plus js-fm-plus">+EUR 0</b></li><li><span>Capture rate</span><b>83%</b></li><li><span>Other optimizers</span><b>4 compared</b></li></ul></div>
+            <ul><li><span>Extra revenue</span><b class="fm-plus js-fm-plus">+EUR 0</b></li><li><span>Capture rate</span><b>82%</b></li><li><span>Other optimizers</span><b>4 compared</b></li></ul></div>
         </div>
       </div>
       <div class="fm-ctrl"><button type="button" class="fm-play js-fm-play" aria-label="Pause">Pause</button>
@@ -835,6 +838,7 @@ def cr_section(v, label=False):
     return f"""<section class="dark cr-sec cr-{v}">{tag}<div class="wrap">{CR_H}<div class="cr-vis">{CR_VARIANTS[v][1]()}</div>{CR_P}<p class="cr-note-ill">Illustrative example.</p></div></section>"""
 
 CR_CHOICE = os.environ.get('CR_VARIANT', '')
+FILM_LIVE = False  # set True once approved to show the film on the live site
 
 GS_STEPS = f'''<section class="dark gs-steps" id="steps">
   <div class="wrap">
@@ -879,11 +883,10 @@ def solutions(t):
       </div>
       <div class="sh-r"><img src="/assets/img/solutions-veins-bright.jpg" alt="" width="1600" height="900"></div>
     </div>"""
-    body = f"""<section class="sol-light sol-wrap sol-noicon" id="solutions">
+    body = f"""{cr_section('J') if (RES_EXTRAS or FILM_LIVE) else ''}<section class="sol-light sol-wrap sol-noicon" id="solutions">
   <div class="wrap">
 {blocks}  </div>
 </section>
-{(''.join(cr_section(v, True) for v in CR_VARIANTS) if RES_EXTRAS and not CR_CHOICE else (cr_section(CR_CHOICE) if CR_CHOICE else ''))}
 {GS_STEPS}
 {GS_SECURE}
 {faq_block(NEWFAQS, 'Frequently asked questions')}"""

@@ -1998,3 +1998,18 @@ body{line-height:1.6}
   .fm-sc2{align-self:center}
 }
 @media (min-width:861px){.fm-sc1{height:400px}}
+/* v81 film: bar card (capture rate, last 6 months) in the Monitor stage */
+.fm-bars{opacity:0;transform:translateY(16px);transition:opacity .5s,transform .5s}
+.fm-bars .cu-big{font-size:44px}
+.fm-bb i{height:0;background:#D392EB;transition:height .6s cubic-bezier(.2,.8,.2,1)}
+.film.f0 .fm-bars{opacity:1;transform:none}
+.film.f0 .fm-bb i{height:var(--h)}
+@media (min-width:861px){
+  .fm-sc1{height:470px !important}
+  .fm-sc1 .fm-bars{position:absolute;right:0;top:0;width:50%;z-index:1}
+  .fm-sc1 .fm-note{top:200px !important;right:3% !important;width:50% !important;z-index:2}
+  .fm-sc1 .fm-quotes{top:262px !important;right:7% !important;width:54% !important;z-index:3}
+  .fm-sc1 .fm-gauge{top:40px !important}
+}
+.fm-bb{height:110px}.fm-bb .cu-exp{bottom:96px}
+@media (min-width:861px){.fm-sc1{height:510px !important}.fm-sc1 .fm-bars{padding-bottom:18px}.fm-sc1 .fm-note{top:238px !important}.fm-sc1 .fm-quotes{top:300px !important}.fm-sc1 .fm-gauge{top:60px !important}}
