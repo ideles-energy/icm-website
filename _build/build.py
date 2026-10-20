@@ -373,7 +373,7 @@ def resources(t):
     RES_EXTRAS_HTML = f'''  <div class="wrap">
     <section class="calc-sec res-cols" id="calculator" aria-labelledby="calc-h">
       <div class="res-sec calc-left">
-        <span class="eyebrow">Tools</span><h2 id="calc-h">BESS Calculator <span class="calc-beta">Beta</span></h2>
+        <h2 id="calc-h">BESS Calculator <span class="calc-beta">Beta</span></h2>
         <p class="res-lead">Stop not knowing. See what your battery could have earned. No one has the perfect 2-hour BESS with a full grid connection that delivered EUR 305k per MW per year. Your battery has its own limits. See what it could have earned within them.</p>
         <div><a class="btn btn-outline-dark" href="/talk-to-us/">Talk to us</a></div>
       </div>
@@ -417,12 +417,12 @@ def resources(t):
     body = f'''<main class="res">
 {RES_EXTRAS_HTML if RES_EXTRAS else ''}  <div class="wrap res-cols">
     <section class="res-sec">
-      <span class="eyebrow">For developers</span><h2>Documents</h2>
-      <p class="res-lead">Read our API documents. Anything missing? Just ask.</p>
+      <h2>Documents</h2>
+      <p class="res-lead">Our API documents, written for and by developers.</p>
       <div class="res-card res-thumb"><img src="/assets/brand/thumb-api.jpg" alt="" width="1400" height="612" loading="lazy"><div><span>API documents</span><small>Guides and reference for the ICM Platform API</small></div><a class="btn btn-dark" href="https://docs.icm.energy/" target="_blank" rel="noopener">Access</a></div>
     </section>
     <section class="res-sec">
-      <span class="eyebrow">Brand</span><h2>Brand assets</h2>
+      <h2>Brand assets</h2>
       <p class="res-lead">Download the official logos of the ICM.</p>
       <div class="res-card res-thumb"><img src="/assets/brand/thumb-logos.jpg" alt="" width="640" height="360" loading="lazy"><div><span>Logos</span><small>PNG and SVG, header and footer versions</small></div><a class="btn btn-dark" href="/assets/brand/ICM-logos.zip" download>Download</a></div>
     </section>
@@ -556,7 +556,6 @@ def cta_band(t, h="Secure your battery's full potential", p='Tell us about your 
     q = f'?topic={topic}' if topic else ''
     return f"""<section class="cta-band">
   <div class="wrap">
-    <span class="eyebrow">Get started</span>
     <h2>{h}</h2>
     <p>{p}</p>
     <div class="cta-row"><a class="btn btn-lilac" href="{TALK}{q}">Get started</a><a class="btn btn-outline" href="/solutions/">Learn more</a></div>
@@ -714,7 +713,7 @@ GS_ICONS = {
 
 
 CR_H = '<span class="eyebrow cr-eb">How we deliver value</span><h2>The best capture rate, at all times.</h2>'
-CR_P = '<p class="cr-p">The ICM proactively monitors your performance and switches optimizers when there is more to earn.</p>'
+CR_P = '<p class="cr-p">The ICM proactively monitors your performance and switches optimizers when there is more to earn. <span class="cr-ill">Illustrative example.</span></p>'
 
 def _cr_ui():
     bars = [88, 87, 85, 82, 78, 75]
@@ -856,7 +855,7 @@ CR_VARIANTS = {'J': ('Film: I, E and G combined', _cr_film), 'I': ('Animated: 46
 
 def cr_section(v, label=False):
     tag = f'<span class="cr-var">Variant {v}: {CR_VARIANTS[v][0]}</span>' if label else ''
-    return f"""<section class="dark cr-sec cr-{v}">{tag}<div class="wrap">{CR_H}{CR_P}<p class="cr-note-ill">Illustrative example.</p><div class="cr-vis">{CR_VARIANTS[v][1]()}</div></div></section>"""
+    return f"""<section class="dark cr-sec cr-{v}">{tag}<div class="wrap">{CR_H}{CR_P}<div class="cr-vis">{CR_VARIANTS[v][1]()}</div></div></section>"""
 
 CR_CHOICE = os.environ.get('CR_VARIANT', '')
 FILM_LIVE = False  # set True once approved to show the film on the live site
