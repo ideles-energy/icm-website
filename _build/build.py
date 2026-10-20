@@ -200,7 +200,7 @@ def head(t, title, desc, path, alt_path=None, jsonld=None, og_title=None):
 <meta property="og:url" content="https://icm.energy{path}">
 <meta property="og:title" content="{og_title or title}">
 <meta property="og:description" content="{desc}">
-<meta property="og:image" content="https://icm.energy/assets/og-image.png?v=3">
+<meta property="og:image" content="https://icm.energy/assets/og-image.png?v=4">
 <meta property="og:site_name" content="The Independent Capacity Market">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
@@ -485,7 +485,7 @@ def company(t):
     <p class="co-label">The team</p>
     <div class="team">
       <a class="member" href="https://www.linkedin.com/in/idel%C3%A8s-kaandorp/" target="_blank" rel="noopener"><img class="ph" src="/assets/team-ideles.jpg" alt="Idelès Kaandorp" width="600" height="600" loading="lazy"><b>Idelès Kaandorp</b><span class="m-bio">Founder. Leads the push for transparency in the BESS market. Trained as a mathematician, holds an MBA from Harvard Business School and served energy clients at McKinsey.</span></a>
-      <a class="member" href="https://www.linkedin.com/in/edo-rivai-78b66a17/" target="_blank" rel="noopener"><img class="ph" src="/assets/team-edo.jpg" alt="Edo Rivai" width="512" height="512" loading="lazy"><b>Edo Rivai</b><span class="m-bio">Senior software developer. Owns platform design, integrations and infrastructure. Built and scaled software, most recently at SpotAI (network of intelligent security cameras).</span></a>
+      <a class="member" href="https://www.linkedin.com/in/edo-rivai-78b66a17/" target="_blank" rel="noopener"><img class="ph" src="/assets/team-edo.jpg" alt="Edo Rivai" width="512" height="512" loading="lazy"><b>Edo Rivai</b><span class="m-bio">Senior software developer. Owns platform design, integrations and infrastructure. Built and scaled software, most recently as Staff Software Engineer at Spot AI (network of intelligent security cameras).</span></a>
       <a class="member" href="https://www.linkedin.com/in/jesse-h-willis/" target="_blank" rel="noopener"><img class="ph" src="/assets/team-jesse.jpg" alt="Jesse Willis" width="600" height="720" loading="lazy"><b>Jesse Willis</b><span class="m-bio">Project Engineer. Translates your dispatch constraints into custom insights that drive decisions. Studied Industrial Design Engineering in Delft and started Everlab to build meaningful products from scratch.</span></a>
     </div>
     <div class="team-cta"><a class="btn btn-lilac" href="/talk-to-us/">Get in touch</a></div>
