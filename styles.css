@@ -2352,3 +2352,12 @@ body{line-height:1.6}
 .sol-head{max-width:none !important;width:100%;text-align:center !important}.sol-head .eyebrow{text-align:center !important}
 .cr-ill{color:#A9B9BC}
 .cr-sec .cr-p{margin-bottom:36px}
+/* v94 404 page */
+.nf-hero{padding-bottom:96px}
+.nf-links{list-style:none;display:flex;gap:24px;flex-wrap:wrap;margin:28px 0 0;padding:0}
+.nf-links a{color:#97F2F5;font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.gs-white .eyebrow{color:#526E74 !important}
+.ax-off,.ax-off .cs-tag,.ax-off .ax-rcap,.ax-off li span,.ax-off li b,.ax-off .ax-mg span{color:#475F64 !important}.ax-off .ax-big,.ax-off .ax-mg b{color:#3E5357 !important}
+.f-sep{margin:0 8px;color:#7E9599}
+.f-li{display:inline-flex;align-items:center;gap:5px}
+.f-li svg{flex:none}
