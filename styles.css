@@ -1750,3 +1750,10 @@ body{line-height:1.6}
 .sol-flat-configurator svg,.sol-flat-broker svg,.sol-flat-backtest svg{stroke:#97F2F5 !important}
 .props-light .sol-icon{background:#274A51 !important;border-color:#274A51 !important;opacity:1 !important}
 .props-light .sol-icon svg{stroke:#97F2F5 !important;color:#97F2F5 !important;opacity:1 !important}
+/* v73 About white (with Props), Our why back to dark; calculator buttons aligned */
+.about-light{background:#FFFFFF}
+.about-light .about-card{background:#F2F8F9 !important}
+.calc-sec.res-cols{align-items:stretch}
+.calc-sec .calc-left{display:flex;flex-direction:column}
+.calc-sec .calc-left > div:last-child{margin-top:auto}
+@media (min-width:901px){.calc-sec .calc-left > div:last-child{padding-bottom:19px}}
