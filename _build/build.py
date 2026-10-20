@@ -723,7 +723,7 @@ GS_STEPS = f'''<section class="dark gs-steps" id="steps">
     <h2>Get started in three easy steps</h2>
     <div class="gs-grid">
       <div>{GS_ICONS['mail']}<p><b>Step 1: Enter your work email.</b> <span>Enter your business email to begin. You'll be prompted to answer a few questions about your context and objectives.</span></p></div>
-      <div>{GS_ICONS['form']}<p><b>Step 2: Provide your details.</b> <span>We'll ask for the basics: the battery (MW/MWh), the grid connection (import/export MW), other assets on site such as solar panels, and the markets your optimizer trades in.</span></p></div>
+      <div>{GS_ICONS['form']}<p><b>Step 2: Provide your details.</b> <span>We'll ask for basic information such as the battery size (MW/MWh) and your dispatch constraints (GTV).</span></p></div>
       <div>{GS_ICONS['key']}<p><b>Step 3: Navigate your reality.</b> <span>Most businesses receive a custom view of their potential earnings within 1 working day. It's the draft we start from.</span></p></div>
     </div>
   </div>
