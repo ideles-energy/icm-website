@@ -2219,3 +2219,18 @@ body{line-height:1.6}
 .ax-q b{white-space:nowrap}
 @media (max-width:860px){.ax-leg{flex-wrap:wrap}}
 @media (max-width:860px){.ax-ax{font-size:15px}.ax-pchart{align-self:start}}
+/* v84 gauge: more air between arc and number */
+.ax-grid2{grid-template-columns:260px minmax(0,1fr)}
+.ax-g-bg,.ax-g-fg{stroke-width:18}
+.ax-num{bottom:4px}
+.ax-num b{font-size:32px}
+.ax-glab{text-align:center;margin:6px 0 0;font-size:13px;color:#526E74}
+@media (max-width:860px){.ax-grid2{grid-template-columns:1fr}}
+/* v85 logo bottom right, result card in Platinum */
+.ax-main{position:relative;padding-bottom:44px}
+.ax-mark{position:absolute;right:18px;bottom:14px;width:26px;height:26px;border-radius:7px;opacity:.9}
+.ax-side{padding-top:22px}
+.ax-on{background:#F2F8F9;color:#040D1F;border:2px solid #274A51;box-shadow:0 18px 40px rgba(4,13,31,.18)}
+.ax-on .cs-tag{color:#526E74}.ax-on .ax-big{color:#040D1F}.ax-on li{border-top:1px solid #D5E1E3}.ax-on li b{color:#040D1F}
+@media (max-width:860px){.ax-main{padding-bottom:40px}}
+.ax-rb,.ax-rbh{opacity:0}.film.f5 .ax-rb{opacity:1}.film.f5 .ax-rbh{opacity:.7}

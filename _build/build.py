@@ -794,16 +794,14 @@ def _cr_anim():
 
 def _cr_film():
     # All figures are for one illustrative battery. Expected revenues are known only after each month.
-    ex = [214, 208, 205, 211, 218, 222, 225, 219, 212, 207, 215, 224]          # expected revenues, EUR k per MW per year (annualised)
-    CA, CB, CE = 63, 82, 80                                                     # capture rate with A, with B, expected
+    ex = [214, 209, 208, 215, 222, 225, 225, 221, 216, 211, 220, 225]          # expected revenues, EUR k per MW per year (annualised)
+    CA, CB, CE = 68, 88, 80                                                     # capture rate with A, with B, expected (88/68 = +30%)
     ra = [e * CA / CE for e in ex]; rb = [e * CB / CE for e in ex]
-    before = round(sum(ex) / 12 * CA / CE * 10) * 100
-    after = round(sum(ex) / 12 * CB / CE * 10) * 100
-    gain = after - before
+    before, gain = 185000, 55500                                                # same battery as the home page: EUR 185k, +30% = EUR 55.5k
     fmt = lambda v: f'{v:,.0f}'
     W, H, L, R, T, B = 520, 300, 46, 10, 14, 30
     X = lambda i: L + i * (W - L - R) / 11
-    Y = lambda v: T + (255 - v) / (255 - 150) * (H - T - B)
+    Y = lambda v: T + (262 - v) / (262 - 150) * (H - T - B)
     pl = lambda pts, idx: ' '.join(('M' if k == 0 else 'L') + f'{X(i):.1f},{Y(v):.1f}' for k, (i, v) in enumerate(zip(idx, pts)))
     band = 'M' + ' L'.join(f'{X(i):.1f},{Y(e*1.1):.1f}' for i, e in enumerate(ex)) + ' L' + ' L'.join(f'{X(i):.1f},{Y(e*0.9):.1f}' for i, e in reversed(list(enumerate(ex)))) + ' Z'
     grid = ''.join(f'<line x1="{L}" x2="{W-R}" y1="{Y(v):.1f}" y2="{Y(v):.1f}" class="ax-grid"/><text x="{L-7}" y="{Y(v)+4:.1f}" text-anchor="end" class="ax-ax">{v}k</text>' for v in (150, 175, 200, 225, 250))
@@ -823,8 +821,9 @@ def _cr_film():
     navh = ''.join(f'<li><button type="button" data-t="{t}"><span>{k+1}</span>{h}</button><p>{d}</p></li>' for k, (t, h, d) in enumerate(nav))
     return f"""<div class="film ax js-film" data-from="{CA}" data-to="{CB}" data-base="{before}" data-gain="{gain}">
       <div class="ax-win">
-        <aside class="ax-side"><div class="ax-brand"><img src="/assets/favicon.svg" alt="" width="28" height="28"><span>ICM</span></div><ol class="fm-ch ax-nav">{navh}</ol></aside>
+        <aside class="ax-side"><ol class="fm-ch ax-nav">{navh}</ol></aside>
         <div class="ax-main">
+          <img class="ax-mark" src="/assets/favicon.svg" alt="The Independent Capacity Market" width="26" height="26">
           <p class="ax-cap js-fm-cap"></p>
           <div class="ax-grid2">
             <div class="ax-card ax-kpi">
@@ -834,7 +833,7 @@ def _cr_film():
                 <path d="M44,196 A156,156 0 0 1 356,196" class="ax-g-bg" pathLength="100"/>
                 <path d="M44,196 A156,156 0 0 1 356,196" class="ax-g-fg js-fm-arc" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100"/>
                 <line x1="311.6" y1="114.9" x2="342.4" y2="92.5" class="ax-g-exp"/><text x="355.3" y="83.1" class="ax-g-el">80%</text>
-              </svg><div class="ax-num"><b class="js-fm-num">0%</b><span>capture rate</span></div></div>
+              </svg><div class="ax-num"><b class="js-fm-num">0%</b></div></div><p class="ax-glab">capture rate</p>
               <div class="ax-status"><span class="ax-s ax-slo">Below expected</span><span class="ax-s ax-sok">On track</span></div>
             </div>
             <div class="ax-right">
