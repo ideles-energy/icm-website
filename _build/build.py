@@ -379,18 +379,11 @@ def resources(t):
       </div>
       <div class="res-sec">
         <div class="res-card res-thumb calc-card">
-          <button type="button" class="calc-shot-btn js-calc-open" aria-label="Open the BESS Calculator"><img src="/assets/img/calculator-preview.jpg" alt="BESS Calculator: full potential and expected revenues per month (fictional example)" width="1440" height="900" loading="lazy"></button>
+          <button type="button" class="calc-shot-btn js-gate-open" data-gate="calc" aria-label="Open the BESS Calculator"><img src="/assets/img/calculator-preview.jpg" alt="BESS Calculator: full potential and expected revenues per month (fictional example)" width="1440" height="900" loading="lazy"></button>
           <div><span>BESS Calculator</span><small>Subject to change, methodology to be refined.</small></div>
-          <button type="button" class="btn btn-dark js-calc-open">Open</button>
+          <button type="button" class="btn btn-dark js-gate-open" data-gate="calc">Open</button>
         </div>
       </div>
-      <dialog class="calc-dlg" id="calc-dlg" aria-labelledby="calc-dlg-h">
-        <button type="button" class="gate-x js-calc-close" aria-label="Close">&times;</button>
-        <img src="/assets/img/calculator-preview.jpg" alt="" width="1440" height="900" loading="lazy">
-        <h3 id="calc-dlg-h">The BESS Calculator opens soon</h3>
-        <p>Curious what it shows for your battery? We are happy to walk you through it.</p>
-        <a class="btn btn-dark" href="/talk-to-us/">Talk to us</a>
-      </dialog>
     </section>
   </div>
   <div class="wrap">
@@ -823,17 +816,17 @@ def _cr_film():
       <div class="ax-win">
         <aside class="ax-side"><ol class="fm-ch ax-nav">{navh}</ol></aside>
         <div class="ax-main">
-          <img class="ax-mark" src="/assets/favicon.svg" alt="The Independent Capacity Market" width="26" height="26">
+          <img class="ax-mark" src="/assets/icm-mark.svg" alt="The Independent Capacity Market" width="40" height="40">
           <p class="ax-cap js-fm-cap"></p>
           <div class="ax-grid2">
             <div class="ax-card ax-kpi">
-              <div class="ax-kh"><b>Your battery</b><em>10 MW / 20 MWh</em></div>
+              <div class="ax-kh"><b>Capture rate, %</b></div>
               <div class="ax-opt"><span class="ax-o ax-oa">Optimizer A</span><span class="ax-o ax-ob">Optimizer B</span></div>
               <div class="ax-gw"><svg viewBox="0 0 400 210" class="ax-g" aria-hidden="true">
                 <path d="M44,196 A156,156 0 0 1 356,196" class="ax-g-bg" pathLength="100"/>
                 <path d="M44,196 A156,156 0 0 1 356,196" class="ax-g-fg js-fm-arc" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100"/>
                 <line x1="311.6" y1="114.9" x2="342.4" y2="92.5" class="ax-g-exp"/><text x="355.3" y="83.1" class="ax-g-el">80%</text>
-              </svg><div class="ax-num"><b class="js-fm-num">0%</b></div></div><p class="ax-glab">capture rate</p>
+              </svg><div class="ax-num"><b class="js-fm-num">0%</b></div></div>
               <div class="ax-status"><span class="ax-s ax-slo">Below expected</span><span class="ax-s ax-sok">On track</span></div>
             </div>
             <div class="ax-right">
@@ -1283,4 +1276,9 @@ write('demo/index.html', '<!DOCTYPE html><html lang="en"><head><meta charset="UT
 
 # BESS Backtest example report (fictional data), served at /bess-backtest/example/ with a way back to the site.
 write('bess-backtest/example/index.html', open(os.path.join(ROOT, '_build', 'backtest-example.html'), encoding='utf-8').read())
+import shutil
+if RES_EXTRAS:
+    write('bess-calculator/index.html', open(os.path.join(ROOT, '_build', 'bess-calculator.html'), encoding='utf-8').read())
+elif os.path.isdir(os.path.join(ROOT, 'bess-calculator')):
+    shutil.rmtree(os.path.join(ROOT, 'bess-calculator'))
 print('demo built')

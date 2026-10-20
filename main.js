@@ -165,8 +165,10 @@ r.addEventListener('input',u);u();})();
 /* Email gate before the Backtest product: work-email form (Fillout) in a pop-up */
 (function(){
   var g=document.getElementById('gate'); if(!g) return;
-  var go=g.querySelector('.js-gate-go'), loaded=false;
+  var go=g.querySelector('.js-gate-go'), loaded=false, target='/bess-backtest/example/', bg=g.querySelector('.gate-bg');
+  var T={calc:['/bess-calculator/','/assets/img/calculator-preview.jpg','Entered your email? Open the BESS Calculator'],demo:['/bess-backtest/example/','/assets/img/backtest-example.jpg','Entered your email? Open the example report']};
   function open(mode){g.hidden=false;document.body.style.overflow='hidden';
+    var c=T[mode]||T.demo; target=c[0]; if(bg)bg.src=c[1]; if(go){go.href=c[0];go.textContent=c[2];}
     if(!loaded){loaded=true;var box=g.querySelector('.gate-frame');if(box){
       var u=new URL('https://embed.fillout.com/t/'+box.getAttribute('data-form'));
       new URLSearchParams(location.search).forEach(function(v,k){u.searchParams.set(k,v);});
@@ -176,7 +178,7 @@ r.addEventListener('input',u);u();})();
       window.addEventListener('message',function(e){
         if(e.origin!=='https://embed.fillout.com'||!e.data||e.data.embedId!=='icmgate')return;
         if(e.data.type==='form_resized'&&typeof e.data.size==='number')f.style.height=Math.max(e.data.size,260)+'px';
-        if(e.data.type==='form_submit')location.href='/bess-backtest/example/';
+        if(e.data.type==='form_submit')location.href=target;
       });}}
     if(go)go.hidden=(mode==='start');}
   function close(){g.hidden=true;document.body.style.overflow='';}
