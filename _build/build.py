@@ -787,14 +787,14 @@ def _cr_anim():
 
 def _cr_film():
     # All figures are for one illustrative battery. Expected revenues are known only after each month.
-    ex = [214, 209, 208, 215, 222, 225, 225, 221, 216, 211, 220, 225]          # expected revenues, EUR k per MW per year (annualised)
-    CA, CB, CE = 68, 88, 80                                                     # capture rate with A, with B, expected (88/68 = +30%)
+    ex = [228, 223, 222, 229, 236, 240, 240, 235, 230, 225, 234, 233]          # expected revenues, EUR k per MW per year (annualised)
+    CA, CB, CE = 64, 83, 80                                                     # capture rate with A, with B, expected (83/64 = +30%)
     ra = [e * CA / CE for e in ex]; rb = [e * CB / CE for e in ex]
     before, gain = 185000, 55500                                                # same battery as the home page: EUR 185k, +30% = EUR 55.5k
     fmt = lambda v: f'{v:,.0f}'
     W, H, L, R, T, B = 520, 300, 60, 10, 14, 30
     X = lambda i: L + i * (W - L - R) / 11
-    Y = lambda v: T + (262 - v) / (262 - 150) * (H - T - B)
+    Y = lambda v: T + (270 - v) / (270 - 150) * (H - T - B)
     pl = lambda pts, idx: ' '.join(('M' if k == 0 else 'L') + f'{X(i):.1f},{Y(v):.1f}' for k, (i, v) in enumerate(zip(idx, pts)))
     band = 'M' + ' L'.join(f'{X(i):.1f},{Y(e*1.1):.1f}' for i, e in enumerate(ex)) + ' L' + ' L'.join(f'{X(i):.1f},{Y(e*0.9):.1f}' for i, e in reversed(list(enumerate(ex)))) + ' Z'
     grid = ''.join(f'<line x1="{L}" x2="{W-R}" y1="{Y(v):.1f}" y2="{Y(v):.1f}" class="ax-grid"/><text x="{L-7}" y="{Y(v)+4:.1f}" text-anchor="end" class="ax-ax">{v}k</text>' for v in (150, 175, 200, 225, 250))
@@ -838,10 +838,10 @@ def _cr_film():
             <div class="ax-toast ax-t1"><span class="ax-bell"><svg viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4zM10 20a2 2 0 0 0 4 0"/></svg></span>
               <div><b>Capture rate below expected for 6 months</b><span class="ax-t1b">Owner alerted. We ask trusted optimizers for a quote.</span></div></div>
             <div class="ax-res">
-              <div class="ax-rc ax-off"><div class="ax-rtop"><div><p class="cs-tag">Without the ICM</p><p class="ax-big">EUR {fmt(before)}</p><p class="ax-rcap">per MW per year</p></div><div class="ax-mg"><svg viewBox="0 0 400 215" aria-hidden="true"><path d="M44,196 A156,156 0 0 1 356,196" class="ax-mg-bg" pathLength="100"/><path d="M44,196 A156,156 0 0 1 356,196" class="ax-mg-fg ax-mg-a" pathLength="100" stroke-dasharray="100" stroke-dashoffset="{100-CA}"/></svg><b>{CA}%</b><span>capture rate</span></div></div>
-                <ul><li><span>Missed opportunity</span><b>Unknown</b></li><li><span>Other optimizers</span><b>Unknown</b></li></ul></div>
-              <div class="ax-rc ax-on"><div class="ax-rtop"><div><p class="cs-tag">With the ICM</p><p class="ax-big"><span class="js-fm-gain">EUR {fmt(before)}</span></p><p class="ax-rcap">per MW per year</p></div><div class="ax-mg"><svg viewBox="0 0 400 215" aria-hidden="true"><path d="M44,196 A156,156 0 0 1 356,196" class="ax-mg-bg" pathLength="100"/><path d="M44,196 A156,156 0 0 1 356,196" class="ax-mg-fg ax-mg-b" pathLength="100" stroke-dasharray="100" stroke-dashoffset="{100-CB}"/></svg><b>{CB}%</b><span>capture rate</span></div></div>
-                <ul><li><span>Extra revenue</span><b class="js-fm-plus">+EUR 0</b></li><li><span>Offers compared</span><b>4</b></li></ul></div>
+              <div class="ax-rc ax-off"><p class="cs-tag">Without the ICM</p><p class="ax-big">EUR {fmt(before)}</p><p class="ax-rcap">per MW per year</p>
+                <ul><li><span>Missed opportunity</span><b>Unknown</b></li><li><span>Other optimizers</span><b>Unknown</b></li></ul><div class="ax-mg"><svg viewBox="0 0 400 215" aria-hidden="true"><path d="M44,196 A156,156 0 0 1 356,196" class="ax-mg-bg" pathLength="100"/><path d="M44,196 A156,156 0 0 1 356,196" class="ax-mg-fg ax-mg-a" pathLength="100" stroke-dasharray="100" stroke-dashoffset="{100-CA}"/></svg><b>{CA}%</b><span>capture rate</span></div></div>
+              <div class="ax-rc ax-on"><p class="cs-tag">With the ICM</p><p class="ax-big"><span class="js-fm-gain">EUR {fmt(before)}</span></p><p class="ax-rcap">per MW per year</p>
+                <ul><li><span>Extra revenue</span><b class="js-fm-plus">+EUR 0</b></li><li><span>Offers compared</span><b>4</b></li></ul><div class="ax-mg"><svg viewBox="0 0 400 215" aria-hidden="true"><path d="M44,196 A156,156 0 0 1 356,196" class="ax-mg-bg" pathLength="100"/><path d="M44,196 A156,156 0 0 1 356,196" class="ax-mg-fg ax-mg-b" pathLength="100" stroke-dasharray="100" stroke-dashoffset="{100-CB}"/></svg><b>{CB}%</b><span>capture rate</span></div></div>
             </div>
           </div>
         </div>
