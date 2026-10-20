@@ -2234,3 +2234,16 @@ body{line-height:1.6}
 .ax-on .cs-tag{color:#526E74}.ax-on .ax-big{color:#040D1F}.ax-on li{border-top:1px solid #D5E1E3}.ax-on li b{color:#040D1F}
 @media (max-width:860px){.ax-main{padding-bottom:40px}}
 .ax-rb,.ax-rbh{opacity:0}.film.f5 .ax-rb{opacity:1}.film.f5 .ax-rbh{opacity:.7}
+/* v86 band heading white, intro above the film, bigger logo, compact result, no halo on line B */
+.cr-sec h2{color:#F2F8F9 !important;margin-bottom:18px}
+.cr-sec .cr-p{margin:0 auto 6px}
+.cr-sec .cr-note-ill{margin:0 0 36px}
+.ax-mark{width:40px !important;height:40px !important;border-radius:10px;right:16px;bottom:12px;opacity:1}
+.ax-main{padding-bottom:62px}
+.ax-res{align-self:start;align-items:start}
+.ax-rc{padding:20px 24px}
+.ax-rcap{margin:6px 0 10px}
+.ax-rc li{padding:9px 0}
+.ax-l-rb i{box-shadow:none !important}
+@media (max-width:860px){.cr-sec .cr-note-ill{margin-bottom:24px}.ax-main{padding-bottom:58px}}
+@media (max-width:860px){.ax-gw{max-width:300px;width:100%;margin:0 auto}.ax-kpi{align-items:stretch}}

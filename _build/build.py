@@ -810,7 +810,7 @@ def _cr_film():
     chart = f"""<svg viewBox="0 0 {W} {H}" class="ax-chart" aria-hidden="true" data-x0="{L}" data-x1="{x1:.1f}" data-x2="{x2}">
           <defs><clipPath id="ax-clip"><rect class="js-ax-clip" x="0" y="0" width="{L}" height="{H}"/></clipPath></defs>{grid}{months}
           <g clip-path="url(#ax-clip)"><path d="{band}" class="ax-band"/><path d="{pl(ex, range(12))}" class="ax-ex"/>
-          <path d="{pl(ra[:6], range(6))}" class="ax-ra"/><path d="{pl([ra[5]] + rb[6:], range(5, 12))}" class="ax-rbh"/><path d="{pl([ra[5]] + rb[6:], range(5, 12))}" class="ax-rb"/>
+          <path d="{pl(ra[:6], range(6))}" class="ax-ra"/><path d="{pl([ra[5]] + rb[6:], range(5, 12))}" class="ax-rb"/>
           <line x1="{(X(5)+X(6))/2:.1f}" x2="{(X(5)+X(6))/2:.1f}" y1="{T}" y2="{H-B}" class="ax-sw"/></g></svg>"""
     quotes = [('Optimizer B', 84, True), ('Optimizer C', 81, False), ('Optimizer D', 79, False), ('Optimizer E', 76, False)]
     qr = ''.join(f'<div class="ax-q{" ax-qsel" if sel else ""}" style="--k:{k}"><b>{n}</b><span class="ax-qe">Expected <strong>{e}%</strong></span>' + ('<span class="ax-btn">Switch</span>' if sel else '<span></span>') + '</div>' for k, (n, e, sel) in enumerate(quotes))
@@ -862,7 +862,7 @@ CR_VARIANTS = {'J': ('Film: I, E and G combined', _cr_film), 'I': ('Animated: 46
 
 def cr_section(v, label=False):
     tag = f'<span class="cr-var">Variant {v}: {CR_VARIANTS[v][0]}</span>' if label else ''
-    return f"""<section class="dark cr-sec cr-{v}">{tag}<div class="wrap">{CR_H}<div class="cr-vis">{CR_VARIANTS[v][1]()}</div>{CR_P}<p class="cr-note-ill">Illustrative example.</p></div></section>"""
+    return f"""<section class="dark cr-sec cr-{v}">{tag}<div class="wrap">{CR_H}{CR_P}<p class="cr-note-ill">Illustrative example.</p><div class="cr-vis">{CR_VARIANTS[v][1]()}</div></div></section>"""
 
 CR_CHOICE = os.environ.get('CR_VARIANT', '')
 FILM_LIVE = False  # set True once approved to show the film on the live site
