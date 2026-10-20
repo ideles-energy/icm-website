@@ -2303,3 +2303,24 @@ body{line-height:1.6}
 .ax-kh b{font-size:15px}
 @media (max-width:640px){.ax-cap{font-size:17px;min-height:4em}}
 .ax-mark{width:auto !important;height:34px !important}@media (max-width:640px){.ax-mark{height:28px !important}}
+/* v89 result cards repeat the capture rate as a small gauge */
+.ax-rtop{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.ax-mg{position:relative;width:118px;flex:none;text-align:center;margin-top:2px}
+.ax-mg svg{width:100%;height:auto;display:block}
+.ax-mg-bg{fill:none;stroke:#D5E1E3;stroke-width:26;stroke-linecap:round}
+.ax-mg-fg{fill:none;stroke-width:26;stroke-linecap:round}
+.ax-mg-a{stroke:#D392EB}
+.ax-mg-b{stroke:#274A51;transition:stroke-dashoffset 1.4s cubic-bezier(.2,.8,.2,1) .3s}
+.film:not(.f6) .ax-mg-b{stroke-dashoffset:32}
+.ax-mg b{position:absolute;left:0;right:0;top:34px;font-size:20px;font-weight:700;color:#040D1F}
+.ax-off .ax-mg b{color:#526E74}
+.ax-mg span{display:block;font-size:11px;color:#526E74;margin-top:2px}
+@media (max-width:640px){.ax-mg{width:96px}.ax-mg b{top:27px;font-size:17px}}
+.ax-res{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.ax-rc{min-width:0;overflow:hidden}
+.ax-rtop > div:first-child{min-width:0}
+.ax-rc .ax-big{font-size:clamp(24px,2.3vw,32px)}
+.ax-mg{width:88px}.ax-mg b{top:24px;font-size:17px}.ax-mg span{font-size:10.5px}
+@media (max-width:860px){.ax-res{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:640px){.ax-rc .ax-big{font-size:26px}.ax-mg{width:84px}.ax-mg b{top:23px;font-size:16px}}
+.ax-rc .ax-big{font-size:clamp(22px,1.95vw,28px)}.ax-rtop{gap:16px}@media (max-width:640px){.ax-rc .ax-big{font-size:23px}}

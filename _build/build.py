@@ -838,10 +838,10 @@ def _cr_film():
             <div class="ax-toast ax-t1"><span class="ax-bell"><svg viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4zM10 20a2 2 0 0 0 4 0"/></svg></span>
               <div><b>Capture rate below expected for 6 months</b><span class="ax-t1b">Owner alerted. We ask trusted optimizers for a quote.</span></div></div>
             <div class="ax-res">
-              <div class="ax-rc ax-off"><p class="cs-tag">Without the ICM</p><p class="ax-big">EUR {fmt(before)}</p><p class="ax-rcap">per MW per year</p>
-                <ul><li><span>Missed opportunity</span><b>Unknown</b></li><li><span>Capture rate</span><b>Unknown</b></li><li><span>Other optimizers</span><b>Unknown</b></li></ul></div>
-              <div class="ax-rc ax-on"><p class="cs-tag">With the ICM</p><p class="ax-big"><span class="js-fm-gain">EUR {fmt(before)}</span></p><p class="ax-rcap">per MW per year</p>
-                <ul><li><span>Extra revenue</span><b class="js-fm-plus">+EUR 0</b></li><li><span>Capture rate</span><b>{CB}%</b></li><li><span>Offers compared</span><b>4</b></li></ul></div>
+              <div class="ax-rc ax-off"><div class="ax-rtop"><div><p class="cs-tag">Without the ICM</p><p class="ax-big">EUR {fmt(before)}</p><p class="ax-rcap">per MW per year</p></div><div class="ax-mg"><svg viewBox="0 0 400 215" aria-hidden="true"><path d="M44,196 A156,156 0 0 1 356,196" class="ax-mg-bg" pathLength="100"/><path d="M44,196 A156,156 0 0 1 356,196" class="ax-mg-fg ax-mg-a" pathLength="100" stroke-dasharray="100" stroke-dashoffset="{100-CA}"/></svg><b>{CA}%</b><span>capture rate</span></div></div>
+                <ul><li><span>Missed opportunity</span><b>Unknown</b></li><li><span>Other optimizers</span><b>Unknown</b></li></ul></div>
+              <div class="ax-rc ax-on"><div class="ax-rtop"><div><p class="cs-tag">With the ICM</p><p class="ax-big"><span class="js-fm-gain">EUR {fmt(before)}</span></p><p class="ax-rcap">per MW per year</p></div><div class="ax-mg"><svg viewBox="0 0 400 215" aria-hidden="true"><path d="M44,196 A156,156 0 0 1 356,196" class="ax-mg-bg" pathLength="100"/><path d="M44,196 A156,156 0 0 1 356,196" class="ax-mg-fg ax-mg-b" pathLength="100" stroke-dasharray="100" stroke-dashoffset="{100-CB}"/></svg><b>{CB}%</b><span>capture rate</span></div></div>
+                <ul><li><span>Extra revenue</span><b class="js-fm-plus">+EUR 0</b></li><li><span>Offers compared</span><b>4</b></li></ul></div>
             </div>
           </div>
         </div>
