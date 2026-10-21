@@ -259,7 +259,7 @@ def footer(t, other_href):
       <a href="/resources/">Resources</a>
       <a href="{TALK}">Talk to us</a>
     </nav>
-    <div class="f-mail"><p><a href="mailto:info@icm.energy">info@icm.energy</a></p><p class="f-copy">© 2026 Independent Capacity Market B.V.<span class="f-kvk">KvK 99958775</span></p></div>
+    <div class="f-mail"><p><a href="mailto:info@icm.energy">info@icm.energy</a><a class="f-li" href="https://www.linkedin.com/company/112941912/" target="_blank" rel="noopener" aria-label="The ICM on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true" width="16" height="16"><path fill="currentColor" d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C20.6 8.65 21 11.2 21 14.5V21h-4v-5.8c0-1.4 0-3.2-1.95-3.2S12.8 13.5 12.8 15.1V21H9z"/></svg></a></p><p class="f-copy">© 2026 Independent Capacity Market B.V.<span class="f-kvk">KvK 99958775</span></p></div>
     <div class="f-legal">
       <p>Website designed by <a href="https://www.saltandchalk.co.uk" target="_blank" rel="noopener">Salt &amp; Chalk</a></p>
       <p><a href="{b}terms/">{t['terms']}</a> | <a href="{b}privacy/">{t['privacy']}</a> | <a href="{b}cookies/">{t['cookie']}</a></p>
@@ -484,7 +484,7 @@ def company(t):
     <div class="team-cta"><a class="btn btn-lilac" href="/talk-to-us/">Talk to us</a></div>
   </div>
 </section>
-{'<section class="co-story" id="story"><div class="wrap"><div class="co-story-grid"><div><span class="eyebrow">Our story</span><h2>How the ICM started</h2><div class="story-txt"><p>Batteries are becoming the backbone of a flexible grid. Europe already has more than 100 GWh of battery storage installed, and the Netherlands is expected to reach around 25 GWh by 2030.</p><p>Batteries strengthen the grid. They store surplus solar and wind power, relieve congested grids and help keep the frequency at 50 Hz.</p><p>Yet most battery owners are flying blind. They have no overview of the optimizers on the market or how they compare, and no reference for what their own site could deliver.</p><p>The ICM was founded in Amsterdam in March 2026 to close this information gap. We serve those who add capacity to the grid, but are in the dark about the potential of their assets.</p><p class="story-src-line">Sources: <a href="https://www.ees-europe.com/publications/european-market-outlook-for-battery-storage-2026" target="_blank" rel="noopener">SolarPower Europe, European Market Outlook for Battery Storage</a>; <a href="https://taiyangnews.info/storage/europe-battery-storage-capacity-exceeds-100-gwh" target="_blank" rel="noopener">TaiyangNews, Europe’s battery storage capacity exceeds 100 GWh</a>.</p></div></div><div><span class="eyebrow">Supported by</span><div class="sup-card"><img src="/assets/img/provincie-noord-holland.png" alt="Province of Noord-Holland" width="1188" height="236" loading="lazy"><p><a href="https://www.noord-holland.nl/Producten_op_alfabet/MKB_innovatiestimulering_topsectoren_MIT_Noord_Holland_Haalbaarheidsproject_subsidie" target="_blank" rel="noopener">MIT feasibility grant</a> from the Province of Noord-Holland.</p></div></div></div></div></section>' if COMPANY_STORY else ''}
+{'<section class="co-story" id="story"><div class="wrap"><div class="co-story-grid"><div><span class="eyebrow">Our story</span><h2>How the ICM started</h2><div class="story-txt"><p>Batteries are becoming the backbone of a resilient grid. Europe already has more than 100 GWh of battery storage installed, and the Netherlands is expected to reach around 25 GWh by 2030.</p><p>Batteries strengthen the grid. They store surplus solar and wind power, relieve congested grids and help keep the frequency at 50 Hz.</p><p>Yet most battery owners are flying blind. They have no overview of the optimizers on the market or how they compare, and no reference for what their own site could deliver.</p><p>The ICM was founded in Amsterdam in March 2026 to close this information gap. We serve those who add capacity to the grid, but are in the dark about the potential of their assets.</p><p class="story-src-line">Sources: <a href="https://www.ees-europe.com/publications/european-market-outlook-for-battery-storage-2026" target="_blank" rel="noopener">SolarPower Europe, European Market Outlook for Battery Storage</a>; <a href="https://taiyangnews.info/storage/europe-battery-storage-capacity-exceeds-100-gwh" target="_blank" rel="noopener">TaiyangNews, Europe’s battery storage capacity exceeds 100 GWh</a>.</p></div></div><div><span class="eyebrow">Supported by</span><div class="sup-card"><img src="/assets/img/provincie-noord-holland.png" alt="Province of Noord-Holland" width="1188" height="236" loading="lazy"><p><a href="https://www.noord-holland.nl/Producten_op_alfabet/MKB_innovatiestimulering_topsectoren_MIT_Noord_Holland_Haalbaarheidsproject_subsidie" target="_blank" rel="noopener">MIT feasibility grant</a> from the Province of Noord-Holland.</p></div></div></div></div></section>' if COMPANY_STORY else ''}
 <section class="co-careers" id="careers">
   <div class="wrap">
     <p class="co-label dark-t">Open roles</p>
@@ -806,7 +806,8 @@ def _cr_film():
           <path d="{pl(ra[:6], range(6))}" class="ax-ra"/><path d="{pl([ra[5]] + rb[6:], range(5, 12))}" class="ax-rb"/>
           <line x1="{(X(5)+X(6))/2:.1f}" x2="{(X(5)+X(6))/2:.1f}" y1="{T}" y2="{H-B}" class="ax-sw"/></g></svg>"""
     quotes = [('Optimizer B', 84, True), ('Optimizer C', 81, False), ('Optimizer D', 79, False), ('Optimizer E', 76, False)]
-    qr = ''.join(f'<div class="ax-q{" ax-qsel" if sel else ""}" style="--k:{k}"><b>{n}</b><span class="ax-qe">Expected <strong>{e}%</strong></span>' + ('<span class="ax-btn">Switch</span>' if sel else '<span></span>') + '</div>' for k, (n, e, sel) in enumerate(quotes))
+    fpot = before / CA * 100                                                    # full potential per MW per year
+    qr = ''.join(f'<div class="ax-q{" ax-qsel" if sel else ""}" style="--k:{k}"><div class="ax-qn"><b>{n}</b><small>EUR {round(fpot*e/100/1000):,}k per MW per year</small></div><span class="ax-qe"><strong>{e}%</strong><small>expected</small></span>' + ('<span class="ax-btn">Switch</span>' if sel else '<span></span>') + '</div>' for k, (n, e, sel) in enumerate(quotes))
     nav = [('0', 'Monitor', f'Capture rate at {CA}%, below the expected {CE}%. Owner alerted.'),
            ('6000', 'Compare', 'Trusted optimizers, quotes compared side by side.'),
            ('9800', 'Switch', f'Optimizer B takes over. Capture rate up to {CB}%.'),
@@ -828,6 +829,10 @@ def _cr_film():
                 <line x1="311.6" y1="114.9" x2="342.4" y2="92.5" class="ax-g-exp"/><text x="355.3" y="83.1" class="ax-g-el">80%</text>
               </svg><div class="ax-num"><b class="js-fm-num">0%</b></div></div>
               <div class="ax-status"><span class="ax-s ax-slo">Below expected</span><span class="ax-s ax-sok">On track</span></div>
+              <ul class="ax-kf"><li><span>Realised</span><b><i class="ax-va">EUR {round(before/1000)}k</i><i class="ax-vb">EUR {round((before+gain)/1000)}k</i></b></li>
+                <li><span>Expected</span><b>EUR {round(before/CA*CE/1000)}k</b></li>
+                <li><span>Difference</span><b><i class="ax-va ax-neg">&minus;EUR {round((before/CA*CE-before)/1000)}k</i><i class="ax-vb ax-pos">+EUR {round((before+gain-before/CA*CE)/1000)}k</i></b></li>
+                <li class="ax-kfn">per MW per year</li></ul>
             </div>
             <div class="ax-right">
               <div class="ax-card ax-pchart"><p class="ax-ct">Revenue per MW per year <em>monthly, annualised</em></p>{chart}
@@ -1276,6 +1281,15 @@ demo = demo.replace('</body>', "<script>if('scrollRestoration' in history)histor
 write('demo/index.html', '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Example report | The ICM</title><meta name="robots" content="noindex"><link rel="canonical" href="https://icm.energy/bess-backtest/example/"><meta http-equiv="refresh" content="0; url=/bess-backtest/example/"></head><body><a href="/bess-backtest/example/">See an example report</a></body></html>')
 
 # BESS Backtest example report (fictional data), served at /bess-backtest/example/ with a way back to the site.
+def notfound(t):
+    hero = f"""    <div class="page-hero nf-hero" id="main">
+      <h1>This page could not be found</h1>
+      <p>The link may be out of date, or the page has moved. Everything else is still here.</p>
+    </div>"""
+    html = page_shell(t, '/404.html', 'Page not found | The ICM', 'This page could not be found.', hero, '')
+    return html.replace('<head>', '<head>\n<meta name="robots" content="noindex"><style>body{background:#040D1F !important}</style>', 1)
+
+write('404.html', notfound(T['en']))
 write('bess-backtest/example/index.html', open(os.path.join(ROOT, '_build', 'backtest-example.html'), encoding='utf-8').read())
 import shutil
 if RES_EXTRAS:
