@@ -829,6 +829,10 @@ def _cr_film():
                 <line x1="311.6" y1="114.9" x2="342.4" y2="92.5" class="ax-g-exp"/><text x="355.3" y="83.1" class="ax-g-el">80%</text>
               </svg><div class="ax-num"><b class="js-fm-num">0%</b></div></div>
               <div class="ax-status"><span class="ax-s ax-slo">Below expected</span><span class="ax-s ax-sok">On track</span></div>
+              <ul class="ax-kf"><li><span>Realised</span><b><i class="ax-va">EUR {round(before/1000)}k</i><i class="ax-vb">EUR {round((before+gain)/1000)}k</i></b></li>
+                <li><span>Expected</span><b>EUR {round(before/CA*CE/1000)}k</b></li>
+                <li><span>Difference</span><b><i class="ax-va ax-neg">&minus;EUR {round((before/CA*CE-before)/1000)}k</i><i class="ax-vb ax-pos">+EUR {round((before+gain-before/CA*CE)/1000)}k</i></b></li>
+                <li class="ax-kfn">per MW per year</li></ul>
             </div>
             <div class="ax-right">
               <div class="ax-card ax-pchart"><p class="ax-ct">Revenue per MW per year <em>monthly, annualised</em></p>{chart}

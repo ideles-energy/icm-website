@@ -254,7 +254,7 @@ r.addEventListener('input',u);u();})();
   var els=document.querySelectorAll('.js-film'); if(!els.length) return;
   var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var MON=0, CMP=6000, SWI=9800, RES=13600, END=15600;
-  var STEPS=[[2000,'f1'],[3800,'f1b'],[CMP,'f2'],[CMP+150,'f3'],[CMP+2600,'f4'],[SWI,'f5'],[SWI+2000,'f5b'],[RES,'f6'],[END,'done']], CH=[MON,CMP,SWI,RES];
+  var STEPS=[[2000,'f1'],[3800,'f1b'],[CMP,'f2'],[CMP+400,'f3'],[CMP+2600,'f4'],[SWI,'f5'],[SWI+2000,'f5b'],[RES,'f6'],[END,'done']], CH=[MON,CMP,SWI,RES];
   function ease(p){ p=Math.max(0,Math.min(1,p)); return 1-Math.pow(1-p,3); }
   function eur(v){ return (Math.round(v/100)*100).toLocaleString('en-GB'); }
   els.forEach(function(el){

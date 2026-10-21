@@ -2383,3 +2383,15 @@ body{line-height:1.6}
 .ax-qe strong{font-size:18px}.ax-qe small{font-size:11.5px;color:#526E74}
 .ax-qn small{white-space:nowrap}
 @media (max-width:640px){.ax-qe{display:flex}.ax-q{grid-template-columns:minmax(0,1fr) auto auto !important}.ax-qn small{white-space:normal}}
+/* v97 Capture-rate card: fill the space above/below the gauge with realised vs expected */
+.ax-kpi .ax-gw{margin:auto 0 0}
+.ax-kf{list-style:none;margin:18px 0 0;padding:14px 0 0;border-top:1px solid #E3EBED;display:grid;gap:8px;font-size:13.5px}
+.ax-kf li{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.ax-kf span{color:#526E74}
+.ax-kf b{position:relative;display:inline-grid;text-align:right;color:#040D1F}
+.ax-kf i{font-style:normal;grid-area:1/1;transition:opacity .5s,transform .5s}
+.ax-kf .ax-vb{opacity:0;transform:translateY(6px)}
+.film.f5 .ax-kf .ax-va{opacity:0;transform:translateY(-6px)}.film.f5 .ax-kf .ax-vb{opacity:1;transform:none}
+.ax-kf .ax-neg{color:#6B2F84}.ax-kf .ax-pos{color:#1F6B57}
+.ax-kf .ax-kfn{justify-content:flex-end;font-size:11.5px;color:#526E74;margin-top:-2px}
+@media (max-width:860px){.ax-kf{display:none}}
