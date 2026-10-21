@@ -455,11 +455,11 @@ ROLES = [
 
 
 ADVISORS = [  # (name, one-line background or '', LinkedIn)
-  ('Dick Velings', '', 'https://www.linkedin.com/in/dick-velings/'),
-  ('Daan Walter', '', 'https://www.linkedin.com/in/daan-walter-292980a7/'),
-  ('Rutger de Waard', '', 'https://www.linkedin.com/in/rutgerdewaard/'),
-  ('Craig Husa', '', 'https://www.linkedin.com/in/craighusa/'),
-  ('Bram Gerrist', '', 'https://www.linkedin.com/in/bramgerrist/'),
+  ('Dick Velings', 'Former Director B2B, Eneco', 'https://www.linkedin.com/in/dick-velings/'),
+  ('Daan Walter', 'Principal, Ember', 'https://www.linkedin.com/in/daan-walter-292980a7/'),
+  ('Rutger de Waard', 'Former Head of Business Development, Adyen', 'https://www.linkedin.com/in/rutgerdewaard/'),
+  ('Craig Husa', 'Former CEO, 3TIER; coach, Harvard Business School', 'https://www.linkedin.com/in/craighusa/'),
+  ('Bram Gerrist', 'Director Innovation &amp; Development, Enexis', 'https://www.linkedin.com/in/bramgerrist/'),
 ]
 _LI = '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C20.6 8.65 21 11 21 14v7h-4v-6.2c0-1.48-.03-3.38-2.06-3.38-2.06 0-2.38 1.6-2.38 3.27V21H9z"/></svg>'
 ADVISORS_HTML = ('<div class="sup-card adv-card"><p class="adv-h">Advisors</p><ul class="adv-list">' + ''.join(
