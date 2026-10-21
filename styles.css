@@ -2430,3 +2430,5 @@ body{line-height:1.6}
   .ax-rc .ax-big{font-size:23px !important}
   .ax-rc .cs-tag{margin-bottom:8px}
 }
+/* v99 Switch button dark slate grey with white text */
+.ax-btn{background:#274A51;color:#FFFFFF}
