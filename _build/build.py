@@ -454,6 +454,18 @@ ROLES = [
 ]
 
 
+ADVISORS = [  # (name, one-line background or '', LinkedIn)
+  ('Dick Velings', '', 'https://www.linkedin.com/in/dick-velings/'),
+  ('Daan Walter', '', 'https://www.linkedin.com/in/daan-walter-292980a7/'),
+  ('Rutger de Waard', '', 'https://www.linkedin.com/in/rutgerdewaard/'),
+  ('Craig Husa', '', 'https://www.linkedin.com/in/craighusa/'),
+  ('Bram Gerrist', '', 'https://www.linkedin.com/in/bramgerrist/'),
+]
+_LI = '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C20.6 8.65 21 11 21 14v7h-4v-6.2c0-1.48-.03-3.38-2.06-3.38-2.06 0-2.38 1.6-2.38 3.27V21H9z"/></svg>'
+ADVISORS_HTML = ('<div class="sup-card adv-card"><p class="adv-h">Advisors</p><ul class="adv-list">' + ''.join(
+    f'<li><a href="{u}" target="_blank" rel="noopener"><span><b>{n}</b>' + (f'<small>{r}</small>' if r else '') + f'</span><i aria-hidden="true">{_LI}</i><span class="sr-only"> on LinkedIn</span></a></li>'
+    for n, r, u in ADVISORS) + '</ul></div>')
+
 def company(t):
     def li(items): return ''.join(f'<li>{i}</li>' for i in items)
     rows = '\n'.join(f'''      <details class="co-role" name="roles"><summary><b>{r}</b><em>{c}</em><i class="co-pm" aria-hidden="true"></i></summary><div class="co-body"><div><p>{m}</p><a class="btn btn-dark" href="mailto:ideles@icm.energy?subject=Application%3A%20{r.replace(" ", "%20")}">Apply</a></div><div><h4>What you will do</h4><ul>{li(do)}</ul></div><div><h4>Who you are</h4><ul>{li(you)}</ul></div></div></details>''' for r, c, m, do, you in ROLES)
@@ -484,7 +496,7 @@ def company(t):
     <div class="team-cta"><a class="btn btn-lilac" href="/talk-to-us/">Talk to us</a></div>
   </div>
 </section>
-{'<section class="co-story" id="story"><div class="wrap"><div class="co-story-grid"><div><span class="eyebrow">Our story</span><h2>How the ICM started</h2><div class="story-txt"><p>Batteries are becoming the backbone of a resilient grid. Europe already has more than 100 GWh of battery storage installed, and the Netherlands is expected to reach around 25 GWh by 2030.</p><p>Batteries strengthen the grid. They store surplus solar and wind power, relieve congested grids and help keep the frequency at 50 Hz.</p><p>Yet most battery owners are flying blind. They have no overview of the optimizers on the market or how they compare, and no reference for what their own site could deliver.</p><p>The ICM was founded in Amsterdam in March 2026 to close this information gap. We serve those who add capacity to the grid, but are in the dark about the potential of their assets.</p><p class="story-src-line">Sources: <a href="https://www.ees-europe.com/publications/european-market-outlook-for-battery-storage-2026" target="_blank" rel="noopener">SolarPower Europe, European Market Outlook for Battery Storage</a>; <a href="https://taiyangnews.info/storage/europe-battery-storage-capacity-exceeds-100-gwh" target="_blank" rel="noopener">TaiyangNews, Europe’s battery storage capacity exceeds 100 GWh</a>.</p></div></div><div><span class="eyebrow">Supported by</span><div class="sup-card"><img src="/assets/img/provincie-noord-holland.png" alt="Province of Noord-Holland" width="1188" height="236" loading="lazy"><p><a href="https://www.noord-holland.nl/Producten_op_alfabet/MKB_innovatiestimulering_topsectoren_MIT_Noord_Holland_Haalbaarheidsproject_subsidie" target="_blank" rel="noopener">MIT feasibility grant</a> from the Province of Noord-Holland.</p></div></div></div></div></section>' if COMPANY_STORY else ''}
+{'<section class="co-story" id="story"><div class="wrap"><div class="co-story-grid"><div><span class="eyebrow">Our story</span><h2>How the ICM started</h2><div class="story-txt"><p>Batteries are becoming the backbone of a resilient grid. Europe already has more than 100 GWh of battery storage installed, and the Netherlands is expected to reach around 25 GWh by 2030.</p><p>Batteries strengthen the grid. They store surplus solar and wind power, relieve congested grids and help keep the frequency at 50 Hz.</p><p>Yet most battery owners are flying blind. They have no overview of the optimizers on the market or how they compare, and no reference for what their own site could deliver.</p><p>The ICM was founded in Amsterdam in March 2026 to close this information gap. We serve those who add capacity to the grid, but are in the dark about the potential of their assets.</p><p class="story-src-line">Sources: <a href="https://www.ees-europe.com/publications/european-market-outlook-for-battery-storage-2026" target="_blank" rel="noopener">SolarPower Europe, European Market Outlook for Battery Storage</a>; <a href="https://taiyangnews.info/storage/europe-battery-storage-capacity-exceeds-100-gwh" target="_blank" rel="noopener">TaiyangNews, Europe’s battery storage capacity exceeds 100 GWh</a>.</p></div></div><div><span class="eyebrow">Supported by</span><div class="sup-card"><img src="/assets/img/provincie-noord-holland.png" alt="Province of Noord-Holland" width="1188" height="236" loading="lazy"><p><a href="https://www.noord-holland.nl/Producten_op_alfabet/MKB_innovatiestimulering_topsectoren_MIT_Noord_Holland_Haalbaarheidsproject_subsidie" target="_blank" rel="noopener">MIT feasibility grant</a> from the Province of Noord-Holland.</p></div>' + ADVISORS_HTML + '</div></div></div></section>' if COMPANY_STORY else ''}
 <section class="co-careers" id="careers">
   <div class="wrap">
     <p class="co-label dark-t">Open roles</p>

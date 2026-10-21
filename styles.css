@@ -2441,3 +2441,14 @@ body{line-height:1.6}
 .co-team-pl .member .ph{max-width:none !important;border:0}
 .co-team-pl .member b{color:#040D1F}
 .co-team-pl .member .m-bio{color:#3E5357 !important}
+/* v102 Company: advisors under Supported by (option 5) */
+.adv-card{gap:4px}
+.adv-h{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#526E74;margin:0 0 2px}
+.adv-list{list-style:none;margin:0;padding:0}
+.adv-list li{border-bottom:1px solid #E3EBED}.adv-list li:last-child{border-bottom:0}
+.sup-card .adv-list a{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:11px 0;text-decoration:none;color:#040D1F;font-weight:400}
+.adv-list b{display:block;font-size:16px;font-weight:600}.adv-list small{display:block;font-size:14px;color:#526E74}
+.adv-list i{color:#526E74;display:flex;transition:color .2s}.adv-list a:hover i{color:#274A51}.adv-list a:hover b{text-decoration:underline}
+.adv-list a:last-child{padding-bottom:0}
+/* v102 Mobile header over light sections: dark ICM mark instead of the darkened app tile */
+@media (max-width:760px){body.nav-light.nav-fixed header.nav .logo-icon{content:url(/assets/icm-mark.svg);filter:none !important;width:auto;height:30px;border-radius:0}}
