@@ -2432,3 +2432,5 @@ body{line-height:1.6}
 }
 /* v99 Switch button dark slate grey with white text */
 .ax-btn{background:#274A51;color:#FFFFFF}
+/* v100 Selected quote (Optimizer B): dark slate border, neutral shadow */
+.film.f4 .ax-qsel{border-color:#274A51;box-shadow:0 10px 26px rgba(39,74,81,.18)}
