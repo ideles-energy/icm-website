@@ -2452,3 +2452,5 @@ body{line-height:1.6}
 .adv-list a:last-child{padding-bottom:0}
 /* v102 Mobile header over light sections: dark ICM mark instead of the darkened app tile */
 @media (max-width:760px){body.nav-light.nav-fixed header.nav .logo-icon{content:url(/assets/icm-mark.svg);filter:none !important;width:auto;height:30px;border-radius:0}}
+.adv-list small i.adv-sep{display:inline;font-style:normal;color:inherit}
+@media (max-width:640px){.adv-list small span{display:block}.adv-list small i.adv-sep{display:none}.adv-list .adv-org{color:#274A51;font-weight:600}}
