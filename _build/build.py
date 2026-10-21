@@ -431,7 +431,7 @@ def resources(t):
     return page_shell(t, '/resources/', 'Resources | The ICM' if not RES_EXTRAS else 'Resources: BESS Calculator, API documents and brand assets | The ICM', 'API documents and brand assets of the Independent Capacity Market.' if not RES_EXTRAS else 'A free BESS Calculator, the NL BESS Revenue Report, API documents and brand assets of the Independent Capacity Market.', hero, body)
 
 ROLES = [
-  ('Commercial Lead', 'Amsterdam',
+  ('Business Developer', 'Amsterdam',
    'Sell our solutions to BESS owners and the installers who work with them. You own the pipeline, from first call to signed contract and beyond.',
    ['Be the connector: build lasting relationships with the installers and developers who bring us BESS owners (3–30 MW)',
     'Run discovery calls and present Calculator, Backtest and Broker results',
