@@ -2454,3 +2454,6 @@ body{line-height:1.6}
 @media (max-width:760px){body.nav-light.nav-fixed header.nav .logo-icon{content:url(/assets/icm-mark.svg);filter:none !important;width:auto;height:30px;border-radius:0}}
 .adv-list small i.adv-sep{display:inline;font-style:normal;color:inherit}
 @media (max-width:640px){.adv-list small span{display:block}.adv-list small i.adv-sep{display:none}.adv-list .adv-org{color:#274A51;font-weight:600}}
+/* v103 advisors: space between company line and divider (last-child rule hit every row) */
+.sup-card .adv-list a{padding:12px 0 13px}
+.sup-card .adv-list li:last-child a{padding-bottom:0}
