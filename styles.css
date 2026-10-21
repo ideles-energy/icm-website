@@ -2434,3 +2434,10 @@ body{line-height:1.6}
 .ax-btn{background:#274A51;color:#FFFFFF}
 /* v100 Selected quote (Optimizer B): dark slate border, neutral shadow */
 .film.f4 .ax-qsel{border-color:#274A51;box-shadow:0 10px 26px rgba(39,74,81,.18)}
+/* v101 Company: handbook rhythm (dark hero + who we are, team on Platinum with white cards, story white, careers Platinum) */
+.co-team-pl{background:#F2F8F9;color:#040D1F;padding:72px 0 88px}
+.co-team-pl .member{background:#FFFFFF;border:1px solid #D5E1E3;border-radius:16px;padding:16px 16px 20px;color:#040D1F;transition:border-color .2s,box-shadow .2s}
+.co-team-pl .member:hover{border-color:#274A51;box-shadow:0 10px 26px rgba(39,74,81,.12)}
+.co-team-pl .member .ph{max-width:none !important;border:0}
+.co-team-pl .member b{color:#040D1F}
+.co-team-pl .member .m-bio{color:#3E5357 !important}

@@ -473,9 +473,9 @@ def company(t):
     </div>
   </div>
 </section>
-<section class="dark co-team">
+<section class="co-team co-team-pl">
   <div class="wrap">
-    <p class="co-label">The team</p>
+    <p class="co-label dark-t">The team</p>
     <div class="team">
       <a class="member" href="https://www.linkedin.com/in/idel%C3%A8s-kaandorp/" target="_blank" rel="noopener"><img class="ph" src="/assets/team-ideles.jpg" alt="Idelès Kaandorp" width="600" height="600" loading="lazy"><b>Idelès Kaandorp</b><span class="m-bio">Founder. Leads the push for transparency in the BESS market. Trained as a mathematician, holds an MBA from Harvard Business School and served energy clients as a manager at McKinsey.</span></a>
       <a class="member" href="https://www.linkedin.com/in/edo-rivai-78b66a17/" target="_blank" rel="noopener"><img class="ph" src="/assets/team-edo.jpg" alt="Edo Rivai" width="512" height="512" loading="lazy"><b>Edo Rivai</b><span class="m-bio">Senior Software Developer. Owns platform design, integrations and infrastructure. Built and scaled software, most recently as Staff Software Engineer at Spot AI (intelligent security cameras).</span></a>
