@@ -227,7 +227,7 @@ def nav(t, other_href):
     subs = ''.join(f'<li><a href="{h}"><b>{n}</b><span>{s}</span></a></li>' for n, s, h in SOLUTIONS)
     msubs = ''.join(f'<a class="m-sub" href="{h}">{n}</a>' for n, s, h in SOLUTIONS)
     return f"""    <header class="nav">
-      <a class="logo" href="{b}" aria-label="The Independent Capacity Market, home"><img class="logo-full logo-on-dark" src="/assets/logo-header.svg" alt="The Independent Capacity Market" width="796" height="119"><img class="logo-full logo-on-light" src="/assets/logo-header-dark.svg" alt="" width="796" height="119"><img class="logo-icon" src="/assets/favicon.svg" alt="" width="36" height="36"></a>
+      <a class="logo" href="{b}" aria-label="The Independent Capacity Market, home"><img class="logo-full logo-on-dark" src="/assets/logo-header.svg" alt="The Independent Capacity Market" width="796" height="119"><img class="logo-full logo-on-light" src="/assets/logo-header-dark.svg" alt="" width="796" height="119"><img class="logo-icon" src="/assets/favicon.svg" alt="" width="36" height="36"><img class="logo-icon-light" src="/assets/icm-mark.svg" alt="" width="38" height="30"></a>
       <nav aria-label="{t['menu']}">
         <ul class="nav-links nav-main">
           <li class="hide-sm"><a href="/solutions/">Solutions</a></li>
@@ -380,7 +380,7 @@ def resources(t):
       <div class="res-sec">
         <div class="res-card res-thumb calc-card">
           <button type="button" class="calc-shot-btn js-gate-open" data-gate="calc" aria-label="Open the BESS Calculator"><img src="/assets/img/calculator-preview.jpg" alt="BESS Calculator: full potential and expected revenues per month (fictional example)" width="1440" height="900" loading="lazy"></button>
-          <div><span>BESS Calculator</span><small>Subject to change, methodology to be refined. Project data are never shown to other parties.</small></div>
+          <div><span>BESS Calculator</span><small>Subject to change, methodology to be refined. Project data is never shown to other parties.</small></div>
           <button type="button" class="btn btn-dark js-gate-open" data-gate="calc">Open</button>
         </div>
       </div>
@@ -485,6 +485,7 @@ def company(t):
     </div>
   </div>
 </section>
+{'<section class="co-story" id="story"><div class="wrap"><div class="co-story-grid"><div><span class="eyebrow">Our story</span><h2>How the ICM started</h2><div class="story-txt"><p>Batteries are becoming the backbone of a resilient grid. Europe already has more than 100 GWh of battery storage installed, and the Netherlands is expected to reach around 25 GWh by 2030.</p><p>Batteries strengthen the grid. They store surplus solar and wind power, relieve congested grids and help keep the frequency at 50 Hz.</p><p>Yet most battery owners are flying blind. What a battery earns is a black box, and so is the route to a better optimizer. There is no objective information on which optimizers exist and how they perform.</p><p>The ICM was founded in Amsterdam in March 2026 to close this information gap. We serve those who add capacity to the grid, but are in the dark about the potential of their assets.</p><p class="story-src-line">Sources: <a href="https://www.ees-europe.com/publications/european-market-outlook-for-battery-storage-2026" target="_blank" rel="noopener">SolarPower Europe, European Market Outlook for Battery Storage</a>; <a href="https://taiyangnews.info/storage/europe-battery-storage-capacity-exceeds-100-gwh" target="_blank" rel="noopener">TaiyangNews, Europe’s battery storage capacity exceeds 100 GWh</a>.</p></div></div><div><span class="eyebrow">Supported by</span><div class="sup-card"><img src="/assets/img/provincie-noord-holland.png" alt="Province of Noord-Holland" width="1188" height="236" loading="lazy"><p><a href="https://www.noord-holland.nl/Producten_op_alfabet/MKB_innovatiestimulering_topsectoren_MIT_Noord_Holland_Haalbaarheidsproject_subsidie" target="_blank" rel="noopener">MIT feasibility grant</a> from the Province of Noord-Holland.</p></div>' + ADVISORS_HTML + '</div></div></div></section>' if COMPANY_STORY else ''}
 <section class="co-team co-team-pl">
   <div class="wrap">
     <p class="co-label dark-t">The team</p>
@@ -496,7 +497,6 @@ def company(t):
     <div class="team-cta"><a class="btn btn-lilac" href="/talk-to-us/">Talk to us</a></div>
   </div>
 </section>
-{'<section class="co-story" id="story"><div class="wrap"><div class="co-story-grid"><div><span class="eyebrow">Our story</span><h2>How the ICM started</h2><div class="story-txt"><p>Batteries are becoming the backbone of a resilient grid. Europe already has more than 100 GWh of battery storage installed, and the Netherlands is expected to reach around 25 GWh by 2030.</p><p>Batteries strengthen the grid. They store surplus solar and wind power, relieve congested grids and help keep the frequency at 50 Hz.</p><p>Yet most battery owners are flying blind. What a battery earns is a black box, and so is the route to a better optimizer.</p><p>The ICM was founded in Amsterdam in March 2026 to close this information gap. We serve those who add capacity to the grid, but are in the dark about the potential of their assets.</p><p class="story-src-line">Sources: <a href="https://www.ees-europe.com/publications/european-market-outlook-for-battery-storage-2026" target="_blank" rel="noopener">SolarPower Europe, European Market Outlook for Battery Storage</a>; <a href="https://taiyangnews.info/storage/europe-battery-storage-capacity-exceeds-100-gwh" target="_blank" rel="noopener">TaiyangNews, Europe’s battery storage capacity exceeds 100 GWh</a>.</p></div></div><div><span class="eyebrow">Supported by</span><div class="sup-card"><img src="/assets/img/provincie-noord-holland.png" alt="Province of Noord-Holland" width="1188" height="236" loading="lazy"><p><a href="https://www.noord-holland.nl/Producten_op_alfabet/MKB_innovatiestimulering_topsectoren_MIT_Noord_Holland_Haalbaarheidsproject_subsidie" target="_blank" rel="noopener">MIT feasibility grant</a> from the Province of Noord-Holland.</p></div>' + ADVISORS_HTML + '</div></div></div></section>' if COMPANY_STORY else ''}
 <section class="co-careers" id="careers">
   <div class="wrap">
     <p class="co-label dark-t">Open roles</p>
