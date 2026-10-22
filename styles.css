@@ -2467,3 +2467,5 @@ header.nav .logo .logo-icon-light{display:none !important}
 .co-story .sup-card:not(.adv-card) p{flex:1;min-width:0}
 @media (max-width:640px){.co-story .sup-card:not(.adv-card){gap:16px;padding:18px}.co-story .sup-card:not(.adv-card) img{width:130px}}
 @media (max-width:640px){.co-story .sup-card:not(.adv-card) p{font-size:15px}}
+/* v106 careers subtitle: no heading letter-spacing (looked like a different font) */
+.co-big span{letter-spacing:normal;font-weight:500}
