@@ -2451,7 +2451,8 @@ body{line-height:1.6}
 .adv-list i{color:#526E74;display:flex;transition:color .2s}.adv-list a:hover i{color:#274A51}.adv-list a:hover b{text-decoration:underline}
 .adv-list a:last-child{padding-bottom:0}
 /* v102 Mobile header over light sections: dark ICM mark instead of the darkened app tile */
-@media (max-width:760px){body.nav-light.nav-fixed header.nav .logo-icon{content:url(/assets/icm-mark.svg);filter:none !important;width:auto;height:30px;border-radius:0}}
+header.nav .logo .logo-icon-light{display:none !important}
+@media (max-width:760px){body.nav-light.nav-fixed header.nav .logo-icon{display:none !important}body.nav-light.nav-fixed header.nav .logo .logo-icon-light{display:block !important;width:auto;height:30px}}
 .adv-list small i.adv-sep{display:inline;font-style:normal;color:inherit}
 @media (max-width:640px){.adv-list small span{display:block}.adv-list small i.adv-sep{display:none}.adv-list .adv-org{color:#274A51;font-weight:600}}
 /* v103 advisors: space between company line and divider (last-child rule hit every row) */
