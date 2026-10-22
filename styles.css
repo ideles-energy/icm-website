@@ -2395,3 +2395,65 @@ body{line-height:1.6}
 .ax-kf .ax-neg{color:#6B2F84}.ax-kf .ax-pos{color:#1F6B57}
 .ax-kf .ax-kfn{justify-content:flex-end;font-size:11.5px;color:#526E74;margin-top:-2px}
 @media (max-width:860px){.ax-kf{display:none}}
+/* v98 Compress the film window: gauge higher, tighter quotes, toast floats over the cards */
+.ax-grid2{grid-template-rows:auto}
+.ax-toast{position:absolute;left:150px;right:150px;bottom:-26px;grid-row:1;z-index:3}
+.ax-main{padding-bottom:52px}
+.ax-kpi .ax-gw{margin:8px auto 0;max-width:210px;width:100%}
+.ax-kpi .ax-status{margin-top:10px}
+.ax-kf{margin:auto 0 0;padding:10px 0 0;gap:5px;font-size:13px}
+.ax-kpi .ax-status{margin-bottom:14px}
+.ax-pq .ax-q{max-height:none;flex:none;padding:9px 16px;margin-top:8px}
+.ax-pq .ax-note{margin-top:auto;padding-top:10px}
+@media (max-width:860px){
+  .ax-grid2{grid-template-rows:auto auto}
+  .ax-toast{left:10px;right:10px;bottom:auto;top:calc(100% - 20px);grid-row:auto}
+  .ax-kpi .ax-gw{margin:0 !important;max-width:none}
+  .ax-kpi .ax-status{margin:0}
+  .ax-pq .ax-q{padding:8px 12px;margin-top:6px}
+}
+/* v98b toast sits in the empty future half of the chart; results compact on phones */
+.ax-toast{left:auto;right:22px;bottom:auto;top:96px;width:min(400px,44%)}
+@media (max-width:860px){
+  .ax-toast{left:10px;right:10px;width:auto;top:auto;bottom:0}
+  .ax-rc{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:12px;align-items:start}
+  .ax-rc>.cs-tag,.ax-rc>.ax-big,.ax-rc>.ax-rcap{grid-column:1}
+  .ax-rc>.ax-mg{grid-column:2;grid-row:1/4;align-self:center;margin:0}
+  .ax-rc>ul{grid-column:1/-1}
+  .ax-rcap{margin-bottom:6px}
+  .ax-res{gap:12px}
+}
+@media (max-width:860px){
+  .ax-rc .ax-mg{width:92px !important;margin:0 !important}
+  .ax-rc .ax-mg b{top:21px !important;font-size:16px !important}
+  .ax-rc .ax-mg span{font-size:10.5px !important;margin-top:2px}
+  .ax-rc .ax-big{font-size:23px !important}
+  .ax-rc .cs-tag{margin-bottom:8px}
+}
+/* v99 Switch button dark slate grey with white text */
+.ax-btn{background:#274A51;color:#FFFFFF}
+/* v100 Selected quote (Optimizer B): dark slate border, neutral shadow */
+.film.f4 .ax-qsel{border-color:#274A51;box-shadow:0 10px 26px rgba(39,74,81,.18)}
+/* v101 Company: handbook rhythm (dark hero + who we are, team on Platinum with white cards, story white, careers Platinum) */
+.co-team-pl{background:#F2F8F9;color:#040D1F;padding:72px 0 88px}
+.co-team-pl .member{background:#FFFFFF;border:1px solid #D5E1E3;border-radius:16px;padding:16px 16px 20px;color:#040D1F;transition:border-color .2s,box-shadow .2s}
+.co-team-pl .member:hover{border-color:#274A51;box-shadow:0 10px 26px rgba(39,74,81,.12)}
+.co-team-pl .member .ph{max-width:none !important;border:0}
+.co-team-pl .member b{color:#040D1F}
+.co-team-pl .member .m-bio{color:#3E5357 !important}
+/* v102 Company: advisors under Supported by (option 5) */
+.adv-card{gap:4px}
+.adv-h{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#526E74;margin:0 0 2px}
+.adv-list{list-style:none;margin:0;padding:0}
+.adv-list li{border-bottom:1px solid #E3EBED}.adv-list li:last-child{border-bottom:0}
+.sup-card .adv-list a{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:11px 0;text-decoration:none;color:#040D1F;font-weight:400}
+.adv-list b{display:block;font-size:16px;font-weight:600}.adv-list small{display:block;font-size:14px;color:#526E74}
+.adv-list i{color:#526E74;display:flex;transition:color .2s}.adv-list a:hover i{color:#274A51}.adv-list a:hover b{text-decoration:underline}
+.adv-list a:last-child{padding-bottom:0}
+/* v102 Mobile header over light sections: dark ICM mark instead of the darkened app tile */
+@media (max-width:760px){body.nav-light.nav-fixed header.nav .logo-icon{content:url(/assets/icm-mark.svg);filter:none !important;width:auto;height:30px;border-radius:0}}
+.adv-list small i.adv-sep{display:inline;font-style:normal;color:inherit}
+@media (max-width:640px){.adv-list small span{display:block}.adv-list small i.adv-sep{display:none}.adv-list .adv-org{color:#274A51;font-weight:600}}
+/* v103 advisors: space between company line and divider (last-child rule hit every row) */
+.sup-card .adv-list a{padding:12px 0 13px}
+.sup-card .adv-list li:last-child a{padding-bottom:0}

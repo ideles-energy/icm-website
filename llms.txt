@@ -1,10 +1,17 @@
 # The Independent Capacity Market (the ICM)
 
-> The ICM is an independent energy tech company in Amsterdam. It helps owners of battery energy storage systems (BESS) in the Netherlands, and the installers who work with them, secure the true value of their assets. The ICM owns no batteries and is not an optimizer.
+> The ICM is an independent energy tech company in Amsterdam. It helps owners of battery energy storage systems (BESS) in the Netherlands, and the installers who work with them, secure the true value of their assets. The ICM does not own, install or optimize batteries: it is independent of every optimizer.
+
+## How the ICM measures performance
+- Capture rate: the share of a battery's full potential that was actually realised, per month. It shows whether a battery earns what it should.
+- Full potential: the most the battery could have earned on its own site, calculated from real Dutch market prices (day-ahead, imbalance, FCR and aFRR) at quarter-hour resolution, within the site's dispatch constraints (grid connection, GTV, co-located solar or load).
+- Expected revenues: 80% of the full potential. The full potential is calculated with hindsight that no optimizer has, so the expected level is the benchmark, not the full potential.
+- Alert: when the capture rate stays below expected for six months, the ICM alerts the owner and asks trusted optimizers for a quote.
+- Results are shown in EUR per MW per year, so batteries of different sizes can be compared.
 
 ## Solutions
-- BESS Calculator: simulates the revenues of different MW/MWh configurations within a site's dispatch constraints and shows which one delivers the highest returns. For owners and developers who plan a battery, stand-alone or co-located with solar, wind or other assets, and for installers who size systems for customers.
-- BESS Backtest: compares realised revenues with what can be reasonably achieved within a site's dispatch constraints, and flags when performance consistently falls short. For owners of operating batteries, and for installers who give every customer an independent view of what the battery earns.
+- BESS Calculator: simulates the revenues of different MW/MWh configurations within a site's dispatch constraints and shows which one delivers the highest returns. Free to use with a work email, via the Resources page. For owners and developers who plan a battery, stand-alone or co-located with solar, wind or other assets, and for installers who size systems for customers.
+- BESS Backtest: compares realised revenues with the full potential of the site, reports the capture rate and flags when performance consistently falls short. For owners of operating batteries, and for installers who give every customer an independent view of what the battery earns.
 - BESS Broker: a standardised process to source, compare and contract optimizers, and to oversee the switch so the battery keeps earning without interruption.
 
 ## How to get started
@@ -12,13 +19,28 @@
 2. Provide basic information, such as the battery size (MW/MWh) and the dispatch constraints (GTV).
 3. Most businesses receive a custom view of their potential earnings within one working day.
 
+## Team
+- Idelès Kaandorp, founder. Mathematician, MBA from Harvard Business School, former manager at McKinsey.
+- Edo Rivai, senior software developer.
+- Jesse Willis, project engineer.
+
+## Advisors
+- Dick Velings, former Director B2B, Eneco
+- Bram Gerrist, Director Innovation & Development, Enexis
+- Craig Husa, former Director, Lockheed Martin Energy
+- Rutger de Waard, former SVP Business Development, Adyen
+- Daan Walter, Principal, Ember
+
+## Supported by
+- MIT feasibility grant from the Province of Noord-Holland.
+
 ## Pages
 - [Home](https://icm.energy/)
-- [Solutions](https://icm.energy/solutions/): BESS Calculator, BESS Backtest and BESS Broker
+- [Solutions](https://icm.energy/solutions/): BESS Calculator, BESS Backtest and BESS Broker, how the ICM works, FAQ
 - [Example report](https://icm.energy/bess-backtest/example/): BESS Backtest with fictional data
+- [Resources](https://icm.energy/resources/): BESS Calculator and API documents
+- [Company](https://icm.energy/company/): our story, team, advisors and open roles
 - [Talk to us](https://icm.energy/talk-to-us/)
-- [Resources](https://icm.energy/resources/): API documents and brand assets
-- [Company](https://icm.energy/company/): our story, team and open roles
 
 ## Contact
 - info@icm.energy
