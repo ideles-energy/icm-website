@@ -2461,3 +2461,9 @@ header.nav .logo .logo-icon-light{display:none !important}
 /* v104 Company order: story -> team (Platinum) -> open roles (white) */
 .co-careers{background:#FFFFFF !important}
 .co-story{background:#FFFFFF}
+/* v105 Supported by: grant logo and text side by side, vertically centred */
+.co-story .sup-card:not(.adv-card){flex-direction:row;align-items:center;gap:22px}
+.co-story .sup-card:not(.adv-card) img{flex:none;width:170px;max-width:42% !important}
+.co-story .sup-card:not(.adv-card) p{flex:1;min-width:0}
+@media (max-width:640px){.co-story .sup-card:not(.adv-card){gap:16px;padding:18px}.co-story .sup-card:not(.adv-card) img{width:130px}}
+@media (max-width:640px){.co-story .sup-card:not(.adv-card) p{font-size:15px}}
