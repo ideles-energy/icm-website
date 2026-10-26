@@ -375,7 +375,7 @@ def resources(t):
     <section class="calc-sec res-cols" id="calculator" aria-labelledby="calc-h">
       <div class="res-sec calc-left">
         <h2 id="calc-h">BESS Calculator <span class="calc-beta">Beta</span></h2>
-        <p class="res-lead">Stop not knowing. See what your battery could have earned. No one has the perfect 2-hour BESS with a full grid connection that delivered EUR 305k per MW per year. Your battery has its own limits. See what it could have earned within them.</p>
+        <p class="res-lead">Stop not knowing. See what your battery could have earned. No one has the 2-hour battery with a full grid connection that could have earned EUR ~305k per MW per year, based on January to September 2026. Your battery has its own limits; see what it could have earned within them.</p>
         <div><a class="btn btn-outline-dark" href="/talk-to-us/">Talk to us</a></div>
       </div>
       <div class="res-sec">
