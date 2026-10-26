@@ -468,13 +468,15 @@ ADVISORS_HTML = ('<div class="sup-card adv-card"><ul class="adv-list">' + ''.joi
     f'<li><a href="{u}" target="_blank" rel="noopener"><span><b>{n}</b>' + (('<small><span>' + r.rsplit(', ', 1)[0] + '</span><i class="adv-sep">, </i><span class="adv-org">' + r.rsplit(', ', 1)[1] + '</span></small>') if ', ' in r else (f'<small>{r}</small>' if r else '')) + f'</span><i aria-hidden="true">{_LI}</i><span class="sr-only"> on LinkedIn</span></a></li>'
     for n, r, u in ADVISORS) + '</ul></div>')
 
+APPLY_URL = 'https://vwz64wuu6x.zite.so/'
+
 def role_v2(title, summary, about, does, bring, offer, extra_about=''):
     li = lambda xs: ''.join(f'<li>{x}</li>' for x in xs)
     subj = title.replace(' ', '%20')
     return f'''      <details class="co-role" name="roles"><summary><b>{title}</b><em>Amsterdam</em><i class="co-pm" aria-hidden="true"></i></summary><div class="co-body co-body2 co-body3">
         <div><h4>About the role</h4><p>{summary}</p>{about}{('<ul>' + li(does) + '</ul>') if does else ''}{extra_about}
-          <p class="co-prac">Based in Amsterdam, with a flexible start date. Send your CV and a short note on what you would like to achieve at the ICM to <a href="mailto:careers@icm.energy">careers@icm.energy</a>.</p>
-          <a class="btn btn-dark" href="mailto:careers@icm.energy?subject=Application%3A%20{subj}">Apply</a></div>
+          <p class="co-prac">Based in Amsterdam, with a flexible start date. Apply with your CV and a short note on what you would like to achieve at the ICM.</p>
+          <a class="btn btn-dark" href="{APPLY_URL}" target="_blank" rel="noopener">Apply</a></div>
         <div><h4>What you bring</h4><p class="co-sub">If you meet most, but not all, of these criteria, we encourage you to apply.</p><ul>{li(bring)}</ul></div>
         <div><h4>What we offer</h4><ul>{li(offer)}</ul></div>
       </div></details>'''
@@ -520,7 +522,7 @@ ROLE_PREVIEW = os.environ.get('ICM_PREVIEW') == '1'  # Business Developer v2: pr
 
 def company(t):
     def li(items): return ''.join(f'<li>{i}</li>' for i in items)
-    rows = '\n'.join(f'''      <details class="co-role" name="roles"><summary><b>{r}</b><em>{c}</em><i class="co-pm" aria-hidden="true"></i></summary><div class="co-body"><div><p>{m}</p><a class="btn btn-dark" href="mailto:careers@icm.energy?subject=Application%3A%20{r.replace(" ", "%20")}">Apply</a></div><div><h4>What you will do</h4><ul>{li(do)}</ul></div><div><h4>Who you are</h4><ul>{li(you)}</ul></div></div></details>''' for r, c, m, do, you in ROLES)
+    rows = '\n'.join(f'''      <details class="co-role" name="roles"><summary><b>{r}</b><em>{c}</em><i class="co-pm" aria-hidden="true"></i></summary><div class="co-body"><div><p>{m}</p><a class="btn btn-dark" href="{APPLY_URL}" target="_blank" rel="noopener">Apply</a></div><div><h4>What you will do</h4><ul>{li(do)}</ul></div><div><h4>Who you are</h4><ul>{li(you)}</ul></div></div></details>''' for r, c, m, do, you in ROLES)
     if ROLE_PREVIEW:
         rows = BD_V2 + '\n' + ANALYST_V2
 
