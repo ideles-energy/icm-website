@@ -2540,3 +2540,10 @@ header.nav .logo .logo-icon-light{display:none !important}
 .sup-by a{display:inline-flex;border-radius:8px;padding:4px;transition:background .2s}
 .sup-by a:hover{background:#F2F8F9}
 .sup-by img{width:150px;height:auto;display:block}
+/* v112 advisors without the card frame; dividers only */
+.co-story .adv-card{border:0 !important;border-radius:0;padding:0;background:none;margin-top:6px}
+.co-story .adv-list li:first-child a{padding-top:8px}
+.co-story .adv-list{border-top:1px solid #E3EBED}
+.co-story .adv-list li{border-bottom:1px solid #E3EBED}
+.co-story .adv-list li:last-child{border-bottom:1px solid #E3EBED}
+.sup-card .adv-list li:last-child a{padding-bottom:13px}
