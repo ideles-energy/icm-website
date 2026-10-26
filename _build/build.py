@@ -372,7 +372,7 @@ FILLOUT_JS = '\n<script src="https://server.fillout.com/embed/v1/" defer></scrip
 def resources(t):
     BM_HTML = open(os.path.join(ROOT, '_build', 'bm_section.html'), encoding='utf-8').read() if MAP_LIVE else ''
     RES_EXTRAS_HTML = f'''  <div class="wrap">
-    <section class="calc-sec" id="calculator" aria-labelledby="calc-h">
+{BM_HTML}    <section class="calc-sec" id="calculator" aria-labelledby="calc-h">
       <div class="res-sec bm-head">
         <h2 id="calc-h">BESS Calculator <span class="calc-beta">Beta</span></h2>
         <p class="res-lead">Stop not knowing. See what your battery could have earned within its dispatch constraints (connection size, PV production, etc.).</p>
@@ -390,7 +390,7 @@ def resources(t):
     </section>
   </div>
   <div class="wrap">
-{BM_HTML}    <section class="nlr-block" id="nl-report" aria-labelledby="nlr-h">
+    <section class="nlr-block" id="nl-report" aria-labelledby="nlr-h">
       <div class="nlr-copy">
         <div class="calc-tags"><span>Coming soon</span></div>
         <h2 id="nlr-h">NL BESS Revenue Report</h2>
@@ -415,7 +415,7 @@ def resources(t):
         RES_EXTRAS_HTML = re.sub(r'\n    <section class="nlr-block".*?</section>', '', RES_EXTRAS_HTML, flags=re.S)
     hero = f'''    <div class="page-hero" id="main">
       <h1>Resources</h1>
-      <p>{('A free BESS Calculator, a periodic NL revenue report, API documents and brand assets of the Independent Capacity Market.' if NL_REPORT else ('A free BESS Calculator, an introduction to strategies for battery energy storage systems, our API documents and brand assets.' if MAP_LIVE else 'A free BESS Calculator, API documents and brand assets of the Independent Capacity Market.')) if RES_EXTRAS else 'API documents and brand assets of the Independent Capacity Market.'}</p>
+      <p>{('A free BESS Calculator, a periodic NL revenue report, API documents and brand assets of the Independent Capacity Market.' if NL_REPORT else ('An introduction to strategies for battery energy storage systems, a free BESS Calculator, our API documents and brand assets.' if MAP_LIVE else 'A free BESS Calculator, API documents and brand assets of the Independent Capacity Market.')) if RES_EXTRAS else 'API documents and brand assets of the Independent Capacity Market.'}</p>
     </div>'''
     body = f'''<main class="res">
 {RES_EXTRAS_HTML if RES_EXTRAS else ''}  <div class="wrap res-cols">

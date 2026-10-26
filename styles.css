@@ -2607,3 +2607,5 @@ header.nav .logo .logo-icon-light{display:none !important}
 .calc-grid .calc-shot2{align-self:center}
 .calc-sec .bm-head .res-lead{margin-bottom:28px}
 .calc-panel{background:#F2F8F9 !important;border:0}
+/* v118 map first: no top margin on the band, calculator below on Platinum */
+.bm-band{margin-top:0 !important}
