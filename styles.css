@@ -2533,3 +2533,10 @@ header.nav .logo .logo-icon-light{display:none !important}
   .film{padding:18px 22px 14px}
   .fm-ctrl{margin-top:12px}
 }
+/* v111 Company: Our advisors card, compact Supported by line with clickable province logo */
+.co-story .adv-card{margin-top:14px}
+.sup-by{display:flex;align-items:center;gap:16px;margin-top:22px}
+.sup-by span{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#526E74}
+.sup-by a{display:inline-flex;border-radius:8px;padding:4px;transition:background .2s}
+.sup-by a:hover{background:#F2F8F9}
+.sup-by img{width:150px;height:auto;display:block}
