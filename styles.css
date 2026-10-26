@@ -2636,3 +2636,4 @@ header.nav .logo .logo-icon-light{display:none !important}
 /* v121: mobile, calculator stacks like the map and matches its size */
 @media (max-width:860px){.calc-grid{grid-template-columns:1fr !important;padding:18px;gap:18px}.calc-shot-v{max-width:320px;order:0}.calc-panel{order:1}}
 .calc-panel > p:not(.bm-place){font-size:16px;line-height:1.6}
+.co-body3 > div:first-child > p:not(:first-of-type):not(.co-prac){font-size:15px;line-height:1.6;margin-top:12px}

@@ -470,54 +470,54 @@ ADVISORS_HTML = ('<div class="sup-card adv-card"><ul class="adv-list">' + ''.joi
 
 APPLY_URL = 'https://vwz64wuu6x.zite.so/'
 
-def role_v2(title, summary, about, does, bring, offer, extra_about=''):
+def role_v2(title, summary, about, goals, bring, offer):
     li = lambda xs: ''.join(f'<li>{x}</li>' for x in xs)
-    subj = title.replace(' ', '%20')
     return f'''      <details class="co-role" name="roles"><summary><b>{title}</b><em>Amsterdam</em><i class="co-pm" aria-hidden="true"></i></summary><div class="co-body co-body2 co-body3">
-        <div><h4>About the role</h4><p>{summary}</p>{about}{('<ul>' + li(does) + '</ul>') if does else ''}{extra_about}
-          <p class="co-prac">Based in Amsterdam, with a flexible start date. Apply with your CV and a short note on what you would like to achieve at the ICM.</p>
+        <div><h4>About the role</h4><p>{summary}</p><p>{_MARKET}</p><p>{about}</p><p>{goals}</p>
+          <p class="co-prac">Based in Amsterdam, with a flexible start date. Apply with your CV, a short motivation and your goals for the first 12 months.</p>
           <a class="btn btn-dark" href="{APPLY_URL}" target="_blank" rel="noopener">Apply</a></div>
         <div><h4>What you bring</h4><p class="co-sub">If you meet most, but not all, of these criteria, we encourage you to apply.</p><ul>{li(bring)}</ul></div>
         <div><h4>What we offer</h4><ul>{li(offer)}</ul></div>
       </div></details>'''
 
-_OFFER_COMMON = ['Ownership from your first week, in a small team with short decision lines',
-    'Work that shows results within days rather than quarters',
+_MARKET = 'Batteries are set to shape the future of the energy system. They store surplus solar and wind power, relieve grid congestion and strengthen Europe’s energy security at a time of geopolitical uncertainty. Battery capacity in the Netherlands is growing rapidly.'
+
+_OFFER_COMMON = ['Freedom to set your own targets and plan, and to work remotely, as long as you reach the goals you set',
+    'Ownership from your first week, in a small team with short decision lines',
+    'Results within days rather than quarters',
     'Coaching from the founder and senior industry professionals',
-    'Flexibility, with the option to work remotely',
-    'A role in a fast-growing market']
+    'A role in a market that will shape the future of energy']
 
 BD_V2 = role_v2('Business Developer',
-    'Lead commercial growth at the ICM. You bring our analysis to battery owners (3–30 MW), installers and developers, and own the sales process from first conversation to signed contract.',
-    '<p>You are often the first person clients meet at the ICM. You show what their battery earned, what it could have earned, and what that means for them. Sales is currently founder-led: you work directly with the founder and our analysts, and feed client needs into the product.</p>',
-    [],
-    ['3–6 years of experience in B2B consultative sales, ideally in SaaS, energy or financial services',
-     'Experience building long-term relationships with battery owners, installers or project developers; a network among them is a plus',
-     'Confident leading discovery conversations on assets, contracts and objectives',
-     'A track record of converting demos into clients, with disciplined pipeline management and forecasting',
-     'You set clear targets yourself and make a plan to reach them',
-     'You enjoy prototyping product features and validating them with clients',
-     'Able to explain technical topics clearly and to support every claim with data',
-     'Accountable, comfortable working independently and calm when plans change',
-     'Native Dutch speaker with strong English'],
+    'Build the flywheel that brings the ICM’s solutions to battery owners across the Netherlands. You find the distribution channels that scale, and own the sales process from first conversation to signed contract.',
+    'You are often the first person clients meet at the ICM. You show what their battery earned, what it could have earned, and what that means for them. Sales is currently founder-led: you work directly with the founder and our analysts, and feed client needs into the product.',
+    'Your goal for the first 12 months: help our first 50 clients use their batteries as efficiently as possible, build a network of installers and developers who bring us the next clients, and turn results into case studies.',
+    ['Three to six years of experience in B2B consultative sales, ideally in SaaS, energy or financial services',
+     'A track record of turning first conversations into signed contracts and long-term client relationships',
+     'A network among battery owners, installers or developers, or the drive to build one quickly',
+     'A working understanding of how batteries earn revenues (day-ahead, imbalance, FCR and aFRR), or the willingness to learn it in your first months',
+     'The ability to explain technical topics clearly and to support every claim with data',
+     'An eagerness to test new offers, pricing and product features with clients',
+     'Native Dutch with strong English'],
     ['An attractive bonus structure and equity in the ICM',
-     'The chance to design the sales process as the ICM scales'] + _OFFER_COMMON)
+     'The opportunity to design the sales process as the ICM scales'] + _OFFER_COMMON)
 
 ANALYST_V2 = role_v2('BESS Analyst',
-    'Deepen the analysis behind every ICM result. You answer the technical questions of battery owners and traders, and build the answers into our models.',
-    '<p>Owners and traders ask us precise questions: how intraday trading changes a backtest, what a battery’s own bids do to prices, and how an optimizer’s settlement can be verified. You answer them, in writing and in meetings, together with our software developers, product manager and domain experts, and turn the answers into our methodology.</p>',
-    [],
-    ['MSc in econometrics, operations research, physics or energy, with strong Python and SQL',
-     '2–5 years as a trader, quant or analyst at an optimizer, utility or trading house',
+    'Build the best BESS Backtest in Europe: the most customised view of what a battery could have earned on its own site. You answer the technical questions of battery owners and traders, and build the answers into our models.',
+    'Owners and traders ask us precise questions: how intraday trading changes a backtest, what a battery’s own bids do to prices, and how an optimizer’s settlement can be verified. You answer them, in writing and in meetings, together with our software developers, product manager and domain experts.',
+    'Your goal for the first 12 months: extend the BESS Backtest to intraday trading, make optimizer settlement verifiable for owners, and develop a methodology that owners, traders and financiers trust.',
+    ['An MSc in econometrics, operations research, physics or energy, with strong Python and SQL',
+     'Two to five years of experience as a trader, quant or analyst at an optimizer, utility or trading house',
      'In-depth knowledge of the Dutch and European power markets, including intraday order books and the price impact of a battery’s own bids',
-     'Experience with optimisation models, for example linear programming or PyPSA, and with comparing asset-backed and proprietary trading strategies',
-     'Understanding of how optimizers settle revenues, including set-ups where owners hold their own BSP, BRP or intraday accounts',
-     'Comfortable reading academic research on battery optimisation and translating it into a methodology',
-     'You set clear targets yourself, and enjoy prototyping product features and validating them with clients',
-     'Able to explain complex results clearly to owners who are not traders',
-     'Fluent in English; Dutch is a plus'],
+     'Experience with optimisation models, such as linear programming or PyPSA, and with asset-backed and proprietary trading strategies',
+     'An understanding of how optimizers settle revenues, including set-ups where owners hold their own BSP, BRP or intraday accounts',
+     'The ability to read academic research and translate it into a methodology',
+     'The ability to explain complex results clearly to owners who are not traders',
+     'An eagerness to prototype new features and validate them with clients',
+     'Fluent English; Dutch is a plus'],
     ['A competitive salary and equity in the ICM',
-     'The chance to shape the methodology behind every ICM result'] + _OFFER_COMMON)
+     'The opportunity to shape the methodology behind every ICM result'] + _OFFER_COMMON)
+
 ROLE_PREVIEW = os.environ.get('ICM_PREVIEW') == '1'  # Business Developer v2: preview only until reviewed
 
 def company(t):
