@@ -2495,3 +2495,9 @@ header.nav .logo .logo-icon-light{display:none !important}
 .bm-back:hover{background:#274A51;color:#F2F8F9}
 .bm-note{margin:18px 0 0;padding-top:14px;border-top:1px solid #E3EBED;font-size:13.5px;color:#526E74}.bm-note a{color:#274A51;font-weight:600}
 @media (max-width:860px){.bm-grid{grid-template-columns:1fr;padding:18px;gap:18px}.bm-map{max-width:320px}.bm-panel{min-height:0;padding:20px}}
+/* v108 map: Google Maps-like legibility (land white, dashed province borders, province labels, water tint) */
+.bm-map{background:#DDEFF2;border-radius:16px;padding:0}
+.bm-prov path{fill:#FFFFFF;stroke:#A9BDC2;stroke-width:.9;stroke-dasharray:3 2.5;stroke-linejoin:round}
+.bm-lbl text{font:600 8.6px Figtree,system-ui,sans-serif;letter-spacing:.06em;text-transform:uppercase;fill:#7E9599;text-anchor:middle;pointer-events:none}
+.bm-dot{margin:-22px 0 0 -22px}
+.bm-story h3{font-size:22px}
