@@ -473,33 +473,31 @@ APPLY_URL = 'https://vwz64wuu6x.zite.so/'
 def role_v2(title, summary, about, goals, bring, offer):
     li = lambda xs: ''.join(f'<li>{x}</li>' for x in xs)
     return f'''      <details class="co-role" name="roles"><summary><b>{title}</b><em>Amsterdam</em><i class="co-pm" aria-hidden="true"></i></summary><div class="co-body co-body2 co-body3">
-        <div><h4>About the role</h4><p>{summary}</p><p>{_MARKET}</p><p>{about}</p><p>{goals}</p>
+        <div><h4>About the role</h4><p>{summary}</p><p>{_MARKET}</p>{('<p>' + about + '</p>') if about else ''}<p>{goals}</p>
           <p class="co-prac">Based in Amsterdam, with a flexible start date. Apply with your CV, a short motivation and your goals for the first 12 months.</p>
           <a class="btn btn-dark" href="{APPLY_URL}" target="_blank" rel="noopener">Apply</a></div>
         <div><h4>What you bring</h4><p class="co-sub">If you meet most, but not all, of these criteria, we encourage you to apply.</p><ul>{li(bring)}</ul></div>
         <div><h4>What we offer</h4><ul>{li(offer)}</ul></div>
       </div></details>'''
 
-_MARKET = 'Batteries are set to shape the future of the energy system. They store surplus solar and wind power, relieve grid congestion and strengthen Europe’s energy security at a time of geopolitical uncertainty. Battery capacity in the Netherlands is growing rapidly.'
+_MARKET = 'Batteries are becoming central to a secure power system that runs on solar and wind. Storage in the Netherlands is projected to reach around 25 GWh by 2030, yet most owners have no independent view of what their battery should earn.'
 
-_OFFER_COMMON = ['Freedom to set your own targets and plan, and to work remotely, as long as you reach the goals you set',
+_OFFER_COMMON = ['A front-row view of one of the fastest-growing sectors in energy',
+    'Coaching from the founder and our advisors, senior leaders from Eneco, Enexis, Lockheed Martin Energy, Adyen and Ember',
+    'Freedom to set your own targets and plan, and to work remotely, as long as you reach the goals you set',
     'Ownership from your first week, in a small team with short decision lines',
-    'Results within days rather than quarters',
-    'Coaching from the founder and senior industry professionals',
-    'A role in a market that will shape the future of energy']
+    'Results within days rather than quarters']
 
 BD_V2 = role_v2('Business Developer',
-    'Build the flywheel that brings the ICM’s solutions to battery owners across the Netherlands. You find the distribution channels that scale, and own the sales process from first conversation to signed contract.',
-    'You are often the first person clients meet at the ICM. You show what their battery earned, what it could have earned, and what that means for them. Sales is currently founder-led: you work directly with the founder and our analysts, and feed client needs into the product.',
-    'Your goal for the first 12 months: help our first 50 clients use their batteries as efficiently as possible, build a network of installers and developers who bring us the next clients, and turn results into case studies.',
+    'As our first Business Developer, you bring the ICM to battery owners and the installers who work with them. You take over sales from the founder and work closely with our analysts.',
+    '',
+    'Your goal for the first 12 months: help our first 50 clients get the most value from their batteries, and build the channels, such as installers and developers, that bring us the next clients.',
     ['Three to six years of experience in B2B consultative sales, ideally in SaaS, energy or financial services',
      'A track record of turning first conversations into signed contracts and long-term client relationships',
      'A network among battery owners, installers or developers, or the drive to build one quickly',
-     'A working understanding of how batteries earn revenues (day-ahead, imbalance, FCR and aFRR), or the willingness to learn it in your first months',
-     'The ability to explain technical topics clearly and to support every claim with data',
-     'An eagerness to test new offers, pricing and product features with clients',
      'Native Dutch with strong English'],
     ['An attractive bonus structure and equity in the ICM',
+     'A crash course in how batteries create value: day-ahead, intraday, imbalance, FCR, aFRR, mFRR and redispatch',
      'The opportunity to design the sales process as the ICM scales'] + _OFFER_COMMON)
 
 ANALYST_V2 = role_v2('BESS Analyst',
