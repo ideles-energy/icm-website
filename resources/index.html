@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css?v=b3b3ac40">
+<link rel="stylesheet" href="/styles.css?v=88b3fd70">
 </head>
 <body>
 <a class="sr-only" href="#main">Skip to content</a>
@@ -52,15 +52,14 @@
     <section class="calc-sec" id="calculator" aria-labelledby="calc-h">
       <div class="res-sec bm-head">
         <h2 id="calc-h">BESS Calculator <span class="calc-beta">Beta</span></h2>
-        <p class="res-lead">Stop not knowing. See what your battery could have earned within its dispatch constraints (connection size, PV production, etc.).</p>
       </div>
       <div class="bm-grid calc-grid">
-        <button type="button" class="calc-shot-btn calc-shot2 js-gate-open" data-gate="calc" aria-label="Open the BESS Calculator"><img src="/assets/img/calculator-preview.jpg" alt="BESS Calculator: project set-up with grid connection, battery, solar and consumption (fictional example)" width="1280" height="720" loading="lazy"></button>
-        <div class="bm-panel calc-panel">
-          <div class="bm-top"><div><p class="bm-place">Fictional example</p><h3>What you see</h3></div><div class="bm-actions"><button type="button" class="btn btn-dark js-gate-open" data-gate="calc">Open</button></div></div>
-          <ul class="calc-list"><li>Expected revenues of your battery, per month and year to date</li><li>Revenues with and without the battery, next to your solar and consumption</li><li>Your project set-up: grid connection, battery, solar and consumption</li></ul>
-          <p class="bm-note">Subject to change, methodology to be refined. Project data is never shown to other parties. Questions? <a href="/talk-to-us/">Talk to us</a>.</p>
+        <div class="calc-copy">
+          <p class="calc-lead2">Stop not knowing. See what your battery could have earned within its dispatch constraints (connection size, PV production, etc.).</p>
+          <div class="calc-btns"><button type="button" class="btn btn-dark js-gate-open" data-gate="calc">Open</button><a class="btn btn-outline-dark" href="/talk-to-us/">Talk to us</a></div>
+          <p class="bm-note">Fictional example. Subject to change, methodology to be refined. Project data is never shown to other parties.</p>
         </div>
+        <button type="button" class="calc-shot2 js-gate-open" data-gate="calc" aria-label="Open the BESS Calculator"><video autoplay muted loop playsinline preload="metadata" poster="/assets/video/calc-tour-poster.jpg" aria-hidden="true"><source src="/assets/video/calc-tour.mp4" type="video/mp4"><source src="/assets/video/calc-tour.webm" type="video/webm"></video></button>
       </div>
     </section>
   </div>
