@@ -2609,3 +2609,15 @@ header.nav .logo .logo-icon-light{display:none !important}
 .calc-panel{background:#F2F8F9 !important;border:0}
 /* v118 map first: no top margin on the band, calculator below on Platinum */
 .bm-band{margin-top:0 !important}
+/* v119 Resources rhythm: map on Platinum, calculator on white (full-bleed), documents on Platinum */
+.bm-band{background:#F2F8F9 !important}
+.bm-band .bm-grid{background:#FFFFFF !important}
+.bm-band .bm-panel{background:#F2F8F9;border-color:#E3EBED}
+.calc-sec{background:#FFFFFF;box-shadow:0 0 0 100vmax #FFFFFF;clip-path:inset(0 -100vmax);padding:64px 0 72px !important;margin-bottom:56px}
+.calc-grid{background:#F2F8F9 !important}
+.calc-panel{background:#FFFFFF !important}
+/* v119 role v2 */
+.co-body2 h4{margin-top:22px !important}
+.co-body2 > div > h4:first-child{margin-top:0 !important}
+.co-body2 .btn{margin-top:4px}
+.co-sub{font-size:14px !important;opacity:.8;margin:0 0 10px !important}

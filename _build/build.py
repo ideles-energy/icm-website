@@ -469,9 +469,26 @@ ADVISORS_HTML = ('<div class="sup-card adv-card"><ul class="adv-list">' + ''.joi
     f'<li><a href="{u}" target="_blank" rel="noopener"><span><b>{n}</b>' + (('<small><span>' + r.rsplit(', ', 1)[0] + '</span><i class="adv-sep">, </i><span class="adv-org">' + r.rsplit(', ', 1)[1] + '</span></small>') if ', ' in r else (f'<small>{r}</small>' if r else '')) + f'</span><i aria-hidden="true">{_LI}</i><span class="sr-only"> on LinkedIn</span></a></li>'
     for n, r, u in ADVISORS) + '</ul></div>')
 
+BD_V2 = """      <details class="co-role" name="roles"><summary><b>Business Developer</b><em>Amsterdam</em><i class="co-pm" aria-hidden="true"></i></summary><div class="co-body co-body2">
+        <div><p>Lead commercial growth at the ICM. You bring our analysis tools to battery owners (3–30 MW), installers and developers, and own the sales process from first conversation to signed contract.</p>
+          <h4>About the role</h4>
+          <p>The Dutch battery market is growing fast, and many owners and installers are still working out how to size, finance and operate their assets. The ICM’s BESS Calculator, BESS Backtest and BESS Broker show what a battery can earn and what it actually earns. Because we own no batteries and are not an optimizer, our analysis is independent.</p>
+          <p>As Business Developer, you are often the first person clients meet at the ICM. You explain what our tools show and what that means for the performance of their battery.</p>
+          <p>Sales is currently founder-led. You will work directly with the founder and our analysts, design the sales process as it scales, and feed client needs into product development.</p>
+          <a class="btn btn-dark" href="mailto:careers@icm.energy?subject=Application%3A%20Business%20Developer">Apply</a></div>
+        <div><h4>What you will do</h4><ul><li>Build long-term relationships with battery owners, installers and project developers</li><li>Design and run the sales process, and help the ICM move beyond founder-led sales</li><li>Lead discovery conversations on assets, contracts and objectives</li><li>Book demos with owners and installers and convert them into clients, against clear targets</li><li>Manage the pipeline, including follow-up, forecasting and reporting</li></ul>
+          <h4>What we offer</h4><ul><li>An attractive bonus structure and equity in the ICM</li><li>Coaching from the founder and senior industry professionals</li><li>Flexibility, with the option to work remotely</li><li>A role in a fast-growing market</li></ul></div>
+        <div><h4>Who you are</h4><p class="co-sub">If you meet most, but not all, of these criteria, we encourage you to apply.</p><ul><li>3–6 years of experience in B2B consultative sales, ideally in SaaS, energy or financial services</li><li>Able to explain technical topics clearly and to support every claim with data</li><li>Familiar with BRP and aFRR, or able to learn quickly</li><li>Accountable and comfortable working independently in a small team</li><li>Genuine interest in energy markets and large-scale batteries</li><li>Native Dutch speaker with strong English</li></ul>
+          <h4>Working at the ICM</h4><p>The ICM is a small team with short decision lines. Your work is visible from your first week, and you will often see its results within days rather than quarters. Priorities shift as the market develops, and roles are not always neatly defined. You will feel at home if you enjoy taking ownership, act on feedback quickly and stay calm when plans change.</p>
+          <h4>Practicalities</h4><p>Based in Amsterdam. Flexible start date. Send your CV and a short note on what you would like to achieve at the ICM to <a href="mailto:careers@icm.energy">careers@icm.energy</a>.</p></div>
+      </div></details>"""
+ROLE_PREVIEW = os.environ.get('ICM_PREVIEW') == '1'  # Business Developer v2: preview only until reviewed
+
 def company(t):
     def li(items): return ''.join(f'<li>{i}</li>' for i in items)
-    rows = '\n'.join(f'''      <details class="co-role" name="roles"><summary><b>{r}</b><em>{c}</em><i class="co-pm" aria-hidden="true"></i></summary><div class="co-body"><div><p>{m}</p><a class="btn btn-dark" href="mailto:ideles@icm.energy?subject=Application%3A%20{r.replace(" ", "%20")}">Apply</a></div><div><h4>What you will do</h4><ul>{li(do)}</ul></div><div><h4>Who you are</h4><ul>{li(you)}</ul></div></div></details>''' for r, c, m, do, you in ROLES)
+    rows = '\n'.join(f'''      <details class="co-role" name="roles"><summary><b>{r}</b><em>{c}</em><i class="co-pm" aria-hidden="true"></i></summary><div class="co-body"><div><p>{m}</p><a class="btn btn-dark" href="mailto:careers@icm.energy?subject=Application%3A%20{r.replace(" ", "%20")}">Apply</a></div><div><h4>What you will do</h4><ul>{li(do)}</ul></div><div><h4>Who you are</h4><ul>{li(you)}</ul></div></div></details>''' for r, c, m, do, you in ROLES)
+    if ROLE_PREVIEW:
+        rows = BD_V2 + '\n' + '\n'.join(x for x in rows.split('\n') if '<b>Business Developer</b>' not in x)
 
     hero = '''    <div class="page-hero" id="main">
       <h1>About The Independent Capacity Market</h1>
@@ -483,7 +500,7 @@ def company(t):
     <div>
       <p>The ICM serves those who add capacity to the grid, but are in the dark about their potential.</p>
       <p>Greater transparency strengthens the grid. It rewards optimizers that perform, makes batteries easier to finance and gives system operators access to more reliable flexible capacity.</p>
-      <p>Independence is central to how we work. We do not own, install or optimize batteries, so we have no stake in any outcome other than our clients’ results. Our clients get an objective view of their battery’s full potential, the support to capture it, and the numbers to prove it.</p>
+      <p>Independence is central to how we work. We do not own, install or optimize batteries, so we have no stake in any outcome other than our clients’ results. We show clients how far their battery is from its full potential, and help them capture the rest.</p>
       <a class="btn btn-lilac" href="/talk-to-us/">Talk to us</a>
     </div>
   </div>
@@ -508,7 +525,7 @@ def company(t):
     <div class="co-acc">
 {rows}
     </div>
-    <p class="co-note">If none of these roles fits, send an open application with your CV and what you would like to achieve at the ICM to <a href="mailto:ideles@icm.energy">ideles@icm.energy</a>.</p>
+    <p class="co-note">If none of these roles fits, send an open application with your CV and what you would like to achieve at the ICM to <a href="mailto:careers@icm.energy">careers@icm.energy</a>.</p>
   </div>
 </section>'''
     ld = {"@context": "https://schema.org", "@type": "AboutPage", "url": "https://icm.energy/company/", "mainEntity": {"@type": "Organization", "@id": "https://icm.energy/#org", "name": "Independent Capacity Market B.V.", "alternateName": "The ICM", "logo": "https://icm.energy/assets/logo-header.png", "url": "https://icm.energy/",
