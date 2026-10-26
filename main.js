@@ -287,3 +287,15 @@ r.addEventListener('input',u);u();})();
     if('IntersectionObserver' in window){ var io=new IntersectionObserver(function(es){ if(es[0].isIntersecting){ start(); io.disconnect(); } },{threshold:.35}); io.observe(el); } else start();
   });
 })();
+
+/* Batteries at work map: dot click shows that battery's story; default panel explains why batteries */
+(function(){
+  var dots=document.querySelectorAll('.js-bm-dot'); if(!dots.length) return;
+  var stories=document.querySelectorAll('.bm-story');
+  function show(k){
+    stories.forEach(function(s){ s.hidden = (s.getAttribute('data-k')||'') !== k; });
+    dots.forEach(function(d){ d.setAttribute('aria-pressed', d.getAttribute('data-k')===k ? 'true' : 'false'); });
+  }
+  dots.forEach(function(d){ d.addEventListener('click', function(){ var k=d.getAttribute('data-k'); show(d.getAttribute('aria-pressed')==='true' ? '' : k); }); });
+  document.querySelectorAll('.js-bm-back').forEach(function(b){ b.addEventListener('click', function(){ show(''); }); });
+})();

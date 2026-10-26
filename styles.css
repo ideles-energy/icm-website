@@ -2469,3 +2469,29 @@ header.nav .logo .logo-icon-light{display:none !important}
 @media (max-width:640px){.co-story .sup-card:not(.adv-card) p{font-size:15px}}
 /* v106 careers subtitle: no heading letter-spacing (looked like a different font) */
 .co-big span{letter-spacing:normal;font-weight:500}
+/* v107 Resources: Batteries at work map (preview only until texts approved) */
+.bm-sec{padding:64px 0 24px}
+.bm-sec h2{font-size:clamp(28px,3vw,38px);font-weight:700;letter-spacing:-.02em;color:#040D1F;margin:6px 0 28px}
+.bm-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:36px;align-items:center;background:#F2F8F9;border:1px solid #D5E1E3;border-radius:22px;padding:28px}
+.bm-map{position:relative;max-width:440px;width:100%;margin:0 auto}
+.bm-map svg{display:block;width:100%;height:auto}
+.bm-map path{fill:#DCE7E9;stroke:#9FB5BA;stroke-width:1;stroke-linejoin:round}
+.bm-dot{position:absolute;width:44px;height:44px;margin:-22px 0 0 -22px;border:0;background:none;padding:0;cursor:pointer;display:grid;place-items:center}
+.bm-dot i{width:18px;height:18px;border-radius:50%;background:#00899E;box-shadow:0 0 0 0 rgba(0,137,158,.55);animation:bmPulse 2.4s ease-in-out infinite;transition:transform .2s}
+.bm-dot:nth-of-type(2n) i{animation-delay:1.2s}
+.bm-dot:hover i,.bm-dot:focus-visible i{transform:scale(1.25)}
+.bm-dot:focus-visible{outline:2px solid #274A51;outline-offset:-6px;border-radius:50%}
+.bm-dot[aria-pressed="true"] i{background:#D392EB;animation:none;box-shadow:0 0 0 7px rgba(211,146,235,.3);transform:scale(1.2)}
+@keyframes bmPulse{0%{background:#00899E;box-shadow:0 0 0 0 rgba(0,137,158,.5)}50%{background:#97F2F5;box-shadow:0 0 0 12px rgba(151,242,245,0)}100%{background:#00899E;box-shadow:0 0 0 0 rgba(0,137,158,0)}}
+@media (prefers-reduced-motion:reduce){.bm-dot i{animation:none}}
+.bm-panel{min-height:300px;display:flex;flex-direction:column;justify-content:center;background:#FFFFFF;border:1px solid #D5E1E3;border-radius:18px;padding:28px}
+.bm-story h3{font-size:24px;font-weight:700;color:#040D1F;margin:4px 0 10px;letter-spacing:-.01em}
+.bm-story p{margin:0 0 12px;line-height:1.55;color:#283A3E}
+.bm-place{font-size:13px !important;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#526E74 !important;margin:0 !important}
+.bm-stat{display:inline-block;background:#274A51;color:#F2F8F9 !important;font-weight:700;border-radius:999px;padding:6px 14px;font-variant-numeric:tabular-nums}
+.bm-hint{color:#00899E !important;font-weight:600}
+.bm-src{font-size:14px;color:#526E74 !important}.bm-src a{color:#274A51;font-weight:600}
+.bm-back{border:1px solid #274A51;background:none;color:#274A51;border-radius:999px;padding:7px 16px;font:600 14px inherit;cursor:pointer;align-self:flex-start}
+.bm-back:hover{background:#274A51;color:#F2F8F9}
+.bm-note{margin:18px 0 0;padding-top:14px;border-top:1px solid #E3EBED;font-size:13.5px;color:#526E74}.bm-note a{color:#274A51;font-weight:600}
+@media (max-width:860px){.bm-grid{grid-template-columns:1fr;padding:18px;gap:18px}.bm-map{max-width:320px}.bm-panel{min-height:0;padding:20px}}

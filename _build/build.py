@@ -370,6 +370,7 @@ NL_REPORT = False  # NL BESS Revenue Report signup: parked (built, not shown any
 FILLOUT_JS = '\n<script src="https://server.fillout.com/embed/v1/" defer></script>'
 
 def resources(t):
+    BM_HTML = open(os.path.join(ROOT, '_build', 'bm_section.html'), encoding='utf-8').read() if MAP_LIVE else ''
     RES_EXTRAS_HTML = f'''  <div class="wrap">
     <section class="calc-sec res-cols" id="calculator" aria-labelledby="calc-h">
       <div class="res-sec calc-left">
@@ -387,7 +388,7 @@ def resources(t):
     </section>
   </div>
   <div class="wrap">
-    <section class="nlr-block" id="nl-report" aria-labelledby="nlr-h">
+{BM_HTML}    <section class="nlr-block" id="nl-report" aria-labelledby="nlr-h">
       <div class="nlr-copy">
         <div class="calc-tags"><span>Coming soon</span></div>
         <h2 id="nlr-h">NL BESS Revenue Report</h2>
@@ -531,7 +532,6 @@ PROPS = [
 ]
 
 NEWFAQS = [
- ('Why batteries at all?', 'Because they make room on a full grid. In Almere, Prologis opened a 23,000 m² distribution centre on a site where the grid operator can deliver only 55 kW until at least 2035. With solar panels, batteries and smart control, the site can use about 400 kW; a gas generator only steps in when needed. At holiday park Landgoed De Zandleij, 125 holiday homes share a 41 kW connection: the park charges its batteries at night and uses that power during the day. Read more in <a href="https://fd.nl/opinie/1616478/netbeheerders-moeten-de-stroomspits-aanpakken-voor-ze-gaan-bouwen" target="_blank" rel="noopener">Het Financieele Dagblad</a>.'),
  ('Why do battery owners work with the ICM?', 'To know what their battery could earn, and whether it earns that. We compare your revenue with the full potential of your site, and when there is more to earn we help you find a better optimizer. Because we own no batteries and are not an optimizer, you can share our numbers with your bank, installer and insurer.'),
  ('Why do installers offer the BESS Backtest to their customers?', 'It is a gift that builds trust. Installers can include a BESS Backtest at delivery, so every customer gets an independent view of what the battery earns. It shows you stand behind your system.'),
  ('Why can I trust the ICM\'s numbers?', 'We do not own BESS assets. We are not an optimizer. Nor will we ever be.'),
@@ -876,6 +876,7 @@ def cr_section(v, label=False):
     return f"""<section class="dark cr-sec cr-{v}">{tag}<div class="wrap">{CR_H}{CR_P}<div class="cr-vis">{CR_VARIANTS[v][1]()}</div></div></section>"""
 
 CR_CHOICE = os.environ.get('CR_VARIANT', '')
+MAP_LIVE = os.environ.get('ICM_PREVIEW') == '1'  # Batteries at work map: preview only until the texts are approved
 FILM_LIVE = False  # set True once approved to show the film on the live site
 
 GS_STEPS = f'''<section class="dark gs-steps" id="steps">
