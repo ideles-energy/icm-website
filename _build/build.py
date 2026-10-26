@@ -483,7 +483,7 @@ def company(t):
     <div>
       <p>The ICM serves those who add capacity to the grid, but are in the dark about their potential.</p>
       <p>Greater transparency strengthens the grid. It rewards optimizers that perform, makes batteries easier to finance and gives system operators access to more reliable flexible capacity.</p>
-      <p>Independence is central to how we work. We do not own, install or optimize batteries, so we have no stake in any outcome other than our clients’ results. For our clients, that means securing the true value of their battery, backed by reliable numbers.</p>
+      <p>Independence is central to how we work. We do not own, install or optimize batteries, so we have no stake in any outcome other than our clients’ results. Our clients get an objective view of their battery’s full potential, the support to capture it, and the numbers to prove it.</p>
       <a class="btn btn-lilac" href="/talk-to-us/">Talk to us</a>
     </div>
   </div>
