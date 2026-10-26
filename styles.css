@@ -2525,3 +2525,11 @@ header.nav .logo .logo-icon-light{display:none !important}
 .bm-dot[aria-pressed="true"] svg{transform:scale(1.12)}
 @media (prefers-reduced-motion:reduce){.bm-ping{animation:none;opacity:.5}}
 .bm-story p a{color:#274A51;font-weight:600}
+/* v110 Film fits a laptop screen: tighter frame and headings; JS scales the film when the window is short */
+@media (min-width:861px){
+  .cr-sec{padding:72px 0 80px}
+  .cr-sec h2{margin-bottom:12px !important}
+  .cr-sec .cr-p{margin-bottom:24px !important}
+  .film{padding:18px 22px 14px}
+  .fm-ctrl{margin-top:12px}
+}
