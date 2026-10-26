@@ -375,12 +375,15 @@ def resources(t):
     <section class="calc-sec" id="calculator" aria-labelledby="calc-h">
       <div class="res-sec bm-head">
         <h2 id="calc-h">BESS Calculator <span class="calc-beta">Beta</span></h2>
+        <p class="res-lead">Stop not knowing. See what your battery could have earned within its dispatch constraints (connection size, PV production, etc.).</p>
       </div>
       <div class="bm-grid calc-grid">
-        <div class="calc-copy">
-          <p class="calc-lead2">Stop not knowing. See what your battery could have earned within its dispatch constraints (connection size, PV production, etc.).</p>
-          <div class="calc-btns"><button type="button" class="btn btn-dark js-gate-open" data-gate="calc">Open</button><a class="btn btn-outline-dark" href="/talk-to-us/">Talk to us</a></div>
-          <p class="bm-note">Fictional example. Subject to change, methodology to be refined. Project data is never shown to other parties.</p>
+        <div class="bm-panel calc-panel">
+          <p class="bm-place">Example</p>
+          <h3>Project Sterrenburg</h3>
+          <p>A 5 MW / 10 MWh battery next to 10 MWp of solar, on a 10 MW grid connection. See its expected revenues, month by month.</p>
+          <div class="bm-foot"><a class="calc-talk" href="/talk-to-us/">Talk to us</a><button type="button" class="btn btn-dark js-gate-open" data-gate="calc">Open</button></div>
+          <p class="bm-note">Project Sterrenburg runs on example data from emulated batteries. The numbers are subject to change as the methodology is still being refined. Project data from our customers is kept confidential by the ICM.</p>
         </div>
         <button type="button" class="calc-shot2 js-gate-open" data-gate="calc" aria-label="Open the BESS Calculator"><video autoplay muted loop playsinline preload="metadata" poster="/assets/video/calc-tour-poster.jpg" aria-hidden="true"><source src="/assets/video/calc-tour.mp4" type="video/mp4"><source src="/assets/video/calc-tour.webm" type="video/webm"></video></button>
       </div>

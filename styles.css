@@ -2597,3 +2597,13 @@ header.nav .logo .logo-icon-light{display:none !important}
 .sup-tile small{font-size:13px;color:#526E74}
 .sup-arrow{position:absolute;top:10px;right:10px;width:26px;height:26px;border-radius:50%;background:#F2F8F9;color:#274A51;display:grid;place-items:center}
 .sup-tile:hover .sup-arrow{background:#274A51;color:#FFFFFF}
+/* v117 calculator aligned with the map: heading + lead above, box with panel (left) and video (right) */
+.calc-grid{grid-template-columns:minmax(0,1fr) minmax(0,1.25fr) !important;align-items:stretch !important}
+.calc-panel{background:#FFFFFF !important;border:1px solid #D5E1E3}
+.calc-panel h3{font-size:clamp(22px,1.9vw,27px) !important;margin:6px 0 12px}
+.calc-panel p{margin:0 0 12px;line-height:1.55;color:#283A3E}
+.calc-panel .bm-foot{margin-top:auto;padding-top:12px}
+.calc-talk{color:#274A51;font-weight:600}
+.calc-grid .calc-shot2{align-self:center}
+.calc-sec .bm-head .res-lead{margin-bottom:28px}
+.calc-panel{background:#F2F8F9 !important;border:0}
