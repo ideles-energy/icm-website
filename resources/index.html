@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css?v=09b5f5d7">
+<link rel="stylesheet" href="/styles.css?v=0a76687e">
 </head>
 <body>
 <a class="sr-only" href="#main">Skip to content</a>
@@ -49,17 +49,17 @@
 </div>
 <main class="res">
   <div class="wrap">
-    <section class="calc-sec res-cols" id="calculator" aria-labelledby="calc-h">
-      <div class="res-sec calc-left">
+    <section class="calc-sec" id="calculator" aria-labelledby="calc-h">
+      <div class="res-sec bm-head">
         <h2 id="calc-h">BESS Calculator <span class="calc-beta">Beta</span></h2>
-        <p class="res-lead">Stop not knowing. See what your battery could have earned. No one has the 2-hour battery with a full grid connection that could have earned EUR ~305k per MW per year, based on January to September 2026. Your battery has its own limits; see what it could have earned within them.</p>
-        <div><a class="btn btn-outline-dark" href="/talk-to-us/">Talk to us</a></div>
+        <p class="res-lead">Stop not knowing. See what your battery could have earned within its dispatch constraints (connection size, PV production, etc.).</p>
       </div>
-      <div class="res-sec">
-        <div class="res-card res-thumb calc-card">
-          <button type="button" class="calc-shot-btn js-gate-open" data-gate="calc" aria-label="Open the BESS Calculator"><img src="/assets/img/calculator-preview.jpg" alt="BESS Calculator: full potential and expected revenues per month (fictional example)" width="1440" height="900" loading="lazy"></button>
-          <div><span>BESS Calculator</span><small>Subject to change, methodology to be refined. Project data is never shown to other parties.</small></div>
-          <button type="button" class="btn btn-dark js-gate-open" data-gate="calc">Open</button>
+      <div class="bm-grid calc-grid">
+        <button type="button" class="calc-shot-btn calc-shot2 js-gate-open" data-gate="calc" aria-label="Open the BESS Calculator"><img src="/assets/img/calculator-preview.jpg" alt="BESS Calculator: project set-up with grid connection, battery, solar and consumption (fictional example)" width="1280" height="720" loading="lazy"></button>
+        <div class="bm-panel calc-panel">
+          <div class="bm-top"><div><p class="bm-place">Fictional example</p><h3>What you see</h3></div><div class="bm-actions"><button type="button" class="btn btn-dark js-gate-open" data-gate="calc">Open</button></div></div>
+          <ul class="calc-list"><li>Expected revenues of your battery, per month and year to date</li><li>Revenues with and without the battery, next to your solar and consumption</li><li>Your project set-up: grid connection, battery, solar and consumption</li></ul>
+          <p class="bm-note">Subject to change, methodology to be refined. Project data is never shown to other parties. Questions? <a href="/talk-to-us/">Talk to us</a>.</p>
         </div>
       </div>
     </section>

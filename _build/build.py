@@ -372,17 +372,17 @@ FILLOUT_JS = '\n<script src="https://server.fillout.com/embed/v1/" defer></scrip
 def resources(t):
     BM_HTML = open(os.path.join(ROOT, '_build', 'bm_section.html'), encoding='utf-8').read() if MAP_LIVE else ''
     RES_EXTRAS_HTML = f'''  <div class="wrap">
-    <section class="calc-sec res-cols" id="calculator" aria-labelledby="calc-h">
-      <div class="res-sec calc-left">
+    <section class="calc-sec" id="calculator" aria-labelledby="calc-h">
+      <div class="res-sec bm-head">
         <h2 id="calc-h">BESS Calculator <span class="calc-beta">Beta</span></h2>
-        <p class="res-lead">Stop not knowing. See what your battery could have earned. No one has the 2-hour battery with a full grid connection that could have earned EUR ~305k per MW per year, based on January to September 2026. Your battery has its own limits; see what it could have earned within them.</p>
-        <div><a class="btn btn-outline-dark" href="/talk-to-us/">Talk to us</a></div>
+        <p class="res-lead">Stop not knowing. See what your battery could have earned within its dispatch constraints (connection size, PV production, etc.).</p>
       </div>
-      <div class="res-sec">
-        <div class="res-card res-thumb calc-card">
-          <button type="button" class="calc-shot-btn js-gate-open" data-gate="calc" aria-label="Open the BESS Calculator"><img src="/assets/img/calculator-preview.jpg" alt="BESS Calculator: full potential and expected revenues per month (fictional example)" width="1440" height="900" loading="lazy"></button>
-          <div><span>BESS Calculator</span><small>Subject to change, methodology to be refined. Project data is never shown to other parties.</small></div>
-          <button type="button" class="btn btn-dark js-gate-open" data-gate="calc">Open</button>
+      <div class="bm-grid calc-grid">
+        <button type="button" class="calc-shot-btn calc-shot2 js-gate-open" data-gate="calc" aria-label="Open the BESS Calculator"><img src="/assets/img/calculator-preview.jpg" alt="BESS Calculator: project set-up with grid connection, battery, solar and consumption (fictional example)" width="1280" height="720" loading="lazy"></button>
+        <div class="bm-panel calc-panel">
+          <div class="bm-top"><div><p class="bm-place">Fictional example</p><h3>What you see</h3></div><div class="bm-actions"><button type="button" class="btn btn-dark js-gate-open" data-gate="calc">Open</button></div></div>
+          <ul class="calc-list"><li>Expected revenues of your battery, per month and year to date</li><li>Revenues with and without the battery, next to your solar and consumption</li><li>Your project set-up: grid connection, battery, solar and consumption</li></ul>
+          <p class="bm-note">Subject to change, methodology to be refined. Project data is never shown to other parties. Questions? <a href="/talk-to-us/">Talk to us</a>.</p>
         </div>
       </div>
     </section>
@@ -413,7 +413,7 @@ def resources(t):
         RES_EXTRAS_HTML = re.sub(r'\n    <section class="nlr-block".*?</section>', '', RES_EXTRAS_HTML, flags=re.S)
     hero = f'''    <div class="page-hero" id="main">
       <h1>Resources</h1>
-      <p>{('A free BESS Calculator, a periodic NL revenue report, API documents and brand assets of the Independent Capacity Market.' if NL_REPORT else 'A free BESS Calculator, API documents and brand assets of the Independent Capacity Market.') if RES_EXTRAS else 'API documents and brand assets of the Independent Capacity Market.'}</p>
+      <p>{('A free BESS Calculator, a periodic NL revenue report, API documents and brand assets of the Independent Capacity Market.' if NL_REPORT else ('A free BESS Calculator, an introduction to battery storage in the Netherlands, API documents and brand assets of the Independent Capacity Market.' if MAP_LIVE else 'A free BESS Calculator, API documents and brand assets of the Independent Capacity Market.')) if RES_EXTRAS else 'API documents and brand assets of the Independent Capacity Market.'}</p>
     </div>'''
     body = f'''<main class="res">
 {RES_EXTRAS_HTML if RES_EXTRAS else ''}  <div class="wrap res-cols">

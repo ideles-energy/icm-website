@@ -2549,3 +2549,23 @@ header.nav .logo .logo-icon-light{display:none !important}
 .sup-card .adv-list li:last-child a{padding-bottom:13px}
 .co-story .adv-list{border-top:0}
 .co-story .adv-list li:first-child a{padding-top:4px}
+/* v113 Calculator in the same box format as the map; story panel fixed height; actions top right */
+.calc-sec{padding-top:56px}
+.calc-sec .bm-head .res-lead{max-width:44em;min-height:0 !important;margin:0 0 28px}
+.calc-grid{background:#FFFFFF}
+.calc-shot2{display:block;border:1px solid #D5E1E3;border-radius:16px;overflow:hidden;background:#F2F8F9;padding:0;cursor:pointer}
+.calc-shot2 img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;transition:transform .3s}
+.calc-shot2:hover img{transform:scale(1.02)}
+.calc-panel{background:#F2F8F9 !important;justify-content:flex-start}
+.calc-list{margin:4px 0 0;padding-left:20px;line-height:1.55;color:#283A3E}.calc-list li{margin:0 0 8px}
+.bm-stack{display:grid}
+.bm-stack > .bm-story{grid-area:1/1}
+.bm-stack > .bm-story[hidden]{display:block !important;visibility:hidden}
+.bm-panel{justify-content:flex-start}
+.bm-top{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;margin:0 0 12px}
+.bm-top h3{margin:4px 0 0}
+.bm-actions{display:flex;align-items:center;gap:10px;flex:none}
+.bm-actions .btn{white-space:nowrap}
+.bm-actions .bm-stat{margin:0 !important;white-space:nowrap}
+.bm-back{display:none}
+@media (max-width:1100px){.bm-top{flex-direction:column}.bm-actions{flex-wrap:wrap}}
