@@ -384,7 +384,7 @@ def resources(t):
           <p>A 5 MW / 10 MWh battery co-located with 10 MWp of solar on a 10 MW grid connection. The calculator shows its expected revenues by month, with and without the battery. The example uses data from emulated assets; figures may change as the methodology is refined.</p>
           <div class="bm-foot"><a class="calc-talk" href="/talk-to-us/">Talk to us</a><button type="button" class="btn btn-dark js-gate-open" data-gate="calc">Open</button></div>
         </div>
-        <button type="button" class="calc-shot2 calc-shot-v js-gate-open" data-gate="calc" aria-label="Open the BESS Calculator"><video autoplay muted loop playsinline preload="metadata" poster="/assets/video/calc-tour-v-poster.jpg" aria-hidden="true"><source src="/assets/video/calc-tour-v.mp4" type="video/mp4"><source src="/assets/video/calc-tour-v.webm" type="video/webm"></video></button>
+        <button type="button" class="calc-shot2 calc-shot-v js-gate-open" data-gate="calc" aria-label="Open the BESS Calculator"><video autoplay muted loop playsinline preload="metadata" poster="/assets/video/calc-tour-v-poster.jpg" aria-hidden="true"><source src="/assets/video/calc-tour-m.mp4" type="video/mp4" media="(max-width:860px)"><source src="/assets/video/calc-tour-m.webm" type="video/webm" media="(max-width:860px)"><source src="/assets/video/calc-tour-v.mp4" type="video/mp4"><source src="/assets/video/calc-tour-v.webm" type="video/webm"></video></button>
       </div>
     </section>
   </div>
@@ -472,7 +472,7 @@ def role_v2(title, summary, about, does, bring, offer, extra_about=''):
     li = lambda xs: ''.join(f'<li>{x}</li>' for x in xs)
     subj = title.replace(' ', '%20')
     return f'''      <details class="co-role" name="roles"><summary><b>{title}</b><em>Amsterdam</em><i class="co-pm" aria-hidden="true"></i></summary><div class="co-body co-body2 co-body3">
-        <div><h4>About the role</h4><p>{summary}</p>{about}<ul>{li(does)}</ul>{extra_about}
+        <div><h4>About the role</h4><p>{summary}</p>{about}{('<ul>' + li(does) + '</ul>') if does else ''}{extra_about}
           <p class="co-prac">Based in Amsterdam, with a flexible start date. Send your CV and a short note on what you would like to achieve at the ICM to <a href="mailto:careers@icm.energy">careers@icm.energy</a>.</p>
           <a class="btn btn-dark" href="mailto:careers@icm.energy?subject=Application%3A%20{subj}">Apply</a></div>
         <div><h4>What you bring</h4><p class="co-sub">If you meet most, but not all, of these criteria, we encourage you to apply.</p><ul>{li(bring)}</ul></div>
@@ -488,32 +488,34 @@ _OFFER_COMMON = ['Ownership from your first week, in a small team with short dec
 BD_V2 = role_v2('Business Developer',
     'Lead commercial growth at the ICM. You bring our analysis to battery owners (3–30 MW), installers and developers, and own the sales process from first conversation to signed contract.',
     '<p>You are often the first person clients meet at the ICM. You show what their battery earned, what it could have earned, and what that means for them. Sales is currently founder-led: you work directly with the founder and our analysts, and feed client needs into the product.</p>',
-    ['Build long-term relationships with battery owners, installers and project developers',
-     'Lead discovery conversations on assets, contracts and objectives',
-     'Book demos and convert them into clients, against clear targets',
-     'Design the sales process as it scales, and manage the pipeline, forecasts and reporting'],
+    [],
     ['3–6 years of experience in B2B consultative sales, ideally in SaaS, energy or financial services',
+     'Experience building long-term relationships with battery owners, installers or project developers; a network among them is a plus',
+     'Confident leading discovery conversations on assets, contracts and objectives',
+     'A track record of converting demos into clients, with disciplined pipeline management and forecasting',
+     'You set clear targets yourself and make a plan to reach them',
+     'You enjoy prototyping product features and validating them with clients',
      'Able to explain technical topics clearly and to support every claim with data',
-     'A network among battery owners, installers or developers is a plus',
-     'Accountable and comfortable working independently in a small team',
-     'You enjoy ownership, act on feedback quickly and stay calm when plans change',
+     'Accountable, comfortable working independently and calm when plans change',
      'Native Dutch speaker with strong English'],
-    ['An attractive bonus structure and equity in the ICM'] + _OFFER_COMMON)
+    ['An attractive bonus structure and equity in the ICM',
+     'The chance to design the sales process as the ICM scales'] + _OFFER_COMMON)
 
 ANALYST_V2 = role_v2('BESS Analyst',
     'Deepen the analysis behind every ICM result. You answer the technical questions of battery owners and traders, and build the answers into our models.',
-    '<p>Owners and traders ask us precise questions: how intraday trading changes a backtest, what a battery’s own bids do to prices, and how an optimizer’s settlement can be verified. You answer them, in writing and in meetings, together with our software developers, product manager and domain experts.</p>',
-    ['Extend the BESS Backtest to intraday trading, including order book depth and the price impact of a battery’s own bids',
-     'Compare asset-backed strategies with proprietary trading, and test claims of day-ahead outperformance net of fees',
-     'Make optimizer settlement verifiable, including set-ups where owners hold their own BSP, BRP or intraday accounts',
-     'Read academic research on battery optimisation and translate it into our methodology'],
+    '<p>Owners and traders ask us precise questions: how intraday trading changes a backtest, what a battery’s own bids do to prices, and how an optimizer’s settlement can be verified. You answer them, in writing and in meetings, together with our software developers, product manager and domain experts, and turn the answers into our methodology.</p>',
+    [],
     ['MSc in econometrics, operations research, physics or energy, with strong Python and SQL',
      '2–5 years as a trader, quant or analyst at an optimizer, utility or trading house',
-     'In-depth knowledge of the Dutch and European power markets: day-ahead, intraday, imbalance, FCR and aFRR',
-     'Experience with optimisation models, for example linear programming or PyPSA',
+     'In-depth knowledge of the Dutch and European power markets, including intraday order books and the price impact of a battery’s own bids',
+     'Experience with optimisation models, for example linear programming or PyPSA, and with comparing asset-backed and proprietary trading strategies',
+     'Understanding of how optimizers settle revenues, including set-ups where owners hold their own BSP, BRP or intraday accounts',
+     'Comfortable reading academic research on battery optimisation and translating it into a methodology',
+     'You set clear targets yourself, and enjoy prototyping product features and validating them with clients',
      'Able to explain complex results clearly to owners who are not traders',
      'Fluent in English; Dutch is a plus'],
-    ['A competitive salary and equity in the ICM'] + _OFFER_COMMON)
+    ['A competitive salary and equity in the ICM',
+     'The chance to shape the methodology behind every ICM result'] + _OFFER_COMMON)
 ROLE_PREVIEW = os.environ.get('ICM_PREVIEW') == '1'  # Business Developer v2: preview only until reviewed
 
 def company(t):
