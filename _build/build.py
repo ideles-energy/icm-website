@@ -484,21 +484,22 @@ _MARKET = 'Batteries are becoming central to a secure power system that runs on 
 
 _OFFER_COMMON = ['A front-row view of one of the fastest-growing sectors in energy',
     'Coaching from the founder and our advisors, senior leaders from Eneco, Enexis, Lockheed Martin Energy, Adyen and Ember',
-    'Freedom to set your own targets and plan, and to work remotely, as long as you reach the goals you set',
+    'Freedom to choose your own route and to work remotely, towards targets we set together',
     'Ownership from your first week, in a small team with short decision lines',
     'Results within days rather than quarters']
 
 BD_V2 = role_v2('Business Developer',
-    'As our first Business Developer, you bring the ICM to battery owners and the installers who work with them. You take over sales from the founder and work closely with our analysts.',
+    'As our first Business Developer, you bring the ICM to battery owners and the installers who work with them (3–30 MW). You also speak with optimizers, and you report to the founder.',
     '',
-    'Your goal for the first 12 months: help our first 50 clients get the most value from their batteries, and build the channels, such as installers and developers, that bring us the next clients.',
+    'Your main goal for the first 12 months: case studies that fuel our growth. You get there by building a partner channel of 10 installers who refer clients, and by helping our first 50 clients get the most value from their batteries.',
     ['Three to six years of experience in B2B consultative sales, ideally in SaaS, energy or financial services',
      'A track record of turning first conversations into signed contracts and long-term client relationships',
      'A network among battery owners, installers or developers, or the drive to build one quickly',
+     'Familiarity with optimizer contracts, such as tolling and revenue share, as a plus',
      'Native Dutch with strong English'],
-    ['An attractive bonus structure and equity in the ICM',
-     'A crash course in how batteries create value: day-ahead, intraday, imbalance, FCR, aFRR, mFRR and redispatch',
-     'The opportunity to design the sales process as the ICM scales'] + _OFFER_COMMON)
+    ['A one-year contract with a probation period, reporting to the founder',
+     'A salary in line with the Dutch average, plus a bonus and equity that fit a first hire',
+     'A crash course in how batteries create value: day-ahead, intraday, imbalance, FCR, aFRR, mFRR and redispatch'] + _OFFER_COMMON)
 
 ANALYST_V2 = role_v2('BESS Analyst',
     'Build the best BESS Backtest in Europe: the most customised view of what a battery could have earned on its own site. You answer the technical questions of battery owners and traders, and build the answers into our models.',
