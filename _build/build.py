@@ -381,11 +381,10 @@ def resources(t):
         <div class="bm-panel calc-panel">
           <p class="bm-place">Example</p>
           <h3>Project Sterrenburg</h3>
-          <p>A 5 MW / 10 MWh battery co-located with 10 MWp of solar on a 10 MW grid connection. The calculator shows its expected revenues by month, with and without the battery.</p>
+          <p>A 5 MW / 10 MWh battery co-located with 10 MWp of solar on a 10 MW grid connection. The calculator shows its expected revenues by month, with and without the battery. The example uses data from emulated assets; figures may change as the methodology is refined.</p>
           <div class="bm-foot"><a class="calc-talk" href="/talk-to-us/">Talk to us</a><button type="button" class="btn btn-dark js-gate-open" data-gate="calc">Open</button></div>
-          <p class="bm-note">Project Sterrenburg is based on example data from emulated assets. Figures may change as the methodology is refined. The ICM keeps all customer project data confidential.</p>
         </div>
-        <button type="button" class="calc-shot2 js-gate-open" data-gate="calc" aria-label="Open the BESS Calculator"><video autoplay muted loop playsinline preload="metadata" poster="/assets/video/calc-tour-poster.jpg" aria-hidden="true"><source src="/assets/video/calc-tour.mp4" type="video/mp4"><source src="/assets/video/calc-tour.webm" type="video/webm"></video></button>
+        <button type="button" class="calc-shot2 calc-shot-v js-gate-open" data-gate="calc" aria-label="Open the BESS Calculator"><video autoplay muted loop playsinline preload="metadata" poster="/assets/video/calc-tour-v-poster.jpg" aria-hidden="true"><source src="/assets/video/calc-tour-v.mp4" type="video/mp4"><source src="/assets/video/calc-tour-v.webm" type="video/webm"></video></button>
       </div>
     </section>
   </div>
@@ -469,26 +468,59 @@ ADVISORS_HTML = ('<div class="sup-card adv-card"><ul class="adv-list">' + ''.joi
     f'<li><a href="{u}" target="_blank" rel="noopener"><span><b>{n}</b>' + (('<small><span>' + r.rsplit(', ', 1)[0] + '</span><i class="adv-sep">, </i><span class="adv-org">' + r.rsplit(', ', 1)[1] + '</span></small>') if ', ' in r else (f'<small>{r}</small>' if r else '')) + f'</span><i aria-hidden="true">{_LI}</i><span class="sr-only"> on LinkedIn</span></a></li>'
     for n, r, u in ADVISORS) + '</ul></div>')
 
-BD_V2 = """      <details class="co-role" name="roles"><summary><b>Business Developer</b><em>Amsterdam</em><i class="co-pm" aria-hidden="true"></i></summary><div class="co-body co-body2">
-        <div><p>Lead commercial growth at the ICM. You bring our analysis tools to battery owners (3–30 MW), installers and developers, and own the sales process from first conversation to signed contract.</p>
-          <h4>About the role</h4>
-          <p>The Dutch battery market is growing fast, and many owners and installers are still working out how to size, finance and operate their assets. The ICM’s BESS Calculator, BESS Backtest and BESS Broker show what a battery can earn and what it actually earns. Because we own no batteries and are not an optimizer, our analysis is independent.</p>
-          <p>As Business Developer, you are often the first person clients meet at the ICM. You explain what our tools show and what that means for the performance of their battery.</p>
-          <p>Sales is currently founder-led. You will work directly with the founder and our analysts, design the sales process as it scales, and feed client needs into product development.</p>
-          <a class="btn btn-dark" href="mailto:careers@icm.energy?subject=Application%3A%20Business%20Developer">Apply</a></div>
-        <div><h4>What you will do</h4><ul><li>Build long-term relationships with battery owners, installers and project developers</li><li>Design and run the sales process, and help the ICM move beyond founder-led sales</li><li>Lead discovery conversations on assets, contracts and objectives</li><li>Show owners what their battery earned and what it could have earned, rather than pitch</li><li>Book demos with owners and installers and convert them into clients, against clear targets</li><li>Manage the pipeline, including follow-up, forecasting and reporting</li></ul>
-          <h4>What we offer</h4><ul><li>An attractive bonus structure and equity in the ICM</li><li>Coaching from the founder and senior industry professionals</li><li>Flexibility, with the option to work remotely</li><li>A role in a fast-growing market</li></ul></div>
-        <div><h4>Who you are</h4><p class="co-sub">If you meet most, but not all, of these criteria, we encourage you to apply.</p><ul><li>3–6 years of experience in B2B consultative sales, ideally in SaaS, energy or financial services</li><li>Able to explain technical topics clearly and to support every claim with data</li><li>A network among battery owners, installers or developers is a plus</li><li>Accountable and comfortable working independently in a small team</li><li>Genuine interest in energy markets and large-scale batteries</li><li>Native Dutch speaker with strong English</li></ul>
-          <h4>Working at the ICM</h4><p>The ICM is a small team with short decision lines. Your work is visible from your first week, and you will often see its results within days rather than quarters. Priorities shift as the market develops, and roles are not always neatly defined. You will feel at home if you enjoy taking ownership, act on feedback quickly and stay calm when plans change.</p>
-          <h4>Practicalities</h4><p>Based in Amsterdam. Flexible start date. Send your CV and a short note on what you would like to achieve at the ICM to <a href="mailto:careers@icm.energy">careers@icm.energy</a>.</p></div>
-      </div></details>"""
+def role_v2(title, summary, about, does, bring, offer, extra_about=''):
+    li = lambda xs: ''.join(f'<li>{x}</li>' for x in xs)
+    subj = title.replace(' ', '%20')
+    return f'''      <details class="co-role" name="roles"><summary><b>{title}</b><em>Amsterdam</em><i class="co-pm" aria-hidden="true"></i></summary><div class="co-body co-body2 co-body3">
+        <div><h4>About the role</h4><p>{summary}</p>{about}<ul>{li(does)}</ul>{extra_about}
+          <p class="co-prac">Based in Amsterdam, with a flexible start date. Send your CV and a short note on what you would like to achieve at the ICM to <a href="mailto:careers@icm.energy">careers@icm.energy</a>.</p>
+          <a class="btn btn-dark" href="mailto:careers@icm.energy?subject=Application%3A%20{subj}">Apply</a></div>
+        <div><h4>What you bring</h4><p class="co-sub">If you meet most, but not all, of these criteria, we encourage you to apply.</p><ul>{li(bring)}</ul></div>
+        <div><h4>What we offer</h4><ul>{li(offer)}</ul></div>
+      </div></details>'''
+
+_OFFER_COMMON = ['Ownership from your first week, in a small team with short decision lines',
+    'Work that shows results within days rather than quarters',
+    'Coaching from the founder and senior industry professionals',
+    'Flexibility, with the option to work remotely',
+    'A role in a fast-growing market']
+
+BD_V2 = role_v2('Business Developer',
+    'Lead commercial growth at the ICM. You bring our analysis to battery owners (3–30 MW), installers and developers, and own the sales process from first conversation to signed contract.',
+    '<p>You are often the first person clients meet at the ICM. You show what their battery earned, what it could have earned, and what that means for them. Sales is currently founder-led: you work directly with the founder and our analysts, and feed client needs into the product.</p>',
+    ['Build long-term relationships with battery owners, installers and project developers',
+     'Lead discovery conversations on assets, contracts and objectives',
+     'Book demos and convert them into clients, against clear targets',
+     'Design the sales process as it scales, and manage the pipeline, forecasts and reporting'],
+    ['3–6 years of experience in B2B consultative sales, ideally in SaaS, energy or financial services',
+     'Able to explain technical topics clearly and to support every claim with data',
+     'A network among battery owners, installers or developers is a plus',
+     'Accountable and comfortable working independently in a small team',
+     'You enjoy ownership, act on feedback quickly and stay calm when plans change',
+     'Native Dutch speaker with strong English'],
+    ['An attractive bonus structure and equity in the ICM'] + _OFFER_COMMON)
+
+ANALYST_V2 = role_v2('BESS Analyst',
+    'Deepen the analysis behind every ICM result. You answer the technical questions of battery owners and traders, and build the answers into our models.',
+    '<p>Owners and traders ask us precise questions: how intraday trading changes a backtest, what a battery’s own bids do to prices, and how an optimizer’s settlement can be verified. You answer them, in writing and in meetings, together with our software developers, product manager and domain experts.</p>',
+    ['Extend the BESS Backtest to intraday trading, including order book depth and the price impact of a battery’s own bids',
+     'Compare asset-backed strategies with proprietary trading, and test claims of day-ahead outperformance net of fees',
+     'Make optimizer settlement verifiable, including set-ups where owners hold their own BSP, BRP or intraday accounts',
+     'Read academic research on battery optimisation and translate it into our methodology'],
+    ['MSc in econometrics, operations research, physics or energy, with strong Python and SQL',
+     '2–5 years as a trader, quant or analyst at an optimizer, utility or trading house',
+     'In-depth knowledge of the Dutch and European power markets: day-ahead, intraday, imbalance, FCR and aFRR',
+     'Experience with optimisation models, for example linear programming or PyPSA',
+     'Able to explain complex results clearly to owners who are not traders',
+     'Fluent in English; Dutch is a plus'],
+    ['A competitive salary and equity in the ICM'] + _OFFER_COMMON)
 ROLE_PREVIEW = os.environ.get('ICM_PREVIEW') == '1'  # Business Developer v2: preview only until reviewed
 
 def company(t):
     def li(items): return ''.join(f'<li>{i}</li>' for i in items)
     rows = '\n'.join(f'''      <details class="co-role" name="roles"><summary><b>{r}</b><em>{c}</em><i class="co-pm" aria-hidden="true"></i></summary><div class="co-body"><div><p>{m}</p><a class="btn btn-dark" href="mailto:careers@icm.energy?subject=Application%3A%20{r.replace(" ", "%20")}">Apply</a></div><div><h4>What you will do</h4><ul>{li(do)}</ul></div><div><h4>Who you are</h4><ul>{li(you)}</ul></div></div></details>''' for r, c, m, do, you in ROLES)
     if ROLE_PREVIEW:
-        rows = BD_V2 + '\n' + '\n'.join(x for x in rows.split('\n') if '<b>Business Developer</b>' not in x)
+        rows = BD_V2 + '\n' + ANALYST_V2
 
     hero = '''    <div class="page-hero" id="main">
       <h1>About The Independent Capacity Market</h1>

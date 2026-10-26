@@ -2621,3 +2621,15 @@ header.nav .logo .logo-icon-light{display:none !important}
 .co-body2 > div > h4:first-child{margin-top:0 !important}
 .co-body2 .btn{margin-top:4px}
 .co-sub{font-size:14px !important;opacity:.8;margin:0 0 10px !important}
+
+/* v120: calculator box same size as the map box; roles in three blocks */
+.calc-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important;align-items:center}
+.calc-shot-v{max-width:440px;width:100%;margin:0 auto;align-self:center}
+.calc-shot-v video{aspect-ratio:420/500 !important;height:auto;object-fit:cover}
+.calc-panel{align-self:center}
+.calc-panel .bm-foot{align-items:center;margin-top:28px}
+@media (max-width:860px){.calc-shot-v{max-width:320px}}
+.co-body3 > div > ul{margin-top:12px}
+.co-body3 .co-prac{font-size:14px;opacity:.85;margin-top:16px}
+.co-body3 > div:first-child h4:first-child,.co-body3 > div > h4:first-child{margin-top:0 !important}
+.calc-panel .bm-foot .calc-talk{margin:0;padding:0;line-height:1}
