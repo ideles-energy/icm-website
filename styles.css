@@ -2547,3 +2547,5 @@ header.nav .logo .logo-icon-light{display:none !important}
 .co-story .adv-list li{border-bottom:1px solid #E3EBED}
 .co-story .adv-list li:last-child{border-bottom:1px solid #E3EBED}
 .sup-card .adv-list li:last-child a{padding-bottom:13px}
+.co-story .adv-list{border-top:0}
+.co-story .adv-list li:first-child a{padding-top:4px}
