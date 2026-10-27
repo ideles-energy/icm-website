@@ -500,7 +500,7 @@ BD_V2 = role_v2('Business Developer',
      'As a starting point, a one-year contract with a salary around the Dutch modal income (EUR 40–50k), plus a performance bonus and equity options',
      'Freedom to choose your own approach and to work remotely, with room to co-lead the sales team as we scale',
      'A crash course in all things BESS, including how batteries create value: day-ahead, intraday, imbalance, FCR, aFRR, mFRR and redispatch'],
-    'Full-time or part-time (minimum 3 days a week). Based in Amsterdam, with some travel to visit installers and owners. You report to the founder.')
+    'Full-time or part-time (minimum 3 days a week). Based in Amsterdam, with some travel to visit installers and owners. You report to the founder and work with our advisors to deliver results.')
 
 ANALYST_V2 = role_v2('BESS Analyst',
     '',
