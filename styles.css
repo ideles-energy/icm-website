@@ -2653,3 +2653,6 @@ header.nav .logo .logo-icon-light{display:none !important}
 .co-role .co-body.co-body4 > .co-foot{display:flex !important}
 .co-body4 > div > h4 + p,.co-body4 > div > h4 + ul{margin-top:12px !important}
 @media (max-width:900px){.co-role .co-body.co-body4 > .co-foot{flex-direction:column;align-items:flex-start}}
+/* v124: back to three columns side by side; footer stays full width */
+.co-role > .co-body.co-body4{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr) minmax(0,1fr);column-gap:32px}
+@media (max-width:900px){.co-role > .co-body.co-body4{grid-template-columns:minmax(0,1fr)}}
