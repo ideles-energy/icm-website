@@ -480,32 +480,32 @@ def role_v2(title, summary, about, goals, bring, offer, prac='Based in Amsterdam
         <div><h4>What we offer</h4><ul>{li(offer)}</ul></div>
       </div></details>'''
 
-_MARKET = 'Batteries are becoming central to a secure power system that runs on solar and wind. Storage in the Netherlands is projected to reach around 25 GWh by 2030, yet most owners have no independent view of what their battery should earn.'
+_MARKET = 'Batteries are becoming central to a secure power system based on solar and wind. Dutch storage capacity is projected to reach around 25 GWh by 2030, yet most owners lack an independent view of what their battery should earn.'
 
-_FRONT = 'A front-row view of one of the fastest-growing sectors in energy'
-_OWN = 'Proper ownership from your first week, in a small team coached by senior industry leaders. We combine corporate excellence with startup chaos.'
+_FRONT = 'A front-row view of one of the fastest-growing sectors in energy, where batteries, grid congestion and power markets meet'
+_OWN = 'Proper ownership from your first week, in a small team coached by senior industry leaders. We combine corporate excellence with startup speed.'
 _FREE = 'Freedom to choose your own route and to work remotely, towards targets we set together.'
 
 BD_V2 = role_v2('Business Developer',
-    'As our first Business Developer, you bring the ICM to battery owners and the installers who work with them (3–30 MW). We are looking for a sales juggernaut in the making.',
+    'As our first Business Developer, you lead the ICM’s commercial expansion among battery owners and installers (3–30 MW). We are looking for a sales juggernaut in the making.',
     '',
-    'In your first 3 months, you learn how batteries create value, meet the installers and owners in our network and deliver your first case study. Your main goal for the first 12 months: case studies that fuel our growth. You get there by building a partner channel of 10 installers who refer clients, and by helping our first 50 clients get the most value from their batteries.',
+    '<b>First 3 months.</b> Master how batteries create value, build relationships with the installers and owners in our network, and deliver the first case study.</p><p><b>First 12 months.</b> Build a partner channel of 10 installers who refer clients, support our first 50 clients in maximising the value of their batteries, and convert results into case studies that fuel growth.',
     ['Three to six years of experience in B2B consultative sales, ideally in SaaS, energy or financial services',
      'A track record of turning first conversations into signed contracts and long-term client relationships',
      'A network among battery owners, installers or developers, or the drive to build one quickly',
      'Familiarity with the BESS landscape (meters, EMS, optimizers) as a plus',
      'Native Dutch with strong English'],
     [_FRONT,
-     'A one-year contract with a Dutch modal salary (EUR 40–50k, excluding bonus), plus an equity package that fits a first hire',
      _OWN,
-     _FREE + ' As the sales team grows, you can become co-responsible for setting up the sales process of a European scale-up in the making.',
+     'A one-year contract with a Dutch modal salary (EUR 40–50k, excluding bonus), plus an equity package that fits a first hire',
+     'Freedom to choose your own route and to work remotely, with room to co-lead the sales team as we scale',
      'A crash course in all things BESS, including how batteries create value: day-ahead, intraday, imbalance, FCR, aFRR, mFRR and redispatch'],
     'Based in Amsterdam, with some travel to visit installers and owners. You report to the founder.')
 
 ANALYST_V2 = role_v2('BESS Analyst',
     'Build the best BESS Backtest in Europe: the most customised view of what a battery could have earned on its own site. You answer the technical questions of battery owners and traders, and build the answers into our models.',
     'Owners and traders ask us precise questions: how intraday trading changes a backtest, what a battery’s own bids do to prices, and how an optimizer’s settlement can be verified. You answer them, in writing and in meetings, together with our software developers, product manager and domain experts.',
-    'In your first 3 months, you get to know our models and data, and answer your first client questions. Your goal for the first 12 months: extend the BESS Backtest to intraday trading, make optimizer settlement verifiable for owners, and develop a methodology that owners, traders and financiers trust.',
+    '<b>First 3 months.</b> Master our models and data, and answer the first client questions.</p><p><b>First 12 months.</b> Extend the BESS Backtest to intraday trading, make optimizer settlement verifiable for owners, and develop a methodology that owners, traders and financiers trust.',
     ['An MSc in econometrics, operations research, physics or energy, with strong Python and SQL',
      'Two to five years of experience as a trader, quant or analyst at an optimizer, utility or trading house',
      'In-depth knowledge of the Dutch and European power markets, including intraday order books and the price impact of a battery’s own bids',
