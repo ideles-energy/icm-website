@@ -518,13 +518,18 @@ ANALYST_V2 = role_v2('BESS Analyst',
      'Freedom to choose your own approach and to work remotely, with room to co-develop our analytics team as we scale'],
     'Full-time or part-time (minimum 3 days a week). Based in Amsterdam, with a flexible start date. You report to the founder and work with our software developers and seasoned traders.')
 
+OPEN_APP = f'''      <details class="co-role co-open" name="roles"><summary><b>Open application</b><em>Amsterdam</em><i class="co-pm" aria-hidden="true"></i></summary><div class="co-body co-open-body">
+        <div><p>Are you convinced you can make our team stronger, but don’t see a role that fits?</p>
+          <p>You’re welcome to submit an open application with your CV and what you would add to the ICM, either through the button below or by email to <a href="mailto:careers@icm.energy">careers@icm.energy</a>.</p>
+          <a class="btn btn-dark" href="{APPLY_URL}" target="_blank" rel="noopener">Apply</a></div>
+      </div></details>'''
 ROLE_PREVIEW = True  # roles v2 approved 27 Oct 2026
 
 def company(t):
     def li(items): return ''.join(f'<li>{i}</li>' for i in items)
     rows = '\n'.join(f'''      <details class="co-role" name="roles"><summary><b>{r}</b><em>{c}</em><i class="co-pm" aria-hidden="true"></i></summary><div class="co-body"><div><p>{m}</p><a class="btn btn-dark" href="{APPLY_URL}" target="_blank" rel="noopener">Apply</a></div><div><h4>What you will do</h4><ul>{li(do)}</ul></div><div><h4>Who you are</h4><ul>{li(you)}</ul></div></div></details>''' for r, c, m, do, you in ROLES)
     if ROLE_PREVIEW:
-        rows = BD_V2 + '\n' + ANALYST_V2
+        rows = BD_V2 + '\n' + ANALYST_V2 + '\n' + OPEN_APP
 
     hero = '''    <div class="page-hero" id="main">
       <h1>About The Independent Capacity Market</h1>
@@ -561,7 +566,6 @@ def company(t):
     <div class="co-acc">
 {rows}
     </div>
-    <p class="co-note">If none of these roles fits, send an open application with your CV and what you would like to achieve at the ICM to <a href="mailto:careers@icm.energy">careers@icm.energy</a>.</p>
   </div>
 </section>'''
     ld = {"@context": "https://schema.org", "@type": "AboutPage", "url": "https://icm.energy/company/", "mainEntity": {"@type": "Organization", "@id": "https://icm.energy/#org", "name": "Independent Capacity Market B.V.", "alternateName": "The ICM", "logo": "https://icm.energy/assets/logo-header.png", "url": "https://icm.energy/",
