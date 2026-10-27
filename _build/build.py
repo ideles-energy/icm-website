@@ -518,7 +518,7 @@ ANALYST_V2 = role_v2('BESS Analyst',
      'The opportunity to shape the methodology behind every ICM result, drawing on the latest academic research'],
     'Based in Amsterdam, with a flexible start date. You report to the founder and work with our software developers and seasoned traders.')
 
-ROLE_PREVIEW = os.environ.get('ICM_PREVIEW') == '1'  # Business Developer v2: preview only until reviewed
+ROLE_PREVIEW = True  # roles v2 approved 27 Oct 2026
 
 def company(t):
     def li(items): return ''.join(f'<li>{i}</li>' for i in items)
