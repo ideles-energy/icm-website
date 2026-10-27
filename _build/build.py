@@ -255,8 +255,8 @@ def footer(t, other_href):
     <a class="f-logo" href="/" aria-label="The ICM, home"><img src="/assets/submark.png" alt="The ICM" width="302" height="449" loading="lazy"></a>
     <nav class="f-links" aria-label="Footer">
       <a href="/solutions/">Solutions</a>
-      <a href="/company/">Company</a>
       <a href="/resources/">Resources</a>
+      <a href="/company/">Company</a>
       <a href="{TALK}">Talk to us</a>
     </nav>
     <div class="f-mail"><p><a href="mailto:info@icm.energy">info@icm.energy</a><a class="f-li" href="https://www.linkedin.com/company/112941912/" target="_blank" rel="noopener" aria-label="The ICM on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true" width="16" height="16"><path fill="currentColor" d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C20.6 8.65 21 11.2 21 14.5V21h-4v-5.8c0-1.4 0-3.2-1.95-3.2S12.8 13.5 12.8 15.1V21H9z"/></svg></a></p><p class="f-copy">© 2026 Independent Capacity Market B.V.<span class="f-kvk">KvK 99958775</span></p></div>
@@ -370,19 +370,21 @@ NL_REPORT = False  # NL BESS Revenue Report signup: parked (built, not shown any
 FILLOUT_JS = '\n<script src="https://server.fillout.com/embed/v1/" defer></script>'
 
 def resources(t):
+    BM_HTML = open(os.path.join(ROOT, '_build', 'bm_section.html'), encoding='utf-8').read() if MAP_LIVE else ''
     RES_EXTRAS_HTML = f'''  <div class="wrap">
-    <section class="calc-sec res-cols" id="calculator" aria-labelledby="calc-h">
-      <div class="res-sec calc-left">
+{BM_HTML}    <section class="calc-sec" id="calculator" aria-labelledby="calc-h">
+      <div class="res-sec bm-head">
         <h2 id="calc-h">BESS Calculator <span class="calc-beta">Beta</span></h2>
-        <p class="res-lead">Stop not knowing. See what your battery could have earned. No one has the perfect 2-hour BESS with a full grid connection that delivered EUR 305k per MW per year. Your battery has its own limits. See what it could have earned within them.</p>
-        <div><a class="btn btn-outline-dark" href="/talk-to-us/">Talk to us</a></div>
+        <p class="res-lead">See what a battery could have delivered on your site. Meaningful limits, such as the size of your grid connection and on-site production, are included.</p>
       </div>
-      <div class="res-sec">
-        <div class="res-card res-thumb calc-card">
-          <button type="button" class="calc-shot-btn js-gate-open" data-gate="calc" aria-label="Open the BESS Calculator"><img src="/assets/img/calculator-preview.jpg" alt="BESS Calculator: full potential and expected revenues per month (fictional example)" width="1440" height="900" loading="lazy"></button>
-          <div><span>BESS Calculator</span><small>Subject to change, methodology to be refined. Project data is never shown to other parties.</small></div>
-          <button type="button" class="btn btn-dark js-gate-open" data-gate="calc">Open</button>
+      <div class="bm-grid calc-grid">
+        <div class="bm-panel calc-panel">
+          <p class="bm-place">Example</p>
+          <h3>Project Sterrenburg</h3>
+          <p>A 5 MW / 10 MWh battery co-located with 10 MWp of solar on a 10 MW grid connection. The calculator shows its expected revenues by month, with and without the battery. The example uses data from emulated assets; figures may change as the methodology is refined.</p>
+          <div class="bm-foot"><a class="calc-talk" href="/talk-to-us/">Talk to us</a><button type="button" class="btn btn-dark js-gate-open" data-gate="calc">Open</button></div>
         </div>
+        <button type="button" class="calc-shot2 calc-shot-v js-gate-open" data-gate="calc" aria-label="Open the BESS Calculator"><video autoplay muted loop playsinline preload="metadata" poster="/assets/video/calc-tour-v-poster.jpg" aria-hidden="true"><source src="/assets/video/calc-tour-m.mp4" type="video/mp4" media="(max-width:860px)"><source src="/assets/video/calc-tour-m.webm" type="video/webm" media="(max-width:860px)"><source src="/assets/video/calc-tour-v.mp4" type="video/mp4"><source src="/assets/video/calc-tour-v.webm" type="video/webm"></video></button>
       </div>
     </section>
   </div>
@@ -412,7 +414,7 @@ def resources(t):
         RES_EXTRAS_HTML = re.sub(r'\n    <section class="nlr-block".*?</section>', '', RES_EXTRAS_HTML, flags=re.S)
     hero = f'''    <div class="page-hero" id="main">
       <h1>Resources</h1>
-      <p>{('A free BESS Calculator, a periodic NL revenue report, API documents and brand assets of the Independent Capacity Market.' if NL_REPORT else 'A free BESS Calculator, API documents and brand assets of the Independent Capacity Market.') if RES_EXTRAS else 'API documents and brand assets of the Independent Capacity Market.'}</p>
+      <p>{('A free BESS Calculator, a periodic NL revenue report, API documents and brand assets of the Independent Capacity Market.' if NL_REPORT else ('An introduction to strategies for battery energy storage systems, a free BESS Calculator, our API documents and brand assets.' if MAP_LIVE else 'A free BESS Calculator, API documents and brand assets of the Independent Capacity Market.')) if RES_EXTRAS else 'API documents and brand assets of the Independent Capacity Market.'}</p>
     </div>'''
     body = f'''<main class="res">
 {RES_EXTRAS_HTML if RES_EXTRAS else ''}  <div class="wrap res-cols">
@@ -432,21 +434,21 @@ def resources(t):
 
 ROLES = [
   ('Business Developer', 'Amsterdam',
-   'Sell our solutions to BESS owners and the installers who work with them. You own the pipeline, from first call to signed contract and beyond.',
-   ['Be the connector: build lasting relationships with the installers and developers who bring us BESS owners (3–30 MW)',
+   'Bring the ICM’s solutions to BESS owners and the installers who work with them. You own the pipeline from first conversation to signed contract, and the relationship after that.',
+   ['Build lasting relationships with the installers and developers who bring us BESS owners (3–30 MW)',
     'Run discovery calls and present Calculator, Backtest and Broker results',
     'Guide clients from first call through onboarding, and make sure they get lasting value',
-    'Turn successfully served clients into case examples'],
+    'Turn successful client engagements into case studies'],
    ['3–6 years in B2B consultative sales (SaaS, energy or finance)',
-    'Explains technical topics clearly',
+    'Able to explain technical topics clearly',
     'Fluent in Dutch and English',
-    'Knows BRP and aFRR, or learns fast']),
+    'Familiar with BRP and aFRR, or able to learn quickly']),
   ('BESS Analyst', 'Amsterdam',
-   'Improve the revenue models, the BESS Backtest and the data pipelines behind every ICM result, and discuss the outcomes with clients.',
+   'Strengthen the revenue models, the BESS Backtest and the data pipelines behind every ICM result, and discuss the outcomes with clients.',
    ['Improve and extend the revenue models for imbalance, FCR, aFRR and day-ahead',
     'Speed up the BESS Backtest back-end and automate battery and market data',
     'Follow market design and regulation (TenneT, ACM, grid congestion) and translate it into our methodology',
-    'Talk with clients about their results and what they mean for them'],
+    'Discuss results with clients and what they mean for their assets'],
    ['MSc in econometrics, physics, energy or similar, with Python and SQL',
     '2–5 years at a trader, optimizer or consultancy',
     'Knowledge of the Dutch and European power markets',
@@ -462,13 +464,67 @@ ADVISORS = [  # (name, one-line background or '', LinkedIn)
   ('Daan Walter', 'Principal, Ember', 'https://www.linkedin.com/in/daan-walter-292980a7/'),
 ]
 _LI = '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C20.6 8.65 21 11 21 14v7h-4v-6.2c0-1.48-.03-3.38-2.06-3.38-2.06 0-2.38 1.6-2.38 3.27V21H9z"/></svg>'
-ADVISORS_HTML = ('<div class="sup-card adv-card"><p class="adv-h">Advisors</p><ul class="adv-list">' + ''.join(
+ADVISORS_HTML = ('<div class="sup-card adv-card"><ul class="adv-list">' + ''.join(
     f'<li><a href="{u}" target="_blank" rel="noopener"><span><b>{n}</b>' + (('<small><span>' + r.rsplit(', ', 1)[0] + '</span><i class="adv-sep">, </i><span class="adv-org">' + r.rsplit(', ', 1)[1] + '</span></small>') if ', ' in r else (f'<small>{r}</small>' if r else '')) + f'</span><i aria-hidden="true">{_LI}</i><span class="sr-only"> on LinkedIn</span></a></li>'
     for n, r, u in ADVISORS) + '</ul></div>')
 
+APPLY_URL = 'https://vwz64wuu6x.zite.so/'
+
+def role_v2(title, summary, about, goals, bring, offer, prac='Based in Amsterdam, with a flexible start date.'):
+    li = lambda xs: ''.join(f'<li>{x}</li>' for x in xs)
+    return f'''      <details class="co-role" name="roles"><summary><b>{title}</b><em>Amsterdam</em><i class="co-pm" aria-hidden="true"></i></summary><div class="co-body co-body2 co-body3">
+        <div><h4>About the role</h4><p>{summary}</p><p>{_MARKET}</p>{('<p>' + about + '</p>') if about else ''}<p>{goals}</p>
+          <p class="co-prac">{prac} Apply with your CV, a short cover letter and your goals for the first 3 months.</p>
+          <a class="btn btn-dark" href="{APPLY_URL}" target="_blank" rel="noopener">Apply</a></div>
+        <div><h4>What you bring</h4><p class="co-sub">If you meet most, but not all, of these criteria, we encourage you to apply.</p><ul>{li(bring)}</ul></div>
+        <div><h4>What we offer</h4><ul>{li(offer)}</ul></div>
+      </div></details>'''
+
+_MARKET = 'Batteries are becoming central to a secure power system based on solar and wind. The Netherlands had around 3 GWh of battery storage installed at the end of 2025 and is projected to reach around 25 GWh by 2030, an eightfold increase.</p><p>For most owners, battery revenues remain opaque. The ICM benchmarks performance against the full potential of each site and monitors it proactively, so that every battery is used as efficiently as possible.'
+
+_FRONT = 'A front-row view of one of the fastest-growing sectors in energy, where batteries, grid congestion and power markets meet'
+_OWN = 'Full ownership from your first week, in a small team coached by senior industry leaders. We combine corporate excellence with startup speed.'
+_FREE = 'Freedom to choose your own route and to work remotely, towards targets we set together.'
+
+BD_V2 = role_v2('Business Developer',
+    'As our first Business Developer, you lead the ICM’s commercial expansion among battery owners and installers (3–30 MW). We are looking for a sales juggernaut in the making.',
+    '',
+    '<b>First 3 months.</b> Master how batteries create value, build relationships with the installers and owners in our network, and deliver the first case study.</p><p><b>First 12 months.</b> Build a partner channel of 10 installers who refer clients, support our first 50 clients in maximising the value of their batteries, and convert results into case studies that fuel growth.',
+    ['3–6 years of experience in B2B consultative sales, ideally in SaaS, energy or financial services',
+     'A track record of turning first conversations into signed contracts and long-term client relationships',
+     'A network among battery owners, installers or developers, or the drive to build one quickly',
+     'Familiarity with the BESS landscape (meters, EMS, optimizers) and the sales cycle within it, as a plus',
+     'Native-level Dutch and strong English'],
+    [_FRONT,
+     _OWN,
+     'A one-year contract with a salary around the Dutch modal income (EUR 40–50k, excluding bonus), plus an equity package that fits a first hire',
+     'Freedom to choose your own route and to work remotely, with room to co-lead the sales team as we scale',
+     'A crash course in all things BESS, including how batteries create value: day-ahead, intraday, imbalance, FCR, aFRR, mFRR and redispatch'],
+    'Based in Amsterdam, with some travel to visit installers and owners. You report to the founder.')
+
+ANALYST_V2 = role_v2('BESS Analyst',
+    'As our first BESS Analyst, you build the most customised BESS Backtest in Europe and answer the technical questions of battery owners and traders.',
+    '',
+    '<b>First 3 months.</b> Master our models and data, and answer the first technical questions from owners and traders, such as the price impact of a battery’s own bids.</p><p><b>First 12 months.</b> Extend the BESS Backtest to intraday trading, make optimizer settlement verifiable for owners, and further develop a methodology that owners, traders and financiers trust.',
+    ['An MSc in econometrics, operations research, physics or energy, with strong Python and SQL',
+     '2–5 years of experience as a trader, quant or analyst at an optimizer, utility or trading house',
+     'In-depth knowledge of the Dutch and European power markets, including intraday order books and settlement',
+     'Experience with optimisation models, such as linear programming or PyPSA, and with asset-backed and proprietary trading strategies',
+     'The ability to explain technical concepts in simple terms, in fluent English; Dutch as a plus'],
+    [_FRONT,
+     _OWN,
+     'A salary around the Dutch modal income (EUR 40–50k), plus an equity package that fits a first hire',
+     'Freedom to choose your own route and to work remotely, with room to lead the analytics team as we scale',
+     'The opportunity to shape the methodology behind every ICM result, drawing on the latest academic research'],
+    'Based in Amsterdam, with a flexible start date. You report to the founder and work with our software developers and seasoned traders.')
+
+ROLE_PREVIEW = True  # roles v2 approved 27 Oct 2026
+
 def company(t):
     def li(items): return ''.join(f'<li>{i}</li>' for i in items)
-    rows = '\n'.join(f'''      <details class="co-role" name="roles"><summary><b>{r}</b><em>{c}</em><i class="co-pm" aria-hidden="true"></i></summary><div class="co-body"><div><p>{m}</p><a class="btn btn-dark" href="mailto:ideles@icm.energy?subject=Application%3A%20{r.replace(" ", "%20")}">Apply</a></div><div><h4>What you will do</h4><ul>{li(do)}</ul></div><div><h4>Who you are</h4><ul>{li(you)}</ul></div></div></details>''' for r, c, m, do, you in ROLES)
+    rows = '\n'.join(f'''      <details class="co-role" name="roles"><summary><b>{r}</b><em>{c}</em><i class="co-pm" aria-hidden="true"></i></summary><div class="co-body"><div><p>{m}</p><a class="btn btn-dark" href="{APPLY_URL}" target="_blank" rel="noopener">Apply</a></div><div><h4>What you will do</h4><ul>{li(do)}</ul></div><div><h4>Who you are</h4><ul>{li(you)}</ul></div></div></details>''' for r, c, m, do, you in ROLES)
+    if ROLE_PREVIEW:
+        rows = BD_V2 + '\n' + ANALYST_V2
 
     hero = '''    <div class="page-hero" id="main">
       <h1>About The Independent Capacity Market</h1>
@@ -479,20 +535,20 @@ def company(t):
     <p class="co-label">Who we are</p>
     <div>
       <p>The ICM serves those who add capacity to the grid, but are in the dark about their potential.</p>
-      <p>By bringing transparency, we contribute to a stronger grid: one that rewards optimizers that perform, makes batteries easier to finance and gives system operators access to more reliable flexible capacity.</p>
-      <p>We value our independence. We don't own, install or optimize, which keeps our intentions pure and our heads clear. For our clients, that means securing the true value of their battery, backed by reliable numbers.</p>
+      <p>Greater transparency strengthens the grid. It rewards optimizers that perform, makes batteries easier to finance and gives system operators access to more reliable flexible capacity.</p>
+      <p>Independence is central to how we work. We do not own, install or optimize batteries, so we have no stake in any outcome other than our clients’ results. We show clients how far their battery is from its full potential, and help them capture the rest.</p>
       <a class="btn btn-lilac" href="/talk-to-us/">Talk to us</a>
     </div>
   </div>
 </section>
-{'<section class="co-story" id="story"><div class="wrap"><div class="co-story-grid"><div><span class="eyebrow">Our story</span><h2>How the ICM started</h2><div class="story-txt"><p>Batteries are becoming the backbone of a resilient grid. Europe already has more than 100 GWh of battery storage installed, and the Netherlands is expected to reach around 25 GWh by 2030.</p><p>Batteries strengthen the grid. They store surplus solar and wind power, relieve congested grids and help keep the frequency at 50 Hz.</p><p>Yet most battery owners are flying blind. What a battery earns is a black box, and so is the route to a better optimizer. There is no objective information on which optimizers exist and how they perform.</p><p>The ICM was founded in Amsterdam in March 2026 to close this information gap. We serve those who add capacity to the grid, but are in the dark about the potential of their assets.</p><p class="story-src-line">Sources: <a href="https://www.ees-europe.com/publications/european-market-outlook-for-battery-storage-2026" target="_blank" rel="noopener">SolarPower Europe, European Market Outlook for Battery Storage</a>; <a href="https://taiyangnews.info/storage/europe-battery-storage-capacity-exceeds-100-gwh" target="_blank" rel="noopener">TaiyangNews, Europe’s battery storage capacity exceeds 100 GWh</a>.</p></div></div><div><span class="eyebrow">Supported by</span><div class="sup-card"><img src="/assets/img/provincie-noord-holland.png" alt="Province of Noord-Holland" width="1188" height="236" loading="lazy"><p><a href="https://www.noord-holland.nl/Producten_op_alfabet/MKB_innovatiestimulering_topsectoren_MIT_Noord_Holland_Haalbaarheidsproject_subsidie" target="_blank" rel="noopener">MIT feasibility grant</a> from the Province of Noord&#8209;Holland.</p></div>' + ADVISORS_HTML + '</div></div></div></section>' if COMPANY_STORY else ''}
+{'<section class="co-story" id="story"><div class="wrap"><div class="co-story-grid"><div><span class="eyebrow">Our story</span><h2>How the ICM started</h2><div class="story-txt"><p>Battery storage is becoming a cornerstone of a resilient power grid. Batteries store surplus solar and wind power, relieve congestion and help keep grid frequency at 50 Hz.</p><p>The Netherlands had around 3 GWh installed at the end of 2025 and is projected to reach around 25 GWh by 2030, an eightfold increase.</p><p>Yet, for most, battery revenues are a black box, and so is the route to a better optimizer: there is no objective information on which optimizers exist, what their track record is or how they could perform on your site.</p><p>The ICM was founded in Amsterdam in March 2026 to close this information gap.</p><p class="story-src-line">Sources: <a href="https://www.ees-europe.com/publications/european-market-outlook-for-battery-storage-2026" target="_blank" rel="noopener">SolarPower Europe, European Market Outlook for Battery Storage</a>; <a href="https://taiyangnews.info/storage/europe-battery-storage-capacity-exceeds-100-gwh" target="_blank" rel="noopener">TaiyangNews, Europe’s battery storage capacity exceeds 100 GWh</a>.</p></div></div><div><span class="eyebrow">Our advisors</span>' + ADVISORS_HTML + '<span class="eyebrow sup-eb">Our supporters</span><div class="sup-tiles"><a class="sup-tile" href="https://www.noord-holland.nl/Producten_op_alfabet/MKB_innovatiestimulering_topsectoren_MIT_Noord_Holland_Haalbaarheidsproject_subsidie" target="_blank" rel="noopener" aria-label="MIT feasibility grant from the Province of Noord-Holland"><span class="sup-arrow" aria-hidden="true"><svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span><img src="/assets/img/provincie-noord-holland.png" alt="Province of Noord-Holland" width="1188" height="236" loading="lazy"><small>MIT feasibility grant</small></a></div></div></div></div></section>' if COMPANY_STORY else ''}
 <section class="co-team co-team-pl">
   <div class="wrap">
     <p class="co-label dark-t">The team</p>
     <div class="team">
-      <a class="member" href="https://www.linkedin.com/in/idel%C3%A8s-kaandorp/" target="_blank" rel="noopener"><img class="ph" src="/assets/team-ideles.jpg" alt="Idelès Kaandorp" width="600" height="600" loading="lazy"><b>Idelès Kaandorp</b><span class="m-bio">Founder. Leads the push for transparency in the BESS market. Trained as a mathematician, holds an MBA from Harvard Business School and served energy clients as a manager at McKinsey.</span></a>
-      <a class="member" href="https://www.linkedin.com/in/edo-rivai-78b66a17/" target="_blank" rel="noopener"><img class="ph" src="/assets/team-edo.jpg" alt="Edo Rivai" width="512" height="512" loading="lazy"><b>Edo Rivai</b><span class="m-bio">Senior Software Developer. Owns platform design, integrations and infrastructure. Built and scaled software, most recently as Staff Software Engineer at Spot AI (intelligent security cameras).</span></a>
-      <a class="member" href="https://www.linkedin.com/in/jesse-h-willis/" target="_blank" rel="noopener"><img class="ph" src="/assets/team-jesse.jpg" alt="Jesse Willis" width="600" height="720" loading="lazy"><b>Jesse Willis</b><span class="m-bio">Project Engineer. Translates your dispatch constraints into custom insights that drive decisions. Studied Industrial Design Engineering in Delft and started Everlab to build meaningful products from scratch.</span></a>
+      <a class="member" href="https://www.linkedin.com/in/idel%C3%A8s-kaandorp/" target="_blank" rel="noopener"><img class="ph" src="/assets/team-ideles.jpg" alt="Idelès Kaandorp" width="600" height="600" loading="lazy"><b>Idelès Kaandorp</b><span class="m-bio">Founder. Leads the ICM’s work on transparency in the BESS market. Trained as a mathematician, she holds an MBA from Harvard Business School and served energy clients as an Engagement Manager at McKinsey.</span></a>
+      <a class="member" href="https://www.linkedin.com/in/edo-rivai-78b66a17/" target="_blank" rel="noopener"><img class="ph" src="/assets/team-edo.jpg" alt="Edo Rivai" width="512" height="512" loading="lazy"><b>Edo Rivai</b><span class="m-bio">Senior Software Developer. Responsible for platform design, integrations and infrastructure. Previously Staff Software Engineer at Spot AI, a provider of intelligent security cameras.</span></a>
+      <a class="member" href="https://www.linkedin.com/in/jesse-h-willis/" target="_blank" rel="noopener"><img class="ph" src="/assets/team-jesse.jpg" alt="Jesse Willis" width="600" height="720" loading="lazy"><b>Jesse Willis</b><span class="m-bio">Project Engineer. Translates each site’s dispatch constraints into tailored analysis for clients. Studied Industrial Design Engineering at TU Delft and founded Everlab to build products from scratch.</span></a>
     </div>
     <div class="team-cta"><a class="btn btn-lilac" href="/talk-to-us/">Talk to us</a></div>
   </div>
@@ -505,7 +561,7 @@ def company(t):
     <div class="co-acc">
 {rows}
     </div>
-    <p class="co-note">If no position suits you, you're welcome to submit an open application with your CV and what you'd want to achieve at the ICM to <a href="mailto:ideles@icm.energy">ideles@icm.energy</a>.</p>
+    <p class="co-note">If none of these roles fits, send an open application with your CV and what you would like to achieve at the ICM to <a href="mailto:careers@icm.energy">careers@icm.energy</a>.</p>
   </div>
 </section>'''
     ld = {"@context": "https://schema.org", "@type": "AboutPage", "url": "https://icm.energy/company/", "mainEntity": {"@type": "Organization", "@id": "https://icm.energy/#org", "name": "Independent Capacity Market B.V.", "alternateName": "The ICM", "logo": "https://icm.energy/assets/logo-header.png", "url": "https://icm.energy/",
@@ -875,6 +931,7 @@ def cr_section(v, label=False):
     return f"""<section class="dark cr-sec cr-{v}">{tag}<div class="wrap">{CR_H}{CR_P}<div class="cr-vis">{CR_VARIANTS[v][1]()}</div></div></section>"""
 
 CR_CHOICE = os.environ.get('CR_VARIANT', '')
+MAP_LIVE = True  # Unlocking the Netherlands map (texts approved 26 Oct 2026)
 FILM_LIVE = False  # set True once approved to show the film on the live site
 
 GS_STEPS = f'''<section class="dark gs-steps" id="steps">

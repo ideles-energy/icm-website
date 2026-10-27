@@ -287,3 +287,34 @@ r.addEventListener('input',u);u();})();
     if('IntersectionObserver' in window){ var io=new IntersectionObserver(function(es){ if(es[0].isIntersecting){ start(); io.disconnect(); } },{threshold:.35}); io.observe(el); } else start();
   });
 })();
+
+/* Batteries at work map: dot click shows that battery's story; default panel explains why batteries */
+(function(){
+  var dots=document.querySelectorAll('.js-bm-dot'); if(!dots.length) return;
+  var stories=document.querySelectorAll('.bm-story');
+  function show(k){
+    stories.forEach(function(s){ s.hidden = (s.getAttribute('data-k')||'') !== k; });
+    dots.forEach(function(d){ d.setAttribute('aria-pressed', d.getAttribute('data-k')===k ? 'true' : 'false'); });
+  }
+  dots.forEach(function(d){ d.addEventListener('click', function(){ var k=d.getAttribute('data-k'); show(d.getAttribute('aria-pressed')==='true' ? '' : k); }); });
+  document.querySelectorAll('.js-bm-back').forEach(function(b){ b.addEventListener('click', function(){ show(''); }); });
+})();
+
+/* Film: on desktop, scale the whole film so heading + film + controls fit in the window below the header */
+(function(){
+  var f=document.querySelector('.cr-sec .film'); if(!f || !('zoom' in document.body.style)) return;
+  var sec=f.closest('.cr-sec'), eb=sec.querySelector('.cr-eb')||sec.querySelector('h2');
+  function fit(){
+    f.style.zoom='';
+    if(window.innerWidth<861) return;
+    var nav=document.querySelector('header.nav'), navH=nav?Math.min(nav.offsetHeight,80):70;
+    var avail=window.innerHeight-navH-16;
+    var top=eb.getBoundingClientRect().top, bottom=f.getBoundingClientRect().bottom;
+    var need=bottom-top; if(need<=avail) return;
+    var fh=f.offsetHeight, head=need-fh;
+    var z=Math.max(.72,Math.min(1,(avail-head)/fh));
+    f.style.zoom=z.toFixed(3);
+  }
+  fit(); window.addEventListener('resize',function(){clearTimeout(fit._t);fit._t=setTimeout(fit,120)});
+  window.addEventListener('load',fit);
+})();

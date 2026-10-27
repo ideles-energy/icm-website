@@ -2469,3 +2469,175 @@ header.nav .logo .logo-icon-light{display:none !important}
 @media (max-width:640px){.co-story .sup-card:not(.adv-card) p{font-size:15px}}
 /* v106 careers subtitle: no heading letter-spacing (looked like a different font) */
 .co-big span{letter-spacing:normal;font-weight:500}
+/* v107 Resources: Batteries at work map (preview only until texts approved) */
+.bm-sec{padding:64px 0 24px}
+.bm-sec h2{font-size:clamp(28px,3vw,38px);font-weight:700;letter-spacing:-.02em;color:#040D1F;margin:6px 0 28px}
+.bm-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:36px;align-items:center;background:#F2F8F9;border:1px solid #D5E1E3;border-radius:22px;padding:28px}
+.bm-map{position:relative;max-width:440px;width:100%;margin:0 auto}
+.bm-map > svg{display:block;width:100%;height:auto}
+.bm-dot{position:absolute;width:44px;height:44px;margin:-22px 0 0 -22px;border:0;background:none;padding:0;cursor:pointer;display:grid;place-items:center}
+.bm-dot i{width:18px;height:18px;border-radius:50%;background:#00899E;box-shadow:0 0 0 0 rgba(0,137,158,.55);animation:bmPulse 2.4s ease-in-out infinite;transition:transform .2s}
+.bm-dot:nth-of-type(2n) i{animation-delay:1.2s}
+.bm-dot:hover i,.bm-dot:focus-visible i{transform:scale(1.25)}
+.bm-dot:focus-visible{outline:2px solid #274A51;outline-offset:-6px;border-radius:50%}
+.bm-dot[aria-pressed="true"] i{background:#D392EB;animation:none;box-shadow:0 0 0 7px rgba(211,146,235,.3);transform:scale(1.2)}
+@keyframes bmPulse{0%{background:#00899E;box-shadow:0 0 0 0 rgba(0,137,158,.5)}50%{background:#97F2F5;box-shadow:0 0 0 12px rgba(151,242,245,0)}100%{background:#00899E;box-shadow:0 0 0 0 rgba(0,137,158,0)}}
+@media (prefers-reduced-motion:reduce){.bm-dot i{animation:none}}
+.bm-panel{min-height:300px;display:flex;flex-direction:column;justify-content:center;background:#FFFFFF;border:1px solid #D5E1E3;border-radius:18px;padding:28px}
+.bm-story h3{font-size:24px;font-weight:700;color:#040D1F;margin:4px 0 10px;letter-spacing:-.01em}
+.bm-story p{margin:0 0 12px;line-height:1.55;color:#283A3E}
+.bm-place{font-size:13px !important;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#526E74 !important;margin:0 !important}
+.bm-stat{display:inline-block;background:#274A51;color:#F2F8F9 !important;font-weight:700;border-radius:999px;padding:6px 14px;font-variant-numeric:tabular-nums}
+.bm-hint{color:#00899E !important;font-weight:600}
+.bm-src{font-size:14px;color:#526E74 !important}.bm-src a{color:#274A51;font-weight:600}
+.bm-back{border:1px solid #274A51;background:none;color:#274A51;border-radius:999px;padding:7px 16px;font:600 14px inherit;cursor:pointer;align-self:flex-start}
+.bm-back:hover{background:#274A51;color:#F2F8F9}
+.bm-note{margin:18px 0 0;padding-top:14px;border-top:1px solid #E3EBED;font-size:13.5px;color:#526E74}.bm-note a{color:#274A51;font-weight:600}
+@media (max-width:860px){.bm-grid{grid-template-columns:1fr;padding:18px;gap:18px}.bm-map{max-width:320px}.bm-panel{min-height:0;padding:20px}}
+/* v108 map: Google Maps-like legibility (land white, dashed province borders, province labels, water tint) */
+.bm-map{background:#DDEFF2;border-radius:16px;padding:0}
+.bm-prov path{fill:#FFFFFF;stroke:#A9BDC2;stroke-width:.9;stroke-dasharray:3 2.5;stroke-linejoin:round}
+.bm-lbl text{font:600 8.6px Figtree,system-ui,sans-serif;letter-spacing:.06em;text-transform:uppercase;fill:#7E9599;text-anchor:middle;pointer-events:none}
+.bm-dot{margin:-22px 0 0 -22px}
+.bm-story h3{font-size:22px}
+/* v109 map: white band (handbook rhythm), Resources heading style, IJsselmeer, cities, pin markers */
+.bm-band{background:#FFFFFF;margin:48px 0 0;padding:56px 0 64px}
+.bm-band .bm-head{margin:0 0 8px}
+.bm-band .bm-head .res-lead{max-width:44em;min-height:0 !important;margin:0 0 28px}
+.bm-band .bm-grid{background:#F2F8F9}
+.bm-map{background:#CFE6EC}
+.bm-prov path{fill:#FBFCFC;stroke:#9DB2B7;stroke-width:.8;stroke-dasharray:3 2.5}
+.bm-lake path{fill:#CFE6EC;stroke:#B2CFD6;stroke-width:.6}
+.bm-city circle{fill:#526E74}
+.bm-city text{font:600 9.5px Figtree,system-ui,sans-serif;fill:#3E5357;paint-order:stroke;stroke:#FBFCFC;stroke-width:3px;stroke-linejoin:round}
+.bm-lbl{display:none}
+.bm-dot{width:30px;height:40px;margin:0;transform:translate(-50%,-100%);display:block}
+.bm-dot i{display:none}
+.bm-dot svg{position:relative;display:block;width:28px;height:38px;filter:drop-shadow(0 3px 4px rgba(4,13,31,.3));transition:transform .2s;transform-origin:50% 100%}
+.bm-dot .bm-pin-b{fill:#274A51;stroke:#FFFFFF;stroke-width:1.5;transition:fill .2s}.bm-dot .bm-pin-c{fill:#FFFFFF}
+.bm-ping{position:absolute;left:50%;bottom:-5px;width:16px;height:16px;margin-left:-8px;border-radius:50%;background:rgba(211,146,235,.55);animation:bmPing 2.2s ease-out infinite}
+.bm-dot:nth-of-type(2n) .bm-ping{animation-delay:1.1s}
+@keyframes bmPing{0%{transform:scale(.4);opacity:.9}100%{transform:scale(2.6);opacity:0}}
+.bm-dot:hover svg,.bm-dot:focus-visible svg{transform:translateY(-3px) scale(1.08)}
+.bm-dot:focus-visible{outline:2px solid #274A51;outline-offset:2px;border-radius:8px}
+.bm-dot[aria-pressed="true"] .bm-pin-b{fill:#D392EB}.bm-dot[aria-pressed="true"] .bm-pin-c{fill:#040D1F}
+.bm-dot[aria-pressed="true"] .bm-ping{animation:none;opacity:0}
+.bm-dot[aria-pressed="true"] svg{transform:scale(1.12)}
+@media (prefers-reduced-motion:reduce){.bm-ping{animation:none;opacity:.5}}
+.bm-story p a{color:#274A51;font-weight:600}
+/* v110 Film fits a laptop screen: tighter frame and headings; JS scales the film when the window is short */
+@media (min-width:861px){
+  .cr-sec{padding:72px 0 80px}
+  .cr-sec h2{margin-bottom:12px !important}
+  .cr-sec .cr-p{margin-bottom:24px !important}
+  .film{padding:18px 22px 14px}
+  .fm-ctrl{margin-top:12px}
+}
+/* v111 Company: Our advisors card, compact Supported by line with clickable province logo */
+.co-story .adv-card{margin-top:14px}
+.sup-by{display:flex;align-items:center;gap:16px;margin-top:22px}
+.sup-by span{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#526E74}
+.sup-by a{display:inline-flex;border-radius:8px;padding:4px;transition:background .2s}
+.sup-by a:hover{background:#F2F8F9}
+.sup-by img{width:150px;height:auto;display:block}
+/* v112 advisors without the card frame; dividers only */
+.co-story .adv-card{border:0 !important;border-radius:0;padding:0;background:none;margin-top:6px}
+.co-story .adv-list li:first-child a{padding-top:8px}
+.co-story .adv-list{border-top:1px solid #E3EBED}
+.co-story .adv-list li{border-bottom:1px solid #E3EBED}
+.co-story .adv-list li:last-child{border-bottom:1px solid #E3EBED}
+.sup-card .adv-list li:last-child a{padding-bottom:13px}
+.co-story .adv-list{border-top:0}
+.co-story .adv-list li:first-child a{padding-top:4px}
+/* v113 Calculator in the same box format as the map; story panel fixed height; actions top right */
+.calc-sec{padding-top:56px}
+.calc-sec .bm-head .res-lead{max-width:44em;min-height:0 !important;margin:0 0 28px}
+.calc-grid{background:#FFFFFF}
+.calc-shot2{display:block;border:1px solid #D5E1E3;border-radius:16px;overflow:hidden;background:#F2F8F9;padding:0;cursor:pointer}
+.calc-shot2 img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;transition:transform .3s}
+.calc-shot2:hover img{transform:scale(1.02)}
+.calc-panel{background:#F2F8F9 !important;justify-content:flex-start}
+.calc-list{margin:4px 0 0;padding-left:20px;line-height:1.55;color:#283A3E}.calc-list li{margin:0 0 8px}
+.bm-stack{display:grid}
+.bm-stack > .bm-story{grid-area:1/1}
+.bm-stack > .bm-story[hidden]{display:block !important;visibility:hidden}
+.bm-panel{justify-content:flex-start}
+.bm-top{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;margin:0 0 12px}
+.bm-top h3{margin:4px 0 0}
+.bm-actions{display:flex;align-items:center;gap:10px;flex:none}
+.bm-actions .btn{white-space:nowrap}
+.bm-actions .bm-stat{margin:0 !important;white-space:nowrap}
+.bm-back{display:none}
+@media (max-width:1100px){.bm-top{flex-direction:column}.bm-actions{flex-wrap:wrap}}
+/* v114 alert: lower right over the chart, full text at once */
+@media (min-width:861px){.ax-toast{top:auto !important;bottom:-10px;right:40px !important;width:min(370px,40%) !important}}
+.ax-t1b{opacity:1 !important;transition:none}
+/* v115 calculator: text left, video right; map stories: full-width title, source + back at the bottom */
+.calc-grid{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr) !important}
+.calc-copy{display:flex;flex-direction:column;gap:18px;padding:8px 6px}
+.calc-lead2{font-size:clamp(20px,1.7vw,24px);line-height:1.4;font-weight:600;color:#040D1F;margin:0}
+.calc-btns{display:flex;gap:12px;flex-wrap:wrap}
+.calc-copy .bm-note{border:0;padding:0;margin:0}
+.calc-shot2 video{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+.bm-stack > .bm-story{display:flex !important;flex-direction:column}
+.bm-story h3{font-size:clamp(22px,1.9vw,27px) !important;line-height:1.2;margin:6px 0 14px !important}
+.bm-place{white-space:nowrap}
+.bm-foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:6px}
+.bm-foot .bm-src{margin:0 !important}
+.bm-foot .btn{white-space:nowrap}
+@media (max-width:860px){.calc-grid{grid-template-columns:1fr !important}.calc-shot2{order:-1}.bm-foot{flex-wrap:wrap}}
+/* v116 Company: spacing under Our advisors, Our supporters as Ramp-style tiles */
+.co-story .adv-card{margin-top:18px !important}
+.sup-eb{display:block;margin-top:52px}
+.sup-tiles{display:grid;grid-template-columns:repeat(auto-fill,170px);gap:12px;margin-top:18px;max-width:560px}
+.sup-tile{position:relative;aspect-ratio:1/1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;border:1px solid #E3EBED;border-radius:14px;background:#FFFFFF;text-decoration:none;padding:18px;transition:border-color .2s,box-shadow .2s}
+.sup-tile:hover{border-color:#274A51;box-shadow:0 10px 26px rgba(39,74,81,.10)}
+.sup-tile img{width:82%;height:auto;filter:grayscale(1);opacity:.75;transition:filter .2s,opacity .2s}
+.sup-tile:hover img{filter:none;opacity:1}
+.sup-tile small{font-size:13px;color:#526E74}
+.sup-arrow{position:absolute;top:10px;right:10px;width:26px;height:26px;border-radius:50%;background:#F2F8F9;color:#274A51;display:grid;place-items:center}
+.sup-tile:hover .sup-arrow{background:#274A51;color:#FFFFFF}
+/* v117 calculator aligned with the map: heading + lead above, box with panel (left) and video (right) */
+.calc-grid{grid-template-columns:minmax(0,1fr) minmax(0,1.25fr) !important;align-items:stretch !important}
+.calc-panel{background:#FFFFFF !important;border:1px solid #D5E1E3}
+.calc-panel h3{font-size:clamp(22px,1.9vw,27px) !important;margin:6px 0 12px}
+.calc-panel p{margin:0 0 12px;line-height:1.55;color:#283A3E}
+.calc-panel .bm-foot{margin-top:auto;padding-top:12px}
+.calc-talk{color:#274A51;font-weight:600}
+.calc-grid .calc-shot2{align-self:center}
+.calc-sec .bm-head .res-lead{margin-bottom:28px}
+.calc-panel{background:#F2F8F9 !important;border:0}
+/* v118 map first: no top margin on the band, calculator below on Platinum */
+.bm-band{margin-top:0 !important}
+/* v119 Resources rhythm: map on Platinum, calculator on white (full-bleed), documents on Platinum */
+.bm-band{background:#F2F8F9 !important}
+.bm-band .bm-grid{background:#FFFFFF !important}
+.bm-band .bm-panel{background:#F2F8F9;border-color:#E3EBED}
+.calc-sec{background:#FFFFFF;box-shadow:0 0 0 100vmax #FFFFFF;clip-path:inset(0 -100vmax);padding:64px 0 72px !important;margin-bottom:56px}
+.calc-grid{background:#F2F8F9 !important}
+.calc-panel{background:#FFFFFF !important}
+/* v119 role v2 */
+.co-body2 h4{margin-top:22px !important}
+.co-body2 > div > h4:first-child{margin-top:0 !important}
+.co-body2 .btn{margin-top:4px}
+.co-sub{font-size:14px !important;opacity:.8;margin:0 0 10px !important}
+
+/* v120: calculator box same size as the map box; roles in three blocks */
+.calc-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important;align-items:center}
+.calc-shot-v{max-width:440px;width:100%;margin:0 auto;align-self:center}
+.calc-shot-v video{aspect-ratio:420/500 !important;height:auto;object-fit:cover}
+.calc-panel{align-self:center}
+.calc-panel .bm-foot{align-items:center;margin-top:28px}
+@media (max-width:860px){.calc-shot-v{max-width:320px}}
+.co-body3 > div > ul{margin-top:12px}
+.co-body3 .co-prac{font-size:14px;opacity:.85;margin-top:16px}
+.co-body3 > div:first-child h4:first-child,.co-body3 > div > h4:first-child{margin-top:0 !important}
+.calc-panel .bm-foot .calc-talk{margin:0;padding:0;line-height:1}
+/* v121: mobile, calculator stacks like the map and matches its size */
+@media (max-width:860px){.calc-grid{grid-template-columns:1fr !important;padding:18px;gap:18px}.calc-shot-v{max-width:320px;order:0}.calc-panel{order:1}}
+.calc-panel > p:not(.bm-place){font-size:16px;line-height:1.6}
+.co-body3 > div:first-child > p:not(:first-of-type):not(.co-prac){font-size:15px;line-height:1.6;margin-top:12px}
+.co-body3 p b{font-size:inherit !important;font-weight:600;display:inline;letter-spacing:0}
+/* v122: one text size in role details (eyebrows and button aside) */
+.co-body3 p,.co-body3 li,.co-body3 .co-sub,.co-body3 .co-prac,.co-body3 > div:first-child > p{font-size:15px !important;line-height:24px !important}
+.co-body3 .co-sub,.co-body3 .co-prac{opacity:.75}
