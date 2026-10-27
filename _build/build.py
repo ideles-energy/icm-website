@@ -480,7 +480,7 @@ def role_v2(title, summary, about, goals, bring, offer, prac='Based in Amsterdam
         <div><h4>What we offer</h4><ul>{li(offer)}</ul></div>
       </div></details>'''
 
-_MARKET = 'Batteries are becoming central to a secure power system based on solar and wind. Dutch storage capacity is projected to reach around 25 GWh by 2030. For most owners, battery revenues are still a black box. The ICM makes them transparent and monitors performance proactively, so that every battery is used as efficiently as possible.'
+_MARKET = 'Batteries are becoming central to a secure power system based on solar and wind. Dutch storage capacity is projected to reach around 25 GWh by 2030. For most owners, battery revenues remain opaque. The ICM benchmarks performance against the full potential of each site and monitors it proactively, so that every battery is used as efficiently as possible.'
 
 _FRONT = 'A front-row view of one of the fastest-growing sectors in energy, where batteries, grid congestion and power markets meet'
 _OWN = 'Proper ownership from your first week, in a small team coached by senior industry leaders. We combine corporate excellence with startup speed.'
@@ -505,18 +505,18 @@ BD_V2 = role_v2('Business Developer',
 ANALYST_V2 = role_v2('BESS Analyst',
     'As our first BESS Analyst, you build the most customised BESS Backtest in Europe and answer the technical questions of battery owners and traders.',
     '',
-    '<b>First 3 months.</b> Master our models and data, and answer the first technical questions from owners and traders, such as the price impact of a battery’s own bids.</p><p><b>First 12 months.</b> Extend the BESS Backtest to intraday trading, make optimizer settlement verifiable for owners, and develop a methodology that owners, traders and financiers trust.',
+    '<b>First 3 months.</b> Master our models and data, and answer the first technical questions from owners and traders, such as the price impact of a battery’s own bids.</p><p><b>First 12 months.</b> Extend the BESS Backtest to intraday trading, make optimizer settlement verifiable for owners, and further develop a methodology that owners, traders and financiers trust.',
     ['An MSc in econometrics, operations research, physics or energy, with strong Python and SQL',
      'Two to five years of experience as a trader, quant or analyst at an optimizer, utility or trading house',
      'In-depth knowledge of the Dutch and European power markets, including intraday order books, settlement and BSP and BRP roles',
      'Experience with optimisation models, such as linear programming or PyPSA, and with asset-backed and proprietary trading strategies',
-     'Fluent English; Dutch as a plus'],
+     'The ability to explain technical concepts in simple terms, in fluent English; Dutch as a plus'],
     [_FRONT,
      _OWN,
      'A Dutch modal salary (EUR 40–50k), plus an equity package that fits a first hire',
      'Freedom to choose your own route and to work remotely, with room to lead the analytics team as we scale',
      'The opportunity to shape the methodology behind every ICM result, drawing on the latest academic research'],
-    'Based in Amsterdam, with a flexible start date. You report to the founder and work with our software developers, product manager and domain experts.')
+    'Based in Amsterdam, with a flexible start date. You report to the founder and work with our software developers, product manager and seasoned traders.')
 
 ROLE_PREVIEW = os.environ.get('ICM_PREVIEW') == '1'  # Business Developer v2: preview only until reviewed
 
