@@ -474,7 +474,7 @@ def role_v2(title, summary, about, goals, bring, offer, prac='Based in Amsterdam
     li = lambda xs: ''.join(f'<li>{x}</li>' for x in xs)
     return f'''      <details class="co-role" name="roles"><summary><b>{title}</b><em>Amsterdam</em><i class="co-pm" aria-hidden="true"></i></summary><div class="co-body co-body2 co-body3">
         <div><h4>About the role</h4><p>{summary}</p><p>{_MARKET}</p>{('<p>' + about + '</p>') if about else ''}<p>{goals}</p>
-          <p class="co-prac">{prac} Apply with your CV, a short motivation and your goals for the first 3 months.</p>
+          <p class="co-prac">{prac} Apply with your CV, a short cover letter and your goals for the first 3 months.</p>
           <a class="btn btn-dark" href="{APPLY_URL}" target="_blank" rel="noopener">Apply</a></div>
         <div><h4>What you bring</h4><p class="co-sub">If you meet most, but not all, of these criteria, we encourage you to apply.</p><ul>{li(bring)}</ul></div>
         <div><h4>What we offer</h4><ul>{li(offer)}</ul></div>
@@ -483,21 +483,21 @@ def role_v2(title, summary, about, goals, bring, offer, prac='Based in Amsterdam
 _MARKET = 'Batteries are becoming central to a secure power system based on solar and wind. Dutch storage capacity is projected to reach around 25 GWh by 2030. For most owners, battery revenues remain opaque. The ICM benchmarks performance against the full potential of each site and monitors it proactively, so that every battery is used as efficiently as possible.'
 
 _FRONT = 'A front-row view of one of the fastest-growing sectors in energy, where batteries, grid congestion and power markets meet'
-_OWN = 'Proper ownership from your first week, in a small team coached by senior industry leaders. We combine corporate excellence with startup speed.'
+_OWN = 'Full ownership from your first week, in a small team coached by senior industry leaders. We combine corporate excellence with startup speed.'
 _FREE = 'Freedom to choose your own route and to work remotely, towards targets we set together.'
 
 BD_V2 = role_v2('Business Developer',
     'As our first Business Developer, you lead the ICM’s commercial expansion among battery owners and installers (3–30 MW). We are looking for a sales juggernaut in the making.',
     '',
     '<b>First 3 months.</b> Master how batteries create value, build relationships with the installers and owners in our network, and deliver the first case study.</p><p><b>First 12 months.</b> Build a partner channel of 10 installers who refer clients, support our first 50 clients in maximising the value of their batteries, and convert results into case studies that fuel growth.',
-    ['Three to six years of experience in B2B consultative sales, ideally in SaaS, energy or financial services',
+    ['3–6 years of experience in B2B consultative sales, ideally in SaaS, energy or financial services',
      'A track record of turning first conversations into signed contracts and long-term client relationships',
      'A network among battery owners, installers or developers, or the drive to build one quickly',
      'Familiarity with the BESS landscape (meters, EMS, optimizers) and the sales cycle within it, as a plus',
-     'Native Dutch with strong English'],
+     'Native-level Dutch and strong English'],
     [_FRONT,
      _OWN,
-     'A one-year contract with a Dutch modal salary (EUR 40–50k, excluding bonus), plus an equity package that fits a first hire',
+     'A one-year contract with a salary around the Dutch modal income (EUR 40–50k, excluding bonus), plus an equity package that fits a first hire',
      'Freedom to choose your own route and to work remotely, with room to co-lead the sales team as we scale',
      'A crash course in all things BESS, including how batteries create value: day-ahead, intraday, imbalance, FCR, aFRR, mFRR and redispatch'],
     'Based in Amsterdam, with some travel to visit installers and owners. You report to the founder.')
@@ -507,13 +507,13 @@ ANALYST_V2 = role_v2('BESS Analyst',
     '',
     '<b>First 3 months.</b> Master our models and data, and answer the first technical questions from owners and traders, such as the price impact of a battery’s own bids.</p><p><b>First 12 months.</b> Extend the BESS Backtest to intraday trading, make optimizer settlement verifiable for owners, and further develop a methodology that owners, traders and financiers trust.',
     ['An MSc in econometrics, operations research, physics or energy, with strong Python and SQL',
-     'Two to five years of experience as a trader, quant or analyst at an optimizer, utility or trading house',
-     'In-depth knowledge of the Dutch and European power markets, including intraday order books, settlement and BSP and BRP roles',
+     '2–5 years of experience as a trader, quant or analyst at an optimizer, utility or trading house',
+     'In-depth knowledge of the Dutch and European power markets, including intraday order books, settlement, and the roles of BSP and BRP',
      'Experience with optimisation models, such as linear programming or PyPSA, and with asset-backed and proprietary trading strategies',
      'The ability to explain technical concepts in simple terms, in fluent English; Dutch as a plus'],
     [_FRONT,
      _OWN,
-     'A Dutch modal salary (EUR 40–50k), plus an equity package that fits a first hire',
+     'A salary around the Dutch modal income (EUR 40–50k), plus an equity package that fits a first hire',
      'Freedom to choose your own route and to work remotely, with room to lead the analytics team as we scale',
      'The opportunity to shape the methodology behind every ICM result, drawing on the latest academic research'],
     'Based in Amsterdam, with a flexible start date. You report to the founder and work with our software developers, product manager and seasoned traders.')
