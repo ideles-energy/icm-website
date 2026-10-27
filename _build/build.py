@@ -480,7 +480,7 @@ def role_v2(title, summary, about, goals, bring, offer, prac='Based in Amsterdam
         <div><h4>What we offer</h4><ul>{li(offer)}</ul></div>
       </div></details>'''
 
-_MARKET = 'Batteries are becoming central to a secure power system based on solar and wind. The Netherlands had around 3 GWh of battery storage installed at the end of 2025 and is projected to reach around 25 GWh by 2030, an eightfold increase. For most owners, battery revenues remain opaque. The ICM benchmarks performance against the full potential of each site and monitors it proactively, so that every battery is used as efficiently as possible.'
+_MARKET = 'Batteries are becoming central to a secure power system based on solar and wind. The Netherlands had around 3 GWh of battery storage installed at the end of 2025 and is projected to reach around 25 GWh by 2030, an eightfold increase.</p><p>For most owners, battery revenues remain opaque. The ICM benchmarks performance against the full potential of each site and monitors it proactively, so that every battery is used as efficiently as possible.'
 
 _FRONT = 'A front-row view of one of the fastest-growing sectors in energy, where batteries, grid congestion and power markets meet'
 _OWN = 'Full ownership from your first week, in a small team coached by senior industry leaders. We combine corporate excellence with startup speed.'
