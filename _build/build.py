@@ -163,14 +163,14 @@ PRIVACY_EN = [
  ('How long we keep it', 'We keep contact details for as long as needed to follow up on your request and at most two years after our last contact, unless you become a client or the law requires us to keep them longer.'),
  ('How we protect it', 'We limit access to personal data to people who need it, use trusted providers and keep our systems up to date. No online service is completely secure, so please do not send us confidential data you do not need to share.'),
  ('Your rights', 'You can ask to see, correct, delete or receive a copy of your personal data, restrict or object to its use, and withdraw consent you have given. Email <a href="mailto:info@icm.energy">info@icm.energy</a> and we will respond within one month. You can also file a complaint with the Dutch Data Protection Authority (Autoriteit Persoonsgegevens).'),
- ('Cookies', 'The ICM website does not use analytics or advertising cookies. See our <a href="/cookies/">cookie policy</a> for details.'),
+ ('Cookies', 'The ICM website does not use analytics or advertising cookies. We count visits with Plausible Analytics, an EU-based service that works without cookies and does not collect personal data. See our <a href="/cookies/">cookie policy</a> for details.'),
  ('Changes to this statement', 'We may update this statement from time to time. The date below shows when it was last changed.'),
 ]
 PRIVACY = {'en': PRIVACY_EN, 'nl': PRIVACY_EN}
 
 COOKIES_EN = [
  ('What are cookies', 'Cookies are small text files that a website stores on your device when you visit it. Similar technologies, such as local storage and pixels, work in the same way. We use the word “cookies” for all of them.'),
- ('How we use cookies', 'The ICM website is built to work without tracking. We do not use analytics cookies, advertising cookies or social media tracking, and we do not build profiles of visitors.'),
+ ('How we use cookies', 'The ICM website is built to work without tracking. We do not use analytics cookies, advertising cookies or social media tracking, and we do not build profiles of visitors. To understand how the site is used, we count visits with Plausible Analytics, an EU-based service that works without cookies and does not collect personal data.'),
  ('Cookies on our website', '<b>Our own website.</b> The pages of icm.energy do not set cookies of their own and do not store data in your browser to identify you.<br><b>Third-party content.</b> The forms on our Talk to us page and in the example report pop-up are provided by Fillout. When you load a form, Fillout may set cookies or similar technologies needed to show and submit it. Their use is governed by Fillout’s own policies.'),
  ('Managing cookies', 'You can block or delete cookies in your browser settings. If you do, parts of the website, such as the forms, may not work as intended. If you prefer, you can also email us at <a href="mailto:info@icm.energy">info@icm.energy</a> instead of using the form.'),
  ('If this changes', 'If we start using analytics or other cookies that need consent, we will ask for your permission first and update this policy.'),
@@ -1246,7 +1246,17 @@ def talk(t, variant=None):
 SOL_REDIRECT = '''<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Solutions | The ICM</title><meta name="robots" content="noindex"><link rel="canonical" href="https://icm.energy/solutions/#KEY"><meta http-equiv="refresh" content="0; url=/solutions/#KEY"></head><body><a href="/solutions/#KEY">All solutions are on one page.</a></body></html>'''
 REDIRECT = '''<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Careers | The ICM</title><meta name="robots" content="noindex"><link rel="canonical" href="https://icm.energy/company/#careers"><meta http-equiv="refresh" content="0; url=/company/#careers"></head><body><a href="/company/#careers">Careers have moved to our company page.</a></body></html>'''
 
+PLAUSIBLE = '''<!-- Privacy-friendly analytics by Plausible -->
+<script async src="https://plausible.io/js/pa-NQ9wWw9pwatwJr18-DHFX.js"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init()
+</script>
+'''
+
 def write(rel, html):
+    if os.environ.get('ICM_PREVIEW') != '1' and '</head>' in html and 'plausible.io' not in html:
+        html = html.replace('</head>', PLAUSIBLE + '</head>', 1)
     p = os.path.join(ROOT, rel)
     os.makedirs(os.path.dirname(p), exist_ok=True)
     open(p, 'w', encoding='utf-8').write(html)
