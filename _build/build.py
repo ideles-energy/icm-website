@@ -473,7 +473,7 @@ APPLY_URL = 'https://vwz64wuu6x.zite.so/'
 def role_v2(title, summary, about, goals, bring, offer, prac='Based in Amsterdam, with a flexible start date.'):
     li = lambda xs: ''.join(f'<li>{x}</li>' for x in xs)
     return f'''      <details class="co-role" name="roles"><summary><b>{title}</b><em>Amsterdam</em><i class="co-pm" aria-hidden="true"></i></summary><div class="co-body co-body2 co-body3 co-body4">
-        <div><h4>About the role</h4>{('<p>' + summary + '</p>') if summary else ''}<p>{_MARKET}</p>{('<p>' + about + '</p>') if about else ''}<p>{goals}</p></div>
+        <div><h4>About the role</h4>{('<p>' + summary + '</p>') if summary else ''}<p>{_MARKET}</p>{('<p>' + about + '</p>') if about else ''}{('<p>' + goals + '</p>') if goals else ''}</div>
         <div><h4>What you bring</h4><ul>{li(bring)}</ul><p class="co-sub">If you meet most, but not all, of these criteria, we encourage you to apply.</p></div>
         <div><h4>What we offer</h4><ul>{li(offer)}</ul></div>
         <div class="co-foot"><p class="co-prac">{prac} Apply with your CV, what motivates you to work for the ICM and what your goals are for the first 3 months.</p>
@@ -489,7 +489,7 @@ _FREE = 'Freedom to choose your own approach and to work remotely, towards targe
 BD_V2 = role_v2('Business Developer',
     '',
     'As our Business Developer, you lead our commercial expansion among owners and installers of batteries larger than 3 MW. We are looking for a sales juggernaut in the making: someone who builds relationships, grows our network in the Dutch BESS market and creates more value for the batteries we monitor.',
-    '<b>First 3 months.</b> Master how batteries create value, build relationships with the installers and owners in our network, and deliver the first case study.</p><p><b>First 12 months.</b> Build a partner channel of 10 installers who refer clients, support our first 50 clients in maximising the value of their batteries, and convert results into case studies that fuel growth.',
+    '',
     ['3–6 years of experience in B2B consultative sales, ideally in SaaS, energy or financial services',
      'A track record of turning first conversations into signed contracts and long-term client relationships',
      'A network among battery owners, installers or developers, or the drive to build one quickly',
