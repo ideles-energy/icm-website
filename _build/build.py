@@ -472,19 +472,19 @@ APPLY_URL = 'https://vwz64wuu6x.zite.so/'
 
 def role_v2(title, summary, about, goals, bring, offer, prac='Based in Amsterdam, with a flexible start date.'):
     li = lambda xs: ''.join(f'<li>{x}</li>' for x in xs)
-    return f'''      <details class="co-role" name="roles"><summary><b>{title}</b><em>Amsterdam</em><i class="co-pm" aria-hidden="true"></i></summary><div class="co-body co-body2 co-body3">
-        <div><h4>About the role</h4><p>{summary}</p><p>{_MARKET}</p>{('<p>' + about + '</p>') if about else ''}<p>{goals}</p>
-          <p class="co-prac">{prac} Apply with your CV, what motivates you to work for the ICM and what your goals are for the first 3 months.</p>
+    return f'''      <details class="co-role" name="roles"><summary><b>{title}</b><em>Amsterdam</em><i class="co-pm" aria-hidden="true"></i></summary><div class="co-body co-body2 co-body3 co-body4">
+        <div><h4>About the role</h4><p>{summary}</p><p>{_MARKET}</p>{('<p>' + about + '</p>') if about else ''}<p>{goals}</p></div>
+        <div><h4>What you bring</h4><ul>{li(bring)}</ul><p class="co-sub">If you meet most, but not all, of these criteria, we encourage you to apply.</p>
+          <h4>What we offer</h4><ul>{li(offer)}</ul></div>
+        <div class="co-foot"><p class="co-prac">{prac} Apply with your CV, what motivates you to work for the ICM and what your goals are for the first 3 months.</p>
           <a class="btn btn-dark" href="{APPLY_URL}" target="_blank" rel="noopener">Apply</a></div>
-        <div><h4>What you bring</h4><p class="co-sub">If you meet most, but not all, of these criteria, we encourage you to apply.</p><ul>{li(bring)}</ul></div>
-        <div><h4>What we offer</h4><ul>{li(offer)}</ul></div>
       </div></details>'''
 
 _MARKET = 'Batteries are becoming central to a secure power system based on solar and wind. The Netherlands had around 3 GWh of battery storage installed at the end of 2025 and is projected to reach around 25 GWh by 2030, an eightfold increase.</p><p>For most owners, battery revenues remain opaque. The ICM benchmarks performance against the full potential of each site and monitors it proactively, so that every battery is used as efficiently as possible.'
 
-_FRONT = 'A front-row view of one of the fastest-growing sectors in energy, where batteries, grid congestion and power markets meet'
+_FRONT = 'The opportunity to participate in one of the fastest-growing sectors in energy, at the intersection of batteries, grid congestion and power markets'
 _OWN = 'Full ownership from your first week, in a small team coached by senior industry leaders. We combine corporate excellence with startup speed.'
-_FREE = 'Freedom to choose your own route and to work remotely, towards targets we set together.'
+_FREE = 'Freedom to choose your own approach and to work remotely, towards targets we set together.'
 
 BD_V2 = role_v2('Business Developer',
     'As our first Business Developer, you lead the ICM’s commercial expansion among battery owners and installers (3–30 MW). We are looking for a sales juggernaut in the making.',
@@ -493,12 +493,12 @@ BD_V2 = role_v2('Business Developer',
     ['3–6 years of experience in B2B consultative sales, ideally in SaaS, energy or financial services',
      'A track record of turning first conversations into signed contracts and long-term client relationships',
      'A network among battery owners, installers or developers, or the drive to build one quickly',
-     'Familiarity with the BESS landscape (meters, EMS, optimizers) and the sales cycle within it, as a plus',
+     'Preferred: familiarity with the BESS landscape (meters, EMS, optimizers) and the sales cycle within it',
      'Native-level Dutch and strong English'],
     [_FRONT,
      _OWN,
-     'As a starting point, a one-year contract with a salary around the Dutch modal income (EUR 40–50k), plus a performance bonus and equity options with vesting',
-     'Freedom to choose your own route and to work remotely, with room to co-lead the sales team as we scale',
+     'As a starting point, a one-year contract with a salary around the Dutch modal income (EUR 40–50k), plus a performance bonus and equity options',
+     'Freedom to choose your own approach and to work remotely, with room to co-lead the sales team as we scale',
      'A crash course in all things BESS, including how batteries create value: day-ahead, intraday, imbalance, FCR, aFRR, mFRR and redispatch'],
     'Full-time or part-time (minimum 3 days a week). Based in Amsterdam, with some travel to visit installers and owners. You report to the founder.')
 
@@ -513,8 +513,8 @@ ANALYST_V2 = role_v2('BESS Analyst',
      'The ability to explain technical concepts in simple terms, in fluent English; Dutch as a plus'],
     [_FRONT,
      _OWN,
-     'A salary around the Dutch modal income (EUR 40–50k), plus equity options with vesting',
-     'Freedom to choose your own route and to work remotely, with room to lead the analytics team as we scale',
+     'A salary around the Dutch modal income (EUR 40–50k), plus equity options',
+     'Freedom to choose your own approach and to work remotely, with room to lead the analytics team as we scale',
      'The opportunity to shape the methodology behind every ICM result, drawing on the latest academic research'],
     'Full-time or part-time (minimum 3 days a week). Based in Amsterdam, with a flexible start date. You report to the founder and work with our software developers and seasoned traders.')
 
