@@ -497,10 +497,10 @@ BD_V2 = role_v2('Business Developer',
      'Native-level Dutch and strong English'],
     [_FRONT,
      _OWN,
-     'A one-year contract with a salary around the Dutch modal income (EUR 40–50k, excluding bonus), plus an equity package that fits a first hire',
+     'As a starting point, a one-year contract with a salary around the Dutch modal income (EUR 40–50k), plus a performance bonus and equity options with vesting',
      'Freedom to choose your own route and to work remotely, with room to co-lead the sales team as we scale',
      'A crash course in all things BESS, including how batteries create value: day-ahead, intraday, imbalance, FCR, aFRR, mFRR and redispatch'],
-    'Based in Amsterdam, with some travel to visit installers and owners. You report to the founder.')
+    'Full-time or part-time (minimum 3 days a week). Based in Amsterdam, with some travel to visit installers and owners. You report to the founder.')
 
 ANALYST_V2 = role_v2('BESS Analyst',
     'As our first BESS Analyst, you build the most customised BESS Backtest in Europe and answer the technical questions of battery owners and traders.',
@@ -513,10 +513,10 @@ ANALYST_V2 = role_v2('BESS Analyst',
      'The ability to explain technical concepts in simple terms, in fluent English; Dutch as a plus'],
     [_FRONT,
      _OWN,
-     'A salary around the Dutch modal income (EUR 40–50k), plus an equity package that fits a first hire',
+     'A salary around the Dutch modal income (EUR 40–50k), plus equity options with vesting',
      'Freedom to choose your own route and to work remotely, with room to lead the analytics team as we scale',
      'The opportunity to shape the methodology behind every ICM result, drawing on the latest academic research'],
-    'Based in Amsterdam, with a flexible start date. You report to the founder and work with our software developers and seasoned traders.')
+    'Full-time or part-time (minimum 3 days a week). Based in Amsterdam, with a flexible start date. You report to the founder and work with our software developers and seasoned traders.')
 
 ROLE_PREVIEW = True  # roles v2 approved 27 Oct 2026
 
