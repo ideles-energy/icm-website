@@ -2641,3 +2641,4 @@ header.nav .logo .logo-icon-light{display:none !important}
 /* v122: one text size in role details (eyebrows and button aside) */
 .co-body3 p,.co-body3 li,.co-body3 .co-sub,.co-body3 .co-prac,.co-body3 > div:first-child > p{font-size:15px !important;line-height:24px !important}
 .co-body3 .co-sub,.co-body3 .co-prac{opacity:.75}
+.co-body3 p,.co-body3 li,.co-body3 .co-sub,.co-body3 .co-prac{opacity:1 !important;color:inherit !important}
