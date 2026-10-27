@@ -472,59 +472,64 @@ APPLY_URL = 'https://vwz64wuu6x.zite.so/'
 
 def role_v2(title, summary, about, goals, bring, offer, prac='Based in Amsterdam, with a flexible start date.'):
     li = lambda xs: ''.join(f'<li>{x}</li>' for x in xs)
-    return f'''      <details class="co-role" name="roles"><summary><b>{title}</b><em>Amsterdam</em><i class="co-pm" aria-hidden="true"></i></summary><div class="co-body co-body2 co-body3">
-        <div><h4>About the role</h4><p>{summary}</p><p>{_MARKET}</p>{('<p>' + about + '</p>') if about else ''}<p>{goals}</p>
-          <p class="co-prac">{prac} Apply with your CV, a short cover letter and your goals for the first 3 months.</p>
-          <a class="btn btn-dark" href="{APPLY_URL}" target="_blank" rel="noopener">Apply</a></div>
-        <div><h4>What you bring</h4><p class="co-sub">If you meet most, but not all, of these criteria, we encourage you to apply.</p><ul>{li(bring)}</ul></div>
+    return f'''      <details class="co-role" name="roles"><summary><b>{title}</b><em>Amsterdam</em><i class="co-pm" aria-hidden="true"></i></summary><div class="co-body co-body2 co-body3 co-body4">
+        <div><h4>About the role</h4>{('<p>' + summary + '</p>') if summary else ''}<p>{_MARKET}</p>{('<p>' + about + '</p>') if about else ''}{('<p>' + goals + '</p>') if goals else ''}</div>
+        <div><h4>What you bring</h4><ul>{li(bring)}</ul><p class="co-sub">If you meet most, but not all, of these criteria, we encourage you to apply.</p></div>
         <div><h4>What we offer</h4><ul>{li(offer)}</ul></div>
+        <div class="co-foot"><p class="co-prac">{prac} Apply with your CV, what motivates you to work for the ICM and what your goals are for the first 3 months.</p>
+          <a class="btn btn-dark" href="{APPLY_URL}" target="_blank" rel="noopener">Apply</a></div>
       </div></details>'''
 
 _MARKET = 'Batteries are becoming central to a secure power system based on solar and wind. The Netherlands had around 3 GWh of battery storage installed at the end of 2025 and is projected to reach around 25 GWh by 2030, an eightfold increase.</p><p>For most owners, battery revenues remain opaque. The ICM benchmarks performance against the full potential of each site and monitors it proactively, so that every battery is used as efficiently as possible.'
 
-_FRONT = 'A front-row view of one of the fastest-growing sectors in energy, where batteries, grid congestion and power markets meet'
+_FRONT = 'The opportunity to shape one of the fastest-growing sectors in energy, at the intersection of batteries, grid congestion and power markets'
 _OWN = 'Full ownership from your first week, in a small team coached by senior industry leaders. We combine corporate excellence with startup speed.'
-_FREE = 'Freedom to choose your own route and to work remotely, towards targets we set together.'
+_FREE = 'Freedom to choose your own approach and to work remotely, towards targets we set together.'
 
 BD_V2 = role_v2('Business Developer',
-    'As our first Business Developer, you lead the ICM’s commercial expansion among battery owners and installers (3–30 MW). We are looking for a sales juggernaut in the making.',
     '',
-    '<b>First 3 months.</b> Master how batteries create value, build relationships with the installers and owners in our network, and deliver the first case study.</p><p><b>First 12 months.</b> Build a partner channel of 10 installers who refer clients, support our first 50 clients in maximising the value of their batteries, and convert results into case studies that fuel growth.',
+    'As our Business Developer, you lead our commercial expansion among owners and installers of &gt;3 MW batteries. We are looking for a sales juggernaut in the making. Someone who builds relationships and grows our network in the Dutch BESS space and creates more value for our batteries under management.',
+    '',
     ['3–6 years of experience in B2B consultative sales, ideally in SaaS, energy or financial services',
      'A track record of turning first conversations into signed contracts and long-term client relationships',
      'A network among battery owners, installers or developers, or the drive to build one quickly',
-     'Familiarity with the BESS landscape (meters, EMS, optimizers) and the sales cycle within it, as a plus',
+     'Preferred: familiarity with the BESS landscape (meters, EMS, optimizers) and the sales cycle within it',
      'Native-level Dutch and strong English'],
     [_FRONT,
      _OWN,
-     'A one-year contract with a salary around the Dutch modal income (EUR 40–50k, excluding bonus), plus an equity package that fits a first hire',
-     'Freedom to choose your own route and to work remotely, with room to co-lead the sales team as we scale',
+     'As a starting point, a one-year contract with a salary around the Dutch modal income (EUR 40–50k), plus a performance bonus and equity options',
+     'Freedom to choose your own approach and to work remotely, with room to co-lead the sales team as we scale',
      'A crash course in all things BESS, including how batteries create value: day-ahead, intraday, imbalance, FCR, aFRR, mFRR and redispatch'],
-    'Based in Amsterdam, with some travel to visit installers and owners. You report to the founder.')
+    'Full-time or part-time (minimum 3 days a week). Based in Amsterdam, with some travel to visit installers and owners. You report to the founder and work with our advisors to deliver results.')
 
 ANALYST_V2 = role_v2('BESS Analyst',
-    'As our first BESS Analyst, you build the most customised BESS Backtest in Europe and answer the technical questions of battery owners and traders.',
     '',
-    '<b>First 3 months.</b> Master our models and data, and answer the first technical questions from owners and traders, such as the price impact of a battery’s own bids.</p><p><b>First 12 months.</b> Extend the BESS Backtest to intraday trading, make optimizer settlement verifiable for owners, and further develop a methodology that owners, traders and financiers trust.',
-    ['An MSc in econometrics, operations research, physics or energy, with strong Python and SQL',
-     '2–5 years of experience as a trader, quant or analyst at an optimizer, utility or trading house',
+    'As our BESS analyst, you improve our proprietary calculation engine that tracks the potential revenue of our batteries under management. You ensure our models reflect how Dutch battery markets really behave and engage with our clients on their results. Expect full ownership of the methodology.',
+    '',
+    ['2–5 years of experience as a flex trader, either at the trading desk of an optimizer, aggregator or utility',
+     'An MSc in pure mathematics, econometrics, operations research, physics or energy, strong in Python and JavaScript',
      'In-depth knowledge of the Dutch and European power markets, including intraday order books and settlement',
      'Experience with optimisation models, such as linear programming or PyPSA, and with asset-backed and proprietary trading strategies',
-     'The ability to explain technical concepts in simple terms, in fluent English; Dutch as a plus'],
-    [_FRONT,
+     'The ability to explain technical concepts in layman’s terms, in fluent English; Dutch is a bonus'],
+    ['Contribute to a more resilient grid. We clarify how batteries are optimized and make them more efficient.',
+     _FRONT,
      _OWN,
-     'A salary around the Dutch modal income (EUR 40–50k), plus an equity package that fits a first hire',
-     'Freedom to choose your own route and to work remotely, with room to lead the analytics team as we scale',
-     'The opportunity to shape the methodology behind every ICM result, drawing on the latest academic research'],
-    'Based in Amsterdam, with a flexible start date. You report to the founder and work with our software developers and seasoned traders.')
+     'As a starting point, a one-year contract with a salary around the Dutch modal income (EUR 40–50k), plus equity options',
+     'Freedom to choose your own approach and to work remotely, with room to co-develop our analytics team as we scale'],
+    'Full-time or part-time (minimum 3 days a week). Based in Amsterdam, with a flexible start date. You report to the founder and work with our software developers and seasoned traders.')
 
+OPEN_APP = f'''      <details class="co-role co-open" name="roles"><summary><b>Open application</b><em>Amsterdam</em><i class="co-pm" aria-hidden="true"></i></summary><div class="co-body co-open-body">
+        <div><p>Are you convinced you can make our team stronger, but don’t see a role that fits?</p>
+          <p>You’re welcome to submit an open application with your CV and what you would add to the ICM, either through the button below or by email to <a href="mailto:careers@icm.energy">careers@icm.energy</a>.</p>
+          <a class="btn btn-dark" href="{APPLY_URL}" target="_blank" rel="noopener">Apply</a></div>
+      </div></details>'''
 ROLE_PREVIEW = True  # roles v2 approved 27 Oct 2026
 
 def company(t):
     def li(items): return ''.join(f'<li>{i}</li>' for i in items)
     rows = '\n'.join(f'''      <details class="co-role" name="roles"><summary><b>{r}</b><em>{c}</em><i class="co-pm" aria-hidden="true"></i></summary><div class="co-body"><div><p>{m}</p><a class="btn btn-dark" href="{APPLY_URL}" target="_blank" rel="noopener">Apply</a></div><div><h4>What you will do</h4><ul>{li(do)}</ul></div><div><h4>Who you are</h4><ul>{li(you)}</ul></div></div></details>''' for r, c, m, do, you in ROLES)
     if ROLE_PREVIEW:
-        rows = BD_V2 + '\n' + ANALYST_V2
+        rows = BD_V2 + '\n' + ANALYST_V2 + '\n' + OPEN_APP
 
     hero = '''    <div class="page-hero" id="main">
       <h1>About The Independent Capacity Market</h1>
@@ -556,12 +561,11 @@ def company(t):
 <section class="co-careers" id="careers">
   <div class="wrap">
     <p class="co-label dark-t">Open roles</p>
-    <h2 class="co-big">A more equitable grid.<span>Do work that matters, with people who care.</span></h2>
+    <h2 class="co-big">Provide insights to owners.<span>Do work that matters, with people who care.</span></h2>
     <hr>
     <div class="co-acc">
 {rows}
     </div>
-    <p class="co-note">If none of these roles fits, send an open application with your CV and what you would like to achieve at the ICM to <a href="mailto:careers@icm.energy">careers@icm.energy</a>.</p>
   </div>
 </section>'''
     ld = {"@context": "https://schema.org", "@type": "AboutPage", "url": "https://icm.energy/company/", "mainEntity": {"@type": "Organization", "@id": "https://icm.energy/#org", "name": "Independent Capacity Market B.V.", "alternateName": "The ICM", "logo": "https://icm.energy/assets/logo-header.png", "url": "https://icm.energy/",

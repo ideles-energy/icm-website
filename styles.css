@@ -2641,3 +2641,24 @@ header.nav .logo .logo-icon-light{display:none !important}
 /* v122: one text size in role details (eyebrows and button aside) */
 .co-body3 p,.co-body3 li,.co-body3 .co-sub,.co-body3 .co-prac,.co-body3 > div:first-child > p{font-size:15px !important;line-height:24px !important}
 .co-body3 .co-sub,.co-body3 .co-prac{opacity:.75}
+.co-body3 p,.co-body3 li,.co-body3 .co-sub,.co-body3 .co-prac{opacity:1 !important;color:inherit !important}
+/* v123: roles in two columns (about | bring + offer), footer across the width */
+.co-role > .co-body.co-body4{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start;column-gap:48px}
+.co-body4 .co-sub{margin-top:12px !important}
+.co-body4 .co-sub + h4{margin-top:26px !important}
+.co-body4 .co-foot{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:24px;border-top:1px solid #D5E1E3;padding-top:20px}
+.co-body4 .co-foot .co-prac{margin:0 !important;color:#6B7F84 !important;max-width:none}
+.co-body4 .co-foot .btn{margin:0;flex:none}
+@media (max-width:900px){.co-role > .co-body.co-body4{grid-template-columns:minmax(0,1fr)}.co-body4 .co-foot{flex-direction:column;align-items:flex-start}}
+.co-role .co-body.co-body4 > .co-foot{display:flex !important}
+.co-body4 > div > h4 + p,.co-body4 > div > h4 + ul{margin-top:12px !important}
+@media (max-width:900px){.co-role .co-body.co-body4 > .co-foot{flex-direction:column;align-items:flex-start}}
+/* v124: back to three columns side by side; footer stays full width */
+.co-role > .co-body.co-body4{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr) minmax(0,1fr);column-gap:32px}
+@media (max-width:900px){.co-role > .co-body.co-body4{grid-template-columns:minmax(0,1fr)}}
+.co-body4 .co-sub{font-style:italic}
+/* v125: open application as a role card */
+.co-role > .co-body.co-open-body{grid-template-columns:minmax(0,1fr)}
+.co-open-body p{font-size:15px;line-height:24px;margin:0 0 14px;max-width:760px}
+.co-open-body p a{text-decoration:underline}
+.co-open-body .btn{margin-top:6px}
