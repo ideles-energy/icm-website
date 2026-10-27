@@ -488,7 +488,7 @@ _FREE = 'Freedom to choose your own approach and to work remotely, towards targe
 
 BD_V2 = role_v2('Business Developer',
     '',
-    'As our Business Developer, you lead our commercial expansion among owners and installers of batteries larger than 3 MW. We are looking for a sales juggernaut in the making: someone who builds relationships, grows our network in the Dutch BESS market and creates more value for the batteries we monitor.',
+    'As our Business Developer, you lead our commercial expansion among owners and installers of &gt;3 MW batteries. We are looking for a sales juggernaut in the making. Someone who builds relationships and grows our network in the Dutch BESS space and creates more value for our batteries under management.',
     '',
     ['3–6 years of experience in B2B consultative sales, ideally in SaaS, energy or financial services',
      'A track record of turning first conversations into signed contracts and long-term client relationships',
