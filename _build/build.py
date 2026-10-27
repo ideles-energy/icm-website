@@ -482,11 +482,9 @@ def role_v2(title, summary, about, goals, bring, offer, prac='Based in Amsterdam
 
 _MARKET = 'Batteries are becoming central to a secure power system that runs on solar and wind. Storage in the Netherlands is projected to reach around 25 GWh by 2030, yet most owners have no independent view of what their battery should earn.'
 
-_OFFER_COMMON = ['A front-row view of one of the fastest-growing sectors in energy',
-    'Coaching from the founder and our advisors, senior leaders from Eneco, Enexis, Lockheed Martin Energy, Adyen and Ember',
-    'Freedom to choose your own route and to work remotely, towards targets we set together',
-    'Ownership from your first week, in a small team with short decision lines',
-    'Results within days rather than quarters']
+_FRONT = 'A front-row view of one of the fastest-growing sectors in energy'
+_OWN = 'Proper ownership from your first week, in a small team coached by senior industry leaders. We combine corporate excellence with startup chaos.'
+_FREE = 'Freedom to choose your own route and to work remotely, towards targets we set together.'
 
 BD_V2 = role_v2('Business Developer',
     'As our first Business Developer, you bring the ICM to battery owners and the installers who work with them (3–30 MW). We are looking for a sales juggernaut in the making.',
@@ -495,13 +493,14 @@ BD_V2 = role_v2('Business Developer',
     ['Three to six years of experience in B2B consultative sales, ideally in SaaS, energy or financial services',
      'A track record of turning first conversations into signed contracts and long-term client relationships',
      'A network among battery owners, installers or developers, or the drive to build one quickly',
-     'Familiarity with optimizer contracts, such as tolling and revenue share, as a plus',
+     'Familiarity with the BESS landscape (meters, EMS, optimizers) as a plus',
      'Native Dutch with strong English'],
-    ['A one-year contract with a probation period',
-     'A Dutch modal salary (EUR 40–50k), plus a bonus and equity that fit a first hire',
-     'A crash course in how batteries create value: day-ahead, intraday, imbalance, FCR, aFRR, mFRR and redispatch',
-     'Growth into a larger sales team, with more responsibility'] + _OFFER_COMMON,
-    'Based in Amsterdam, with some travel to visit installers and owners. You report to the founder and also speak with optimizers.')
+    [_FRONT,
+     'A one-year contract with a Dutch modal salary (EUR 40–50k, excluding bonus), plus an equity package that fits a first hire',
+     _OWN,
+     _FREE + ' As the sales team grows, you can become co-responsible for setting up the sales process of a European scale-up in the making.',
+     'A crash course in all things BESS, including how batteries create value: day-ahead, intraday, imbalance, FCR, aFRR, mFRR and redispatch'],
+    'Based in Amsterdam, with some travel to visit installers and owners. You report to the founder.')
 
 ANALYST_V2 = role_v2('BESS Analyst',
     'Build the best BESS Backtest in Europe: the most customised view of what a battery could have earned on its own site. You answer the technical questions of battery owners and traders, and build the answers into our models.',
@@ -516,8 +515,11 @@ ANALYST_V2 = role_v2('BESS Analyst',
      'The ability to explain complex results clearly to owners who are not traders',
      'An eagerness to prototype new features and validate them with clients',
      'Fluent English; Dutch is a plus'],
-    ['A Dutch modal salary (EUR 40–50k) and equity in the ICM',
-     'The opportunity to shape the methodology behind every ICM result'] + _OFFER_COMMON)
+    [_FRONT,
+     'A Dutch modal salary (EUR 40–50k), plus an equity package that fits a first hire',
+     _OWN,
+     _FREE,
+     'The opportunity to shape the methodology behind every ICM result'])
 
 ROLE_PREVIEW = os.environ.get('ICM_PREVIEW') == '1'  # Business Developer v2: preview only until reviewed
 
