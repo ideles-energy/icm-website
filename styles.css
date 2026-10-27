@@ -2662,3 +2662,14 @@ header.nav .logo .logo-icon-light{display:none !important}
 .co-open-body p{font-size:15px;line-height:24px;margin:0 0 14px;max-width:760px}
 .co-open-body p a{text-decoration:underline}
 .co-open-body .btn{margin-top:6px}
+/* v126: FAQ collapsed by default, questions in bold */
+.faq-all > summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:8px 0 24px}
+.faq-all > summary::-webkit-details-marker{display:none}
+.faq-all > summary h2{margin:0}
+.faq-all > summary::after{content:"+";font-size:34px;line-height:1;color:var(--lilac)}
+.faq-all[open] > summary::after{content:"–"}
+.faq details > summary{font-weight:700 !important}
+.faq details ul{padding-left:20px}
+
+.faq-all > summary::after{content:"" !important;flex:none;width:38px;height:38px;border:1px solid #C9D9DD;border-radius:8px;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none' stroke='%23040D1F' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m3.5 6 4.5 4.5L12.5 6'/%3E%3C/svg%3E") center/16px no-repeat;transition:transform .2s}
+.faq-all[open] > summary::after{content:"" !important;transform:rotate(180deg)}

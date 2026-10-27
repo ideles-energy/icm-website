@@ -163,14 +163,14 @@ PRIVACY_EN = [
  ('How long we keep it', 'We keep contact details for as long as needed to follow up on your request and at most two years after our last contact, unless you become a client or the law requires us to keep them longer.'),
  ('How we protect it', 'We limit access to personal data to people who need it, use trusted providers and keep our systems up to date. No online service is completely secure, so please do not send us confidential data you do not need to share.'),
  ('Your rights', 'You can ask to see, correct, delete or receive a copy of your personal data, restrict or object to its use, and withdraw consent you have given. Email <a href="mailto:info@icm.energy">info@icm.energy</a> and we will respond within one month. You can also file a complaint with the Dutch Data Protection Authority (Autoriteit Persoonsgegevens).'),
- ('Cookies', 'The ICM website does not use analytics or advertising cookies. See our <a href="/cookies/">cookie policy</a> for details.'),
+ ('Cookies', 'The ICM website does not use analytics or advertising cookies. We count visits with Plausible Analytics, an EU-based service that works without cookies and does not collect personal data. See our <a href="/cookies/">cookie policy</a> for details.'),
  ('Changes to this statement', 'We may update this statement from time to time. The date below shows when it was last changed.'),
 ]
 PRIVACY = {'en': PRIVACY_EN, 'nl': PRIVACY_EN}
 
 COOKIES_EN = [
  ('What are cookies', 'Cookies are small text files that a website stores on your device when you visit it. Similar technologies, such as local storage and pixels, work in the same way. We use the word “cookies” for all of them.'),
- ('How we use cookies', 'The ICM website is built to work without tracking. We do not use analytics cookies, advertising cookies or social media tracking, and we do not build profiles of visitors.'),
+ ('How we use cookies', 'The ICM website is built to work without tracking. We do not use analytics cookies, advertising cookies or social media tracking, and we do not build profiles of visitors. To understand how the site is used, we count visits with Plausible Analytics, an EU-based service that works without cookies and does not collect personal data.'),
  ('Cookies on our website', '<b>Our own website.</b> The pages of icm.energy do not set cookies of their own and do not store data in your browser to identify you.<br><b>Third-party content.</b> The forms on our Talk to us page and in the example report pop-up are provided by Fillout. When you load a form, Fillout may set cookies or similar technologies needed to show and submit it. Their use is governed by Fillout’s own policies.'),
  ('Managing cookies', 'You can block or delete cookies in your browser settings. If you do, parts of the website, such as the forms, may not work as intended. If you prefer, you can also email us at <a href="mailto:info@icm.energy">info@icm.energy</a> instead of using the form.'),
  ('If this changes', 'If we start using analytics or other cookies that need consent, we will ask for your permission first and update this policy.'),
@@ -591,14 +591,16 @@ PROPS = [
 ]
 
 NEWFAQS = [
- ('Why do battery owners work with the ICM?', 'To know what their battery could earn, and whether it earns that. We compare your revenue with the full potential of your site, and when there is more to earn we help you find a better optimizer. Because we own no batteries and are not an optimizer, you can share our numbers with your bank, installer and insurer.'),
- ('Why do installers offer the BESS Backtest to their customers?', 'It is a gift that builds trust. Installers can include a BESS Backtest at delivery, so every customer gets an independent view of what the battery earns. It shows you stand behind your system.'),
- ('Why can I trust the ICM\'s numbers?', 'We do not own BESS assets. We are not an optimizer. Nor will we ever be.'),
-('What is the BESS Backtest?', 'The BESS Backtest compares what your battery earned with the most it could have earned on your site. The result is a capture rate: the share of the full potential that was realised. It shows whether a battery earns what it should, and what holds it back.'),
-('What data do I need to provide?', 'The optimizer report, quarter-hour meter data, data from the energy management system for downtime, and the documents on your grid connection and optimizer mandate. We guide you through the list, and your installer or metering service provider can often deliver most of it.'),
-('Who orders a BESS Backtest, me or my installer?', 'Installers can include a BESS Backtest at delivery, so every customer gets an independent view of what the battery earns. Owners can also order one directly. Talk to us about how this works for you.'),
-('How can my installer work with the ICM?', 'Installers can use the ICM in three ways: size a system with the BESS Calculator before the sale, include a BESS Backtest at delivery so every customer gets an independent view of what the battery earns, and refer owners who want a better optimizer to the BESS Broker. Talk to us to see what fits your way of working.'),
-('What if my battery earns less than it could?', 'You decide what happens next. If the result objectively falls short, the BESS Broker can help you request and compare quotes from other optimizers, test what they would have earned, and guide the switch.'),
+ ('What is a BESS Backtest?', 'The BESS Backtest analyses the historical usage data of your battery and reveals unused potential. The result is called the “Capture Rate”: the percentage of the full potential that was realised. It shows whether a battery earns what it should, and why it might be held back.'),
+ ('What makes the ICM independent?', 'We don’t own batteries and we are not an optimizer. That means we don’t compete on the energy markets and we don’t care which optimizer you use. We simply provide you with accurate numbers you can share with your lender, insurer, installer and optimizer.'),
+ ('Who orders a BESS Backtest, the battery owner or the installer?', 'Both are possible: installers can offer a BESS Backtest at or even before delivery, so every customer gets an independent view of what the battery can earn. Owners can also order one directly. Talk to us about how this works for you.'),
+ ('What if my battery isn’t earning to its full potential?', 'You decide what happens next. If the result objectively falls short, the first step is contacting the optimizer. We’ll help you review or, when desired, aid you in requesting and comparing quotes from additional optimizers, test what they would have earned, and guide the switch.'),
+ ('Why work with the ICM?', 'We are an independent entity serving both your profit margin and helping solidify the national electricity network. No other incentives, transparent communication, all while delivering results.'),
+ ('Can I trust the ICM’s numbers?', 'Mathematics, econometrics, and complex data analysis tools. Programmed by us, simple to use for you. Our reason for existing is the accuracy of our data and we stand behind it with a confident stance. Markets are always in flux and that’s what makes the challenge worthwhile. We are constantly adjusting our calculations, so you don’t have to. Used information resources are always listed for transparency.'),
+ ('What data does the ICM need, and how is it handled?', 'The more data we have, the more accurate our report. Optimizer reports, meter data per 15 minutes, data from the energy management system for downtime, and the documents on your grid connection and optimizer mandate. We guide you through the list, and your installer or metering service provider can often deliver most of it.'),
+ ('What can the ICM do for my installer?', '<p>Installers can use the ICM in three ways:</p><ul><li>Size a system with the BESS Calculator in the pre-construction phase</li><li>Include a BESS Backtest at delivery so every customer gets an independent view of what the battery earns</li><li>Refer owners who want an efficient optimizer to our BESS Broker</li></ul><p>Talk to us to see what fits your way of working.</p>'),
+ ('Why do installers offer the BESS Backtest to their customers?', 'A useful tool is the best gift, it builds trust. Installers can offer a free BESS Backtest at delivery, so every customer gets an independent view of what the battery earns. It shows you stand behind your product.'),
+ ('Am I increasing my profits or improving the grid?', 'Both, that’s the beauty! A battery that earns the most it can is obviously good for your bottom line, but also makes your battery usage respond to what the energy market needs. Profits therefore directly transfer into a more stable grid.'),
 ]
 
 SOL_FAQS = [
@@ -613,14 +615,14 @@ SOL_FAQS = [
 ]
 
 def faq_block(items, title=None):
-    rows = '\n'.join(f'      <details><summary>{q}</summary><p>{a}</p></details>' for q, a in items)
-    h = (f'<span class="eyebrow">Good to know</span><h2>{title}</h2>') if title else ''
+    rows = '\n'.join(f'      <details><summary>{q}</summary>{a if a.startswith("<") else "<p>" + a + "</p>"}</details>' for q, a in items)
     return f"""<section class="faq-sec" id="faq">
   <div class="wrap">
-    <div class="section-head center">{h}</div>
+    <details class="faq-all"><summary><h2>{title or 'Frequently asked questions'}</h2></summary>
     <div class="faq">
 {rows}
     </div>
+    </details>
   </div>
 </section>"""
 
@@ -989,7 +991,7 @@ def solutions(t):
 </section>
 {GS_STEPS.replace('class="dark gs-steps"', 'class="gs-steps gs-white"')}
 {GS_SECURE.replace('class="dark gs-secure"', 'class="gs-secure gs-white"')}
-{faq_block(NEWFAQS, 'Frequently asked questions')}"""
+{faq_block(NEWFAQS, 'Frequently Asked Questions')}"""
     return page_shell(t, '/solutions/', 'Solutions: BESS Calculator, BESS Backtest and BESS Broker | The ICM',
         'How the ICM helps BESS owners: size the right battery system, backtest its performance against its full potential and find a trusted optimizer.', hero, body)
 
@@ -1246,7 +1248,17 @@ def talk(t, variant=None):
 SOL_REDIRECT = '''<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Solutions | The ICM</title><meta name="robots" content="noindex"><link rel="canonical" href="https://icm.energy/solutions/#KEY"><meta http-equiv="refresh" content="0; url=/solutions/#KEY"></head><body><a href="/solutions/#KEY">All solutions are on one page.</a></body></html>'''
 REDIRECT = '''<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Careers | The ICM</title><meta name="robots" content="noindex"><link rel="canonical" href="https://icm.energy/company/#careers"><meta http-equiv="refresh" content="0; url=/company/#careers"></head><body><a href="/company/#careers">Careers have moved to our company page.</a></body></html>'''
 
+PLAUSIBLE = '''<!-- Privacy-friendly analytics by Plausible -->
+<script async src="https://plausible.io/js/pa-NQ9wWw9pwatwJr18-DHFX.js"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init()
+</script>
+'''
+
 def write(rel, html):
+    if os.environ.get('ICM_PREVIEW') != '1' and '</head>' in html and 'plausible.io' not in html:
+        html = html.replace('</head>', PLAUSIBLE + '</head>', 1)
     p = os.path.join(ROOT, rel)
     os.makedirs(os.path.dirname(p), exist_ok=True)
     open(p, 'w', encoding='utf-8').write(html)
