@@ -503,8 +503,8 @@ BD_V2 = role_v2('Business Developer',
     'Full-time or part-time (minimum 3 days a week). Based in Amsterdam, with some travel to visit installers and owners. You report to the founder.')
 
 ANALYST_V2 = role_v2('BESS Analyst',
-    'As our first BESS Analyst, you build the most customised BESS Backtest in Europe and answer the technical questions of battery owners and traders.',
     '',
+    'As our first BESS Analyst, you build the most customised BESS Backtest in Europe and answer the technical questions of battery owners and traders.',
     '<b>First 3 months.</b> Master our models and data, and answer the first technical questions from owners and traders, such as the price impact of a battery’s own bids.</p><p><b>First 12 months.</b> Extend the BESS Backtest to intraday trading, make optimizer settlement verifiable for owners, and further develop a methodology that owners, traders and financiers trust.',
     ['An MSc in econometrics, operations research, physics or energy, with strong Python and SQL',
      '2–5 years of experience as a trader, quant or analyst at an optimizer, utility or trading house',
