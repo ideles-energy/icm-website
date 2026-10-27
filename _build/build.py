@@ -482,7 +482,7 @@ def role_v2(title, summary, about, goals, bring, offer, prac='Based in Amsterdam
 
 _MARKET = 'Batteries are becoming central to a secure power system based on solar and wind. The Netherlands had around 3 GWh of battery storage installed at the end of 2025 and is projected to reach around 25 GWh by 2030, an eightfold increase.</p><p>For most owners, battery revenues remain opaque. The ICM benchmarks performance against the full potential of each site and monitors it proactively, so that every battery is used as efficiently as possible.'
 
-_FRONT = 'The opportunity to participate in one of the fastest-growing sectors in energy, at the intersection of batteries, grid congestion and power markets'
+_FRONT = 'The opportunity to shape one of the fastest-growing sectors in energy, at the intersection of batteries, grid congestion and power markets'
 _OWN = 'Full ownership from your first week, in a small team coached by senior industry leaders. We combine corporate excellence with startup speed.'
 _FREE = 'Freedom to choose your own approach and to work remotely, towards targets we set together.'
 
@@ -506,16 +506,16 @@ ANALYST_V2 = role_v2('BESS Analyst',
     '',
     'As our BESS analyst, you improve our proprietary calculation engine that tracks the potential revenue of our batteries under management. You ensure our models reflect how Dutch battery markets really behave and engage with our clients on their results. Expect full ownership of the methodology.',
     '',
-    ['An MSc in econometrics, operations research, physics or energy, with strong Python and SQL',
-     '2–5 years of experience as a trader, quant or analyst at an optimizer, utility or trading house',
+    ['2–5 years of experience as a flex trader, either at the trading desk of an optimizer, aggregator or utility',
+     'An MSc in pure mathematics, econometrics, operations research, physics or energy, strong in Python and JavaScript',
      'In-depth knowledge of the Dutch and European power markets, including intraday order books and settlement',
      'Experience with optimisation models, such as linear programming or PyPSA, and with asset-backed and proprietary trading strategies',
-     'The ability to explain technical concepts in simple terms, in fluent English; Dutch as a plus'],
-    [_FRONT,
+     'The ability to explain technical concepts in layman’s terms, in fluent English; Dutch is a bonus'],
+    ['Contribute to a more resilient grid. We clarify how batteries are optimized and make them more efficient.',
+     _FRONT,
      _OWN,
-     'A salary around the Dutch modal income (EUR 40–50k), plus equity options',
-     'Freedom to choose your own approach and to work remotely, with room to lead the analytics team as we scale',
-     'The opportunity to shape the methodology behind every ICM result, drawing on the latest academic research'],
+     'As a starting point, a one-year contract with a salary around the Dutch modal income (EUR 40–50k), plus equity options',
+     'Freedom to choose your own approach and to work remotely, with room to co-develop our analytics team as we scale'],
     'Full-time or part-time (minimum 3 days a week). Based in Amsterdam, with a flexible start date. You report to the founder and work with our software developers and seasoned traders.')
 
 ROLE_PREVIEW = True  # roles v2 approved 27 Oct 2026
