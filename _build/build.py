@@ -474,7 +474,7 @@ def role_v2(title, summary, about, goals, bring, offer, prac='Based in Amsterdam
     li = lambda xs: ''.join(f'<li>{x}</li>' for x in xs)
     return f'''      <details class="co-role" name="roles"><summary><b>{title}</b><em>Amsterdam</em><i class="co-pm" aria-hidden="true"></i></summary><div class="co-body co-body2 co-body3">
         <div><h4>About the role</h4><p>{summary}</p><p>{_MARKET}</p>{('<p>' + about + '</p>') if about else ''}<p>{goals}</p>
-          <p class="co-prac">{prac} Apply with your CV, a short cover letter and your goals for the first 3 months.</p>
+          <p class="co-prac">{prac} Apply with your CV, what motivates you to work for the ICM and what your goals are for the first 3 months.</p>
           <a class="btn btn-dark" href="{APPLY_URL}" target="_blank" rel="noopener">Apply</a></div>
         <div><h4>What you bring</h4><p class="co-sub">If you meet most, but not all, of these criteria, we encourage you to apply.</p><ul>{li(bring)}</ul></div>
         <div><h4>What we offer</h4><ul>{li(offer)}</ul></div>
