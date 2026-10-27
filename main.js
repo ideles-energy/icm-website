@@ -1,3 +1,5 @@
+/* Plausible custom events (no-op when Plausible is not loaded) */
+function icmTrack(n,p){try{if(window.plausible)window.plausible(n,{props:p||{}});}catch(e){}}
 // Contact form: submit to Formspree without leaving the page.
 (function () {
   var form = document.getElementById('contact-form');
@@ -165,9 +167,9 @@ r.addEventListener('input',u);u();})();
 /* Email gate before the Backtest product: work-email form (Fillout) in a pop-up */
 (function(){
   var g=document.getElementById('gate'); if(!g) return;
-  var go=g.querySelector('.js-gate-go'), loaded=false, target='/bess-backtest/example/', bg=g.querySelector('.gate-bg');
+  var go=g.querySelector('.js-gate-go'), loaded=false, cur='demo', target='/bess-backtest/example/', bg=g.querySelector('.gate-bg');
   var T={calc:['/bess-calculator/','/assets/img/calculator-preview.jpg','Entered your email? Open the BESS Calculator'],demo:['/bess-backtest/example/','/assets/img/backtest-example.jpg','Entered your email? Open the example report']};
-  function open(mode){g.hidden=false;document.body.style.overflow='hidden';
+  function open(mode){g.hidden=false;document.body.style.overflow='hidden';cur=mode||'demo';icmTrack('Gate opened',{product:cur});
     var c=T[mode]||T.demo; target=c[0]; if(bg)bg.src=c[1]; if(go){go.href=c[0];go.textContent=c[2];}
     if(!loaded){loaded=true;var box=g.querySelector('.gate-frame');if(box){
       var u=new URL('https://embed.fillout.com/t/'+box.getAttribute('data-form'));
@@ -178,7 +180,7 @@ r.addEventListener('input',u);u();})();
       window.addEventListener('message',function(e){
         if(e.origin!=='https://embed.fillout.com'||!e.data||e.data.embedId!=='icmgate')return;
         if(e.data.type==='form_resized'&&typeof e.data.size==='number')f.style.height=Math.max(e.data.size,260)+'px';
-        if(e.data.type==='form_submit')location.href=target;
+        if(e.data.type==='form_submit'){icmTrack('Gate email submitted',{product:cur});setTimeout(function(){location.href=target;},150);}
       });}}
     if(go)go.hidden=(mode==='start');}
   function close(){g.hidden=true;document.body.style.overflow='';}
@@ -317,4 +319,21 @@ r.addEventListener('input',u);u();})();
   }
   fit(); window.addEventListener('resize',function(){clearTimeout(fit._t);fit._t=setTimeout(fit,120)});
   window.addEventListener('load',fit);
+})();
+
+/* Plausible: clicks on calls to action, Apply buttons, map projects; Fillout submissions */
+(function(){
+  document.addEventListener('click',function(e){
+    var a=e.target.closest&&e.target.closest('a,.js-bm-dot'); if(!a) return;
+    var page=location.pathname;
+    if(a.classList&&a.classList.contains('js-bm-dot')){icmTrack('Map project opened',{project:a.getAttribute('data-k')||a.getAttribute('aria-label')||'',page:page});return;}
+    var h=a.getAttribute('href')||'';
+    if(h.indexOf('zite.so')>-1){var d=a.closest('details'),b=d&&d.querySelector('summary b');icmTrack('Apply clicked',{role:b?b.textContent.trim():'',page:page});return;}
+    if(h==='/talk-to-us/'||h.indexOf('/talk-to-us/')===0){icmTrack('Talk to us clicked',{label:(a.textContent||'').trim().slice(0,40),page:page});}
+  },true);
+  window.addEventListener('message',function(e){
+    if(e.origin!=='https://embed.fillout.com'||!e.data||e.data.type!=='form_submit'||e.data.embedId==='icmgate')return;
+    icmTrack('Form submitted',{page:location.pathname});
+  });
+  document.querySelectorAll('.gs-form').forEach(function(f){f.addEventListener('submit',function(){icmTrack('Work email entered',{page:location.pathname});});});
 })();
