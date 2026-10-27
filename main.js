@@ -337,3 +337,6 @@ r.addEventListener('input',u);u();})();
   });
   document.querySelectorAll('.gs-form').forEach(function(f){f.addEventListener('submit',function(){icmTrack('Work email entered',{page:location.pathname});});});
 })();
+
+/* Plausible: 404 pages, with the path that was requested */
+if(document.title.indexOf('Page not found')===0){icmTrack('404',{path:location.pathname});}
