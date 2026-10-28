@@ -561,7 +561,7 @@ def company(t):
 <section class="co-careers" id="careers">
   <div class="wrap">
     <p class="co-label dark-t">Open roles</p>
-    <h2 class="co-big">Provide insights to owners.<span>Do work that matters, with people who care.</span></h2>
+    <h2 class="co-big">Tap into the full potential of European batteries<span>Do work that matters, with people who care.</span></h2>
     <hr>
     <div class="co-acc">
 {rows}
