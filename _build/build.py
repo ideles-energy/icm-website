@@ -504,7 +504,7 @@ BD_V2 = role_v2('Business Developer',
 
 ANALYST_V2 = role_v2('BESS Analyst',
     '',
-    'As our BESS analyst, you improve our proprietary calculation engine that tracks the potential revenue of our batteries under management. You ensure our models reflect how Dutch battery markets really behave and engage with our clients on their results. Expect full ownership of the methodology.',
+    'As our BESS analyst, you improve our proprietary calculation engine that tracks the potential revenue of our batteries under management. You ensure our models reflect how Dutch battery markets really behave and engage with our clients about their results. Expect full ownership of the methodology.',
     '',
     ['2–5 years of experience as a flex trader, either at the trading desk of an optimizer, aggregator or utility',
      'An MSc in pure mathematics, econometrics, operations research, physics or energy, strong in Python and JavaScript',
