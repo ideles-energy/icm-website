@@ -1257,7 +1257,7 @@ PLAUSIBLE = '''<!-- Privacy-friendly analytics by Plausible -->
 '''
 
 def write(rel, html):
-    if os.environ.get('ICM_PREVIEW') != '1' and '</head>' in html and 'plausible.io' not in html:
+    if os.environ.get('ICM_PREVIEW') != '1' and '</head>' in html and 'plausible.io' not in html and rel != 'plausible/index.html':
         html = html.replace('</head>', PLAUSIBLE + '</head>', 1)
     p = os.path.join(ROOT, rel)
     os.makedirs(os.path.dirname(p), exist_ok=True)
@@ -1363,6 +1363,31 @@ demo = demo.replace('<div class="wrap" id="page1">', back + '\n<div class="wrap"
 demo = demo.replace('<body>', '<body class="light">', 1)
 demo = demo.replace('data-v="dark" aria-pressed="true">Dark</button><button type="button" data-v="light" aria-pressed="false">', 'data-v="dark" aria-pressed="false">Dark</button><button type="button" data-v="light" aria-pressed="true">', 1)
 demo = demo.replace('</body>', "<script>if('scrollRestoration' in history)history.scrollRestoration='manual';window.scrollTo(0,0);addEventListener('load',function(){window.scrollTo(0,0)});</script>\n</body>", 1)
+# Plausible: exclude your own visits in this browser (localStorage flag, per Plausible docs). Not indexed, not linked.
+PLAUSIBLE_EXCLUDE = """<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Exclude my visits | The ICM</title><meta name="robots" content="noindex, nofollow"><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0;min-height:100vh;display:grid;place-items:center;background:#F2F8F9;font-family:Figtree,system-ui,sans-serif;color:#274A51}
+.box{background:#fff;border:1px solid #D5E1E3;border-radius:22px;padding:40px;max-width:460px;margin:16px;text-align:center}
+h1{font-size:26px;margin:0 0 10px}p{font-size:16px;line-height:1.55;margin:0 0 22px}
+button{font:inherit;font-weight:600;font-size:16px;border:0;border-radius:999px;padding:14px 26px;cursor:pointer;background:#274A51;color:#fff}
+.on{color:#1E7A4C;font-weight:700}.off{color:#B54708;font-weight:700}a{color:#274A51}
+</style></head><body><main class="box">
+<h1>Plausible analytics</h1>
+<p id="state">Checking this browser&hellip;</p>
+<button id="toggle" type="button">&hellip;</button>
+<p style="margin-top:22px;font-size:14px">This setting applies to this browser on icm.energy only. Repeat it in every browser you use. <a href="/">Back to icm.energy</a></p>
+</main>
+<script>
+(function(){var st=document.getElementById('state'),bt=document.getElementById('toggle');
+function get(){try{return localStorage.getItem('plausible_ignore')==='true'}catch(e){return null}}
+function render(){var v=get();if(v===null){st.textContent='This browser blocks local storage, so the setting cannot be saved.';bt.hidden=true;return}
+st.innerHTML=v?'Your visits in this browser are <span class="on">excluded</span> from the statistics.':'Your visits in this browser are <span class="off">counted</span> in the statistics.';
+bt.textContent=v?'Count my visits again':'Exclude my visits';}
+bt.addEventListener('click',function(){try{if(get())localStorage.removeItem('plausible_ignore');else localStorage.setItem('plausible_ignore','true')}catch(e){}render();});
+render();})();
+</script></body></html>"""
+write('plausible/index.html', PLAUSIBLE_EXCLUDE)
 write('demo/index.html', '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Example report | The ICM</title><meta name="robots" content="noindex"><link rel="canonical" href="https://icm.energy/bess-backtest/example/"><meta http-equiv="refresh" content="0; url=/bess-backtest/example/"></head><body><a href="/bess-backtest/example/">See an example report</a></body></html>')
 
 # BESS Backtest example report (fictional data), served at /bess-backtest/example/ with a way back to the site.
