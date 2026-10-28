@@ -468,7 +468,7 @@ ADVISORS_HTML = ('<div class="sup-card adv-card"><ul class="adv-list">' + ''.joi
     f'<li><a href="{u}" target="_blank" rel="noopener"><span><b>{n}</b>' + (('<small><span>' + r.rsplit(', ', 1)[0] + '</span><i class="adv-sep">, </i><span class="adv-org">' + r.rsplit(', ', 1)[1] + '</span></small>') if ', ' in r else (f'<small>{r}</small>' if r else '')) + f'</span><i aria-hidden="true">{_LI}</i><span class="sr-only"> on LinkedIn</span></a></li>'
     for n, r, u in ADVISORS) + '</ul></div>')
 
-APPLY_URL = 'https://vwz64wuu6x.zite.so/'
+APPLY_URL = 'https://forms.fillout.com/t/5E11gghr17us'
 
 def role_v2(title, summary, about, goals, bring, offer, prac='Based in Amsterdam, with a flexible start date.'):
     li = lambda xs: ''.join(f'<li>{x}</li>' for x in xs)
