@@ -328,7 +328,7 @@ r.addEventListener('input',u);u();})();
     var page=location.pathname;
     if(a.classList&&a.classList.contains('js-bm-dot')){icmTrack('Map project opened',{project:a.getAttribute('data-k')||a.getAttribute('aria-label')||'',page:page});return;}
     var h=a.getAttribute('href')||'';
-    if(h.indexOf('zite.so')>-1){var d=a.closest('details'),b=d&&d.querySelector('summary b');icmTrack('Apply clicked',{role:b?b.textContent.trim():'',page:page});return;}
+    if(h.indexOf('5E11gghr17us')>-1||h.indexOf('zite.so')>-1){var d=a.closest('details'),b=d&&d.querySelector('summary b');icmTrack('Apply clicked',{role:b?b.textContent.trim():'',page:page});return;}
     if(h==='/talk-to-us/'||h.indexOf('/talk-to-us/')===0){icmTrack('Talk to us clicked',{label:(a.textContent||'').trim().slice(0,40),page:page});}
   },true);
   window.addEventListener('message',function(e){

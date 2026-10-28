@@ -34,7 +34,7 @@
 ## Open roles
 - Business Developer (Amsterdam): first sales hire; builds a partner channel of installers and supports the first 50 clients.
 - BESS Analyst (Amsterdam): further develops the BESS Backtest, including intraday trading and optimizer settlement.
-- Apply via https://vwz64wuu6x.zite.so/
+- Apply via https://forms.fillout.com/t/5E11gghr17us
 
 ## Supported by
 - MIT feasibility grant from the Province of Noord-Holland.

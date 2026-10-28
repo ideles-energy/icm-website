@@ -468,7 +468,7 @@ ADVISORS_HTML = ('<div class="sup-card adv-card"><ul class="adv-list">' + ''.joi
     f'<li><a href="{u}" target="_blank" rel="noopener"><span><b>{n}</b>' + (('<small><span>' + r.rsplit(', ', 1)[0] + '</span><i class="adv-sep">, </i><span class="adv-org">' + r.rsplit(', ', 1)[1] + '</span></small>') if ', ' in r else (f'<small>{r}</small>' if r else '')) + f'</span><i aria-hidden="true">{_LI}</i><span class="sr-only"> on LinkedIn</span></a></li>'
     for n, r, u in ADVISORS) + '</ul></div>')
 
-APPLY_URL = 'https://vwz64wuu6x.zite.so/'
+APPLY_URL = 'https://forms.fillout.com/t/5E11gghr17us'
 
 def role_v2(title, summary, about, goals, bring, offer, prac='Based in Amsterdam, with a flexible start date.'):
     li = lambda xs: ''.join(f'<li>{x}</li>' for x in xs)
@@ -480,7 +480,7 @@ def role_v2(title, summary, about, goals, bring, offer, prac='Based in Amsterdam
           <a class="btn btn-dark" href="{APPLY_URL}" target="_blank" rel="noopener">Apply</a></div>
       </div></details>'''
 
-_MARKET = 'Batteries are becoming the backbone of a resilient grid and of Europe’s energy security. The Netherlands had around 3 GWh of battery storage installed at the end of 2025 and is projected to reach around 25 GWh by 2030, an eightfold increase.</p><p>For most owners, battery revenues remain opaque. The ICM benchmarks performance against the full potential of each site and monitors it proactively, so that every battery is used as efficiently as possible.'
+_MARKET = 'Batteries are becoming the backbone of a resilient grid and of Europe’s energy security. By 2030, the Netherlands is projected to reach ~25 GWh, an eightfold increase from the 3 GWh installed at the end of 2025.</p><p>For most owners, battery revenues remain opaque. The ICM benchmarks performance against the full potential of each site and monitors it proactively, so that every battery is used as efficiently as possible.'
 
 _FRONT = 'The opportunity to shape one of the fastest-growing sectors in energy, at the intersection of batteries, grid congestion and power markets'
 _OWN = 'Full ownership from your first week, in a small team coached by senior industry leaders. We combine corporate excellence with startup speed.'
@@ -496,22 +496,22 @@ BD_V2 = role_v2('Business Developer',
      'Preferred: familiarity with the BESS landscape (meters, EMS, optimizers) and the sales cycle within it',
      'Native-level Dutch and strong English'],
     [_FRONT,
-     _OWN,
+     'The opportunity to co-lead the sales team as we scale, while being coached by industry leaders. We combine corporate excellence with startup speed.',
      'As a starting point, a one-year contract with a salary around the Dutch modal income (EUR 40–50k), plus a performance bonus and equity options',
-     'Freedom to choose your own approach and to work remotely, with room to co-lead the sales team as we scale',
+     'The freedom to work remote, plan your work as you see fit and be part of a small team of senior experts.',
      'A crash course in all things BESS, including how batteries create value: day-ahead, intraday, imbalance, FCR, aFRR, mFRR and redispatch'],
     'Full-time or part-time (minimum 3 days a week). Based in Amsterdam, with some travel to visit installers and owners. You report to the founder and work with our advisors to deliver results.')
 
 ANALYST_V2 = role_v2('BESS Analyst',
     '',
-    'As our BESS analyst, you improve our proprietary calculation engine that tracks the potential revenue of our batteries under management. You ensure our models reflect how Dutch battery markets really behave and engage with our clients on their results. Expect full ownership of the methodology.',
+    'As our BESS analyst, you improve our proprietary calculation engine that tracks the potential revenue of our batteries under management. You ensure our models reflect how Dutch battery markets really behave and engage with our clients about their results. Expect full ownership of the methodology.',
     '',
-    ['2–5 years of experience as a flex trader, either at the trading desk of an optimizer, aggregator or utility',
-     'An MSc in pure mathematics, econometrics, operations research, physics or energy, strong in Python and JavaScript',
+    ['2–5 years of experience in energy portfolio management and power/flex trading, either at an optimizer, aggregator or utility',
+     'An MSc in pure mathematics, physics, econometrics, or energy systems engineering, strong in Python and JavaScript',
      'In-depth knowledge of the Dutch and European power markets, including intraday order books and settlement',
      'Experience with optimisation models, such as linear programming or PyPSA, and with asset-backed and proprietary trading strategies',
      'The ability to explain technical concepts in layman’s terms, in fluent English; Dutch is a bonus'],
-    ['Contribute to a more resilient grid. We clarify how batteries are optimized and make them more efficient.',
+    ['Contribute to a more resilient grid by clarifying how the optimization of batteries can be improved',
      _FRONT,
      _OWN,
      'As a starting point, a one-year contract with a salary around the Dutch modal income (EUR 40–50k), plus equity options',
@@ -546,7 +546,7 @@ def company(t):
     </div>
   </div>
 </section>
-{'<section class="co-story" id="story"><div class="wrap"><div class="co-story-grid"><div><span class="eyebrow">Our story</span><h2>How the ICM started</h2><div class="story-txt"><p>Battery storage is becoming a cornerstone of a resilient power grid. Batteries store surplus solar and wind power, relieve congestion and help keep grid frequency at 50 Hz.</p><p>The Netherlands had around 3 GWh installed at the end of 2025 and is projected to reach around 25 GWh by 2030, an eightfold increase.</p><p>Yet, for most, battery revenues are a black box, and so is the route to a better optimizer: there is no objective information on which optimizers exist, what their track record is or how they could perform on your site.</p><p>The ICM was founded in Amsterdam in March 2026 to close this information gap.</p><p class="story-src-line">Sources: <a href="https://www.ees-europe.com/publications/european-market-outlook-for-battery-storage-2026" target="_blank" rel="noopener">SolarPower Europe, European Market Outlook for Battery Storage</a>; <a href="https://taiyangnews.info/storage/europe-battery-storage-capacity-exceeds-100-gwh" target="_blank" rel="noopener">TaiyangNews, Europe’s battery storage capacity exceeds 100 GWh</a>.</p></div></div><div><span class="eyebrow">Our advisors</span>' + ADVISORS_HTML + '<span class="eyebrow sup-eb">Our supporters</span><div class="sup-tiles"><a class="sup-tile" href="https://www.noord-holland.nl/Producten_op_alfabet/MKB_innovatiestimulering_topsectoren_MIT_Noord_Holland_Haalbaarheidsproject_subsidie" target="_blank" rel="noopener" aria-label="MIT feasibility grant from the Province of Noord-Holland"><span class="sup-arrow" aria-hidden="true"><svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span><img src="/assets/img/provincie-noord-holland.png" alt="Province of Noord-Holland" width="1188" height="236" loading="lazy"><small>MIT feasibility grant</small></a></div></div></div></div></section>' if COMPANY_STORY else ''}
+{'<section class="co-story" id="story"><div class="wrap"><div class="co-story-grid"><div><span class="eyebrow">Our story</span><h2>How the ICM started</h2><div class="story-txt"><p>Battery storage is becoming a cornerstone of a resilient power grid. Batteries store surplus solar and wind power, relieve congestion and help keep grid frequency at 50 Hz.</p><p>By 2030, the Netherlands is projected to reach ~25 GWh, an eightfold increase from the 3 GWh installed at the end of 2025.</p><p>Yet, for most, battery revenues are a black box, and so is the route to a better optimizer: there is no objective information on which optimizers exist, what their track record is or how they could perform on your site.</p><p>The ICM was founded in Amsterdam in March 2026 to close this information gap.</p><p class="story-src-line">Sources: <a href="https://www.ees-europe.com/publications/european-market-outlook-for-battery-storage-2026" target="_blank" rel="noopener">SolarPower Europe, European Market Outlook for Battery Storage</a>; <a href="https://taiyangnews.info/storage/europe-battery-storage-capacity-exceeds-100-gwh" target="_blank" rel="noopener">TaiyangNews, Europe’s battery storage capacity exceeds 100 GWh</a>.</p></div></div><div><span class="eyebrow">Our advisors</span>' + ADVISORS_HTML + '<span class="eyebrow sup-eb">Our supporters</span><div class="sup-tiles"><a class="sup-tile" href="https://www.noord-holland.nl/Producten_op_alfabet/MKB_innovatiestimulering_topsectoren_MIT_Noord_Holland_Haalbaarheidsproject_subsidie" target="_blank" rel="noopener" aria-label="MIT feasibility grant from the Province of Noord-Holland"><span class="sup-arrow" aria-hidden="true"><svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span><img src="/assets/img/provincie-noord-holland.png" alt="Province of Noord-Holland" width="1188" height="236" loading="lazy"><small>MIT feasibility grant</small></a></div></div></div></div></section>' if COMPANY_STORY else ''}
 <section class="co-team co-team-pl">
   <div class="wrap">
     <p class="co-label dark-t">The team</p>
@@ -561,7 +561,7 @@ def company(t):
 <section class="co-careers" id="careers">
   <div class="wrap">
     <p class="co-label dark-t">Open roles</p>
-    <h2 class="co-big">Provide insights to owners.<span>Do work that matters, with people who care.</span></h2>
+    <h2 class="co-big">Tap into the full potential of European batteries<span>Do work that matters, with people who care.</span></h2>
     <hr>
     <div class="co-acc">
 {rows}
