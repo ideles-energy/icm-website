@@ -496,9 +496,9 @@ BD_V2 = role_v2('Business Developer',
      'Preferred: familiarity with the BESS landscape (meters, EMS, optimizers) and the sales cycle within it',
      'Native-level Dutch and strong English'],
     [_FRONT,
-     _OWN,
+     'The opportunity to co-lead the sales team as we scale, while being coached by industry leaders. We combine corporate excellence with startup speed.',
      'As a starting point, a one-year contract with a salary around the Dutch modal income (EUR 40–50k), plus a performance bonus and equity options',
-     'Freedom to choose your own approach and to work remotely, with room to co-lead the sales team as we scale',
+     'The freedom to work remote, plan your work as you see fit and be part of a small team of senior experts.',
      'A crash course in all things BESS, including how batteries create value: day-ahead, intraday, imbalance, FCR, aFRR, mFRR and redispatch'],
     'Full-time or part-time (minimum 3 days a week). Based in Amsterdam, with some travel to visit installers and owners. You report to the founder and work with our advisors to deliver results.')
 
