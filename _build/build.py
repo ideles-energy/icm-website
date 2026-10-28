@@ -8,7 +8,7 @@ import json, os, re, hashlib
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 LANGS = ['en']  # add 'nl' once the Dutch texts are proofread
-EMAIL = 'ideles@icm.energy'
+EMAIL = 'info@icm.energy'
 LINKEDIN = 'https://www.linkedin.com/in/idel%C3%A8s-kaandorp/'
 
 T = {
@@ -81,14 +81,14 @@ T = {
    ('How long is the commitment?', 'New members are asked to stay at least 3 months. After that, membership renews monthly.'),
    ('Who sees the data?', 'Only the member and the ICM see the raw data. The ICM anonymises submitted information before it adds it to the BESS Benchmark. We do not share individual member data with other members, or third parties. The BESS Benchmark itself is based on aggregated, anonymised information.'),
    ('Can members share their results?', 'Yes. Members may share their BESS Benchmark freely. It belongs to the member and may benefit conversations with installers, advisers and financiers.'),
-   ('I advise or finance BESS assets. Can we work together?', 'Yes. Reach out to <a href="mailto:ideles@icm.energy">ideles@icm.energy</a> to explore the options to work together and join our partner network.'),
+   ('I advise or finance BESS assets. Can we work together?', 'Yes. Reach out to <a href="mailto:info@icm.energy">info@icm.energy</a> to explore the options to work together and join our partner network.'),
    ('How is the BESS Benchmark calculated?', 'The BESS Benchmark divides revenues by MW and annualises the result to show EUR per MW per year. Several filters allow members to compare batteries with a similar duration and set-up. Unavailable hours are excluded (maintenance, fault). Results are preliminary for 3 months, anticipating potential corrections.'),
    ('Why do BESS assets earn differently?', 'Various factors restrict the full earnings potential of a battery: (i) the battery itself (e.g., round-trip efficiency, minimum/maximum state of charge) and its local set-up (e.g., size of the grid connection, congestion contract), (ii) the markets it is active in and (iii) maintenance and malfunctions are the most commonly mentioned factors.'),
    ('Can members see which optimizer performs best?', 'No. The BESS Benchmark does not show results per optimizer, or rankings of optimizers. Members can compare their battery with peers that use the same or other optimizers, without names. Our BESS Broker proposition is designed to source and evaluate optimizers for owners.'),
-   ('Is the ICM independent?', 'Yes. We do not own BESS assets. We are not an optimizer. Nor will we ever be. For more information about our governance, please reach out to <a href="mailto:ideles@icm.energy">ideles@icm.energy</a>.'),
+   ('Is the ICM independent?', 'Yes. We do not own BESS assets. We are not an optimizer. Nor will we ever be. For more information about our governance, please reach out to <a href="mailto:info@icm.energy">info@icm.energy</a>.'),
   ],
   terms_title='Terms & Conditions | The ICM', terms_h='Terms & Conditions',
-  terms_body='<p>Please email <a href="mailto:ideles@icm.energy">ideles@icm.energy</a> to request a version of our Terms &amp; Conditions.</p>',
+  terms_body='<p>Please email <a href="mailto:info@icm.energy">info@icm.energy</a> to request a version of our Terms &amp; Conditions.</p>',
   privacy_title='Privacy statement | The ICM', privacy_h='Privacy statement',
  ),
  'nl': dict(
@@ -147,7 +147,7 @@ T = {
    ('Hoe berekenen jullie de benchmark?', 'We tellen de opbrengst van alle vergelijkbare batterijen op en delen die door hun MW en de uren dat ze beschikbaar waren. De uitkomst staat in euro per MW per jaar. Alle regels staan in de <a href="/methodology/" hreflang="en">methodologie</a> (Engels).'),
   ],
   terms_title='Algemene voorwaarden | de ICM', terms_h='Algemene voorwaarden',
-  terms_body='<p>De algemene voorwaarden (Terms &amp; Conditions) van de BESS Benchmark ontvangt elk aspirant-lid vóór het tekenen, samen met de methodologie.</p><p>Wil je ze eerst lezen? Mail naar <a href="mailto:ideles@icm.energy">ideles@icm.energy</a>, dan sturen we je de actuele versie.</p>',
+  terms_body='<p>De algemene voorwaarden (Terms &amp; Conditions) van de BESS Benchmark ontvangt elk aspirant-lid vóór het tekenen, samen met de methodologie.</p><p>Wil je ze eerst lezen? Mail naar <a href="mailto:info@icm.energy">info@icm.energy</a>, dan sturen we je de actuele versie.</p>',
   privacy_title='Privacyverklaring | de ICM', privacy_h='Privacyverklaring',
  ),
 }
@@ -591,16 +591,16 @@ PROPS = [
 ]
 
 NEWFAQS = [
- ('What is a BESS Backtest?', 'The BESS Backtest analyses the historical usage data of your battery and reveals unused potential. The result is called the “Capture Rate”: the percentage of the full potential that was realised. It shows whether a battery earns what it should, and why it might be held back.'),
- ('What makes the ICM independent?', 'We don’t own batteries and we are not an optimizer. That means we don’t compete on the energy markets and we don’t care which optimizer you use. We simply provide you with accurate numbers you can share with your lender, insurer, installer and optimizer.'),
- ('Who orders a BESS Backtest, the battery owner or the installer?', 'Both are possible: installers can offer a BESS Backtest at or even before delivery, so every customer gets an independent view of what the battery can earn. Owners can also order one directly. Talk to us about how this works for you.'),
- ('What if my battery isn’t earning to its full potential?', 'You decide what happens next. If the result objectively falls short, the first step is contacting the optimizer. We’ll help you review or, when desired, aid you in requesting and comparing quotes from additional optimizers, test what they would have earned, and guide the switch.'),
- ('Why work with the ICM?', 'We are an independent entity serving both your profit margin and helping solidify the national electricity network. No other incentives, transparent communication, all while delivering results.'),
- ('Can I trust the ICM’s numbers?', 'Mathematics, econometrics, and complex data analysis tools. Programmed by us, simple to use for you. Our reason for existing is the accuracy of our data and we stand behind it with a confident stance. Markets are always in flux and that’s what makes the challenge worthwhile. We are constantly adjusting our calculations, so you don’t have to. Used information resources are always listed for transparency.'),
- ('What data does the ICM need, and how is it handled?', 'The more data we have, the more accurate our report. Optimizer reports, meter data per 15 minutes, data from the energy management system for downtime, and the documents on your grid connection and optimizer mandate. We guide you through the list, and your installer or metering service provider can often deliver most of it.'),
- ('What can the ICM do for my installer?', '<p>Installers can use the ICM in three ways:</p><ul><li>Size a system with the BESS Calculator in the pre-construction phase</li><li>Include a BESS Backtest at delivery so every customer gets an independent view of what the battery earns</li><li>Refer owners who want an efficient optimizer to our BESS Broker</li></ul><p>Talk to us to see what fits your way of working.</p>'),
- ('Why do installers offer the BESS Backtest to their customers?', 'A useful tool is the best gift, it builds trust. Installers can offer a free BESS Backtest at delivery, so every customer gets an independent view of what the battery earns. It shows you stand behind your product.'),
- ('Am I increasing my profits or improving the grid?', 'Both, that’s the beauty! A battery that earns the most it can is obviously good for your bottom line, but also makes your battery usage respond to what the energy market needs. Profits therefore directly transfer into a more stable grid.'),
+ ('Why work with the ICM?', 'We are an independent entity serving your profit margin while helping solidify the national electricity network. No other incentives, transparent communication, all while delivering results.'),
+ ('What is a BESS Backtest?', 'The BESS Backtest analyses the historical usage data of your battery and provides insight into usage and revenue. The result is called the “Capture Rate”: this percentage shows whether a battery earns what it should, and why it might be held back.'),
+ ('What makes the ICM independent?', 'We don’t own batteries and we are not an optimizer. That means we don’t compete on the energy markets and simply want your battery to reach its potential. We simply provide you with valuable insight you can share with your project financier, insurer, installer and optimizer.'),
+ ('Who orders a BESS Backtest, the battery owner or the installer?', 'Both are possible, installers can gift a BESS Backtest subscription to their clients at delivery, this way every customer gets an independent view of what their battery can earn. Owners can also order one directly. Talk to us about how this works for you.'),
+ ('Can my battery earn more?', 'If your results objectively fall short, the first step is contacting the optimizer. We’ll help you communicate and guide adjustments. When desired we can also help compare quotes from different optimizers, calculate what they would have earned for you, and potentially guide a switch.'),
+ ('Can I trust the ICM’s numbers?', 'We are informed by the best energy benchmarks available. Our team of mathematicians and econometrists use complex data analysis tools to extract every bit of information and use this to analyse your particular set-up. Finally our advisors at Powerhouse, Nuts Groep and GOPACS help us verify our methodology. In addition this methodology and the sources used are included in our reports.'),
+ ('What data does ICM need?', 'The more data we have, the more accurate our report. Optimizer reports, meter data per 15 minutes, data from the energy management system for downtime, and the documents on your grid connection and optimizer mandate. We guide you through the list, and your installer or metering service provider can often deliver most of it.'),
+ ('What can the ICM do for an installer?', '<p>Installers can use the ICM in three ways:</p><ul><li>Size a system with the BESS Calculator in the pre-construction phase</li><li>Include a BESS Backtest at delivery so every customer gets an independent view of what the battery earns</li><li>Refer owners who want an efficient optimizer to our BESS Broker.</li></ul><p>Talk to us to see what fits your way of working.</p>'),
+ ('Why do installers offer the BESS Backtest to their customers?', 'Installers can gift 3 months of BESS Backtest to their customers at delivery of the battery, providing an independent view of what the battery earns. Showing you support your product and making sure the configuration is done well.'),
+ ('Am I increasing my profits or improving the grid?', 'Both, that’s the beauty! A battery that earns well is obviously good for your bottom line, but also helps support the network. Profits therefore directly transfer into a more stable grid.'),
 ]
 
 SOL_FAQS = [
@@ -618,7 +618,7 @@ def faq_block(items, title=None):
     rows = '\n'.join(f'      <details><summary>{q}</summary>{a if a.startswith("<") else "<p>" + a + "</p>"}</details>' for q, a in items)
     return f"""<section class="faq-sec" id="faq">
   <div class="wrap">
-    <details class="faq-all"><summary><h2>{title or 'Frequently asked questions'}</h2></summary>
+    <details class="faq-all"><summary><div><span class="eyebrow">Good to know</span><h2>{title or 'Frequently asked questions'}</h2></div></summary>
     <div class="faq">
 {rows}
     </div>
@@ -1231,7 +1231,7 @@ def talk(t, variant=None):
       <div class="talk-copy">
         <h1><span class="nw">Secure the true value</span><br><span class="nw">of your BESS asset</span></h1>
         <p>Ready to learn more? Use the form to give us a bit more information about your context and objectives.</p>
-        <p>Alternatively, you can email us directly at <a href="mailto:ideles@icm.energy">ideles@icm.energy</a>.</p>
+        <p>Alternatively, you can email us directly at <a href="mailto:info@icm.energy">info@icm.energy</a>.</p>
       </div>
       <div class="form fillout">
         <div style="width:100%;height:640px" data-fillout-id="icWpPN8hsgus" data-fillout-embed-type="standard" data-fillout-inherit-parameters data-fillout-dynamic-resize></div>
