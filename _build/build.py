@@ -497,7 +497,7 @@ BD_V2 = role_v2('Business Developer',
      'Native-level Dutch and strong English'],
     [_FRONT,
      'The opportunity to co-lead the sales team as we scale, while being coached by industry leaders. We combine corporate excellence with startup speed.',
-     'As a starting point, a one-year contract with a salary around the Dutch modal income (EUR 40–50k), plus a performance bonus and equity options',
+     'As a starting point, a one-year contract, with the combination of salary, equity and bonus to be discussed',
      'The freedom to work remote, plan your work as you see fit and be part of a small team of senior experts.',
      'A crash course in all things BESS, including how batteries create value: day-ahead, intraday, imbalance, FCR, aFRR, mFRR and redispatch'],
     'Full-time or part-time (minimum 3 days a week). Based in Amsterdam, with some travel to visit installers and owners. You report to the founder and work with our advisors to deliver results.')
@@ -514,7 +514,7 @@ ANALYST_V2 = role_v2('BESS Analyst',
     ['Contribute to a more resilient grid by clarifying how the optimization of batteries can be improved',
      _FRONT,
      _OWN,
-     'As a starting point, a one-year contract with a salary around the Dutch modal income (EUR 40–50k), plus equity options',
+     'As a starting point, a one-year contract, with the combination of salary, equity and bonus to be discussed',
      'Freedom to choose your own approach and to work remotely, with room to co-develop our analytics team as we scale'],
     'Full-time or part-time (minimum 3 days a week). Based in Amsterdam, with a flexible start date. You report to the founder and work with our software developers and seasoned traders.')
 
