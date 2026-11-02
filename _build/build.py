@@ -591,7 +591,7 @@ PROPS = [
 ]
 
 NEWFAQS = [
- ('Why work with the ICM?', 'We are an independent entity serving your profit margin while helping solidify the national electricity network. No other incentives, transparent communication, all while delivering results.'),
+ ('Why work with the ICM?', 'Because the ICM works for one thing: running your battery as efficiently as possible. We pick up the phone when we see a way to improve its performance. The best set-up today may not be the best one next year, so we keep checking for you.'),
  ('What is a BESS Backtest?', 'The BESS Backtest analyses the historical usage data of your battery and provides insight into usage and revenue. The result is called the “Capture Rate”: this percentage shows whether a battery earns what it should, and why it might be held back.'),
  ('What makes the ICM independent?', 'We don’t own batteries and we are not an optimizer. That means we don’t compete on the energy markets and simply want your battery to reach its potential. We simply provide you with valuable insight you can share with your project financier, insurer, installer and optimizer.'),
  ('Who orders a BESS Backtest, the battery owner or the installer?', 'Both are possible, installers can gift a BESS Backtest subscription to their clients at delivery, this way every customer gets an independent view of what their battery can earn. Owners can also order one directly. Talk to us about how this works for you.'),
