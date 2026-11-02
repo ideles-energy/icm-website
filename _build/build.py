@@ -991,7 +991,7 @@ def solutions(t):
 </section>
 {GS_STEPS.replace('class="dark gs-steps"', 'class="gs-steps gs-white"')}
 {GS_SECURE.replace('class="dark gs-secure"', 'class="gs-secure gs-white"')}
-{faq_block(NEWFAQS, 'Frequently Asked Questions')}"""
+{faq_block(NEWFAQS[:5], 'Frequently Asked Questions')}"""
     return page_shell(t, '/solutions/', 'Solutions: BESS Calculator, BESS Backtest and BESS Broker | The ICM',
         'How the ICM helps BESS owners: size the right battery system, backtest its performance against its full potential and find a trusted optimizer.', hero, body)
 
@@ -1189,7 +1189,7 @@ def backtest_page(t):
        ('We calculate the full potential', 'We model the best result your site could achieve, hour by hour, and compare it with what the battery earned.'),
        ('You see the result and its drivers', 'The capture rate, split into trading, downtime and site limits. If it falls short, you choose what to do next.')],
       'Owners of operating batteries, and installers who deliver a BESS Backtest with each installation to give customers an independent verdict.',
-      extra_top=example, faq=NEWFAQS)
+      extra_top=example, faq=NEWFAQS[:5])
 
 def broker_page(t):
     return prop_page(t, 'broker', '/solutions/#broker', 'BESS Broker',
