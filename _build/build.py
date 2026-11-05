@@ -667,7 +667,7 @@ def home(t):
 {nav(t, other)}
     <div class="hero" id="main">
       <div>
-        <h1>Secure the true value <br>of your BESS asset</h1>
+        <h1>Living your best live</h1>
         <p class="lead">For those with a nagging sense their battery could earn more. Find the optimal system for your context, outsource the search for a trusted optimizer and monitor your performance proactively.</p>
         <div class="hero-ctas">
           <a class="btn btn-lilac" href="{TALK}">Get started</a>
