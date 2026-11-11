@@ -732,7 +732,7 @@ document.addEventListener('click',e=>{const b=e.target.closest('.info');if(!b){i
  tip.style.left=Math.max(16,Math.min(r.left-w/2,window.innerWidth-w-16))+'px';tip.style.top=(r.bottom+8)+'px';tip.style.maxWidth=w+'px';});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){tip.hidden=true;tipFor=null;closeShare()}});
 window.addEventListener('scroll',()=>{tip.hidden=true;tipFor=null},{passive:true});
-let rsz;window.addEventListener('resize',()=>{clearTimeout(rsz);rsz=setTimeout(()=>{if(S[cur])drawChart()},150)});
+let rsz;window.addEventListener('resize',()=>{clearTimeout(rsz);rsz=setTimeout(()=>{if(S[cur])drawChart()},150)});(function(){const nb=document.getElementById('numbers');if(nb)nb.addEventListener('toggle',()=>{if(S[cur]){drawChart();renderNumbers()}})})();
 const I=t=>!t?'':'<button class="info" type="button" aria-label="More information" data-tip="'+esc(CL(t))+'"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="currentColor" opacity=".14"/><circle cx="8" cy="4.6" r="1.15" fill="currentColor"/><rect x="7" y="6.8" width="2" height="5.4" rx="1" fill="currentColor"/></svg></button>';
 function lbl(label,t){if(!t)return esc(label);const w=label.split(' ');const last=w.pop();return esc(w.join(' '))+(w.length?' ':'')+'<span class="nw">'+esc(last)+I(t)+'</span>'}
 
@@ -880,7 +880,7 @@ function drawChart(){
  const tot=P.reduce((a,p)=>a+TV(p),0);
  $('#chSub').textContent='In EUR · '+winTxt()+' · total '+eur(tot);renderChNotes();
  if(!n){box.innerHTML='<p class="muted">No results in this period.</p>';return}
- const W=Math.max(320,Math.round(box.clientWidth||760)),narrow=W<560,H=narrow?260:300,ALN=!narrow&&unit==='month'&&n<=12,L=narrow?44:ALN?Math.min(250,Math.round(W*.19)):60,R=ALN?Math.max(64,Math.round(W*.07)):12,T=30,Bm=30;const cw=(W-L-R)/n;window.CHG=ALN?{W,L,R,cw,n}:null;
+ const W=Math.max(320,Math.round(box.clientWidth||760)),narrow=W<560,H=narrow?260:300,ALN=!narrow&&unit==='month'&&n<=12&&!!(document.getElementById('numbers')||{}).open,L=narrow?44:ALN?Math.min(250,Math.round(W*.19)):60,R=ALN?Math.max(64,Math.round(W*.07)):12,T=30,Bm=30;const cw=(W-L-R)/n;window.CHG=ALN?{W,L,R,cw,n}:null;
  const vals=P.map(TV).concat(P.filter(p=>p.real!=null).map(p=>p.real));const hi=Math.max(0,...vals),lo=Math.min(0,...vals);
  const span=(hi-lo)||1,raw=span/4,p10=Math.pow(10,Math.floor(Math.log10(raw))),q=raw/p10,step=(q<=1?1:q<=2?2:q<=2.5?2.5:q<=5?5:10)*p10;
  const top=Math.ceil(hi*1.04/step)*step||step,bot=Math.floor(lo/step)*step;const y=v=>T+(top-v)/(top-bot)*(H-T-Bm);const xc=i=>L+cw*(i+.5);
