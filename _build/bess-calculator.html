@@ -580,7 +580,7 @@ table.dt.aln td:not(:first-child),table.dt.aln th:not(:first-child){text-align:c
     </div>
     <div class="leg legr"><div class="li off"><i class="lsw opt"></i><b>Optimizer revenues · <a href="#" class="addopt" target="_blank" rel="noopener">Add optimizer results</a></b></div><div class="li"><i class="lsw"></i><b>Expected revenues</b></div></div>
     <div class="chart" id="chart"></div><div class="chnotes" id="chNotes" hidden></div>
-        <details class="fold" id="numbers"><summary>In numbers <span class="muted small" id="numNote"></span></summary><div class="tbl" id="numTbl"></div><div class="tnotes"><p>In thousands of euros. Figures may not add up due to rounding.</p><p><b>Not included:</b> intraday, aFRR activation energy, mFRR, redispatch, CSC or CBC fees and the optimizer’s fee.</p></div></details>
+        <details class="fold" id="numbers" hidden><summary>In numbers <span class="muted small" id="numNote"></span></summary><div class="tbl" id="numTbl"></div><div class="tnotes"><p>In thousands of euros. Figures may not add up due to rounding.</p><p><b>Not included:</b> intraday, aFRR activation energy, mFRR, redispatch, CSC or CBC fees and the optimizer’s fee.</p></div></details>
   </section>
 
 
@@ -880,7 +880,7 @@ function drawChart(){
  const tot=P.reduce((a,p)=>a+TV(p),0);
  $('#chSub').textContent='In EUR · '+winTxt()+' · total '+eur(tot);renderChNotes();
  if(!n){box.innerHTML='<p class="muted">No results in this period.</p>';return}
- const W=Math.max(320,Math.round(box.clientWidth||760)),narrow=W<560,H=narrow?260:300,ALN=!narrow&&unit==='month'&&n<=12&&!!(document.getElementById('numbers')||{}).open,L=narrow?44:ALN?Math.min(250,Math.round(W*.19)):60,R=ALN?Math.max(64,Math.round(W*.07)):12,T=30,Bm=30;const cw=(W-L-R)/n;window.CHG=ALN?{W,L,R,cw,n}:null;
+ const W=Math.max(320,Math.round(box.clientWidth||760)),narrow=W<560,H=narrow?260:300,ALN=false,L=narrow?44:ALN?Math.min(250,Math.round(W*.19)):60,R=ALN?Math.max(64,Math.round(W*.07)):12,T=30,Bm=30;const cw=(W-L-R)/n;window.CHG=ALN?{W,L,R,cw,n}:null;
  const vals=P.map(TV).concat(P.filter(p=>p.real!=null).map(p=>p.real));const hi=Math.max(0,...vals),lo=Math.min(0,...vals);
  const span=(hi-lo)||1,raw=span/4,p10=Math.pow(10,Math.floor(Math.log10(raw))),q=raw/p10,step=(q<=1?1:q<=2?2:q<=2.5?2.5:q<=5?5:10)*p10;
  const top=Math.ceil(hi*1.04/step)*step||step,bot=Math.floor(lo/step)*step;const y=v=>T+(top-v)/(top-bot)*(H-T-Bm);const xc=i=>L+cw*(i+.5);
